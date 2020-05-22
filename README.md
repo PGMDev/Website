@@ -1,6 +1,6 @@
 # PGM Documentation Website
 
-Source for the official [PGM plugin](https://github.com/Electroid/PGM) documentation, using [Docusaurus 2](https://v2.docusaurus.io/). This repository is maintained by [Overcast Community](https://oc.tc./) developers, but is open source. Read on about how to contribute and document missing features.
+Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus 2](https://v2.docusaurus.io/). This repository is maintained by [Overcast Community](https://oc.tc/) developers, but is open source. Read on about how to contribute and document missing features.
 
 ## Overview
 
@@ -18,10 +18,9 @@ Follow the steps below to get a working local installation of this documentation
 
 Before opening a Pull Request, please:
 
-- Verify that there is no ongoing discussion concerning the implementation you wish to contribute. You can search for such a discussion in this repo's issues page.
+- Verify that there is no ongoing discussion concerning the implementation you wish to contribute. You can search for such a discussion in the [plugin's repository issues page](https://github.com/PGMDev/PGM/issues).
 - Make sure your contribution follows American (US) English grammar rules and spelling, e.g. "color" and not "colour".
-- Prefix your PR's title with `DOCS:`. Remember that this repository also hosts the PGM plugin source code, so it is important we distinguish documentation from plugin.
 
 ## License
 
-> [**Apache-2.0**](https://github.com/Electroid/PGM/blob/docs/LICENSE)
+> [**Apache-2.0**](https://github.com/PGMDev/Website/blob/master/LICENSE)

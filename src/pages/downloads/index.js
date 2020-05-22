@@ -20,7 +20,7 @@ export default function Downloads() {
   useEffect(() => {
     async function getReleases() {
       const response = await fetch(
-        "https://api.github.com/repos/Electroid/PGM/releases"
+        "https://api.github.com/repos/PGMDev/PGM/releases"
       );
 
       return setReleases(await response.json());
