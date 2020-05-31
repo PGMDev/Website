@@ -1,9 +1,9 @@
 name: docs
 on:
   pull_request:
-    branches: [docs]
+    branches: [master]
   push:
-    branches: [docs]
+    branches: [master]
 jobs:
   check:
     if: github.event_name != 'push'
