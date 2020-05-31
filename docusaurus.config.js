@@ -4,8 +4,8 @@ module.exports = {
   url: "https://pgm.dev/",
   baseUrl: "/",
   favicon: "img/favicon.png",
-  organizationName: "Electroid", // Usually your GitHub org/user name.
-  projectName: "PGM", // Usually your repo name.
+  organizationName: "PGMDev", // Usually your GitHub org/user name.
+  projectName: "Website", // Usually your repo name.
   themeConfig: {
     navbar: {
       title: "PGM Documentation",
@@ -42,7 +42,7 @@ module.exports = {
           position: "left",
         },
         {
-          href: "https://github.com/Electroid/PGM",
+          href: "https://github.com/PGMDev",
           label: "GitHub",
           position: "right",
         },
@@ -90,7 +90,7 @@ module.exports = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/Electroid/PGM",
+              href: "https://github.com/PGMDev",
             },
           ],
         },
@@ -104,7 +104,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/Electroid/PGM/edit/docs",
+          editUrl: "https://github.com/PGMDev/Website",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
