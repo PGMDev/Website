@@ -238,6 +238,10 @@ function Navbar() {
             ))}
         </div>
         <div className="navbar__items navbar__items--right">
+          <SearchBar
+            handleSearchBarToggle={setIsSearchBarExpanded}
+            isSearchBarExpanded={isSearchBarExpanded}
+          />
           {links
             .filter((linkItem) => linkItem.position === "right")
             .map((linkItem, i) => (
@@ -251,10 +255,6 @@ function Navbar() {
               onChange={onToggleChange}
             />
           )}
-          <SearchBar
-            handleSearchBarToggle={setIsSearchBarExpanded}
-            isSearchBarExpanded={isSearchBarExpanded}
-          />
         </div>
       </div>
       <div

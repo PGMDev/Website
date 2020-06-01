@@ -97,6 +97,10 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} The PGM project and its contributors`,
     },
+    algolia: {
+      apiKey: "eb1f17b6501799dbbc0ecf0bae35ed57",
+      indexName: "pgm",
+    },
   },
   presets: [
     [
