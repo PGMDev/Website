@@ -132,9 +132,9 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<time>duration</time>`}</label>
         </td>
         <td>
-          Filter if the specified
-          <a href="/docs/reference/misc/time-periods">time period</a>
-          has elapsed since the match started.
+          Filter if the specified{" "}
+          <a href="/docs/reference/misc/time-periods">time period</a> has
+          elapsed since the match started.
         </td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
@@ -144,12 +144,7 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<flag-carried>flag_id</flag-carried>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#flagFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the flag is being carried by anyone.
-        </td>
+        <td>Match if the flag is being carried by anyone.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
@@ -158,12 +153,7 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<flag-dropped>flag_id</flag-dropped>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#flagFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the flag is dropped on the ground.
-        </td>
+        <td>Match if the flag is dropped on the ground.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
@@ -172,12 +162,7 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<flag-returned>flag_id</flag-returned>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#flagFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the flag is at the return-point.
-        </td>
+        <td>Match if the flag is at the return-point.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
@@ -186,12 +171,7 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<flag-captured>flag_id</flag-captured>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#flagFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the flag has been captured.
-        </td>
+        <td>Match if the flag has been captured.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
@@ -206,12 +186,10 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<void/>`}</label>
         </td>
         <td>
-          <a className="left-ref-link" href="#voidFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if there is an air block at Y=0 in the vertical column of this location
+          Match if there is an air block at Y=0 in the vertical column of this
+          location
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td colspan="3">
@@ -228,28 +206,26 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<material>block</material>`}</label>
         </td>
         <td>
-          Matches blocks by their
-          <a href="/docs/reference/items/inventory#material_finder">Material</a>
+          Matches blocks by their{" "}
+          <a href="/docs/reference/items/inventory#material_finder">Material</a>{" "}
           name.
           <br />
-          Accepts a
+          Accepts a{" "}
           <a href="/docs/reference/items/inventory#material_matchers">
             Single Material Pattern
           </a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<structural-load>2</structural-load>`}</label>
         </td>
         <td>
-          <a className="left-ref-link" href="#structuralLoadFilters">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Test the number of other gravity blocks that the queried block is supporting.
+          Test the number of other gravity blocks that the queried block is
+          supporting.
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <th colspan="3">Entity filters</th>
@@ -259,27 +235,27 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<spawn>spawn reason</spawn>`}</label>
         </td>
         <td>
-          Matches spawn event reasons, see
+          Matches spawn event reasons, see{" "}
           <a href="/docs/modules/environment/mobs">mob spawning</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<mob>mob name</mob>`}</label>
         </td>
         <td>
-          Matches mobs by their name, see
+          Matches mobs by their name, see{" "}
           <a href="/docs/modules/environment/mobs">mob spawning</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<entity>entity name</entity>`}</label>
         </td>
         <td>Match entities, e.g. projectiles, boats, dropped items, etc.</td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <th colspan="3">Competitor filters (apply to teams, or FFA players)</th>
@@ -288,12 +264,7 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<carrying-flag>flag_id</carrying-flag>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#flagFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match the team/player carrying the specified flag.
-        </td>
+        <td>Match the team/player carrying the specified flag.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
@@ -324,19 +295,14 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<class>class name</class>`}</label>
         </td>
         <td>Match players with the specified class.</td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<kill-streak/>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#killStreakFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match players with a certain range or amount of kills.
-        </td>
-        <td></td>
+        <td>Match players with a certain range or amount of kills.</td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -379,7 +345,7 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<can-fly/>`}</label>
         </td>
         <td>Match if the player can fly.</td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -394,37 +360,22 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<carrying><item material=""/></carrying>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#itemFilters">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the player is carrying an item.
-        </td>
-        <td></td>
+        <td>Match if the player is carrying an item.</td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<holding><item material=""/></holding>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#itemFilters">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the player is holding an item.
-        </td>
-        <td></td>
+        <td>Match if the player is holding an item.</td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<wearing><item material=""/></wearing>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#itemFilters">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Match if the player is wearing an item.
-        </td>
-        <td></td>
+        <td>Match if the player is wearing an item.</td>
+        <td />
       </tr>
       <tr>
         <th colspan="3">Event filters (apply to transient events)</th>
@@ -433,25 +384,15 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<cause>cause</cause>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#causeFilters">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Filter an event's cause.
-        </td>
-        <td></td>
+        <td>Filter an event's cause.</td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<random>decimal or range</random>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#randomFilter">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Random chance matcher.
-        </td>
-        <td></td>
+        <td>Random chance matcher.</td>
+        <td />
       </tr>
       <tr>
         <th colspan="3">Damage filters (apply to damage/combat events)</th>
@@ -460,13 +401,8 @@ Filter matchers test for specific conditions or properties of things.
         <td>
           <label>{`<relation>relation</relation>`}</label>
         </td>
-        <td>
-          <a className="left-ref-link" href="#relationFilters">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          Filter an event's relation to the player.
-        </td>
-        <td></td>
+        <td>Filter an event's relation to the player.</td>
+        <td />
       </tr>
     </tbody>
   </table>
@@ -550,14 +486,14 @@ These elements must contain either a single filter, or a list of filters, as the
           Allow if the child filter allows, otherwise abstain (transform deny to
           abstain).
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
           <label>{`<deny>`}</label>
         </td>
         <td>Deny if the child filter allows, otherwise abstain.</td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <th colspan="3">Query modifiers - change the question</th>
@@ -572,7 +508,7 @@ These elements must contain either a single filter, or a list of filters, as the
           For example, "do they have the flag?" becomes "does their team have
           the flag?".
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -585,7 +521,7 @@ These elements must contain either a single filter, or a list of filters, as the
           the flag?" Commonly used with the{" "}
           <a href="/docs/modules/mechanics/damage">damage</a> module.
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -598,7 +534,7 @@ These elements must contain either a single filter, or a list of filters, as the
           the flag?" Commonly used in the{" "}
           <a href="/docs/modules/mechanics/damage">damage</a> module.
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <th colspan="3">
@@ -655,7 +591,7 @@ This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) 
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -665,7 +601,7 @@ This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) 
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -682,7 +618,7 @@ This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) 
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -973,7 +909,7 @@ Cause filters are used to filter an event or action according to its cause.
         <td>
           <label>THORNS</label>
         </td>
-        <td></td>
+        <td />
       </tr>
     </tbody>
   </table>

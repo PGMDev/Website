@@ -51,7 +51,6 @@ table tr {
 }
 
 table th {
-  border-color: rgb(72, 77, 91, 0.2);
   background-color: rgb(72, 77, 91, 0.1);
   padding: 8px;
 }
@@ -67,11 +66,11 @@ table td {
 }
 
 table tr:nth-child(even) td {
-  border-color: rgb(72, 77, 91, 0.25);
+  border-color: rgb(72, 77, 91, 0.1);
 }
 
 table tr:nth-child(odd) td {
-  border-color: rgb(72, 77, 91, 0.25);
+  border-color: rgb(72, 77, 91, 0.1);
 }
 
 table label {
