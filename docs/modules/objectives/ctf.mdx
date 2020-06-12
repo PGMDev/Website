@@ -37,7 +37,7 @@ In addition to flags, a CTF map also requires **nets** for flags to be captured 
         <td>
           Node containing a group of flags, nets and posts for this match.
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <th>Sub-elements</th>
@@ -147,7 +147,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -172,7 +172,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -186,7 +186,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/reference/misc/colors">Dye Color Name</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -215,7 +215,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/objectives/ctf#posts">Flag Post</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -231,7 +231,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/format/teams">Team ID</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -242,6 +242,19 @@ Filters can be used to control who can pickup/capture the flag and when.
           <br />
           Causes the flag's scoreboard icon to have the color of the team
           carrying it, rather than the color of the flag itself.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>
+          <label>sequential</label>
+        </td>
+        <td>
+          Specify if the flag cycles through all its posts in a sequential
+          manner, as opposed to picking a random one.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -261,7 +274,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -320,7 +333,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -338,7 +351,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -356,7 +369,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -374,7 +387,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/gear/kits">Kit</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -392,7 +405,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/gear/kits">Kit</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -412,7 +425,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <a href="/docs/modules/gear/kits">Removable Kit</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -444,7 +457,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           Metric used to determine proximity to the flag.
           <br />
-          Accepts <label>closest player</label>, <label>closest block</label>, {" "}
+          Accepts <label>closest player</label>, <label>closest block</label>,{" "}
           <label>closest kill</label> or <label>none</label>.
         </td>
         <td>
@@ -471,7 +484,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           Metric used to determine proximity to the net.
           <br />
-          Accepts <label>closest player</label>, <label>closest block</label>, {" "}
+          Accepts <label>closest player</label>, <label>closest block</label>,{" "}
           <label>closest kill</label> or <label>none</label>.
         </td>
         <td>
@@ -635,6 +648,7 @@ Each flag must have a default post, where it will be placed at the start of the 
 If a post is defined with a region rather than a point, flags will respawn at a random point in the region.
 If multiple points or regions are given, one will be chosen at random (unless the `sequential` option is used).
 Multiple flags can be at a post simultaneously only if there is space available for them.
+One flag can also have multiple posts.
 
 The time required for a flag to respawn is configurable, as well as the time it spends on the ground after being dropped.
 
@@ -688,7 +702,19 @@ The `permanent` option can be used to make a post into something like a [monumen
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <label>name</label>
+        </td>
+        <td>
+          An identifier used in chat messages to know where the flag spawns at.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -698,7 +724,7 @@ The `permanent` option can be used to make a post into something like a [monumen
         <td>
           <a href="/docs/modules/format/teams">Team ID</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -764,7 +790,7 @@ The `permanent` option can be used to make a post into something like a [monumen
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -795,7 +821,7 @@ The `permanent` option can be used to make a post into something like a [monumen
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -823,7 +849,7 @@ The `permanent` option can be used to make a post into something like a [monumen
         <td>
           <span className="badge badge--primary">-180 to 180</span>
         </td>
-        <td></td>
+        <td />
       </tr>
     </tbody>
   </table>
@@ -918,7 +944,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -937,7 +963,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <a href="/docs/modules/mechanics/regions">Region</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -947,7 +973,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <a href="/docs/modules/format/teams">Team ID</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -979,7 +1005,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <a href="/docs/modules/objectives/ctf">Flag Post</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -1019,7 +1045,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -1056,7 +1082,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -1074,7 +1100,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -1105,7 +1131,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -1123,7 +1149,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
