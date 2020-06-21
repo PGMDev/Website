@@ -3,6 +3,14 @@ id: world
 title: World & Terrain
 ---
 
+### Build Height
+
+A world's maximum build height can be set using the `maxbuildheight` element. Once a player tries to build past the set maximum build height, they will be prompted with a message stating that they can not build past the playing field.
+
+```xml
+<maxbuildheight>64</maxbuildheight>
+```
+
 ### Terrain
 
 A world's terrain generator can be modified to use a specific seed, world and/or whether the vanilla chunk generator is used. By default a new random seed is generated for each match, unless one is specified in the seed attribute.
