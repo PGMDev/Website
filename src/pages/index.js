@@ -35,7 +35,7 @@ const features = [
     description: (
       <>
         Be part of a community of over 20 contributors and help keep the project
-        alive! Our <a href="https://discord.gg/CvJGbrV">Discord server</a> is
+        alive! Our <a href="https://discord.gg/pEEcwTk">Discord server</a> is
         the best place to discuss bug fixes and implementations in real time.
       </>
     ),
