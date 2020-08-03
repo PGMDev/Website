@@ -20,7 +20,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
           <label>{`<cores> </cores>`}</label>
         </td>
         <td>Node containing all the defined cores.</td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <th>Sub-elements</th>
@@ -64,7 +64,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -74,7 +74,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
         <td>
           <span className="badge badge--primary">String</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -108,7 +108,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
         <td>
           <a href="/docs/modules/mechanics/regions">Bounded Region</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -122,6 +122,19 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
           <span className="badge badge--primary">Number</span>
         </td>
         <td>5</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-progress</label>
+        </td>
+        <td>
+          Instead of a touch, a % representing how far the core has been leaked
+          is shown. This works similar to destroyables.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
       </tr>
       <tr>
         <td>
@@ -148,7 +161,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
         <td>
           <a href="/docs/modules/format/teams">Team ID</a>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -161,7 +174,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
-        <td></td>
+        <td />
       </tr>
       <tr>
         <td>
@@ -188,7 +201,7 @@ Players have to locate and break the enemy team's core, usually an obsidian sphe
         <td>
           Metric used to determine proximity to the core.
           <br />
-          Accepts <label>closest player</label>, <label>closest block</label>, {" "}
+          Accepts <label>closest player</label>, <label>closest block</label>,{" "}
           <label>closest kill</label> or <label>none</label>.
         </td>
         <td>
