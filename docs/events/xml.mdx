@@ -1,0 +1,302 @@
+---
+id: xml
+title: XML
+---
+
+### Format
+
+Formats are XML files that instruct the plugin to do a specific tournament format, i.e. having a Bo3 of CTW maps, or having several "rounds" of different maps and gamemodes.
+
+Every format XML file must contain the base `<format>` module. The format module can also be a round and therefore can be used to create a nested rounds.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Format Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<format> </format>`}</label>
+        </td>
+        <td>
+          The main format node containing all the modules used in this format.
+          It can also represent a round and be nested inside other elements.
+        </td>
+        <td>
+          <span className="badge badge--secondary">XML Modules</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Format Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>best-of</label>
+        </td>
+        <td>What the match should be out of</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>
+          <label>name</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">
+            Only if nested in {`<options>`}
+          </span>
+          The name of the round. Useful for vetoing
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+        <td />
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Format Sub-elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Attributes</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<match>`}</label>
+        </td>
+        <td>The name of the map.</td>
+        <td>
+          <label>id=""</label> (defaults to map name)
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<veto>`}</label>
+        </td>
+        <td>Represents a round with a veto mechanism to choose play order.</td>
+        <td>
+          <label>id=""</label>
+        </td>
+        <td>
+          <span className="badge badge--secondary">Veto Modules</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Veto
+
+Every format can have a veto element to choose play order between rounds, and each round can have a veto mechanism to choose play order between maps.
+
+##### Veto Sub-elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<decider>`}</label>
+        </td>
+        <td>A veto decider. Decides which team vetoes first.</td>
+        <td>
+          <span className="badge badge--secondary">Match</span>
+          <span className="badge badge--secondary">{`<result-from />`}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<options>`}</label>
+        </td>
+        <td>Map options for that round.</td>
+        <td>
+          <span className="badge badge--secondary">Match</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<order>`}</label>
+        </td>
+        <td>
+          The veto order (ban, pick, etc.). The last element is enacted by the
+          system.
+        </td>
+        <td>
+          <span className="badge badge--secondary">Match</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### `<decider>`
+
+###### Decider Sub-elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Attribute</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<result-from />`}</label>
+        </td>
+        <td>
+          Uses the result from a round with a matching id, let it be a veto
+          decider, match or round. Useful to stop repeating veto deciders.
+        </td>
+        <td>
+          <label>id="map-name"</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### `<order>`
+
+##### Order Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>ban-until</label>
+        </td>
+        <td>The number of maps that will remain after banning maps.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>
+          <label>starting-team</label>
+        </td>
+        <td>Which team starts choosing/banning first.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>
+          <label>time</label>
+        </td>
+        <td>The time in seconds that each team has to veto.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>30</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Order Sub-elements
+
+If `<order>` has no attributes present, it will look for these sub-elements.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Attributes</th>
+        <th>Attribute Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<pick>`}</label>
+        </td>
+        <td>A pick in the veto process.</td>
+        <td>
+          <p style={{ marginBottom: "10px" }}>
+            <label>team=""</label> The team that gets to pick the map
+          </p>
+          <label>insert="back"</label> Whether the map should be added to the front
+          or back of the maps to be played
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<ban>`}</label>
+        </td>
+        <td>A ban in the veto process.</td>
+        <td>
+          <p style={{ marginBottom: "10px" }}>
+            <label>team=""</label> The team that gets to pick the map
+          </p>
+          <label>insert="back"</label> Whether the map should be added to the front
+          or back of the maps to be played
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
