@@ -1,0 +1,97 @@
+---
+id: commands
+title: Commands
+---
+
+The plugin's commands are divided in 2 sections: User commands and Admin commands. Keep in mind that in order to run Admin commands you must have the `events.staff` permission.
+
+### User commands
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Parameters</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>/veto</label>
+        </td>
+        <td>{`<number>`}</td>
+        <td>
+          Vetoes a map if a veto round is running. It can only be executed by
+          players on a team.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>/score</label>
+        </td>
+        <td />
+        <td>Shows the current score in the event.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/rounds</label>
+        </td>
+        <td />
+        <td>Shows the rounds from this event.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Admin Commands
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Parameters</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>/tm create</label>
+        </td>
+        <td>{`<format>`}</td>
+        <td>Creates a match based on a format.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/tm register</label>
+        </td>
+        <td>{`<team>`}</td>
+        <td>Registers a team for a match.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/tm list</label>
+        </td>
+        <td />
+        <td>Lists all loaded teams.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/tm info</label>
+        </td>
+        <td>{`<team>`}</td>
+        <td>Shows information about a team.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/tm unregisterall</label>
+        </td>
+        <td />
+        <td>Clears all registered teams.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -87,6 +87,7 @@ module.exports = {
       Format: ["events/xml", "events/examples"],
     },
     "events/teams",
+    "events/commands",
   ],
   Examples: ["examples/airship-battle"],
 };
