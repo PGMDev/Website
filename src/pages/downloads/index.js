@@ -140,7 +140,7 @@ export default function Downloads() {
                           "button button--primary",
                           styles.others_button
                         )}
-                        href=""
+                        href="https://github.com/PGMDev/Events/releases/latest"
                       >
                         Download <FontAwesomeIcon icon={faArrowDown} />
                       </a>
