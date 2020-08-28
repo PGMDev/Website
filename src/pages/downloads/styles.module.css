@@ -205,10 +205,8 @@
   margin-top: 30px;
 }
 
-@media screen and (max-width: 1000px) {
-  .others_column {
-    margin-top: 30px;
-  }
+.column {
+  margin-top: 30px;
 }
 
 .others_hero {

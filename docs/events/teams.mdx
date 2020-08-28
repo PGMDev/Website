@@ -1,0 +1,34 @@
+---
+id: teams
+title: Teams
+---
+
+In order to define teams that can be loaded with the `/tm register <team>` command, you can either create a team file for each team or add them to a `teams.yml` file under the `/plugins/Events/` folder.
+
+The process of creating team files is pretty straight forward. You simply create a `YML` file under the `/plugins/Events/teams` folder with a name and a list of player UUIDs.
+
+_Example_
+
+```yml
+name: A
+players:
+  - 30401f63-f5bb-4f24-9a5a-0ecd5f706115
+  - 2318a6ef-937d-41ad-aac0-59070815de92
+  - 77d845ce-c88a-467d-9880-1db671a18933
+  - 9b4fbb38-ed55-44ad-b510-9f0197433f93
+  - 02407912-8bbf-4b7b-a34c-a45339841436
+```
+
+On the other side, if you decide to define teams through a single `teams.yml` file, you must do it by adding a root teams element with a list of teams, with each team being an entry and having a name and a list of UUIDs.
+
+_Example_
+
+```yml
+teams:
+  - name: "team1"
+    players:
+      - 24c67759-e2a7-4bdc-a635-2875a0323f8d
+  - name: "team2"
+    players:
+      - e82603df-417d-4a95-bd1f-1720648be0b4
+```

@@ -81,5 +81,13 @@ module.exports = {
       "guides/packaging/compiling-and-releasing",
     ],
   },
+  Events: [
+    "events/main",
+    {
+      Format: ["events/xml", "events/examples"],
+    },
+    "events/teams",
+    "events/commands",
+  ],
   Examples: ["examples/airship-battle"],
 };

@@ -9,6 +9,8 @@ import {
   faAngleRight,
   faFolderOpen,
   faCompass,
+  faCalendarAlt,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
 import classnames from "classnames";
@@ -113,9 +115,89 @@ export default function Downloads() {
           </div>
         )}
         <div className={styles.others}>
-          <h2>Other Resources</h2>
+          <h2 style={{ marginBottom: "-15px" }}>Other Resources</h2>
           <div className="row">
-            <div className="col col--6">
+            <div className={classnames("col col--6", styles.column)}>
+              <div className={classnames("hero", styles.others_hero)}>
+                <div className="col">
+                  <div className="row">
+                    <div className="col col--6">
+                      <div className="row">
+                        <h1 className={styles.others_icon}>
+                          <FontAwesomeIcon icon={faCalendarAlt} />
+                        </h1>
+                        <div className={styles.others_header}>
+                          <h2>Events</h2>
+                          <a href="https://github.com/PGMDev/Events/">
+                            <label>GitHub</label>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col col--6">
+                      <a
+                        className={classnames(
+                          "button button--primary",
+                          styles.others_button
+                        )}
+                        href="https://github.com/PGMDev/Events/releases/latest"
+                      >
+                        Download <FontAwesomeIcon icon={faArrowDown} />
+                      </a>
+                    </div>
+                  </div>
+                  <div className={styles.others_description}>
+                    <p>
+                      Events is the official PGM plugin for managing PvP matches
+                      in a competitive setting. Upon joining or cycling, all
+                      team members are forced onto their respective teams.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={classnames("col col--6", styles.column)}>
+              <div className={classnames("hero", styles.others_hero)}>
+                <div className="col">
+                  <div className="row">
+                    <div className="col col--6">
+                      <div className="row">
+                        <h1 className={styles.others_icon}>
+                          <FontAwesomeIcon icon={faUsers} />
+                        </h1>
+                        <div className={styles.others_header}>
+                          <h2>Community</h2>
+                          <a href="">
+                            <label>GitHub</label>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col col--6">
+                      <button
+                        className={classnames(
+                          "button disabled button--primary",
+                          styles.others_button
+                        )}
+                      >
+                        Coming Soon <FontAwesomeIcon icon={faArrowDown} />
+                      </button>
+                    </div>
+                  </div>
+                  <div className={styles.others_description}>
+                    <p>
+                      Community is a standalone plugin for managing PGM servers.
+                      It includes current PGM community features, such as
+                      punishments, freezing and other aspects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr style={{ marginTop: "40px", marginBottom: "10px" }} />
+          <div className="row">
+            <div className={classnames("col col--6", styles.column)}>
               <div className={classnames("hero", styles.others_hero)}>
                 <div className="col">
                   <div className="row">
@@ -155,7 +237,7 @@ export default function Downloads() {
                 </div>
               </div>
             </div>
-            <div className={classnames("col col--6", styles.others_column)}>
+            <div className={classnames("col col--6", styles.column)}>
               <div className={classnames("hero", styles.others_hero)}>
                 <div className="col">
                   <div className="row">

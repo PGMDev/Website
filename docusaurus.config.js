@@ -37,6 +37,11 @@ module.exports = {
           ],
         },
         {
+          to: "docs/events/main",
+          label: "Events",
+          position: "left",
+        },
+        {
           to: "downloads",
           label: "Downloads",
           position: "left",

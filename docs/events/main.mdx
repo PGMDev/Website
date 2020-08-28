@@ -1,0 +1,31 @@
+---
+id: main
+title: Introduction
+---
+
+`Events` is the official PGM plugin for managing PvP matches in a competitive setting. Team joining is disabled for everyone, and upon joining or cycling, all players on the match's registered teams are forced onto their respective, defined-in-config teams.
+
+The plugin also manages cycling & starting matches as well as readying teams. Maps played in a match can be customised using a format file. Customisable vetos are also supported.
+
+### Running
+
+1. Once you download the plugin from the [Downloads](/downloads) page, make sure that PGM is loaded and all your maps are present under the `maps` folder.
+
+2. Ensure that `plugins/Events/teams/` contains all the teams playing in this tournament and `plugins/Events/formats/` contains the formats for this tournament. You can find more information on how to create both in this section.
+
+3. Register each team playing with /tm register `<team>`
+
+4. Start the format with /tm create `<format>` where `<format>`.xml is a valid file in plugins/Ingame/formats
+
+You will find more information about the plugin's commands in the `Commands` section. The plugin's configuration itself only has a single configurable option: which is `observers-must-ready`. If disabled, the match will start without observers doing /ready. This is specially useful for referees, which is why it's enabled by default.
+
+### Permissions
+
+- `ingame.staff` - Allows users to run `/tm` commands (for administrators)
+- `ingame.spectate` - Allows users to spectate matches. This applies for users that are **not** playing
+
+<span className="badge badge--danger">WARNING</span> The plugin is still WIP. If
+you wish to contribute to its development, please check its <a href="https://github.com/PGMDev/Events">
+  GitHub repository
+</a>
+.
