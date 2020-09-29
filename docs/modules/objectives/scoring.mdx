@@ -401,7 +401,7 @@ Result can be the name of a team, or one of the special values; "tie" for no win
 
 #### Overtime
 
-Overtime can be used in order to force a single winner in a match.  By using the optional `overtime="..."` attribute in the time element, you can specify a <a href="/docs/reference/misc/time-periods">time period</a>. If the score is tied once regulation time ends, the match will extend into overtime. The time will begin to tick down as soon as the tie is broken. It will reset back to the specified time if a tie is reached again before the time expires.
+Overtime can be used in order to force a single winner in a match.  By using the optional `overtime="..."` attribute in the time element, you can specify a <a href="/docs/reference/misc/time-periods">time period</a>. If the score is tied once regulation time ends, the match will extend into overtime. The time will begin to tick down as soon as the tie is broken. It will reset back to the specified time if a tie is reached again or a change in the lead occurs before the time expires.
 
 To limit how long overtime lasts, you can include the `max-overtime="..."` attribute as well.  It, too, accepts a <a href="/docs/reference/misc/time-periods">time period</a> as a value. This will count down in the background and force the overtime to count down once surpassing the `overtime="..."` attribute's value.
 
