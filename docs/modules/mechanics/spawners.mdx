@@ -53,18 +53,6 @@ The module uses the same syntax as <a href="/docs/modules/gear/kits">kits</a> to
     <tbody>
       <tr>
         <td>
-          <label>id</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifier used to reference the spawner from other places in the
-          XML.
-        </td>
-        <td>String</td>
-        <td />
-      </tr>
-      <tr>
-        <td>
           <label>spawn-region</label>
         </td>
         <td>
@@ -197,7 +185,7 @@ This will spawn golden swords (in stacks of 1) in the red base, provided there i
 
 ```xml
 <spawners>
-    <spawner id="sword-spawner" spawn-region="red-base"  player-region="red-base" max-entities="50" min-delay="2s" max-delay="10s" filter="only-red">
+    <spawner spawn-region="red-base"  player-region="red-base" max-entities="50" min-delay="2s" max-delay="10s" filter="only-red">
         <item amount="1" name="`6Golden Sword" material="gold sword"/>
     </spawner>
 </spawners>
