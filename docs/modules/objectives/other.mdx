@@ -5,18 +5,16 @@ title: Other Gamemodes
 
 ### Ghost Squadron
 
-Enables the ghostsquadron gamemode and all its features.
-The default ghostsquadron classes can be found [here](https://raw.githubusercontent.com/OvercastNetwork/maps.oc.tc/master/Blitz/GS/gs.xml).
-Ghost squadron maps set a custom gamemode title in the `gs.xml` with the `<map game="Ghost Squadron">` attribute.
-When not using the default GS XML include a custom title should be set.
-
-`NOTE:` This module must be used in conjunction with another gamemode.
+The ghostsquadron gamemode can be quicky adapted in conjunction with the Bliz gamemode.
+The default ghostsquadron classes and setup can be found [here](https://raw.githubusercontent.com/OvercastNetwork/maps.oc.tc/master/Blitz/GS/gs.xml).
+Ghost squadron maps are set a custom gamemode title using the `<game>` tag.
 
 ```xml
-<ghostsquadron />
-<include src="gs.xml" />
+<game>Ghost Squadron</game>
 
-<time>6m</time>
+<!-- insert ghostsquadron setup --> 
+
+<time>4m</time>
 <blitz>
     <broadcastLives>false</broadcastLives>
 </blitz>

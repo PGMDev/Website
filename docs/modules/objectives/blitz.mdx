@@ -10,7 +10,7 @@ If the match timer ends before a team is eliminated the team with the most playe
 
 The blitz module is used with the [Ghost Squadron](/docs/modules/objectives/other#gs) gamemode, and is also often combined with the [rage](/docs/modules/objectives/other#rage) module.
 
-Blitz maps should include the [global blitz XML](https://raw.githubusercontent.com/OvercastNetwork/maps.oc.tc/master/Include/blitz-global.xml) file.
+Blitz maps should include `<respawn auto="true"/>` to prevent players from "hiding" and prolonging matches.
 
 <div className="table-container">
   <table>
@@ -71,7 +71,7 @@ Example:
 <!-- Time till the match ends in minutes -->
 <time>10m</time>
 
-<include src="blitz-global.xml"/>
+<respawn auto="true"/>
 ```
 
 ```xml
