@@ -382,5 +382,8 @@ _Examples_
     <portal region="portal-entrance">
         <destination><region id="portal-exit"/></destination>
     </portal>
+
+    <!-- Teleports players on the Red Team from score-box to red-spawn, facing west -->
+    <portal filter="only-red" yaw="@90" region="score-box" destination="red-spawn"/>
 </portals>
 ```

@@ -6,7 +6,7 @@ title: Control Points
 Control point give a certain amount of point to the team currently holding it. Once a team has captured all points, or reached a certain score (using the [score module](/docs/modules/objectives/scoring)) the match ends. Control points can be mixed with and used in addition to other gamemodes. Other uses of control points include unlocking an area of the map using objective filters, etc.
 
 ```xml
-<control-points capture-players="lead" incremental="true" show-progress="true">
+<control-points capture-rule="lead" incremental="true" show-progress="true">
     <control-point name="Center" capture-time="20s">
         <capture><cylinder base="0.5,23,7.5" radius="7" height="5"/></capture>
         <progress><cylinder base="0.5,22,7.5" radius="7" height="4"/></progress>
