@@ -7,8 +7,8 @@ The potion `<effect>` element can be used in a kit to apply potion effects direc
 or used to give a custom effect to a [potion bottle item](/docs/modules/gear/items#potions).
 
 Duration specifies how long the potion will last, and amplifier determines what level / how strong the potion is.
-The effect type is specified by its [Minecraft ID](http://minecraft.gamepedia.com/Data_values#Status_effects).
-Effect ID's should be specified without their `minecraft:` prefix.
+The effect type is specified by its [Minecraft ID](/docs/reference/items/potions#potion-names--colors).
+Effect IDs should be specified without their `minecraft:` prefix.
 
 ##### Effect Element
 
@@ -28,7 +28,7 @@ Effect ID's should be specified without their `minecraft:` prefix.
         </td>
         <td>A potion effect</td>
         <td>
-          <a href="http://minecraft.gamepedia.com/Data_values#Status_effects">
+          <a href="/docs/reference/items/potions#potion-names--colors">
             Status Effect ID
           </a>
         </td>
@@ -80,6 +80,9 @@ Effect ID's should be specified without their `minecraft:` prefix.
 _Example_
 
 ```xml
-<effect duration="10" amplifier="4">resistance</effect>
+<effect duration="2" amplifier="10">resistance</effect>
 <effect duration="900" amplifier="1">jump_boost</effect>
+<!-- Commonly used to prevent unintended damage when spawning -->
+<effect duration="2" amplifier="10">damage_resistance</effect>
+
 ```
