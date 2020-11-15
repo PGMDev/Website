@@ -5,25 +5,25 @@ title: Introduction
 
 ### History
 
-PGM originally started off in 2012 as a single game plugin specificaly built to run one map, Airship Battle.
+PGM originally started in 2012 as a single game plugin specifically built to run one map, Airship Battle.
 This plugin could manage the match and reset the map easily at the end of the game.
-Other maps were created later, but these all had to be hardcoded into the plugin.
+Other maps were created later, but these all had to be hard-coded into the plugin.
 This was cumbersome and complicated, and there needed to be a new way to quickly program maps into the plugin using an easy to understand language and syntax.
 This problem would later meet its solution, the PvP Game Manager.
 Players unknown to Java programming could now create their own games and matches using an XML file that PGM takes as an input.
-As of now, there are around 1000+ maps made for PGM!
+As of now, there are over 1000 maps made for PGM!
 
 ### How it Works
 
-All maps made for PGM are programmed using an XML file called `map.xml`.
-XML is structured and layered silimar to HTML, making it easily readable.
-Everything from objectives, spawn kits, filters, jump pads, build areas, kill rewards and damage disable is defined in a map's XML file.
+All maps made for PGM are configured using an XML file called `map.xml`.
+XML is structured and layered similar to HTML, making it easily readable.
+Everything from objectives, spawn kits, filters, jump pads, build areas, kill rewards is defined in a map's XML file.
 Most of the XML can be programmed with little involvement of Minecraft, save for testing and getting coordinates.
 PGM is also backwards compatible with XML files that were made for a previous spec (map proto) so older maps don't need to be upgraded to be playable.
 
-Aspects to a map are defined by modules, and information can be placed inside and in-between modules.
+Aspects of a map are defined by modules, and information can be placed inside modules.
 
 Take a look at an [example](/docs/examples/airship-battle) to see how the XML works and how the modules work together.
 
 The rest of this documentation will explain how to use the modules to build a working XML file for your map.
-Any text editor of your choice can be used to write XML files.
+Text editors like [Atom](https://atom.io/), and [Sublime Text](https://www.sublimetext.com/) are good choices to edit XML.

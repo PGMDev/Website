@@ -19,7 +19,7 @@ module.exports = {
           position: "left",
           items: [
             {
-              to: "docs/modules/general/main",
+              to: "docs/modules/general/introduction",
               label: "Modules",
             },
             {
