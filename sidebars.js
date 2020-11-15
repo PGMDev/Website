@@ -56,6 +56,7 @@ module.exports = {
   Reference: {
     Items: [
       "reference/items/inventory",
+      "reference/items/potions",
       "reference/items/enchantments",
       "reference/items/attributes",
     ],

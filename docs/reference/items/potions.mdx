@@ -1,0 +1,198 @@
+---
+id: potions
+title: Potions & Effects
+---
+
+### Potion Names & Colors
+
+Damage values for potion names/colors, and their effect names for `<effect>`.
+These are intended for use to set the potion color, potion type, and default name.
+Use the `<effect>` element to set duration, amplifier, custom name, and actual potion effect.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Damage Value</th>
+        <th>Potion Name</th>
+        <th>Status Effect</th>
+        <th>Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>0</label>
+        </td>
+        <td>Water Bottle</td>
+        <td>
+          <label>N/A</label>
+        </td>
+        <td>Blue</td>
+      </tr>
+      <tr>
+        <td>
+          <label>1</label>
+        </td>
+        <td>Potion of Regeneration</td>
+        <td>
+          <label>regeneration</label>
+        </td>
+        <td>Pink</td>
+      </tr>
+      <tr>
+        <td>
+          <label>2</label>
+        </td>
+        <td>Potion of Swiftness</td>
+        <td>
+          <label>speed</label>
+        </td>
+        <td>Sky Blue</td>
+      </tr>
+      <tr>
+        <td>
+          <label>3</label>
+        </td>
+        <td>Potion of Fire Resistance</td>
+        <td>
+          <label>fire_resistance</label>
+        </td>
+        <td>Orange</td>
+      </tr>
+      <tr>
+        <td>
+          <label>4</label>
+        </td>
+        <td>Potion of Poison</td>
+        <td>
+          <label>poison</label>
+        </td>
+        <td>Green</td>
+      </tr>
+      <tr>
+        <td>
+          <label>5</label>
+        </td>
+        <td>Potion of Healing</td>
+        <td>
+          <label>instant_health</label>
+        </td>
+        <td>Red</td>
+      </tr>
+      <tr>
+        <td>
+          <label>6</label>
+        </td>
+        <td>Potion of Night Vision</td>
+        <td>
+          <label>night_vision</label>
+        </td>
+        <td>Navy Blue</td>
+      </tr>
+      <tr>
+        <td>
+          <label>7</label>
+        </td>
+        <td>Clear Potion</td>
+        <td>
+          <label>N/A</label>
+        </td>
+        <td>Blue</td>
+      </tr>
+      <tr>
+        <td>
+          <label>8</label>
+        </td>
+        <td>Potion of Weakness</td>
+        <td>
+          <label>weakness</label>
+        </td>
+        <td>Gray</td>
+      </tr>
+      <tr>
+        <td>
+          <label>9</label>
+        </td>
+        <td>Potion of Strength</td>
+        <td>
+          <label>strength</label>
+        </td>
+        <td>Dark Red</td>
+      </tr>
+      <tr>
+        <td>
+          <label>10</label>
+        </td>
+        <td>Potion of Slowness</td>
+        <td>
+          <label>slowness</label>
+        </td>
+        <td>Blue-gray</td>
+      </tr>
+      <tr>
+        <td>
+          <label>11</label>
+        </td>
+        <td>Potion of Leaping</td>
+        <td>
+          <label>jump_boost</label>
+        </td>
+        <td>Bright Green</td>
+      </tr>
+      <tr>
+        <td>
+          <label>12</label>
+        </td>
+        <td>Potion of Harming</td>
+        <td>
+          <label>instant_damage</label>
+        </td>
+        <td>Purple</td>
+      </tr>
+      <tr>
+        <td>
+          <label>13</label>
+        </td>
+        <td>Potion of Water Breathing</td>
+        <td>
+          <label>N/A</label>
+        </td>
+        <td>Blue</td>
+      </tr>
+      <tr>
+        <td>
+          <label>14</label>
+        </td>
+        <td>Potion of Invisibility</td>
+        <td>
+          <label>invisibility</label>
+        </td>
+        <td>Light Gray</td>
+      </tr>
+      <tr>
+        <td>
+          <label>15</label>
+        </td>
+        <td>Thin Potion</td>
+        <td>
+          <label>N/A</label>
+        </td>
+        <td>Blue</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Splash Potions
+
+Splash potions are determined by adding the damage value `16384` to the chosen potion value.
+
+```xml
+<!-- 16384 + 18 = 16402 -->
+<!-- Splash potion + Speed color = Splash Potion of Swiftness I -->
+<item amount="1" material="potion" damage="16402">
+    <!-- Overwrites original three minute Speed I effect -->
+    <effect duration="1m" amplifier="2">speed</effect>
+</item>
+```
