@@ -167,7 +167,7 @@ export default function Downloads() {
                         </h1>
                         <div className={styles.others_header}>
                           <h2>Community</h2>
-                          <a href="">
+                          <a href="https://github.com/PGMDev/Community/">
                             <label>GitHub</label>
                           </a>
                         </div>
@@ -187,8 +187,8 @@ export default function Downloads() {
                   <div className={styles.others_description}>
                     <p>
                       Community is a standalone plugin for managing PGM servers.
-                      It includes current PGM community features, such as
-                      punishments, freezing and other aspects.
+                      It includes various PGM features, such as punishments,
+                      moderation, freezing and other aspects.
                     </p>
                   </div>
                 </div>
