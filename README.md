@@ -1,6 +1,6 @@
 # PGM Documentation Website
 
-Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus 2](https://v2.docusaurus.io/). This repository is maintained by [Overcast Community](https://oc.tc/) developers, but is open source. Read on about how to contribute and document missing features.
+Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus 2](https://v2.docusaurus.io/).
 
 ## Overview
 
@@ -20,6 +20,10 @@ Before opening a Pull Request, please:
 
 - Verify that there is no ongoing discussion concerning the implementation you wish to contribute. You can search for such a discussion in the [plugin's repository issues page](https://github.com/PGMDev/PGM/issues).
 - Make sure your contribution follows American (US) English grammar rules and spelling, e.g. "color" and not "colour".
+
+## Governance
+
+This project is maintained by [Indicado](https://github.com/Indicardo), with assistance from [Electroid](https://github.com/Electroid) and other members from the [PGM](https://discord.gg/RTcBe5AKRA) community.
 
 ## License
 
