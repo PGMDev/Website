@@ -14,11 +14,13 @@ Players unknown to Java programming could now create their own games and matches
 
 This was the signature plugin that was exclusive to a major Minecraft server called Overcast Network (also known as oc.tc).
 After the server's closure, it was open sourced for the community to enjoy.
-A new server called Stratus Network became the lead maintainer of PGM, adding new features to it, but later on they became unable to maintain the plugin as it became large and messy.
-This current iteration of PGM has been forked from an pre-Stratus version to heavily simplify its scope and has three major changes from the previous versions.
+A new server called Stratus Network became the lead maintainer of PGM, adding new features to it, but later on they were unable to maintain the plugin as it became large and messy.
+This current iteration of PGM has been forked from a pre-Stratus version to heavily simplify its scope and has three major changes from the previous versions.
+
 - Based on Minecraft 1.8
 - No backend, website or API
 - Reduced dependencies to make it easier to compile and submit contributions.
+
 It is now easier for anyone to run a Minecraft server using PGM, and people are still making new maps with new features coming in.
 As of now, there are over 1000 maps made for PGM!
 
@@ -26,7 +28,7 @@ As of now, there are over 1000 maps made for PGM!
 
 All maps made for PGM are configured using a unique XML file called `map.xml`.
 XML is structured and layered similar to HTML, making it easily readable.
-PGM reads `map.xml` when the server is loaded, and when the match starts it applies all the functions that is defined in the XML file onto the map.
+PGM reads `map.xml` when the server is loaded, and when the match starts it applies all the functions that is defined in the XML file onto the game.
 Everything from objectives, spawn kits, filters, jump pads, and kill rewards is defined in a map's XML file.
 Many different game modes can be reproduced with PGM, like Team Deathmatch, Capture the Wool, Race, Destroy the Monument, Attack and Defend, and King of the Hill.
 Aspects of a map are defined by modules, and information can be placed inside other modules, making them very versatile and can be used to create many other unique game modes and maps.
@@ -36,6 +38,6 @@ Take a look at this [example](/docs/examples/airship-battle) to see how `map.xml
 PGM is also backwards compatible with XML files that were made for a previous spec (map proto) so older maps don't need to be upgraded to be playable.
 
 The rest of this documentation will explain how to use the modules to build a working XML file for your map.
-Text editors like [Atom](https://atom.io/), and [Sublime Text](https://www.sublimetext.com/) are good choices to edit XML.
+Text editors like [Atom](https://atom.io/) and [Sublime Text](https://www.sublimetext.com/) are good choices to edit XML.
 
 Let's [get started!](/docs/modules/general/main/)
