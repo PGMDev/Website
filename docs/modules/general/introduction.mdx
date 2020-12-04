@@ -1,0 +1,42 @@
+---
+id: introduction
+title: Introduction
+---
+
+### History
+
+PGM originally started in 2012 as a single game plugin specifically built to run one map, [Airship Battle](https://youtu.be/3dLo8ytygWs).
+This plugin could manage the match and reset the map easily at the end of the game, which was unique at the time as there were no comprehensive Bukkit plugins that could manage PvP matches.
+Other maps were created later, but these all had to be hard-coded into the plugin.
+This was cumbersome and complicated, and there needed to be a new way to quickly program maps into the plugin using an easy to understand language and syntax.
+This problem would later meet its solution, the PvP Game Manager.
+Players unknown to Java programming could now create their own games and matches using an XML file that PGM takes as an input.
+
+This was the signature plugin that was exclusive to a major Minecraft server called Overcast Network (also known as oc.tc).
+After the server's closure, it was open sourced for the community to enjoy, but at that point it became very complex to maintain and use.
+This current iteration of PGM has been forked from an earlier 1.8 copy to heavily simplify its scope and has three major changes from the previous iterations of PGM.
+
+- Based on Minecraft 1.8
+- No backend, website or API
+- Reduced dependencies to make it easier to compile and submit contributions.
+
+It is now easier for anyone to run a Minecraft server using PGM, and people are still making new maps with new features coming in.
+As of now, there are over 1000 maps made for PGM!
+
+### How it Works
+
+All maps made for PGM are configured using a unique XML file called `map.xml`.
+XML is structured and layered similar to HTML, making it easily readable.
+PGM reads `map.xml` when the server is loaded, and when the match starts it applies all the functions that is defined in the XML file onto the game.
+Everything from objectives, spawn kits, filters, jump pads, and kill rewards is defined in a map's XML file.
+Many different game modes can be reproduced with PGM, like Team Deathmatch, Capture the Wool, Race, Destroy the Monument, Attack and Defend, and King of the Hill.
+Aspects of a map are defined by modules, and information can be placed inside other modules, making them very versatile and can be used to create many other unique game modes and maps.
+Most of the XML can be programmed with little involvement of Minecraft, save for testing and getting coordinates.
+
+Take a look at this [example](/docs/examples/airship-battle) to see how `map.xml` works and how the modules work together.
+PGM is also backwards compatible with XML files that were made for a previous spec (map proto) so older maps don't need to be upgraded to be playable.
+
+The rest of this documentation will explain how to use the modules to build a working XML file for your map.
+Text editors like [Atom](https://atom.io/) and [Sublime Text](https://www.sublimetext.com/) are good choices to edit XML.
+
+Let's [get started!](/docs/modules/general/main/)
