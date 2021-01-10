@@ -5,9 +5,9 @@ title: Potions & Effects
 
 ### Potion Names & Colors
 
-Damage values for potion names/colors, and their effect names for `<effect>`.
-These are intended for use to set the potion color, potion type, and default name.
-Use the `<effect>` element to set duration, amplifier, custom name, and actual potion effect.
+Damage values for potion names/colors, and their effect names to set [potion effects](/docs/modules/gear/potions).
+Damage values set the potion color, potion type, default duration and name.
+Use the `<effect>` element to set custom duration, amplifier, and actual potion effect.
 
 <div className="table-container">
   <table>
@@ -191,13 +191,13 @@ Splash potions are determined by adding the damage value `16384` to the chosen p
 ```xml
 <!-- 16384 + 18 = 16402 -->
 <!-- Splash potion + Speed color = Splash Potion of Swiftness I -->
-<item amount="1" material="potion" damage="16402">
+<item amount="1" material="potion" damage="16402" name="Super Speed">
     <!-- Overwrites original three minute Speed I effect -->
     <effect duration="1m" amplifier="2">speed</effect>
 </item>
 
 <!-- 16384 + 5 = 16389 -->
-<!-- Splash potion + Speed color = Splash Potion of Instant Health I -->
+<!-- Splash potion + Healing color = Splash Potion of Instant Health I -->
 <item amount="1" material="potion" damage="16389">
     <effect amplifier="1">instant_health</effect>
 </item>
