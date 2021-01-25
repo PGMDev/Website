@@ -137,8 +137,26 @@ to gold block after 10 minutes of gameplay.
 </modes>
 ```
 
+In order for an objective to change modes,
+it must have `modes` or `mode-changes="true"` in its element tag.
+Objectives with `mode-changes` enabled will cycle through all
+modes, regardless if the mode has an ID.
+
+```xml
+<destroyables name="Monument" materials="obsidian" mode-changes="true">
+    <!-- destroyables... -->
+    <!-- destroyables are already affected by modes listed in core -->
+</destroyable>
+<cores>
+    <core team="red" modes="gold-mode sandstone-mode glass-mode">
+        <region><cuboid min="10,15,12" max="12,13,16"/></region>
+    </core>
+</cores>
+```
+
 This specifies a mode that will change the material of affected objectives to
-coal blocks after 10 minutes of gameplay, with the following status message, `> > > EASY MODE < < <`
+coal blocks after 10 minutes of gameplay, with the following boss bar message
+in yellow, `> > > EASY MODE < < <`
 
 ```xml
 <modes>
@@ -147,28 +165,20 @@ coal blocks after 10 minutes of gameplay, with the following status message, `> 
 ```
 
 In this example, the two cores and the two monuments turn to glass in ten minutes, and the
-two cores will turn to gold in fifteen minutes.
+two cores will turn to gold in fifteen minutes. Enabling an objective's `mode-changes`
+attribute is not necessary in this senario.
 
 ```xml
-<cores material="obsidian" leak="2">
-    <core team="red-team" region="left-core" modes="glass-mode gold-mode" name="red core"/>
-    <core team="blue-team" region="right-core" modes="glass-mode gold-mode" name="blue core"/>
+<cores>
+    <core team="red-team"  region="red-core" modes="glass-mode gold-mode"/>
+    <core team="blue-team" region="blu-core" modes="glass-mode gold-mode"/>
 </cores>
-<destroyables>
-    <destroyable id="red-mon" name="red one" owner="red-team" modes="glass-mode" region="mon-red" materials="obsidian"/>
-    <destroyable id="blue-mon" name="blue one" owner="blue-team" modes="glass-mode" region="mon-blu" materials="obsidian"/>
+<destroyables materials="obsidian">
+    <destroyable owner="red-team" modes="glass-mode" region="mon-red" name="Red Monument"/>
+    <destroyable owner="blue-team" modes="glass-mode" region="mon-blu" name="Blue Monument"/>
 </destroyables>
 <modes>
-    <mode id="glass-mode" after="10m" material="glass" name="`eGlass Mode"/>
-    <mode id="gold-mode" after="15m" material="gold block" name="`eGold Mode"/>
+    <mode id="glass-mode" after="10m" material="glass" name="`fGlass Mode"/>
+    <mode id="gold-mode" after="15m" material="gold block" name="`6Gold Mode"/>
 </modes>
-```
-
-`NOTE:` In order for an objective to change modes, it must
-have `modes` or `mode-changes="true"` in its element tag.
-
-```xml
-<destroyables name="Monument" materials="obsidian" mode-changes="true">
-    <!-- destroyables... -->
-</destroyable>
 ```
