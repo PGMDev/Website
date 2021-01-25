@@ -159,16 +159,32 @@ Completion specifies how much of the material(s) inside of the monument region m
       </tr>
       <tr>
         <td>
+          <label>modes</label>
+        </td>
+        <td>
+          Specify which{" "}
+          <a href="/docs/modules/objectives/monument-modes">monument modes</a>{" "}
+          should be used.
+        </td>
+        <td>
+          <a href="/docs/modules/objectives/monument-modes">Mode IDs</a>
+        </td>
+        <td>All modes.</td>
+      </tr>
+      <tr>
+        <td>
           <label>mode-changes</label>
         </td>
         <td>
-          Specify if this destroyable uses custom{" "}
-          <a href="/docs/modules/objectives/monument-modes">monument modes</a>
+          Specify if this destroyable uses custom monument modes.
+          <br />
+          <label>NOTE:</label>
+          Not used in conjunction with <label>modes</label>.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
-        <td>false</td>
+        <td>true</td>
       </tr>
       <tr>
         <td>
@@ -228,7 +244,7 @@ Completion specifies how much of the material(s) inside of the monument region m
         <td>
           Metric used to determine proximity to the destroyable.
           <br />
-          Accepts <label>closest player</label>, <label>closest block</label>, {" "}
+          Accepts <label>closest player</label>, <label>closest block</label>,{" "}
           <label>closest kill</label> or <label>none</label>.
         </td>
         <td>

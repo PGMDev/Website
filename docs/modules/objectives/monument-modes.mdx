@@ -3,9 +3,12 @@ id: monument-modes
 title: Monument Modes
 ---
 
-This module can be used to customize the modes that cores and destroyables cycle through, and at what duration they do so. When a monuments mode changes its material is usually changed from a hard to a soft block.
+This module can be used to customize the modes that cores and destroyables cycle
+through, and at what duration they do so. When a monuments mode changes its
+material is usually changed from a hard to a soft block.
 
-The `<modes>` tag can contain any number of `<mode>` tags with different durations. Each `<mode>` has configurable characteristics that define it.
+The `<modes>` tag can contain any number of `<mode>` tags with different durations.
+Each `<mode>` has configurable characteristics that define it.
 
 <div className="table-container">
   <table>
@@ -86,6 +89,16 @@ The `<modes>` tag can contain any number of `<mode>` tags with different duratio
       </tr>
       <tr>
         <td>
+          <label>id</label>
+        </td>
+        <td>The unique ID of the mode.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
           <label>name</label>
         </td>
         <td>Custom mode name, used for the mode change notice.</td>
@@ -112,7 +125,11 @@ The `<modes>` tag can contain any number of `<mode>` tags with different duratio
     </tbody>
   </table>
 </div>
-Example
+
+#### Examples
+
+This specifies a mode that will change the material of affected objectives
+to gold block after 10 minutes of gameplay.
 
 ```xml
 <modes>
@@ -120,7 +137,8 @@ Example
 </modes>
 ```
 
-This specifies a mode that will change the material of affected objectives to gold block after 10 minutes of gameplay.
+This specifies a mode that will change the material of affected objectives to
+coal blocks after 10 minutes of gameplay, with the following status message, `> > > EASY MODE < < <`
 
 ```xml
 <modes>
@@ -128,9 +146,26 @@ This specifies a mode that will change the material of affected objectives to go
 </modes>
 ```
 
-This specifies a mode that will change the material of affected objectives to coal block after 10 minutes of gameplay, with the following chat message: `> > > EASY MODE < < <`
+In this example, the two cores and the two monuments turn to glass in ten minutes, and the
+two cores will turn to gold in fifteen minutes.
 
-`NOTE:` In order for an objective to change modes, it must have `mode-changes="true"` in its element tag.
+```xml
+<cores material="obsidian" leak="2">
+    <core team="red-team" region="left-core" modes="glass-mode gold-mode" name="red core"/>
+    <core team="blue-team" region="right-core" modes="glass-mode gold-mode" name="blue core"/>
+</cores>
+<destroyables>
+    <destroyable id="red-mon" name="red one" owner="red-team" modes="glass-mode" region="mon-red" materials="obsidian"/>
+    <destroyable id="blue-mon" name="blue one" owner="blue-team" modes="glass-mode" region="mon-blu" materials="obsidian"/>
+</destroyables>
+<modes>
+    <mode id="glass-mode" after="10m" material="glass" name="`eGlass Mode"/>
+    <mode id="gold-mode" after="15m" material="gold block" name="`eGold Mode"/>
+</modes>
+```
+
+`NOTE:` In order for an objective to change modes, it must
+have `modes` or `mode-changes="true"` in its element tag.
 
 ```xml
 <destroyables name="Monument" materials="obsidian" mode-changes="true">
