@@ -159,7 +159,10 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
         <td>
           <label>damage</label>
         </td>
-        <td>The item's damage, used for items such as birch logs.</td>
+        <td>
+          The item's damage, used for items such as birch logs, red wool, potion
+          types, etc.
+        </td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
@@ -549,41 +552,9 @@ However, if any custom effects are present, they will completely replace the def
 By default when a player drinks a potion bottle the empty bottle is automatically removed from the players inventory.
 This behavior can be disabled with the `<keep-potion-bottles/>` tag.
 
-See [Potion Effects](/docs/modules/gear/potions) for details on the effects element.
+See [Potion Effects](/docs/modules/gear/potions) for details on the `<effect>` element.
 
-Also see [Minecraft wiki - Potion](http://www.minecraftwiki.net/wiki/Potions)
-and [Minecraft wiki - Status Effect](http://minecraft.gamepedia.com/Status_effect)
-
-##### Potion Item Attributes
-
-<div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>potion</label>
-        </td>
-        <td>Potion type</td>
-        <td>
-          <a href="http://minecraft.gamepedia.com/Potion#Data_values">
-            Potion ID
-          </a>
-        </td>
-        <td>
-          <label>minecraft:empty</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+Also see the [Potions & Effects](/docs/modules/gear/potions) reference page.
 
 ##### Potion Item Sub-elements
 
@@ -611,9 +582,12 @@ and [Minecraft wiki - Status Effect](http://minecraft.gamepedia.com/Status_effec
 </div>
 
 ```xml
-<item slot="0" material="lingering potion" potion="strong_harming"/>
-<item slot="1" material="potion" potion="fire_resistance">
+<item slot="1" material="potion" damage="3">
     <effect duration="15m">fire_resistance</effect>
+</item>
+<!-- A Jump Boost Splash Potion -->
+<item slot="0" material="potion" damage="16395">
+    <effect duration="3m" amplifier="2">jump_boost</effect>
 </item>
 ```
 
