@@ -129,7 +129,7 @@ Each `<mode>` has configurable characteristics that define it.
 #### Examples
 
 This specifies a mode that will change the material of affected objectives
-to gold block after 10 minutes of gameplay.
+to gold blocks after ten minutes of gameplay.
 
 ```xml
 <modes>
@@ -144,19 +144,26 @@ modes, regardless if the mode has an ID.
 
 ```xml
 <destroyables name="Monument" materials="obsidian" mode-changes="true">
-    <!-- destroyables... -->
-    <!-- destroyables are already affected by modes listed in core -->
+    <destroyable owner="red" mode-changes="true">
+        <region><cuboid min="46,16,26" max="45,14,25"/></region>
+    </destroyable>
+    <!-- destroyable is already affected by modes listed -->
 </destroyable>
 <cores>
     <core team="red" modes="gold-mode sandstone-mode glass-mode">
         <region><cuboid min="10,15,12" max="12,13,16"/></region>
     </core>
 </cores>
+<modes>
+    <mode after="5m" material="gold block" id="gold-mode"/>
+    <mode after="10m" material="sandstone" id="sandstone-mode"/>
+    <mode after="15m" material="glass" id="glass-mode"/>
+</modes>
 ```
 
-This specifies a mode that will change the material of affected objectives to
-coal blocks after 10 minutes of gameplay, with the following boss bar message
-in yellow, `> > > EASY MODE < < <`
+This shows a mode that will change the material of enabled objectives to
+coal blocks after ten minutes of gameplay. The following text, `> > > EASY MODE < < <`
+will be on top of the BossBar in yellow.
 
 ```xml
 <modes>
@@ -166,7 +173,7 @@ in yellow, `> > > EASY MODE < < <`
 
 In this example, the two cores and the two monuments turn to glass in ten minutes, and the
 two cores will turn to gold in fifteen minutes. Enabling an objective's `mode-changes`
-attribute is not necessary in this senario.
+attribute is not necessary in this case.
 
 ```xml
 <cores>
