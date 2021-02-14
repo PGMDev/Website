@@ -291,6 +291,71 @@ By default health or hunger values are only increased, not decreased. For exampl
 </kit>
 ```
 
+### Team Switch Kit
+
+Allow for players who recieve this kit to be forced onto a different team.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<team-switch/>`}</label>
+        </td>
+        <td>Switch the player's current team</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Team Switch Kit Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>team</label>
+        </td>
+        <td>The team to switch the player to.</td>
+        <td>
+          <a href="/docs/modules/format/teams">Team ID</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-title</label>
+        </td>
+        <td>Set if the player should recieve join message as a title.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```xml
+<kit id="team-switch">
+    <team-switch team="blue" show-title="false"/>
+</kit>
+```
+
 ### Potion Effect Kits (removable)
 
 Potion effects can be applied and removed with a kit. See [Potion Effects](/docs/modules/gear/potions) for details about the `<effect>` element.
