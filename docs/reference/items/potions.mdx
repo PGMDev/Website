@@ -6,7 +6,7 @@ title: Potions & Effects
 ### Potion Names & Colors
 
 Damage values set the potion color, [potion effect](/docs/modules/gear/potions), default duration and name for potion items.
-Use the `<effect>` element to set custom duration, amplifier and desired potion effect.
+Use the `<effect>` element to set custom duration, amplifier and desired status effect.
 
 <div className="table-container">
   <table>
@@ -199,5 +199,81 @@ Splash potions are determined by adding the damage value `16384` to the chosen p
 <!-- Splash potion + Healing color = Splash Potion of Instant Health I -->
 <item amount="1" material="potion" damage="16389">
     <effect amplifier="1">instant_health</effect>
+</item>
+```
+
+### Other Status Effects
+
+Potions can have other status effects applied that are not potion effects.
+Multiple effects can be applied to a potion
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Status Effect</th>
+        <th>Status ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Absorption</td>
+        <td>
+          <label>absorption</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Blindness</td>
+        <td>
+          <label>blindness</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Confusion</td>
+        <td>
+          <label>confusion</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Fast Digging</td>
+        <td>
+          <label>fast_digging</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Health Boost</td>
+        <td>
+          <label>health_boost</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Saturation</td>
+        <td>
+          <label>saturation</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Slow Digging</td>
+        <td>
+          <label>slow_digging</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Wither</td>
+        <td>
+          <label>wither</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```xml
+<!-- Strength potion color -->
+<item amount="1" material="potion" damage="9">
+    <effect amplifier="3" duration="100">absorption</effect>
+    <effect amplifier="1" duration="30">fast_digging</effect>
+    <effect amplifier="2" duration="30">speed</effect>
+    <!-- Strength potion effect is not applied at all -->
 </item>
 ```
