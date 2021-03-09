@@ -5,10 +5,40 @@ title: Time & Dimension
 
 ### Time
 
-Lock the time to what the map was saved with. Change the maps time to midnight and then save it. The time will then remain locked to midnight the whole game through. This can also be accomplished with the `doDaylightCycle` [gamerule](/docs/modules/mechanics/gamerules).
+#### Time Set
+
+Sets the map to use a certain time on match load, measured in ticks.
 
 ```xml
-<timelock>on</timelock>  <!-- Defaults to off -->
+<world>
+    <!-- Sets map to midnight -->
+    <timeset>18000</timeset>
+</world>
+```
+
+#### Random Time
+
+World time can be set from one of six possible times at random when a match loads.
+
+```xml
+<world>
+    <randomtime/>
+    <!-- 1000, 6000, 12610, 13000, 14000, 18000 -->
+    <!-- day   noon  dusk   night         midnight -->
+</world>
+```
+
+#### Time Lock
+
+Locks the time to a certain time, either from `<timeset>` or from the map data.
+Time lock must be specifically turned off if one wishes to have the time cycle
+when using `<timeset>` or `<randomtime/>`.
+This can also be accomplished with the `doDaylightCycle` [gamerule](/docs/modules/mechanics/gamerules).
+
+```xml
+<world>
+    <timelock>on</timelock>  <!-- Defaults to off -->
+</world>
 ```
 
 ### Dimension
