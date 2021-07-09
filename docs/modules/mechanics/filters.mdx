@@ -653,6 +653,69 @@ _Examples_
 <kill-streak id="10th-kill-filter" repeat="true" count="10"/>    <!-- match for every 10th kill -->
 ```
 
+#### Lives Filter
+
+The lives filter matches for players who have a specified number of lives.
+The [Blitz module](/docs/modules/objectives/blitz) must be enabled to use this filter.
+
+##### Lives Filter Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>min</label>
+        </td>
+        <td>Match players with at least this many lives.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>max</label>
+        </td>
+        <td>Match players with a maximum of this many lives.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>count</label>
+        </td>
+        <td>
+          Match players with exactly this many lives.
+          <br />
+          <i>
+            Cannot be mixed with the <label>min</label> & <label>max</label>{" "}
+            attributes.
+          </i>
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Examples_
+
+```xml
+<lives min="3"/>      <!-- matches players with at least 3 lives -->
+<lives max="5"/>      <!-- matches players with at most 5 lives -->
+<lives count="1"/>    <!-- matches players with exactly 1 life -->
+```
+
 #### Random Filter
 
 This filter will randomly `ALLOW` or `DENY` when evaluated in the context of an event.
