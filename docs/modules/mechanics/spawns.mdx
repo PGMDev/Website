@@ -83,9 +83,7 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
         </td>
         <td>The team this spawn applies to.</td>
         <br />
-        <i>
-          Not needed for team-less gamemodes.
-        </i>
+        <i>Not needed for team-less gamemodes.</i>
         <td>
           <a href="/docs/modules/format/teams">Team ID</a>
         </td>
@@ -362,7 +360,13 @@ To allow players to spawn at a bed set the bed attribute to true. Players spawni
         <td>
           <label>{`<respawn/>`}</label>
         </td>
-        <td>Node specifying the respawn settings for this map.</td>
+        <td>Node specifying the default respawn settings for this map.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<respawns>`}</label>
+        </td>
+        <td>Node specifying multiple respawn options for this map.</td>
       </tr>
     </tbody>
   </table>
@@ -390,6 +394,16 @@ To allow players to spawn at a bed set the bed attribute to true. Players spawni
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
         <td>2s</td>
+      </tr>
+      <tr>
+        <td>
+          <label>filter</label>
+        </td>
+        <td>Filters when the respawn is used.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -500,4 +514,11 @@ To allow players to spawn at a bed set the bed attribute to true. Players spawni
 <respawn delay="5s" spectate="true">
     <message>{translate: "death.respawn.confirmed.waiting.flagDropped"}</message>
 </respawn>
+
+<!-- Allow respawning after 1.5 seconds -->
+<!-- After 10 minutes has passed, allow respawning after 10 seconds -->
+<respawns>
+  <respawn delay="10s" filter="after-10m"/>
+</respawns>
+<respawn delay="1.5s"/>
 ```
