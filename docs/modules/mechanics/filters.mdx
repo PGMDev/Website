@@ -1001,6 +1001,24 @@ Cause filters are used to filter an event or action according to its cause.
   </table>
 </div>
 
+#### Effect Filter
+
+The effect filter is used to check if a player has the same type of effect specified in the filter.
+Three optional attributes can be configured using `min-duration`, `max-duration` and `amplifier`.
+
+```xml
+<!-- matches players with Saturation I that lasts at least 10 seconds -->
+<effect id="filter1" min-duration="10s" amplifier="1">saturation</effect>
+<!-- matches players with a saturation effect, regardless of strength or length. -->
+<effect id="filter2">saturation</effect>
+<!-- matches players with Night Vision II that lasts at most 30 seconds -->
+<effect id="filter3" max-duration="30s" amplifier="2">night vision</effect>
+<!-- matches players with Water Breathing I -->
+<effect id="filter4" amplifier="1">water breathing</effect>
+<!-- matches players with Night Vision II that lasts between 10-20 seconds -->
+<effect id="filter5" min-duration="10s" max-duration="20s" amplifier="2">night vision</effect>
+```
+
 #### Player Relation Filters
 
 The relation filter is used when a player is damaged to check the relation between them and the damage cause.
