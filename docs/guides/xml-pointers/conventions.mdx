@@ -7,7 +7,8 @@ title: XML Conventions
 
 ##### Map Indentation
 
-Modules must all start on column one. This means that all children tags under the `<map>` tag must be aligned with said `<map>` tag.
+Modules must all start on column one.
+This means that all children tags under the `<map>` tag must be aligned with said `<map>` tag.
 
 ```xml
 <?xml version="1.0"?>
@@ -24,7 +25,7 @@ Modules that have sub elements such as the `author` tag must be indented with 4 
 
 ```xml
 <?xml version="1.0"?>
-<map proto=”1.4.0">
+<map proto="1.4.0">
 <authors>
     <author uuid="060baa18-2852-40d8-afcb-e61607c04be3"/> <!-- PepsiDog -->
 </authors>
@@ -33,7 +34,8 @@ Modules that have sub elements such as the `author` tag must be indented with 4 
 
 ##### Space Between Modules
 
-There should be no white spaces between modules. That means the end of one module should have the start of another on the immediate next line.
+There should be no white spaces between modules.
+That means the end of one module should have the start of another on the immediate next line.
 
 ```xml
 <!-- Correct -->
@@ -66,13 +68,15 @@ The ending tag of one module should be on the line directly above the beginning 
 
 ##### Line Ending
 
-XML files must end with an empty line. For example, if the ending `</map>` tag is on line 52, the last line of the XML file would be line 53.
+XML files must end with an empty line.
+For example, if the ending `</map>` tag is on line 52, the last line of the XML file would be line 53.
 
 ### Layout
 
 ##### Main Map Definitions
 
-There are 6 modules that make up the maps definition. They should all be placed at the top of the document; following the order below: `map`, `name`, `version`, `objective`, `authors` and `contributors`.
+There are 6 modules that make up the maps definition.
+They should all be placed at the top of the document; following the order below: `map`, `name`, `version`, `objective`, `authors` and `contributors`.
 
 `NOTE:` Contributors are optional but are still to remain at the top.
 
@@ -93,11 +97,11 @@ There are 6 modules that make up the maps definition. They should all be placed 
 
 ##### The Protocol
 
-All maps being added to the repository should use the most up to date protocol.
+All maps should use the most up to date protocol.
 
 ##### Authors and Contributors
 
-An author using a uuid definition should have an inline comment to denote the players IGN.
+An author using a UUID definition should have an inline comment to denote the players IGN.
 
 ```xml
 <authors>
@@ -111,15 +115,15 @@ The filter definition should be defined before the definition of regions.
 
 ### Naming Conventions
 
-##### Map Names Map
-
-Names should not contain any special characters or symbols. This includes unicode and letters with accents.
-
 ##### Versioning
 
 Follow the Semantic Versioning Schema For example: `1.2.3`
 
-A Major is classified by the addition of major gameplay changes - changes that could be called a new map. A Minor is classified by the addition of changes that affect gameplay but not to the extent of a major. A Patch is classified by a small change to fix a bug or unintentional feature. `NOTE:` Bump this patch when you fix something on a map.
+A Major is classified by the addition of major gameplay changes - changes that could be called a new map.
+A Minor is classified by the addition of changes that affect gameplay but not to the extent of a major.
+A Patch is classified by a small change to fix a bug or unintentional feature.
+
+`NOTE:` Bump the patch number when you fix something on a map.
 
 ##### Objectives
 
@@ -139,11 +143,8 @@ Modules that require an `id` to be defined should be named in all lowercase and 
 
 ##### Enumeration Naming
 
-Names which are defined as enumeration in bukkit should be transferred into lower case and `_` underscores replaced with spaces. `PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
-
-##### Material Definition
-
-In places where you define a material type use the bukkit name following the Enumeration Naming (3.5) instead of the ID. This makes it a lot easier to know what block is being defined during debugging processes.
+Names which are defined as enumeration in bukkit should be transferred into lower case and `_` underscores replaced with spaces.
+`PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
 
 ##### Team Filters
 
