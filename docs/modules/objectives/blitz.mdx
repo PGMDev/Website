@@ -8,7 +8,7 @@ Each player has a limited amount of lives, and after they are used up the player
 The match ends after the specified amount of time, or when one team is eliminated.
 If the match timer ends before a team is eliminated the team with the most players remaining wins.
 
-The blitz module is used with the [Ghost Squadron](/docs/modules/objectives/other#gs) gamemode, and is also often combined with the [rage](/docs/modules/objectives/other#rage) module.
+The blitz module is often combined with the [rage](/docs/modules/objectives/other#rage) module.
 
 Blitz maps should include `<respawn auto="true"/>` to prevent players from "hiding" and prolonging matches.
 
@@ -57,10 +57,21 @@ Blitz maps should include `<respawn auto="true"/>` to prevent players from "hidi
         </td>
         <td>true</td>
       </tr>
+      <tr>
+        <td>
+          <label>{`<filter>`}</label>
+        </td>
+        <td>Filters when a player loses a life.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+        <td>N/A</td>
+      </tr>
     </tbody>
   </table>
 </div>
-Example:
+
+_Example_
 
 ```xml
 <blitz>
@@ -72,6 +83,29 @@ Example:
 <time>10m</time>
 
 <respawn auto="true"/>
+```
+
+```xml
+<!-- Player loses life when dying 30 seconds after match start -->
+<blitz>
+    <lives>5</lives>
+    <filter>
+        <time>30s</time>
+    </filter>
+</blitz>
+```
+
+```xml
+<blitz filter="blitz-filter">
+    <lives>2</lives>
+</blitz>
+
+<!-- Player loses life when not carrying a golden apple -->
+<not id="blitz-filter">
+    <carrying>
+        <item material="golden apple"/>
+    </carrying>
+</not>
 ```
 
 ```xml
