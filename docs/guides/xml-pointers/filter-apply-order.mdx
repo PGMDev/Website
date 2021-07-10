@@ -3,6 +3,8 @@ id: filter-apply-order
 title: Filter Apply Order
 ---
 
+import ImageSwitcher from "../../../src/components/ImageSwitcher.js";
+
 After proto `1.3.3` and above, the order that you [apply](/docs/modules/mechanics/regions#applying) filters to regions affects their behavior.
 Here's an example.
 
@@ -25,7 +27,10 @@ Now let's apply this filter to `Region A`, and also apply a filter to `Region B`
 However, there is one slight complication. `Region B` is inside of `Region A`.
 So which filter will override the other? This is where the apply order comes in handy.
 
-![Apply Order Image](https://i.imgur.com/tFkLV5O.png)
+<ImageSwitcher
+  lightImageSrc="/img/apply-order.png"
+  darkImageSrc="/img/apply-order-dark.png"
+/>
 
 The order that you put the `<apply>`'s can change the outcome when something gets filtered.
 In the previous example, the `only-tnt` filter would always override the `never` filter since it is above it.

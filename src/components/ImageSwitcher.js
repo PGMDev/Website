@@ -7,7 +7,7 @@ const ImageSwitcher = ({ lightImageSrc, darkImageSrc }) => {
   return (
     <img
       src={isDarkTheme ? darkImageSrc : lightImageSrc}
-      alt="Example banner"
+      alt="This image needs JS enabled to load."
     />
   );
 };
