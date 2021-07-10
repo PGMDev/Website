@@ -142,7 +142,7 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
       <tr>
         <td>
-          <label>{`<objective>objective_id</objective>`}</label>
+          <label>{`<objective>objective-id</objective>`}</label>
         </td>
         <td>Match if the objective is completed.</td>
         <td>
@@ -151,7 +151,7 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
       <tr>
         <td>
-          <label>{`<flag-carried>flag_id</flag-carried>`}</label>
+          <label>{`<flag-carried>flag-id</flag-carried>`}</label>
         </td>
         <td>Match if the flag is being carried by anyone.</td>
         <td>
@@ -160,7 +160,7 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
       <tr>
         <td>
-          <label>{`<flag-dropped>flag_id</flag-dropped>`}</label>
+          <label>{`<flag-dropped>flag-id</flag-dropped>`}</label>
         </td>
         <td>Match if the flag is dropped on the ground.</td>
         <td>
@@ -169,7 +169,7 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
       <tr>
         <td>
-          <label>{`<flag-returned>flag_id</flag-returned>`}</label>
+          <label>{`<flag-returned>flag-id</flag-returned>`}</label>
         </td>
         <td>Match if the flag is at the return-point.</td>
         <td>
@@ -178,7 +178,7 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
       <tr>
         <td>
-          <label>{`<flag-captured>flag_id</flag-captured>`}</label>
+          <label>{`<flag-captured>flag-id</flag-captured>`}</label>
         </td>
         <td>Match if the flag has been captured.</td>
         <td>
@@ -271,9 +271,18 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
       <tr>
         <td>
-          <label>{`<carrying-flag>flag_id</carrying-flag>`}</label>
+          <label>{`<carrying-flag>flag-id</carrying-flag>`}</label>
         </td>
         <td>Match the team/player carrying the specified flag.</td>
+        <td>
+          <span className="badge badge--primary">Dynamic</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<score>single number or range</score>`}</label>
+        </td>
+        <td>Match the team/player with a range of score.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
@@ -311,6 +320,13 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<kill-streak/>`}</label>
         </td>
         <td>Match players with a certain range or amount of kills.</td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<lives/>`}</label>
+        </td>
+        <td>Match players with a certain amount of lives.</td>
         <td />
       </tr>
       <tr>
@@ -363,6 +379,13 @@ Filter matchers test for specific conditions or properties of things.
           <label>{`<can-fly/>`}</label>
         </td>
         <td>Match if the player can fly.</td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<effect/>`}</label>
+        </td>
+        <td>Match if the player has a certain status effect.</td>
         <td />
       </tr>
       <tr>
@@ -573,6 +596,8 @@ _Examples_
 </filters>
 ```
 
+### Special Elements
+
 #### Kill-Streak Filter
 
 The kill-streak filter is a matcher that matches players who have a specified number of kills.
@@ -656,10 +681,10 @@ This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) 
 _Examples_
 
 ```xml
-<kill-streak min="3"/>      <!-- matches players with at least 3 kills -->
-<kill-streak max="5"/>      <!-- matches players with at most 5 kills -->
-<kill-streak count="4"/>    <!-- matches players with exactly 4 kills -->
-<kill-streak id="10th-kill-filter" repeat="true" count="10"/>    <!-- match for every 10th kill -->
+<kill-streak min="3"/>    <!-- matches players with at least 3 kills -->
+<kill-streak max="5"/>    <!-- matches players with at most 5 kills -->
+<kill-streak count="4"/>  <!-- matches players with exactly 4 kills -->
+<kill-streak repeat="true" count="10"/>  <!-- match for every 10th kill -->
 ```
 
 #### Lives Filter
@@ -833,7 +858,10 @@ The child filter can be omitted, in which case all players in the match will be 
 
 #### Flag Filters
 
-The flag filters allow filtering of a specific flags current state or for the player that is carrying the flag. One important use of these filters is to implement the standard rule that a team can only capture an enemy flag when their own flag is returned. This can be implemented easily using a `<flag-returned>` as the capture-filter of a flag. This can also be done with the nets return attribute. However, using the return attribute will return dropped flags, while using a filter will not.
+The flag filters allow filtering of a specific flags current state or for the player that is carrying the flag.
+One important use of these filters is to implement the standard rule that a team can only capture an enemy flag when their own flag is returned.
+This can be implemented easily using a `<flag-returned>` as the capture-filter of a flag.
+This can also be done with the nets return attribute. However, using the return attribute will return dropped flags, while using a filter will not.
 The flag carried, dropped, captured and returned filters have an optional `post` attribute to only match if the flag was last returned to that post.
 
 ```xml
@@ -853,7 +881,10 @@ The flag carried, dropped, captured and returned filters have an optional `post`
 
 #### Item Filters
 
-These filters can be used to filter for players with specific items in their inventory. They accept a single [item](/docs/modules/gear/items) element. Only the item's type, durability/damage and meta data are compared. A item's meta data includes the item's name, enchantments, etc.
+These filters can be used to filter for players with specific items in their inventory.
+They accept a single [item](/docs/modules/gear/items) element.
+Only the item's type, durability/damage and meta data are compared.
+A item's meta data includes the item's name, enchantments, etc.
 
 ```xml
 <!-- Player has a stick named 'Blue Door Key' in their inventory -->
@@ -961,7 +992,7 @@ Cause filters are used to filter an event or action according to its cause.
       <tr>
         <td>
           <label>GRAVITY</label>
-          Fall and void damage.
+          <i>(fall and void damage)</i>
         </td>
         <td>
           <label>VOID</label>
@@ -1003,7 +1034,7 @@ Cause filters are used to filter an event or action according to its cause.
 
 #### Effect Filter
 
-The effect filter is used to check if a player has the same type of effect specified in the filter.
+The effect filter is used to check if a player has the same type of [Status Effect](/docs/modules/gear/potions) specified in the filter.
 Three optional attributes can be configured using `min-duration`, `max-duration` and `amplifier`.
 
 ```xml
@@ -1022,7 +1053,7 @@ Three optional attributes can be configured using `min-duration`, `max-duration`
 #### Player Relation Filters
 
 The relation filter is used when a player is damaged to check the relation between them and the damage cause.
-This filter is only used in damage related contexts i.e., [damage filters](/docs/modules/mechanics/damage), and [kill rewards](/docs/modules/gear/kill-rewards)
+This filter is only used in damage related contexts i.e., [damage filters](/docs/modules/mechanics/damage), and [kill rewards](/docs/modules/gear/kill-rewards).
 
 <div className="table-container">
   <table>
@@ -1079,7 +1110,7 @@ The structural load filter checks the number of gravity blocks that are attached
 It returns `ALLOW` as long as the structural load is greater than or equal to the specified value and `DENY` otherwise.
 
 <span className="badge badge--warning">Warning</span> This filter is very computationally
-expensive to apply, XML authors should ensure that it is only run when absolutely
+expensive to apply. XML authors should ensure that it is only run when absolutely
 necessary, e.g. by placing other filters above it. They should also not apply it
 to events that modify large amounts of blocks, such as explosions. This filter requires
 the falling blocks module to be loaded otherwise it will default to abstain.
@@ -1100,7 +1131,10 @@ _Example_
 #### Void Filter
 
 If your map is especially complex shaped you may have to use the `<void/>` tag to shape your filtered region.
-The `<void/>` tag checks the specified regions for blocks on the bottom layer of the world. It then creates an outline of those blocks and the specified filter is only active inside or outside that outline. Bridges are usually not detected because they are not at `y=0`. This can be fixed by creating a invisible silhouette of the bridge with block 36 at `y=0`.
+The `<void/>` tag checks the specified regions for blocks on the bottom layer of the world.
+It then creates an outline of those blocks and the specified filter is only active inside or outside that outline.
+Bridges are usually not detected because they are not at `y=0`.
+This can be fixed by creating a invisible silhouette of the bridge with block 36 at `y=0`.
 
 _Example_
 
