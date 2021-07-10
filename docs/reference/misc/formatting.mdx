@@ -3,6 +3,8 @@ id: formatting
 title: Text Formatting
 ---
 
+import ImageSwitcher from "../../../src/components/ImageSwitcher.js";
+
 Text formatting codes are used to create fancy colorized text, they are prefixed with a grave symbol `` ` ``. After using a formatting code such as `` `o `` (italic) it has to be reset, otherwise it will continue until the end of the text.
 
 <div className="alert alert--info" style={{ marginBottom: "20px" }}>
@@ -22,7 +24,10 @@ _Examples_
 
 ##### Chat Colors
 
-![Chat Colors](https://i.imgur.com/UuiIpLu.png)
+<ImageSwitcher
+  lightImageSrc="/static/img/chat-colors.png"
+  darkImageSrc="/static/img/chat-colors-dark.png"
+/>
 
 <div className="table-container">
   <table>
