@@ -252,7 +252,11 @@ or the item form of the custom projectile itself.
 
 ### Modifying Bow Projectiles
 
-Bows can be modified to shoot a different projectile at a custom speed. The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows. This means that a flying fish with a velocity of 40 will almost certainly kill you. Projectiles can also have custom [potion effects](/docs/modules/gear/potions) which are applied to the target when it is hit.
+Bows can be modified to shoot a different projectile at a custom speed.
+The PGM plugin will calculate the damage the projectile does using the same formula as minecraft does for arrows.
+This means that a flying fish with a velocity of 40 will almost certainly kill you.
+Projectiles can also have custom [potion effects](/docs/modules/gear/potions) which are applied to the target when it is hit.
+
 `NOTE:` You can currently only modify all bow projectiles, this means no normal and custom bow at the same time.
 
 <div className="table-container">
@@ -287,7 +291,9 @@ Bows can be modified to shoot a different projectile at a custom speed. The PGM 
         </td>
         <td>The entity to use as the bows projectile.</td>
         <td>
-          <a href="/docs/reference/entities/entity-types">Entity Type</a>
+          <a href="/docs/modules/gear/projectiles#custom-projectile-types">
+            Projectile Type
+          </a>
         </td>
       </tr>
       <tr>
@@ -326,14 +332,17 @@ Examples
 </modifybowprojectile>
 ```
 
-All the following projectiles are guaranteed to work. See [mrapple/Bukkit Entity Spawning.md](https://gist.github.com/4617111) for a list of tested entities.
+### Custom Projectile Types
+
+All of the following projectiles in this table are guaranteed to work.
+Some projectiles such as `WitherSkull` travel very fast by default and may need `<velocityMod>` to reduce the speed.
+See [mrapple/Bukkit Entity Spawning.md](https://gist.github.com/4617111) for a list of tested entities.
 
 <div className="table-responsive">
   <table className="table table-striped table-condensed">
     <thead>
       <tr>
-        <th>Supported Entity Types</th>
-        <th></th>
+        <th>Working Entity Types</th>
       </tr>
     </thead>
     <tbody>
@@ -341,6 +350,13 @@ All the following projectiles are guaranteed to work. See [mrapple/Bukkit Entity
         <td>
           <label>Arrow</label>
         </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Boat</label>
+        </td>
+      </tr>
+      <tr>
         <td>
           <label>Egg</label>
         </td>
@@ -349,14 +365,23 @@ All the following projectiles are guaranteed to work. See [mrapple/Bukkit Entity
         <td>
           <label>EnderPearl</label>
         </td>
+      </tr>
+      <tr>
         <td>
           <label>Fireball</label>
         </td>
       </tr>
       <tr>
         <td>
+          <label>Firework</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>LargeFireball</label>
         </td>
+      </tr>
+      <tr>
         <td>
           <label>SmallFireball</label>
         </td>
@@ -365,6 +390,8 @@ All the following projectiles are guaranteed to work. See [mrapple/Bukkit Entity
         <td>
           <label>Snowball</label>
         </td>
+      </tr>
+      <tr>
         <td>
           <label>ThrownExpBottle</label>
         </td>
@@ -373,6 +400,8 @@ All the following projectiles are guaranteed to work. See [mrapple/Bukkit Entity
         <td>
           <label>WitherSkull</label>
         </td>
+      </tr>
+      <tr>
         <td>
           <label>TNTPrimed</label>
         </td>
