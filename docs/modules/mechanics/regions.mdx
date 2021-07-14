@@ -3,6 +3,8 @@ id: regions
 title: Regions
 ---
 
+import ImageSwitcher from "../../../src/components/ImageSwitcher.js";
+
 Regions are a type of filter that filters the coordinates of a query. They are used to define, among other things, the area a filter applies to or where a portal links from. There are two distinct types of regions; block bounded regions, which contain a finite amount of blocks and unbounded regions that contain a infinite amount. All regions and region modifiers can have a `id` attribute to reference them from kits, portals, etc.
 
 ```xml
@@ -576,7 +578,12 @@ Regions can be inverted, combined, subtracted, or intersected by putting them in
   </table>
 </div>
 
-![Region Combinations](https://i.imgur.com/LGiIjbg.png)
+_Region Combinations Diagram_
+
+<ImageSwitcher
+  lightImageSrc="/img/region-types.png"
+  darkImageSrc="/img/region-types-dark.png"
+/>
 
 Regions can be translated or mirrored with the following elements. When translating or mirroring a region the original is not modified instead a copy is created.
 
@@ -605,7 +612,12 @@ When mirroring a region the origin is the central point around which the region 
   </table>
 </div>
 
-![Region Mirror](https://i.imgur.com/85QHTwz.png)
+_Region Mirrors Diagram_
+
+<ImageSwitcher
+  lightImageSrc="/img/transform-types.png"
+  darkImageSrc="/img/transform-types-dark.png"
+/>
 
 _Examples_
 
