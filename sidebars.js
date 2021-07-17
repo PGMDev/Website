@@ -66,6 +66,7 @@ module.exports = {
     ],
     Misc: [
       "reference/misc/formatting",
+      "reference/misc/objective-names",
       "reference/misc/colors",
       "reference/misc/time-periods",
     ],

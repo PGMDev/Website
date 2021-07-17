@@ -1,0 +1,176 @@
+---
+id: objective-names
+title: Objective Names
+---
+
+A few objective names specified in `name=` can be automatically translated to users who connect to the server
+using a language other than English in their client. They can be used by themselves or with other words
+(ie Antenna A). Names are case senstitive.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Translatable Objective Names</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>Antenna</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Base</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Core</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Engine</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Flag</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Inhibitor</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Monument</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Orb</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Reactor</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Ship</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Tower</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Wool</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Descriptor Patterns
+
+Descriptor Patterns are also supported, which can be used in addition to the Objective Patterns.
+Names are also case senstitive.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Translatable Descriptor Patterns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>Top</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Bottom</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Front</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Back</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Rear</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Left</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Right</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Center</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Mid</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>North</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>South</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>East</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>West</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Examples_
+
+```xml
+<!-- Displays as "Adelante" to players using European Spanish -->
+<control-point name="Front" capture-time="20s">
+<!-- Displays as "Motor A" in European Spanish -->
+<destroyable name="Engine A">
+<!-- Displays as "Red Drapeau" in French -->
+<flag name="Red Flag" id="red-flag" owner="red-team">
+<!-- Displays as "Arrière Vaisseau" in French -->
+<!-- Note that adjectives aren't swapped properly yet -->
+<destroyable name="Rear Ship" id="blue-mon" owner="blue-team"/>
+```
