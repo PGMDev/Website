@@ -5,7 +5,11 @@ title: Regions
 
 import ImageSwitcher from "../../../src/components/ImageSwitcher.js";
 
-Regions are a type of filter that filters the coordinates of a query. They are used to define, among other things, the area a filter applies to or where a portal links from. There are two distinct types of regions; block bounded regions, which contain a finite amount of blocks and unbounded regions that contain a infinite amount. All regions and region modifiers can have a `id` attribute to reference them from kits, portals, etc.
+Regions are a type of filter that filters the coordinates of a query.
+They are used to define, among other things, the area a filter applies to or where a portal links from.
+There are two distinct types of regions; block bounded regions,
+which contain a finite amount of blocks and unbounded regions that contain a infinite amount.
+All regions and region modifiers can have a `id` attribute to reference them from kits, portals, etc.
 
 ```xml
 <regions>
@@ -16,7 +20,9 @@ Regions are a type of filter that filters the coordinates of a query. They are u
 <region id="xyzzy-region"/>
 ```
 
-The area a region applies to is specified with one or more of the following elements. Use `oo` and `-oo` to specify positive/negative infinity in coordinates. See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for information on how to properly get the coordinates of a region.
+The area a region applies to is specified with one or more of the following elements.
+Use `oo` and `-oo` to specify positive/negative infinity in coordinates.
+See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for information on how to properly get the coordinates of a region.
 
 ##### Region Types
 
@@ -169,7 +175,10 @@ The area a region applies to is specified with one or more of the following elem
 
 #### Half-space Regions
 
-A half-space region contains everything on one side of an arbitrary plane. The plane is defined by an origin point and a normal vector, and the region contains everything on the side of the plane that the normal is pointing towards. The example below defines a region with a diagonal boundary:
+A half-space region contains everything on one side of an arbitrary plane.
+The plane is defined by an origin point and a normal vector,
+and the region contains everything on the side of the plane that the normal is pointing towards.
+The example below defines a region with a diagonal boundary:
 
 ```xml
 <half origin="5,0,0" normal="1,1,0"/>
@@ -184,9 +193,15 @@ The above and below regions can be used to conveniently define axis-aligned half
 
 ### Applying Things to Regions
 
-Filters, kits, and velocity changes can be applied to regions by using an `<apply>` element. The apply element can contain more than one region. If the apply element contains more than one region the same settings are applied to all of them. Applies with no region default to `<everywhere/>`. Applies can also be defined in the filters element.
+Filters, kits, and velocity changes can be applied to regions by using an `<apply>` element.
+The apply element can contain more than one region.
+If the apply element contains more than one region the same settings are applied to all of them.
+Applies with no region default to `<everywhere/>`. Applies can also be defined in the filters element.
 
-The order in which apply elements are specified determines which takes precedence when regions overlap. Applies specified first override those specified further down in the XML. See [filter apply order](/docs/guides/xml-pointers/filter-apply-order) for a more detailed example. The region an apply affects can be specified as an attribute or in a `<region>` sub-element.
+The order in which apply elements are specified determines which takes precedence when regions overlap.
+Applies specified first override those specified further down in the XML.
+See [filter apply order](/docs/guides/xml-pointers/filter-apply-order) for a more detailed example.
+The region an apply affects can be specified as an attribute or in a `<region>` sub-element.
 
 ##### Apply Element Attributes
 
@@ -515,10 +530,12 @@ _Examples_
 </regions>
 ```
 
-An applies velocity attribute changes the players velocity when they enter the specified region. This velocity is specified as a `X,Y,Z` vector.
-On the mapdev servers velocity can be tested with the `/vel x y z` command.
+### Applying Velocities to Regions
 
-Example using velocity for jump pads
+An applies velocity attribute changes the players velocity when they enter the specified region.
+This velocity is specified as a `X,Y,Z` vector.
+
+_Example using velocity for jump pads_
 
 ```xml
 <regions>
@@ -585,9 +602,12 @@ _Region Combinations Diagram_
   darkImageSrc="/img/region-types-dark.png"
 />
 
-Regions can be translated or mirrored with the following elements. When translating or mirroring a region the original is not modified instead a copy is created.
+Regions can be translated or mirrored with the following elements.
+When translating or mirroring a region the original is not modified instead a copy is created.
 
-When mirroring a region the origin is the central point around which the region is mirrored. This point can be inside or outside the region being mirrored. The normal specifies which direction the region is being mirrored, e.g., `1,0,0` would mirror along the +X axis.
+When mirroring a region the origin is the central point around which the region is mirrored.
+This point can be inside or outside the region being mirrored.
+The normal specifies which direction the region is being mirrored, e.g., `1,0,0` would mirror along the +X axis.
 
 <div className="table-container" style={{ marginBottom: "30px" }}>
   <table>
@@ -651,7 +671,8 @@ _Examples_
 
 ### Point Providers
 
-A point provider is used to return individual points inside a region. It can also be used to modify the position returned by a region to include the direction a player ends up facing when spawned, etc.
+A point provider is used to return individual points inside a region.
+It can also be used to modify the position returned by a region to include the direction a player ends up facing when spawned, etc.
 Input can be a region, a region modifier or simply an exact `X,Y,Z` coordinate.
 
 ```xml
