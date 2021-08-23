@@ -159,7 +159,7 @@ Kits can place items in specific slots of a player's inventory, and equip them w
 
 Item kits will replace any items in the player's inventory in slots present in the kit, but they will not alter any other slots.
 If you want to guarantee that a slot is empty, put an item called "air" in that slot. You can also clear the player's entire inventory
-before applying the kit by using one of the elements below.
+before applying the kit by using the `<clear/>` element.
 
 ##### Inventory Clear Elements
 
@@ -176,13 +176,54 @@ before applying the kit by using one of the elements below.
         <td>
           <label>{`<clear/>`}</label>
         </td>
-        <td>Clear the all of the player's inventory including armor slots.</td>
+        <td>Clears all of the player's inventory including armor slots.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Inventory Clear Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`items`}</label>
+        </td>
+        <td>Clears all of the player's inventory except armor slots.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
       </tr>
       <tr>
         <td>
-          <label>{`<clear-items/>`}</label>
+          <label>{`armor`}</label>
         </td>
-        <td>Clear only the player's item slots.</td>
+        <td>Clear's all of the player's armor slots.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`effects`}</label>
+        </td>
+        <td>Clears all of the player's current potion effects.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
       </tr>
     </tbody>
   </table>
@@ -191,6 +232,7 @@ before applying the kit by using one of the elements below.
 ```xml
 <kit id="ender" reset-ender-pearls="true">
     <item slot="0" amount="1" material="ender pearl"/>
+    <!-- clears items and armor slots by default -->
     <clear/>
 </kit>
 ```
@@ -233,7 +275,9 @@ A player's gamemode can be changed when they spawn or enter a region, etc. by us
 
 A player's health and hunger can be modified with kits, this can be useful on maps with the `naturalRegeneration` [gamerule](/docs/modules/mechanics/gamerules) set to false.
 
-By default health or hunger values are only increased, not decreased. For example, a player with 5 hearts (10 points) will not get a 5 health point kit applied, however a 20 point kit will be applied. This can be overwritten with a kits `force="true"` attribute.
+By default health or hunger values are only increased, not decreased.
+For example, a player with 5 hearts (10 points) will not get a 5 health point kit applied,
+however a 20 point kit will be applied. This can be overwritten with a kits `force="true"` attribute.
 
 ##### Health & Hunger Elements
 
