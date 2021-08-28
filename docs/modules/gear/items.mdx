@@ -346,7 +346,9 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
   </table>
 </div>
 
-Items can be give custom names and lore with the `name` and `lore` attributes. Colors and fancy text in item names or lore can be specified with the grave symbol `` ` `` and then the [formatting code](/docs/reference/misc/formatting). You can specify multiple lines of lore using a pipe symbol `|` for line breaks.
+Items can be give custom names and lore with the `name` and `lore` attributes.
+Colors and fancy text in item names or lore can be specified with the grave symbol `` ` `` and then the [formatting code](/docs/reference/misc/formatting).
+You can specify multiple lines of lore using a pipe symbol `|` for line breaks.
 
 ```xml
 <item name="`6Golden Sword" material="gold sword"/> <!-- Gold sword with a gold/yellow name. -->
@@ -532,13 +534,28 @@ Enchanting, naming or giving armor lore works the same way as with items.
 </boots>
 ```
 
-Items like leather armor are colored with the `color` attribute.
+Items like leather armor can be colored with the `color` attribute.
 The color is represented in hexadecimal, see [dye colors](/docs/reference/misc/colors) for a list of hex colors for the different dyes.
 
 `NOTE:` The hex color value is specified without the hash `#` symbol.
 
 ```xml
 <helmet color="cd0000" material="leather helmet"/>
+```
+
+###### Team Color Attribute
+
+The `team-color` attribute can be used to attribute color to leather armor automatically.
+This helps to simplfy kits so a seperate team kit for only colored armor is not required.
+
+```xml
+<kits>
+    <kit id="spawn" force="true">
+        <!-- automatically applies blue colored armor to blue team, red armor to red team, etc -->
+        <helmet team-color="true" unbreakable="true" material="leather helmet"/>
+        <chestplate team-color="true" unbreakable="true" material="leather chestplate"/>
+    </kit>
+</kits>
 ```
 
 ### Potions
@@ -601,9 +618,11 @@ This feature is enabled by default, but can be disabled with this tag.
 
 ### Books
 
-Written books can be created using the book element, the tile, author and individual pages can be formatted with [formatting codes](/docs/reference/misc/formatting). All normal item attributes can also be applied to books.
+Written books can be created using the book element, the tile, author and individual pages can be formatted with [formatting codes](/docs/reference/misc/formatting).
+All normal item attributes can also be applied to books.
 
-Each page in a book can contain a maximum of 13 lines, with approximately 19 characters per line. Preferably books should be written in-game to ensure proper formatting, and then translated into the books element.
+Each page in a book can contain a maximum of 13 lines, with approximately 19 characters per line.
+Preferably books should be written in-game to ensure proper formatting, and then translated into the books element.
 
 ##### Book Element
 
@@ -841,9 +860,12 @@ _Examples_
 
 ### [Grenades](id:grenades)
 
-The `grenade="true"` attribute will make the item explode on impact, just like a grenade. This option only works on items that can turn into projectiles. For example, ender pearls, snowballs, eggs, and arrows all work.
+The `grenade="true"` attribute will make the item explode on impact, just like a grenade.
+This option only works on items that can turn into projectiles.
+For example, ender pearls, snowballs, eggs, and arrows all work.
 
-The `grenade-power="1.0"` attribute sets the explosion power. The default value of `1.0` will not destroy blocks, but it will damage players and set off TNT.
+The `grenade-power="1.0"` attribute sets the explosion power.
+The default value of `1.0` will not destroy blocks, but it will damage players and set off TNT.
 
 The attributes `grenade-fire="true"` and `grenade-destroy="true"` determine if the explosion creates fire and/or destroys blocks.
 
