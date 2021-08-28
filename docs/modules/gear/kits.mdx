@@ -302,6 +302,15 @@ however a 20 point kit will be applied. This can be overwritten with a kits `for
       </tr>
       <tr>
         <td>
+          <label>{`<max-health> </max-health>`}</label>
+        </td>
+        <td>The maximum health a player can have.</td>
+        <td>
+          <span className="badge badge--primary">> 1</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>{`<saturation> </saturation>`}</label>
         </td>
         <td>
@@ -327,6 +336,11 @@ however a 20 point kit will be applied. This can be overwritten with a kits `for
 ```xml
 <kit id="health" force="true">
     <health>10</health>
+</kit>
+
+<kit id="max-health-kit" force="true">
+     <!-- Double health, default is 20 -->
+     <max-health>40</max-health>
 </kit>
 
 <kit id="hunger">
