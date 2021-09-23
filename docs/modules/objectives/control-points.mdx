@@ -205,6 +205,47 @@ Control point give a certain amount of point to the team currently holding it. O
       </tr>
       <tr>
         <td>
+          <label>recovery-rate</label>
+        </td>
+        <td>The rate for a control point to recover to its current state.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>
+          <label>decay-rate</label>
+        </td>
+        <td>
+          The rate for a control point to decay to its current state. Applies
+          when nobody is dominating the point.
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>
+          <label>owned-decay-rate</label>
+        </td>
+        <td>
+          The rate for a control point to decay from captured to neutral.
+          Applies when nobody is dominating the point.
+          <br />
+          <i>Takes presecense over `decay-rate`.</i>
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>
           <label>incremental</label>
         </td>
         <td>
