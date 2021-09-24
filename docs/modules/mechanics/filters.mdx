@@ -196,7 +196,7 @@ Filter matchers test for specific conditions or properties of things.
         </td>
         <td>
           Match if there is an air block at Y=0 in the vertical column of this
-          location
+          location.
         </td>
         <td />
       </tr>
@@ -550,7 +550,7 @@ These elements must contain either a single filter, or a list of filters, as the
           Make a damage question specifically about the victim.
           <br />
           For example, "do they have the flag?" becomes "does the victim have
-          the flag?" Commonly used with the{" "}
+          the flag?". Commonly used with the{" "}
           <a href="/docs/modules/mechanics/damage">damage</a> module.
         </td>
         <td />
@@ -563,8 +563,23 @@ These elements must contain either a single filter, or a list of filters, as the
           Make a damage question specifically about the attacker.
           <br />
           For example, "do they have the flag?" becomes "does the attacker have
-          the flag?" Commonly used in the{" "}
+          the flag?". Commonly used in the{" "}
           <a href="/docs/modules/mechanics/damage">damage</a> module.
+        </td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<player>`}</label>
+        </td>
+        <td>
+          Make a location question specifically about the player.
+          <br />
+          For example, "is the chest inside the region?" becomes "is the player
+          inside the region?". Commonly used with the <label>
+            use
+          </label> and <label>block-break</label> attributes on <label>{`<apply/>`}</label>
+          .
         </td>
         <td />
       </tr>
