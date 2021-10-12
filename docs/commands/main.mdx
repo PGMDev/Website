@@ -1,0 +1,370 @@
+---
+id: main
+title: PGM Commands
+---
+
+This page describes a list of PGM commands, aliases and permissions.
+Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Aliases</th>
+        <th>Description</th>
+        <th>Flags</th>
+        <th>Useage</th>
+        <th>Permissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>alias</td>
+        <td></td>
+        <td>Rename a team</td>
+        <td></td>
+        <td>[old name] [new name]</td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>timelimit</td>
+        <td>tl</td>
+        <td>Start a time limit</td>
+        <td>-r </td>
+        <td>duration [result] [overtime] [max-overtime]</td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>join</td>
+        <td>play</td>
+        <td>Join the match</td>
+        <td>-f force</td>
+        <td>[team] – defaults to random</td>
+        <td>JOIN</td>
+      </tr>
+      <tr>
+        <td>force</td>
+        <td></td>
+        <td>Force a player onto a team</td>
+        <td></td>
+        <td>[player] [team]</td>
+        <td>JOIN_FORCE</td>
+      </tr>
+      <tr>
+        <td>shuffle</td>
+        <td></td>
+        <td>Shuffle players among the teams</td>
+        <td>-a all -f force</td>
+        <td></td>
+        <td>JOIN_FORCE</td>
+      </tr>
+      <tr>
+        <td>pgm</td>
+        <td></td>
+        <td>Reload the config</td>
+        <td></td>
+        <td></td>
+        <td>RELOAD</td>
+      </tr>
+      <tr>
+        <td>loadnewmaps</td>
+        <td>findnewmaps new maps</td>
+        <td>Load New Maps</td>
+        <td></td>
+        <td></td>
+        <td>RELOAD</td>
+      </tr>
+      <tr>
+        <td>min</td>
+        <td></td>
+        <td>Set the min players on a team</td>
+        <td></td>
+        <td>team (reset| min-players)</td>
+        <td>RESIZE</td>
+      </tr>
+      <tr>
+        <td>size</td>
+        <td></td>
+        <td>Set the max players</td>
+        <td></td>
+        <td>reset | max-players [max-overfill]</td>
+        <td>RESIZE</td>
+      </tr>
+      <tr>
+        <td>size</td>
+        <td></td>
+        <td>Set the max players on a team</td>
+        <td></td>
+        <td>team (reset| min-players)</td>
+        <td>RESIZE</td>
+      </tr>
+      <tr>
+        <td>min</td>
+        <td></td>
+        <td>Set the min players on a&nbsp;&nbsp;team</td>
+        <td></td>
+        <td></td>
+        <td>RESIZE</td>
+      </tr>
+      <tr>
+        <td>setnext</td>
+        <td>sn</td>
+        <td>Change the next map</td>
+        <td>-f force -r reset</td>
+        <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>setpool</td>
+        <td>setrot</td>
+        <td>Change the map pool</td>
+        <td>-r reset -t timelimit -m matchlimit</td>
+        <td>[pool name]</td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>skip</td>
+        <td></td>
+        <td>Skip the next map</td>
+        <td></td>
+        <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>add</td>
+        <td></td>
+        <td>Add a custom map to the next vote</td>
+        <td></td>
+        <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>remove</td>
+        <td>rm</td>
+        <td>Remove a custom map from the next vote</td>
+        <td></td>
+        <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>mode</td>
+        <td></td>
+        <td>Toggle the voting mode between replace and override</td>
+        <td></td>
+        <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>clear</td>
+        <td></td>
+        <td>Clear all custom map selections from the next vote</td>
+        <td></td>
+        <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>cycle</td>
+        <td></td>
+        <td>Cycle to the next match</td>
+        <td>-f force</td>
+        <td></td>
+        <td>START</td>
+      </tr>
+      <tr>
+        <td>recycle</td>
+        <td>rematch</td>
+        <td>Reload (cycle to) the current map</td>
+        <td>-f force</td>
+        <td></td>
+        <td>START</td>
+      </tr>
+      <tr>
+        <td>start</td>
+        <td>begin</td>
+        <td>Start the match</td>
+        <td></td>
+        <td></td>
+        <td>START</td>
+      </tr>
+      <tr>
+        <td>cancel</td>
+        <td>cancelrestart cr</td>
+        <td>Cancels all countdowns</td>
+        <td></td>
+        <td></td>
+        <td>STOP</td>
+      </tr>
+      <tr>
+        <td>finish</td>
+        <td>end</td>
+        <td>End the match</td>
+        <td></td>
+        <td></td>
+        <td>STOP</td>
+      </tr>
+      <tr>
+        <td>restart</td>
+        <td>queuerestart qr</td>
+        <td>Restart the server</td>
+        <td>-f force</td>
+        <td></td>
+        <td>STOP</td>
+      </tr>
+      <tr>
+        <td>class</td>
+        <td>selectclass c cl</td>
+        <td>Selects your class</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>classlist</td>
+        <td>classes listclasses cls</td>
+        <td>List all available classes</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>inventory</td>
+        <td>inv vi</td>
+        <td>View a player’s inventory</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>list</td>
+        <td>who online ls</td>
+        <td>View a list of online players</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>list</td>
+        <td>ls</td>
+        <td>View a list of maps that have been selected for the next vote </td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>map</td>
+        <td>mapinfo</td>
+        <td>Show info about a map</td>
+        <td></td>
+        <td>[map name] – defaults to current map</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>maps </td>
+        <td>maplist ml</td>
+        <td>List all maps loaded</td>
+        <td>-a author -t tag1, tag2, -n name</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>match</td>
+        <td>matchinfo</td>
+        <td>Show the match info</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>mode list</td>
+        <td>mode pages</td>
+        <td>List all objective modes</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>mode next</td>
+        <td></td>
+        <td>Show the next objective mode</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nextmap</td>
+        <td>mn mapnext nm next</td>
+        <td>Show which map is playing next</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>pool</td>
+        <td>rotation rot</td>
+        <td>List the maps in the map pool</td>
+        <td>-p pool -s scores -c chance of vote</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>pools</td>
+        <td>rotations rots</td>
+        <td>List all the map pools</td>
+        <td>-d dynamic only</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>proximity</td>
+        <td>prox</td>
+        <td>Show the progress of each objective</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>push</td>
+        <td></td>
+        <td>Reschedule an objective mode</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>setting</td>
+        <td></td>
+        <td>Get the value of a setting</td>
+        <td></td>
+        <td>[setting]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>stats</td>
+        <td></td>
+        <td>Show your stats for the match</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>votebook</td>
+        <td></td>
+        <td>Spawn a vote book</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>votenext</td>
+        <td></td>
+        <td>Vote for the next map</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Tables generated using https://www.tablesgenerator.com/html_tables/

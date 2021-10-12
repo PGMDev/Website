@@ -1,0 +1,512 @@
+---
+id: community
+title: Community Commands
+---
+
+This page describes a list of commands, aliases and permissions for the Community plugin.
+Permissions are prefixed with `CommunityPermissions` (ie `CommunityPermissions.LOOKUP_OTHERS`).
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Commands</th>
+        <th>Aliases</th>
+        <th>Description</th>
+        <th>Useage</th>
+        <th>Permissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>alts</td>
+        <td>alternateaccounts</td>
+        <td>View a list of alternate accounts of a player</td>
+        <td>[target]</td>
+        <td>LOOKUP_OTHERS</td>
+      </tr>
+      <tr>
+        <td>assistance</td>
+        <td>assist helpop helpme</td>
+        <td>Request help from the staff members</td>
+        <td>[reason] – Let staff know what you need help with</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>ban</td>
+        <td>permban pb</td>
+        <td>Ban a player from the server</td>
+        <td>[player] [reason]</td>
+        <td>BAN</td>
+      </tr>
+      <tr>
+        <td>broadcast</td>
+        <td>announce bc</td>
+        <td>Broadcast an announcement to everyone</td>
+        <td>title [message] or [message]</td>
+        <td>BROADCAST</td>
+      </tr>
+      <tr>
+        <td>chat</td>
+        <td></td>
+        <td>Manage the chat status</td>
+        <td>lock|lockdown slow|slowmode status clear</td>
+        <td>CHAT_MANAGEMENT</td>
+      </tr>
+      <tr>
+        <td>chestedit</td>
+        <td>ce cedit containeredit</td>
+        <td>
+          Edit inventory contents of target block (chest, furnace, dispenser,
+          beacon, etc)
+        </td>
+        <td></td>
+        <td>CONTAINER</td>
+      </tr>
+      <tr>
+        <td>community</td>
+        <td></td>
+        <td>Manage the community plugin</td>
+        <td>reloads by default – stats (punishments|p import true/false)</td>
+        <td>RELOAD</td>
+      </tr>
+      <tr>
+        <td>fly</td>
+        <td>flight</td>
+        <td>Toggle your flight mode</td>
+        <td></td>
+        <td>FLIGHT</td>
+      </tr>
+      <tr>
+        <td>flyspeed</td>
+        <td></td>
+        <td>Adjust your flight speed</td>
+        <td></td>
+        <td>FLIGHT_SPEED</td>
+      </tr>
+      <tr>
+        <td>freeze</td>
+        <td>fz f</td>
+        <td>Toggle a player’s frozen state</td>
+        <td>[username]</td>
+        <td>FREEZE</td>
+      </tr>
+      <tr>
+        <td>friend</td>
+        <td>friendship fs</td>
+        <td>Manage your friend relationships</td>
+        <td></td>
+        <td>FRIENDSHIP</td>
+      </tr>
+      <tr>
+        <td>friend accept</td>
+        <td>acc</td>
+        <td>Accept an incoming friend request</td>
+        <td>[username | uuid]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>friend add</td>
+        <td>request a</td>
+        <td>Sends a friend request to another player</td>
+        <td>[username | uuid]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>friend reject</td>
+        <td>deny</td>
+        <td>Denies an incoming friend request</td>
+        <td>[username | uuid]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>friend remove</td>
+        <td>delete rm</td>
+        <td>Removes a friend</td>
+        <td>[username | uuid]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>friend requests</td>
+        <td>incoming pending</td>
+        <td>View a list of your pending friend requests</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>frozenlist</td>
+        <td>fls flist</td>
+        <td>View a list of frozen players</td>
+        <td></td>
+        <td>FREEZE</td>
+      </tr>
+      <tr>
+        <td>gamemode</td>
+        <td>gm</td>
+        <td>Adjust your or another player’s gamemode</td>
+        <td></td>
+        <td>GAMEODE</td>
+      </tr>
+      <tr>
+        <td>kick</td>
+        <td>k</td>
+        <td>Kick a player from the server</td>
+        <td>[player] [reason]</td>
+        <td>KICK</td>
+      </tr>
+      <tr>
+        <td>languages</td>
+        <td></td>
+        <td>View a list of online languages</td>
+        <td></td>
+        <td>TRANSLATE</td>
+      </tr>
+      <tr>
+        <td>lookup</td>
+        <td>l</td>
+        <td>View infraction history of a player</td>
+        <td>[player] [page]</td>
+        <td>LOOKUP_OTHERS</td>
+      </tr>
+      <tr>
+        <td>modtools</td>
+        <td>mtools</td>
+        <td>Give moderator tools to overserver</td>
+        <td></td>
+        <td>STAFF</td>
+      </tr>
+      <tr>
+        <td>mutate</td>
+        <td>mutation mt</td>
+        <td>Manage match mutations</td>
+        <td></td>
+        <td>MUTATION</td>
+      </tr>
+      <tr>
+        <td>mutate add</td>
+        <td>a</td>
+        <td>Add a mutation to the match</td>
+        <td></td>
+        <td>MUTATION</td>
+      </tr>
+      <tr>
+        <td>mutate list</td>
+        <td>ls</td>
+        <td>View a list of mutations</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>mutate remove</td>
+        <td>rm disable</td>
+        <td>Remove an active mutation from the match</td>
+        <td></td>
+        <td>MUTATION</td>
+      </tr>
+      <tr>
+        <td>mute</td>
+        <td>m</td>
+        <td>Pervent a player from speaking in the chat</td>
+        <td>[player] [duration] [reason]</td>
+        <td>MUTE</td>
+      </tr>
+      <tr>
+        <td>mutes</td>
+        <td></td>
+        <td>List all online players who are muted</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nameban</td>
+        <td>nb</td>
+        <td>
+          Bans a username from the server, player can still reconnect if their
+          username changes
+        </td>
+        <td>[player] – no reason required</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nick</td>
+        <td></td>
+        <td>Set a nickname</td>
+        <td></td>
+        <td>NICKNAME</td>
+      </tr>
+      <tr>
+        <td>nick check</td>
+        <td></td>
+        <td>Check if the provided name is avaliable</td>
+        <td>[nick]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nick clear</td>
+        <td>reset</td>
+        <td>Remove nickname from yourself or another player</td>
+        <td>[target] – needs nickname other permissions</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nick confirm</td>
+        <td></td>
+        <td>Confirm random nickname choice</td>
+        <td>[name] – Confirm name from nick selection</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nick random</td>
+        <td></td>
+        <td>Set a random nickname</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nick set</td>
+        <td></td>
+        <td>Set your nickname</td>
+        <td>[name]</td>
+        <td>NICKNAME_SET</td>
+      </tr>
+      <tr>
+        <td>nick setother</td>
+        <td>other</td>
+        <td>Set the nickname of another player</td>
+        <td>[target] [nick]</td>
+        <td>NICKNAME_OTHER</td>
+      </tr>
+      <tr>
+        <td>nick skin</td>
+        <td></td>
+        <td>Set skin for current nick session</td>
+        <td>[username] – name of skin to copy</td>
+        <td>NICKNAME_SET</td>
+      </tr>
+      <tr>
+        <td>nick status</td>
+        <td></td>
+        <td>Check your current nickname status</td>
+        <td>[target] – needs nickname other permissions</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nick toggle</td>
+        <td></td>
+        <td>Toggle your nickname status</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>nicks</td>
+        <td>/nick list</td>
+        <td>View a list of online nicked players</td>
+        <td></td>
+        <td>STAFF</td>
+      </tr>
+      <tr>
+        <td>player</td>
+        <td>pl</td>
+        <td>View a list of recent reports for the targeted player</td>
+        <td>[player] [page]</td>
+        <td>REPORTS</td>
+      </tr>
+      <tr>
+        <td>profile</td>
+        <td>user</td>
+        <td>View account info for a player</td>
+        <td>[name or uuid]</td>
+        <td>LOOKUP_OTHERS</td>
+      </tr>
+      <tr>
+        <td>punishmenthistory</td>
+        <td>ph</td>
+        <td>View a list of recent punishments</td>
+        <td>[page]</td>
+        <td>PUNISH</td>
+      </tr>
+      <tr>
+        <td>queue</td>
+        <td>sponsorqueue sq /sponsor queue</td>
+        <td>View the sponsored maps queue</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>record</td>
+        <td>infractions mypunishments</td>
+        <td>View your punishment histpry</td>
+        <td>[page]</td>
+        <td>LOOKUP</td>
+      </tr>
+      <tr>
+        <td>repeatpunishment</td>
+        <td>rp</td>
+        <td>Repeat the last punishment you performed for another player</td>
+        <td>[player]</td>
+        <td>PUNISH</td>
+      </tr>
+      <tr>
+        <td>report</td>
+        <td></td>
+        <td>Report a player who is breaking the rules</td>
+        <td>[username] [reason]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>reports</td>
+        <td>reporthistory reps</td>
+        <td>View report history</td>
+        <td></td>
+        <td>REPORTS</td>
+      </tr>
+      <tr>
+        <td>request</td>
+        <td>req</td>
+        <td>Request a map</td>
+        <td>[map] – Name of map to request</td>
+        <td>REQUEST</td>
+      </tr>
+      <tr>
+        <td>requests</td>
+        <td>reqs</td>
+        <td>View and manage map requests</td>
+        <td>clear</td>
+        <td>STAFF</td>
+      </tr>
+      <tr>
+        <td>seen</td>
+        <td>lastseen find</td>
+        <td>View when a player was last seen online</td>
+        <td>[player]</td>
+        <td>FIND</td>
+      </tr>
+      <tr>
+        <td>sponsor</td>
+        <td></td>
+        <td>View the sponsor request menu</td>
+        <td>cancel info</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>sponsor maps</td>
+        <td></td>
+        <td>View a list of maps which can be sponsored</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>sponsor request</td>
+        <td>submit add</td>
+        <td>Sponsor a map request</td>
+        <td>[map] – Name of map to sponsor (only allowed maps)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>staff</td>
+        <td>mods admins</td>
+        <td>View a list of online staff members</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>sudo</td>
+        <td>force</td>
+        <td>Force targets to perform given command</td>
+        <td>[commands]</td>
+        <td>ADMIN</td>
+      </tr>
+      <tr>
+        <td>tempban</td>
+        <td>tb</td>
+        <td>Temporarily bans a player from a server</td>
+        <td>[player] [duration] [reason]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>tokens</td>
+        <td>sponsortokens token</td>
+        <td>View how many sponsor tokens you have</td>
+        <td>balance</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>tokens give</td>
+        <td>award</td>
+        <td>Give the target player sponsor tokens</td>
+        <td>[player] [token amount]</td>
+        <td>ADMIN</td>
+      </tr>
+      <tr>
+        <td>tp</td>
+        <td>teleport</td>
+        <td>Teleport to another player</td>
+        <td>[player]</td>
+        <td>TELEPORT</td>
+      </tr>
+      <tr>
+        <td>tphere</td>
+        <td>bring tph</td>
+        <td>Teleport players to you</td>
+        <td>[player]</td>
+        <td>TELEPORT_OTHERS</td>
+      </tr>
+      <tr>
+        <td>tplocation</td>
+        <td>tpl tploc</td>
+        <td>Teleport to specific coordinates</td>
+        <td>[x,y,z]</td>
+        <td>TELEPORT_LOCATION</td>
+      </tr>
+      <tr>
+        <td>tptarget</td>
+        <td>tptg tg</td>
+        <td>Target a player for the player hook tool</td>
+        <td></td>
+        <td>STAFF</td>
+      </tr>
+      <tr>
+        <td>translate</td>
+        <td></td>
+        <td>Translate the given chat message</td>
+        <td></td>
+        <td>TRANSLATE</td>
+      </tr>
+      <tr>
+        <td>unban</td>
+        <td>pardon forgive</td>
+        <td>Pardon all active punishments for a player</td>
+        <td>[player]</td>
+        <td>UNBAN</td>
+      </tr>
+      <tr>
+        <td>unmute</td>
+        <td>um</td>
+        <td>Unmute a player</td>
+        <td>[player]</td>
+        <td>MUTE</td>
+      </tr>
+      <tr>
+        <td>uptime</td>
+        <td></td>
+        <td>View how long the server has been online</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>usernamehistoy</td>
+        <td>uh</td>
+        <td>View the name history of a user</td>
+        <td>[player]</td>
+        <td>LOOKUP_OTHERS</td>
+      </tr>
+      <tr>
+        <td>warn</td>
+        <td>w</td>
+        <td>Warn a player for bad behavior</td>
+        <td>[player] [reason]</td>
+        <td>WARN</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

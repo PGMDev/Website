@@ -83,6 +83,7 @@ module.exports = {
       "guides/packaging/compiling-and-releasing",
     ],
   },
+  Commands: ["commands/main", "commands/community", "commands/events"],
   Events: [
     "events/main",
     {
