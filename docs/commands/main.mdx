@@ -10,7 +10,7 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
   <table>
     <thead>
       <tr>
-        <th>Command</th>
+        <th>Commands</th>
         <th>Aliases</th>
         <th>Description</th>
         <th>Flags</th>
@@ -20,23 +20,41 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
     </thead>
     <tbody>
       <tr>
-        <td>alias</td>
+        <td>
+          <label>/team alias</label>
+        </td>
         <td></td>
         <td>Rename a team</td>
         <td></td>
-        <td>[old name] [new name]</td>
+        <td>[old team name] [new team name]</td>
         <td>GAMEPLAY</td>
       </tr>
       <tr>
-        <td>timelimit</td>
+        <td>
+          <label>/timelimit</label>
+        </td>
         <td>tl</td>
         <td>Start a time limit</td>
-        <td>-r </td>
-        <td>duration [result] [overtime] [max-overtime]</td>
+        <td>
+          -r result (result can be default, objectives, tie, or name of team)
+        </td>
+        <td>[duration] [result] [overtime] [max-overtime]</td>
         <td>GAMEPLAY</td>
       </tr>
       <tr>
-        <td>join</td>
+        <td>
+          <label>/mode push</label>
+        </td>
+        <td></td>
+        <td>Reschedule all unconditional objective modes</td>
+        <td></td>
+        <td></td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/join</label>
+        </td>
         <td>play</td>
         <td>Join the match</td>
         <td>-f force</td>
@@ -44,15 +62,19 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>JOIN</td>
       </tr>
       <tr>
-        <td>force</td>
+        <td>
+          <label>/team force</label>
+        </td>
         <td></td>
         <td>Force a player onto a team</td>
         <td></td>
-        <td>[player] [team]</td>
+        <td></td>
         <td>JOIN_FORCE</td>
       </tr>
       <tr>
-        <td>shuffle</td>
+        <td>
+          <label>/team shuffle</label>
+        </td>
         <td></td>
         <td>Shuffle players among the teams</td>
         <td>-a all -f force</td>
@@ -60,7 +82,19 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>JOIN_FORCE</td>
       </tr>
       <tr>
-        <td>pgm</td>
+        <td>
+          <label>/leave</label>
+        </td>
+        <td>obs</td>
+        <td>Leave the match</td>
+        <td></td>
+        <td></td>
+        <td>LEAVE</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/pgm</label>
+        </td>
         <td></td>
         <td>Reload the config</td>
         <td></td>
@@ -68,39 +102,49 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>RELOAD</td>
       </tr>
       <tr>
-        <td>loadnewmaps</td>
+        <td>
+          <label>/loadnewmaps</label>
+        </td>
         <td>findnewmaps new maps</td>
         <td>Load New Maps</td>
-        <td></td>
+        <td>-f force</td>
         <td></td>
         <td>RELOAD</td>
       </tr>
       <tr>
-        <td>min</td>
+        <td>
+          <label>/team min</label>
+        </td>
         <td></td>
         <td>Set the min players on a team</td>
         <td></td>
-        <td>team (reset| min-players)</td>
+        <td>[team] (reset | min-players)</td>
         <td>RESIZE</td>
       </tr>
       <tr>
-        <td>size</td>
+        <td>
+          <label>/team size</label>
+        </td>
         <td></td>
         <td>Set the max players</td>
         <td></td>
-        <td>reset | max-players [max-overfill]</td>
+        <td>[reset] (max-players | max-overfill)</td>
         <td>RESIZE</td>
       </tr>
       <tr>
-        <td>size</td>
+        <td>
+          <label>/ffa size</label>
+        </td>
         <td></td>
         <td>Set the max players on a team</td>
         <td></td>
-        <td>team (reset| min-players)</td>
+        <td>[team] (reset | min-players)</td>
         <td>RESIZE</td>
       </tr>
       <tr>
-        <td>min</td>
+        <td>
+          <label>/ffa min</label>
+        </td>
         <td></td>
         <td>Set the min players on a&nbsp;&nbsp;team</td>
         <td></td>
@@ -108,47 +152,59 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>RESIZE</td>
       </tr>
       <tr>
-        <td>setnext</td>
+        <td>
+          <label>/setnext</label>
+        </td>
         <td>sn</td>
         <td>Change the next map</td>
         <td>-f force -r reset</td>
-        <td></td>
+        <td>[map name]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>setpool</td>
+        <td>
+          <label>/setpool</label>
+        </td>
         <td>setrot</td>
         <td>Change the map pool</td>
-        <td>-r reset -t timelimit -m matchlimit</td>
+        <td>-r revert to dynamic -t timelimit -m matchlimit</td>
         <td>[pool name]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>skip</td>
+        <td>
+          <label>/skip</label>
+        </td>
         <td></td>
         <td>Skip the next map</td>
         <td></td>
-        <td></td>
+        <td>[positions]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>add</td>
+        <td>
+          <label>/vote add</label>
+        </td>
         <td></td>
         <td>Add a custom map to the next vote</td>
         <td></td>
-        <td></td>
+        <td>[map name]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>remove</td>
+        <td>
+          <label>/vote remove</label>
+        </td>
         <td>rm</td>
         <td>Remove a custom map from the next vote</td>
         <td></td>
-        <td></td>
+        <td>[map name]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>mode</td>
+        <td>
+          <label>/vote mode</label>
+        </td>
         <td></td>
         <td>Toggle the voting mode between replace and override</td>
         <td></td>
@@ -156,7 +212,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>clear</td>
+        <td>
+          <label>/vote clear</label>
+        </td>
         <td></td>
         <td>Clear all custom map selections from the next vote</td>
         <td></td>
@@ -164,7 +222,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>SETNEXT</td>
       </tr>
       <tr>
-        <td>cycle</td>
+        <td>
+          <label>/cycle</label>
+        </td>
         <td></td>
         <td>Cycle to the next match</td>
         <td>-f force</td>
@@ -172,7 +232,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>START</td>
       </tr>
       <tr>
-        <td>recycle</td>
+        <td>
+          <label>/recycle</label>
+        </td>
         <td>rematch</td>
         <td>Reload (cycle to) the current map</td>
         <td>-f force</td>
@@ -180,7 +242,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>START</td>
       </tr>
       <tr>
-        <td>start</td>
+        <td>
+          <label>/start</label>
+        </td>
         <td>begin</td>
         <td>Start the match</td>
         <td></td>
@@ -188,7 +252,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>START</td>
       </tr>
       <tr>
-        <td>cancel</td>
+        <td>
+          <label>/cancel</label>
+        </td>
         <td>cancelrestart cr</td>
         <td>Cancels all countdowns</td>
         <td></td>
@@ -196,15 +262,19 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>STOP</td>
       </tr>
       <tr>
-        <td>finish</td>
+        <td>
+          <label>/finish</label>
+        </td>
         <td>end</td>
         <td>End the match</td>
         <td></td>
-        <td></td>
+        <td>[competitor]</td>
         <td>STOP</td>
       </tr>
       <tr>
-        <td>restart</td>
+        <td>
+          <label>/restart</label>
+        </td>
         <td>queuerestart qr</td>
         <td>Restart the server</td>
         <td>-f force</td>
@@ -212,7 +282,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td>STOP</td>
       </tr>
       <tr>
-        <td>class</td>
+        <td>
+          <label>/class</label>
+        </td>
         <td>selectclass c cl</td>
         <td>Selects your class</td>
         <td></td>
@@ -220,7 +292,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>classlist</td>
+        <td>
+          <label>/classlist</label>
+        </td>
         <td>classes listclasses cls</td>
         <td>List all available classes</td>
         <td></td>
@@ -228,7 +302,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>inventory</td>
+        <td>
+          <label>/inventory</label>
+        </td>
         <td>inv vi</td>
         <td>View a player’s inventory</td>
         <td></td>
@@ -236,7 +312,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>list</td>
+        <td>
+          <label>/list</label>
+        </td>
         <td>who online ls</td>
         <td>View a list of online players</td>
         <td></td>
@@ -244,15 +322,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>list</td>
-        <td>ls</td>
-        <td>View a list of maps that have been selected for the next vote </td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>map</td>
+        <td>
+          <label>/map</label>
+        </td>
         <td>mapinfo</td>
         <td>Show info about a map</td>
         <td></td>
@@ -260,15 +332,19 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>maps </td>
+        <td>
+          <label>/maps</label>
+        </td>
         <td>maplist ml</td>
         <td>List all maps loaded</td>
-        <td>-a author -t tag1, tag2, -n name</td>
+        <td>-a author -t tag1,tag2, -n name</td>
         <td></td>
         <td></td>
       </tr>
       <tr>
-        <td>match</td>
+        <td>
+          <label>/match</label>
+        </td>
         <td>matchinfo</td>
         <td>Show the match info</td>
         <td></td>
@@ -276,15 +352,19 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>mode list</td>
-        <td>mode pages</td>
+        <td>
+          <label>/mode list</label>
+        </td>
+        <td>page</td>
         <td>List all objective modes</td>
         <td></td>
-        <td></td>
+        <td>[page]</td>
         <td></td>
       </tr>
       <tr>
-        <td>mode next</td>
+        <td>
+          <label>/mode next</label>
+        </td>
         <td></td>
         <td>Show the next objective mode</td>
         <td></td>
@@ -292,7 +372,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>nextmap</td>
+        <td>
+          <label>/nextmap</label>
+        </td>
         <td>mn mapnext nm next</td>
         <td>Show which map is playing next</td>
         <td></td>
@@ -300,7 +382,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>pool</td>
+        <td>
+          <label>/pool</label>
+        </td>
         <td>rotation rot</td>
         <td>List the maps in the map pool</td>
         <td>-p pool -s scores -c chance of vote</td>
@@ -308,7 +392,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>pools</td>
+        <td>
+          <label>/pools</label>
+        </td>
         <td>rotations rots</td>
         <td>List all the map pools</td>
         <td>-d dynamic only</td>
@@ -316,7 +402,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>proximity</td>
+        <td>
+          <label>/proximity</label>
+        </td>
         <td>prox</td>
         <td>Show the progress of each objective</td>
         <td></td>
@@ -324,15 +412,9 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>push</td>
-        <td></td>
-        <td>Reschedule an objective mode</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>setting</td>
+        <td>
+          <label>/setting</label>
+        </td>
         <td></td>
         <td>Get the value of a setting</td>
         <td></td>
@@ -340,7 +422,19 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>stats</td>
+        <td>
+          <label>/settings</label>
+        </td>
+        <td></td>
+        <td>Open the settings Menu</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/stats</label>
+        </td>
         <td></td>
         <td>Show your stats for the match</td>
         <td></td>
@@ -348,7 +442,39 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>votebook</td>
+        <td>
+          <label>/toggle</label>
+        </td>
+        <td>set</td>
+        <td>Toggle or set the value of a setting</td>
+        <td></td>
+        <td>[setting] [option]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/tools</label>
+        </td>
+        <td>observertools ot</td>
+        <td>Open the observer tools menu</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/vote list</label>
+        </td>
+        <td>ls</td>
+        <td>View a list of maps that have been selected for the next vote</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/votebook</label>
+        </td>
         <td></td>
         <td>Spawn a vote book</td>
         <td></td>
@@ -356,15 +482,15 @@ Permissions are prefixed with `Permissions` (ie `Permissions.GAMEPLAY`).
         <td></td>
       </tr>
       <tr>
-        <td>votenext</td>
+        <td>
+          <label>/votenext</label>
+        </td>
         <td></td>
         <td>Vote for the next map</td>
-        <td></td>
-        <td></td>
+        <td>-o force open</td>
+        <td>[map name]</td>
         <td></td>
       </tr>
     </tbody>
   </table>
 </div>
-
-Tables generated using https://www.tablesgenerator.com/html_tables/
