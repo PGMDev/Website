@@ -37,6 +37,11 @@ module.exports = {
           ],
         },
         {
+          to: "docs/commands/main",
+          label: "Commands",
+          position: "left",
+        },
+        {
           to: "docs/events/main",
           label: "Events",
           position: "left",
