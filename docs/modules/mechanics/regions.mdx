@@ -24,7 +24,9 @@ The area a region applies to is specified with one or more of the following elem
 Use `oo` and `-oo` to specify positive/negative infinity in coordinates.
 See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for information on how to properly get the coordinates of a region.
 
-### Region Types
+## Region Types
+
+### Block Bounded Regions
 
 <div className="table-container">
   <table>
@@ -97,17 +99,26 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
           <span className="badge badge--primary">Randomize-able</span>
         </td>
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Unbounded Regions
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <td colspan="2">
-          <b>Unbounded Regions</b>
-        </td>
+        <th>Unbounded Regions</th>
       </tr>
+      <tr></tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<rectangle id="abc" min="X1,Z1" max="X2,Z2"/>`}</label>
           <br />A rectangle from <label>X1,Z1</label> to <label>X2,Z2</label>.
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -120,7 +131,6 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
             players Y position.
           </i>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -128,30 +138,39 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
           <br />
           Half of the world split by a plane pointing towards a normal.
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
-          <label>{`<below x="" y="" z="" id="abc"/>`}</label>|<label>{`<above x="" y="" z="" id="abc"/>`}</label>
+          <label>{`<below x="" y="" z="" id="abc"/>`}</label>
+          <br />
+          <label>{`<above x="" y="" z="" id="abc"/>`}</label>
           <br />
           Half of the world split at the specified axis.
           <br />
           If multiple axises are defined the specified parts of each axis are
           intersected and returned.
         </td>
-        <td></td>
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Static Regions
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <td colspan="2">
-          <b>Static Regions</b>
-        </td>
+        <th>Static Regions</th>
       </tr>
+      <tr></tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<empty/>`}</label>
           <br />A zero size/position region, contains nothing.
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -159,7 +178,6 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
           <br />A reference-able zero size/position region, contains nothing. Can
           be referenced with the region ID: <label>nowhere</label>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -167,13 +185,12 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
           <br />A reference-able infinite size region, contains everything. Can be
           referenced with the region ID: <label>everywhere</label>
         </td>
-        <td></td>
       </tr>
     </tbody>
   </table>
 </div>
 
-#### Half-space Regions
+### Half-space Regions
 
 A half-space region contains everything on one side of an arbitrary plane.
 The plane is defined by an origin point and a normal vector,
@@ -191,7 +208,7 @@ The above and below regions can be used to conveniently define axis-aligned half
 <below x="0" z="0"/>    <!-- Everything in the -X, -Z quadrant -->
 ```
 
-### Applying Things to Regions
+## Applying Things to Regions
 
 Filters, kits, and velocity changes can be applied to regions by using an `<apply>` element.
 The apply element can contain more than one region.
@@ -203,7 +220,7 @@ Applies specified first override those specified further down in the XML.
 See [filter apply order](/docs/guides/xml-pointers/filter-apply-order) for a more detailed example.
 The region an apply affects can be specified as an attribute or in a `<region>` sub-element.
 
-##### Apply Element Attributes
+### Apply Element Attributes
 
 <div className="table-container">
   <table>
@@ -398,11 +415,21 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
         </td>
         <td>false</td>
       </tr>
-      <tr>
-        <td colspan="4">
-          <b>Apply Effects</b>
-        </td>
-      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Apply Effects
+
+<div className="table-container">
+  <table>
+    <thead>
+      <th style={{ minWidth: "175px" }}>Attribute</th>
+      <th>Description</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <tr></tr>
       <tr>
         <td>
           <label>kit</label>
@@ -419,7 +446,6 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
         <td>
           <a href="/docs/modules/gear/kits">Kit</a>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -440,7 +466,6 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
         <td>
           <a href="/docs/modules/gear/kits">Kit</a>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -450,7 +475,6 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
         <td>
           <span className="badge badge--primary">X,Y,Z</span>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -468,7 +492,6 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td></td>
       </tr>
     </tbody>
   </table>
@@ -553,7 +576,7 @@ _Example using velocity for jump pads_
 </regions>
 ```
 
-### Region Modifiers
+## Region Modifiers
 
 Regions can be inverted, combined, subtracted, or intersected by putting them inside of the following elements.
 
@@ -563,8 +586,9 @@ Regions can be inverted, combined, subtracted, or intersected by putting them in
       <tr>
         <td>
           <label>{`<negative><region id="region1"/></negative>`}</label>
-          Inverse of a region, the region or regions will no longer be considered
-          block bounded.
+          <br />
+          Inverse of a region, the region or regions will no longer be
+          considered block bounded.
         </td>
       </tr>
       <tr>
@@ -669,7 +693,7 @@ _Examples_
 </regions>
 ```
 
-### Point Providers
+## Point Providers
 
 A point provider is used to return individual points inside a region.
 It can also be used to modify the position returned by a region to include the direction a player ends up facing when spawned, etc.

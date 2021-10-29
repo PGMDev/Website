@@ -3,9 +3,9 @@ id: conventions
 title: XML Conventions
 ---
 
-### Indentation
+## Indentation
 
-##### Map Indentation
+### Map Indentation
 
 Modules must all start on column one.
 This means that all children tags under the `<map>` tag must be aligned with said `<map>` tag.
@@ -19,7 +19,7 @@ This means that all children tags under the `<map>` tag must be aligned with sai
 </map>
 ```
 
-##### Child Element Indentation
+### Child Element Indentation
 
 Modules that have sub elements such as the `author` tag must be indented with 4 spaces below the parent element.
 
@@ -32,7 +32,7 @@ Modules that have sub elements such as the `author` tag must be indented with 4 
 </map>
 ```
 
-##### Space Between Modules
+### Space Between Modules
 
 There should be no white spaces between modules.
 That means the end of one module should have the start of another on the immediate next line.
@@ -62,18 +62,18 @@ That means the end of one module should have the start of another on the immedia
 </map>
 ```
 
-##### Closing tags
+#### Closing tags
 
 The ending tag of one module should be on the line directly above the beginning tag of a following module.
 
-##### Line Ending
+#### Line Ending
 
 XML files must end with an empty line.
 For example, if the ending `</map>` tag is on line 52, the last line of the XML file would be line 53.
 
-### Layout
+## Layout
 
-##### Main Map Definitions
+### Main Map Definitions
 
 There are 6 modules that make up the maps definition.
 They should all be placed at the top of the document; following the order below: `map`, `name`, `version`, `objective`, `authors` and `contributors`.
@@ -95,11 +95,11 @@ They should all be placed at the top of the document; following the order below:
 </map>
 ```
 
-##### The Protocol
+### The Protocol
 
 All maps should use the most up to date protocol.
 
-##### Authors and Contributors
+### Authors and Contributors
 
 An author using a UUID definition should have an inline comment to denote the players IGN.
 
@@ -109,13 +109,13 @@ An author using a UUID definition should have an inline comment to denote the pl
 </authors>
 ```
 
-##### Filters and Regions
+### Filters and Regions
 
 The filter definition should be defined before the definition of regions.
 
-### Naming Conventions
+## Naming Conventions
 
-##### Versioning
+### Versioning
 
 Follow the Semantic Versioning Schema For example: `1.2.3`
 
@@ -125,7 +125,7 @@ A Patch is classified by a small change to fix a bug or unintentional feature.
 
 `NOTE:` Bump the patch number when you fix something on a map.
 
-##### Objectives
+### Objectives
 
 Objectives should be short and tell the player what they have to do to win the match.
 
@@ -133,7 +133,7 @@ Objectives should be short and tell the player what they have to do to win the m
 <objective>Win the match by killing the enemy team!</objective>
 ```
 
-##### Identification Naming
+### Identification Naming
 
 Modules that require an `id` to be defined should be named in all lowercase and use a `-` dash to signify a space.
 
@@ -141,12 +141,12 @@ Modules that require an `id` to be defined should be named in all lowercase and 
 <team id="only-blue">blue</team>
 ```
 
-##### Enumeration Naming
+### Enumeration Naming
 
 Names which are defined as enumeration in bukkit should be transferred into lower case and `_` underscores replaced with spaces.
 `PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
 
-##### Team Filters
+### Team Filters
 
 Team filters should be named by following the Identification naming (3.4) and start with `only-` followed by the team name.
 

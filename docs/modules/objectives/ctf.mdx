@@ -92,7 +92,7 @@ In addition to flags, a CTF map also requires **nets** for flags to be captured 
   </table>
 </div>
 
-#### Flags
+### Flags
 
 A `<flag>` is a single physical banner that can be picked up, dropped, and captured.
 Its appearance is defined by an actual banner built into the map, and it has a name and color which you can override in XML.
@@ -522,6 +522,8 @@ Filters can be used to control who can pickup/capture the flag and when.
   </table>
 </div>
 
+### Flag Sub-elements
+
 <div className="table-container">
   <table>
     <thead>
@@ -650,7 +652,7 @@ Filters can be used to control who can pickup/capture the flag and when.
   </table>
 </div>
 
-#### Posts
+### Posts
 
 A **post** is a point or region where flags can respawn after being captured or dropped.
 It is essentially a [spawn](/docs/modules/mechanics/spawns) for flags instead of players,
@@ -900,7 +902,7 @@ The `permanent` option can be used to make a post into something like a [monumen
   </table>
 </div>
 
-#### Nets
+### Nets
 
 A `<net>` is a region that flags can be captured in.
 Each net has a optional list of flags that it will accept.

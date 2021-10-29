@@ -611,9 +611,9 @@ _Examples_
 </filters>
 ```
 
-### Special Elements
+## Special Elements
 
-#### Kill-Streak Filter
+### Kill-Streak Filter
 
 The kill-streak filter is a matcher that matches players who have a specified number of kills.
 The kill counter can be set to count from the start of the match or from the last time the player died.
@@ -702,7 +702,7 @@ _Examples_
 <kill-streak repeat="true" count="10"/>  <!-- match for every 10th kill -->
 ```
 
-#### Lives Filter
+### Lives Filter
 
 The lives filter matches for players who have a specified number of lives.
 The [Blitz module](/docs/modules/objectives/blitz) must be enabled to use this filter.
@@ -765,7 +765,7 @@ _Examples_
 <lives count="1"/> <!-- matches players with exactly 1 life -->
 ```
 
-#### Score Filter
+### Score Filter
 
 The score filter matches if the player's or team's score is a equal to a single value or within a range of values.
 The value can be an exact amount or a interval specifying a range. Only whole numbers are valid.
@@ -779,7 +779,7 @@ _Examples_
 <score>[5-10]</score>
 ```
 
-#### Random Filter
+### Random Filter
 
 This filter will randomly `ALLOW` or `DENY` when evaluated in the context of an event.
 Its value is a decimal fraction between 0 and 1, representing the probability of `ALLOW`.
@@ -808,7 +808,7 @@ _Examples_
 <random>[0.25, 0.75)</random>
 ```
 
-#### Player Count Filter
+### Player Count Filter
 
 This filter counts the number of players matching a single child filter,
 and matches if that count is within a specified range.
@@ -871,7 +871,7 @@ The child filter can be omitted, in which case all players in the match will be 
   </table>
 </div>
 
-#### Flag Filters
+### Flag Filters
 
 The flag filters allow filtering of a specific flags current state or for the player that is carrying the flag.
 One important use of these filters is to implement the standard rule that a team can only capture an enemy flag when their own flag is returned.
@@ -894,7 +894,7 @@ The flag carried, dropped, captured and returned filters have an optional `post`
 <carrying-flag>purple-flag</carrying-flag>
 ```
 
-#### Item Filters
+### Item Filters
 
 These filters can be used to filter for players with specific items in their inventory.
 They accept a single [item](/docs/modules/gear/items) element.
@@ -910,7 +910,7 @@ A item's meta data includes the item's name, enchantments, etc.
 <wearing><item material="chainmail chestplate"/></wearing>
 ```
 
-#### Event Cause Filters
+### Event Cause Filters
 
 Cause filters are used to filter an event or action according to its cause.
 
@@ -1047,7 +1047,7 @@ Cause filters are used to filter an event or action according to its cause.
   </table>
 </div>
 
-#### Effect Filter
+### Effect Filter
 
 The effect filter is used to check if a player has the same type of [Status Effect](/docs/modules/gear/potions) specified in the filter.
 Three optional attributes can be configured using `min-duration`, `max-duration` and `amplifier`.
@@ -1065,7 +1065,7 @@ Three optional attributes can be configured using `min-duration`, `max-duration`
 <effect id="filter5" min-duration="10s" max-duration="20s" amplifier="2">night vision</effect>
 ```
 
-#### Player Relation Filters
+### Player Relation Filters
 
 The relation filter is used when a player is damaged to check the relation between them and the damage cause.
 This filter is only used in damage related contexts i.e., [damage filters](/docs/modules/mechanics/damage), and [kill rewards](/docs/modules/gear/kill-rewards).
@@ -1119,7 +1119,7 @@ This filter is only used in damage related contexts i.e., [damage filters](/docs
   </table>
 </div>
 
-#### Structural Load Filters
+### Structural Load Filters
 
 The structural load filter checks the number of gravity blocks that are attached to the queried block.
 It returns `ALLOW` as long as the structural load is greater than or equal to the specified value and `DENY` otherwise.
@@ -1143,7 +1143,7 @@ _Example_
 </not>
 ```
 
-#### Void Filter
+### Void Filter
 
 If your map is especially complex shaped you may have to use the `<void/>` tag to shape your filtered region.
 The `<void/>` tag checks the specified regions for blocks on the bottom layer of the world.
