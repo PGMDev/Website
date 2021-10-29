@@ -97,7 +97,11 @@ They should all be placed at the top of the document; following the order below:
 
 ### The Protocol
 
-All maps should use the most up to date protocol.
+All maps should use the most up to date protocol. The protocol is used to
+
+```xml
+<map proto="1.4.0">
+```
 
 ### Authors and Contributors
 
@@ -123,6 +127,10 @@ A Major is classified by the addition of major gameplay changes - changes that c
 A Minor is classified by the addition of changes that affect gameplay but not to the extent of a major.
 A Patch is classified by a small change to fix a bug or unintentional feature.
 
+```xml
+<version>1.2.3</version>
+```
+
 `NOTE:` Bump the patch number when you fix something on a map.
 
 ### Objectives
@@ -143,11 +151,11 @@ Modules that require an `id` to be defined should be named in all lowercase and 
 
 ### Enumeration Naming
 
-Names which are defined as enumeration in bukkit should be transferred into lower case and `_` underscores replaced with spaces.
-`PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
+Bukkit names should be set into lower case with `_` underscores replaced with spaces.
+For example, `PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
 
 ### Team Filters
 
-Team filters should be named by following the Identification naming (3.4) and start with `only-` followed by the team name.
+Team filters should be named by following the Identification naming and start with `only-` followed by the team name.
 
 `only-blue` `only-elves`
