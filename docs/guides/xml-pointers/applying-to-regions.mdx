@@ -1,0 +1,87 @@
+---
+id: applying-to-regions
+title: Using Filters and Regions
+---
+
+Regions define areas that can later be applied to [Filters](/docs/modules/mechanics/filters)
+and other modules.
+Understanding how modules and filters work together is important to make functional mechanics.
+
+## Creating a Region
+
+Creating a [Region](docs/modules/mechanics/filters) involves certain world coordinates.
+In this example, we will create a simple `<cuboid/>` region, which we will save with the ID of `red-spawn`
+which we can reference for later use.
+
+```xml
+<regions>
+    <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
+</regions>
+```
+
+## Creating a Filter
+
+Creating a [Filter](/docs/modules/mechanics/filters) allows us to put restrictions on certain events.
+We want to filter players that are entering a region, so we will make a basic filter that matches for
+players on a certian team.
+
+```xml
+<filters>
+    <!-- Filter will pass ALLOW once all the conditions are met -->
+    <all id="only-red">
+        <!-- is player on the red team? -->
+        <team>red-team</team>
+    </all>
+</filters>
+```
+
+## Applying a Filter to a Region
+
+Applying filters to a region is done inside the `<regions>` module.
+When we make our `<apply/>` module, we can use the IDs in our region and filter to reference them.
+Out of the various [events](/docs/modules/mechanics/regions#apply-element-attributes),
+we will use the `enter` event.
+When a player enters our region, we want to make sure that only players on the red team are able to enter it.
+So we apply our `only-red` filter to players that are entering the `red-spawn` region.
+
+```xml
+<regions>
+    <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
+    <!-- checks only-red if a player is allowed to enter -->
+    <apply region="red-spawn" enter="only-red"/>
+</regions>
+<filters>
+    <!-- only players on Red will be allowed to enter -->
+    <all id="only-red">
+        <team>red-team</team>
+    </all>
+</filters>
+```
+
+## Applying multiple things to regions
+
+Typically we want to prevent players from placing any blocks in spawn,
+so the `<union>` element will be used to combine the two spawn regions.
+Then an `<apply/>` module can be used for both regions at once.
+This will use the built-in `never` filter, which denies everything.
+
+```xml
+<regions>
+    <union id="spawns">
+        <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
+        <cuboid id="blue-spawn" min="10,0,-55" max="30,10,-75"/>
+    </union>
+    <apply region="red-spawn" enter="only-red"/>
+    <apply region="blue-spawn" enter="only-blue"/>
+    <!-- denies all block place and block break events in both red-spawn and blue-spawn -->
+    <apply region="spawns" block="never"/>
+</regions>
+<filters>
+    <all id="only-red">
+        <team>red-team</team>
+    </all>
+    <all id="only-blue">
+        <team>red-team</team>
+    </all>
+</filters>
+```

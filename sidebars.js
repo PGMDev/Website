@@ -74,6 +74,7 @@ module.exports = {
   Guides: {
     "XML Pointers": [
       "guides/xml-pointers/regions",
+      "guides/xml-pointers/applying-to-regions",
       "guides/xml-pointers/filter-apply-order",
       "guides/xml-pointers/conventions",
     ],
