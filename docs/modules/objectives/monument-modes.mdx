@@ -65,7 +65,10 @@ Each `<mode>` has configurable characteristics that define it.
         </td>
         <td>
           <span className="badge badge--danger">Required</span>
-          Time from the start of the game till this mode takes effect.
+          Time from the start of the game till this mode takes effect. If a filter
+          is defined, then it will be the time since the filter passes <label>
+            ALLOW
+          </label>.
         </td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
@@ -94,6 +97,16 @@ Each `<mode>` has configurable characteristics that define it.
         <td>The unique ID of the mode.</td>
         <td>
           <span className="badge badge--primary">String</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>filter</label>
+        </td>
+        <td>Filter that triggers mode countdown.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Dynamic Filter</a>
         </td>
         <td></td>
       </tr>
@@ -135,6 +148,23 @@ to gold blocks after ten minutes of gameplay.
 <modes>
     <mode after="10m" material="gold block"/>
 </modes>
+```
+
+A mode can be triggered by a dynamic filter when it passes `ALLOW` to PGM.
+In this case, the `after` attribute means the mode will change in the
+given amount of time after the filter changes to `ALLOW`.
+
+```xml
+<!-- Turns objectives to emerald blocks 20 seconds after Red Monument and Blue Monument have been destryoed -->
+<modes>
+    <mode after="20s" filter="modes-filter" material="emerald block"/>
+</modes>
+<filters>
+    <all id="modes-filter">
+        <objective>red-mon</objective>
+        <objective>blue-mon</objective>
+    </all>
+</filters>
 ```
 
 In order for an objective to change modes,
