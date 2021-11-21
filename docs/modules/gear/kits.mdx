@@ -3,14 +3,17 @@ id: kits
 title: Kits
 ---
 
-Kits are groups of items and effects that can be given to players in various ways. There are many types of kits, and they can be
-packaged together in any combination.
+Kits are groups of items and effects that can be given to players in various ways.
+here are many types of kits, and they can be packaged together in any combination.
 
 Kits can be given an `id` attribute, which is used to refer to them in other places.
 Kits can contain other kits directly, and can also inherit items from other kits through the `parents=""` attribute.
 
-Some types of kits are _removable_, meaning that the kit can be automatically taken from the player as well as given. When used in certain contexts,
-these kits will be automatically removed from the player at an appropriate time. This will be noted in the documentation where applicable.
+Some types of kits are _removable_, meaning that the kit can be automatically
+taken from the player as well as given. When used in certain contexts,
+these kits will be automatically removed from the player at an appropriate time.
+These can be used in [Dynamic Kits](#dynamic-kits).
+Removable kits will be noted in the documentation where applicable.
 
 <div className="table-container">
   <table>
@@ -412,6 +415,77 @@ Allow for players who receive this kit to be forced onto a different team.
 <kit id="team-switch">
     <team-switch team="blue" show-title="false"/>
 </kit>
+```
+
+### Dynamic Kits
+
+Kits that are removable can be given and taken dynamically by using a Dynamic Filter.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<give>`}</label>
+        </td>
+        <td>Gives a kit to a player when they match the filter.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filter
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<take>`}</label>
+        </td>
+        <td>Removes a kit when they match the filter.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filter
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<lend>`}</label>
+        </td>
+        <td>
+          Loans a player a kit when the filter is <label>ALLOW</label>, removes
+          when they stop matching the filter.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filter
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```xml
+<kits>
+    <!-- Kit and Filter References -->
+    <lend kit="jumper-kit" filter="carrying-gold" />
+    <give kit="regen-kit" filter="holding-redstone" />
+    <!-- Player can no longer fly after carrying the flag -->
+    <take>
+        <kit>
+            <fly/>
+        </kit>
+        <filter>
+            <flag-carried>flag</flag-carried>
+        </filter>
+    </take>
+</kits>
 ```
 
 ### Potion Effect Kits (removable)
