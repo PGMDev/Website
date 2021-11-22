@@ -973,6 +973,60 @@ The child filter can be omitted, in which case all players in the match will be 
   </table>
 </div>
 
+### Objective Filter
+
+Matches for objectives that have been completed.
+The filter can also match for objectives completed by a certain team, or by anyone.
+This filter is a [Dynamic Filter](#dynamic-filters).
+
+##### Objective Filter Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>any</label>
+        </td>
+        <td>Matches if any team completed the objective.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>
+          <label>team</label>
+        </td>
+        <td>Matches if a certain team completed the objective.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Examples_
+
+```xml
+<!-- Matches if the team of the player is the one that completed objective -->
+<objective>goal-id</objective>
+<!-- Matches if any team has completed objective -->
+<objective any="true">goal-id</objective>
+<!-- Matches if red team completed objective -->
+<objective team="red-team">goal-id</objective>
+```
+
 ### Flag Filters
 
 The flag filters allow filtering of a specific flags current state or for the player that is carrying the flag.
