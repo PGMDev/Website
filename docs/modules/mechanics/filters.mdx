@@ -75,9 +75,13 @@ and assigned an `id` used to reference them elsewhere.
 </filters>
 ```
 
-### Matcher Elements
+## Matcher Elements
 
 Filter matchers test for specific conditions or properties of things.
+
+### Generic Filters
+
+Generic filters can apply to anything.
 
 <div className="table-container">
   <table>
@@ -91,9 +95,6 @@ Filter matchers test for specific conditions or properties of things.
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th colspan="3">Generic filters (apply to anything)</th>
-      </tr>
       <tr>
         <td>
           <label>{`<filter id="filter1"/>`}</label>
@@ -187,11 +188,25 @@ Filter matchers test for specific conditions or properties of things.
           <span className="badge badge--primary">Dynamic</span>
         </td>
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Spatial Filters
+
+These type of filters apply to anything with a physical location.
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <th colspan="3">
-          Spatial filters (apply to anything with a physical location)
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
         </th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<void/>`}</label>
@@ -200,18 +215,33 @@ Filter matchers test for specific conditions or properties of things.
           Match if there is an air block at Y=0 in the vertical column of this
           location.
         </td>
-        <td />
       </tr>
       <tr>
         <td colspan="3">
           <em>
-            Any <a href="/docs/modules/mechanics/regions">region</a> element
+            All{" "}
+            <a href="/docs/modules/mechanics/regions#region-types">region</a>{" "}
+            types
           </em>
         </td>
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Block Filters
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <th colspan="3">Block filters</th>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<material>block</material>`}</label>
@@ -226,7 +256,6 @@ Filter matchers test for specific conditions or properties of things.
             Single Material Pattern
           </a>
         </td>
-        <td />
       </tr>
       <tr>
         <td>
@@ -236,11 +265,24 @@ Filter matchers test for specific conditions or properties of things.
           Test the number of other gravity blocks that the queried block is
           supporting.
         </td>
-        <td />
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Entity Filters
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <th colspan="3">Entity filters</th>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<spawn>spawn reason</spawn>`}</label>
@@ -249,7 +291,6 @@ Filter matchers test for specific conditions or properties of things.
           Matches spawn event reasons, see{" "}
           <a href="/docs/modules/environment/mobs">mob spawning</a>
         </td>
-        <td />
       </tr>
       <tr>
         <td>
@@ -259,18 +300,33 @@ Filter matchers test for specific conditions or properties of things.
           Matches mobs by their name, see{" "}
           <a href="/docs/modules/environment/mobs">mob spawning</a>
         </td>
-        <td />
       </tr>
       <tr>
         <td>
           <label>{`<entity>entity name</entity>`}</label>
         </td>
         <td>Match entities, e.g. projectiles, boats, dropped items, etc.</td>
-        <td />
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Competitor Filters
+
+Competitor Filters apply to teams or players when Free-for-all is enabled.
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <th colspan="3">Competitor filters (apply to teams, or FFA players)</th>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
+        <th></th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<carrying-flag>flag-id</carrying-flag>`}</label>
@@ -289,9 +345,26 @@ Filter matchers test for specific conditions or properties of things.
           <span className="badge badge--primary">Dynamic</span>
         </td>
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Player Filters
+
+Player filters match for attributes of a certain player.
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <th colspan="3">Player filters</th>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
+        <th></th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<participating/>`}</label>
@@ -411,38 +484,65 @@ Filter matchers test for specific conditions or properties of things.
         <td>Match if the player is wearing an item.</td>
         <td />
       </tr>
+    </tbody>
+  </table>
+</div>
+
+### Event Filters
+
+Event Filters apply to transient events.
+
+<div className="table-container">
+  <table>
+    <thead>
       <tr>
-        <th colspan="3">Event filters (apply to transient events)</th>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>
           <label>{`<cause>cause</cause>`}</label>
         </td>
         <td>Filter an event's cause.</td>
-        <td />
       </tr>
       <tr>
         <td>
           <label>{`<random>decimal or range</random>`}</label>
         </td>
         <td>Random chance matcher.</td>
-        <td />
-      </tr>
-      <tr>
-        <th colspan="3">Damage filters (apply to damage/combat events)</th>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<relation>relation</relation>`}</label>
-        </td>
-        <td>Filter an event's relation to the player.</td>
-        <td />
       </tr>
     </tbody>
   </table>
 </div>
 
-### Modifier Elements
+### Damage Filters
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<relation>relation</relation>`}</label>
+        </td>
+        <td>Filter an event's relation to the player.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Modifier Elements
 
 Filter modifiers are used to alter the meaning of other filters, and combine them into more complex conditions.
 These elements must contain either a single filter, or a list of filters, as their child elements.
@@ -617,7 +717,7 @@ _Examples_
 
 ### Kill-Streak Filter
 
-The kill-streak filter is a matcher that matches players who have a specified number of kills.
+The kill-streak filter matches players who have a specified number of kills.
 The kill counter can be set to count from the start of the match or from the last time the player died.
 This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) but can also be used to restrict access to certain locations, etc.
 
