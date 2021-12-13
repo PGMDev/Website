@@ -82,7 +82,6 @@ Portals respond to any player move event, this allows almost instant teleportati
           >
             Property
           </span>
-          <span className="badge badge--danger">Required</span>
           Region where this portals entrance is located.
           <br />
           <i>
@@ -239,7 +238,6 @@ Portals respond to any player move event, this allows almost instant teleportati
           >
             Property
           </span>
-          <span className="badge badge--danger">Required</span>
           Region where this portals entrance is located.
         </td>
         <td>
@@ -294,12 +292,13 @@ Portals respond to any player move event, this allows almost instant teleportati
           >
             Property
           </span>
-          Apply forward transform on rising edge
+          Apply forward transform on rising edge.
         </td>
         <td>
-          <a href="/docs/modules/mechanics/filters">Dynamic Filters</a>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filters
+          </a>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -312,12 +311,13 @@ Portals respond to any player move event, this allows almost instant teleportati
           >
             Property
           </span>
-          Apply reverse transform on rising edge
+          Apply reverse transform on rising edge.
         </td>
         <td>
-          <a href="/docs/modules/mechanics/filters">Dynamic Filters</a>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filters
+          </a>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -331,7 +331,7 @@ Portals respond to any player move event, this allows almost instant teleportati
             Property
           </span>
           Apply forward transform on rising edge and reverse transform on falling
-          edge
+          edge.
           <br />
           <i>
             Cannot combine <label>transit</label> property with{" "}
@@ -339,9 +339,10 @@ Portals respond to any player move event, this allows almost instant teleportati
           </i>
         </td>
         <td>
-          <a href="/docs/modules/mechanics/filters">Dynamic Filters</a>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filters
+          </a>
         </td>
-        <td></td>
       </tr>
       <tr>
         <td>
@@ -386,4 +387,36 @@ _Examples_
     <!-- Teleports players on the Red Team from score-box to red-spawn, facing west -->
     <portal filter="only-red" yaw="@90" region="score-box" destination="red-spawn"/>
 </portals>
+```
+
+## Dynamic Portals
+
+Dynamic portals are portals that use <a href="/docs/modules/mechanics/filters#dynamic-filters">Dynamic Filters</a>
+to determine who is allowed entrance to a portal.
+Dynamic portals will always track when a condition is met, rather than standard portals, which can only
+track when a condition is met at the moment a player enters the portal.
+This means that dynamic portals can, for example, **immediately** teleport players 10 minutes into a match.
+
+In this example, the dynamic portal will teleport red players inside the `red-rear` region
+to the `red-front` region five minutes into the match. Red players who enter and remain in the region
+before the five minutes will still be teleported.
+
+```xml
+<portals>
+    <!-- A one-way (entrance to destination) Dynamic Portal -->
+    <!-- forward takes a dynamic filter as input -->
+    <portal forward="dynamic-filter-red" destination="red-front"/>
+</portals>
+<filters>
+    <all id="dynamic-filter-red">
+        <team>red-team</team>
+        <time>5m</time>
+        <!-- The entrance region is described inside the filter -->
+        <region id="red-rear"/>
+    </all>
+</filters>
+<regions>
+    <cuboid id="red-rear" min="10,20,30" max="15,25,35"/>
+    <cuboid id="red-front" min="50,20,30" max="55,25,35"/>
+</regions>
 ```
