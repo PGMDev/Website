@@ -3,10 +3,14 @@ id: control-points
 title: Control Points
 ---
 
-Control point give a certain amount of point to the team currently holding it. Once a team has captured all points, or reached a certain score (using the [score module](/docs/modules/objectives/scoring)) the match ends. Control points can be mixed with and used in addition to other gamemodes. Other uses of control points include unlocking an area of the map using objective filters, etc.
+Control points give a certain amount of point to the team currently holding it.
+Once a team has captured all points,
+or reached a certain score (using the [score module](/docs/modules/objectives/scoring)) the match ends.
+Control points can be mixed with and used in addition to other gamemodes.
+Other uses of control points include unlocking an area of the map using objective filters, etc.
 
 ```xml
-<control-points capture-rule="lead" incremental="true" show-progress="true">
+<control-points capture-rule="lead" show-progress="true">
     <control-point name="Center" capture-time="20s">
         <capture><cylinder base="0.5,23,7.5" radius="7" height="5"/></capture>
         <progress><cylinder base="0.5,22,7.5" radius="7" height="4"/></progress>
@@ -161,7 +165,7 @@ Control point give a certain amount of point to the team currently holding it. O
           moment.
         </td>
         <td>
-          <a href="#capture_rule">Capture Rule</a>
+          <a href="#capture-rule">Capture Rule</a>
         </td>
         <td colspan="2">exclusive</td>
       </tr>
@@ -528,16 +532,23 @@ Control point give a certain amount of point to the team currently holding it. O
   </table>
 </div>
 
-#### Capture Rule
+### Capture Rule
 
-The capture rule defines the logic used to decide which team is in control of the point. Values for `capture-rule` can be one of the following:
+The capture rule defines the logic used to decide which team is in control of the point.
+Values for `capture-rule` can be one of the following:
 
 - `exclusive` The team must be the only team with players on the control point. (default)
 - `majority` The team must have more players on the control point than all other teams combined.
 - `lead` The team must have more players on the control point than any other single team.
 
-Players who match either `capture-filter` or `player-filter` are counted when calculating the `capture-rule`. Players who don't match either filter cannot affect the control point at all.
+Players who match either `capture-filter` or `player-filter` are counted when calculating the `capture-rule`.
+Players who don't match either filter cannot affect the control point at all.
 
-#### Control Point Regions
+### Control Point Regions
 
-Capture progress is displayed inside the defined `<progress>` region using the dominating teams color. After a control point is captured the `<captured>` region is also filled with that color. The progress and captured regions must be bounded regions, e.g. cylinders & cuboids will work, circles and squares will not. Only the default visual materials or materials defined in `visual-materials` will be modified in the progress regions when they are updated.
+Capture progress is displayed inside the defined `<progress>` region using the dominating teams color.
+After a control point is captured the `<captured>` region is also filled with that color.
+The progress and captured regions must be bounded regions,
+e.g. cylinders & cuboids will work, circles and squares will not.
+Only the default visual materials or materials defined in `visual-materials` will be modified
+in the progress regions when they are updated.
