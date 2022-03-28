@@ -3,7 +3,7 @@ id: control-points
 title: Control Points
 ---
 
-Control points give a certain amount of point to the team currently holding it.
+Control points give a certain amount of points to the team currently holding it.
 Once a team has captured all points,
 or reached a certain score (using the [score module](/docs/modules/objectives/scoring)) the match ends.
 Control points can be mixed with and used in addition to other gamemodes.
@@ -552,3 +552,46 @@ The progress and captured regions must be bounded regions,
 e.g. cylinders & cuboids will work, circles and squares will not.
 Only the default visual materials or materials defined in `visual-materials` will be modified
 in the progress regions when they are updated.
+
+### King of the Hill (deprecated)
+
+<span className="badge badge--danger">NOTE:</span>
+
+_The `<king>`, `<hill>` and `<hills>` tags have been deprecated.
+Use the `<control-point>` and `<control-points>` tags, which work the same but
+with differrent default values._
+
+KotH is a gamemode in which you capture and hold a hill to collect points.
+The first team to reach a preset amount of points wins.
+
+KotH maps use control points to define hills.
+Instead of being called `<control-points>` they are called `<hills>` and must be defined inside a main `<king>` element.
+The main difference between hills and control points is what their default values are.
+Default values for `time-multiplier`, `show-progress`, `neutral-state`,
+`incremental` and `permanent` differ between `<control-point>` and `<hill>`.
+
+```xml
+<king>
+    <hills>
+        <hill name="Hill" capture-time="10s" points="1">
+            <capture><region id="hill"/></capture>
+            <progress><cuboid min="-5,71,-5" max="5,71,5"/></progress>
+        </hill>
+    </hills>
+</king>
+```
+
+#### Scoring
+
+KotH games use the `<score>` module to end the game when one team reaches a preset amount of points.
+The `<king/>` tag prevents teams from getting points when killing players,
+this means they have to actually capture the hill to get points.
+
+King of the Hill maps may **not** have a time limit.
+
+```xml
+<score>
+    <limit>500</limit>
+    <king/>
+</score>
+```
