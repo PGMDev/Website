@@ -92,7 +92,7 @@ This can also be avoided by keeping the lava far away enough from the core and n
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
-        <td>true</td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -197,6 +197,58 @@ This can also be avoided by keeping the lava far away enough from the core and n
       </tr>
       <tr>
         <td>
+          <label>show-messages</label>
+        </td>
+        <td>Broadcast messages related to the core in chat.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-effects</label>
+        </td>
+        <td>Play sounds, fireworks and other effects related to the core.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-info</label>
+        </td>
+        <td>
+          Display the core under commands such as <label>/match</label>.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-sidebar</label>
+        </td>
+        <td>Displays the core on scoreboard.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>stats</label>
+        </td>
+        <td>Determines if this core counts as a win condition.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
           <label>show</label>
         </td>
         <td>
@@ -205,8 +257,7 @@ This can also be avoided by keeping the lava far away enough from the core and n
           scoreboard.
           <br />
           <label>NOTE:</label>
-          The objective will also not be logged to the Database and the player will
-          not recieve any raindrops upon completion.
+          This attribute sets all five values above to true/false.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>

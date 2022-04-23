@@ -95,7 +95,7 @@ Completion specifies how much of the material(s) inside of the monument region m
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
-        <td>true</td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -221,16 +221,69 @@ Completion specifies how much of the material(s) inside of the monument region m
       </tr>
       <tr>
         <td>
+          <label>show-messages</label>
+        </td>
+        <td>Broadcast messages related to the monument in chat.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-effects</label>
+        </td>
+        <td>
+          Play sounds, fireworks and other effects related to the monument.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-info</label>
+        </td>
+        <td>
+          Display the monument under commands such as <label>/match</label>.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-sidebar</label>
+        </td>
+        <td>Displays the monument on scoreboard.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>stats</label>
+        </td>
+        <td>Determines if this monument counts as a win condition.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
           <label>show</label>
         </td>
         <td>
-          Specify if the objective should be hidden from all visible locations
-          to the player. These locations include chat, the boss bar, and the
+          Specify if the monument should be hidden from all visible locations to
+          the player. These locations include chat, the boss bar, and the
           scoreboard.
           <br />
           <label>NOTE:</label>
-          The objective will also not be logged to the Database and the player will
-          not recieve any raindrops upon completion.
+          This attribute sets all five values above to true/false.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>

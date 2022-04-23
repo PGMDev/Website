@@ -162,7 +162,7 @@ Filters can be used to control who can pickup/capture the flag and when.
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
-        <td>true</td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -190,9 +190,68 @@ Filters can be used to control who can pickup/capture the flag and when.
       </tr>
       <tr>
         <td>
+          <label>show-messages</label>
+        </td>
+        <td>Broadcast messages related to the flag in chat.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-effects</label>
+        </td>
+        <td>Play sounds, fireworks and other effects related to the flag.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-info</label>
+        </td>
+        <td>
+          Display the flag under commands such as <label>/match</label>.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-sidebar</label>
+        </td>
+        <td>Displays the flag on scoreboard.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>stats</label>
+        </td>
+        <td>Determines if this flag counts as a win condition.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
           <label>show</label>
         </td>
-        <td>Show this flag on the scoreboard, chat, etc.</td>
+        <td>
+          Specify if the flag should be hidden from all visible locations to the
+          player. These locations include chat, the boss bar, and the
+          scoreboard.
+          <br />
+          <label>NOTE:</label>
+          This attribute sets all five values above to true/false.
+        </td>
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>

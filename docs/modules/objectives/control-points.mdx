@@ -107,7 +107,7 @@ Other uses of control points include unlocking an area of the map using objectiv
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
-        <td colspan="2">true</td>
+        <td colspan="2"></td>
       </tr>
       <tr>
         <td>
@@ -295,15 +295,70 @@ Other uses of control points include unlocking an area of the map using objectiv
       </tr>
       <tr>
         <td>
+          <label>show-messages</label>
+        </td>
+        <td>Broadcast messages related to the control point in chat.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td colspan="2">true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-effects</label>
+        </td>
+        <td>
+          Play sounds, fireworks and other effects related to the control point.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td colspan="2">true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-info</label>
+        </td>
+        <td>
+          Display the control point under commands such as <label>/match</label>
+          .
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td colspan="2">true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>show-sidebar</label>
+        </td>
+        <td>Displays the control point on scoreboard.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td colspan="2">true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>stats</label>
+        </td>
+        <td>Determines if this control point counts as a win condition.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td colspan="2">true</td>
+      </tr>
+      <tr>
+        <td>
           <label>show</label>
         </td>
         <td>
-          Show the objective in the interface and fire fireworks on completion.
+          Specify if the control point should be hidden from all visible
+          locations to the player. These locations include chat, the boss bar,
+          and the scoreboard.
           <br />
-          <i>
-            Hidden goals do not count towards a players completed objectives &
-            do not give raindrops.
-          </i>
+          <label>NOTE:</label>
+          This attribute sets all five values above to true/false.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
