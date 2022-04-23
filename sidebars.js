@@ -93,5 +93,12 @@ module.exports = {
     "events/teams",
     "events/commands",
   ],
-  Examples: ["examples/airship-battle"],
+  Examples: [
+    "examples/airship-battle",
+    "examples/harb",
+    "examples/ozone",
+    "examples/race-for-victory",
+    "examples/the-fenland",
+    "examples/warlock",
+  ],
 };

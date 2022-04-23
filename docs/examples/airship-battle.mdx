@@ -1,14 +1,30 @@
 ---
 id: airship-battle
-title: Airship Battle
+title: Airship Battle (DTC)
 ---
+
+Airship Battle is the first ever map made for PGM.
+It features two wooden airships with building materials, tools, and weapons inside chests.
+The objective of the map is to leak the lava contained inside an obsidian sphere by destroying it.
+Whoever leaks the other team's core first wins the game.
+
+![](/img/examples//airship1.png)
+_Players build across to the other ship, either at ground level or bridging ontop of the propellers._
+
+![](/img/examples/airship2.png)
+_The large spawn area where observers spawn at, players spawn inside the safe bedrock
+tunnels and run into the ship._
+
+![](/img/examples/airship3.png)
+_The obsidian core that which you must leak the lava out of!
+Make the lava leak by destroying the obsidian blocks containing it and other obsticles that might get in the way._
 
 [<i className="icon-right">➡️</i>](/docs/modules/general/main)
 Every map XML file starts with the XML header and then the base `<map>` module.
 
 ```xml
 <?xml version="1.0"?>
-<map proto="1.4.0">
+<map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Airship Battle</name>
 <!-- States what version the map is -->
@@ -19,14 +35,14 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 <authors>
     <author uuid="30e27366-0b14-4076-8f55-0819ece49ce3"/> <!--  Dewtroid  -->
 </authors>
-<!-- Shows any map rules that are not in normal OCN rules -->
+<!-- Shows any map rules or details that are not in normal server rules -->
 <rules>
-    <rule>Dispensers are disabled</rule>
+    <rule>Dispensers are disabled.</rule>
 </rules>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/format/teams)
-Defines the teams [colors](/docs/reference/misc/formatting#chatColors), names and how many people can be on the teams.
+Defines the team's [colors](/docs/reference/misc/formatting#chatColors), names and how many people can be on the teams.
 
 ```xml
 <teams>
@@ -106,6 +122,7 @@ These regions reference the dispenser and obsidian filters defined above and sta
             </negative>
         </region>
     </apply>
+    <!-- Only the obsidian that makes up the core can be broken -->
     <apply block-break="deny-obsidian" message="You may not break obsidian outside the core area!">
         <region>
             <complement>
@@ -115,11 +132,8 @@ These regions reference the dispenser and obsidian filters defined above and sta
             </complement>
         </region>
     </apply>
-    <apply block-place="deny-dispenser" message="Dispensers are disabled on this map!">
-        <region>
-            <everywhere/>
-        </region>
-    </apply>
+    <!-- Do not let anyone place dispenser blocks anywhere on the map -->
+    <apply block-place="deny-dispenser" region="everywhere" message="Dispensers are disabled on this map!"/>
 </regions>
 ```
 
@@ -152,7 +166,7 @@ Remove shears, obsidian and gold block items from the playing field when they ar
 </itemremove>
 ```
 
-[<i className="icon-right">➡️</i>](/docs/modules/objectives/other)
+[<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
 
 This specifies how high players can build however it doesn't stop them from going over this limit.
 
