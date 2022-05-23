@@ -3,13 +3,15 @@ id: spawners
 title: Spawners
 ---
 
-The `<spawners>` module provides an easy way of spawning entities and items into the world, without using actual spawner blocks and NBT editors.
+The `<spawners>` module provides an easy way of spawning items and splash potions into the world,
+without using actual spawner blocks with NBT editors.
 
-The module uses the same syntax as <a href="/docs/modules/gear/kits">kits</a> to define items and makes use of a specific <a href="/docs/modules/mechanics/regions">region</a> to spawn them in.
+The module uses the same syntax as <a href="/docs/modules/gear/kits">kits</a> to
+define items and makes use of a specific <a href="/docs/modules/mechanics/regions">region</a> to spawn them in.
 
 <div className="alert alert--warning" style={{ marginBottom: "30px" }}>
-  Currently, only dropped items are supported by this module. Other types of
-  entities may be supported in the future.
+  Currently, only dropped items and splash potions are supported by this module.
+  Other types of entities may be supported in the future.
 </div>
 
 <div className="table-container">
@@ -175,18 +177,49 @@ The module uses the same syntax as <a href="/docs/modules/gear/kits">kits</a> to
           <a href="/docs/modules/gear/items">Item</a>
         </td>
       </tr>
+      <tr>
+        <td>
+          <label>{`<potion> </potion>`}</label>
+        </td>
+        <td>
+          A single splash potion that will be dropped in the{" "}
+          <label>spawn-region</label>
+        </td>
+        <td>
+          <a href="/docs/modules/gear/potions">Potion Effects</a>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 
 _Examples_
 
-This will spawn golden swords (in stacks of 1) in the red base, provided there is at least 1 person in that base. The swords will spawn in ramdom intervals of 2s - 10s. The <label>filter</label> insures that only players on the red team can trigger the spawner.
+This will spawn golden swords (in stacks of 1) in the red base, provided there is at least 1 person in that base.
+The swords will spawn in ramdom intervals of 2s - 10s.
+The <label>filter</label> insures that only players on the red team can trigger the spawner.
 
 ```xml
 <spawners>
-    <spawner spawn-region="red-base"  player-region="red-base" max-entities="50" min-delay="2s" max-delay="10s" filter="only-red">
+    <spawner spawn-region="red-base" player-region="red-base" max-entities="50" min-delay="2s" max-delay="10s" filter="only-red">
         <item amount="1" name="`6Golden Sword" material="gold sword"/>
+    </spawner>
+</spawners>
+```
+
+This will spawn a single splash potion that gives players Absorption III, Speed II and Jump Boost II.
+The speed and jump boost effects will both last 10 seconds and aborbtion will last 60 seconds.
+The `damage` attribute will give the potion a red appeareance based on
+[Potion Values](/docs/reference/items/potions#potion-names--colors).
+
+```xml
+<spawners>
+    <spawner spawn-region="spawner" player-region="spawner-area" delay="2s">
+        <potion duration="10" amplifier="2" damage="5">
+            <effect amplifier="3" duration="60">absorption</effect>
+            <effect>speed</effect>
+            <effect>jump_boost</effect>
+        </potion>
     </spawner>
 </spawners>
 ```
