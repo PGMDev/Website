@@ -160,12 +160,16 @@ Mapmakers should always use the latest supported proto version, and this may be 
 <span class="badge badge--success">New</span>
 <br />
 
+<span className="badge badge--secondary">Partially implemented</span>{" "}
+
 - Portals, kits, score boxes & structures can now be dynamically applied using dynamic filters. All region types are dynamic, however, only some filter types are dynamic.
-  - Kits now have give, take & lend properties.
-  - Portals have forward, reverse & transit properties.
-  - Structures & score boxes have a trigger property.
-- Added a player count filter.
+  - Kits now have [`give`, `take` & `lend` properties](/docs/modules/gear/kits#dynamic-kits).
+  - Portals have [`forward`, `reverse` & `transit` properties](/docs/modules/mechanics/portals#portal-sub-elements).
+  - Structures & [score boxes](/docs/modules/objectives/scoring#score-box-attributes) have a `trigger` property.
+- <span className="badge badge--secondary">Not implemented</span> Added a player
+  count filter.
 - Added a `<grounded/>` filter to check if the player is standing on the ground.
+- Added `<match-started/>`, `<match-running/>` & `<match-finished/>` filters that are used to check the state of the current match.
 - New `pre-match-physics` attribute for the terrain module to enable physics events before the match starts.
 
 ### Changes in 1.4.1
@@ -173,13 +177,16 @@ Mapmakers should always use the latest supported proto version, and this may be 
 <span className="badge badge--danger">Breaking</span>
 <br />
 
+<span className="badge badge--secondary">Not implemented</span>
+
 - `<random>` filters now only respond to instantaneous events, and abstain when used in any persistent context. This breaks some uses that relied on undefined behavior, but these would likely break anyway as filters gain more dynamic functionality.
   ***
 
 <span class="badge badge--primary">Change</span>
 <br />
 
-- As of Minecraft 1.9, TNT fuse time is no longer limited to 4 seconds.
+- <span className="badge badge--secondary">Not implemented</span> As of Minecraft
+  1.9, TNT fuse time is no longer limited to 4 seconds.
 - Portals react to player move events allowing almost instant teleportation as soon as the filter matches.
   ***
 
@@ -188,7 +195,8 @@ Mapmakers should always use the latest supported proto version, and this may be 
 
 - Added `<observing>` and `<participant>` filters. Also added an `observers` filter property to portals to restrict observer access.
 - Added player rank and score filters. Filters return if the player's rank or score is within the specified range.
-- Added a gliding filter, returns if the player is gliding with an elytra.
+- <span className="badge badge--secondary">Not implemented</span> Added a gliding
+  filter, returns if the player is gliding with an elytra.
 - Control points have new `recovery` and `decay` attributes that replace the `incremental` attribute and allow more control of the progress.
 
 ### Changes in 1.4.0
@@ -206,10 +214,6 @@ Mapmakers should always use the latest supported proto version, and this may be 
       <team id="only-red">red-team</team>
     </filters>
     ```
-
-  ```
-
-  ```
 
 - The region for an `<apply>` must be either a `region` attribute or a `<region>` sub-element. It cannot appear directly inside the `<apply>` tag.
 - Inline filters must always be a single tag, multiple tags are not accepted anywhere. To combine multiple filters, always use a compound filter like `<all>` or `<any>`. This change is retroactive, and affects _all_ proto versions.
@@ -280,19 +284,19 @@ Mapmakers should always use the latest supported proto version, and this may be 
 - A team can have a minimum required size with the `min=""` attribute.
 - Objectives have a `required` attribute that specifies if they are required to complete the match.
 - A players gamemode can be changed by using the new `<game-mode> </game-mode>` kit.
-- New world border module that can be used to create a shifting and/or auto resizing world border.
+- New [world border module](/docs/modules/environment/border) that can be used to create a shifting and/or auto resizing world border.
 - Support added for block punch and trample `<block-drops>`.
-- Custom item crafting recipe module.
-- All items of a specific type can be modified for the whole match using the `<item-mods>` module.
-- Teamless gamemodes with the `<players/>` module.
+- Custom item [crafting recipe module](/docs/modules/gear/crafting).
+- All items of a specific type can be modified for the whole match using the [`<item-mods>` module](/docs/modules/gear/item-mods).
+- Teamless gamemodes with the [`<players/>` module](/docs/modules/format/players).
 - Heads can be given to players in kits with the `<head>` element.
 - Cause filters have several new possible values they can filter for.
 - Added the `<relation>` filter to check the relation between two players.
-- The world generator can be modified with the terrain module. This module allows the seed, void/vanilla generator, and world folder location to be specified.
+- The world generator can be modified with the [terrain module](/docs/modules/environment/world#terrain). This module allows the seed, void/vanilla generator, and world folder location to be specified.
 - XML files can now contain conditional `<if>` and `<unless>` statements. These statements allow modules to be loaded on specific servers or during holiday events.
 - The maps display gamemode can be specified with the `<gamemode>` element.
-- Added a shield kit module that gives a player an absorption hearts recharging shield.
-- Pickups module for location specific kit pickups.
+- Added a [shield kit module](/docs/modules/gear/kits/#shield-kit-removable) that gives a player an absorption hearts recharging shield.
+- [Pickups module](/docs/modules/gear/pickups) for location specific kit pickups.
   ***
 
 <span className="badge badge--info">Removed</span>
