@@ -3,7 +3,7 @@ id: proto
 title: Protocol Versions
 ---
 
-The `proto=""` attribute specifies what PGM version a XML file was created for. If this value is higher than the version supported by the instance of PGM that is running, the map will not load. If it is lower, the map will load but the XML may be interpreted in an outdated way. In most cases, PGM will attempt to provide as much backward or forward compatibility as possible if a map is using a legacy proto version.
+The `proto=""` attribute specifies what iteration of PGM a XML file was created for. It also instructs PGM on whether to allow the usage of deprecated or newly introduced features. If the value is lower than the currently recommended proto version, the map will load but the XML may be interpreted in an outdated way.
 
 Mapmakers should always use the latest supported proto version, and this may be required of new maps that are to be added to any map compilation projects, such as [ResourcePile](https://mcresourcepile.github.io).
 
