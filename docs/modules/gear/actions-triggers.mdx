@@ -3,7 +3,7 @@ id: actions-triggers
 title: Actions & Triggers
 ---
 
-Actions are a set of features that are not player scoped, like [Kits](kits).
+Actions are a set of features that are applied to players, teams or matches, similiar to [Kits](kits).
 
 ##### Action Elements
 
@@ -38,7 +38,7 @@ Actions are a set of features that are not player scoped, like [Kits](kits).
         <td>
           <label>{`<switch-scope> </switch-scope>`}</label>
         </td>
-        <td>some bullshit idk</td>
+        <td>Changes a scope in which the trigger looks at.</td>
       </tr>
       <tr>
         <td>
@@ -73,7 +73,11 @@ Actions are a set of features that are not player scoped, like [Kits](kits).
         <td>
           <label>{`scope`}</label>
         </td>
-        <td>some bullshit idk</td>
+        <td>
+          Runs the filter against, <label>{`player`}</label>, <label>{`team`}</label>
+          , or
+          <label>{`match`}</label>.
+        </td>
       </tr>
     </tbody>
   </table>
@@ -94,13 +98,17 @@ Actions are a set of features that are not player scoped, like [Kits](kits).
         <td>
           <label>{`id`}</label>
         </td>
-        <td>A message that is sent to the player.</td>
+        <td>An ID.</td>
       </tr>
       <tr>
         <td>
           <label>{`inner`}</label>
         </td>
-        <td>some bullshit idk</td>
+        <td>
+          Runs the filter against, <label>{`player`}</label>, <label>{`team`}</label>
+          , or
+          <label>{`match`}</label>.
+        </td>
       </tr>
       <tr>
         <td>
@@ -130,7 +138,7 @@ Actions are a set of features that are not player scoped, like [Kits](kits).
           <label>{`filter`}</label>
         </td>
         <td>
-          A <a href="#filter">Filter</a>.
+          A <a href="#filter">Dynamic Filter</a>.
         </td>
       </tr>
       <tr>
@@ -144,10 +152,40 @@ Actions are a set of features that are not player scoped, like [Kits](kits).
           <label>{`scope`}</label>
         </td>
         <td>
-          Checks for <label>{`player`}</label>, <label>{`team`}</label>, or{" "}
+          Runs the filter against, <label>{`player`}</label>, <label>{`team`}</label>
+          , or
           <label>{`match`}</label>.
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+_Example_
+
+```xml
+<kits>
+    <kit id="spawn">
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <action>
+            <message text="You were given a kit!"/>
+        </action>
+    </kit>
+</kits>
+<actions>
+    <action id="do-stuff" scope="player">
+        <message text="You've been given a diamond!"/>
+        <switch-scope outer="player" inner="team">
+            <message text="Your team has been given the spawn kit!"/>
+            <switch-scope outer="team" inner="player">
+                <kit id="spawn"/>
+            </switch-scope>
+        </switch-scope>
+        <kit>
+            <item>diamond</item>
+        </kit>
+    </action>
+    <trigger filter="some-dynamic-filter" trigger="do-stuff" scope="player"/>
+    <trigger filter="another-dynamic-filter" trigger="standalone-text" scope="player"/>
+</actions>
+```
