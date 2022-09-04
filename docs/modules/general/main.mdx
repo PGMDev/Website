@@ -348,6 +348,35 @@ A players name should **not** be used to credit them, instead their UUID should 
 </contributors>
 ```
 
+### Include Statements
+
+Include statements allow for global XML files to be loaded and re-used across different maps.
+This can be used to standardize values across maps.
+Below is an example includes file that can be used on Blitz maps:
+
+```xml
+<!-- blitz.xml, located under includes/blitz.xml -->
+<!-- the location for include files is defined in config.yml -->
+<map>
+    <blitz>
+        <lives>5</lives>
+    </blitz>
+</map>
+```
+
+The file is automatically given an ID based on the file name, which in this case is `blitz`.
+Then it can be added into the main `map.xml`. Multiple include statements can be used per map.
+
+```xml
+<!-- map.xml -->
+<map>
+  ...
+  <!-- All maps with this include statement will give the player 5 lives -->
+  <include id="blitz"/>
+  ...
+</map>
+```
+
 ### Map Gamemode
 
 The gamemode element is used to specify the gamemode(s) of the map.
