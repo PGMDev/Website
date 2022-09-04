@@ -1,0 +1,153 @@
+---
+id: actions-triggers
+title: Actions & Triggers
+---
+
+Actions are a set of features that are not player scoped, like [Kits](kits).
+
+##### Action Elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<action> </action>`}</label>
+        </td>
+        <td>A single action.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<trigger/>`}</label>
+        </td>
+        <td>Creates a trigger to cause an Action.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<message/>`}</label>
+        </td>
+        <td>A message that is sent to the player.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<switch-scope> </switch-scope>`}</label>
+        </td>
+        <td>some bullshit idk</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<kit/>`}</label>
+        </td>
+        <td>
+          Applies a <a href="#kits">Kit</a>.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Action Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>An ID.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`scope`}</label>
+        </td>
+        <td>some bullshit idk</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Switch-Scope Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>A message that is sent to the player.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`inner`}</label>
+        </td>
+        <td>some bullshit idk</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`outer`}</label>
+        </td>
+        <td>
+          <a href="#kits">Kit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Trigger Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`filter`}</label>
+        </td>
+        <td>
+          A <a href="#filter">Filter</a>.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`trigger`}</label>
+        </td>
+        <td>Sets an Action.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`scope`}</label>
+        </td>
+        <td>
+          Checks for <label>{`player`}</label>, <label>{`team`}</label>, or{" "}
+          <label>{`match`}</label>.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
