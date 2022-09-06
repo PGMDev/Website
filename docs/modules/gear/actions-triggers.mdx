@@ -4,9 +4,12 @@ title: Actions & Triggers
 ---
 
 Actions are a set of features that are applied to players, teams or matches, similiar to [Kits](kits).
-In the future, some features that are currently used in Kits may be transferred to be used as an Action.
+Multiple actions can be started by one trigger.
 
-##### Action Elements
+<span className="badge badge--primary">Note:</span> In the future, some features
+that are currently used in Kits may be transferred to be used as an Action.
+
+### Action Elements
 
 <div className="table-container">
   <table>
@@ -25,15 +28,9 @@ In the future, some features that are currently used in Kits may be transferred 
       </tr>
       <tr>
         <td>
-          <label>{`<trigger/>`}</label>
-        </td>
-        <td>Creates a trigger to cause an Action.</td>
-      </tr>
-      <tr>
-        <td>
           <label>{`<switch-scope> </switch-scope>`}</label>
         </td>
-        <td>Changes a scope in which the trigger looks at.</td>
+        <td>Changes the scope that an action applies to.</td>
       </tr>
       <tr>
         <td>
@@ -53,7 +50,7 @@ In the future, some features that are currently used in Kits may be transferred 
   </table>
 </div>
 
-##### Action Attributes
+#### Action Attributes
 
 <div className="table-container">
   <table>
@@ -83,54 +80,20 @@ In the future, some features that are currently used in Kits may be transferred 
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
       </tr>
-    </tbody>
-  </table>
-</div>
-
-##### Trigger Attributes
-
-<div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
       <tr>
         <td>
           <label>{`filter`}</label>
         </td>
-        <td>A dynamic filter that activiates the trigger.</td>
+        <td>A filter that is tested before running actions inside.</td>
         <td>
-          <a href="#filter">Dynamic Filter</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`trigger`}</label>
-        </td>
-        <td>Sets an Action.</td>
-        <td>
-          <a href="#action-elements">Action</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`scope`}</label>
-        </td>
-        <td>Runs the filter against a certain query.</td>
-        <td>
-          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-##### Switch-Scope Attributes
+#### Switch-Scope Attributes
 
 <div className="table-container">
   <table>
@@ -155,7 +118,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`inner`}</label>
         </td>
-        <td>Runs the filter against a certain query.</td>
+        <td>Runs the filter against a new query.</td>
         <td>
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
@@ -164,7 +127,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`outer`}</label>
         </td>
-        <td>Runs the filter against a certain query.</td>
+        <td>The previously defined query.</td>
         <td>
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
@@ -173,7 +136,7 @@ In the future, some features that are currently used in Kits may be transferred 
   </table>
 </div>
 
-##### Message Attributes
+#### Message Attributes
 
 <div className="table-container">
   <table>
@@ -192,6 +155,56 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>The text that will be sent to a player.</td>
         <td>
           <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Trigger Element
+
+The <label>`<trigger/>`</label> Element waits for a dynamic filter to activate it, and afterwards it will
+trigger an Action.
+
+#### Trigger Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`filter`}</label>
+        </td>
+        <td>A dynamic filter that activiates the trigger.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filter
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`trigger`}</label>
+        </td>
+        <td>Sets an Action.</td>
+        <td>
+          <a href="#action-elements">Action</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`scope`}</label>
+        </td>
+        <td>Runs the filter against a certain query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
       </tr>
     </tbody>
