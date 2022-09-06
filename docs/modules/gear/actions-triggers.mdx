@@ -4,6 +4,7 @@ title: Actions & Triggers
 ---
 
 Actions are a set of features that are applied to players, teams or matches, similiar to [Kits](kits).
+In the future, some features that are currently used in Kits may be transferred to be used as an Action.
 
 ##### Action Elements
 
@@ -20,7 +21,7 @@ Actions are a set of features that are applied to players, teams or matches, sim
         <td>
           <label>{`<action> </action>`}</label>
         </td>
-        <td>A single action.</td>
+        <td>A single Action.</td>
       </tr>
       <tr>
         <td>
@@ -30,15 +31,15 @@ Actions are a set of features that are applied to players, teams or matches, sim
       </tr>
       <tr>
         <td>
-          <label>{`<message/>`}</label>
-        </td>
-        <td>A message that is sent to the player.</td>
-      </tr>
-      <tr>
-        <td>
           <label>{`<switch-scope> </switch-scope>`}</label>
         </td>
         <td>Changes a scope in which the trigger looks at.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<message/>`}</label>
+        </td>
+        <td>A message that is sent to the player.</td>
       </tr>
       <tr>
         <td>
@@ -60,6 +61,7 @@ Actions are a set of features that are applied to players, teams or matches, sim
       <tr>
         <th>Attribute</th>
         <th>Description</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -68,54 +70,17 @@ Actions are a set of features that are applied to players, teams or matches, sim
           <label>{`id`}</label>
         </td>
         <td>An ID.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
       </tr>
       <tr>
         <td>
           <label>{`scope`}</label>
         </td>
+        <td>Runs the filter against a certain query.</td>
         <td>
-          Runs the filter against, <label>{`player`}</label>, <label>{`team`}</label>
-          , or
-          <label>{`match`}</label>.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-##### Switch-Scope Attributes
-
-<div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`id`}</label>
-        </td>
-        <td>An ID.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`inner`}</label>
-        </td>
-        <td>
-          Runs the filter against, <label>{`player`}</label>, <label>{`team`}</label>
-          , or
-          <label>{`match`}</label>.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`outer`}</label>
-        </td>
-        <td>
-          <a href="#kits">Kit</a>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
       </tr>
     </tbody>
@@ -130,6 +95,7 @@ Actions are a set of features that are applied to players, teams or matches, sim
       <tr>
         <th>Attribute</th>
         <th>Description</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -137,8 +103,9 @@ Actions are a set of features that are applied to players, teams or matches, sim
         <td>
           <label>{`filter`}</label>
         </td>
+        <td>A dynamic filter that activiates the trigger.</td>
         <td>
-          A <a href="#filter">Dynamic Filter</a>.
+          <a href="#filter">Dynamic Filter</a>
         </td>
       </tr>
       <tr>
@@ -146,15 +113,85 @@ Actions are a set of features that are applied to players, teams or matches, sim
           <label>{`trigger`}</label>
         </td>
         <td>Sets an Action.</td>
+        <td>
+          <a href="#action-elements">Action</a>
+        </td>
       </tr>
       <tr>
         <td>
           <label>{`scope`}</label>
         </td>
+        <td>Runs the filter against a certain query.</td>
         <td>
-          Runs the filter against, <label>{`player`}</label>, <label>{`team`}</label>
-          , or
-          <label>{`match`}</label>.
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Switch-Scope Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>An ID.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`inner`}</label>
+        </td>
+        <td>Runs the filter against a certain query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`outer`}</label>
+        </td>
+        <td>Runs the filter against a certain query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Message Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`text`}</label>
+        </td>
+        <td>The text that will be sent to a player.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
         </td>
       </tr>
     </tbody>
