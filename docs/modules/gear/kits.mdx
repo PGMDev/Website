@@ -102,6 +102,44 @@ Removable kits will be noted in the documentation where applicable.
       </tr>
       <tr>
         <td>
+          <label>repair-tools</label>
+        </td>
+        <td>
+          Repairs tools in the player's inventory with those given in the kit.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>deduct-tools</label>
+        </td>
+        <td>
+          Deducts the toolrepair given in the kit by the toolrepair in the
+          player's inventory.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
+          <label>deduct-items</label>
+        </td>
+        <td>
+          Deducts the number of items given in the kit by the number of items
+          the player already has.
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <td>
           <label>potion-particles</label>
         </td>
         <td>
@@ -139,7 +177,7 @@ and potion effects can be replaced with the same effect at a lower level or shor
 ```xml
 <kits>
     <kit id="spawn" force="true">
-        <item slot="0" material ="iron sword"/>
+        <item slot="0" material="iron sword"/>
         <item slot="8" amount="32" material="bread"/>
         <effect duration="5" amplifier="1">instant_health</effect>
     </kit>
