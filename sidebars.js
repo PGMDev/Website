@@ -42,6 +42,7 @@ module.exports = {
       "modules/gear/items",
       "modules/gear/potions",
       "modules/gear/kits",
+      "modules/gear/actions-triggers",
       "modules/gear/classes",
       "modules/gear/pickups",
       "modules/gear/item-mods",
