@@ -7,7 +7,7 @@ Actions are a set of features that are applied to players, teams or matches, sim
 Multiple actions can be started by one trigger.
 
 <span className="badge badge--primary">Note:</span> In the future, some features
-that are currently used in Kits may be transferred to be used as an Action.
+that are currently used in Kits may be transferred to be used as an Action instead.
 
 ### Action Elements
 
@@ -43,7 +43,7 @@ that are currently used in Kits may be transferred to be used as an Action.
           <label>{`<kit/>`}</label>
         </td>
         <td>
-          Applies a <a href="#kits">Kit</a>.
+          Applies a <a href="/docs/modules/gear/kits">Kit</a>.
         </td>
       </tr>
     </tbody>
@@ -224,18 +224,22 @@ _Example_
 </kits>
 <actions>
     <action id="do-stuff" scope="player">
+        <!-- Gives the player who activated the trigger a diamond -->
         <message text="You've been given a diamond!"/>
+        <kit>
+            <item>diamond</item>
+        </kit>
+        <!-- Sends a message to the player's team -->
         <switch-scope outer="player" inner="team">
             <message text="Your team has been given the spawn kit!"/>
+            <!-- Gives each player in the team a kit (Kits are applied per player) -->
             <switch-scope outer="team" inner="player">
                 <kit id="spawn"/>
             </switch-scope>
         </switch-scope>
-        <kit>
-            <item>diamond</item>
-        </kit>
     </action>
     <trigger filter="some-dynamic-filter" trigger="do-stuff" scope="player"/>
+    <message id="standalone-text" text="This is a standalone text trigger"/>
     <trigger filter="another-dynamic-filter" trigger="standalone-text" scope="player"/>
 </actions>
 ```
