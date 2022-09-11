@@ -1,0 +1,245 @@
+---
+id: actions-triggers
+title: Actions & Triggers
+---
+
+Actions are a set of features that are applied to players, teams or matches, similiar to [Kits](kits).
+Multiple actions can be started by one trigger.
+
+<span className="badge badge--primary">Note:</span> In the future, some features
+that are currently used in Kits may be transferred to be used as an Action instead.
+
+### Action Elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<action> </action>`}</label>
+        </td>
+        <td>A single Action.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<switch-scope> </switch-scope>`}</label>
+        </td>
+        <td>Changes the scope that an action applies to.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<message/>`}</label>
+        </td>
+        <td>A message that is sent to the player.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<kit/>`}</label>
+        </td>
+        <td>
+          Applies a <a href="/docs/modules/gear/kits">Kit</a>.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Action Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>An ID.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`scope`}</label>
+        </td>
+        <td>Runs the filter against a certain query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`filter`}</label>
+        </td>
+        <td>A filter that is tested before running actions inside.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Switch-Scope Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>An ID.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`inner`}</label>
+        </td>
+        <td>Runs the filter against a new query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`outer`}</label>
+        </td>
+        <td>The previously defined query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Message Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`text`}</label>
+        </td>
+        <td>The text that will be sent to a player.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Trigger Element
+
+The <label>`<trigger/>`</label> Element waits for a dynamic filter to activate it, and afterwards it will
+trigger an Action.
+
+#### Trigger Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`filter`}</label>
+        </td>
+        <td>A dynamic filter that activiates the trigger.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">
+            Dynamic Filter
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`trigger`}</label>
+        </td>
+        <td>Sets an Action.</td>
+        <td>
+          <a href="#action-elements">Action</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`scope`}</label>
+        </td>
+        <td>Runs the filter against a certain query.</td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Example_
+
+```xml
+<kits>
+    <kit id="spawn">
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <action>
+            <message text="You were given a kit!"/>
+        </action>
+    </kit>
+</kits>
+<actions>
+    <action id="do-stuff" scope="player">
+        <!-- Gives the player who activated the trigger a diamond -->
+        <message text="You've been given a diamond!"/>
+        <kit>
+            <item>diamond</item>
+        </kit>
+        <!-- Sends a message to the player's team -->
+        <switch-scope outer="player" inner="team">
+            <message text="Your team has been given the spawn kit!"/>
+            <!-- Gives each player in the team a kit (Kits are applied per player) -->
+            <switch-scope outer="team" inner="player">
+                <kit id="spawn"/>
+            </switch-scope>
+        </switch-scope>
+    </action>
+    <trigger filter="some-dynamic-filter" trigger="do-stuff" scope="player"/>
+    <message id="standalone-text" text="This is a standalone text trigger"/>
+    <trigger filter="another-dynamic-filter" trigger="standalone-text" scope="player"/>
+</actions>
+```
