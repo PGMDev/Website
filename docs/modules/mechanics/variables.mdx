@@ -1,0 +1,170 @@
+---
+id: variables
+title: Variables
+---
+
+Variables are used to store information that can later be used in a filter.
+Values are changed using the [Actions & Triggers](/docs/modules/gear/actions-triggers) mechanic.
+Afterwards, they can be used as a [Filter](/docs/modules/mechanics/filters#variable-filter) after meeting a certain number or range.
+You can define as many variables as you want, and all variables must have a scope defined.
+
+### Variable Element
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<variables> </variables>`}</label>
+        </td>
+        <td>A node containing the variables for this map.</td>
+        <td>
+          <span className="badge badge--secondary">Variables</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<variable/>`}</label>
+        </td>
+        <td>An individual variable.</td>
+        <td>
+          <span className="badge badge--secondary">Variable Attributes</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Variable Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>The ID for the variable.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`scope`}</label>
+        </td>
+        <td>
+          Defines what the variable will be applied to.
+          <br />
+          <span className="badge badge--primary">NOTE:</span>
+          Variables scoped to a player will give each player a unique value.
+        </td>
+        <td>
+          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`default`}</label>
+        </td>
+        <td>Sets the initial value of the variable.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Setting Variables
+
+Setting variables are done inside the [Actions & Triggers](/docs/modules/gear/actions-triggers) mechanic.
+The `<set>` action which changes the variables, waits to be called by a trigger after a filter activates it.
+The `value` attribute can do any basic mathematical expressions.
+
+_Example_
+
+```xml
+<actions>
+    <action id="increment-flag-cap" scope="team">
+        <!-- increments the current value by 1 -->
+        <set var="flag_captures" value="flag_captures+1">
+    </action>
+    <trigger filter="flag-cap-filter" trigger="score-points" scope="player"/>
+</action>
+```
+
+In this example, the `flag_captures` variable will increment by 1 after a player completes `flag-cap-filter`.
+
+### Using a Variable In a Filter
+
+The variable can then be used in the [Variable Filter](/docs/modules/mechanics/filters#variable-filter)
+to be utilized in another Action or other module that uses filters.
+The variable filter can match for a single number or a range of numbers.
+
+_Example_
+
+```xml
+<!-- Match if next_post has a value of 1 -->
+<variable id="next-blue" var="next_post">1</variable>
+<!-- Match if t_score is >= 100 -->
+<variable id="reached-score" var="t_score">[100,oo)</variable>
+
+<!-- Match if t_score is between 5 and 10 (including 5 and 10) -->
+<variable id="reached-score" var="t_score">[5-10]</variable>
+<!-- Match if t_score is between 5 and 10 (excluding 5 and 10) -->
+<variable id="reached-score" var="t_score">(5-10)</variable>
+<!-- Match if t_score is between 0 and 10 (including 0 and excluding 10) -->
+<variable id="reached-score" var="t_score">[0-10)</variable>
+```
+
+### Examples
+
+In this example, when a player first enters `region-a`, the team score and later the player score is
+increased by 5. The second time the same player enters, the team will score an additional 10 points,
+with the player score continuing to increment by 5. Once the team gets 100 points or higher, a message indicating this will be sent.
+
+```xml
+<variables>
+    <!-- Initializes the variables -->
+    <variable id="team_score" scope="team"/>
+    <variable id="player_score" scope="player" default="5"/>
+</variables>
+<actions>
+    <action id="score-points" scope="player"/>
+        <!-- team_score = team_score + player_score -->
+        <!-- Adds the player's score to the team score -->
+        <set var="team_score" value="team_score+player_score"/>
+        <!-- Adds 5 points to the player's score -->
+        <set var="player_score" value="player_score+5"/>
+    </action>
+    <!-- Triggers the above score-points action when a player enters region-a -->
+    <trigger filter="region-a" trigger="score-points" scope="player"/>
+    <!-- Sends a message to the team once the filter reached-score passes Allow -->
+    <trigger filter="reached-score" trigger="completed" scope="team"/>
+    <message id="completed" text="The team reached 100 points!"/>
+</action>
+<filters>
+    <!-- Allows when the t_score variable is greater than or equal to 100 -->
+    <variable id="reached-score" var="t_score">[100,oo)</variable>
+</filters>
+```

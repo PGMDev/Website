@@ -881,6 +881,20 @@ _Examples_
 <score>[5-10]</score>
 ```
 
+### Variable Filter
+
+The variable filter matches if a given variable is a certain value or range.
+The value can be an exact amount or a interval specifying a range. Only whole numbers are valid.
+
+_Examples_
+
+```xml
+<!-- Match if next_post has a value of 1 -->
+<variable id="next-blue" var="next_post">1</variable>
+<!-- Match if t_score is ≥ 100 -->
+<variable id="reached-score" var="t_score">[100,oo)</variable>
+```
+
 ### Random Filter
 
 This filter will randomly `ALLOW` or `DENY` when evaluated in the context of an event.
