@@ -40,6 +40,15 @@ that are currently used in Kits may be transferred to be used as an Action inste
       </tr>
       <tr>
         <td>
+          <label>{`<set/>`}</label>
+        </td>
+        <td>
+          Sets a new value for a{" "}
+          <a href="/docs/modules/mechanics/variables">Variable</a>.
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>{`<kit/>`}</label>
         </td>
         <td>
@@ -153,6 +162,40 @@ that are currently used in Kits may be transferred to be used as an Action inste
           <label>{`text`}</label>
         </td>
         <td>The text that will be sent to a player.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Set Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`var`}</label>
+        </td>
+        <td>The variable to update.</td>
+        <td>
+          <a href="/docs/modules/mechanics/variables">Variable</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`value`}</label>
+        </td>
+        <td>Sets a new value for the variable.</td>
         <td>
           <span className="badge badge--primary">String</span>
         </td>

@@ -26,6 +26,7 @@ module.exports = {
     Mechanics: [
       "modules/mechanics/filters",
       "modules/mechanics/regions",
+      "modules/mechanics/variables",
       "modules/mechanics/spawns",
       "modules/mechanics/portals",
       "modules/mechanics/proximity-alarms",
