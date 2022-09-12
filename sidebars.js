@@ -26,6 +26,7 @@ module.exports = {
     Mechanics: [
       "modules/mechanics/filters",
       "modules/mechanics/regions",
+      "modules/mechanics/actions-triggers",
       "modules/mechanics/variables",
       "modules/mechanics/spawns",
       "modules/mechanics/portals",
@@ -39,7 +40,6 @@ module.exports = {
       "modules/gear/items",
       "modules/gear/potions",
       "modules/gear/kits",
-      "modules/gear/actions-triggers",
       "modules/gear/classes",
       "modules/gear/pickups",
       "modules/gear/item-mods",
