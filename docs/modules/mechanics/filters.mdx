@@ -869,7 +869,7 @@ _Examples_
 
 ### Score Filter
 
-The score filter matches if the player's or team's score is a equal to a single value or within a range of values.
+The score filter matches if the player or team's score is a equal to a single value or within a range of values.
 The value can be an exact amount or a interval specifying a range. Only whole numbers are valid.
 
 _Examples_
@@ -878,7 +878,9 @@ _Examples_
 <!-- Match if team (or player) has a score of 20. -->
 <score>20</score>
 <!-- Match if team (or player) has a score from 5 to 10. -->
-<score>[5-10]</score>
+<score>[5,10]</score>
+<!-- Match if team (or player) has a score of 5 or greater. -->
+<score>[5,oo)</score>
 ```
 
 ### Variable Filter
