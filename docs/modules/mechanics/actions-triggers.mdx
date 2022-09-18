@@ -49,6 +49,12 @@ that are currently used in Kits may be transferred to be used as an Action inste
       </tr>
       <tr>
         <td>
+          <label>{`<kill-entities/>`}</label>
+        </td>
+        <td>Removes entities based on a filter.</td>
+      </tr>
+      <tr>
+        <td>
           <label>{`<kit/>`}</label>
         </td>
         <td>
@@ -198,6 +204,31 @@ that are currently used in Kits may be transferred to be used as an Action inste
         <td>Sets a new value for the variable.</td>
         <td>
           <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Kill-Entities Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`filter`}</label>
+        </td>
+        <td>Filters which entities to remove.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
       </tr>
     </tbody>
