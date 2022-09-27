@@ -3,7 +3,7 @@ id: proto
 title: Protocol Versions
 ---
 
-The `proto=""` attribute specifies what iteration of PGM a XML file was created for. It also instructs PGM on whether to allow the usage of deprecated or newly introduced features. If the value is lower than the currently recommended proto version, the map will load but the XML may be interpreted in an outdated way.
+The `proto=""` attribute specifies what iteration of PGM a certain XML document was created for. It also instructs PGM on whether to allow the usage of deprecated or newly introduced features within a map. If the value is lower than the currently recommended proto version, the map will load but the XML may be interpreted in an outdated way.
 
 Mapmakers should always use the latest supported proto version, and this may be required of new maps that are to be added to any map compilation projects, such as [ResourcePile](https://mcresourcepile.github.io).
 
@@ -222,7 +222,7 @@ Mapmakers should always use the latest supported proto version, and this may be 
   - All of the new built-ins have equivalent tags of the same name i.e. `<always/>` & `<never/>`.
 - Filters can no longer have parents.
 - `<allow`> and `<deny>` can now be used anywhere a filter is expected, and actually function how they were supposed to i.e. they cause the filter to be ignored (skipped over) if it does not match.
-- Blitz or Ghost Squadron titles are no longer a part of the blitz module, instead they are set as a attribute of the `<map>` element and can be used with any gamemode.
+- Blitz or Ghost Squadron titles are no longer a part of the [Blitz module](/docs/modules/objectives/blitz), instead they are set as a attribute of the `<map>` element and can be used with any gamemode.
 - Match time limit is no longer part of the `<score>` or `<blitz>` module, instead it is defined directly in the root element.
 
   - ```xml
@@ -289,9 +289,9 @@ Mapmakers should always use the latest supported proto version, and this may be 
 - Custom item [crafting recipe module](/docs/modules/gear/crafting).
 - All items of a specific type can be modified for the whole match using the [`<item-mods>` module](/docs/modules/gear/item-mods).
 - Teamless gamemodes with the [`<players/>` module](/docs/modules/format/players).
-- Heads can be given to players in kits with the `<head>` element.
+- Heads can be given to players in kits with the [`<head>` element](/docs/modules/gear/items/#custom-heads).
 - Cause filters have several new possible values they can filter for.
-- Added the `<relation>` filter to check the relation between two players.
+- Added the [`<relation>` filter](/docs/modules/mechanics/filters/#player-relation-filters) to check the relation between two players.
 - The world generator can be modified with the [terrain module](/docs/modules/environment/world#terrain). This module allows the seed, void/vanilla generator, and world folder location to be specified.
 - XML files can now contain conditional `<if>` and `<unless>` statements. These statements allow modules to be loaded on specific servers or during holiday events.
 - The maps display gamemode can be specified with the `<gamemode>` element.
