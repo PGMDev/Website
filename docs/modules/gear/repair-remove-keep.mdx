@@ -5,9 +5,15 @@ title: Repair, Remove & Keep
 
 ### Tool Repair
 
-Defines tools that will be automatically repaired when dropped and picked up again. This will also merge items that are picked up, i.e., picking up an iron sword would result in it merging with your sword and repairing it. Repaired items will keep their enchantment, unlike vanilla minecraft where they will not.
+Defines tools that will be automatically repaired when dropped and picked up again.
+This will also merge items that are picked up, i.e., picking up an iron sword would result in it merging with your sword and repairing it.
+Repaired items will keep their enchantment, unlike vanilla minecraft where they will not.
 
-This also works with non-tool items such as arrows. When people pick up item in the `<toolrepair>` module and they already have one of the same kind it gets merged into the existing item, if they don't have it they get it like normal. Repairing arrows instead of removing them has the advantage of the player being able to accidental drop one and not lose it.
+This also works with non-tool items such as arrows.
+When people pick up item in the `<toolrepair>` module and they already have one of the same kind it gets merged into the existing item, if they don't have it they get it like normal.
+Repairing arrows instead of removing them has the advantage of the player being able to accidental drop one and not lose it.
+
+#### Tool Repair Element
 
 <div className="table-container">
   <table>
@@ -115,7 +121,8 @@ _Example_
 
 ### Item Keep
 
-Defines items that will be kept on death. If there is a spawn kit, kept items will be given back _after_ the kit is applied, except for equipped armor, which will replace any armor in the kit.
+Defines items that will be kept on death.
+If there is a spawn kit, kept items will be given back _after_ the kit is applied, except for equipped armor, which will replace any armor in the kit.
 
 <div className="table-container">
   <table>

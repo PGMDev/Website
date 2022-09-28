@@ -12,13 +12,14 @@ The crystal will respawn again at a _random_ location inside the specified regio
 This means that the pickup's region must be randomize-able, e.g. a `<cuboid>`, `<cylinder>`, `<block>` or `<point>`.
 A `<point>` region does not return a randomized position but can still be used to specify an exact location for a pickup.
 
+#### Pickup Element
+
 <div className="table-container">
   <table>
     <thead>
       <tr>
         <th>Pickups Element</th>
         <th>Description</th>
-        <th />
         <th>Value/Children</th>
       </tr>
     </thead>
@@ -28,7 +29,9 @@ A `<point>` region does not return a randomized position but can still be used t
           <label>{`<pickups> </pickups>`}</label>
         </td>
         <td>Node containing all the pickups.</td>
-        <td />
+        <td>
+          <span className="badge badge--secondary">Pickup Elements</span>
+        </td>
       </tr>
       <tr>
         <th>Sub-elements</th>
@@ -48,7 +51,7 @@ A `<point>` region does not return a randomized position but can still be used t
   </table>
 </div>
 
-##### Pickup Attributes
+### Pickup Attributes
 
 <div className="table-container">
   <table>
