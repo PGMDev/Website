@@ -3,7 +3,8 @@ id: shops
 title: Shops
 ---
 
-The shops module is an easy way to add shop functionality to a map with a GUI interface.
+The Shops module is an easy way to add shop functionality to a map with a GUI interface.
+Players interact with mobs (like Villagers) which are shopkeepers and can buy items using a currency.
 
 ## Shop Element
 
@@ -13,7 +14,7 @@ The shops module is an easy way to add shop functionality to a map with a GUI in
       <tr>
         <th>Element</th>
         <th>Description</th>
-        <th>Value/Children</th>
+        <th>Children</th>
       </tr>
     </thead>
     <tbody>
@@ -61,8 +62,8 @@ The shops module is an easy way to add shop functionality to a map with a GUI in
           <label>{`<category> </category>`}</label>
         </td>
         <td>
-          <span className="badge badge--danger">Required</span>A category that can
-          hold up to 28 items.
+          <span className="badge badge--danger">Required</span>A category that
+          can hold up to 28 items.
         </td>
         <td>
           <a href="/docs/modules/gear/items">Items</a>
@@ -89,7 +90,7 @@ The shops module is an easy way to add shop functionality to a map with a GUI in
       <tr>
         <th>Element</th>
         <th>Description</th>
-        <th>Value/Children</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -128,7 +129,7 @@ The shops module is an easy way to add shop functionality to a map with a GUI in
       <tr>
         <th>Element</th>
         <th>Description</th>
-        <th>Value/Children</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -181,7 +182,7 @@ Items can be purchased with multiple currencies using the `<payment>` tag.
       <tr>
         <th>Element</th>
         <th>Description</th>
-        <th>Value/Children</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -232,7 +233,7 @@ Items can be purchased with multiple currencies using the `<payment>` tag.
 _Example_
 
 ```xml
-<!-- Item where the kit is defined. -->
+<!-- Item where a kit is defined. -->
 <!-- Icon will be a stick but kit can give anything -->
 <item name="Magic Wand" material="stick" price="100" currency="blaze powder" kit="magic-kit">
 
@@ -270,7 +271,7 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
       <tr>
         <th>Element</th>
         <th>Description</th>
-        <th>Value/Children</th>
+        <th>Children</th>
       </tr>
     </thead>
     <tbody>
@@ -309,7 +310,7 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
       <tr>
         <th>Element</th>
         <th>Description</th>
-        <th>Value/Children</th>
+        <th>Value</th>
       </tr>
     </thead>
     <tbody>
@@ -319,14 +320,18 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
         </td>
         <td>Name for the shopkeeper.</td>
         <td>
-          <a href="/docs/modules/gear/items">Items</a>
+          <a href="/docs/reference/misc/formatting#chatColors">
+            Chat Color Name
+          </a>
         </td>
       </tr>
       <tr>
         <td>
           <label>{`mob`}</label>
         </td>
-        <td>Mob type for shopkeeper (defaults to Villager)</td>
+        <td>
+          Mob type for shopkeeper <i>(defaults to Villager)</i>
+        </td>
         <td>
           <a href="/docs/reference/entities/entity-types">Creature Types</a>
         </td>
@@ -348,7 +353,8 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
 _Example_
 
 ```xml
-<!-- There's no limit to how many shopkeepers can be in each match, as long as each <shop> has at least 1 keeper -->
+<!-- There's no limit to how many shopkeepers can be in a -->
+<!-- match, as long as each <shop> has at least 1 keeper. -->
 <shopkeepers>
     <!-- A shop keeper for the "Items" shop (defaults to villager) -->
     <shopkeeper name="`5Purple `7Item Shop" shop="purple-item-shop">
@@ -367,33 +373,25 @@ _Example_
 ```xml
 <shops>
     <shop id="item-shop" name="`bItems">
-     <!-- You can have an multiple categories, each category will hold up to 28 items -->
-      <category id="weapons" name="`cWeapons" material="stone sword">
+        <!-- You can have an multiple categories, each category will hold up to 28 items -->
+        <category id="weapons" name="`cWeapons" material="stone sword">
+            <!-- Free item -->
+            <item material="wooden sword" amount="1" price="0"/>
 
-        <!-- Free item -->
-        <item material="wooden sword" amount="1" price="0"/>
+            <!-- Currency & Price in same line -->
+            <item material="stone sword" amount="1" price="3" currency="emerald" />
 
-        <!-- Currency & Price in same line -->
-        <item material="stone sword" amount="1" price="3" currency="emerald" />
-
-        <!-- Payment as sub-element but only using a single currency -->
-        <item name="Cool TNT" material="tnt" amount="5">
-            <payment price="5" currency="gunpowder"/>
-        </item>
-
-      </category>
-      <category id="food" name="`aFood" material="apple">
-        <item material="apple" name="Tasty Apple" amount="100" price="10" currency="gold ingot"/>
-        <item material="carrot" name="Crunchy Carrot" amount="50" price="4" currency="gold ingot"/>
-      </category>
+            <!-- Payment as sub-element but only using a single currency -->
+            <item name="Cool TNT" material="tnt" amount="5">
+                <payment price="5" currency="gunpowder"/>
+            </item>
+          </category>
+          <!-- Seperate "food" page in shop -->
+          <category id="food" name="`aFood" material="apple">
+              <item material="apple" name="Tasty Apple" amount="100" price="10" currency="gold ingot"/>
+              <item material="carrot" name="Crunchy Carrot" amount="50" price="4" currency="gold ingot"/>
+          </category>
     </shop>
-
-    <!-- You can define as many <shops> as needed, here's a second example -->
-    <shop id="magic-shop" name="`5Magic Shop">
-      <category id="magic" name="`dWands">
-        <!-- Item where the kit is defined. Icon will render as a stick but kit can give anything -->
-        <item name="Magic Wand" material="stick" price="100" currency="blaze powder" kit="magic-kit">
-      </category>
-    </shop>
+    <!-- You can define as many <shops> as needed -->
 </shops>
 ```
