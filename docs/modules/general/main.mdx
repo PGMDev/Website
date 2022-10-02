@@ -5,7 +5,7 @@ title: Main Map Element
 
 Every map XML file must contain the base `<map>` module. It contains modules that specify the map name, version, objective, authors, contributors and all other map settings. The objective is the text that players see when they join the match, and so it's important for this to be very clear, concise, and informative.
 
-The `proto=""` attribute specifies what PGM version the XML file was created for. If this value is higher than the version of PGM that is running, the map won't load. If it's lower, the map will load but the XML may be interpreted in an outdated way. Mapmakers should always use the latest supported XML version, and this may be required of new maps that are to be added to any map compilation projects, such as [ResourcePile](https://mcresourcepile.github.io).
+The `proto=""` attribute specifies what PGM version the XML file was created for. Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](docs/modules/general/proto).
 
 The maps version should follow the versioning schema `major.minor.patch`.
 
@@ -53,10 +53,10 @@ The maps version should follow the versioning schema `major.minor.patch`.
         </td>
         <td>
           <span className="badge badge--danger">Required</span>
-          The maps XML protocol version.
+          The map's XML protocol version.
         </td>
         <td>
-          <label>1.4.0</label>
+          <label>1.4.2</label>
         </td>
         <td />
       </tr>
@@ -124,7 +124,7 @@ The maps version should follow the versioning schema `major.minor.patch`.
         </td>
         <td>
           <span className="badge badge--danger">Required</span>
-          The map's <a href="http://semver.org">semantic version</a> string.
+          The map's <a href="https://semver.org">semantic version</a> string.
         </td>
         <td>
           <label>1.0.0</label>
