@@ -4,9 +4,10 @@ title: Shops
 ---
 
 The Shops module is an easy way to add shop functionality to a map with a GUI interface.
-Players interact with mobs (like Villagers) which are shopkeepers and can buy items using a currency.
+Players interact with mobs (like Villagers) which are shopkeepers and can buy items using currencies.
+Shops have categories of items, and each category can store up to 28 unique items.
 
-## Shop Element
+#### Shop Element
 
 <div className="table-container">
   <table>
@@ -333,7 +334,7 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
           Mob type for shopkeeper <i>(defaults to Villager)</i>
         </td>
         <td>
-          <a href="/docs/reference/entities/entity-types">Creature Types</a>
+          <a href="/docs/reference/entities/entity-types">Creature Type</a>
         </td>
       </tr>
       <tr>
@@ -358,12 +359,12 @@ _Example_
 <shopkeepers>
     <!-- A shop keeper for the "Items" shop (defaults to villager) -->
     <shopkeeper name="`5Purple `7Item Shop" shop="purple-item-shop">
-       <point yaw="0" pitch="10">-88.5,13,-103.5</point>
+        <point yaw="0" pitch="10">-88.5,13,-103.5</point>
     </shopkeeper>
 
     <!-- You can define a mob attribute to set the entity type -->
     <shopkeeper name="`4Red `dMagic Shop" mob="Witch" shop="magic-shop" />
-      <point>-90.5,54,-100.5</point>
+        <point>-90.5,54,-100.5</point>
     </shopkeeper>
 </shopkeepers>
 ```
