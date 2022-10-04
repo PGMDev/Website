@@ -22,6 +22,7 @@ module.exports = {
       "modules/objectives/blitz",
       "modules/objectives/scoring",
       "modules/objectives/other",
+      "modules/objectives/payload",
     ],
     Mechanics: [
       "modules/mechanics/filters",

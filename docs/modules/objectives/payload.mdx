@@ -1,0 +1,158 @@
+---
+id: payload
+title: Payload (Experimental)
+---
+
+<p>
+  <span className="badge badge--warning">Note!</span>{" "}
+  <em>
+    This gamemode is experimental and must be enabled for playtesting. In its
+    current state, Payload only properly supports Attack/Defend type payload.
+    All documentation here is subject to rapid change.
+  </em>
+</p>
+
+```yml
+# Inside plugins/PGM/config.yml
+experiments:
+  payload: true
+```
+
+Payload has an attacking team and defending team. The attacking team's objective is to push
+a minecart (the payload) to the end of the track, usually towards the defending team's base.
+The defending team can prevent this by killing enemies and pushing the minecart back.
+
+The payload is portrayed in-game as a minecart holding a colored block which changes depending on which team is
+pushing it. The track must be built with rails.
+The start of the track will display as 0% completion, and 100% completion is where ever the track ends.
+
+This gamemode is entirely based off of [Control Points](/docs/modules/objectives/control-points),
+so it currently supports everything that a control point supports.
+
+#### Payload Element
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<payloads> </payloads>`}</label>
+        </td>
+        <td>A node containing the payloads for this map.</td>
+        <td>
+          <span className="badge badge--secondary">Payloads</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<payload/>`}</label>
+        </td>
+        <td>An individual payload.</td>
+        <td>
+          <span className="badge badge--secondary">Payload Attributes</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Payload Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`location`}</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>The starting
+          position of the payload.
+        </td>
+        <td>
+          <span className="badge badge--primary">X,Y,Z</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`radius`}</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>The distance at
+          which a player can affect the payload.
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`display-filter`}</label>
+        </td>
+        <td>Filter for when particles are shown</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+        <td>
+          <label>always</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>capture-time</label>
+        </td>
+        <td>Time for the payload to reach the end of the track.</td>
+        <td>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
+        </td>
+        <td colspan="2">30 sec</td>
+      </tr>
+      <tr>
+        <th colspan="4">
+          <a href="/docs/modules/objectives/control-points#control-point-attributes">
+            Supports every other feature of control points.
+          </a>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Examples
+
+```xml
+<payloads>
+    <payload location="x,y,z" radius="3" display-filter="filter" capture-time="1m" decay-rate="0.25" .../>
+</payloads>
+```
+
+### Video Example
+
+<video controls>
+  <source
+    src="https://user-images.githubusercontent.com/11789291/192090427-8c315f9d-0442-40fe-a63a-d3f13d37ff12.mp4"
+    type="video/mp4"
+  />
+</video>
