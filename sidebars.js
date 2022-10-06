@@ -1,6 +1,10 @@
 module.exports = {
   Modules: {
-    General: ["modules/general/introduction", "modules/general/main"],
+    General: [
+      "modules/general/introduction",
+      "modules/general/main",
+      "modules/general/proto",
+    ],
     Information: [
       "modules/information/broadcasts",
       "modules/information/rules",
