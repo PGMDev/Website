@@ -1,0 +1,399 @@
+---
+id: shops
+title: Shops
+---
+
+The Shops module is an easy way to add shop functionality to a map with a GUI interface.
+Players interact with mobs (like Villagers) which are shopkeepers which they can buy items using currencies.
+Shops have categories of items, and each category can store up to 28 unique items.
+Players can also buy a kit instead of individual items, or use muiltiple currencies to purchase items.
+
+#### Shop Element
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<shops> </shops>`}</label>
+        </td>
+        <td>A node containing the shops for this map.</td>
+        <td>
+          <span className="badge badge--secondary">Shop Elements</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<shop> </shop>`}</label>
+        </td>
+        <td>An individual shop.</td>
+        <td>
+          <span className="badge badge--secondary">Category Elements</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Shop Elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<category> </category>`}</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>A category that
+          can hold up to 28 items.
+        </td>
+        <td>
+          <a href="/docs/modules/gear/items">Items</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<shop> </shop>`}</label>
+        </td>
+        <td>An individual shop.</td>
+        <td>
+          <span className="badge badge--secondary">Shop Elements</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Shop Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          The ID for the shop.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`name`}</label>
+        </td>
+        <td>The name for the in-game shop.</td>
+        <td>
+          <a href="/docs/reference/misc/formatting#chatColors">
+            Chat Color Name
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Category Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`id`}</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          The ID for the category.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`name`}</label>
+        </td>
+        <td>The name for the in-game category.</td>
+        <td>
+          <a href="/docs/reference/misc/formatting#chatColors">
+            Chat Color Name
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`material`}</label>
+        </td>
+        <td>The item to display for the category</td>
+        <td>
+          <a href="/docs/reference/items/inventory#material_matchers">
+            Material Name
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Item Attributes
+
+Items have unique attributes when used in a shop, usually for currency purchases.
+Items can be purchased with multiple currencies using the `<payment>` tag.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`currency`}</label>
+        </td>
+        <td>The currency needed to purchase.</td>
+        <td>
+          <a href="/docs/reference/items/inventory#material_matchers">
+            Material Name
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`price`}</label>
+        </td>
+        <td>The amount of a currency needed to purchase.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`kit`}</label>
+        </td>
+        <td>The kit to give to the player</td>
+        <td>
+          <a href="/docs/modules/gear/kits">Kit</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`color`}</label>
+        </td>
+        <td>Changes the currency text color.</td>
+        <td>
+          <a href="/docs/reference/misc/formatting#chatColors">
+            Chat Color Name
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Example_
+
+```xml
+<!-- Item where a kit is defined. -->
+<!-- Icon will be a stick but kit can give anything -->
+<item name="Magic Wand" material="stick" price="100" currency="blaze powder" kit="magic-kit">
+
+<!-- Multiple Payment requirements-->
+<item material="diamond sword" amount="1">
+    <enchantment level="2">sharpness</enchantment>
+    <payment price="10" currency="diamond"/>
+    <payment price="20" currency="stick"/>
+</item>
+
+<!-- Custom currency uses a child <item> under <payment> -->
+<item material="diamond sword" amount="1">
+  <payment price="1">
+      <!-- Item name is shown under the cost lore instead of the raw material name -->
+      <item name="`bEnchanted Diamond" material="diamond">
+          <enchantment level="2">sharpness</enchantment>
+      </item>
+  </payment>
+</item>
+```
+
+## Shopkeepers
+
+Shopkeepers are invulnerable, unmovable entities that hold a single shop type and are spawned at match load.
+Each shop type can have an unlimited number of shopkeepers, however. There's no limitations to how many players
+can have a shop open at the same time.
+
+Shopkeepers must use a single location provider, multiple inner points/regions are not allowed.
+
+### Shopkeeper Element
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<shopkeepers> </shopkeepers>`}</label>
+        </td>
+        <td>A node containing a set of shopkeepers for this map.</td>
+        <td>
+          <span className="badge badge--secondary">Shopkeeper Elements</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<shopkeeper> </shopkeeper>`}</label>
+        </td>
+        <td>An individual shopkeeper.</td>
+        <td>
+          <span className="badge badge--secondary">Shopkeeper Attributes</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Shopkeeper Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`name`}</label>
+        </td>
+        <td>Name for the shopkeeper.</td>
+        <td>
+          <a href="/docs/reference/misc/formatting#chatColors">
+            Chat Color Name
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`mob`}</label>
+        </td>
+        <td>
+          Mob type for shopkeeper <i>(defaults to Villager)</i>
+        </td>
+        <td>
+          <a href="/docs/reference/entities/entity-types">Creature Type</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`shop`}</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          The shop to use.
+        </td>
+        <td>Shop ID</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Example_
+
+```xml
+<!-- There's no limit to how many shopkeepers can be in a -->
+<!-- match, as long as each <shop> has at least 1 keeper. -->
+<shopkeepers>
+    <!-- A shop keeper for the "Items" shop (defaults to villager) -->
+    <shopkeeper name="`5Purple `7Item Shop" shop="purple-item-shop">
+        <point yaw="0" pitch="10">-88.5,13,-103.5</point>
+    </shopkeeper>
+
+    <!-- You can define a mob attribute to set the entity type -->
+    <shopkeeper name="`4Red `dMagic Shop" mob="Witch" shop="magic-shop" />
+        <point>-90.5,54,-100.5</point>
+    </shopkeeper>
+</shopkeepers>
+```
+
+## Examples
+
+```xml
+<shops>
+    <shop id="item-shop" name="`bItems">
+        <!-- You can have an multiple categories, each category will hold up to 28 items -->
+        <category id="weapons" name="`cWeapons" material="stone sword">
+            <!-- Free item -->
+            <item material="wooden sword" amount="1" price="0"/>
+
+            <!-- Currency & Price in same line -->
+            <item material="stone sword" amount="1" price="3" currency="emerald" />
+
+            <!-- Payment as sub-element but only using a single currency -->
+            <item name="Cool TNT" material="tnt" amount="5">
+                <payment price="5" currency="gunpowder"/>
+            </item>
+          </category>
+          <!-- Seperate "food" page in shop -->
+          <category id="food" name="`aFood" material="apple">
+              <item material="apple" name="Tasty Apple" amount="100" price="10" currency="gold ingot"/>
+              <item material="carrot" name="Crunchy Carrot" amount="50" price="4" currency="gold ingot"/>
+          </category>
+    </shop>
+    <!-- You can define as many <shops> as needed -->
+</shops>
+```

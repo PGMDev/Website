@@ -43,6 +43,7 @@ module.exports = {
       "modules/gear/kits",
       "modules/gear/classes",
       "modules/gear/pickups",
+      "modules/gear/shops",
       "modules/gear/item-mods",
       "modules/gear/crafting",
       "modules/gear/repair-remove-keep",
