@@ -265,7 +265,7 @@ trigger an Action.
       </tr>
       <tr>
         <td>
-          <label>{`trigger`}</label>
+          <label>{`action`}</label>
         </td>
         <td>Sets an Action.</td>
         <td>
@@ -312,8 +312,8 @@ _Example_
             </switch-scope>
         </switch-scope>
     </action>
-    <trigger filter="some-dynamic-filter" trigger="do-stuff" scope="player"/>
+    <trigger filter="some-dynamic-filter" action="do-stuff" scope="player"/>
     <message id="standalone-text" text="This is a standalone text trigger"/>
-    <trigger filter="another-dynamic-filter" trigger="standalone-text" scope="player"/>
+    <trigger filter="another-dynamic-filter" action="standalone-text" scope="player"/>
 </actions>
 ```
