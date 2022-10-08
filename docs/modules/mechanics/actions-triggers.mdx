@@ -61,6 +61,12 @@ that are currently used in Kits may be transferred to be used as an Action inste
           Applies a <a href="/docs/modules/gear/kits">Kit</a>.
         </td>
       </tr>
+      <tr>
+        <td>
+          <label>{`<replace-item> </replace-item>`}</label>
+        </td>
+        <td>Finds and replaces certain items.</td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -229,6 +235,81 @@ that are currently used in Kits may be transferred to be used as an Action inste
         <td>Filters which entities to remove.</td>
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Replace Item Attributes/Elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<find/>`}</label>
+        </td>
+        <td>The item to find.</td>
+        <td>
+          <a href="/docs/modules/gear/items#item-attributes">Item Attributes</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<replace/>`}</label>
+        </td>
+        <td>The new item to replace with.</td>
+        <td>
+          <a href="/docs/modules/gear/items#item-attributes">Item Attributes</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`keep-amount`}</label>
+        </td>
+        <td>
+          Player recives the same amount of the new item as they had of the old
+          item.
+        </td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`keep-enchants`}</label>
+        </td>
+        <td>Enchantments on the old item will be applied to the new item.</td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`ignore-metadata`}</label>
+        </td>
+        <td>Filters which entities to remove.</td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`amount`}</label>
+        </td>
+        <td>
+          Match for item stacks that have a certain amount of items in a range.
+        </td>
+        <td>
+          <span className="badge badge--primary">Range</span>
         </td>
       </tr>
     </tbody>
