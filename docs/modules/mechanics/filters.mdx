@@ -488,6 +488,73 @@ Player filters match for attributes of a certain player.
   </table>
 </div>
 
+#### Player Item Filter Attributes
+
+These are the attributes for `<carrying>`, `<holding>` and `<wearing>`.
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th style="min-width: 300px;" style={{ minWidth: "300px" }}>
+          Element
+        </th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`amount`}</label>
+        </td>
+        <td>
+          Match for item stacks that have a certain amount of items in a range.
+        </td>
+        <td>
+          <span className="badge badge--primary">Range</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`ignore-durability`}</label>
+        </td>
+        <td>Ignore the durability of the item when matching.</td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`ignore-metadata`}</label>
+        </td>
+        <td>Ignore the metadata of the item when matching.</td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`ignore-name`}</label>
+        </td>
+        <td>Ignore the name of the item when matching.</td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`ignore-enchantments`}</label>
+        </td>
+        <td>Ignore the enchantments of the item when matching.</td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 ### Event Filters
 
 Event Filters apply to transient events.
