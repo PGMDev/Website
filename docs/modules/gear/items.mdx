@@ -220,6 +220,21 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
       </tr>
       <tr>
         <td>
+          <label>team-color</label>
+        </td>
+        <td>
+          Automatically applies the team's{" "}
+          <a href="/docs/modules/format/teams#team-attributes">Dye Color</a> to
+          colored blocks
+          <i>&nbsp;(wool, stained glass, etc).</i>
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <td>
           <label>grenade</label>
         </td>
         <td>
@@ -548,8 +563,10 @@ The color is represented in hexadecimal, see [dye colors](/docs/reference/misc/c
 
 ###### Team Color Attribute
 
-The `team-color` attribute can be used to attribute color to leather armor automatically.
-This helps to simplfy kits so a seperate team kit for only colored armor is not required.
+The `team-color` attribute can be used to add color to leather armor automatically.
+Armor color is based on the team's [Chat Color](/docs/reference/misc/formatting#chat-colors) rather
+than their [Dye Color](/docs/reference/misc/colors), so using the `dye-color` attribute on [Teams](/docs/modules/format/teams#team-attributes) is not required.
+This helps simplfy kits so a seperate team kit for colored armor and items is not required.
 
 ```xml
 <kits>
