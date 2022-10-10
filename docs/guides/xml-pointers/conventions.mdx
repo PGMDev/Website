@@ -12,7 +12,7 @@ This means that all children tags under the `<map>` tag must be aligned with sai
 
 ```xml
 <?xml version="1.0"?>
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
 <objective>Leak lava from the enemy's obsidian core.</objective>
@@ -25,7 +25,7 @@ Modules that have sub elements such as the `author` tag must be indented with 4 
 
 ```xml
 <?xml version="1.0"?>
-<map proto="1.4.0">
+<map proto="1.4.2">
 <authors>
     <author uuid="060baa18-2852-40d8-afcb-e61607c04be3"/> <!-- PepsiDog -->
 </authors>
@@ -40,7 +40,7 @@ That means the end of one module should have the start of another on the immedia
 ```xml
 <!-- Correct -->
 <?xml version="1.0"?>
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
 <objective>Leak lava from the enemy's obsidian core.</objective>
@@ -51,7 +51,7 @@ That means the end of one module should have the start of another on the immedia
 <!-- Incorrect! -->
 <?xml version="1.0"?>
 
-<map proto="1.4.0">
+<map proto="1.4.2">
 
 <name>Blocks DTC</name>
 
@@ -60,6 +60,16 @@ That means the end of one module should have the start of another on the immedia
 <objective>Leak lava from the enemy's obsidian core.</objective>
 
 </map>
+```
+
+#### XML declaration
+
+Not to be confused with the protocol or map version, it is the first line that may be present in older XML files.
+It is no longer neccessary to add unless you are using certain characters that will not work under UTF-8 encoding.
+
+```xml
+<!-- Default XML declaration -->
+<?xml version="1.0" encoding="utf-8"?>
 ```
 
 #### Closing tags
@@ -70,6 +80,7 @@ The ending tag of one module should be on the line directly above the beginning 
 
 XML files must end with an empty line.
 For example, if the ending `</map>` tag is on line 52, the last line of the XML file would be line 53.
+Most modern text editors will usually handle this for you.
 
 ## Layout
 
@@ -78,16 +89,16 @@ For example, if the ending `</map>` tag is on line 52, the last line of the XML 
 There are 6 modules that make up the maps definition.
 They should all be placed at the top of the document; following the order below: `map`, `name`, `version`, `objective`, `authors` and `contributors`.
 
-`NOTE:` Contributors are optional but are still to remain at the top.
+<span className="badge badge--secondary">Note!</span> Contributors are optional but are still to remain at the top.
 
 ```xml
 <?xml version="1.0"?>
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
 <objective>Leak lava from the enemy's obsidian core.</objective>
 <authors>
-    <author uuid="260004f0-996b-4539-ba21-df4ee6336b63"/> <!-- Elliott_ -->
+    <author uuid="060baa18-2852-40d8-afcb-e61607c04be3"/> <!-- PepsiDog -->
 </authors>
 <contributors>
     <contributor contribution="A contribution">aHelper</contributor>
@@ -97,15 +108,15 @@ They should all be placed at the top of the document; following the order below:
 
 ### The Protocol
 
-All maps should use the most up to date protocol. The protocol is used to
+All maps should use the latest [protocol version](/docs/modules/general/proto). The proto version can be defined with this line:
 
 ```xml
-<map proto="1.4.0">
+<map proto="1.4.2">
 ```
 
 ### Authors and Contributors
 
-An author using a UUID definition should have an inline comment to denote the players IGN.
+An author using a UUID definition should have an inline comment to denote the player's in-game name.
 
 ```xml
 <authors>
@@ -121,7 +132,7 @@ The filter definition should be defined before the definition of regions.
 
 ### Versioning
 
-Follow the Semantic Versioning Schema For example: `1.2.3`
+Follow the [Semantic Versioning](https://semver.org/) for your map's version. For example: `1.2.3`
 
 A Major is classified by the addition of major gameplay changes - changes that could be called a new map.
 A Minor is classified by the addition of changes that affect gameplay but not to the extent of a major.
@@ -131,11 +142,11 @@ A Patch is classified by a small change to fix a bug or unintentional feature.
 <version>1.2.3</version>
 ```
 
-`NOTE:` Bump the patch number when you fix something on a map.
+<span className="badge badge--secondary">Note!</span> Bump the patch number when you fix something on a map.
 
 ### Objectives
 
-Objectives should be short and tell the player what they have to do to win the match.
+Objectives are short and concise statements that tell the player what they need to do to win the match.
 
 ```xml
 <objective>Win the match by killing the enemy team!</objective>
@@ -148,14 +159,13 @@ Modules that require an `id` to be defined should be named in all lowercase and 
 ```xml
 <team id="only-blue">blue</team>
 ```
-
-### Enumeration Naming
-
-Bukkit names should be set into lower case with `_` underscores replaced with spaces.
-For example, `PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
-
 ### Team Filters
 
 Team filters should be named by following the Identification naming and start with `only-` followed by the team name.
 
 `only-blue` `only-elves`
+
+### Enumeration Naming
+
+Bukkit names should be set into lower case with `_` underscores replaced with spaces.
+For example, `PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
