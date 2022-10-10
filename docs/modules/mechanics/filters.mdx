@@ -217,6 +217,14 @@ These type of filters apply to anything with a physical location.
         </td>
       </tr>
       <tr>
+        <td>
+          <label>{`<blocks region="region-1"> </blocks>`}</label>
+        </td>
+        <td>
+          Match for original blocks that exist on the map during match load.
+        </td>
+      </tr>
+      <tr>
         <td colspan="3">
           <em>
             All{" "}
@@ -672,6 +680,15 @@ These elements must contain either a single filter, or a list of filters, as the
           Allow if <i>one</i> of the child filters allows, deny if{" "}
           <i>none allow and at least one denies</i>, otherwise abstain.
         </td>
+        <td>
+          <span className="badge badge--primary">Dynamic</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<after duration="5s">`}</label>
+        </td>
+        <td>Allow after a duration the child filters start allowing.</td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
         </td>
