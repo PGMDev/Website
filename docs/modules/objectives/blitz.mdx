@@ -8,7 +8,7 @@ Each player has a limited amount of lives, and after they are used up the player
 The match ends after the specified amount of time, or when one team is eliminated.
 If the match timer ends before a team is eliminated the team with the most players remaining wins.
 
-The blitz module is often combined with the [rage](/docs/modules/objectives/other#rage) module.
+The blitz module is often combined with the [Rage Module](/docs/modules/objectives/other#rage).
 
 Blitz maps should include `<respawn auto="true"/>` to prevent players from "hiding" and prolonging matches.
 
@@ -65,7 +65,21 @@ Blitz maps should include `<respawn auto="true"/>` to prevent players from "hidi
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
-        <td>N/A</td>
+        <td>
+          <label>always</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<join-filter>`}</label>
+        </td>
+        <td>Filters when a player can join the match after it has started.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+        <td>
+          <label>never</label>
+        </td>
       </tr>
     </tbody>
   </table>
