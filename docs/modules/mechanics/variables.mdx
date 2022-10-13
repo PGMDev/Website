@@ -109,7 +109,7 @@ _Example_
         <!-- increments the current value by 1 -->
         <set var="flag_captures" value="flag_captures+1">
     </action>
-    <trigger filter="flag-cap-filter" trigger="score-points" scope="player"/>
+    <trigger filter="flag-cap-filter" action="score-points" scope="player"/>
 </action>
 ```
 
@@ -158,9 +158,9 @@ with the player score continuing to increment by 5. Once the team gets 100 point
         <set var="player_score" value="player_score+5"/>
     </action>
     <!-- Triggers the above score-points action when a player enters region-a -->
-    <trigger filter="region-a" trigger="score-points" scope="player"/>
+    <trigger filter="region-a" action="score-points" scope="player"/>
     <!-- Sends a message to the team once the filter reached-score passes Allow -->
-    <trigger filter="reached-score" trigger="completed" scope="team"/>
+    <trigger filter="reached-score" action="completed" scope="team"/>
     <message id="completed" text="The team reached 100 points!"/>
 </action>
 <filters>
