@@ -57,6 +57,7 @@ module.exports = {
     ],
     Blocks: [
       "modules/blocks/blockdrops",
+      "modules/blocks/enderchests",
       "modules/blocks/falling-blocks",
       "modules/blocks/renewables",
     ],
