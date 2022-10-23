@@ -3,15 +3,19 @@ id: enderchests
 title: Ender Chests
 ---
 
-This module allow mapmakers to have better control over Ender chest behaviors in a map.
+This module allow mapmakers to have better control over vanilla Ender chest behaviors in a map.
 
 The `<enderchest>` tag can contain any number of `<dropoff>` tags. Each `<dropoff>` can use a region and a filter to
 determine where and when items should be dropped from the Ender chest.
 
+Dropoffs handle taking a player's Ender chest inventory and dropping it on the ground at a defined region or it can completely erase it.
+This can be triggered with a filter or once the player switches team or leaves the server.
+
 <div className="alert alert--warning" style={{ marginBottom: "30px" }}>
   Ensure that any maps with Ender chests are loaded on a server using the latest
-  version of PGM available. Ender chests in previous versions of PGM are not
-  supported and will allow players to transfer items across matches.
+  version of PGM available. Pre-existing Ender chests in previous versions of
+  PGM are not supported and will allow players to transfer items across matches.
+  Additionally, players cannot place Ender chests under any circumstances.
 </div>
 
 #### Enderchest Element
@@ -42,7 +46,7 @@ determine where and when items should be dropped from the Ender chest.
         <td>
           <label>{`<dropoff>`}</label>
         </td>
-        <td>An individual Ender chest dropoff rule.</td>
+        <td>An individual Ender chest drop-off rule.</td>
         <td>
           <span className="badge badge--secondary">
             Enderchest Sub-elements
@@ -150,7 +154,7 @@ determine where and when items should be dropped from the Ender chest.
           >
             Property
           </span>
-          The region the dropoff applies to.
+          The region the drop-off applies to.
         </td>
         <td>
           <a href="/docs/modules/mechanics/regions">Bounded Regions</a>
@@ -191,8 +195,9 @@ _Examples_
 
 #### Fallback
 
-If you want Ender chest contents to not drop upon a certain event, you can specify what PGM will do with it.
-By default, PGM will use `AUTO` if neither regions or a fallback preference are specified.
+If you want Ender chest contents to not drop upon a certain event, you can specify what PGM will do with the inventory.
+This will also be used when a drop-off is not possible.
+By default, PGM will use `AUTO` if neither regions nor a fallback preference are specified.
 
 ```xml
 <!-- Specify a fallback option for when no drop-off locations are defined -->
