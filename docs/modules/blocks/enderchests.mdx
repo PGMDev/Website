@@ -1,0 +1,205 @@
+---
+id: enderchests
+title: Ender Chests
+---
+
+This module allow mapmakers to have better control over vanilla Ender chest behaviors in a map.
+
+The `<enderchest>` tag can contain any number of `<dropoff>` tags. Each `<dropoff>` can use a region and a filter to
+determine where and when items should be dropped from the Ender chest.
+
+Dropoffs handle taking a player's Ender chest inventory and dropping it on the ground at a defined region or it can completely erase it.
+This can be triggered with a filter or once the player switches team or leaves the server.
+
+<div className="alert alert--warning" style={{ marginBottom: "30px" }}>
+  Ensure that any maps with Ender chests are loaded on a server using the latest
+  version of PGM available. Pre-existing Ender chests in previous versions of
+  PGM are not supported and will allow players to transfer items across matches.
+  Additionally, players cannot place Ender chests under any circumstances.
+</div>
+
+#### Enderchest Element
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<enderchest> </enderchest>`}</label>
+        </td>
+        <td>Node containing this map's Ender chest properties.</td>
+        <td />
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<dropoff>`}</label>
+        </td>
+        <td>An individual Ender chest drop-off rule.</td>
+        <td>
+          <span className="badge badge--secondary">
+            Enderchest Sub-elements
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Dropoff Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th style={{ minWidth: "130px" }}>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>region</label>
+        </td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          <span className="badge badge--danger">Required</span>
+          Region in which a player's Ender chest content will be dropped off.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/regions">Region</a>
+        </td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <label>filter</label>
+        </td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          <span className="badge badge--danger">Required</span>
+          Filter which determine when the content should be dropped.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <label>fallback</label>
+        </td>
+        <td>
+          Specify a fallback location option for when no drop-off locations are
+          defined.
+          <br />
+          <em>
+            Cannot be combined with <label>region</label>.
+          </em>
+        </td>
+        <td>
+          <label>AUTO</label>, <label>KEEP</label>, <label>DELETE</label>
+        </td>
+        <td>
+          <label>AUTO</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Dropoff Sub-elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<region>`}</label>
+        </td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this sub-element or an attribute."
+          >
+            Property
+          </span>
+          The region the drop-off applies to.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/regions">Bounded Regions</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<filter>`}</label>
+        </td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this sub-element or an attribute."
+          >
+            Property
+          </span>
+          Filter which blocks are renewed.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filters</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+_Examples_
+
+#### Drop-off Locations
+
+```xml
+<!-- Add drop-off locations for when player switches teams or leave the match -->
+<enderchest>
+    <dropoff region="red-spawn" filter="red-only"/>
+    <dropoff region="blue-spawn" filter="blue-only"/>
+</enderchest>
+```
+
+#### Fallback
+
+If you want Ender chest contents to not drop upon a certain event, you can specify what PGM will do with the inventory.
+This will also be used when a drop-off is not possible.
+By default, PGM will use `AUTO` if neither regions nor a fallback preference are specified.
+
+```xml
+<!-- Specify a fallback option for when no drop-off locations are defined -->
+<enderchest fallback="KEEP"/>
+```
