@@ -14,15 +14,6 @@ When the filter is not passing, (when its value is DENY), the structure will dis
 
 Structures are a very powerful feature that can be used to implement an endless variety of custom game mechanics.
 
-<p>
-  <span className="badge badge--warning">Note!</span>{" "}
-  <em>
-    Currently, only objective filters, time filters, and flag filters can be
-    used with dynamic structures, as well as filter modifiers. Other filter
-    types may be supported in the future.
-  </em>
-</p>
-
 #### Structures Element
 
 <div className="table-container">
@@ -94,6 +85,7 @@ Structures are a very powerful feature that can be used to implement an endless 
           <label>id</label>
         </td>
         <td>
+          <span className="badge badge--danger">Required</span>
           Unique identifier used to reference the structure from other places in
           the XML.
         </td>
@@ -227,8 +219,9 @@ Structures are a very powerful feature that can be used to implement an endless 
           >
             Property
           </span>
-          Conditions under which the structure is placed. Only objective tag, time
-          tag, and flag-related filters are currently supported.
+          Filter used to determine when a stricture is <em>placed</em> when <label>
+            trigger
+          </label> allows.
         </td>
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
@@ -248,7 +241,7 @@ Structures are a very powerful feature that can be used to implement an endless 
           >
             Property
           </span>
-          Dynamic conditions under which the structure is placed.
+          Dynamic filter which triggers placement and clearing of structures.
         </td>
         <td>
           <a href="/docs/modules/mechanics/filters#dynamic-filters">
@@ -263,9 +256,9 @@ Structures are a very powerful feature that can be used to implement an endless 
         </td>
         <td>
           Location to place the structure at. The structure's{" "}
-          <label>origin</label> will be at this point.
+          <label>origin</label> will be at this point.{" "}
           <em>
-            This is an alternative to <label>offset</label>.
+            Mutually exclusive with <label>offset</label>.
           </em>
         </td>
         <td>
@@ -279,9 +272,9 @@ Structures are a very powerful feature that can be used to implement an endless 
         </td>
         <td>
           Relative position to place the structure at. The structure will be
-          translated by this amount from it's original location.
+          translated by this amount from it's original location.{" "}
           <em>
-            This is an alternative to <label>location</label>.
+            Mutually exclusive with <label>location</label>.
           </em>
         </td>
         <td>
