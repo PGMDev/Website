@@ -60,6 +60,7 @@ module.exports = {
       "modules/blocks/enderchests",
       "modules/blocks/falling-blocks",
       "modules/blocks/renewables",
+      "modules/blocks/structures",
     ],
   },
   Reference: {
