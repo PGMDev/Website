@@ -6,7 +6,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 import SearchBar from "@theme/SearchBar";
 import Toggle from "@theme/Toggle";
-import useThemeContext from "@theme/hooks/useThemeContext";
+import {useColorMode} from "@docusaurus/theme-common"; 
 import useHideableNavbar from "@theme/hooks/useHideableNavbar";
 import useLockBodyScroll from "@theme/hooks/useLockBodyScroll";
 import useLogo from "@theme/hooks/useLogo";

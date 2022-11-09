@@ -1,8 +1,9 @@
 import React from "react";
-import useThemeContext from "@theme/hooks/useThemeContext"; //docs: https://v2.docusaurus.io/docs/2.0.0-alpha.69/theme-classic#usethemecontext
+import {useColorMode} from "@docusaurus/theme-common"; 
+//docs: https://docusaurus.io/docs/api/themes/configuration#use-color-mode
 
 const ImageSwitcher = ({ lightImageSrc, darkImageSrc }) => {
-  const { isDarkTheme } = useThemeContext();
+  const { colorMode, setColorMode } = useColorMode();
 
   return (
     <img

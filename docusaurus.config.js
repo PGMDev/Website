@@ -13,7 +13,7 @@ module.exports = {
         alt: "Logo",
         src: "img/logo.png",
       },
-      links: [
+      items: [
         {
           label: "XML",
           position: "left",
@@ -107,10 +107,12 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} The PGM project and its contributors`,
     },
+    /* TODO: Migrate to new DocSearch infra https://docusaurus.io/blog/2021/11/21/algolia-docsearch-migration
     algolia: {
       apiKey: "eb1f17b6501799dbbc0ecf0bae35ed57",
       indexName: "pgm",
     },
+    */
   },
   presets: [
     [
