@@ -1,4 +1,3 @@
-/* stylelint-disable docusaurus/copyright-header */
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -7,86 +6,25 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #ff4500;
-  --ifm-color-primary-dark: #e63e00;
-  --ifm-color-primary-darker: #d93b00;
-  --ifm-color-primary-darkest: #b33000;
-  --ifm-color-primary-light: #ff581a;
-  --ifm-color-primary-lighter: #ff6126;
-  --ifm-color-primary-lightest: #ff7d4d;
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-}
-
-.table-container {
-  display: block;
-  overflow-x: auto;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  box-shadow: var(--ifm-global-shadow-lw) !important;
-  border-radius: 8px;
-}
-
-table {
-  display: table;
-  width: 100%;
-  overflow-wrap: break-word;
-  border-collapse: collapse;
-  border-style: hidden;
-  margin-bottom: 0px;
-}
-
-table span {
-  margin-right: 5px;
-}
-
-table tr {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-table th {
-  background-color: rgb(72, 77, 91, 0.1);
-  padding: 8px;
-}
-
-table tbody tr th {
-  padding: 3px;
-}
-
-table td {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: rgb(72, 77, 91, 0);
-}
-
-table tr:nth-child(even) td {
-  border-color: rgb(72, 77, 91, 0.1);
-}
-
-table tr:nth-child(odd) td {
-  border-color: rgb(72, 77, 91, 0.1);
-}
-
-table label {
-  display: block;
-  unicode-bidi: embed;
-  font-family: monospace;
-  white-space: pre;
-  font-size: 90%;
-  color: #c7254e;
-  border-radius: 4px;
-  padding: 1px 4px;
-  display: inline-block;
-}
-
-.icon-right {
-  float: right;
-  margin-left: 8px;
-  font-style: normal;
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
