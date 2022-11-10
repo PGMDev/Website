@@ -4,12 +4,12 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-import SearchBar from "@theme/SearchBar";
-import Toggle from "@theme/Toggle";
+import SearchBar from "@docusaurus/theme-common";
+import Toggle from "@docusaurus/theme-common";
 import {useColorMode} from "@docusaurus/theme-common"; 
-import useHideableNavbar from "@theme/hooks/useHideableNavbar";
-import useLockBodyScroll from "@theme/hooks/useLockBodyScroll";
-import useLogo from "@theme/hooks/useLogo";
+import {hideOnScroll} from "@docusaurus/theme-common";
+import {useLockBodyScroll} from "@docusaurus/theme-common";
+import Logo from "@docusaurus/theme-common";
 
 import styles from "./styles.module.css";
 
@@ -154,11 +154,12 @@ function Navbar() {
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
 
-  const { isDarkTheme, setLightTheme, setDarkTheme } = useThemeContext();
-  const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
-  const { logoLink, logoLinkProps, logoImageUrl, logoAlt } = useLogo();
+  const { isDarkTheme, setLightTheme, setDarkTheme } = useColorMode();
+  const { navbarRef, isNavbarVisible } = hideOnScroll;
+  // const { logoLink, logoLinkProps, logoImageUrl, logoAlt } = Logo();
+  // https://github.com/facebook/docusaurus/pull/3745
 
-  useLockBodyScroll(sidebarShown);
+  // useLockBodyScroll(sidebarShown); ????????
 
   const showSidebar = useCallback(() => {
     setSidebarShown(true);
