@@ -90,8 +90,13 @@ code {
   border: none;
 }
 
-.theme-doc-markdown .markdown {
-  padding: 10px;
+.theme-doc-markdown {
+  padding: 16px;
+}
+
+.theme-doc-breadcrumbs {
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
 .icon-right {
@@ -139,9 +144,47 @@ code {
   top: calc(var(--ifm-navbar-height) * -1) !important;
 }
 
+/* orange highlight bar on the navbar */
 .navbar--fixed-top {
-  /* orange */
   border-bottom: 4px solid #ffa500; 
+}
+
+/* generally centres the navbar elements  */
+.navbar__inner {
+  max-width: 1108px;
+  margin: auto;
+}
+
+/* keeps the same spacing as the old site */
+.navbar__item {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* centres the traingle on XML navbar menu */
+.dropdown > .navbar__link::after {
+  top: 0px;
+}
+
+/* hide the external link icon */
+.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
+  display: none;
+}
+
+/* centers the footer links */
+footer .container {
+  max-width: 1140px;
+}
+
+/* draws line underneath footer titles */
+.footer__title {
+  border-bottom: 3px solid;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.footer__links {
+  text-align: center;
 }
 
 .search-icon {
