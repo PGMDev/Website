@@ -81,7 +81,10 @@ const config = {
           {to: 'docs/commands/main', label: 'Commands', position: 'left'},
           {to: 'docs/events/main', label: 'Events', position: 'left'},
           {to: 'downloads', label: 'Downloads', position: 'left'},
-          // search bar here
+          {
+            type: 'search',
+            position: 'left',
+          },
           {
             href: 'https://github.com/PGMDev',
             label: 'GitHub',
@@ -90,7 +93,7 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
             title: 'Docs',
@@ -147,9 +150,12 @@ const config = {
       indexName: "pgm",
     },
      */
+     // code highlighting
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: require('prism-react-renderer/themes/palenight'),
+        darkTheme: require('prism-react-renderer/themes/palenight'),
+        /// three backticks (```) will default to XML highlighting
+        defaultLanguage: 'xml',
       },
     }),
 };
