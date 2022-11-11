@@ -90,3 +90,80 @@ table label {
   margin-left: 8px;
   font-style: normal;
 }
+
+.footerLogoLink {
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.footerLogoLink:hover {
+  opacity: 1;
+}
+
+.footerCol {
+  text-align: center;
+}
+
+.footerTitle {
+  border-bottom: 3px solid;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 997px) {
+  .displayOnlyInLargeViewport {
+    display: none !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hideLogoText {
+    display: none;
+  }
+}
+
+.navbarHideable {
+  transition: top 0.2s ease-in-out;
+}
+
+.navbarHidden {
+  top: calc(var(--ifm-navbar-height) * -1) !important;
+}
+
+nav.orange {
+  border-bottom: 4px solid #ffa500;
+}
+
+.search-icon {
+  background-image: var(--ifm-navbar-search-input-icon);
+  height: auto;
+  width: 24px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+}
+
+.search-icon-hidden {
+  visibility: hidden;
+}
+
+@media (max-width: 360px) {
+  .search-bar {
+    width: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    transition: none !important;
+  }
+
+  .search-bar-expanded {
+    width: 9rem !important;
+  }
+
+  .search-icon {
+    display: inline;
+    vertical-align: sub;
+  }
+}
