@@ -78,11 +78,20 @@ table label {
   unicode-bidi: embed;
   font-family: monospace;
   white-space: pre;
-  font-size: 90%;
+  font-size: 120%;
   color: #c7254e;
   border-radius: 4px;
   padding: 1px 4px;
   display: inline-block;
+}
+
+code {
+  padding: 4px;
+  border: none;
+}
+
+.theme-doc-markdown .markdown {
+  padding: 10px;
 }
 
 .icon-right {
@@ -130,8 +139,9 @@ table label {
   top: calc(var(--ifm-navbar-height) * -1) !important;
 }
 
-nav.orange {
-  border-bottom: 4px solid #ffa500;
+.navbar--fixed-top {
+  /* orange */
+  border-bottom: 4px solid #ffa500; 
 }
 
 .search-icon {
