@@ -1,9 +1,3 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'PGM Documentation',
@@ -13,15 +7,8 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'PGMDev', // Usually your GitHub org/user name.
-  projectName: 'Website', // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  organizationName: 'PGMDev',
+  projectName: 'Website',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -34,8 +21,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/PGMDev/Website/tree/master/src',
         },
@@ -83,7 +68,7 @@ const config = {
           {to: 'downloads', label: 'Downloads', position: 'left'},
           {
             type: 'search',
-            position: 'left',
+            position: 'right',
           },
           {
             href: 'https://github.com/PGMDev',
