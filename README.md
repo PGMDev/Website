@@ -1,6 +1,6 @@
 # PGM Documentation Website
 
-Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus 2](https://v2.docusaurus.io/).
+Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus 2](https://docusaurus.io/).
 
 ## Overview
 
@@ -23,7 +23,7 @@ Before opening a Pull Request, please:
 
 ## Governance
 
-This project is maintained by [Indicado](https://github.com/Indicardo), with assistance from [Electroid](https://github.com/Electroid) and other members from the [PGM](https://discord.gg/RTcBe5AKRA) community.
+This project is maintained by [CoWinkKeyDinkInc](https://github.com/CoWinkKeyDinkInc), with assistance from [Electroid](https://github.com/Electroid) and other members from the [PGM](https://discord.gg/RTcBe5AKRA) community.
 
 ## License
 
