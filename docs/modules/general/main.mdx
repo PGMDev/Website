@@ -353,8 +353,7 @@ Include statements allow for global XML files to be loaded and re-used across di
 This can be used to standardize values across maps.
 Below is an example includes file that can be used on Blitz maps:
 
-```xml
-<!-- blitz.xml, located under includes/blitz.xml -->
+```xml title="/server/includes/blitz.xml"
 <!-- the location for include files is defined in config.yml -->
 <map>
     <blitz>
@@ -366,8 +365,7 @@ Below is an example includes file that can be used on Blitz maps:
 The file is automatically given an ID based on the file name, which in this case is `blitz`.
 Then it can be added into the main `map.xml`. Multiple include statements can be used per map.
 
-```xml
-<!-- map.xml -->
+```xml title="/server/maps/map_name/map.xml"
 <map>
   ...
   <!-- All maps with this include statement will give the player 5 lives -->
