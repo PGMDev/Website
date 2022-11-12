@@ -7,7 +7,9 @@ title: Other Gamemodes
 
 This gamemode uses the [scoring](/docs/modules/objectives/scoring) module to run the game for a specified amount of time, after which the team with the highest score wins. Teams increase their score by killing players from the other team or capturing points from a [score box](/docs/modules/objectives/scoring#score_box).
 
-`NOTE:` To be able to score points for kills and deaths the `<kills>` and `<deaths>` elements are required.
+:::note
+To be able to score points for kills and deaths, the `<kills>` and `<deaths>` elements are required.
+:::
 
 ```xml
 <score>
@@ -24,7 +26,9 @@ This gamemode uses the [scoring](/docs/modules/objectives/scoring) module to run
 The FFA gamemode uses the [players](/docs/modules/format/players) instead of the [teams](/docs/modules/format/teams) module to create a team-less match.
 Depending on the modules used, players can increase their score by killing other players until a score or time limit is reached or by capturing objectives, etc.
 
-`NOTE:` To be able to score points for kills and deaths the `<kills>` and `<deaths>` elements are required.
+:::note
+To be able to score points for kills and deaths the `<kills>` and `<deaths>` elements are required.
+:::
 
 ```xml
 <players max="16" max-overfill="20"/>
@@ -42,7 +46,9 @@ Enable the one hit kill, rage style gamemode.
 
 One hit kills will only be applied to items that have a sharpness enchantment greater than level 1. One shot arrow kills will only be applied to bows that have a power enchantment greater than level 1.
 
-`NOTE:` This module must be used in conjunction with another gamemode.
+:::info
+This module must be used in conjunction with another gamemode.
+:::
 
 ```xml
 <rage/>

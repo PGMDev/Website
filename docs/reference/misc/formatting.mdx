@@ -7,12 +7,10 @@ import ImageSwitcher from "../../../src/components/ImageSwitcher.js";
 
 Text formatting codes are used to create fancy colorized text, they are prefixed with a grave symbol `` ` ``. After using a formatting code such as `` `o `` (italic) it has to be reset, otherwise it will continue until the end of the text.
 
-<div className="alert alert--info" style={{ marginBottom: "20px" }}>
-  <p style={{ color: "#000000", marginBottom: "0px" }}>
-    Some older maps may use the depreciated § section symbol to specify
-    formatting codes. This symbol should not be used in new map files.
-  </p>
-</div>
+:::info
+Some older maps may use the depreciated § section symbol to specify
+formatting codes. This symbol should not be used in new map files.
+:::
 
 _Examples_
 
@@ -177,7 +175,9 @@ _Examples_
 
 The magic formatter will convert all the text after it into a scrambled, constantly changing mess of letters.
 
-`NOTE:` Reset resets all color and text styles.
+:::note
+Reset resets all color and text styles.
+:::
 
 To have a line all italic and one word red you will have to to do the following.
 

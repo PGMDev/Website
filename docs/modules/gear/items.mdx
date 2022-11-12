@@ -555,7 +555,9 @@ Enchanting, naming or giving armor lore works the same way as with items.
 Items like leather armor can be colored with the `color` attribute.
 The color is represented in hexadecimal, see [dye colors](/docs/reference/misc/colors) for a list of hex colors for the different dyes.
 
-`NOTE:` The hex color value is specified without the hash `#` symbol.
+:::info
+The hex color value is specified without the hash `#` symbol.
+:::
 
 ```xml
 <helmet color="cd0000" material="leather helmet"/>
@@ -876,7 +878,9 @@ _Examples_
 </item>
 ```
 
-`NOTE:` Negative attribute values are allowed; however sometimes they don't work as expected.
+:::note
+Negative attribute values are allowed; however sometimes they don't work as expected.
+:::
 
 ### Grenades
 
@@ -889,7 +893,9 @@ The default value of `1.0` will not destroy blocks, but it will damage players a
 
 The attributes `grenade-fire="true"` and `grenade-destroy="true"` determine if the explosion creates fire and/or destroys blocks.
 
-`NOTE:` If an ender pearl is used as a grenade, the player will teleport to the location and the explosion will occur.
+:::note
+If an ender pearl is used as a grenade, the player will teleport to the location and the explosion will occur.
+:::
 
 ```xml
 <item slot="1" amount="12" name="`4Grenade" grenade="true" grenade-power="1.2" material="snow ball"/>

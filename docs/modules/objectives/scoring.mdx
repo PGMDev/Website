@@ -332,7 +332,9 @@ Example
 Give the match a time limit, the result attribute determines how the winning team or player is calculated when the time runs out.
 Result can be the name of a team, or one of the special values; "tie" for no winner, or "objectives" for the team that has the most objectives completed. The time limit can be specified in minutes, etc., by formatting it as a [time period](/docs/reference/misc/time-periods).
 
-`NOTE!` This tag is **not** placed inside the score module, instead it is located in the root `<map>` element.
+:::note
+This tag is **not** placed inside the score module, instead it is located in the root `<map>` element.
+:::
 
 ```xml
 <time result="objectives">5m</time>
@@ -405,7 +407,9 @@ Overtime can be used in order to force a single winner in a match. By using the 
 
 To limit how long overtime lasts, you can include the `max-overtime="..."` attribute as well. It, too, accepts a <a href="/docs/reference/misc/time-periods">time period</a> as a value. This will count down in the background and force the overtime to count down once surpassing the `overtime="..."` attribute's value.
 
-`Tip:` Set the `overtime="..."` attribute to `1s` for sudden death overtime.
+:::tip
+Set the `overtime` attribute to `1s` for sudden death overtime.
+:::
 
 Example
 
