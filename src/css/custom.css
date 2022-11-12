@@ -78,15 +78,145 @@ table label {
   unicode-bidi: embed;
   font-family: monospace;
   white-space: pre;
-  font-size: 90%;
+  font-size: 120%;
   color: #c7254e;
   border-radius: 4px;
   padding: 1px 4px;
   display: inline-block;
 }
 
+code {
+  padding: 4px;
+  border: none;
+}
+
+.theme-doc-markdown {
+  padding: 16px;
+}
+
+.theme-doc-breadcrumbs {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
 .icon-right {
   float: right;
   margin-left: 8px;
   font-style: normal;
+}
+
+.footerLogoLink {
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.footerLogoLink:hover {
+  opacity: 1;
+}
+
+.footerCol {
+  text-align: center;
+}
+
+.footerTitle {
+  border-bottom: 3px solid;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 997px) {
+  .displayOnlyInLargeViewport {
+    display: none !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hideLogoText {
+    display: none;
+  }
+}
+
+.navbarHideable {
+  transition: top 0.2s ease-in-out;
+}
+
+.navbarHidden {
+  top: calc(var(--ifm-navbar-height) * -1) !important;
+}
+
+/* orange highlight bar on the navbar */
+.navbar--fixed-top {
+  border-bottom: 4px solid #ffa500; 
+}
+
+/* generally centres the navbar elements  */
+.navbar__inner {
+  max-width: 1108px;
+  margin: auto;
+}
+
+/* keeps the same spacing as the old site */
+.navbar__item {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* centres the traingle on XML navbar menu */
+.dropdown > .navbar__link::after {
+  top: 0px;
+}
+
+/* hide the external link icon */
+.iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
+  display: none;
+}
+
+/* centers the footer links */
+footer .container {
+  max-width: 1140px;
+}
+
+/* draws line underneath footer titles */
+.footer__title {
+  border-bottom: 3px solid;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.footer__links {
+  text-align: center;
+}
+
+.search-icon {
+  background-image: var(--ifm-navbar-search-input-icon);
+  height: auto;
+  width: 24px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+}
+
+.search-icon-hidden {
+  visibility: hidden;
+}
+
+@media (max-width: 360px) {
+  .search-bar {
+    width: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    transition: none !important;
+  }
+
+  .search-bar-expanded {
+    width: 9rem !important;
+  }
+
+  .search-icon {
+    display: inline;
+    vertical-align: sub;
+  }
 }

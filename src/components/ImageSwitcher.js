@@ -1,12 +1,12 @@
 import React from "react";
-import useThemeContext from "@theme/hooks/useThemeContext"; //docs: https://v2.docusaurus.io/docs/2.0.0-alpha.69/theme-classic#usethemecontext
+import {useColorMode} from "@docusaurus/theme-common";
 
 const ImageSwitcher = ({ lightImageSrc, darkImageSrc }) => {
-  const { isDarkTheme } = useThemeContext();
+  const { colorMode, setColorMode } = useColorMode();
 
   return (
     <img
-      src={isDarkTheme ? darkImageSrc : lightImageSrc}
+      src={colorMode === 'dark' ? darkImageSrc : lightImageSrc}
       alt="This image needs JS enabled to load."
     />
   );
