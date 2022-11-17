@@ -211,11 +211,14 @@ Other uses of control points include unlocking an area of the map using objectiv
         <td>
           <label>recovery-rate</label>
         </td>
-        <td>The rate for a control point to recover to its current state.</td>
+        <td>
+          The rate for a control point to recover to its current state.
+          Applies when the owning team is dominating (having players on the point).
+        </td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td>0</td>
+        <td>depends</td>
         <td>0</td>
       </tr>
       <tr>
@@ -223,13 +226,14 @@ Other uses of control points include unlocking an area of the map using objectiv
           <label>decay-rate</label>
         </td>
         <td>
-          The rate for a control point to decay to its current state. Applies
-          when nobody is dominating the point.
+          The rate for a control point to decay to its current state.
+          Applies when nobody is dominating the point (contested by multiple teams or no teams on the point).
+          Can be determined by <label>capture-rules</label>.
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td>0</td>
+        <td>depends</td>
         <td>0</td>
       </tr>
       <tr>
@@ -240,12 +244,12 @@ Other uses of control points include unlocking an area of the map using objectiv
           The rate for a control point to decay from captured to neutral.
           Applies when nobody is dominating the point.
           <br />
-          <i>Takes precedence over `decay-rate`.</i>
+          <i>Takes precedence over <label>decay-rate</label>.</i>
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td>0</td>
+        <td>depends</td>
         <td>0</td>
       </tr>
       <tr>
@@ -260,6 +264,12 @@ Other uses of control points include unlocking an area of the map using objectiv
             Deprecated
           </span>
           Capture progress is retained even if capturing is interrupted.
+          <br/>
+          If incremental is true, sets <label>recovery-rate</label> to 1,
+          <label>decay-rate</label> to 0, and <label>owned-decay-rate</label> to 0.
+          <br/>
+          If incremental is false, <label>recovery-rate</label> and
+          <label>decay-rate</label> are both infinite, and <label>owned-decay-rate</label> is 0.
           <br />
           <i>
             Has been replaced with the recovery & decay attributes which allow
@@ -610,11 +620,11 @@ in the progress regions when they are updated.
 
 ### King of the Hill (deprecated)
 
-<span className="badge badge--danger">NOTE:</span>
-
-_The `<king>`, `<hill>` and `<hills>` tags have been deprecated.
+:::caution
+The `<king>`, `<hill>` and `<hills>` tags have been deprecated.
 Use the `<control-point>` and `<control-points>` tags, which work the same but
-with differrent default values._
+with differrent default values.
+:::
 
 KotH is a gamemode in which you capture and hold a hill to collect points.
 The first team to reach a preset amount of points wins.
