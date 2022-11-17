@@ -126,15 +126,11 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} The PGM project and its contributors`,
       },
-     /*
-      * TODO migrate to new DocSearch/generate new creditantals that expired Feburary 1st 2022
-      * Will fix frozen search results
-      * https://docusaurus.io/blog/2021/11/21/algolia-docsearch-migration
       algolia: {
-      apiKey: "eb1f17b6501799dbbc0ecf0bae35ed57",
-      indexName: "pgm",
-    },
-     */
+        appId: 'NZ27HYOOIL',
+        apiKey: 'ad0db60d12f0ec4d68150a64097ee7c6',
+        indexName: 'pgm',
+      },
      // code highlighting
       prism: {
         theme: require('prism-react-renderer/themes/palenight'),
