@@ -111,6 +111,11 @@ _Example_
     </action>
     <trigger filter="flag-cap-filter" action="score-points" scope="player"/>
 </action>
+
+...
+<!-- Sets some_variable to 0, 1, 2, 3, or 4 randomly -->
+<set var="some_variable" value="floor(random() * 5)"/>
+...
 ```
 
 In this example, the `flag_captures` variable will increment by 1 after a player completes `flag-cap-filter`.
