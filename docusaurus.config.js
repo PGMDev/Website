@@ -77,6 +77,14 @@ const config = {
           },
         ],
       },
+     announcementBar: {
+      id: 'new_features',
+      content:
+        'New Features: <a href="/docs/modules/blocks/structures">Structures</a>, <a href="/docs/modules/blocks/enderchests">Ender Chests</a> and <a href="docs/modules/objectives/payload">Payload Gamemode</a>',
+      backgroundColor: '#fafbfc',
+      textColor: '#091E42',
+      isCloseable: true,
+    },
       footer: {
         style: 'light',
         links: [
