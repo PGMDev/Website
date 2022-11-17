@@ -1118,11 +1118,66 @@ _Examples_
 
 ### Objective Filter
 
-Matches for objectives that have been completed.
+`<objective>` matches for objectives that have been completed.
 The filter can also match for objectives completed by a certain team, or by anyone.
 This filter is a [Dynamic Filter](#dynamic-filters).
 
-##### Objective Filter Attributes
+The `<completed>` filter matches when the specified objective is completed or captured by anybody
+This filter is not affected by the context in which it is applied, and never abstains.
+
+The `<captured>` filter matches players or teams who currently control the specified objective.
+This filter is useful for objectives that can change ownership, such as hills and flags.
+For other objective types, it will match players/teams who are allowed to complete the objective.
+This filter will abstain if used in a context that does not involve a specific player or team.
+
+Alternately, `<captured>` can have a team specified with the team attribute.
+Then it will always test that team’s control of the objective, regardless of the filtering context, and will never abstain.
+
+:::tip
+`<objective>` can replicate all the functionality
+of `<completed>` and `<captured>`, and should be used on newer maps instead
+of these two.
+:::
+
+##### Objective Filter Modules
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Module</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<objective>`}</label>
+        </td>
+        <td>Matches if any team completed the objective.</td>
+        <td>Objective ID</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<completed>`}</label>
+        </td>
+        <td>Matches if any team completed the objective.</td>
+        <td>Objective ID</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<captured>`}</label>
+        </td>
+        <td>Matches if the team of the player is the one that completed it.</td>
+        <td>Objective ID</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+##### Objective Module Attributes
 
 <div className="table-container">
   <table>
@@ -1168,6 +1223,15 @@ _Examples_
 <objective any="true">goal-id</objective>
 <!-- Matches if red team completed objective -->
 <objective team="red-team">goal-id</objective>
+
+<!-- Match if red-core has been leaked -->
+<completed>red-core</completed>
+<!-- Match if south-hill is owned by anyone -->
+<completed>south-hill</completed>
+<!-- Match players/teams who own north-hill -->
+<captured>north-hill</captured>
+<!-- Match if blue-team owns central-hill -->
+<captured team="blue-team">central-hill</captured>
 ```
 
 ### Flag Filters
