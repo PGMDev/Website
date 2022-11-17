@@ -1010,6 +1010,34 @@ _Examples_
 <random>[0.25, 0.75)</random>
 ```
 
+### Offset Filter
+
+The Offset filter checks for blocks that are placed in the world,
+either using exact locations, coordinates relative to the player,
+or directions relative to the player.
+
+Coordinates relative to the player are defined using `~`, and behave the same like
+`~` does in-game.
+Directions relative to the player use `^`.
+
+```
+<filters>
+  <!-- checks for bedrock placed at this exact location -->
+  <offset id="hardFilter" location="10.5, 5, 15.5">
+      <material>bedrock</material>
+  </offset>
+  <!-- checks for cobblestone placed 1 block beneath the player -->
+  <offset id="blockUnderFeetFilter" location="~0, ~-1, ~0">
+      <material>cobblestone</material>
+  </offset>
+  <!-- checks for water placed 2 blocks *in front* of the player -->
+  <!-- ^<+left/-right>, ^<+up/-down>, ^<+front/-behind> -->
+  <offset id="inFrontFilter" location="^0,^0,^2">
+      <material>water</material>
+  </offset>
+</filters>
+```
+
 ### Player Count Filter
 
 This filter counts the number of players matching a single child filter,
