@@ -64,8 +64,8 @@ or the item form of the custom projectile itself.
           <label>id</label>
         </td>
         <td>
-          Unique identifier used to reference this projectile from other places
-          in the XML.
+          <span className="badge badge--danger">Required</span>
+          Unique identifier used to reference this projectile from other places in the XML.
         </td>
         <td>
           <span className="badge badge--primary">String</span>
@@ -186,6 +186,16 @@ or the item form of the custom projectile itself.
         </td>
         <td></td>
       </tr>
+      <tr>
+        <td>
+          <label>precise</label>
+        </td>
+        <td>Whether the path of a thrown projectile should be precise in hitting a target.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -242,7 +252,8 @@ or the item form of the custom projectile itself.
         velocity="3.5"
         damage="50"
         throwable="false"
-        cooldown="5s"/>
+        cooldown="5s"
+        precise="false"/>
 </projectiles>
 <!-- Apply the projectile to an item -->
 <kits>
