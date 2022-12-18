@@ -190,7 +190,13 @@ or the item form of the custom projectile itself.
         <td>
           <label>precise</label>
         </td>
-        <td>Whether the path of a thrown projectile should be precise in hitting a target.</td>
+        <td>
+          Whether the path of a thrown projectile should be precise in hitting a target.
+          <br />
+          <i>
+            This is only applicable if the projectile is <label>Fireball</label>, <label>LargeFireball</label>, <label>SmallFireball</label>, or <label>WitherSkull</label>.
+          </i>
+        </td>
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
@@ -252,8 +258,7 @@ or the item form of the custom projectile itself.
         velocity="3.5"
         damage="50"
         throwable="false"
-        cooldown="5s"
-        precise="false"/>
+        cooldown="5s"/>
 </projectiles>
 <!-- Apply the projectile to an item -->
 <kits>
