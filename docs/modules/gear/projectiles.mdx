@@ -64,8 +64,8 @@ or the item form of the custom projectile itself.
           <label>id</label>
         </td>
         <td>
-          Unique identifier used to reference this projectile from other places
-          in the XML.
+          <span className="badge badge--danger">Required</span>
+          Unique identifier used to reference this projectile from other places in the XML.
         </td>
         <td>
           <span className="badge badge--primary">String</span>
@@ -185,6 +185,22 @@ or the item form of the custom projectile itself.
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
         <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>precise</label>
+        </td>
+        <td>
+          Whether the path of a thrown projectile should be precise in hitting a target.
+          <br />
+          <i>
+            This is only applicable if the projectile is <label>Fireball</label>, <label>LargeFireball</label>, <label>SmallFireball</label>, or <label>WitherSkull</label>.
+          </i>
+        </td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>true</td>
       </tr>
     </tbody>
   </table>
