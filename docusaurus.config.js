@@ -138,6 +138,7 @@ const config = {
         appId: 'NZ27HYOOIL',
         apiKey: 'ad0db60d12f0ec4d68150a64097ee7c6',
         indexName: 'pgm',
+        contextualSearch: false,
       },
      // code highlighting
       prism: {
