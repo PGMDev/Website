@@ -140,7 +140,9 @@ specify blocks to renew. If neither are specified, the renewable affects all blo
           required for any single block to renew will depend on how many other
           blocks are waiting to be renewed by the same renewable.
           <br />
-          <i>This parameter cannot be combined with</i> <label> interval</label>
+          <em>
+            This parameter cannot be combined with <label>interval</label>.
+          </em>
         </td>
         <td>Blocks/second</td>
         <td>1</td>
@@ -150,14 +152,14 @@ specify blocks to renew. If neither are specified, the renewable affects all blo
           <label> interval</label>
         </td>
         <td>
-          Average time required for a block to renew. Unlike `rate`, this
+          Average time required for a block to renew. Unlike <label>rate</label>, this
           applies to each block individually, and blocks do not affect each
-          other's renewal time. A renewable with an `interval` can behave very
-          differently from a renewable with a `rate`, particularly if it is
-          large.
+          other's renewal time. A renewable with an <label>interval</label> can behave very
+          differently from a renewable with a <label>rate</label>, particularly if it is large.
           <br />
-          <i>This parameter cannot be combined with</i>
-          <label> rate</label>
+          <em>
+            This parameter cannot be combined with <label>rate</label>.
+          </em>
         </td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>

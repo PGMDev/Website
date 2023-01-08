@@ -45,7 +45,9 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
             X2,Y2,Z2
           </label>.
           <br />
-          <i>Only block bounded when using finite coordinates.</i>
+          <em>
+            Only block bounded when using finite coordinates.
+          </em>
         </td>
         <td className="text-right">
           <span className="badge badge--primary">Randomize-able</span>
@@ -60,7 +62,9 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
             R
           </label> and a height of <label>H</label>.
           <br />
-          <i>Only block bounded when using a finite radius.</i>
+          <em>
+            Only block bounded when using a finite radius.
+          </em>
         </td>
         <td className="text-right">
           <span className="badge badge--primary">Randomize-able</span>
@@ -82,7 +86,9 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
             R
           </label>.
           <br />
-          <i>Only block bounded when using a finite radius.</i>
+          <em>
+            Only block bounded when using a finite radius.
+          </em>
         </td>
         <td></td>
       </tr>
@@ -90,10 +96,10 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
         <td>
           <label>{`<point id="abc">X,Y,Z</point>`}</label>
           <br />A single point region located at <label>X,Y,Z</label>.<br />
-          <i>
+          <em>
             This region will always return the same location even when used in a
             randomized context, e.g., spawns.
-          </i>
+          </em>
         </td>
         <td className="text-right">
           <span className="badge badge--primary">Randomize-able</span>
@@ -126,10 +132,10 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
           <br />A circle located at <label>X,Z</label> with a radius of <label>
             R
           </label>. <br />
-          <i>
+          <em>
             The region goes from 0 to map height, i.e. PGM doesn't check the
             players Y position.
-          </i>
+          </em>
         </td>
       </tr>
       <tr>
@@ -204,8 +210,8 @@ The example below defines a region with a diagonal boundary:
 The above and below regions can be used to conveniently define axis-aligned half-spaces:
 
 ```xml
-<above y="50"/>         <!-- Everything above Y=50 -->
-<below x="0" z="0"/>    <!-- Everything in the -X, -Z quadrant -->
+<above y="50"/>      <!-- Everything above Y=50 -->
+<below x="0" z="0"/> <!-- Everything in the -X, -Z quadrant -->
 ```
 
 ## Applying Things to Regions
@@ -740,7 +746,9 @@ Input can be a region, a region modifier or simply an exact `X,Y,Z` coordinate.
           Specifies what direction the player is looking horizontally from
           -180&deg; to 180&deg;.
           <br />
-          <i>South 0&deg;, East -90&deg;, North 180&deg; and West 90&deg;.</i>
+          <em>
+            South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">-180 to 180</span>
@@ -754,7 +762,9 @@ Input can be a region, a region modifier or simply an exact `X,Y,Z` coordinate.
           Specifies what direction the player is looking vertically from
           -90&deg; to 90&deg;.
           <br />
-          <i>-90&deg; is straight up 90&deg; is straight down.</i>
+          <em>
+            -90&deg; is straight up, 90&deg; is straight down.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">-90 to 90</span>
@@ -767,10 +777,10 @@ Input can be a region, a region modifier or simply an exact `X,Y,Z` coordinate.
         <td>
           Specify the exact block coordinates that the player should look at.
           <br />
-          <i>
+          <em>
             This attribute will negate any angles set by the <label>yaw</label>{" "}
             and <label>pitch</label> attributes.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">X,Y,Z</span>
@@ -812,4 +822,4 @@ Input can be a region, a region modifier or simply an exact `X,Y,Z` coordinate.
 </div>
 
 `NOTE:` The pitch and yaw arguments can also accept a `X,Y,Z` coordinate. <br/>
-`TIP:` Copy the yaw and pitch from the F3 screen in minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).
+`TIP:` Copy the yaw and pitch from the F3 screen in Minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).

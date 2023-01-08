@@ -102,7 +102,7 @@ Other uses of control points include unlocking an area of the map using objectiv
           Specify if this objective is required to win the match.
           <br />
           Teams completing all of their required objectives will win regardless
-          of score or blitz configuration.
+          of score or Blitz configuration.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -259,7 +259,9 @@ Other uses of control points include unlocking an area of the map using objectiv
           The rate for a control point to decay from captured to neutral.
           Applies when nobody is dominating the point.
           <br />
-          <i>Takes precedence over <label>decay-rate</label>.</i>
+          <em>
+            Takes precedence over <label>decay-rate</label>.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
@@ -279,17 +281,17 @@ Other uses of control points include unlocking an area of the map using objectiv
             Deprecated
           </span>
           Capture progress is retained even if capturing is interrupted.
-          <br/>
+          <br />
           If incremental is true, sets <label>recovery-rate</label> to 1,
           <label>decay-rate</label> to 0, and <label>owned-decay-rate</label> to 0.
-          <br/>
+          <br />
           If incremental is false, <label>recovery-rate</label> and
           <label>decay-rate</label> are both infinite, and <label>owned-decay-rate</label> is 0.
           <br />
-          <i>
-            Has been replaced with the recovery & decay attributes which allow
-            much more control over progress.
-          </i>
+          <em>
+            This has been replaced with the recovery & decay attributes which allow
+            more control over progress.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -396,10 +398,10 @@ Other uses of control points include unlocking an area of the map using objectiv
         <td>
           Filter the materials modified when updating the progress regions.
           <br />
-          <i>
+          <em>
             Defaults to wool, carpet, stained clay, stained glass & stained
             glass panes.
-          </i>
+          </em>
         </td>
         <td>
           <a href="/docs/modules/mechanics/filters">Block Filter</a>

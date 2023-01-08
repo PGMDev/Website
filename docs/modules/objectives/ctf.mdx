@@ -359,10 +359,10 @@ Filters can be used to control who can pickup/capture the flag and when.
           If the flag has an <label>owner</label>, that team receives the
           points. Otherwise, the carrier's team receives them.
           <br />
-          <i>
+          <em>
             A negative number can be used to take away points rather than give
             them.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
@@ -380,10 +380,10 @@ Filters can be used to control who can pickup/capture the flag and when.
           If the flag has an <label>owner</label>, that team receives the
           points. Otherwise, the carrier's team receives them.
           <br />
-          <i>
+          <em>
             A negative number can be used to take away points rather than give
             them.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
@@ -809,10 +809,10 @@ The `permanent` option can be used to make a post into something like a [monumen
           When a flag is captured and returned to this post, remove the flag
           from the game and consider it a completed objective.
           <br />
-          <i>
+          <em>
             The objective is credited to the <label>owner</label> of the post,
             which is required in this case.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -840,9 +840,9 @@ The `permanent` option can be used to make a post into something like a [monumen
           Points awarded per second to this post's owner while any flag is at
           the post.
           <br />
-          <i>
+          <em>
             Requires the <label>owner</label> attribute to be set.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
@@ -888,10 +888,10 @@ The `permanent` option can be used to make a post into something like a [monumen
           Time between a flag being captured/recovered and respawning at this
           post.
           <br />
-          <i>
+          <em>
             During this time, the flag is completely gone, giving defenders a
             chance to return to their base.
-          </i>
+          </em>
         </td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
@@ -916,10 +916,10 @@ The `permanent` option can be used to make a post into something like a [monumen
           Speed that a flag "moves" to respawn at this post, after being
           captured/recovered.
           <br />
-          <i>
+          <em>
             This is an alternative to <label>respawn-time</label> that
             calculates the time based on the distance the flag must travel.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">M/s</span>
@@ -943,7 +943,9 @@ The `permanent` option can be used to make a post into something like a [monumen
         <td>
           Fallback spawn for flag if all other post filters deny.
           <br />
-          <i>The fallback will be used even if it's own post filter denies.</i>
+          <em>
+            The fallback will be used even if its own post filter denies.
+          </em>
         </td>
         <td>
           <a href="/docs/modules/objectives/ctf#posts">Post ID</a>
@@ -1084,10 +1086,10 @@ If the net has no owner, then the player carrying the flag will receive the poin
           If the net has an <label>owner</label>, that team receives the points.
           Otherwise, the carrier's team receives them.
           <br />
-          <i>
+          <em>
             A negative number can be used to take away points rather than give
             them.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
@@ -1115,10 +1117,10 @@ If the net has no owner, then the player carrying the flag will receive the poin
           <br />
           This is a list of flag IDs, separated with spaces.
           <br />
-          <i>
+          <em>
             Attribute can not be specified on nets that are defined inside a
             flag.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">String</span>
