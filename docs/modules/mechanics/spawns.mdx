@@ -54,7 +54,9 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
           </span>
           The spawn for observers and teams without a spawn.
           <br />
-          <i>Only one default spawn element is allowed per map.</i>
+          <em>
+            Only one default spawn element is allowed per map.
+          </em>
         </td>
         <td>
           <label>{`<regions>`}</label>
@@ -84,7 +86,9 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
         <td>
           The team this spawn applies to.
           <br />
-          <i>Not needed for team-less gamemodes.</i>
+          <em>
+            Not needed for team-less gamemodes.
+          </em>
         </td>
         <td>
           <a href="/docs/modules/format/teams">Team ID</a>
@@ -109,9 +113,9 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
           Spawns players at the next region in a list if the one prior to it
           isn't safe.
           <br />
-          <i>
+          <em>
             Requires the <label>safe</label> attribute set to true.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -239,10 +243,10 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
         <td>
           The exact block coordinates that the player looks at when spawned.
           <br />
-          <i>
+          <em>
             This attribute will negate any angles set by the <label>yaw</label>{" "}
             and <label>pitch</label> attributes.
-          </i>
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">X,Y,Z</span>
@@ -256,7 +260,9 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
         <td>
           The horizontal angle the player looks to when spawned.
           <br />
-          <i>South 0, East -90, North 180, and West 90.</i>
+          <em>
+            South 0, East -90, North 180, and West 90.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">-180 to 180</span>
@@ -270,7 +276,9 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
         <td>
           The vertical angle the player looks to when spawned.
           <br />
-          <i>-90 is straight up, 90 is straight down.</i>
+          <em>
+            -90 is straight up, 90 is straight down.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">-90 to 90</span>
@@ -281,7 +289,7 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
   </table>
 </div>
 
-`TIP:` Copy the yaw and pitch from the F3 screen in minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).
+`TIP:` Copy the yaw and pitch from the F3 screen in Minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).
 
 _Examples_
 

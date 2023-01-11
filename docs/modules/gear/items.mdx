@@ -135,10 +135,10 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
         <td>
           Slot where the item will be placed in the player's inventory.
           <br />
-          <i>
+          <em>
             If no slot is specified the item will be merged into the player's
             inventory.
-          </i>
+          </em>
         </td>
         <td>
           <a href="/docs/reference/items/inventory">Inventory Slot</a>
@@ -151,7 +151,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
         </td>
         <td>
           The amount of items. Blocks can be given an infinite amount by using
-          "oo".
+          <label>oo</label>.
         </td>
         <td>
           <span className="badge badge--primary">Number</span>
@@ -163,7 +163,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
           <label>damage</label>
         </td>
         <td>
-          The item's damage, used for items such as birch logs, red wool, potion
+          The item's damage value, used for items such as birch logs, red wool, potion
           types, etc.
         </td>
         <td>
@@ -176,8 +176,8 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
           <label>unbreakable</label>
         </td>
         <td>
-          Specify if this item is unbreakable, hides the durability bar in
-          minecraft.
+          Specify if this item is unbreakable and hides the durability bar in
+          Minecraft.
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -188,7 +188,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
         <td>
           <label>name</label>
         </td>
-        <td>The item's display name.</td>
+        <td>The item's display name that appears when it is selected.</td>
         <td>
           <span className="badge badge--primary">String</span>
         </td>
@@ -198,7 +198,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
         <td>
           <label>lore</label>
         </td>
-        <td>Custom lore string.</td>
+        <td>Custom text that appears when a player hovers over the item in the inventory.</td>
         <td>
           <span className="badge badge--primary">String</span>
         </td>
@@ -211,7 +211,9 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
         <td>
           Leather armor color as a hexadecimal color. <label>RRGGBB</label>
           <br />
-          <i>Only applies to leather armor items.</i>
+          <em>
+            Only applies to leather armor items.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">Hex Color</span>
@@ -243,7 +245,9 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
           </a>
           Projectile explodes on impact.
           <br />
-          <i>Works with ender pearls, snowballs, eggs, and arrows.</i>
+          <em>
+            Works with ender pearls, snowballs, eggs, and arrows.
+          </em>
         </td>
         <td>
           <span className="badge badge--primary">true/false</span>
@@ -759,7 +763,7 @@ Preferably books should be written in-game to ensure proper formatting, and then
 
 Any enchantment can be applied to any item and an item can have one or multiple enchantments.
 The enchantment type can be specified by its
-[Minecraft name](http://minecraft.gamepedia.com/Data_values#Enchantment_IDs) or
+[Minecraft name](https://minecraft.fandom.com/wiki/Java_Edition_data_values/Pre-flattening#Enchantment_IDs) or
 [Bukkit name](/docs/reference/items/enchantments).
 
 To store an enchantment in an enchanted book (instead of enchanting the book itself),

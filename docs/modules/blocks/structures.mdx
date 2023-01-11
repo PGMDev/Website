@@ -4,8 +4,8 @@ title: Structures
 ---
 
 Structures are sets of blocks that can be dynamically copied into the world in response to match events.
-The original structure is built into the map by the mapmaker, and defined in XML with regions.
-When the match loads, the original structures are cleared from the world and saved.
+The original structure is built into the map by the mapmaker and defined in XML with regions.
+When the match loads, the original structures will be saved and cleared from the world.
 
 Structures are brought to life by the `<dynamic>` element.
 This is an XML construct that causes a structure to appear at a specified location in reaction to a given filter.
@@ -28,7 +28,7 @@ Structures are a very powerful feature that can be used to implement an endless 
     <tbody>
       <tr>
         <td>
-          <label>{`<falling-blocks> </falling-blocks>`}</label>
+          <label>{`<structures> </structures>`}</label>
         </td>
         <td>Element containing all structures and dynamics.</td>
         <td>
@@ -219,7 +219,7 @@ Structures are a very powerful feature that can be used to implement an endless 
           >
             Property
           </span>
-          Filter used to determine when a stricture is <em>placed</em> when <label>
+          Filter used to determine when a structure is <em>placed</em> when <label>
             trigger
           </label> allows.
         </td>
