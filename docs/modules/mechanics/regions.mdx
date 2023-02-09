@@ -41,9 +41,12 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
       <tr>
         <td>
           <label>{`<cuboid id="abc" min="X1,Y1,Z1" max="X2,Y2,Z2"/>`}</label>
-          <br />A rectangular solid from <label>X1,Y1,Z1</label> to <label>
-            X2,Y2,Z2
-          </label>.
+          <label>{`<cuboid min="X1,Y1,Z1", size="30,10,40"/>`}</label>
+          <label>{`<cuboid max="X2,Y2,Z2", size="30,10,40"/>`}</label>
+          <br />A rectangular solid from <label>X1,Y1,Z1</label> to <label>X2,Y2,Z2</label>.
+          <br />
+          Using the <label>size</label> attribute offsets the original min/max value by <label>size</label>.
+          ie. (min + size = max) & (max - size = min)
           <br />
           <em>
             Only block bounded when using finite coordinates.
