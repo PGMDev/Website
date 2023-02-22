@@ -1,0 +1,159 @@
+---
+id: consumables
+title: Custom Consumables
+---
+
+Custom consumables can be defined and applied to items in [kits](/docs/modules/gear/kits).
+When consumed, these items can trigger [actions](/docs/modules/mechanics/actions-triggers),
+and override vanilla eating or drinking behavior.
+
+### Consumables Element
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<consumables> </consumables>`}</label>
+        </td>
+        <td>Node containing the custom consumable definitions.</td>
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<consumable> </consumable>`}</label>
+        </td>
+        <td>A custom consumable definition.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Consumable Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th style={{ minWidth: "150px" }}>Attribute</th>
+        <th>Description</th>
+        <th style={{ minWidth: "100px" }}>Value</th>
+        <th style={{ minWidth: "100px" }}>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>id</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Unique identifier used to reference this consumable from other places in the XML.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>action</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          What happens when the consumable is consumed
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/actions-triggers">Action</a>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>kit</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Alias</span>
+          Alternative to <label>action</label>, encouraged if the consumable applies a kit.
+        </td>
+        <td>
+          <a href="/docs/modules/gear/kits">Kit</a>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>on</label>
+        </td>
+        <td>
+          How the consumable is consumed.
+          <br />
+          Accepts <label>eat</label>.
+        </td>
+        <td>
+          <span className="badge badge--primary">Enum</span>
+        </td>
+        <td>
+          <label>eat</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>override</label>
+        </td>
+        <td>If the vanilla eating behaviour of this item should be cancelled.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td><label>true</label></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Examples
+
+```xml
+<!-- Create the consumable "template" -->
+<consumables>
+    <consumable id="fast-apple" kit="speed-kit"/>
+</consumables>
+<kits>
+    <!-- Apply the consumable to an item -->
+    <kit id="spawn">
+        <item slot="1" amount="1" consumable="fast-apple" name="Fast Apple">golden apple</item>
+    </kit>
+    <!-- Define the kit the consumable gives you -->
+    <kit id="speed-kit">
+        <potion duration="4" amplifier="10">speed</potion>
+    </kit>
+</kits>
+```
+
+```xml
+<!-- Create the consumable "template" -->
+<consumables>
+    <consumable id="porkchop-that-says-yum" action="say-yum" on="eat" override="false"/>
+</consumables>
+<!-- Apply the consumable to an item -->
+<kits>
+    <kit id="spawn">
+        <item slot="1" amount="5" consumable="porkchop-that-says-yum">pork</item>
+    </kit>
+</kits>
+<!-- Define the action the consumable gives you -->
+<actions>
+    <action id="say-yum" scope="player">
+        <message text="Yum!"/>
+    </action>
+</actions>
+```
