@@ -325,11 +325,20 @@ Projectiles can also have custom [potion effects](/docs/modules/gear/potions) wh
       </tr>
       <tr>
         <td>
-          <label>{`<effect> </effect>`}</label>
+          <label>{`<potion> </potion>`}</label>
         </td>
         <td>A potion effect to apply to players hit by the bow projectile.</td>
         <td>
           <a href="/docs/modules/gear/potions">Potion Effect</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<pickup-filter> </pickup-filter>`}</label>
+        </td>
+        <td>A filter to determine which players can pick up arrows.</td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
       </tr>
     </tbody>
@@ -343,10 +352,10 @@ Examples
     <projectile>EnderPearl</projectile>
     <velocityMod>2.5</velocityMod>
     <!-- Projectile potion effect -->
-    <effect duration="5" amplifier="1">poison</effect>
+    <potion duration="5" amplifier="1">poison</potion>
 </modifybowprojectile>
 <modifybowprojectile>
-    <effect duration="8" amplifier="1">wither</effect>
+    <potion duration="8" amplifier="1">wither</potion>
 </modifybowprojectile>
 ```
 
