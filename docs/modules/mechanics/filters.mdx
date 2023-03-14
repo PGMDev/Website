@@ -1037,6 +1037,24 @@ _Examples_
 <random>[0.25, 0.75)</random>
 ```
 
+### Pulse Filter
+
+The Puse filter is special modifier filter which sends a repeating signal.
+The filter activates and deactiviates for a certain duration in a time peroid, after
+which the filter is evaluated again. The filter continues repeating if the inner filter condition is still `ALLOW`.
+This is mainly useful in combination with [Actions & Triggers](/docs/modules/mechanics/actions-triggers).
+This filter is a [Dynamic Filter](#dynamic-filters).
+
+```
+<filters>
+  <!-- Pulses activation for 15 seconds after matching, then turns off for another 15 seconds, etc -->
+  <!-- Filter turns off if condition doesn't meet after 60 seconds -->
+  <pulse id="pulse-filter" period="60s" duration="15s">
+    <filter id="second-filter"/>
+  </pulse>
+</filters>
+```
+
 ### Offset Filter
 
 The Offset filter checks for blocks that are placed in the world,
