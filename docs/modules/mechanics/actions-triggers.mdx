@@ -65,6 +65,14 @@ transferred to be used as an Action instead.
       </tr>
       <tr>
         <td>
+          <label>{`<fill/>`}</label>
+        </td>
+        <td>
+          Places blocks in a block-bounded region.
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>{`<replace-item> </replace-item>`}</label>
         </td>
         <td>Finds and replaces certain items.</td>
@@ -299,6 +307,64 @@ transferred to be used as an Action instead.
         <td>Filters which entities to remove.</td>
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Fill Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`region`}</label>
+        </td>
+        <td>Filters which entities to remove.</td>
+        <td>
+          <a href="/docs/modules/mechanics/Regions">Region</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`material`}</label>
+        </td>
+        <td>Filters which entities to remove.</td>
+        <td>
+          <a href="/docs/reference/items/inventory#material_matchers">
+            Single Material Pattern
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`filter`}</label>
+        </td>
+        <td>Filters which blocks get affected. <em>May impact preformace for large fills.</em></td>
+        <td>
+          <a href="/docs/modules/mechanics/filters">Filter</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`events`}</label>
+        </td>
+        <td>
+          Calls events for block placements and removals,
+          which will make it affected by other filters and PGM features.
+          <em>May impact preformace for large fills.</em>
+        </td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
         </td>
       </tr>
     </tbody>
