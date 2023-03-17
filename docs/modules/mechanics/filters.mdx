@@ -992,12 +992,30 @@ The value can be an exact amount or a interval specifying a range. Only whole nu
 _Examples_
 
 ```xml
-<!-- Match if team (or player) has a score of 20. -->
+<!-- Match if a team (or player) has a score of 20. -->
 <score>20</score>
-<!-- Match if team (or player) has a score from 5 to 10. -->
+<!-- Match if a team (or player) has a score from 5 to 10. -->
 <score>[5,10]</score>
-<!-- Match if team (or player) has a score of 5 or greater. -->
+<!-- Match if a team (or player) has a score of 5 or greater. -->
 <score>[5,oo)</score>
+<!-- Match if the red team has a score of 50. -->
+<score team="red-team">50</score>
+```
+
+### Rank Filter
+
+The rank filter matches if the player or team's rank is a equal to a single value or within a range of values.
+The value can be an exact amount or a interval specifying a range. Only whole numbers are valid.
+
+_Examples_
+
+```xml
+<!-- Match if team (or player) is ranked 2nd on the scoreboard -->
+<rank>2</rank>
+<!-- Match if team (or player) is ranked from 1 to 3 on the scoreboard. -->
+<rank>[1,3]</rank>
+<!-- Match if the blue team is ranked first. -->
+<rank team="blue-team">1</rank>
 ```
 
 ### Variable Filter
