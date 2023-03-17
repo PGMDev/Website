@@ -120,6 +120,23 @@ transferred to be used as an Action instead.
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
       </tr>
+      <tr>
+        <td>
+          <label>{`expose`}</label>
+        </td>
+        <td>
+          Allows an action to be triggered by <label>{`/action`}</label>.
+          Defaults to <label>{`false`}</label>.
+          <br/>
+          <em>
+            Actions must have an ID and support the match scope for expose to work.
+            Moderators require the GAMEPLAY permission to use the action command.
+          </em>
+        </td>
+        <td>
+          <span className="badge badge--primary">True/False</span>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -526,4 +543,41 @@ _Example_
     <message id="standalone-text" text="This is a standalone text trigger"/>
     <trigger filter="another-dynamic-filter" action="standalone-text" scope="player"/>
 </actions>
+```
+
+## Examples
+
+### Enabling Blitz Mode
+
+This example uses the `expose` attribute in Action to allow moderators to enable
+a "Blitz Mode" using the `/action` command. Moderators must have the `GAMEPLAY` permissions
+in order to use `/action`. See [Commands](/docs/commands/main) for more details.
+
+```
+<actions>
+  <!-- Moderator uses "/action trigger start-blitz" to start this Action -->
+  <action id="start-blitz" expose="true" scope="match">
+    <!-- Sends notification to chat -->
+    <message text="Blitz mode has been enabled!"/>
+    <!-- Sets blitz_enabled to 1 -->
+    <set var="blitz_enabled" value="1"/>
+  </action>
+
+  <!-- Moderator uses "/action trigger end-blitz" to start this Action -->
+  <action id="end-blitz" expose="true" scope="match">
+    <message text="Blitz mode has been disabled!"/>
+    <set var="blitz_enabled" value="0"/>
+  </action>
+</actions>
+<!-- Creates the blitz_enabled variable -->
+<variables>
+  <variable id="blitz_enabled" scope="match"/>
+</variables>
+<blitz>
+  <!-- Matches for a condition where a player loses a life -->
+  <filter>
+    <!-- If a player dies when blitz_enabled is 1, they lose a life -->
+    <variable var="blitz_enabled">1</variable>
+  </filter>
+</blitz>
 ```
