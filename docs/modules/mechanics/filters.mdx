@@ -1107,9 +1107,12 @@ It never matches when the child filter doesn’t match. This filter is a [Dynami
         <td>
           <label>duration</label>
         </td>
-        <td>Length of time to match for.</td>
         <td>
-          <span className="badge badge--primary">Number</span>
+          <span className="badge badge--danger">Required</span>
+          Length of time to match for.
+        </td>
+        <td>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
       </tr>
       <tr>
@@ -1156,6 +1159,58 @@ The filter activates and deactiviates for a certain duration in a time period, a
 which the filter is evaluated again. The filter continues repeating if the inner filter condition is still `ALLOW`.
 This is mainly useful in combination with [Actions & Triggers](/docs/modules/mechanics/actions-triggers).
 This filter is a [Dynamic Filter](#dynamic-filters).
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>period</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Length of time a pulse remains on in a cycle.
+        </td>
+        <td>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>duration</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Length of time a cycle lasts for.
+          <br/><em>Must be longer than period.</em>
+        </td>
+        <td>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>message</label>
+        </td>
+        <td>
+          Optional timer message to display while counting down.
+          Only players who match the filter can see the timer.
+          If the message contains a placeholder, it will be replaced with the remaining time.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ```
 <filters>
