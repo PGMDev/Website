@@ -1021,6 +1021,9 @@ _Examples_
 <variable id="next-blue" var="next_post">1</variable>
 <!-- Match if t_score is ≥ 100 -->
 <variable id="reached-score" var="t_score">[100,oo)</variable>
+<!-- Match if red team's t_score is 20 -->
+<!-- (The variable must have the team score for it to work) -->
+<variable id="red-reached-score" team="red-team" var="t_score">20</variable>
 ```
 
 ### Random Filter
