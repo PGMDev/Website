@@ -145,6 +145,39 @@ Generic filters can apply to anything.
       </tr>
       <tr>
         <td>
+          <label>{`<match-started/>`}</label>
+        </td>
+        <td>
+          Filter if the match has started <em>(running or finished)</em>.
+        </td>
+        <td>
+          <span className="badge badge--primary">Dynamic</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<match-running/>`}</label>
+        </td>
+        <td>
+          Filter if the match is running.
+        </td>
+        <td>
+          <span className="badge badge--primary">Dynamic</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<match-finished/>`}</label>
+        </td>
+        <td>
+          Filter if the match is over.
+        </td>
+        <td>
+          <span className="badge badge--primary">Dynamic</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>{`<objective>objective-id</objective>`}</label>
         </td>
         <td>Match if the objective is completed.</td>
@@ -1106,7 +1139,7 @@ It never matches when the child filter doesn’t match. This filter is a [Dynami
 
 ### After Filter
 
-This filter allows after a duration the child filters start allowing.
+This filter starts allowing sometime after a duration the child filters start allowing.
 This filter is a [Dynamic Filter](#dynamic-filters).
 
 ```
@@ -1634,6 +1667,36 @@ _Example_
         <structural-load>3</structural-load>
     </all>
 </not>
+```
+
+### Match Phase Filter
+
+The Match Phase Filter matches for a certain state the match is in.
+ie. This filter can start matching *after* a match ends.
+
+:::tip
+Users should use the more specific `<match-started/>`, `<match-running/>` or `<match-finished/>`
+filters instead of `<match-phase>`.
+:::
+
+```
+<!-- Filter if the match has started (running or finished) -->
+<match-started/>
+<!-- Filter if the match is currently running -->
+<match-running/>
+<!-- Filter if the match is over -->
+<match-finished/>
+
+<!-- Filter if the match is actively running and participants have been created -->
+<match-phase>running</match-phase>
+<!-- Filter if the match has stopped running and (if possible) has announced a winner -->
+<match-phase>finished</match-phase>
+<!-- Filter if the match has started (running or finished) -->
+<match-phase>started</match-phase>
+<!-- Filter if match has been queued to transition to running and a countdown is actively progressing -->
+<match-phase>starting</match-phase>
+<!-- Filter if match has loaded but no countdown is given -->
+<match-phase>idle</match-phase>
 ```
 
 ### Void Filter
