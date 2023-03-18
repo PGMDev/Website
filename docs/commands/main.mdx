@@ -31,48 +31,6 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/team alias</label>
-        </td>
-        <td></td>
-        <td>Rename a team</td>
-        <td></td>
-        <td>[old team name] [new team name]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/timelimit</label>
-        </td>
-        <td>tl</td>
-        <td>Start a time limit</td>
-        <td>
-          -r result (result can be default, objectives, tie, or name of team)
-        </td>
-        <td>[duration] [result] [overtime] [max-overtime]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/mode push</label>
-        </td>
-        <td></td>
-        <td>Reschedule all unconditional objective modes</td>
-        <td></td>
-        <td>[time]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/mode start</label>
-        </td>
-        <td></td>
-        <td>Starts an objective mode</td>
-        <td></td>
-        <td>[mode number] [time]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
           <label>/action list</label>
         </td>
         <td>actions list, actions page</td>
@@ -99,6 +57,46 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
         <td>Untrigger a specific action</td>
         <td></td>
         <td>[action]</td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/mode push</label>
+        </td>
+        <td></td>
+        <td>Reschedule all unconditional objective modes</td>
+        <td></td>
+        <td>[time]</td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/mode start</label>
+        </td>
+        <td></td>
+        <td>Starts an objective mode</td>
+        <td></td>
+        <td>[mode number] [time]</td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/team alias</label>
+        </td>
+        <td></td>
+        <td>Rename a team</td>
+        <td></td>
+        <td>[old team name] [new team name]</td>
+        <td>GAMEPLAY</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/timelimit</label>
+        </td>
+        <td>tl</td>
+        <td>Start a time limit</td>
+        <td>-r result (result can be default, objectives, tie, or name of team)</td>
+        <td>[duration] [result] [overtime] [max-overtime]</td>
         <td>GAMEPLAY</td>
       </tr>
       <tr>
@@ -143,6 +141,16 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
+          <label>/loadnewmaps</label>
+        </td>
+        <td>findnewmaps new maps</td>
+        <td>Load New Maps</td>
+        <td>-f force</td>
+        <td></td>
+        <td>RELOAD</td>
+      </tr>
+      <tr>
+        <td>
           <label>/pgm</label>
         </td>
         <td></td>
@@ -153,13 +161,23 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/loadnewmaps</label>
+          <label>/ffa min</label>
         </td>
-        <td>findnewmaps new maps</td>
-        <td>Load New Maps</td>
-        <td>-f force</td>
         <td></td>
-        <td>RELOAD</td>
+        <td>Set the min players</td>
+        <td></td>
+        <td>[reset | min-players]</td>
+        <td>RESIZE</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/ffa size</label>
+        </td>
+        <td></td>
+        <td>Set the max players</td>
+        <td></td>
+        <td>[reset | max-players] (max-overfill)</td>
+        <td>RESIZE</td>
       </tr>
       <tr>
         <td>
@@ -176,36 +194,16 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
           <label>/team size</label>
         </td>
         <td></td>
-        <td>Set the max players</td>
+        <td>Set the max players on a team</td>
         <td></td>
         <td>[reset] (max-players | max-overfill)</td>
         <td>RESIZE</td>
       </tr>
       <tr>
         <td>
-          <label>/ffa size</label>
-        </td>
-        <td></td>
-        <td>Set the max players on a team</td>
-        <td></td>
-        <td>[team] (reset | min-players)</td>
-        <td>RESIZE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/ffa min</label>
-        </td>
-        <td></td>
-        <td>Set the min players on a team</td>
-        <td></td>
-        <td></td>
-        <td>RESIZE</td>
-      </tr>
-      <tr>
-        <td>
           <label>/setnext</label>
         </td>
-        <td>sn</td>
+        <td></td>
         <td>Change the next map</td>
         <td>-f force -r reset</td>
         <td>[map name]</td>
@@ -223,22 +221,22 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/setrot</label>
-        </td>
-        <td></td>
-        <td>Set a rotation as current pool. Use /setpool to set other types of pools.</td>
-        <td>-t timelimit -m matchlimit</td>
-        <td>[rotation name]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
           <label>/setrot reset</label>
         </td>
         <td></td>
         <td>Reset the rotation to default. Use /setpool to reset to other types of pools.</td>
         <td>-t timelimit -m matchlimit</td>
         <td></td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/setrot</label>
+        </td>
+        <td></td>
+        <td>Set a rotation as current pool. Use /setpool to set other types of pools.</td>
+        <td>-t timelimit -m matchlimit</td>
+        <td>[rotation name]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
@@ -263,12 +261,12 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/vote remove</label>
+          <label>/vote clear</label>
         </td>
-        <td>rm</td>
-        <td>Remove a custom map from the next vote</td>
         <td></td>
-        <td>[map name]</td>
+        <td>Clear all custom map selections from the next vote</td>
+        <td></td>
+        <td></td>
         <td>SETNEXT</td>
       </tr>
       <tr>
@@ -283,12 +281,12 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/vote clear</label>
+          <label>/vote remove</label>
         </td>
+        <td>rm</td>
+        <td>Remove a custom map from the next vote</td>
         <td></td>
-        <td>Clear all custom map selections from the next vote</td>
-        <td></td>
-        <td></td>
+        <td>[map name]</td>
         <td>SETNEXT</td>
       </tr>
       <tr>
@@ -463,6 +461,16 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
+          <label>/msg</label>
+        </td>
+        <td>msg tell pm dm (@ - do not use forward slash)</td>
+        <td>Send a direct message to a player</td>
+        <td></td>
+        <td>[player] [message]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
           <label>/nextmap</label>
         </td>
         <td>mn mapnext nm next</td>
@@ -483,16 +491,6 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/rot</label>
-        </td>
-        <td></td>
-        <td>List the maps in the rotation. Use /pool to see unfiltered results.</td>
-        <td>-s scores -c chance</td>
-        <td>[page]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
           <label>/pools</label>
         </td>
         <td></td>
@@ -503,22 +501,42 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
       </tr>
       <tr>
         <td>
-          <label>/rots</label>
-        </td>
-        <td></td>
-        <td>List all the rotations. Use /pools to see unfiltered results.</td>
-        <td>-d dynamic only</td>
-        <td>[page]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
           <label>/proximity</label>
         </td>
         <td>prox</td>
         <td>Show the progress of each objective</td>
         <td></td>
         <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/reply</label>
+        </td>
+        <td>r</td>
+        <td>Reply to a direct message</td>
+        <td></td>
+        <td>[message]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/rot</label>
+        </td>
+        <td></td>
+        <td>List the maps in the rotation. Use /pool to see unfiltered results.</td>
+        <td>-s scores -c chance</td>
+        <td>[page]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/rots</label>
+        </td>
+        <td></td>
+        <td>List all the rotations. Use /pools to see unfiltered results.</td>
+        <td>-d dynamic only</td>
+        <td>[page]</td>
         <td></td>
       </tr>
       <tr>
