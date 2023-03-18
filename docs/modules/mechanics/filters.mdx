@@ -1603,11 +1603,13 @@ This filter is only used in damage related contexts i.e., [damage filters](/docs
 The structural load filter checks the number of gravity blocks that are attached to the queried block.
 It returns `ALLOW` as long as the structural load is greater than or equal to the specified value and `DENY` otherwise.
 
-<span className="badge badge--warning">Warning</span> This filter is very computationally
+:::caution
+This filter is very computationally
 expensive to apply. XML authors should ensure that it is only run when absolutely
 necessary, e.g. by placing other filters above it. They should also not apply it
 to events that modify large amounts of blocks, such as explosions. This filter requires
 the falling blocks module to be loaded otherwise it will default to abstain.
+:::
 
 _Example_
 
