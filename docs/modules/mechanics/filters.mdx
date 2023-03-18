@@ -718,15 +718,6 @@ These elements must contain either a single filter, or a list of filters, as the
         </td>
       </tr>
       <tr>
-        <td>
-          <label>{`<after duration="5s">`}</label>
-        </td>
-        <td>Allow after a duration the child filters start allowing.</td>
-        <td>
-          <span className="badge badge--primary">Dynamic</span>
-        </td>
-      </tr>
-      <tr>
         <th colspan="3">Abstention - force filters to abstain</th>
       </tr>
       <tr>
@@ -1066,12 +1057,60 @@ _Examples_
 This filter matches for **up to** the specified amount of time after the child filter starts matching.
 It never matches when the child filter doesn’t match. This filter is a [Dynamic Filter](#dynamic-filters).
 
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>duration</label>
+        </td>
+        <td>Length of time to match for.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>message</label>
+        </td>
+        <td>
+          Optional timer message to display while counting down.
+          Only players who match the filter can see the timer.
+          If the message contains a placeholder, it will be replaced with the remaining time.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 ```
 <!-- Countdown 30s from the moment any player picks up the flag -->
 <!-- (you could then use the countdown filter to kill them, teleport them, etc) -->
-<countdown duration="30s" message="You have {0} to capture the flag">
+<countdown duration="30s" message="You have {0} to capture the flag!">
     <carrying-flag>blue-flag</carrying-flag>
 </countdown>
+```
+
+### After Filter
+
+This filter allows after a duration the child filters start allowing.
+This filter is a [Dynamic Filter](#dynamic-filters).
+
+```
+<!-- Allows 15 seconds after the player gets 1st place -->
+<after duration="15s" message="1st place bonus will apply in 15 seconds.">
+    <rank>1</rank>
+</after>
 ```
 
 ### Pulse Filter
