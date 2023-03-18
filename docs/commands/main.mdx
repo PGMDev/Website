@@ -215,10 +215,30 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
         <td>
           <label>/setpool</label>
         </td>
-        <td>setrot</td>
+        <td></td>
         <td>Change the map pool</td>
         <td>-r revert to dynamic -t timelimit -m matchlimit</td>
         <td>[pool name]</td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/setrot</label>
+        </td>
+        <td></td>
+        <td>Set a rotation as current pool. Use /setpool to set other types of pools.</td>
+        <td>-t timelimit -m matchlimit</td>
+        <td>[rotation name]</td>
+        <td>SETNEXT</td>
+      </tr>
+      <tr>
+        <td>
+          <label>/setrot reset</label>
+        </td>
+        <td></td>
+        <td>Reset the rotation to default. Use /setpool to reset to other types of pools.</td>
+        <td>-t timelimit -m matchlimit</td>
+        <td></td>
         <td>SETNEXT</td>
       </tr>
       <tr>
@@ -455,20 +475,40 @@ Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
         <td>
           <label>/pool</label>
         </td>
-        <td>rotation rot</td>
-        <td>List the maps in the map pool</td>
-        <td>-p pool -s scores -c chance of vote</td>
         <td></td>
+        <td>List the maps in the map pool</td>
+        <td>-t type -p pool -s scores -c chance of vote</td>
+        <td>[page]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/rot</label>
+        </td>
+        <td></td>
+        <td>List the maps in the rotation. Use /pool to see unfiltered results.</td>
+        <td>-s scores -c chance</td>
+        <td>[page]</td>
         <td></td>
       </tr>
       <tr>
         <td>
           <label>/pools</label>
         </td>
-        <td>rotations rots</td>
+        <td></td>
         <td>List all the map pools</td>
         <td>-d dynamic only</td>
         <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>/rots</label>
+        </td>
+        <td></td>
+        <td>List all the rotations. Use /pools to see unfiltered results.</td>
+        <td>-d dynamic only</td>
+        <td>[page]</td>
         <td></td>
       </tr>
       <tr>
