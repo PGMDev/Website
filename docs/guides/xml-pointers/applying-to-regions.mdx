@@ -7,21 +7,6 @@ Regions define areas that can later be applied to [Filters](/docs/modules/mechan
 and other modules.
 Understanding how modules, regions and filters work together is important to make critical mechanics for a map.
 
-## Creating a Region
-
-Creating a [Region](docs/modules/mechanics/filters) involves certain world coordinates.
-In this example, we will create simple `<cuboid/>` regions inside a `<union>`, which we will save with IDs
-which we can reference for later use.
-
-```xml
-<regions>
-    <union id="spawns">
-        <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
-        <cuboid id="blue-spawn" min="10,0,-55" max="30,10,-75"/>
-    </union>
-</regions>
-```
-
 ## Creating a Filter
 
 Creating a [Filter](/docs/modules/mechanics/filters) allows us to put restrictions on certain events.
@@ -37,6 +22,21 @@ players on a certain team.
 </filters>
 ```
 
+## Creating a Region
+
+Creating a [Region](docs/modules/mechanics/filters) involves certain world coordinates.
+In this example, we will create simple `<cuboid/>` regions inside a `<union>`, which we will save with IDs
+which we can reference for later use.
+
+```xml
+<regions>
+    <union id="spawns">
+        <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
+        <cuboid id="blue-spawn" min="10,0,-55" max="30,10,-75"/>
+    </union>
+</regions>
+```
+
 ## Applying a Filter to a Region
 
 Applying filters to a region is done inside the `<regions>` module.
@@ -47,6 +47,10 @@ When a player enters `red-spawn`, we want to make sure that only players on the 
 So we apply our `only-red` filter to players that are entering it.
 
 ```xml
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
 <regions>
     <union id="spawns">
         <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
@@ -56,10 +60,6 @@ So we apply our `only-red` filter to players that are entering it.
     <apply region="red-spawn" enter="only-red"/>
     <apply region="blue-spawn" enter="only-blue"/>
 </regions>
-<filters>
-    <team id="only-red">red-team</team>
-    <team id="only-blue">blue-team</team>
-</filters>
 ```
 
 ## Applying things to multiple regions
@@ -73,6 +73,10 @@ This XML protects spawn from being damaged by players, TNT, mobs, etc and preven
 players from entering their enemy's spawn room, but can still safely enter their own.
 
 ```xml
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
 <regions>
     <union id="spawns">
         <cuboid id="red-spawn" min="20,0,55" max="40,10,75"/>
@@ -83,8 +87,4 @@ players from entering their enemy's spawn room, but can still safely enter their
     <!-- denies all block breaking and placing in both red-spawn and blue-spawn -->
     <apply region="spawns" block="never"/>
 </regions>
-<filters>
-    <team id="only-red">red-team</team>
-    <team id="only-blue">blue-team</team>
-</filters>
 ```

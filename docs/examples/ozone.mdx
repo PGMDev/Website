@@ -3,8 +3,8 @@ id: ozone
 title: Ozone FFA
 ---
 
-Ozone FFA is a free-for-all adaptation of the original version of Ozone, which was a TDM.
-Each player fights for himself, and whoever gets the most kills after 10 minutes wins.
+Ozone FFA is a free-for-all adaptation of the original version of Ozone, which was a TDM map.
+Each player fights for themselves, and whoever gets the most kills after 10 minutes wins.
 All players are equipped with bows that shoot ender pearls, allowing them to easily traverse the map.
 
 _Source: [Ozone FFA](https://github.com/OvercastCommunity/PublicMaps/tree/main/ffa/standard/ozone_ffa) by [Plastix](https://github.com/Plastix),
@@ -23,11 +23,11 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 <!-- Specifies what the map is called -->
 <name>Ozone FFA</name>
 <!-- States what version the map is -->
-<version>1.0.1</version>
+<version>1.0.2</version>
 <!-- Tells players what the objective is in order to win the game -->
 <objective>Kill the most players in 10 minutes!</objective>
-<!-- Set the time limit for the map -->
-<time>10m</time>
+<!-- Sets the gamemode title for the map -->
+<gamemode>ffa</gamemode>
 <!-- States who made the map -->
 <authors>
     <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8" contribution="Overall map design and XML"/> <!-- Plastix -->
@@ -40,34 +40,42 @@ Every map XML file starts with the XML header and then the base `<map>` module.
     <contributor uuid="2553e6f2-3a2c-440b-a6a3-39e3df7fe3ff" contribution="Feedback and aesthetics"/> <!-- Khazhyk -->
     <contributor uuid="3ce426cd-2ded-4f83-a9bb-46a57d68d9a5" contribution="Various aesthethics"/> <!-- McYukon -->
 </contributors>
-<!-- Sets the gamemode title for the map -->
-<gamemode>ffa</gamemode>
+<!-- Shows any map rules or details that are not in normal server rules which appears when running /map -->
+<rules>
+    <rule>Fall damage is disabled</rule>
+</rules>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/format/players)
-Sets the teamless map, gives each player a random color, and up to 80 players can join.
+Specify that this is a teamless map, assign each player a random color, and allow up to 80 players to join.
 
 ```xml
 <players min="2" max="80" colors="true"/>
 ```
 
+[<i className="icon-right">➡️</i>](/docs/modules/objectives/scoring/#time-limit)
+Set a 10 minute time limit for the map. The player with the most points after time is up wins.
+
 ```xml
-<!-- Player earns one point for killing an enemy -->
+<!-- Gain 1 point for killing a player, the player with most points after 10 minutes wins -->
 <score>
     <kills>1</kills>
 </score>
-<!-- Shows any map rules or details that are not in normal server rules -->
-<rules>
-    <rule>Fall damage is disabled.</rule>
-</rules>
-<!-- Tells all players 2 seconds into the match about fall damage and ender pearl bows -->
+<time>10m</time>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/information/broadcasts)
+Use the broadcasts module to tell players about special mechanics on this map.
+
+```xml
+<!-- Announce to all players 2 seconds into the match about fall damage and ender pearl bows -->
 <broadcasts>
     <alert after="2s">Fall damage is disabled on this map! Bows shoot ender pearls!</alert>
 </broadcasts>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
-Defines the kit all players get.
+Defines the kit that players will receive.
 
 ```xml
 <kits>
@@ -79,10 +87,11 @@ Defines the kit all players get.
         </item>
         <item slot="28" material="arrow"/>
         <item slot="2" material="golden apple"/>
+        <!-- Helmet and chestplate will be automatically colored based on the player's given color -->
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="3">protection projectile</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="5" amplifier="10">damage resistance</effect>
@@ -92,7 +101,7 @@ Defines the kit all players get.
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/spawns)
-Specify where the previously defined teams will spawn, the kit they will spawn with and what direction they face.
+Specify where the previously defined teams will spawn, the kit they will spawn with, and what direction they face.
 
 ```xml
 <spawns>
@@ -124,19 +133,18 @@ Specify where the previously defined teams will spawn, the kit they will spawn w
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/regions)
-This map does not feature building, so any block breaking is disabled.
+This map does not feature building, so any block placing or breaking is disabled.
 
 ```xml
 <regions>
-    <!-- deny all block place and block break events -->
-    <!-- defaults to everywhere on the map -->
+    <!-- Deny all block place and block break events; defaults to everywhere on the map -->
     <apply block="never"/>
 </regions>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/repair-remove-keep)
 Depending on the item dropped, different things will happen. They may be picked up by
-players that don't already have the item, kept when the player dies or are completely removed from the map.
+players that don't already have the item, kept when the player dies, or are completely removed from the map.
 
 ```xml
 <!-- These items will drop, players that already have these items can pick it up and will be merged -->
@@ -145,6 +153,10 @@ players that don't already have the item, kept when the player dies or are compl
     <tool>bow</tool>
     <tool>arrow</tool>
 </toolrepair>
+<!-- If the player has these item, it will be saved in their inventory -->
+<itemkeep>
+    <item>golden apple</item>
+</itemkeep>
 <!-- All of these items will be automatically removed when dropped -->
 <itemremove>
     <item>leather helmet</item>
@@ -152,27 +164,25 @@ players that don't already have the item, kept when the player dies or are compl
     <item>chainmail leggings</item>
     <item>iron boots</item>
 </itemremove>
-<!-- Keep golden apples when you die -->
-<itemkeep>
-    <item>golden apple</item>
-</itemkeep>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kill-rewards)
-Give players a golden apple for killing an enemy.
+Reward players by giving a golden apple for killing an enemy.
 
 ```xml
 <!-- Get a golden apple after killing a player -->
-<kill-reward>
-    <item material="golden apple"/>
-</kill-reward>
+<kill-rewards>
+    <kill-reward>
+        <item material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/damage#hunger)
 Players do not need to worry about hunger in this map, so hunger is disabled.
 
 ```xml
-<!-- Disable hunger from depleating -->
+<!-- Disable hunger from depleting -->
 <hunger>
     <depletion>off</depletion>
 </hunger>
@@ -200,8 +210,16 @@ Disables all falling damage.
 </disabledamage>
 ```
 
+[<i className="icon-right">➡️</i>](/docs/modules/mechanics/gamerules)
+Throwing Ender pearls will occasionally result in Endermites spawning, so we want to disable this unintended mechanics.
+```xml
+<gamerules>
+    <doMobSpawning>false</doMobSpawning>
+</gamerules>
+```
+
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/spawns#respawn-module)
-This module will automatically respawn players, and let them spectate others before respawning.
+This module will automatically respawn players and let them spectate others before respawning.
 
 ```xml
 <respawn auto="true" spectate="true"/>

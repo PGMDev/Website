@@ -11,7 +11,6 @@ Modules must all start on column one.
 This means that all children tags under the `<map>` tag must be aligned with said `<map>` tag.
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
@@ -24,7 +23,6 @@ This means that all children tags under the `<map>` tag must be aligned with sai
 Modules that have sub elements such as the `author` tag must be indented with 4 spaces below the parent element.
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <authors>
     <author uuid="060baa18-2852-40d8-afcb-e61607c04be3"/> <!-- PepsiDog -->
@@ -39,7 +37,6 @@ That means the end of one module should have the start of another on the immedia
 
 ```xml
 <!-- Correct -->
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
@@ -49,8 +46,6 @@ That means the end of one module should have the start of another on the immedia
 
 ```xml
 <!-- Incorrect! -->
-<?xml version="1.0"?>
-
 <map proto="1.4.2">
 
 <name>Blocks DTC</name>
@@ -94,7 +89,6 @@ Contributors are optional but are still to remain at the top.
 :::
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
@@ -161,7 +155,7 @@ Objectives are short and concise statements that tell the player what they need 
 Modules that require an `id` to be defined should be named in all lowercase and use a `-` dash to signify a space.
 
 ```xml
-<team id="only-blue">blue</team>
+<team id="only-blue">blue-team</team>
 ```
 ### Team Filters
 

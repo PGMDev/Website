@@ -3,11 +3,11 @@ id: warlock
 title: Warlock (DTM)
 ---
 
-Warlock is a Destroy the Monument map. Players must destroy a single obsidian monument.
+Warlock is a Destroy the Monument map. Players must destroy a single obsidian monument to win.
 
 _Source: [Warlock](https://github.com/MCResourcePile/overcast-maps/tree/master/maps/warlock) by [McSpider](https://github.com/McSpider).
 ![](/img/examples/warlock1.png)
-\_Players can build and jump their way to the other side of the map. The cobwebs define
+Players can build and jump their way to the other side of the map. The cobwebs define
 the out of bounds region. Underground hallways lead to the monument._
 
 ![](/img/examples/warlock2.png)
@@ -17,12 +17,11 @@ _The monument is obsidian protected by stone bricks and a wooden pressure plate 
 Every map XML file starts with the XML header and then the base `<map>` module.
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Warlock</name>
 <!-- States what version the map is -->
-<version>1.3.10</version>
+<version>1.3.11</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Break the obsidian from the enemy team's monument.</objective>
 <!-- States who made the map -->
@@ -33,97 +32,185 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 <contributors>
     <contributor uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8" contribution="Map Feedback and XML Coding"/> <!-- Plastix -->
 </contributors>
-<!-- Shows any map specific rules that are not in normal server rules -->
-<rules>
-    <rule>Don't spawn kill!</rule>
-    <rule>Don't block the spawns!</rule>
-</rules>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/format/teams)
-Defines the team's [colors](/docs/reference/misc/formatting#chatColors), names and how many people can be on the teams.
+Define the teams' [colors](/docs/reference/misc/formatting#chatColors), names, and how many people can be on each team.
 
 ```xml
 <teams>
-    <team color="dark red" max="13">Red</team>
-    <team color="blue" max="13">Blue</team>
+    <team id="red-team" color="dark red" max="13">Red</team>
+    <team id="blue-team" color="blue" max="13">Blue</team>
 </teams>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
-Defines the kits all players get.
+Define the kit that players will receive.
 
 ```xml
 <kits>
-    <kit id="spawn">
-        <item slot="1" enchantment="arrow infinite:1" unbreakable="true">bow</item>
-        <item slot="28">arrow</item>
-        <item slot="2" unbreakable="true">diamond pickaxe</item>
-        <item slot="3" unbreakable="true">iron axe</item>
-        <item slot="30" unbreakable="true">iron spade</item>
-        <item slot="5" amount="64">glass</item>
-        <item slot="6" amount="64" damage="2">wood</item>
-        <item slot="17" amount="2">gold nugget</item>
-        <item slot="8" amount="64">cooked beef</item>
-        <item slot="27" amount="64">apple</item>
-        <potion duration="2" amplifier="1">heal</potion>
-        <potion duration="4">damage resistance</potion>
-    </kit>
-    <kit id="red-spawn" parents="spawn">
-        <item lore="Red spawn sword" slot="0" unbreakable="true">iron sword</item>
-        <helmet color="cd0000" unbreakable="true">leather helmet</helmet>
-        <chestplate color="cd0000" enchantment="protection projectile:2" unbreakable="true">leather chestplate</chestplate>
-        <leggings color="cd0000" unbreakable="true">leather leggings</leggings>
-        <boots color="cd0000" unbreakable="true">leather boots</boots>
-    </kit>
-    <kit id="blue-spawn" parents="spawn">
-        <item lore="Blue spawn sword" slot="0" unbreakable="true">iron sword</item>
-        <helmet color="0066cc" unbreakable="true">leather helmet</helmet>
-        <chestplate color="0066cc" enchantment="protection projectile:2" unbreakable="true">leather chestplate</chestplate>
-        <leggings color="0066cc" unbreakable="true">leather leggings</leggings>
-        <boots color="0066cc" unbreakable="true">leather boots</boots>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="iron sword"/>
+        <item slot="1" unbreakable="true" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="2" unbreakable="true" material="diamond pickaxe"/>
+        <item slot="3" unbreakable="true" material="iron axe"/>
+        <item slot="4" amount="64" material="glass"/>
+        <item slot="5" damage="2" amount="64" material="wood"/> <!-- To get birch planks, damage must be "2" -->
+        <item slot="6" amount="2" material="gold nugget"/>
+        <item slot="28" material="arrow"/>
+        <item slot="30" unbreakable="true" material="iron spade"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate">
+            <enchantment level="2">protection projectile</enchantment>
+        </chestplate>
+        <leggings unbreakable="true" team-color="true" material="leather leggings"/>
+        <boots unbreakable="true" team-color="true" material="leather boots"/>
+        <effect duration="2">heal</effect>
+        <effect duration="4">damage resistance</effect>
     </kit>
 </kits>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/spawns)
-Defines the spawn areas and the kit each team gets.
+Define the spawn areas and the kit each team gets. The regions will be defined in a later section.
 
 ```xml
 <spawns>
-    <spawn kit="red-spawn" team="red" yaw="0">
-        <region>
-            <cuboid min="40,6,-30" max="44,6,-34"/>
-        </region>
-    </spawn>
-    <spawn kit="blue-spawn" team="blue" yaw="180">
-        <region>
-            <cuboid min="40,6,31" max="44,6,35"/>
-        </region>
-    </spawn>
-    <default yaw="90">
-        <region>
-            <point>133.5,22,0.5</point>
-        </region>
-    </default>
+    <spawn team="red-team" kit="spawn-kit" region="red-spawn-point"/>
+    <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point" yaw="180"/>
+    <default region="obs-spawn-point" yaw="90"/>
 </spawns>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/objectives/dtm)
-This specifies what material the monuments are made of, and where each monument belongs to.
+This specifies what material the monuments are made of and where each monument belongs to. The regions will be defined in a later section.
 
 ```xml
 <destroyables name="Monument" materials="obsidian" mode-changes="true">
-    <destroyable owner="red">
-        <cuboid min="77,1,-36" max="78,3,-37"/>
-    </destroyable>
-    <destroyable owner="blue">
-        <cuboid min="77,1,37" max="78,3,38"/>
-    </destroyable>
+    <destroyable owner="red-team" region="red-monument"/>
+    <destroyable owner="blue-team" region="blue-monument"/>
 </destroyables>
+<!-- The monuments which are made of obsidian will turn into beacon blocks in 20 minutes -->
 <modes>
     <mode material="beacon" after="20m"/>
 </modes>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/mechanics/filters)
+Define the filters on the map and determine which events are allowed.
+
+```xml
+<filters>
+    <!-- Query if the player is over a void area -->
+    <not id="not-void">
+        <void/>
+    </not>
+    <!-- Always deny beacon placement, destruction, or interaction -->
+    <deny id="deny-beacon">
+        <material>beacon</material>
+    </deny>
+</filters>
+```
+[<i className="icon-right">➡️</i>](/docs/modules/mechanics/regions)
+Define regions that can be used to apply spawns, filters, etc.
+
+```xml
+<regions>
+    <cuboid id="red-spawn-point" min="40,6,-30" max="44,6,-34"/>
+    <cuboid id="blue-spawn-point" min="40,6,31" max="44,6,35"/>
+    <point id="obs-spawn-point">133.5,22,0.5</point>
+    <cuboid id="red-monument" min="77,1,-36" max="78,3,-37"/>
+    <cuboid id="blue-monument" min="77,1,37" max="78,3,38"/>
+    <union id="spawns">
+        <union id="red-spawn">
+            <cuboid min="36,5,-38" max="55,11,-25"/>
+            <cuboid min="54,5,-31" max="61,11,-38"/>
+        </union>
+        <union id="blue-spawn">
+            <cuboid min="36,5,39" max="55,11,26"/>
+            <cuboid min="54,5,32" max="61,11,39"/>
+        </union>
+    </union>
+    <negative id="not-build-region">
+        <rectangle id="build-region" min="26,-49" max="120,50"/>
+    </negative>
+    <!-- applicators -->
+    <apply block="never" region="spawns" message="You may not edit spawn!"/>
+    <apply block="not-void" region="not-build-region" message="You may not edit the void!"/>
+    <apply use="deny-beacon"/>
+</regions>
+```
+[<i className="icon-right">➡️</i>](/docs/modules/gear/repair-remove-keep)
+We do not want an excessive amount of items dropped on the map, so this allows us to manage
+how to deal with dropped items more easily.
+
+```xml
+<!-- These items will drop, players that already have these items can pick it up and will be merged -->
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>iron spade</tool>
+</toolrepair>
+<!-- If the player has these item, it will be saved in their inventory -->
+<itemkeep>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>diamond pickaxe</item>
+    <item>iron axe</item>
+    <item>iron spade</item>
+    <item>arrow</item>
+    <item>wood</item>
+    <item>glass</item>
+    <item>golden apple</item>
+</itemkeep>
+<!-- All of these items will be automatically removed when dropped -->
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
+    <item>obsidian</item>
+    <item>beacon</item>
+    <item>ink sack</item>
+</itemremove>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/blocks/blockdrops)
+You can allow players to drop only specific blocks from their inventory, but not when they die or the blocks are broken in the world.
+
+```xml
+<block-drops>
+    <rule>
+        <filter>
+            <any>
+                <material>wood:2</material>
+                <material>glass</material>
+            </any>
+        </filter>
+        <drops>
+            <item chance="0" material="wood"/>
+        </drops>
+    </rule>
+</block-drops>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/gear/tnt)
+Configure how TNT behaves on a map.
+
+```xml
+<tnt>
+    <!-- TNT will automatically ignite when placed -->
+    <instantignite>on</instantignite>
+    <!-- Do not require a license so TNT usage is not restricted -->
+    <licensing>off</licensing>
+    <!-- Players can't defuse a teammate's TNT -->
+    <friendly-defuse>off</friendly-defuse>
+</tnt>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kill-rewards)
@@ -131,12 +218,12 @@ We can make special kill rewards for players that fit certain criteria.
 
 ```xml
 <kill-rewards>
-    <!-- All players get a golden apple and a gold nugget after killing a player -->
+    <!-- All players get a golden apple and a gold nugget after killing an enemy -->
     <kill-reward>
-        <item>gold nugget</item>
-        <item>golden apple</item>
+        <item material="gold nugget"/>
+        <item material="golden apple"/>
     </kill-reward>
-    <!-- Players that kill 2 enemies in a row will get 4 ink sacks,  -->
+    <!-- Players that kill two enemies in a row will get four ink sacks -->
     <kill-reward>
         <filter>
             <kill-streak count="2" repeat="true"/>
@@ -146,100 +233,21 @@ We can make special kill rewards for players that fit certain criteria.
 </kill-rewards>
 ```
 
-[<i className="icon-right">➡️</i>](/docs/modules/gear/repair-remove-keep)
-We don't want an excessive amount of items dropped on the map, so this allows us to manage
-how to deal with dropped items more easily.
+[<i className="icon-right">➡️</i>](/docs/modules/mechanics/damage#hunger)
+Players do not need to worry about hunger in this map, so hunger is disabled.
 
 ```xml
-<!-- These items will drop, players that already have these items can pick it up and will be merged -->
-<toolrepair>
-    <tool>iron sword</tool>
-    <tool>diamond pickaxe</tool>
-    <tool>iron axe</tool>
-    <tool>iron spade</tool>
-    <tool>bow</tool>
-</toolrepair>
-<!-- All of these items will be automatically removed when dropped -->
-<itemremove>
-    <item>arrow</item>
-    <item>leather helmet</item>
-    <item>leather chestplate</item>
-    <item>leather leggings</item>
-    <item>leather boots</item>
-    <item>wood</item>
-    <item>glass</item>
-    <item>apple</item>
-    <item>cooked beef</item>
-    <item>obsidian</item>
-    <item>beacon</item>
-    <item>ink sack</item>
-    <item>golden apple</item>
-</itemremove>
-```
-
-[<i className="icon-right">➡️</i>](/docs/modules/mechanics/filters)
-Defines the filters on the map and determines which events are allowed.
-
-```xml
-<filters>
-    <all id="base-filter">
-        <material>glass</material>
-    </all>
-    <not id="no-beacon">
-        <material>beacon</material>
-    </not>
-</filters>
-```
-
-[<i className="icon-right">➡️</i>](/docs/modules/mechanics/regions)
-Defines regions that can be later used to apply spawns, filters, etc
-
-```xml
-<regions>
-    <!-- You can only place glass in spawn -->
-    <apply block="base-filter">
-        <union id="red-base">
-            <cuboid min="36,5,-38" max="55,11,-25"/>
-            <cuboid min="54,5,-31" max="61,11,-38"/>
-        </union>
-    </apply>
-    <apply block="base-filter">
-        <union id="blue-base">
-            <cuboid min="36,5,39" max="55,11,26"/>
-            <cuboid min="54,5,32" max="61,11,39"/>
-        </union>
-    </apply>
-    <apply block="never" message="You may not build outside of the map!">
-        <!-- This is the inverse of the rectangle region (everything outside of the rectangle) -->
-        <negative>
-            <rectangle min="26,-49" max="120,50"/>
-        </negative>
-    </apply>
-    <!-- Can't use (right click) beacon blocks anywhere on the map -->
-    <apply use="no-beacon" region="everywhere"/>
-</regions>
+<!-- Prevent hunger from depleting -->
+<hunger>
+    <depletion>off</depletion>
+</hunger>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
-
-This specifies how high players can build however it doesn't stop them from going over this limit.
+This specifies how high players can build, however, it doesn't stop them from going over this limit.
 
 ```xml
 <maxbuildheight>25</maxbuildheight>
-```
-
-[<i className="icon-right">➡️</i>](/docs/modules/gear/tnt)
-Configures how TNT behaves on a map.
-
-```xml
-<!-- TNT will automatically ignite when placed -->
-<!-- TNT will not break any blocks but still cause damage to players -->
-<!-- Players can't defuse a teammate's TNT -->
-<tnt>
-    <instantignite>on</instantignite>
-    <licensing>off</licensing>
-    <friendly-defuse>off</friendly-defuse>
-</tnt>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/general/main)

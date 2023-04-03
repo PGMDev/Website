@@ -4,14 +4,14 @@ title: Race for Victory (CTW)
 ---
 
 Race for Victory is a Capture The Wool map where you need to retrive the wool from the enemy side.
-Players can build, bridge and tunnel their way through enemy lines and other obsticles.
+Players can build, bridge and tunnel their way through enemy lines and other obstacles.
 After retrieving the wool, they must make their way back without getting killed by enemies still guarding the
 wools.
 
 _Source: [Race for Victory](https://github.com/MCResourcePile/overcast-maps/tree/master/maps/race_for_victory) by [Plastix](https://github.com/Plastix),
 [MonsieurApple](https://github.com/tonybruess), and [Anxuiz](https://github.com/steveanton).
 ![](/img/examples/rfv1.png)
-\_Floating lava blocks let you fire flaming arrows if you shoot through them, which can burn enemies._
+Floating lava blocks let you fire flaming arrows if you shoot through them, which can burn enemies._
 
 ![](/img/examples/rfv2.png)
 _Cacti and lava await enemies that might get into the woolrooms._
@@ -29,21 +29,20 @@ to help their way back to base!_
 Every map XML file starts with the XML header and then the base `<map>` module.
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Race for Victory</name>
 <!-- States what version the map is -->
-<version>1.2.3</version>
+<version>1.2.4</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.</objective>
 <!-- States who made the map -->
 <authors>
-    <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8" contribution="map design"/> <!-- Plastix -->
-    <author uuid="3c7db14d-ac4b-4e35-b2c6-3b2237f382be" contribution="map design and gameplay management"/> <!-- MonsieurApple -->
-    <author uuid="25961a08-c90c-4abd-b136-dad90e89c2eb" contribution="item management"/> <!-- Anxuiz -->
+    <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8" contribution="Map design"/> <!-- Plastix -->
+    <author uuid="3c7db14d-ac4b-4e35-b2c6-3b2237f382be" contribution="Map design and gameplay management"/> <!-- MonsieurApple -->
+    <author uuid="25961a08-c90c-4abd-b136-dad90e89c2eb" contribution="Item management"/> <!-- Anxuiz -->
 </authors>
-<!-- Shows any map rules or details that are not in normal server rules -->
+<!-- Shows any map rules or details that are not in normal server rules which appears when running /map -->
 <rules>
     <rule>Players may not obstruct the wool rooms with lava or obsidian.</rule>
     <rule>Players may not obstruct the majority of the lane with lava or obsidian.</rule>
@@ -53,26 +52,49 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/format/teams)
-Defines the team's [colors](/docs/reference/misc/formatting#chatColors), names and how many people can be on the teams.
+Define the teams' [colors](/docs/reference/misc/formatting#chatColors), names, and how many people can be on each team.
 
 ```xml
 <teams>
-    <team color="blue" max="12" max-overfill="18">Blue</team>
-    <team color="dark red" max="12" max-overfill="18">Red</team>
+    <team id="blue-team" color="blue" max="12" max-overfill="18">Blue</team>
+    <team id="red-team" color="dark red" max="12" max-overfill="18">Red</team>
 </teams>
 ```
 
+[<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
+Define the kit that players will receive.
+
+```xml
+<kits>
+    <kit id="spawn-kit">
+        <item slot="0" material="iron sword"/>
+        <item slot="1" material="bow"/>
+        <item slot="28" amount="64" material="arrow"/>
+        <item slot="2" material="iron pickaxe"/>
+        <item slot="3" material="iron axe"/>
+        <item slot="4" amount="64" damage="1" material="wood"/>
+        <item slot="5" amount="64" material="ladder"/>
+        <item slot="8" amount="64" material="bread"/>
+        <!-- The armor set will be automatically colored based on the player's team -->
+        <helmet team-color="true" material="leather helmet"/>
+        <chestplate team-color="true" material="leather chestplate"/>
+        <leggings team-color="true" material="leather leggings"/>
+        <boots team-color="true" material="leather boots"/>
+    </kit>
+</kits>
+```
+
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/spawns)
-Specify where the previously defined teams will spawn, the kit they will spawn with and what direction they face.
+Specify where the previously defined teams will spawn, the kit they will spawn with, and what direction they face.
 
 ```xml
 <spawns>
-    <spawn team="blue" yaw="180" kit="blue">
+    <spawn team="blue-team" kit="spawn-kit" yaw="180">
         <region>
             <cuboid min="-1.5,68,108.5" max="1.5,68,110.5"/>
         </region>
     </spawn>
-    <spawn team="red" yaw="0" kit="red">
+    <spawn team="red-team" kit="spawn-kit">
         <region>
             <cuboid min="-1.5,68,-111.5" max="1.5,68,-108.5"/>
         </region>
@@ -85,126 +107,55 @@ Specify where the previously defined teams will spawn, the kit they will spawn w
 </spawns>
 ```
 
-[<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
-Defines the spawn kits that each player gets.
-
-```xml
-<kits>
-    <kit id="spawn">
-        <item slot="0">iron sword</item>
-        <item slot="1">bow</item>
-        <item slot="28" amount="64">arrow</item>
-        <item slot="2">iron pickaxe</item>
-        <item slot="3">iron axe</item>
-        <item slot="4" damage="1" amount="64">wood</item>
-        <item slot="5" amount="64">ladder</item>
-        <item slot="8" amount="64">bread</item>
-    </kit>
-    <kit id="red" parents="spawn">
-        <helmet color="cd0000">leather helmet</helmet>
-        <chestplate color="cd0000">leather chestplate</chestplate>
-        <leggings color="cd0000">leather leggings</leggings>
-        <boots color="cd0000">leather boots</boots>
-    </kit>
-    <kit id="blue" parents="spawn">
-        <helmet color="0066cc">leather helmet</helmet>
-        <chestplate color="0066cc">leather chestplate</chestplate>
-        <leggings color="0066cc">leather leggings</leggings>
-        <boots color="0066cc">leather boots</boots>
-    </kit>
-</kits>
-```
-
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/filters)
-Defines the filters on the map and determines which events are allowed.
+Define the filters on the map and determine which events are allowed.
 
 ```xml
 <filters>
-    <all id="only-blue">
-        <team>blue</team>
-    </all>
-    <all id="only-red">
-        <team>red</team>
-    </all>
-    <!-- Only let Red team open chests at their spawn -->
-    <all id="only-red-usage">
-        <not>
-            <all>
-                <any>
-                    <block>chest</block>
-                    <block>workbench</block>
-                </any>
-                <team>blue</team>
-            </all>
-        </not>
-    </all>
-    <!-- Only let Blue team open chests at their spawn -->
-    <all id="only-blue-usage">
-        <not>
-            <all>
-                <any>
-                    <block>chest</block>
-                    <block>workbench</block>
-                </any>
-                <team>red</team>
-            </all>
-        </not>
-    </all>
+    <!-- Query if a player is a member of either team using the previously defined team ID -->
+    <team id="only-blue">blue-team</team>
+    <team id="only-red">red-team</team>
 </filters>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/regions)
-Defines regions that can be later used to apply spawns, filters, etc
+Define regions that can be later used to apply spawns, filters, etc.
 
 ```xml
 <regions>
-    <!-- Blue wool room protection (these are the wools blue has to get) -->
-    <union id="blue-wool-rooms">
-        <rectangle id="purple-room" min="-25,-80" max="-oo,-oo"/>
-        <rectangle id="yellow-room" min="25,-80" max="oo,-oo"/>
+    <!-- Define where the teams' base are located -->
+    <union id="spawn-protections">
+        <rectangle id="red-base" min="-13,-oo" max="13,-97"/>
+        <rectangle id="blue-base" min="-13,97" max="13,oo"/>
     </union>
-    <!-- Only Blue team can open chests inside the Blue wool rooms -->
-    <apply block="only-blue" use="only-blue-usage">
-        <region id="blue-wool-rooms"/>
-    </apply>
-    <!-- Red team can't enter the wool rooms they have to defend -->
-    <apply enter="only-blue" message="You may not enter your own wool room!">
-        <region id="blue-wool-rooms"/>
-    </apply>
-    <!-- Red wool room protection (these are the wools red has to get) -->
-    <union id="red-wool-rooms">
-        <rectangle id="lime-room" min="25,80" max="oo,oo"/>
-        <rectangle id="orange-room" min="-25,80" max="-oo,oo"/>
+    <!-- Define the exact location where teams must place any captured wools -->
+    <union id="wool-monuments">
+        <block id="blue-team-purple-wool">-1,75,97</block>
+        <block id="blue-team-yellow-wool">0,75,97</block>
+        <block id="red-team-lime-wool">0,75,-98</block>
+        <block id="red-team-orange-wool">-1,75,-98</block>
     </union>
-    <!-- Only Red team can open chests inside the Blue wool rooms -->
-    <apply block="only-red" use="only-red-usage">
-        <region id="red-wool-rooms"/>
-    </apply>
-    <!-- Blue team can't enter the wool rooms they have to defend -->
-    <apply enter="only-red" message="You may not enter your own wool room!">
-        <region id="red-wool-rooms"/>
-    </apply>
-    <!-- Prevent teams from entering each other's spawns -->
-    <rectangle id="red-base" min="-13,-oo" max="13,-97"/>
-    <rectangle id="blue-base" min="-13,97" max="13,oo"/>
-    <!-- Only the Red Team can enter the Red Spawn -->
-    <apply enter="only-red" message="You may not enter red's base!">
-        <region id="red-base"/>
-    </apply>
-    <!-- Only the Red Team can can place and break blocks inside the Red Spawn -->
-    <apply block="only-red">
-        <region id="red-base"/>
-    </apply>
-    <!-- Only the Blue Team can enter the Blue Spawn -->
-    <apply enter="only-blue" message="You may not enter blue's base!">
-        <region id="blue-base"/>
-    </apply>
-    <!-- Only the Blue Team can can place and break blocks inside the Blue Spawn -->
-    <apply block="only-blue">
-        <region id="blue-base"/>
-    </apply>
-    <!-- Prevent void bridging (building out of bounds) -->
-    <apply block="never" message="You may not build in the void!">
+    <union id="wool-rooms">
+        <!-- Red wool room protection (these are the wools Blue has to get) -->
+        <union id="red-wool-rooms">
+            <rectangle id="purple-room" min="-25,-80" max="-oo,-oo"/>
+            <rectangle id="yellow-room" min="25,-80" max="oo,-oo"/>
+        </union>
+        <!-- Blue wool room protection (these are the wools Red has to get) -->
+        <union id="blue-wool-rooms">
+            <rectangle id="lime-room" min="25,80" max="oo,oo"/>
+            <rectangle id="orange-room" min="-25,80" max="-oo,oo"/>
+        </union>
+    </union>
+    <!-- This is the inverse of the rectangle region (everything outside of the rectangle) -->
+    <union id="map-protection">
+        <negative>
+            <rectangle min="-57,-123" max="57,123"/>
+        </negative>
+        <cylinder base="0,67,-110" height="4" radius="3"/>
+        <cylinder base="0,67,110" height="4" radius="3"/>
+    </union>
+    <union id="void-area">
         <complement>
             <union>
                 <rectangle min="-13,-90" max="-oo,90"/>
@@ -212,68 +163,56 @@ Defines regions that can be later used to apply spawns, filters, etc
             </union>
             <rectangle min="-oo,15" max="oo,-15"/>
         </complement>
-        <!-- Behind red's wool rooms -->
+        <!-- Behind Red's wool rooms -->
         <rectangle min="42,-101" max="13,-112"/>
         <rectangle min="-42,-101" max="-13,-112"/>
-        <!-- Behind blue's wool rooms -->
+        <!-- Behind Blue's wool rooms -->
         <rectangle min="13,111" max="42,101"/>
         <rectangle min="-13,111" max="-42,101"/>
-    </apply>
-    <apply block="never" message="You may not edit blocks in this area!">
-        <!-- This is the inverse of the rectangle region (everything outside of the rectangle) -->
-        <negative>
-            <rectangle min="-57,-123" max="57,123"/>
-        </negative>
-        <cylinder base="0,67,-110" height="4" radius="3"/>
-        <cylinder base="0,67,110" height="4" radius="3"/>
-    </apply>
+    </union>
+    <!-- applicators -->
+    <apply region="blue-wool-rooms" block="only-red" use="only-red"/>
+    <apply region="blue-wool-rooms" enter="only-red" message="You may not enter your own wool room!"/>
+    <apply region="red-wool-rooms" block="only-blue" use="only-red"/>
+    <apply region="red-wool-rooms" enter="only-blue" message="You may not enter your own wool room!"/>
+    <apply region="red-base" enter="only-red" message="You may not enter the enemy spawn!"/>
+    <apply region="red-base" block="only-red"/>
+    <apply region="blue-base" enter="only-blue" message="You may not enter the enemy spawn!"/>
+    <apply region="blue-base" block="only-blue"/>
+    <apply region="void-area" block="never" message="You may not build over the void!"/> <!-- Prevent void bridging (building out of bounds) -->
+    <apply region="map-protection" block="never" message="You may not edit blocks in this area!"/>
 </regions>
 ```
 
-[<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
-
-This specifies how high players can build however it doesn't stop them from going over this limit.
-
-```xml
-<maxbuildheight>100</maxbuildheight>
-```
-
 [<i className="icon-right">➡️</i>](/docs/modules/objectives/ctw)
-This specifies wools each team needs to get, and where to place them.
+Specify the wools and its color each team needs to get, where it can be placed, and where exactly it is located to determine proximity.
 
 ```xml
-<wools>
-    <!-- Blue team must get and place the Purple and Yellow wools to win -->
-    <wool team="blue" color="purple">
-        <!-- Location where the Blue team must place the Purple Wool -->
-        <block location="-1,75,97"/>
-    </wool>
-    <wool team="blue" color="yellow">
-        <block location="0,75,97"/>
-    </wool>
-    <!-- Red team must get and place the Lime and Orange wools to win -->
-    <wool team="red" color="lime">
-        <block location="0,75,-98"/>
-    </wool>
-    <wool team="red" color="orange">
-        <block location="-1,75,-98"/>
-    </wool>
+<wools craftable="false">
+    <!-- Blue team must retrieve and place the purple and yellow wools to win -->
+    <wool team="blue-team" color="purple" monument="blue-team-purple-wool" location="-49,69,-96"/>
+    <wool team="blue-team" color="yellow" monument="blue-team-yellow-wool" location="48,69,-96"/>
+    <!-- Red team must retrieve and place the lime and orange wools to win -->
+    <wool team="red-team" color="lime" monument="red-team-lime-wool" location="48,69,95"/>
+    <wool team="red-team" color="orange" monument="red-team-orange-wool" location="-49,69,95"/>
 </wools>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kill-rewards)
-Give players a golden apple, sixteen arrows and 8 oak wood logs after killing a player.
+️Reward players by giving a golden apple, sixteen arrows, and eight oak wood planks for killing an enemy.
 
 ```xml
-<killreward>
-    <item>golden apple</item>
-    <item amount="16">arrow</item>
-    <item damage="1" amount="8">wood</item>
-</killreward>
+<kill-rewards>
+    <kill-reward>
+        <item material="golden apple"/>
+        <item amount="16" material="arrow"/>
+        <item damage="1" amount="8" material="wood"/>
+    </kill-reward>
+</kill-rewards>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/repair-remove-keep)
-We don't want an excessive amount of items dropped on the map, so this allows us to manage
+We do not want an excessive amount of items dropped on the map, so this allows us to manage
 how to deal with dropped items more easily.
 
 ```xml
@@ -297,6 +236,14 @@ how to deal with dropped items more easily.
     <item>bread</item>
     <item>golden apple</item>
 </itemremove>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
+
+This specifies how high players can build, however, it doesn't stop them from going over this limit.
+
+```xml
+<maxbuildheight>100</maxbuildheight>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/general/main)

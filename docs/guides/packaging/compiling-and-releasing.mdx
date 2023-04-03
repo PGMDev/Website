@@ -3,13 +3,18 @@ id: compiling-and-releasing
 title: Compiling and Releasing
 ---
 
+import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
+
 Once your world is cleaned up and pruned, it is ready to be compiled.
 To start, add in your `map.xml` file. Then, add in your `map.png` file.
-Below is an image of what your folder should look like:
+Below is an image of what your map folder should look like:
 
-![](https://i.imgur.com/BZ1ihzE.png)
+<ImageSwitcher
+  lightImageSrc="/img/guides/compiled-folder.png"
+  darkImageSrc="/img/guides/compiled-folder-dark.png"
+/>
 
-#### The Map's XML File
+### The Map XML File
 
 The `map.xml` file is the XML you coded for your map.
 This file is essential when it comes to having your map loaded and tested.
@@ -22,7 +27,7 @@ Take note of the following coding guidelines when creating your `map.xml` file:
 - Bump the map version if gameplay has changed.
 - [Validate](https://www.w3schools.com/xml/xml_validator.asp) the XML to make sure it does not have any syntax errors.
 
-#### The Map Image
+### The Map Image
 
 The `map.png` file displays the image of your map.
 The standard resolution for these pictures is `290x246`.
@@ -33,25 +38,26 @@ _Image Example_
 
 <div className="row">
   <div className="col col--6">
-    <img src="https://i.imgur.com/yvUJNu1.png" />
+    <img src="/img/guides/totally-war-2.png" />
   </div>
   <div className="col">
-    <img src="https://i.imgur.com/On5orcO.png" />
+    <img src="/img/guides/rage-quit.png" />
   </div>
 </div>
 
 _Source: [Totally War II](https://github.com/MCResourcePile/overcast-maps/tree/master/maps/totally_war_ii) by Lyzak (left) and [Rage Quit](https://github.com/MCResourcePile/overcast-maps/tree/master/maps/rage_quit) by Plastix & McYukon (right)_
 
-#### Compressing the folder to a ZIP file
+### Compressing the folder to a ZIP file
 
 Before you upload the map, you must compress the folder to a `.zip` format.
 Do **not** compress to a `.rar` or any other format.
 
 To compress a folder:
 
-- `Windows`: Right Click > Send To > Compressed Zip
-- `Mac`: Right Click > Compress
+- **Windows:** Right Click > Send To > Compressed Zip
+- **macOS:** Right Click > Compress
 
-#### Uploading the map
+### Uploading the map
 
-To upload the map, we recommend using [MediaFire](https://www.mediafire.com/) or [Dropbox](https://www.dropbox.com/).
+To upload the map, we recommend using [MediaFire](https://www.mediafire.com/), [Dropbox](https://www.dropbox.com/), or creating a [GitHub](https://github.com/) repository.
+Additionally, follow any instructions from the Minecraft network of your choice if you wish to submit a map to them.

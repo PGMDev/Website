@@ -11,57 +11,61 @@ When PGM needs to decide if a block is inside a region, it checks if the point a
 The center point of a block will always have coordinates that end in `0.5`.
 When making regions, you have to make sure that all the block centers are _inside_ the region.
 
-Here is an example. Let's say we want to make region for a destroyable that looks like this:
+### Cuboid
 
-![](https://i.imgur.com/q9NMNuV.png)
+Here is an example. Let us say we want to make a region for a destroyable monument that looks like this:
+
+![An overview of a polished andesite tower](/img/guides/cuboid-overview.png)
 
 First, we stand very close to one **corner** of the region and note the coordinates are `(32, 60, -20)`:
 
-![](https://i.imgur.com/OzvGnlJ.png)
+![](/img/guides/cuboid-c1.png)
 
-Then we stand over the opposite corner and note the coordinates are `(34, 60, -18)`.
+Then, we stand over the opposite corner and note the coordinates are `(34, 60, -18)`.
 
-We know the monument is three blocks tall, so we'll just subtract three from the Y coordinate to get `(34, 57, -18)`:
+We know the monument is three blocks tall, so we will just subtract 3 from the Y coordinate to get `(34, 57, -18)`:
 
-![](https://i.imgur.com/mNeLmU8.png)
+![](/img/guides/cuboid-c2.png)
 
-Notice that we are rounding to the **nearest** integer, since those will obviously be the coordinates of the corner we are standing close to.
-We don't need to worry about positive vs negative coordinates, as they work the same way, and we never need to add or subtract one.
+Notice that we are rounding to the **nearest** integer, since those will be the coordinates of the corner we are standing close to.
+We do not need to worry about positive vs negative coordinates, as they work the same way, and we never need to add or subtract one.
 
 With these coordinates, we can make a cuboid region for the monument:
 
 ```xml
-<cuboid min="32, 60, -20" max="34, 57, -18"/>
+<cuboid min="32,60,-20" max="34,57,-18"/>
 ```
 
-For style points, we can make sure all the low coordinates are in min and the high ones in max:
+For style points, we can make sure all the low coordinates are in `min` and the high ones in `max`:
 
 ```xml
-<cuboid min="32, 57, -20" max="34, 60, -18"/>
+<cuboid min="32,57,-20" max="34,60,-18"/>
 ```
 
 This is not necessary, as PGM will fix it for you, but it might make the XML easier for a human to read and edit.
 
 An easy way to check that cuboid regions are correct is to simply subtract the low coordinates from the high ones.
-The result should be the size of the region. If it isn't, you did something wrong.
+The result should be the size of the region. If it is not, you may need to check both the coordinates and your calculation again.
 
-Let's try a more interesting region: a cylinder.
+### Cylinder
+
+Let us try a more interesting region: a cylinder.
 A cylinder is defined by its base (center) point, radius, and height.
 Assuming one layer of blocks, the cylinder in the image below is based at `(53.5, 57, -10.5)` and has a radius of `2.5` and a height of `1`.
 Blocks with their center point inside the cylinder will be considered part of the region.
 
-The region boundary and the block centers are highlighted so you can easily see how this works:
+The region boundary and the block centers are highlighted, so you can easily see how this works:
 
-![](https://i.imgur.com/OgME3KK.png)
+![The topdown view of a cylinder region with a highlight showing a radius of 5 blocks](/img/guides/cylinder-overview.png)
 
 So the region would be:
 
 ```xml
-<cylinder base="53.5, 57, -10.5" radius="2.5" height="1"/>
+<cylinder base="53.5,57,-10.5" radius="2.5" height="1"/>
 ```
 
 ### Regions: The Wrong Way
 
-**DON'T** use WorldEdit to get region coordinates.
-WorldEdit uses a dumb coordinate system that will not give you correct regions, and while it's possible to convert the coordinates,
-it's going to confuse you and cause mistakes, and it's just not worth the trouble.
+**DO NOT USE** use WorldEdit to get region coordinates.
+WorldEdit uses a different coordinate system that will not give you correct regions. Although it is possible to convert the coordinates,
+it is not worth the extra work and mistakes it can cause.
