@@ -104,7 +104,7 @@ Define the filters on the map and determine which events are allowed.
 
 ```xml
 <filters>
-    <!-- Always deny TNT placement, destruction, or interaction -->
+    <!-- Always deny if the queried material is TNT -->
     <deny id="no-tnt">
         <material>tnt</material>
     </deny>
@@ -127,8 +127,8 @@ These regions reference the filters defined above and states where they will wor
             <region id="main-area"/>
         </complement>
     </union>
-    <!-- Nothing will destroy any blocks inside portals-area -->
-    <apply region="portals-area" block="never"/>
+    <!-- applicators -->
+    <apply region="portals-area" block="never"/> <!-- Nothing can destroy blocks inside portals-area -->
     <apply region="bases" block="no-tnt" message="You may not place TNT in the bases."/>
     <apply region="playable" leave="never" message="You can't leave the map!"/>
 </regions>

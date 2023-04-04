@@ -27,12 +27,12 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Airship Battle</name>
+<!-- Shows the map creation date when a user runs /map in game -->
+<created>2011-12-05</created>
 <!-- States what version the map is -->
 <version>1.2.6</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Leak lava from the enemy's obsidian core into the void.</objective>
-<!-- Shows the map creation date when a user runs /map in game -->
-<created>2011-12-05</created>
 <!-- States who made the map -->
 <authors>
     <author uuid="30e27366-0b14-4076-8f55-0819ece49ce3"/> <!-- Dewtroid -->
@@ -239,7 +239,7 @@ Stop players from being able to craft specific blocks or items.
 
 [<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
 
-This specifies how high players can build, however, it doesn't stop them from going over this limit.
+This specifies how high players can build, however, it does not stop them from walking or breaking blocks above this limit.
 
 ```xml
 <maxbuildheight>125</maxbuildheight>
