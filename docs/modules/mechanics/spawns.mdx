@@ -363,9 +363,9 @@ _Examples_
 
 ## Respawn Module
 
-The respawn module allows the map creator to adjust the respawn time and if players are automatically respawned. The respawn time must be greater than 1 second (20 ticks), if the respawn time is less it will automatically default to one second, allowing the death to fully complete and the player to be reset properly.
+The respawn module allows the map creator to adjust the respawn time and if players are automatically respawned. For maps that may require instant respawn, you can set the delay to `0s`.
 
-To allow players to spawn at a bed set the bed attribute to true. Players spawning at beds will not spawn with a kit even if there is one specified. If a player has a bed spawn location set it overrides all other spawn regions for that player.
+To allow players to spawn at a bed set the `bed` attribute to true. Players spawning at beds will not spawn with a kit, even if there is one specified. If a player has a bed spawn location set, it overrides all other spawn regions for that player.
 
 <div className="table-container">
   <table>
