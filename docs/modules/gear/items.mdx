@@ -793,6 +793,38 @@ You can define custom explosion designs when creating and giving a firework rock
   </table>
 </div>
 
+##### Firework Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>power</label>
+        </td>
+        <td>
+          Defines the power of the firework.
+          This also determines how high it will travel.
+        </td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>
+          1
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 ##### Explosion Attributes
 
 <div className="table-container">
@@ -868,7 +900,10 @@ You can define custom explosion designs when creating and giving a firework rock
         <td>
           <label>{`<color>`}</label>
         </td>
-        <td>Define a color of the firework.</td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Define a color of the firework.
+        </td>
         <td>
           <a href="/docs/reference/misc/colors">Hex Firework Color</a>
         </td>
