@@ -188,7 +188,7 @@ export default function Downloads() {
                     <p>
                       Community is a standalone plugin for managing PGM servers.
                       It includes various PGM features, such as punishments,
-                      moderation, freezing and other aspects.
+                      moderation, freezing, and other aspects.
                     </p>
                   </div>
                 </div>
@@ -271,7 +271,7 @@ export default function Downloads() {
                       PGM Tracker is a community tool made by{" "}
                       <a href="https://github.com/applenick">applenick</a> that
                       tracks public PGM servers. Take a look at it, play a
-                      variety of Minecraft PvP maps and get involved with
+                      variety of Minecraft PvP maps, and get involved with
                       development!
                     </p>
                   </div>

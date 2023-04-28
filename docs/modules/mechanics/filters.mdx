@@ -46,11 +46,11 @@ Generally, other modules use filters in one of two ways:
 
 ### Abstaining
 
-Some filters don't make sense in certain contexts.
-For example, you can't ask if a block is on the Red Team, or if a player is made of wood, or if the match is inside a region.
+Some filters do not make sense in certain contexts.
+For example, you cannot ask if a block is on the Red Team, or if a player is made of wood, or if the match is inside a region.
 
 Some modules will generate an error if you try to use the wrong type of filter, but other modules may allow it.
-When a filter doesn't apply to a particular decision, it will **abstain** from that decision, and things will behave as they would if the filter didn't exist.
+When a filter does not apply to a particular decision, it will **abstain** from that decision, and things will behave as they would if the filter did not exist.
 Generally, you should avoid using filters in such a way that they can abstain, since it tends to be confusing.
 
 However, the [event rules module](/docs/modules/mechanics/regions#applying) uses filter abstention to make very complex conditions easier to express:
@@ -564,7 +564,7 @@ Player filters match for attributes of a certain player.
 
 #### Player Item Filter Attributes
 
-These are the attributes for `<carrying>`, `<holding>` and `<wearing>`.
+These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 
 <div className="table-container">
   <table>
@@ -707,7 +707,7 @@ These elements must contain either a single filter, or a list of filters, as the
         </td>
         <td>
           Invert the filters result; allow if the child filter denies, deny if
-          it allows, abstain otherwise.
+          it allows, otherwise abstain.
         </td>
         <td>
           <span className="badge badge--primary">Dynamic</span>
@@ -850,7 +850,9 @@ _Examples_
 
 ```xml
 <filters>
-    <deny id="no-tnt"><material>TNT</material></deny>
+    <deny id="no-tnt">
+        <material>tnt</material>
+    </deny>
 </filters>
 ```
 
@@ -860,7 +862,7 @@ _Examples_
 
 The kill-streak filter matches players who have a specified number of kills.
 The kill counter can be set to count from the start of the match or from the last time the player died.
-This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) but can also be used to restrict access to certain locations, etc.
+This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards), but can also be used to restrict access to certain locations, etc.
 
 ##### Kill-Streak Filter Attributes
 
@@ -879,7 +881,7 @@ This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards) 
         <td>
           <label>min</label>
         </td>
-        <td>Match players with at-least this many kills.</td>
+        <td>Match players with at least this many kills.</td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
@@ -1091,7 +1093,7 @@ _Examples_
 ### Countdown Filter
 
 This filter matches for **up to** the specified amount of time after the child filter starts matching.
-It never matches when the child filter doesn’t match. This filter is a [Dynamic Filter](#dynamic-filters).
+It never matches when the child filter doesn't match. This filter is a [Dynamic Filter](#dynamic-filters).
 
 <div className="table-container">
   <table>
@@ -1214,12 +1216,12 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 
 ```
 <filters>
-  <!-- Pulses activation for 15 seconds in a 60 second time period -->
-  <!-- ie. on for 15 seconds, off for 45 seconds -->
-  <!-- Filter turns off if condition doesn't meet after 60 seconds -->
-  <pulse id="pulse-filter" period="60s" duration="15s">
-    <filter id="second-filter"/>
-  </pulse>
+    <!-- Pulses activation for 15 seconds in a 60 second time period -->
+    <!-- ie. on for 15 seconds, off for 45 seconds -->
+    <!-- Filter turns off if condition doesn't meet after 60 seconds -->
+    <pulse id="pulse-filter" period="60s" duration="15s">
+        <filter id="second-filter"/>
+    </pulse>
 </filters>
 ```
 
@@ -1229,31 +1231,30 @@ The Offset filter checks for blocks that are placed in the world,
 either using exact locations, coordinates relative to the player,
 or directions relative to the player.
 
-Coordinates relative to the player are defined using `~`, and behave the same like
-`~` does in-game.
+Coordinates relative to the player are defined using `~` and behave the same like `~` does in-game.
 Directions relative to the player use `^`.
 
 ```
 <filters>
-  <!-- checks for bedrock placed at this exact location -->
-  <offset id="hardFilter" location="10.5, 5, 15.5">
-      <material>bedrock</material>
-  </offset>
-  <!-- checks for cobblestone placed 1 block beneath the player -->
-  <offset id="blockUnderFeetFilter" location="~0, ~-1, ~0">
-      <material>cobblestone</material>
-  </offset>
-  <!-- checks for water placed 2 blocks *in front* of the player -->
-  <!-- ^<+left/-right>, ^<+up/-down>, ^<+front/-behind> -->
-  <offset id="inFrontFilter" location="^0,^0,^2">
-      <material>water</material>
-  </offset>
+    <!-- checks for bedrock placed at this exact location -->
+    <offset id="hardFilter" location="10.5, 5, 15.5">
+        <material>bedrock</material>
+    </offset>
+    <!-- checks for cobblestone placed 1 block beneath the player -->
+    <offset id="blockUnderFeetFilter" location="~0, ~-1, ~0">
+        <material>cobblestone</material>
+    </offset>
+    <!-- checks for water placed 2 blocks *in front* of the player -->
+    <!-- ^<+left/-right>, ^<+up/-down>, ^<+front/-behind> -->
+    <offset id="inFrontFilter" location="^0,^0,^2">
+        <material>water</material>
+    </offset>
 </filters>
 ```
 
 ### Player Count Filter
 
-This filter counts the number of players matching a single child filter,
+This filter counts the number of players matching a single child filter
 and matches if that count is within a specified range.
 The child filter can be omitted, in which case all players in the match will be counted.
 
@@ -1334,7 +1335,7 @@ _Examples_
 There are three different Objective Filters that are used:
 
 The `<completed>` filter matches when the specified objective is completed or captured by anybody.
-This filter is not affected by the context in which it is applied, and never abstains.
+This filter is not affected by the context in which it is applied and never abstains.
 
 The `<captured>` filter matches players or teams who currently control the specified objective.
 This filter is useful for objectives that can change ownership, such as hills and flags.
@@ -1342,10 +1343,10 @@ For other objective types, it will match players/teams who are allowed to comple
 This filter will abstain if used in a context that does not involve a specific player or team.
 
 Alternately, `<captured>` can have a team specified with the team attribute.
-Then it will always test that team’s control of the objective, regardless of the filtering context, and will never abstain.
+Then it will always test that team's control of the objective, regardless of the filtering context, and will never abstain.
 
 :::caution
-`<objective>` is depricated and may be removed in future versions of PGM.
+`<objective>` is deprecated and may be removed in future versions of PGM.
 The `<captured>` and `<completed>` Filters should be used instead.
 :::
 
@@ -1431,17 +1432,17 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 _Examples_
 
 ```xml
-<!-- Match if red-core has been leaked -->
+<!-- Match if "red-core" has been leaked -->
 <completed>red-core</completed>
-<!-- Match if south-hill is owned by anyone -->
+<!-- Match if "south-hill" is owned by anyone -->
 <completed>south-hill</completed>
 
-<!-- Match players/teams who own north-hill -->
+<!-- Match players/teams who own "north-hill" -->
 <captured>north-hill</captured>
 <!-- Match if Blue Team owns central-hill -->
 <captured team="blue-team">central-hill</captured>
 
-<!-- <objective> is depricated -->
+<!-- <objective> is deprecated -->
 <!-- Matches if the team of the player is the one that completed objective -->
 <objective>goal-id</objective>
 <!-- Matches if any team has completed objective -->
@@ -1456,7 +1457,7 @@ The flag filters allow filtering of a specific flags current state or for the pl
 One important use of these filters is to implement the standard rule that a team can only capture an enemy flag when their own flag is returned.
 This can be implemented easily using a `<flag-returned>` as the capture-filter of a flag.
 This can also be done with the nets return attribute. However, using the return attribute will return dropped flags, while using a filter will not.
-The flag carried, dropped, captured and returned filters have an optional `post` attribute to only match if the flag was last returned to that post.
+The flag carried, dropped, captured, and returned filters have an optional `post` attribute to only match if the flag was last returned to that post.
 
 ```xml
 <!-- The blue flag is currently being carried by a player -->
@@ -1482,11 +1483,17 @@ A item's meta data includes the item's name, enchantments, etc.
 
 ```xml
 <!-- Player has a stick named 'Blue Door Key' in their inventory -->
-<carrying><item name="Blue Door Key" material="stick"/></carrying>
+<carrying>
+    <item name="Blue Door Key" material="stick"/>
+</carrying>
 <!-- Player is holding a clock -->
-<holding><item material="clock"/></holding>
+<holding>
+    <item material="clock"/>
+</holding>
 <!-- Player is wearing a chainmail chestplate -->
-<wearing><item material="chainmail chestplate"/></wearing>
+<wearing>
+    <item material="chainmail chestplate"/>
+</wearing>
 ```
 
 ### Event Cause Filters
@@ -1759,7 +1766,7 @@ If your map is especially complex shaped you may have to use the `<void/>` tag t
 The `<void/>` tag checks the specified regions for blocks on the bottom layer of the world.
 It then creates an outline of those blocks and the specified filter is only active inside or outside that outline.
 Bridges are usually not detected because they are not at `y=0`.
-This can be fixed by creating a invisible silhouette of the bridge with block 36 at `y=0`.
+This can be fixed by creating a invisible silhouette of the bridge with block `36` at `y=0`.
 
 _Example_
 

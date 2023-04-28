@@ -6,9 +6,9 @@ title: The Fenland (DTM)
 The Fenland is a Destroy the Monument map where you have to destroy the other team's obsidian monument to win the game.
 Players fight with diamond axes and spawn with their own building materials.
 
-_Source: [The Fenland](https://github.com/OvercastCommunity/PublicMaps/blob/main/dtcm/standard/the_fenland) by [McSpider](https://github.com/McSpider).
+_Source: [The Fenland](https://github.com/OvercastCommunity/PublicMaps/blob/main/dtcm/standard/the_fenland) by [McSpider](https://github.com/McSpider)._
 ![](/img/examples/fenland1.png)
-\_Because of the lakes in the middle, a lot of the action takes place on the edges of the map, and on
+_Because of the lakes in the middle, a lot of the action takes place on the edges of the map, and on
 sky bridges built over the centre of the map._
 
 ![](/img/examples/fenland2.png)
@@ -19,12 +19,11 @@ All players spawn with diamond pickaxes necessary to break them._
 Every map XML file starts with the XML header and then the base `<map>` module.
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>The Fenland</name>
 <!-- States what version the map is -->
-<version>1.2.10</version>
+<version>1.2.11</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Break the obsidian from the enemy team's monument.</objective>
 <!-- States who made the map -->
@@ -34,34 +33,54 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/format/teams)
-Defines the teams [colors](/docs/reference/misc/formatting#chatColors), names and how many people can be on the teams.
+Define the teams' [colors](/docs/reference/misc/formatting#chatColors), names, and how many people can be on each team.
 
 ```xml
 <teams>
-    <team color="dark red" max="14">Red</team>
-    <team color="blue" max="14">Blue</team>
+    <team id="red-team" color="dark red" max="14">Red</team>
+    <team id="blue-team" color="blue" max="14">Blue</team>
 </teams>
 ```
 
-[<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
-This specifies how high players can build however it doesn't stop them from going over this limit.
+[<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
+Define the kit that players will receive.
 
 ```xml
-<maxbuildheight>25</maxbuildheight>
+<kits>
+    <kit id="spawn-kit">
+        <item slot="0" unbreakable="true" material="diamond axe">
+            <enchantment>durability</enchantment>
+        </item>
+        <item slot="1" unbreakable="true" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="2" unbreakable="true" material="diamond pickaxe"/>
+        <item slot="3" unbreakable="true" material="iron spade"/>
+        <item slot="4" amount="64" material="log"/>
+        <item slot="5" amount="32" material="glass"/>
+        <item slot="7" amount="4" material="gold nugget"/>
+        <item slot="8" amount="32" material="cooked fish"/>
+        <item slot="28" material="arrow"/>
+        <chestplate unbreakable="true" material="iron chestplate">
+            <enchantment level="2">protection projectile</enchantment>
+        </chestplate>
+        <boots unbreakable="true" material="iron boots"/>
+    </kit>
+</kits>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/spawns)
-Defines the spawn areas and the kit each team gets.
+Specify where the previously defined teams will spawn, the kit they will spawn with, and what direction they face.
 
 ```xml
 <spawns>
-    <spawns kit="spawn" safe="true">
-        <spawn team="red" yaw="-90">
+    <spawns kit="spawn-kit" safe="true">
+        <spawn team="red-team" yaw="-90">
             <region>
                 <cuboid min="-43,11,-2" max="-46,11,3"/>
             </region>
         </spawn>
-        <spawn team="blue" yaw="90">
+        <spawn team="blue-team" yaw="90">
             <region>
                 <cuboid min="44,11,3" max="47,11,-2"/>
             </region>
@@ -76,72 +95,61 @@ Defines the spawn areas and the kit each team gets.
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/filters)
-Defines the filters on the map and determines which events are allowed.
+Define the filters on the map and determines which events are allowed.
 
 ```xml
 <filters>
-    <all id="only-blue">
-        <team>blue</team>
-    </all>
-    <all id="only-red">
-        <team>red</team>
-    </all>
-    <all id="no-beacon">
-        <not>
-            <material>beacon</material>
-        </not>
-    </all>
+    <!-- Query if a player is a member of either team using the previously defined team ID -->
+    <team id="only-blue">blue-team</team>
+    <team id="only-red">red-team</team>
+    <!-- Always deny beacon placement, destruction, or interaction -->
+    <deny id="no-beacon">
+        <material>beacon</material>
+    </deny>
 </filters>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/regions)
-Defines regions that can be later used to apply spawns, filters, etc
+Define regions that can be later used to apply spawns, filters, etc.
 
 ```xml
 <regions>
-    <!-- Only the Red Team can enter their own spawn -->
-    <apply enter="only-red" message="You may not enter the enemy team's base!">
-        <cuboid min="-49,13,-4" max="-40,10,4"/>
-    </apply>
-    <!-- Red Spawn can never be damaged -->
-    <apply block="never" message="You may not modify the base!">
-        <cuboid min="-49,7,5" max="-36,16,-4"/>
-    </apply>
-    <!-- Only the Blue Team can enter their own spawn -->
-    <apply enter="only-blue" message="You may not enter the enemy team's base!">
-        <cuboid min="49,13,4" max="41,10,-4"/>
-    </apply>
-    <!-- Blue Spawn can never be damaged -->
-    <apply block="never" message="You may not modify the base!">
-        <cuboid min="50,7,-4" max="37,16,5"/>
-    </apply>
-    <!-- Players can't build outside of the playable area -->
-    <apply block="never" message="You may not build outside the playing area!">
-        <negative id="playable-inverse">
-            <cuboid id="playable" min="64,0,-38" max="-63,31,39"/>
-        </negative>
-    </apply>
-    <!-- Players can't enter the observer spawn island -->
-    <apply enter="never" message="Don't enter the observers spawn area!">
-        <cylinder base="0.5,19,-46.5" radius="6" height="oo"/>
-    </apply>
-    <!-- Players can't use (right click) beacon blocks -->
-    <apply use="no-beacon">
-        <region id="playable"/>
-    </apply>
+    <!-- Define where the teams' base are located -->
+    <union id="spawn-protections">
+        <cuboid id="red-base" min="-49,7,5" max="-36,16,-4"/>
+        <cuboid id="blue-base" min="50,7,-4" max="37,16,5"/>
+    </union>
+    <!-- Define the playable area and also define the inverse of it as well -->
+    <negative id="playable-inverse">
+        <cuboid id="playable" min="64,0,-38" max="-63,31,39"/>
+    </negative>
+    <!-- Define the location of the observers' platform -->
+    <cylinder id="observers-platform" base="0.5,19,-46.5" radius="6" height="oo"/>
+    <!-- applicators -->
+    <apply region="red-base" enter="only-red" message="You may not enter the enemy team's base!"/>
+    <apply region="red-base" block="never" message="You may not modify the base!"/>
+    <apply region="blue-base" enter="only-blue" message="You may not enter the enemy team's base!"/>
+    <apply region="blue-base" block="never" message="You may not modify the base!"/>
+    <apply region="playable-inverse" block="never" message="You may not build outside the playing area!"/>
+    <apply region="observers-platform" enter="never" message="Don't enter the observers spawn area!"/>
+    <apply use="no-beacon"/> <!-- Players can't interact with beacon blocks -->
 </regions>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/objectives/dtm)
-This specifies what material the monuments are made of, and where each monument belongs to.
+This specifies what material the monuments are made of and where each monument belongs to.
 
 ```xml
-<destroyables name="Monument" materials="obsidian" completion="100%" mode-changes="true">
-    <destroyable owner="blue">
-        <cuboid min="46,16,26" max="45,14,25"/>
+<destroyables name="Monument" materials="obsidian" repairable="false" mode-changes="true">
+    <destroyable owner="blue-team">
+        <region>
+            <cuboid min="46,16,26" max="45,14,25"/>
+        </region>
     </destroyable>
-    <destroyable owner="red">
-        <cuboid min="-44,16,-24" max="-45,14,-25"/>
+    <destroyable owner="red-team">
+        <region>
+            <cuboid min="-44,16,-24" max="-45,14,-25"/>
+        </region>
     </destroyable>
 </destroyables>
 <!-- The monuments which are made of obsidian will turn into beacon blocks in 20 minutes -->
@@ -150,29 +158,8 @@ This specifies what material the monuments are made of, and where each monument 
 </modes>
 ```
 
-[<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
-Defines the spawn kit that all players get.
-
-```xml
-<kits>
-    <kit id="spawn">
-        <item slot="0" enchantment="durability:1">diamond axe</item>
-        <item slot="1" enchantment="arrow infinite:1">bow</item>
-        <item slot="2">diamond pickaxe</item>
-        <item slot="3">iron spade</item>
-        <item slot="4" amount="64">log</item>
-        <item slot="5" amount="32">glass</item>
-        <item slot="7" amount="4">gold nugget</item>
-        <item slot="8" amount="32">cooked fish</item>
-        <item slot="28">arrow</item>
-        <chestplate enchantment="protection projectile:2">iron chestplate</chestplate>
-        <boots>iron boots</boots>
-    </kit>
-</kits>
-```
-
 [<i className="icon-right">➡️</i>](/docs/modules/gear/repair-remove-keep)
-We don't want an excessive amount of items dropped on the map, so this allows us to manage
+We do not want an excessive amount of items dropped on the map, so this allows us to manage
 how to deal with dropped items more easily.
 
 ```xml
@@ -200,25 +187,34 @@ how to deal with dropped items more easily.
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kill-rewards)
-Give players a goldn apple for killing an enemy.
+Reward players by giving a golden apple for killing an enemy.
 
 ```xml
-<killreward>
-    <item>golden apple</item>
-</killreward>
+<kill-rewards>
+    <kill-reward>
+        <item material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/tnt)
-TNT will instantly ignite when placed, and teammates can't defuse their own team's TNT.
+TNT will instantly ignite when placed, players will not need a license, and teammates cannot defuse their own team's TNT.
 
 ```xml
-<!-- TNT will automatically ignite when placed -->
-<!-- TNT will not break any blocks but still cause damage to players -->
-<!-- Players can't defuse a teammate's TNT -->
 <tnt>
+    <!-- TNT will automatically ignite when placed -->
     <instantignite>on</instantignite>
+    <!-- Do not require a license so TNT usage is not restricted -->
+    <licensing>off</licensing>
+    <!-- Players can't defuse a teammate's TNT -->
     <friendly-defuse>off</friendly-defuse>
 </tnt>
+```
+[<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
+This specifies how high players can build, however, it does not stop them from walking or breaking blocks above this limit.
+
+```xml
+<maxbuildheight>25</maxbuildheight>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/general/main)

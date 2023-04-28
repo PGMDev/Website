@@ -6,30 +6,29 @@ title: Filter Apply Order
 import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
 
 After proto `1.3.3` and above, the order that you [apply](/docs/modules/mechanics/regions#applying) filters to regions affects their behavior.
-Here's an example.
+Here is an example.
 
-Let's start out with a basic filter that **denies** everything **except** TNT.
+Let us start out with a basic filter that **denies** everything **except** TNT.
 
 ```xml
 <all id="only-tnt">
-    <block>tnt</block>
+    <material>tnt</material>
 </all>
 ```
 
-Now let's apply this filter to `Region A`, and also apply a filter to `Region B` that denies all blocks.
+Now let us apply this filter to `Region A`, and also apply a filter to `Region B` that denies all blocks.
 
 ```xml
-<apply block="only-tnt" region="region-a"/>
-
-<apply block="never" region="region-b"/>
+<apply region="region-a" block="only-tnt"/>
+<apply region="region-b" block="never"/>
 ```
 
 However, there is one slight complication. `Region B` is inside of `Region A`.
 So which filter will override the other? This is where the apply order comes in handy.
 
 <ImageSwitcher
-  lightImageSrc="/img/apply-order.png"
-  darkImageSrc="/img/apply-order-dark.png"
+  lightImageSrc="/img/guides/apply-order.png"
+  darkImageSrc="/img/guides/apply-order-dark.png"
 />
 
 The order that you put the `<apply>` tags can change the outcome when something gets filtered.
@@ -39,8 +38,8 @@ The apply for `region B` won't get checked since it overlaps completely with `re
 If we changed the order of the filters:
 
 ```xml
-<apply block="never" region="region-b"/>
-<apply block="only-tnt" region="region-a"/>
+<apply region="region-b" block="never"/>
+<apply region="region-a" block="only-tnt"/>
 ```
 
 Now you cannot place blocks in `Region B`, but outside of it in `Region A` you can only place TNT blocks.

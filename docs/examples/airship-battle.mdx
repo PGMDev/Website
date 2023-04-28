@@ -17,63 +17,82 @@ _The large spawn area where observers spawn at, players spawn inside the safe be
 tunnels and run into the ship._
 
 ![](/img/examples/airship3.png)
-_The obsidian core that which you must leak the lava out of!
-Make the lava leak by destroying the obsidian blocks containing it and other obsticles that might get in the way._
+_This is the obsidian core that you must leak the lava out of!
+Make the lava leak by destroying the obsidian blocks containing it and other obstacles that might get in the way._
 
 [<i className="icon-right">➡️</i>](/docs/modules/general/main)
 Every map XML file starts with the XML header and then the base `<map>` module.
 
 ```xml
-<?xml version="1.0"?>
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Airship Battle</name>
+<!-- Shows the map creation date when a user runs /map in game -->
+<created>2011-12-05</created>
 <!-- States what version the map is -->
-<version>1.0.4</version>
+<version>1.2.6</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Leak lava from the enemy's obsidian core into the void.</objective>
 <!-- States who made the map -->
 <authors>
-    <author uuid="30e27366-0b14-4076-8f55-0819ece49ce3"/> <!--  Dewtroid  -->
+    <author uuid="30e27366-0b14-4076-8f55-0819ece49ce3"/> <!-- Dewtroid -->
 </authors>
-<!-- Shows any map rules or details that are not in normal server rules -->
+<!-- Shows any map rules or details that are not in normal server rules which appears when running /map -->
 <rules>
-    <rule>Dispensers are disabled.</rule>
+    <rule>Dispensers and chests are disabled</rule>
+    <rule>Players have resistance and reduced knockback in spawn!</rule>
 </rules>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/format/teams)
-Defines the team's [colors](/docs/reference/misc/formatting#chatColors), names and how many people can be on the teams.
+Define the teams' [colors](/docs/reference/misc/formatting#chatColors), names, and how many people can be on each team.
 
 ```xml
 <teams>
-    <team id="blue-team" color="blue" max="24">Blue Team</team>
-    <team id="red-team" color="dark red" max="24">Red Team</team>
+    <team id="blue-team" color="blue" max="24">Blue</team>
+    <team id="red-team" color="dark red" max="24">Red</team>
 </teams>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/kits)
-Define a kit with special TNT defuser shears.
+Define the kit that players will receive.
 
 ```xml
 <kits>
-    <kit id="shears">
-        <item slot="8" name="`6TNT Defuser" lore="`7Right click to defuse teammate's TNT|`7Does not work in `9water`7!" material="shears"/>
+    <kit id="spawn-protection">
+        <potion amplifier="10" duration="oo">damage resistance</potion>
+        <knockback-reduction>1</knockback-reduction>
+    </kit>
+    <kit id="spawn">
+        <item slot="0" material="diamond sword"/>
+        <item slot="1" material="bow"/>
+        <item slot="28" amount="64" material="arrow"/>
+        <item slot="2" material="diamond pickaxe"/>
+        <item slot="3" material="diamond axe"/>
+        <item slot="4" damage="1" amount="64" material="wood"/> <!-- To get spruce planks, damage must be "1" -->
+        <item slot="5" amount="64" material="ladder"/>
+        <item slot="6" material="water bucket"/>
+        <item slot="8" amount="64" material="cooked fish"/>
+        <helmet enchantment="protection explosions:2" material="gold helmet"/>
+        <chestplate enchantment="protection explosions:4" material="chainmail chestplate"/>
+        <!-- Leggings and boots will be automatically colored based on the player's team -->
+        <leggings team-color="true" material="leather leggings"/>
+        <boots team-color="true" material="leather boots"/>
     </kit>
 </kits>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/spawns)
-Specify where the previously defined teams will spawn, the kit they will spawn with and what direction they face.
+Specify where the previously defined teams will spawn, the kit they will spawn with, and what direction they face.
 
 ```xml
 <spawns>
-    <spawn team="blue-team" kit="shears" yaw="270">
+    <spawn team="blue-team" kit="spawn" yaw="270">
         <region>
             <cuboid min="4.5,91,-34" max="7.5,91,-31"/>
         </region>
     </spawn>
-    <spawn team="red-team" kit="shears" yaw="90">
+    <spawn team="red-team" kit="spawn" yaw="90">
         <region>
             <cuboid min="-30.5,91,-34" max="-27.5,91,-31"/>
         </region>
@@ -87,24 +106,34 @@ Specify where the previously defined teams will spawn, the kit they will spawn w
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/filters)
-These filters is used to prevent people from placing dispensers or obsidian in the regions they are applied to.
+Define the filters on the map and determine which events are allowed.
 
 ```xml
 <filters>
-    <not id="deny-dispenser">
+    <!-- Query if a player is a member of either team using the previously defined team ID -->
+    <team id="only-blue">blue-team</team>
+    <team id="only-red">red-team</team>
+    <!-- Always deny dispenser placement, destruction, or interaction -->
+    <deny id="deny-dispenser">
         <material>dispenser</material>
-    </not>
-    <not id="deny-obsidian">
+    </deny>
+    <!-- Always deny obsidian placement or destruction -->
+    <deny id="deny-obsidian">
         <material>obsidian</material>
-    </not>
+    </deny>
 </filters>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/mechanics/regions)
-These regions reference the dispenser and obsidian filters defined above and states where they will work.
+These regions reference the filters defined above and states where they will work, as well as [lending a kit](/docs/modules/mechanics/regions#apply-effects) to players inside their respective team's spawn.
 
 ```xml
 <regions>
+    <cuboid id="red-spawn-protect" min="-42,87,3" max="-35,90,-36"/>
+    <cuboid id="blue-spawn-protect" min="12,87,3" max="19,90,-36"/>
+    <!-- applicators -->
+    <apply region="blue-spawn-protect" lend-kit="spawn-protection" filter="only-blue"/>
+    <apply region="red-spawn-protect" lend-kit="spawn-protection" filter="only-red"/>
     <apply leave="never" message="Don't exit the playing field!">
         <region>
             <union>
@@ -123,6 +152,8 @@ These regions reference the dispenser and obsidian filters defined above and sta
             </negative>
         </region>
     </apply>
+    <!-- Do not let players place or destroy dispenser blocks anywhere on the map -->
+    <apply block="deny-dispenser" message="Dispensers are disabled on this map!"/>
     <!-- Only the obsidian that makes up the core can be broken -->
     <apply block-break="deny-obsidian" message="You may not break obsidian outside the core area!">
         <region>
@@ -133,22 +164,20 @@ These regions reference the dispenser and obsidian filters defined above and sta
             </complement>
         </region>
     </apply>
-    <!-- Do not let anyone place dispenser blocks anywhere on the map -->
-    <apply block-place="deny-dispenser" region="everywhere" message="Dispensers are disabled on this map!"/>
 </regions>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/objectives/dtc)
-This specifies what material the core is made of, who each core belongs to and how far the lava needs to leak.
+This specifies what material the core is made of, who each core belongs to, and how far the lava needs to leak.
 
 ```xml
 <cores material="obsidian" leak="10">
-    <core team="blue">
+    <core team="blue-team">
         <region>
             <cuboid min="13,85,23" max="18,92,30"/>
         </region>
     </core>
-    <core team="red">
+    <core team="red-team">
         <region>
             <cuboid min="-41,85,23" max="-36,92,30"/>
         </region>
@@ -157,19 +186,60 @@ This specifies what material the core is made of, who each core belongs to and h
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/gear/repair-remove-keep)
-Remove shears, obsidian and gold block items from the playing field when they are dropped.
+We do not want an excessive amount of items dropped on the map, so this allows us to manage how to deal with dropped items more easily.
 
 ```xml
+<!-- These items will drop, players that already have these items can pick it up and will be merged -->
+<toolrepair>
+    <tool>diamond sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>diamond axe</tool>
+</toolrepair>
+<!-- All of these items will be automatically removed when dropped -->
 <itemremove>
-    <item>shears</item>
+    <item>gold helmet</item>
+    <item>chainmail chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
     <item>obsidian</item>
+    <item>arrow</item>
+    <item>wood</item>
+    <item>cooked fish</item>
+    <item>ladder</item>
     <item>gold block</item>
+    <item>bucket</item>
+    <item>water bucket</item>
+	<item>golden apple</item>
 </itemremove>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/gear/kill-rewards)
+Reward players by giving various items for killing an enemy.
+
+```xml
+<kill-rewards>
+    <kill-reward>
+        <item amount="16" material="arrow"/>
+        <item damage="1" amount="32" material="wood"/>
+        <item material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
+```
+
+[<i className="icon-right">➡️</i>](/docs/modules/gear/crafting)
+Stop players from being able to craft specific blocks or items.
+
+```xml
+<crafting>
+    <disable>chest</disable>
+    <disable>boat</disable>
+</crafting>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/environment/world/#build-height)
 
-This specifies how high players can build however it doesn't stop them from going over this limit.
+This specifies how high players can build, however, it does not stop them from walking or breaking blocks above this limit.
 
 ```xml
 <maxbuildheight>125</maxbuildheight>

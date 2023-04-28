@@ -3,13 +3,13 @@ id: main
 title: Introduction
 ---
 
-`Events` is the official PGM plugin for managing PvP matches in a competitive setting. Team joining is disabled for everyone, and upon joining or cycling, all players on the match's registered teams are forced onto their respective, defined-in-config teams.
+**Events** is the official PGM plugin for managing PvP matches in a competitive setting. Team joining is disabled for everyone, and upon joining or cycling, all players on the match's registered teams are forced onto their respective, defined-in-config teams.
 
 The plugin also manages cycling and starting matches as well as readying teams. Maps played in a match can be customized using a format file. Customizable vetos are also supported.
 
 ### Running
 
-1. Once you download the plugin from the [Downloads](/downloads) page, make sure that PGM is loaded and all your maps are present under the `maps` folder.
+1. Once you download Events from the [Downloads](/downloads) page, make sure that PGM is loaded and all your maps are present under the `maps` folder.
 
 2. Ensure that `plugins/Events/teams/` contains all the teams playing in this tournament and `plugins/Events/formats/` contains the formats for this tournament. You can find more information on how to create both in this section.
 
@@ -17,7 +17,7 @@ The plugin also manages cycling and starting matches as well as readying teams. 
 
 4. Start the format with /tm create `<format>` where `<format>`.xml is a valid file in plugins/Ingame/formats
 
-You will find more information about the plugin's commands in the `Commands` section. There's only one value to be configured, which is `observers-must-ready`. If disabled, the match will start without observers having to execute /ready. This is specially useful for referees, hence why it's enabled by default.
+You will find more information about the plugin's commands in the `Commands` section. There is only one value to be configured, which is `observers-must-ready`. If disabled, the match will start without observers having to execute `/ready`. This is specially useful for referees, hence why it is enabled by default.
 
 ### Permissions
 
@@ -26,6 +26,6 @@ You will find more information about the plugin's commands in the `Commands` sec
 - `events.spectate.vanish` - Like the above, but users will be vanished and therefore cannot interact with the game
 
 :::caution
-The plugin is still WIP. If you wish to contribute to its development,
-please check its <a href="https://github.com/PGMDev/Events"> GitHub repository</a>.
+The plugin is still work in progress. If you wish to contribute to its development,
+please check its <a href="https://github.com/PGMDev/Events">GitHub repository</a>.
 :::

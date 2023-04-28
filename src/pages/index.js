@@ -13,7 +13,7 @@ const features = [
     description: (
       <>
         Unlike the original release, PGM 1.8 is much easier to use. It has no
-        backend, website or API to make hosting more cost-effective.
+        backend, website, or API to make hosting more cost-effective.
       </>
     ),
   },
@@ -23,7 +23,7 @@ const features = [
     description: (
       <>
         Not only is PGM easy to use, but contributing requires no dependency
-        installation. The plugin is designed with reliability, stability and
+        installation. The plugin is designed with reliability, stability, and
         performance in mind, all made possible thanks to our wonderful
         contributors.
       </>
