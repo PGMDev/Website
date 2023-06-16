@@ -140,10 +140,10 @@ const config = {
         indexName: 'pgm',
         contextualSearch: false,
       },
-     // code highlighting
+      // code highlighting
       prism: {
-        theme: require('prism-react-renderer/themes/palenight'),
-        darkTheme: require('prism-react-renderer/themes/palenight'),
+        theme: require('prism-react-renderer').themes.palenight,
+        darkTheme: require('prism-react-renderer').themes.palenight,
         /// three backticks (```) will default to XML highlighting
         defaultLanguage: 'xml',
       },
