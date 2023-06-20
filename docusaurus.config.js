@@ -80,7 +80,7 @@ const config = {
      announcementBar: {
       id: 'new_features',
       content:
-        'New Features: <a href="/docs/modules/blocks/structures">Structures</a>, <a href="/docs/modules/blocks/enderchests">Ender Chests</a> and <a href="/docs/modules/objectives/payload">Payload Gamemode</a>',
+        'New Features: <a href="/docs/modules/general/main#map-variants">Map Variants</a>, <a href="/docs/modules/blocks/structures">Structures</a>, and <a href="/docs/modules/blocks/enderchests">Ender Chests</a>',
       backgroundColor: '#fafbfc',
       textColor: '#091E42',
       isCloseable: true,
@@ -132,7 +132,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} The PGM project and its contributors`,
+        copyright: `Copyright &#169; ${new Date().getFullYear()} The PGM project and its contributors`,
       },
       algolia: {
         appId: 'NZ27HYOOIL',
