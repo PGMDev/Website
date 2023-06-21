@@ -4,12 +4,14 @@ const sidebars = {
     {
       type: 'category',
       label: 'General',
-      items: ['modules/general/introduction', 'modules/general/main', 'modules/general/proto',],
+      items: ["modules/general/introduction", 
+      "modules/general/main", 
+      "modules/general/proto"],
     },
     {
       type: 'category',
       label: 'Information',
-      items: ['modules/information/broadcasts', 'modules/information/rules'],
+      items: ["modules/information/broadcasts", "modules/information/rules"],
     },
     {
       type: 'category',

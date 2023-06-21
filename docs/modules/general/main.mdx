@@ -182,8 +182,10 @@ The maps version should follow the versioning schema `major.minor.patch`.
           <label>{`<phase>`}</label>
         </td>
         <td>
-          Phase of this map. Only maps with <label>production</label> and
-          <label>standard</label> show up on the website.
+          The phase of this map. 
+          <br />
+          <span className="badge badge--secondary">Note</span> By default, it will not appear in the list when a user runs <label>/maps</label>. 
+          In legacy PGM, only maps with <label>production</label> and <label>standard</label> show up on a website configured with an API.
         </td>
         <td>
           <label>development</label>
@@ -197,7 +199,7 @@ The maps version should follow the versioning schema `major.minor.patch`.
         <td>
           <label>{`<edition>`}</label>
         </td>
-        <td>Edition of this map, describes which servers it is run on.</td>
+        <td>The edition of this map, describing which servers it should run on.</td>
         <td>
           <label>standard</label>
           <label>ranked</label>
@@ -241,7 +243,7 @@ The maps version should follow the versioning schema `major.minor.patch`.
 <map proto="1.4.2">
 <name>Map Name</name>
 <version>1.0.0</version>
-<objective>Short description about the maps objective.</objective>
+<objective>Short description about the map's objective.</objective>
 
 <!-- Map authors & contributors. -->
 
@@ -374,11 +376,211 @@ Then it can be added into the main `map.xml`. Multiple include statements can be
 </map>
 ```
 
+### Map Variants
+
+Mapmakers may choose to build different versions of their maps that are tailored for events, such as tournaments. 
+This tool allows them to avoid the need to duplicate existing maps and, instead, simplify various versions into one location.
+
+By defining a variant ID, PGM will treat an individual map with one or more variants as separate maps. 
+Each variant can contain conditionals, which determine whether a section of the XML file from the base (internally, the `default` variant) map should be loaded for a variant map.
+Additionally, a variant can also contain constants, which allows you to define text constants that can be used to replace placeholders in the base map XML with the specified values.
+
+#### Variant Sub-elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<variant> </variant>`}</label>
+        </td>
+        <td>A map variant.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Variant Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>id</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Unique identifer used to reference this map variant from other places in the XML.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>override</label>
+        </td>
+        <td>Toggle if the variant name should override the base map name. If set to false, PGM will append <label>: [variant]</label> to the base map name.</td>
+        <td>
+          <span className="badge badge--primary">true/false</span>
+        </td>
+        <td>false</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Conditionals Sub-elements
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Value/Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<if> </if>`}</label>
+        </td>
+        <td>Apply an XML section if the specified variant is loaded.</td>
+        <td>
+          <span className="badge badge--secondary">XML Modules</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<unless> </unless>`}</label>
+        </td>
+        <td>Apply an XML section for all variants except for a specific variant when loaded.</td>
+        <td>
+          <span className="badge badge--secondary">XML Modules</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+#### Constants Element
+
+:::note
+Constants are not necessarily tied to variants, you can use constants throughout the map XML without variants. It can also be used for includes.
+:::
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Description</th>
+        <th>Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`<constants> </constants>`}</label>
+        </td>
+        <td>A node containing the constants for this map.</td>
+        <td>
+          <span className="badge badge--secondary">Constant Elements</span>
+        </td>
+      </tr>
+      <tr>
+        <th>Sub-elements</th>
+        <th />
+        <th />
+      </tr>
+      <tr>
+        <td>
+          <label>{`<constant> </constant>`}</label>
+        </td>
+        <td>An individual constant.</td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+##### Constant Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>id</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Unique identifer used to reference this constant from other places in the XML.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```xml
+<map proto="1.4.2">
+<name>Map Name</name>
+<variant id="5v5">5v5</variant> <!-- Loaded as "Map Name: 5v5" -->
+<variant id="tournament">TE</variant> <!-- Loaded as "Map Name: TE" -->
+<variant id="halloween" override="true">Spooky Map Name</variant> <!-- Loaded as "Spooky Map Name" -->
+
+<!-- PGM will replace "${team_size}" placeholder with the new value -->
+<constant id="team_size">25</constant>
+<if variant="5v5">
+    <constant id="team_size">5</constant>
+</if>
+<if variant="tournament">
+    <constant id="team_size">5</constant>
+</if>
+
+<team id="red" max="${team_size}"/>
+<team id="blue" max="${team_size}"/>
+</map>
+```
+
 ### Map Gamemode
 
 The gamemode element is used to specify the gamemode(s) of the map.
 This mainly affects how the map is displayed.
-If no `<gamemode>` tags are specified the map will set the gamemode(s) to whatever modules are used.
+If no `<gamemode>` tags are specified, the map will set the gamemode(s) to whatever modules are used.
 This means that a map that uses destroyables and flags would be displayed as "DTM and CTF" unless specified otherwise.
 
 <div className="table-container">
