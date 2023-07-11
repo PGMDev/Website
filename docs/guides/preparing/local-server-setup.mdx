@@ -1,0 +1,222 @@
+---
+id: local-server-setup
+title: Setting Up a Server
+---
+
+import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
+
+Setting up a local Minecraft server loaded with PGM is one of the best ways to test your map without disruption and allows for greater experimentation. 
+Additionally, being able to test maps before submitting to a Minecraft network of your choice means that you will be able to catch mistakes early and greatly speed up the map submission process.
+
+This guide is divided into three most commonly used operating systems. Please keep in mind that some steps may differ or may not apply to your system.
+If you have any questions or need assistance, please visit our Discord server.
+
+## Windows
+
+This guide uses Windows 11, however, the same process will work on Windows 10 and older.
+
+### Installing Java
+
+We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
+If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+
+<div className="row">
+  <div className="col col--6">
+    <img src="/img/guides/local-server-setup/windows-corretto-setup-c1.png" />
+  </div>
+  <div className="col">
+    <img src="/img/guides/local-server-setup/windows-corretto-setup-c2.png" />
+  </div>
+  <div className="col col--6">
+    <img src="/img/guides/local-server-setup/windows-corretto-setup-c3.png" loading="lazy" />
+  </div>
+  <div className="col">
+    <img src="/img/guides/local-server-setup/windows-corretto-setup-c4.png" loading="lazy" />
+  </div>
+</div>
+
+### Downloading SportPaper
+
+Get the latest version of SportPaper from the [Downloads](/downloads) page.
+Once the download is done, you must put `SportPaper.jar` inside an empty folder.
+
+Next, you must create a Batch file to be able to start your server and have access to its console. Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.bat`.
+You must always double-click the `start.bat` file to launch the server, not the .jar file.
+
+```batch title="start.bat"
+@ECHO OFF
+TITLE SportPaper 1.8
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
+PAUSE
+```
+
+<img src="/img/guides/local-server-setup/windows-sportpaper-c3.png" loading="lazy" />
+
+### Downloading PGM
+
+You have two options when it comes to downloading PGM. You can download the stable version of PGM from the [Downloads](/downloads) page or you can download the development builds from its [GitHub repository](https://github.com/PGMDev/PGM/actions?query=actor%3AElectroid+branch%3Adev+is%3Asuccess).
+If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
+
+Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
+
+<img src="/img/guides/local-server-setup/windows-pgm-c1.png" loading="lazy" />
+
+### Starting the Server
+
+Once you are done with the initial setup, you can double click `start.bat` to let SportPaper create the neccessary files for Minecraft and PGM.
+You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
+
+Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
+
+<img src="/img/guides/local-server-setup/windows-serverstartup-c1.png" loading="lazy" />
+
+## macOS
+
+This guide uses macOS 12 (Monterey). The process should be the same for newer versions of macOS, however, you may need to proceed differently if you are using an older version of macOS.
+
+### Installing Java
+
+We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
+If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+
+<div className="row">
+  <div className="col col--6">
+    <ImageSwitcher
+      lightImageSrc="/img/guides/local-server-setup/mac-corretto-setup-c1-light.png"
+      darkImageSrc="/img/guides/local-server-setup/mac-corretto-setup-c1-dark.png"
+    />
+  </div>
+  <div className="col">
+    <ImageSwitcher
+      lightImageSrc="/img/guides/local-server-setup/mac-corretto-setup-c2-light.png"
+      darkImageSrc="/img/guides/local-server-setup/mac-corretto-setup-c2-dark.png"
+    />
+  </div>
+  <div className="col col--6">
+    <ImageSwitcher
+      lightImageSrc="/img/guides/local-server-setup/mac-corretto-setup-c3-light.png"
+      darkImageSrc="/img/guides/local-server-setup/mac-corretto-setup-c3-dark.png"
+    />
+  </div>
+</div>
+
+### Downloading SportPaper
+
+Get the latest version of SportPaper from the [Downloads](/downloads) page.
+Once the download is done, you must put `SportPaper.jar` inside an empty folder.
+
+Next, you must create a Shell script file to be able to start your server and have access to its console. Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.command`.
+
+```bash title="start.command"
+#!/bin/sh
+
+cd "$( dirname "$0" )"
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
+```
+
+<ImageSwitcher
+  lightImageSrc="/img/guides/local-server-setup/mac-sportpaper-c2-light.png"
+  darkImageSrc="/img/guides/local-server-setup/mac-sportpaper-c2-dark.png"
+/>
+
+You also need to mark the script file as executable. Start by opening Terminal, type the following command below (but **do not press** Enter yet) and drag the file into the window.
+The file path will appear and highlight itself once this is done, then you can press Enter.
+
+```bash
+chmod a+x <path to your start.command file>
+```
+
+<ImageSwitcher
+  lightImageSrc="/img/guides/local-server-setup/mac-sportpaper-c3-light.png"
+  darkImageSrc="/img/guides/local-server-setup/mac-sportpaper-c3-dark.png"
+/>
+
+You must always double-click the `start.command` file to launch the server, not the .jar file.
+
+### Downloading PGM
+
+You have two options when it comes to downloading PGM. You can download the stable version of PGM from the [Downloads](/downloads) page or you can download the development builds from its [GitHub repository](https://github.com/PGMDev/PGM/actions?query=actor%3AElectroid+branch%3Adev+is%3Asuccess).
+If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
+
+Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
+
+<ImageSwitcher
+  lightImageSrc="/img/guides/local-server-setup/mac-pgm-c1-light.png"
+  darkImageSrc="/img/guides/local-server-setup/mac-pgm-c1-dark.png"
+/>
+
+### Starting the Server
+
+Once you are done with the initial setup, you can double click `start.command` to let SportPaper create the neccessary files for Minecraft and PGM.
+You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
+
+Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
+
+<ImageSwitcher
+  lightImageSrc="/img/guides/local-server-setup/mac-serversetup-c1-light.png"
+  darkImageSrc="/img/guides/local-server-setup/mac-serversetup-c1-dark.png"
+/>
+
+## Linux
+
+Please keep in mind that the following process may differ depending on your distribution. If neccessary, consult your distribution's documentation or user manual.
+
+### Installing Java
+
+We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
+If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+
+### Downloading SportPaper
+
+Placeholder
+
+## Additional Setup
+
+### Configure SportPaper
+
+Using your text editor of choice, you may edit `server.properties` and `sportpaper.yml`. We recommend changing the following options below:
+
+```properties title="server.properties"
+allow-nether=false
+announce-player-achievements=false
+generate-structures=false
+```
+
+```yml title="sportpaper.yml"
+bukkit:
+  settings:
+    allow-end: false
+spigot:
+  # Forcibly disable vanilla Minecraft achievements.
+  stats:
+    disable-saving: true
+    forced-stats:
+      achievement:
+        openInventory: 1
+  world-settings:
+    anti-xray:
+      enabled: false # Helps with reducing lag; public servers should utilize an anti-cheat plugin.
+paper:
+  settings:
+    empty-server-suspend: P100D # Prevent the server from immediately suspending itself due to inactivity.
+  world-settings:
+    fix-cannons: true # Recommended when making maps that involves TNT.
+    game-mechanics:
+      disable-chest-cat-detection: true # Helps with reducing lag.
+    optimize-explosions: true # Recommended when making maps that involves TNT.
+```
+
+### Configure PGM
+
+PGM's configuration file can be found in `<file path to your server>/plugins/PGM/config.yml`.
+
+### Load and Configure WorldEdit
+
+Some servers may choose to use [WorldEdit](https://dev.bukkit.org/projects/worldedit). As SportPaper is available as Minecraft 1.8 server software, the latest version of WorldEdit that is compatible is [6.1.9](https://dev.bukkit.org/projects/worldedit/files/2597538).
+
+Once the download is done, place `worldedit-bukkit-6.1.9.jar` inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below:
+
+```yml title="/plugins/WorldEdit/config.yml"
+# PGM will give observers with OP the "Rabbit's Foot" item, which allows them to edit the world during a match.
+wand-item: 414
+```

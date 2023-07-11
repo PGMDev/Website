@@ -106,10 +106,11 @@ const sidebars = {
       "guides/xml-pointers/filter-apply-order",
       "guides/xml-pointers/conventions",
     ],
-    "Packaging Maps": [
-      "guides/packaging/cleaning-files",
-      "guides/packaging/pruning-chunks",
-      "guides/packaging/compiling-and-releasing",
+    "Preparing Maps": [
+      "guides/preparing/cleaning-files",
+      "guides/preparing/pruning-chunks",
+      "guides/preparing/compiling-and-releasing",
+      "guides/preparing/local-server-setup"
     ],
   },
   Commands: ["commands/main", "commands/community", "commands/events"],
