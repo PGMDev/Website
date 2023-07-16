@@ -34,6 +34,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: 'apple-mobile-web-app-title', content: 'PGM Documentation' },
+        { property: 'og:site_name', content: 'PGM Documentation' },
+        { name: 'theme-color', content: '#4C0704' }
+      ],
       navbar: {
         title: 'PGM Documentation',
         logo: {
