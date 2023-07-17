@@ -8,8 +8,8 @@ import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
 Text formatting codes are used to create fancy colorized text, they are prefixed with a grave symbol `` ` ``. After using a formatting code such as `` `o `` (italic), it has to be reset, otherwise it will continue until the end of the text.
 
 :::info
-Some older maps may use the depreciated `§` section symbol to specify
-formatting codes. This symbol should be avoided where possible in new map files.
+Some older maps may use the deprecated `§` section symbol to specify formatting codes. 
+This symbol should be avoided in favor of the `` ` `` grave symbol wherever possible for all new maps.
 :::
 
 _Examples_
@@ -20,12 +20,14 @@ _Examples_
 <item name="`1Blue `4Red `rNone" material="book"/>
 ```
 
-##### Chat Colors
+### Chat Colors
 
-<ImageSwitcher
-  lightImageSrc="/img/reference/chat-colors.png"
-  darkImageSrc="/img/reference/chat-colors-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher
+    lightImageSrc="/img/reference/chat-colors.png"
+    darkImageSrc="/img/reference/chat-colors-dark.png"
+  />
+</div>
 
 <div className="table-container">
   <table>
@@ -122,7 +124,7 @@ _Examples_
   </table>
 </div>
 
-##### Text
+### Text Styles
 
 <div className="table-container">
   <table>

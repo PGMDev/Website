@@ -26,10 +26,12 @@ Now let us apply this filter to `Region A`, and also apply a filter to `Region B
 However, there is one slight complication. `Region B` is inside of `Region A`.
 So which filter will override the other? This is where the apply order comes in handy.
 
-<ImageSwitcher alt="An overview of two sample regions and a depiction of two possible apply orders that affect how the regions operate."
-  lightImageSrc="/img/guides/apply-order.png"
-  darkImageSrc="/img/guides/apply-order-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher alt="An overview of two sample regions and a depiction of two possible apply orders that affect how the regions operate."
+    lightImageSrc="/img/guides/apply-order.png"
+    darkImageSrc="/img/guides/apply-order-dark.png"
+  />
+</div>
 
 The order that you put the `<apply>` tags can change the outcome when something gets filtered.
 In the previous example, the `only-tnt` filter would always override the `never` filter since it is above it.

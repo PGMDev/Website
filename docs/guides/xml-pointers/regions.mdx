@@ -15,17 +15,29 @@ When making regions, you have to make sure that all the block centers are _insid
 
 Here is an example. Let us say we want to make a region for a destroyable monument that looks like this:
 
+<div className="text--center">
+
 ![An overview of a polished andesite tower.](/img/guides/cuboid-overview.png 'An overview of a polished andesite tower.')
+
+</div>
 
 First, we stand very close to one **corner** of the region and note the coordinates are `(32, 60, -20)`:
 
+<div className="text--center">
+
 ![The player in this screenshot is standing at the top edge of the polished andesite tower. The coordinates are visible in the corner.](/img/guides/cuboid-c1.png 'The player in this screenshot is standing at the top edge of the polished andesite tower. The coordinates are visible in the corner.')
+
+</div>
 
 Then, we stand over the opposite corner and note the coordinates are `(34, 60, -18)`.
 
 We know the monument is three blocks tall, so we will just subtract 3 from the Y coordinate to get `(34, 57, -18)`:
 
+<div className="text--center">
+
 ![The player in this screenshot is standing at the same top edge, but on the opposite corners. The coordinates are visible in the corner.](/img/guides/cuboid-c2.png 'The player in this screenshot is standing at the same top edge, but on the opposite corners. The coordinates are visible in the corner.')
+
+</div>
 
 Notice that we are rounding to the **nearest** integer, since those will be the coordinates of the corner we are standing close to.
 We do not need to worry about positive vs negative coordinates, as they work the same way, and we never need to add or subtract one.
@@ -56,7 +68,11 @@ Blocks with their center point inside the cylinder will be considered part of th
 
 The region boundary and the block centers are highlighted, so you can easily see how this works:
 
+<div className="text--center">
+
 ![The topdown view of a cylinder region with a highlight showing a radius of 5 blocks.](/img/guides/cylinder-overview.png 'The topdown view of a cylinder region with a highlight showing a radius of 5 blocks.')
+
+</div>
 
 So the region would be:
 

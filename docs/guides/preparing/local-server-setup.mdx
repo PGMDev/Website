@@ -49,8 +49,9 @@ TITLE SportPaper 1.8
 java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
 PAUSE
 ```
-
-<img src="/img/guides/local-server-setup/windows-sportpaper-c3.png" loading="lazy" />
+<div className="text--center">
+  <img src="/img/guides/local-server-setup/windows-sportpaper-c3.png" loading="lazy" />
+</div>
 
 ### Downloading PGM
 
@@ -59,7 +60,9 @@ If you are working on a map that will utilize features introduced in pre-release
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
 
-<img src="/img/guides/local-server-setup/windows-pgm-c1.png" loading="lazy" />
+<div className="text--center">
+  <img src="/img/guides/local-server-setup/windows-pgm-c1.png" loading="lazy" />
+</div>
 
 ### Starting the Server
 
@@ -68,7 +71,9 @@ You can now join the server from your Minecraft client at `localhost` or `127.0.
 
 Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
 
-<img src="/img/guides/local-server-setup/windows-serverstartup-c1.png" loading="lazy" />
+<div className="text--center">
+  <img src="/img/guides/local-server-setup/windows-serverstartup-c1.png" loading="lazy" />
+</div>
 
 ## macOS
 
@@ -114,10 +119,12 @@ cd "$( dirname "$0" )"
 java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
 ```
 
-<ImageSwitcher
-  lightImageSrc="/img/guides/local-server-setup/mac-sportpaper-c2-light.png"
-  darkImageSrc="/img/guides/local-server-setup/mac-sportpaper-c2-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher
+    lightImageSrc="/img/guides/local-server-setup/mac-sportpaper-c2-light.png"
+    darkImageSrc="/img/guides/local-server-setup/mac-sportpaper-c2-dark.png"
+  />
+</div>
 
 You also need to mark the script file as executable. Start by opening Terminal, type the following command below (but **do not press** Enter yet) and drag the file into the window.
 The file path will appear and highlight itself once this is done, then you can press Enter.
@@ -126,10 +133,12 @@ The file path will appear and highlight itself once this is done, then you can p
 chmod a+x <path to your start.command file>
 ```
 
-<ImageSwitcher
-  lightImageSrc="/img/guides/local-server-setup/mac-sportpaper-c3-light.png"
-  darkImageSrc="/img/guides/local-server-setup/mac-sportpaper-c3-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher
+    lightImageSrc="/img/guides/local-server-setup/mac-sportpaper-c3-light.png"
+    darkImageSrc="/img/guides/local-server-setup/mac-sportpaper-c3-dark.png"
+  />
+</div>
 
 You must always double-click the `start.command` file to launch the server, not the .jar file.
 
@@ -140,10 +149,12 @@ If you are working on a map that will utilize features introduced in pre-release
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
 
-<ImageSwitcher
-  lightImageSrc="/img/guides/local-server-setup/mac-pgm-c1-light.png"
-  darkImageSrc="/img/guides/local-server-setup/mac-pgm-c1-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher
+    lightImageSrc="/img/guides/local-server-setup/mac-pgm-c1-light.png"
+    darkImageSrc="/img/guides/local-server-setup/mac-pgm-c1-dark.png"
+  />
+</div>
 
 ### Starting the Server
 
@@ -152,19 +163,30 @@ You can now join the server from your Minecraft client at `localhost` or `127.0.
 
 Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
 
-<ImageSwitcher
-  lightImageSrc="/img/guides/local-server-setup/mac-serversetup-c1-light.png"
-  darkImageSrc="/img/guides/local-server-setup/mac-serversetup-c1-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher
+    lightImageSrc="/img/guides/local-server-setup/mac-serversetup-c1-light.png"
+    darkImageSrc="/img/guides/local-server-setup/mac-serversetup-c1-dark.png"
+  />
+</div>
 
 ## Linux
 
+This guide uses commands that are available for Debian-based distributions.
 Please keep in mind that the following process may differ depending on your distribution. If neccessary, consult your distribution's documentation or user manual.
+Otherwise, we trust that you know what you are doing.
 
 ### Installing Java
 
 We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
 If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+
+```bash
+wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
+sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
+
+sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
+```
 
 ### Downloading SportPaper
 

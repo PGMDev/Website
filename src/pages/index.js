@@ -8,7 +8,7 @@ import styles from "./styles.module.css";
 
 const features = [
   {
-    title: <>Easy to Use</>,
+    title: "Easy to Use",
     imageUrl: "img/ok-hand.png",
     description: (
       <>
@@ -18,7 +18,7 @@ const features = [
     ),
   },
   {
-    title: <>Open Source</>,
+    title: "Open Source",
     imageUrl: "img/open-hands.png",
     description: (
       <>
@@ -30,7 +30,7 @@ const features = [
     ),
   },
   {
-    title: <>Active Community</>,
+    title: "Active Community",
     imageUrl: "img/handshake.png",
     description: (
       <>
@@ -107,7 +107,8 @@ function Home() {
             <div className="col col--6">
               <img
                 src="img/shield.png"
-                alt="PGM logo"
+                alt="Biege-colored shield with a red outline containing two swords clashing in the middle and a text that reads 'PGM' underneath it."
+                title="Biege-colored shield with a red outline containing two swords clashing in the middle and a text that reads 'PGM' underneath it."
                 width="350px"
                 className={classnames(styles.floating)}
               />
