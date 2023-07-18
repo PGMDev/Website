@@ -109,7 +109,7 @@ const sidebars = {
     "Preparing Maps": [
       "guides/preparing/cleaning-files",
       "guides/preparing/pruning-chunks",
-      "guides/preparing/compiling-and-releasing",
+      "guides/preparing/packaging-and-releasing",
       "guides/preparing/local-server-setup"
     ],
   },
