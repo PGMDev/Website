@@ -6,10 +6,12 @@ title: Setting Up a Server
 import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
 
 Setting up a local Minecraft server loaded with PGM is one of the best ways to test your map without disruption and allows for greater experimentation. 
-Additionally, being able to test maps before submitting to a Minecraft network of your choice means that you will be able to catch mistakes early and greatly speed up the map submission process.
+Additionally, being able to test maps before submitting to a Minecraft network of your choice means that you will be able to catch mistakes early and speed up the map submission process.
 
+:::note
 This guide is divided into three most commonly used operating systems. Please keep in mind that some steps may differ or may not apply to your system.
 If you have any questions or need assistance, please visit our Discord server.
+:::
 
 ## Windows
 
@@ -17,7 +19,8 @@ This guide uses Windows 11, however, the same process will work on Windows 10 an
 
 ### Installing Java
 
-We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
+We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). 
+However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
 If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
 
 <div className="row">
@@ -40,7 +43,8 @@ If you already have a copy of Java 8 or Java 11 installed, you may skip this ste
 Get the latest version of SportPaper from the [Downloads](/downloads) page.
 Once the download is done, you must put `SportPaper.jar` inside an empty folder.
 
-Next, you must create a Batch file to be able to start your server and have access to its console. Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.bat`.
+Next, you must create a Batch file to be able to start your server and have access to its console. 
+Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.bat`.
 You must always double-click the `start.bat` file to launch the server, not the .jar file.
 
 ```batch title="start.bat"
@@ -66,7 +70,7 @@ Once the download is done, you must put `PGM.jar` inside the `plugins` folder (c
 
 ### Starting the Server
 
-Once you are done with the initial setup, you can double click `start.bat` to let SportPaper create the neccessary files for Minecraft and PGM.
+Once you are done with the initial setup, you can double-click `start.bat` to let SportPaper create the necessary files for Minecraft and PGM.
 You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
 
 Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
@@ -81,7 +85,8 @@ This guide uses macOS 12 (Monterey). The process should be the same for newer ve
 
 ### Installing Java
 
-We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
+We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). 
+However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
 If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
 
 <div className="row">
@@ -110,7 +115,8 @@ If you already have a copy of Java 8 or Java 11 installed, you may skip this ste
 Get the latest version of SportPaper from the [Downloads](/downloads) page.
 Once the download is done, you must put `SportPaper.jar` inside an empty folder.
 
-Next, you must create a Shell script file to be able to start your server and have access to its console. Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.command`.
+Next, you must create a Terminal shell script file to be able to start your server and have access to its console. 
+Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.command`.
 
 ```bash title="start.command"
 #!/bin/sh
@@ -158,7 +164,7 @@ Once the download is done, you must put `PGM.jar` inside the `plugins` folder (c
 
 ### Starting the Server
 
-Once you are done with the initial setup, you can double click `start.command` to let SportPaper create the neccessary files for Minecraft and PGM.
+Once you are done with the initial setup, you can double-click `start.command` to let SportPaper create the necessary files for Minecraft and PGM.
 You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
 
 Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
@@ -173,24 +179,54 @@ Also see [Additional Setup](#additional-setup) if you would like to make the mos
 ## Linux
 
 This guide uses commands that are available for Debian-based distributions.
-Please keep in mind that the following process may differ depending on your distribution. If neccessary, consult your distribution's documentation or user manual.
+Please keep in mind that the following process may differ depending on your distribution. If necessary, consult your distribution's documentation or user manual.
 Otherwise, we trust that you know what you are doing.
 
 ### Installing Java
 
-We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
+We recommend using either Java 8 or Java 11. For this guide, we will be using [OpenJDK](https://openjdk.org/). 
+However, you may choose to use [Amazon Corretto 11](https://aws.amazon.com/corretto/) or [Eclipse Adoptium](https://adoptium.net/) as well.
 If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
 
 ```bash
-wget -O- https://apt.corretto.aws/corretto.key | sudo apt-key add - 
-sudo add-apt-repository 'deb https://apt.corretto.aws stable main'
-
-sudo apt-get update; sudo apt-get install -y java-11-amazon-corretto-jdk
+sudo apt update && sudo apt install openjdk-11-jdk
 ```
 
 ### Downloading SportPaper
 
-Placeholder
+Get the latest version of SportPaper from the [Downloads](/downloads) page.
+Once the download is done, you must put `SportPaper.jar` inside an empty folder.
+
+Next, you must create a shell script file to be able to start your server and have access to its console. 
+Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.sh`.
+
+```bash title="start.sh"
+#!/bin/sh
+
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
+```
+
+You also need to mark the script file as executable. Start by typing the following command below into your terminal.
+
+```bash
+chmod +x <path to your start.sh file>
+```
+
+You must always execute from `start.sh` to launch the server, not the .jar file.
+
+### Downloading PGM
+
+You have two options when it comes to downloading PGM. You can download the stable version of PGM from the [Downloads](/downloads) page or you can download the development builds from its [GitHub repository](https://github.com/PGMDev/PGM/actions?query=actor%3AElectroid+branch%3Adev+is%3Asuccess).
+If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
+
+Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
+
+### Starting the Server
+
+Once you are done with the initial setup, you can launch from your terminal (`./start.sh`) or double-click `start.sh` (if using a desktop environment) to let SportPaper create the necessary files for Minecraft and PGM.
+You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
+
+Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
 
 ## Additional Setup
 
@@ -230,11 +266,33 @@ paper:
 
 ### Configure PGM
 
-PGM's configuration file can be found in `<file path to your server>/plugins/PGM/config.yml`.
+PGM will load with five default maps out of the box. 
+You are expected to configure the plugin before you can begin using additional maps.
+We encourage you to understand and modify PGM's config, similarly to what we've done below:
+
+```yml title="/plugins/PGM/config.yml"
+map:
+  folders:
+    # List of folders to load maps.
+    # You can add multiple folders from different sources.
+    - "sample-github-maps"
+    - "local-maps" # Loads maps from a folder named "local-maps" located in your server's directory.
+
+  repositories:
+    # List of git repositories to load maps.
+    # When using multiple GitHub repositories hosted by PGM networks, beware of duplicate maps.
+     - uri: "https://github.com/PGMDev/Maps"
+      path: "sample-github-maps"
+
+# Experimental features that are not yet stable.
+experiments:
+  # Set to "true" if you plan on creating and testing Payload maps.
+  payload: true
+```
 
 ### Load and Configure WorldEdit
 
-Some servers may choose to use [WorldEdit](https://dev.bukkit.org/projects/worldedit). As SportPaper is available as Minecraft 1.8 server software, the latest version of WorldEdit that is compatible is [6.1.9](https://dev.bukkit.org/projects/worldedit/files/2597538).
+Some servers may choose to use [WorldEdit](https://dev.bukkit.org/projects/worldedit). Since SportPaper is based on Minecraft 1.8 server software, the latest compatible version of WorldEdit is [6.1.9](https://dev.bukkit.org/projects/worldedit/files/2597538).
 
 Once the download is done, place `worldedit-bukkit-6.1.9.jar` inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below:
 
