@@ -37,7 +37,7 @@ const config = {
       metadata: [
         { name: 'apple-mobile-web-app-title', content: 'PGM Documentation' },
         { property: 'og:site_name', content: 'PGM Documentation' },
-        { name: 'theme-color', content: '#4C0704' }
+        { name: 'theme-color', content: '#FF4500' }
       ],
       navbar: {
         title: 'PGM Documentation',

@@ -50,7 +50,7 @@ You must always double-click the `start.bat` file to launch the server, not the 
 ```batch title="start.bat"
 @ECHO OFF
 TITLE SportPaper 1.8
-java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
 PAUSE
 ```
 <div className="text--center">
@@ -122,7 +122,7 @@ Start by opening your preferred text editor, copy and paste the following exampl
 #!/bin/sh
 
 cd "$( dirname "$0" )"
-java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
 ```
 
 <div className="text--center">
@@ -203,13 +203,13 @@ Start by opening your preferred text editor, copy and paste the following exampl
 ```bash title="start.sh"
 #!/bin/sh
 
-java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar --nogui
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
 ```
 
-You also need to mark the script file as executable. Start by typing the following command below into your terminal.
+You also need to mark the script file as executable. Start by opening your terminal in the server's directory and typing the following command below.
 
 ```bash
-chmod +x <path to your start.sh file>
+sudo chmod +x start.sh
 ```
 
 You must always execute from `start.sh` to launch the server, not the .jar file.
@@ -223,7 +223,7 @@ Once the download is done, you must put `PGM.jar` inside the `plugins` folder (c
 
 ### Starting the Server
 
-Once you are done with the initial setup, you can launch from your terminal (`./start.sh`) or double-click `start.sh` (if using a desktop environment) to let SportPaper create the necessary files for Minecraft and PGM.
+Once you are done with the initial setup, you can launch from your terminal (`./start.sh`) to let SportPaper create the necessary files for Minecraft and PGM.
 You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
 
 Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
@@ -258,7 +258,7 @@ paper:
   settings:
     empty-server-suspend: P100D # Prevent the server from immediately suspending itself due to inactivity.
   world-settings:
-    fix-cannons: true # Recommended when making maps that involves TNT.
+    fix-cannons: true # Stops ignited TNT from moving in flowing water. Recommended when making maps that involves TNT.
     game-mechanics:
       disable-chest-cat-detection: true # Helps with reducing lag.
     optimize-explosions: true # Recommended when making maps that involves TNT.
@@ -268,14 +268,13 @@ paper:
 
 PGM will load with five default maps out of the box. 
 You are expected to configure the plugin before you can begin using additional maps.
-We encourage you to understand and modify PGM's config, similarly to what we've done below:
+We encourage you to understand and modify PGM's config to your liking, similarly to what we've done below:
 
 ```yml title="/plugins/PGM/config.yml"
 map:
   folders:
     # List of folders to load maps.
     # You can add multiple folders from different sources.
-    - "sample-github-maps"
     - "local-maps" # Loads maps from a folder named "local-maps" located in your server's directory.
 
   repositories:
