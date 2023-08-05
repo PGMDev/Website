@@ -34,6 +34,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        { name: 'apple-mobile-web-app-title', content: 'PGM Documentation' },
+        { property: 'og:site_name', content: 'PGM Documentation' },
+        { name: 'theme-color', content: '#FF4500' }
+      ],
       navbar: {
         title: 'PGM Documentation',
         logo: {
@@ -80,7 +85,7 @@ const config = {
      announcementBar: {
       id: 'new_features',
       content:
-        'New Features: <a href="/docs/modules/general/main#map-variants">Map Variants</a>, <a href="/docs/modules/blocks/structures">Structures</a>, and <a href="/docs/modules/blocks/enderchests">Ender Chests</a>',
+        'New Features: <a href="/docs/modules/general/main#map-variants">Map Variants</a>, <a href="/docs/modules/general/main#constants">Constants</a>, <a href="/docs/modules/blocks/structures">Structures</a>, and <a href="/docs/modules/blocks/enderchests">Ender Chests</a>',
       backgroundColor: '#fafbfc',
       textColor: '#091E42',
       isCloseable: true,

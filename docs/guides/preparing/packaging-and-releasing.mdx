@@ -1,6 +1,6 @@
 ---
-id: compiling-and-releasing
-title: Compiling and Releasing
+id: packaging-and-releasing
+title: Packaging and Releasing
 ---
 
 import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
@@ -9,10 +9,12 @@ Once your world is cleaned up and pruned, it is ready to be compiled.
 To start, add in your `map.xml` file. Then, add in your `map.png` file.
 Below is an image of what your map folder should look like:
 
-<ImageSwitcher
-  lightImageSrc="/img/guides/compiled-folder.png"
-  darkImageSrc="/img/guides/compiled-folder-dark.png"
-/>
+<div className="text--center">
+  <ImageSwitcher alt="A screenshot of a sample map folder. It shows the following files in order: 'level.dat', 'map.png', 'map.xml', and a folder titled 'region'."
+    lightImageSrc="/img/guides/compiled-folder.png"
+    darkImageSrc="/img/guides/compiled-folder-dark.png"
+  />
+</div>
 
 ### The Map XML File
 
@@ -36,12 +38,12 @@ You should use the default resource pack without shaders.
 
 _Image Example_
 
-<div className="row">
-  <div className="col col--6">
-    <img src="/img/guides/totally-war-2.png" />
+<div className="text--center row">
+  <div className="col">
+    <img src="/img/guides/totally-war-2.png" alt="Totally War 2" title="Totally War 2"/>
   </div>
   <div className="col">
-    <img src="/img/guides/rage-quit.png" />
+    <img src="/img/guides/rage-quit.png" alt="Rage Quit" title="Rage Quit"/>
   </div>
 </div>
 
@@ -54,10 +56,12 @@ Do **not** compress to a `.rar` or any other format.
 
 To compress a folder:
 
-- **Windows:** Right Click > Send To > Compressed Zip
+- **Windows 11:** Right Click > Compress to ZIP File
+- **Windows 10 and older:** Right Click > Send To > Compressed (zipped) Folder
 - **macOS:** Right Click > Compress
 
 ### Uploading the map
 
 To upload the map, we recommend using [MediaFire](https://www.mediafire.com/), [Dropbox](https://www.dropbox.com/), or creating a [GitHub](https://github.com/) repository.
+You can also upload your map's XML file to [GitHub Gist](https://gist.github.com/), [Pastebin](https://pastebin.com/), or one of the many alternatives available online.
 Additionally, follow any instructions from the Minecraft network of your choice if you wish to submit a map to them.

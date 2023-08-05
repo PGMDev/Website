@@ -562,7 +562,7 @@ Player filters match for attributes of a certain player.
   </table>
 </div>
 
-#### Player Item Filter Attributes
+#### Carrying/Holding/Wearing Filter Attributes
 
 These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 
@@ -1191,7 +1191,7 @@ This filter is a [Dynamic Filter](#dynamic-filters).
         <td>
           <span className="badge badge--danger">Required</span>
           Length of time a cycle lasts for.
-          <br/><em>Must be longer than period.</em>
+          <br/><em>Must be a positive number that is shorter than the period length.</em>
         </td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
@@ -1289,7 +1289,7 @@ The child filter can be omitted, in which case all players in the match will be 
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
-        <td>oo (unlimited)</td>
+        <td><label>oo</label> (unlimited)</td>
       </tr>
       <tr>
         <td>

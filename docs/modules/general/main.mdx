@@ -1,9 +1,10 @@
 ---
 id: main
 title: Main Map Element
+description: Every map XML file must contain the base map module. It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings.
 ---
 
-Every map XML file must contain the base `<map>` module. It contains modules that specify the map name, version, objective, authors, contributors and all other map settings. The objective is the text that players see when they join the match, and so it's important for this to be very clear, concise, and informative.
+Every map XML file must contain the base `<map>` module. It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings. The objective is the text that players see when they join the match, and so it's important for this to be very clear, concise, and informative.
 
 The `proto=""` attribute specifies what PGM version the XML file was created for. Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](docs/modules/general/proto).
 
@@ -379,7 +380,7 @@ Then it can be added into the main `map.xml`. Multiple include statements can be
 ### Map Variants
 
 Mapmakers may choose to build different versions of their maps that are tailored for events, such as tournaments. 
-This tool allows them to avoid the need to duplicate existing maps and, instead, simplify various versions into one location.
+This tool allows them to avoid the need to duplicate existing maps and, instead, unify various versions into one location.
 
 By defining a variant ID, PGM will treat an individual map with one or more variants as separate maps. 
 Each variant can contain conditionals, which determine whether a section of the XML file from the base (internally, the `default` variant) map should be loaded for a variant map.
@@ -484,11 +485,9 @@ Additionally, a variant can also contain constants, which allows you to define t
   </table>
 </div>
 
-#### Constants Element
-
-:::note
-Constants are not necessarily tied to variants, you can use constants throughout the map XML without variants. It can also be used for includes.
-:::
+### Constants
+Constants are values that remain the same, regardless of conditions.
+PGM will search and replace any corresponding placeholders (`${constant_id}`) with the constant value.
 
 <div className="table-container">
   <table>
@@ -555,6 +554,7 @@ Constants are not necessarily tied to variants, you can use constants throughout
   </table>
 </div>
 
+The following example utilizes both map variants and constant.
 ```xml
 <map proto="1.4.2">
 <name>Map Name</name>
