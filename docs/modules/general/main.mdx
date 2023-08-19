@@ -6,7 +6,7 @@ description: Every map XML file must contain the base map module. It contains mo
 
 Every map XML file must contain the base `<map>` module. It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings. The objective is the text that players see when they join the match, and so it's important for this to be very clear, concise, and informative.
 
-The `proto=""` attribute specifies what PGM version the XML file was created for. Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](docs/modules/general/proto).
+The `proto=""` attribute specifies what PGM version the XML file was created for. Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](/docs/modules/general/proto).
 
 The maps version should follow the versioning schema `major.minor.patch`.
 
@@ -277,8 +277,7 @@ A player's name should **not** be used to credit them, instead their UUID should
         </td>
         <td>
           A major author of the map, used in
-          <label>{`<authors>`}</label>
-          <br />
+          <label>{`<authors>`}</label>.
         </td>
         <td>
           <span className="badge badge--primary">String</span>
@@ -290,7 +289,7 @@ A player's name should **not** be used to credit them, instead their UUID should
         </td>
         <td>
           A contributor to the map, used in
-          <label>{`<contributors>`}</label>
+          <label>{`<contributors>`}</label>.
         </td>
         <td>
           <span className="badge badge--primary">String</span>

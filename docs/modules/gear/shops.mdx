@@ -4,9 +4,9 @@ title: Shops
 ---
 
 The shops module is an easy way to add shop functionality to a map with a GUI interface.
-Players interact with mobs (like Villagers) which are shopkeepers which they can buy items using currencies.
+Players interact with mobs, such as Villagers, which are shopkeepers where they can buy items using currencies.
 Shops have categories of items, and each category can store up to 28 unique items.
-Players can also buy a kit instead of individual items, or use muiltiple currencies to purchase items.
+Players can also buy a kit, instead of individual items, or use muiltiple currencies to purchase items.
 
 #### Shop Element
 
@@ -47,7 +47,7 @@ Players can also buy a kit instead of individual items, or use muiltiple currenc
   </table>
 </div>
 
-### Shop Elements
+### Shop Sub-Elements
 
 <div className="table-container">
   <table>
@@ -102,7 +102,7 @@ Players can also buy a kit instead of individual items, or use muiltiple currenc
         </td>
         <td>
           <span className="badge badge--danger">Required</span>
-          The ID for the shop.
+          Unique identifier used to reference this shop from other places in the XML.
         </td>
         <td>
           <span className="badge badge--primary">String</span>
@@ -112,11 +112,9 @@ Players can also buy a kit instead of individual items, or use muiltiple currenc
         <td>
           <label>{`name`}</label>
         </td>
-        <td>The name for the in-game shop.</td>
+        <td>The display name for the shop.</td>
         <td>
-          <a href="/docs/reference/misc/formatting#chatColors">
-            Chat Color Name
-          </a>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
       </tr>
     </tbody>
@@ -141,7 +139,7 @@ Players can also buy a kit instead of individual items, or use muiltiple currenc
         </td>
         <td>
           <span className="badge badge--danger">Required</span>
-          The ID for the category.
+          Unique identifier used to reference this category from other places in the XML.
         </td>
         <td>
           <span className="badge badge--primary">String</span>
@@ -151,18 +149,16 @@ Players can also buy a kit instead of individual items, or use muiltiple currenc
         <td>
           <label>{`name`}</label>
         </td>
-        <td>The name for the in-game category.</td>
+        <td>The display name for the category.</td>
         <td>
-          <a href="/docs/reference/misc/formatting#chatColors">
-            Chat Color Name
-          </a>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
       </tr>
       <tr>
         <td>
           <label>{`material`}</label>
         </td>
-        <td>The item to display for the category</td>
+        <td>The item to display as an icon for the category</td>
         <td>
           <a href="/docs/reference/items/inventory#material_matchers">
             Material Name
@@ -212,7 +208,7 @@ Items can be purchased with multiple currencies using the `<payment>` tag.
         <td>
           <label>{`kit`}</label>
         </td>
-        <td>The kit to give to the player</td>
+        <td>The kit to give to players purchasing the item.</td>
         <td>
           <a href="/docs/modules/gear/kits">Kit</a>
         </td>
@@ -221,7 +217,7 @@ Items can be purchased with multiple currencies using the `<payment>` tag.
         <td>
           <label>{`color`}</label>
         </td>
-        <td>Changes the currency text color.</td>
+        <td>Set the currency's display text color. Can be used for associating colors with different currency tiers.</td>
         <td>
           <a href="/docs/reference/misc/formatting#chatColors">
             Chat Color Name
@@ -260,10 +256,10 @@ _Example_
 ## Shopkeepers
 
 Shopkeepers are invulnerable, unmovable entities that hold a single shop type and are spawned at match load.
-Each shop type can have an unlimited number of shopkeepers, however. There's no limitations to how many players
-can have a shop open at the same time.
+Each shop type can have an unlimited number of shopkeepers. There are no limitations to how many players
+can have a shop open simultaneously.
 
-Shopkeepers must use a single location provider, multiple inner points/regions are not allowed.
+Shopkeepers must use a single location provider, multiple inner points or regions are not allowed.
 
 ### Shopkeeper Element
 
@@ -313,6 +309,7 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
         <th>Element</th>
         <th>Description</th>
         <th>Value</th>
+        <th>Default</th>
       </tr>
     </thead>
     <tbody>
@@ -320,23 +317,23 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
         <td>
           <label>{`name`}</label>
         </td>
-        <td>Name for the shopkeeper.</td>
+        <td>The display name of this shopkeeper, shown above the entity if present.</td>
         <td>
-          <a href="/docs/reference/misc/formatting#chatColors">
-            Chat Color Name
-          </a>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
+        <td></td>
       </tr>
       <tr>
         <td>
           <label>{`mob`}</label>
         </td>
         <td>
-          Mob type for shopkeeper <i>(defaults to Villager)</i>
+          The mob type for this shopkeeper to appear as.
         </td>
         <td>
           <a href="/docs/reference/entities/entity-types">Creature Type</a>
         </td>
+        <td>Villager</td>
       </tr>
       <tr>
         <td>
@@ -344,9 +341,10 @@ Shopkeepers must use a single location provider, multiple inner points/regions a
         </td>
         <td>
           <span className="badge badge--danger">Required</span>
-          The shop to use.
+          A previously defined shop to use.
         </td>
         <td>Shop ID</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
