@@ -69,7 +69,8 @@ const sidebars = {
       "modules/gear/repair-remove-keep",
       "modules/gear/projectiles",
       "modules/gear/tnt",
-      "modules/gear/kill-rewards"],
+      "modules/gear/kill-rewards",
+      "modules/gear/lootables"],
     },
     {
       type: 'category',
