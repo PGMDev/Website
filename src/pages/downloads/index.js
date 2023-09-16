@@ -5,11 +5,12 @@ import { format } from "date-fns";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faArrowDown,
   faAngleRight,
-  faFolderOpen,
+  faBook,
   faCompass,
   faCalendarAlt,
+  faDownload,
+  faFolderOpen,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -50,51 +51,74 @@ export default function Downloads() {
               styles.appearing
             )}
           >
-            <div className="container row">
-              <div className="col">
-                <div className="row">
-                  <img src="/img/shield.png" className={styles.pgm_logo} />
-                  <div className={styles.pgm}>
-                    <h1>PGM {releases[0].name}</h1>
+            <div className="container">
+              <div className="row">
+                <div className="col">
+                  <div className="row">
+                    <img src="/img/shield.png" className={styles.pgm_logo} />
+                    <div className={styles.pgm}>
+                      <h1>PGM {releases[0].name}</h1>
+                      <p>
+                        <label>
+                          {" "}
+                          {format(
+                            new Date(releases[0].published_at),
+                            "LLLL do, yyyy"
+                          )}{" "}
+                        </label>
+                      </p>
+                      <a href={releases[0].html_url}>
+                        Changelog <FontAwesomeIcon icon={faAngleRight} />
+                      </a>
+                    </div>
+                  </div>
+                  <div className={styles.description}>
                     <p>
-                      <label>
-                        {" "}
-                        {format(
-                          new Date(releases[0].published_at),
-                          "LLLL do, yyyy"
-                        )}{" "}
-                      </label>
+                      Minecraft multiplayer game-server suite for managing PvP
+                      matches across various gamemodes
                     </p>
-                    <a href={releases[0].html_url}>
-                      Changelog <FontAwesomeIcon icon={faAngleRight} />
-                    </a>
                   </div>
                 </div>
-                <div className={styles.description}>
+                <div className={classnames("col col--4", styles.col_border)}>
+                  <h2>Download PGM</h2>
                   <p>
-                    Minecraft multiplayer game-server suite for managing PvP
-                    matches across various gamemodes
+                    PvP Game Manager (PGM) is a plugin that manages running and
+                    instancing multiple PvP maps across various gamemodes for
+                    Minecraft multiplayer.
                   </p>
+                  <div className={classnames(styles.download_button_wrapper)}>
+                    <a
+                        className={classnames(
+                            "button button--primary",
+                            styles.download_button
+                        )}
+                        href={"https://nightly.link/PGMDev/PGM/workflows/deploy/dev/PGM.jar.zip"}
+                        title={"Latest development build directly from github.\nContains all the latest features, may occasionally bring new bugs."}
+                    >
+                      Latest <FontAwesomeIcon icon={faDownload} />
+                    </a>
+                    <a
+                        className={classnames(
+                            "button button--primary",
+                            styles.download_button
+                        )}
+                        href={releases[0].assets[0].browser_download_url}
+                        title={`Latest stable release, ${releases[0].name} from ${format(new Date(releases[0].published_at), "LLLL do, yyyy")}.\nLacks the latest features, but has a smaller chance of random bugs.`}
+                    >
+                      Stable {releases[0].name} <FontAwesomeIcon icon={faDownload} />
+                    </a>
+                  </div>
+                  <a
+                      className={classnames(
+                          "button button--primary",
+                          styles.download_button
+                      )}
+                      href={"/docs/guides/preparing/local-server-setup"}
+                  >
+                    Install guide <FontAwesomeIcon icon={faBook} />
+                  </a>
                 </div>
-              </div>
-              <div className={classnames("col col--4", styles.col_border)}>
-                <h2>Download PGM</h2>
-                <p>
-                  PvP Game Manager (PGM) is a plugin that manages running and
-                  instancing multiple PvP maps across various gamemodes for
-                  Minecraft multiplayer.
-                </p>
-                <a
-                  className={classnames(
-                    "button button--primary",
-                    styles.download_button
-                  )}
-                  href={releases[0].assets[0].browser_download_url}
-                >
-                  Download <FontAwesomeIcon icon={faArrowDown} />
-                </a>
-              </div>
-              <div className={classnames("col col--4", styles.col_margin_left)}>
+                <div className={classnames("col col--4", styles.col_margin_left)}>
                 <h2>Download SportPaper</h2>
                 <p>
                   SportPaper is a Minecraft server jar based on Paper 1.8 tuned
@@ -108,8 +132,9 @@ export default function Downloads() {
                   )}
                   href={releases[0].assets[1].browser_download_url}
                 >
-                  Download <FontAwesomeIcon icon={faArrowDown} />
+                  Download <FontAwesomeIcon icon={faDownload} />
                 </a>
+              </div>
               </div>
             </div>
           </div>
@@ -142,7 +167,7 @@ export default function Downloads() {
                         )}
                         href="https://github.com/PGMDev/Events/releases/latest"
                       >
-                        Download <FontAwesomeIcon icon={faArrowDown} />
+                        Download <FontAwesomeIcon icon={faDownload} />
                       </a>
                     </div>
                   </div>
@@ -180,7 +205,7 @@ export default function Downloads() {
                           styles.others_button
                         )}
                       >
-                        Coming Soon <FontAwesomeIcon icon={faArrowDown} />
+                        Coming Soon <FontAwesomeIcon icon={faDownload} />
                       </button>
                     </div>
                   </div>

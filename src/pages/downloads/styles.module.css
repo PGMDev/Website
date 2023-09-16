@@ -136,7 +136,7 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 996px) {
   .hero_shadow div {
     padding: 0;
   }
@@ -181,17 +181,33 @@
 }
 
 .download_button {
-  width: 200px;
-  max-width: 200px;
+  width: 250px;
+  max-width: 250px;
 }
 
-@media screen and (max-width: 1000px) {
+.download_button_wrapper {
+  width: 250px;
+  max-width: 250px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.download_button_wrapper > .download_button {
+  padding-left: 3px;
+  padding-right: 3px;
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 996px) {
   .download_button {
     margin-bottom: 30px;
+    margin-right: 10px;
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media not screen and (max-width: 996px) {
   .col_border {
     border-right: 1px solid #c8c6c4;
   }

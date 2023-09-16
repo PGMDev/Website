@@ -50,7 +50,7 @@ You must always double-click the `start.bat` file to launch the server, not the 
 ```batch title="start.bat"
 @ECHO OFF
 TITLE SportPaper 1.8
-java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
+java -Xms128M -Xmx2G -Dfile.encoding=UTF8 -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
 PAUSE
 ```
 <div className="text--center">
