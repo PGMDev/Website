@@ -8,6 +8,9 @@
 .docusaurus
 .cache-loader
 
+# Intellij/webstorm
+/.idea
+
 # Misc
 .DS_Store
 .directory
