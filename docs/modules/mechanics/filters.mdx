@@ -595,7 +595,7 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
         </td>
         <td>Ignore the durability of the item when matching.</td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
       <tr>
@@ -604,7 +604,7 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
         </td>
         <td>Ignore the metadata of the item when matching.</td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
       <tr>
@@ -613,7 +613,7 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
         </td>
         <td>Ignore the name of the item when matching.</td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
       <tr>
@@ -622,7 +622,7 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
         </td>
         <td>Ignore the enchantments of the item when matching.</td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
     </tbody>
@@ -941,9 +941,9 @@ This filter is commonly used in [kill rewards](/docs/modules/gear/kill-rewards),
 _Examples_
 
 ```xml
-<kill-streak min="3"/>    <!-- matches players with at least 3 kills -->
-<kill-streak max="5"/>    <!-- matches players with at most 5 kills -->
-<kill-streak count="4"/>  <!-- matches players with exactly 4 kills -->
+<kill-streak min="3"/>   <!-- matches players with at least 3 kills -->
+<kill-streak max="5"/>   <!-- matches players with at most 5 kills -->
+<kill-streak count="4"/> <!-- matches players with exactly 4 kills -->
 <kill-streak repeat="true" count="10"/>  <!-- match for every 10th kill -->
 ```
 
@@ -1119,6 +1119,18 @@ It never matches when the child filter doesn't match. This filter is a [Dynamic 
       </tr>
       <tr>
         <td>
+          <label>filter</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Filter when the countdown should be active.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">Dynamic Filter</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>message</label>
         </td>
         <td>
@@ -1146,6 +1158,57 @@ It never matches when the child filter doesn't match. This filter is a [Dynamic 
 
 This filter starts allowing sometime after a duration the child filters start allowing.
 This filter is a [Dynamic Filter](#dynamic-filters).
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>duration</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Length of time to be active after the child filter allows.
+        </td>
+        <td>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>filter</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Filter when the after filter should be active.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">Dynamic Filter</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>message</label>
+        </td>
+        <td>
+          Optional message to display after the child filter allows.
+          Only players who match the filter can see the message.
+          If the message contains a placeholder, it will be replaced with the remaining time.
+        </td>
+        <td>
+          <span className="badge badge--primary">String</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ```
 <!-- Allows 15 seconds after the player gets 1st place -->
@@ -1199,6 +1262,19 @@ This filter is a [Dynamic Filter](#dynamic-filters).
       </tr>
       <tr>
         <td>
+          <label>filter</label>
+        </td>
+        <td>
+          <span className="badge badge--danger">Required</span>
+          Filter when the pulse should be active; if the filter allows, pulse will be ticking. 
+          It can be defined as a unique child element or as an attribute.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">Dynamic Filter</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <label>message</label>
         </td>
         <td>
@@ -1219,8 +1295,12 @@ This filter is a [Dynamic Filter](#dynamic-filters).
     <!-- Pulses activation for 15 seconds in a 60 second time period -->
     <!-- ie. on for 15 seconds, off for 45 seconds -->
     <!-- Filter turns off if condition doesn't meet after 60 seconds -->
-    <pulse id="pulse-filter" period="60s" duration="15s">
-        <filter id="second-filter"/>
+    <pulse id="pulse-filter" period="60s" duration="15s" filter="second-filter"/>
+
+    <!-- Pulse activates for 20 seconds in a 40 second time period -->
+    <!-- With the inner filter, it is always active until the match ends -->
+    <pulse id="other-pulse" period="40s" duration="20s">
+        <match-running/>
     </pulse>
 </filters>
 ```
@@ -1275,7 +1355,7 @@ The child filter can be omitted, in which case all players in the match will be 
         <td>
           <label>min</label>
         </td>
-        <td>Minimum player count</td>
+        <td>Minimum player count.</td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
@@ -1285,7 +1365,7 @@ The child filter can be omitted, in which case all players in the match will be 
         <td>
           <label>max</label>
         </td>
-        <td>Maximum player count</td>
+        <td>Maximum player count.</td>
         <td>
           <span className="badge badge--primary">Number</span>
         </td>
@@ -1310,6 +1390,20 @@ The child filter can be omitted, in which case all players in the match will be 
           <span className="badge badge--primary">true/false</span>
         </td>
         <td>false</td>
+      </tr>
+      <tr>
+        <td>
+          <label>filter</label>
+        </td>
+        <td>
+          Filter when players are counted.
+        </td>
+        <td>
+          <a href="/docs/modules/mechanics/filters#dynamic-filters">Dynamic Filter</a>
+        </td>
+        <td>
+          <label>&lt;always&#47;&gt;</label>
+        </td>
       </tr>
     </tbody>
   </table>

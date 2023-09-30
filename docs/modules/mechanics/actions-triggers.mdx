@@ -200,9 +200,17 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`text`}</label>
         </td>
-        <td>The text that will be sent to a player.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          The text that will be sent to a player.
+        </td>
+        <td>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
         <td></td>
       </tr>
@@ -210,9 +218,17 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`title`}</label>
         </td>
-        <td>The title text.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          The title text.
+        </td>
+        <td>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
         <td></td>
       </tr>
@@ -220,9 +236,17 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`subtitle`}</label>
         </td>
-        <td>The subtitle text.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          The subtitle text.
+        </td>
+        <td>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
         <td></td>
       </tr>
@@ -230,9 +254,17 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`actionbar`}</label>
         </td>
-        <td>The text above the hotbar.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          The text above the hotbar.
+        </td>
+        <td>
+          <span className="badge badge--primary">Formatted Text</span>
         </td>
         <td></td>
       </tr>
@@ -242,7 +274,7 @@ In the future, some features that are currently used in Kits may be transferred 
         </td>
         <td>How long the text will fade in.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
         <td>0.5 sec</td>
       </tr>
@@ -252,7 +284,7 @@ In the future, some features that are currently used in Kits may be transferred 
         </td>
         <td>How long the text will display for.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
         <td>3.5 sec</td>
       </tr>
@@ -262,7 +294,7 @@ In the future, some features that are currently used in Kits may be transferred 
         </td>
         <td>How long the text will fade out.</td>
         <td>
-          <span className="badge badge--primary">String</span>
+          <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
         <td>1 sec</td>
       </tr>
@@ -379,7 +411,7 @@ In the future, some features that are currently used in Kits may be transferred 
           which will make it affected by other filters and PGM features. <em>May impact preformace for large fills.</em>
         </td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
     </tbody>
@@ -425,7 +457,7 @@ In the future, some features that are currently used in Kits may be transferred 
           item.
         </td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
       <tr>
@@ -434,7 +466,7 @@ In the future, some features that are currently used in Kits may be transferred 
         </td>
         <td>Enchantments on the old item will be applied to the new item.</td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
       <tr>
@@ -443,7 +475,7 @@ In the future, some features that are currently used in Kits may be transferred 
         </td>
         <td>Filters which entities to remove.</td>
         <td>
-          <span className="badge badge--primary">True/False</span>
+          <span className="badge badge--primary">true/false</span>
         </td>
       </tr>
       <tr>
@@ -482,7 +514,15 @@ trigger an Action.
         <td>
           <label>{`filter`}</label>
         </td>
-        <td>A dynamic filter that activiates the trigger.</td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          A dynamic filter that activates the trigger.
+        </td>
         <td>
           <a href="/docs/modules/mechanics/filters#dynamic-filters">
             Dynamic Filter
@@ -493,7 +533,15 @@ trigger an Action.
         <td>
           <label>{`action`}</label>
         </td>
-        <td>Sets an Action.</td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          Sets the action to run when the filter allows.
+        </td>
         <td>
           <a href="#action-elements">Action</a>
         </td>

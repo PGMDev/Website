@@ -576,9 +576,9 @@ affect a modifier applied by a different kit.
 
 **Attribute Operations**
 
-- `add` Add amount
-- `base` Multiply amount by base value and add it
-- `multiply` Multiply by amount
+- `add` &#8212; Add amount
+- `base` &#8212; Multiply amount by base value and add it
+- `multiply` &#8212; Multiply by amount
 
 ##### Attribute Kit Elements
 
@@ -852,7 +852,7 @@ This element's enabled attribute can be used to disable double-jump inside regio
         <td>
           <label>recharge-time</label>
         </td>
-        <td>Recharge time till the player can double jump again.</td>
+        <td>Recharge time until the player can double jump again.</td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
@@ -884,7 +884,7 @@ This element's enabled attribute can be used to disable double-jump inside regio
 
 The fly kit gives players which it is applied to the ability to fly.
 It also allows modification of the speed at which they fly.
-If no attributes are specified can-fly defaults to true.
+If no attributes are specified, `can-fly` defaults to true.
 
 <div className="table-container">
   <table>
@@ -899,7 +899,7 @@ If no attributes are specified can-fly defaults to true.
         <td>
           <label>{`<fly/>`}</label>
         </td>
-        <td>Control the player's flying ability</td>
+        <td>Control the player's flying ability.</td>
       </tr>
     </tbody>
   </table>
@@ -936,9 +936,9 @@ If no attributes are specified can-fly defaults to true.
           Set if the player is currently flying.
           <br />
           <i>
-            To enable flying
+            To enable flying,
             <label>can-fly</label>
-            can not be set to false.
+            cannot be set to false.
           </i>
         </td>
         <td>
@@ -962,9 +962,9 @@ If no attributes are specified can-fly defaults to true.
 
 ```xml
 <kit id="fly">
-    <fly/>                  <!-- Allow player to fly -->
-    <fly can-fly="false"/>  <!-- Don't allow player to fly -->
-    <fly flying="true"/>    <!-- Make the player fly right away -->
-    <fly flying="false"/>   <!-- Make the player stop flying right away -->
+    <fly/>                 <!-- Allow player to fly -->
+    <fly can-fly="false"/> <!-- Don't allow player to fly -->
+    <fly flying="true"/>   <!-- Make the player fly right away -->
+    <fly flying="false"/>  <!-- Make the player stop flying right away -->
 </kit>
 ```
