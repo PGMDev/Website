@@ -25,7 +25,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`<action> </action>`}</label>
         </td>
-        <td>A single Action.</td>
+        <td>A group of actions running in a sequence.</td>
       </tr>
       <tr>
         <td>
@@ -38,6 +38,12 @@ In the future, some features that are currently used in Kits may be transferred 
           <label>{`<message/>`}</label>
         </td>
         <td>A message that is sent to the player.</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`<sound/>`}</label>
+        </td>
+        <td>A sound that is played for the player.</td>
       </tr>
       <tr>
         <td>
@@ -96,7 +102,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`id`}</label>
         </td>
-        <td>An ID.</td>
+        <td>Unique identifier used to reference this action from other places in the XML.</td>
         <td>
           <span className="badge badge--primary">String</span>
         </td>
@@ -105,7 +111,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`scope`}</label>
         </td>
-        <td>Runs the filter against a certain query.</td>
+        <td>Sets the scope target an action should operate against.</td>
         <td>
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
@@ -156,7 +162,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`id`}</label>
         </td>
-        <td>An ID.</td>
+        <td>Unique identifier used to reference this switch-scope from other places in the XML.</td>
         <td>
           <span className="badge badge--primary">String</span>
         </td>
@@ -165,7 +171,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`inner`}</label>
         </td>
-        <td>Runs the filter against a new query.</td>
+        <td>Specify the scope of the inner action.</td>
         <td>
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
@@ -174,7 +180,12 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`outer`}</label>
         </td>
-        <td>The previously defined query.</td>
+        <td>Specify the scope outside of an action.
+        <br />
+        <em>
+          In some cases, this can be omitted as PGM will automatically infer the outer scope.
+        </em>
+        </td>
         <td>
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
@@ -207,43 +218,7 @@ In the future, some features that are currently used in Kits may be transferred 
           >
             Property
           </span>
-          The text that will be sent to a player.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`title`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The title text.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`subtitle`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The subtitle text.
+          The text that will be sent in the chat to a player.
         </td>
         <td>
           <span className="badge badge--primary">Formatted Text</span>
@@ -270,9 +245,45 @@ In the future, some features that are currently used in Kits may be transferred 
       </tr>
       <tr>
         <td>
+          <label>{`title`}</label>
+        </td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          The title text that will appear in the center of the player's screen.
+        </td>
+        <td>
+          <span className="badge badge--primary">Formatted Text</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`subtitle`}</label>
+        </td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          The subtitle text that will appear below the title text.
+        </td>
+        <td>
+          <span className="badge badge--primary">Formatted Text</span>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
           <label>{`fade-in`}</label>
         </td>
-        <td>How long the text will fade in.</td>
+        <td>How long the title and subtitle text will fade in.</td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
@@ -282,7 +293,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`stay`}</label>
         </td>
-        <td>How long the text will display for.</td>
+        <td>How long the title and subtitle text will display for.</td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
@@ -292,11 +303,70 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`fade-out`}</label>
         </td>
-        <td>How long the text will fade out.</td>
+        <td>How long the title and subtitle text will fade out.</td>
         <td>
           <a href="/docs/reference/misc/time-periods">Time Period</a>
         </td>
         <td>1 sec</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Sound Attributes
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label>{`preset`}</label>
+        </td>
+        <td>Allows you to reuse a pre-existing sound with predefined volume and pitch.</td>
+        <td>
+          <a href="/docs/reference/misc/sounds">Sound Presets</a>
+        </td>
+        <td>
+          <label>CUSTOM</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`key`}</label>
+        </td>
+        <td>The sound type that will be played for a player.</td>
+        <td>
+          <a href="/docs/reference/misc/sounds#sound-keys">Sound Keys</a>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`volume`}</label>
+        </td>
+        <td>How loud or quiet a sound should be.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>1.0</td>
+      </tr>
+      <tr>
+        <td>
+          <label>{`pitch`}</label>
+        </td>
+        <td>The tone of the sound.</td>
+        <td>
+          <span className="badge badge--primary">Number</span>
+        </td>
+        <td>1.0</td>
       </tr>
     </tbody>
   </table>
@@ -318,7 +388,10 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`var`}</label>
         </td>
-        <td><span className="badge badge--danger">Required</span> The variable to update.</td>
+        <td>
+          <span className="badge badge--danger">Required</span> 
+          The variable to update.
+        </td>
         <td>
           <a href="/docs/modules/mechanics/variables">Variable</a>
         </td>
@@ -327,7 +400,9 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`value`}</label>
         </td>
-        <td><span className="badge badge--danger">Required</span> Sets a new value for the variable.</td>
+        <td>
+          <span className="badge badge--danger">Required</span> 
+          Sets a new value for the variable.</td>
         <td>
           <span className="badge badge--primary">String</span>
         </td>
@@ -370,6 +445,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <th>Attribute</th>
         <th>Description</th>
         <th>Value</th>
+        <th>Default</th>
       </tr>
     </thead>
     <tbody>
@@ -377,10 +453,21 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <label>{`region`}</label>
         </td>
-        <td>The region to fill in.</td>
+        <td>
+          <span
+            className="badge badge--secondary"
+            title="Can be either this attribute or a sub-element."
+          >
+            Property
+          </span>
+          <span className="badge badge--danger">Required</span>
+          The region to fill in. Multiple regions will be treated
+          as an union.
+        </td>
         <td>
           <a href="/docs/modules/mechanics/Regions">Region</a>
         </td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -392,6 +479,7 @@ In the future, some features that are currently used in Kits may be transferred 
             Single Material Pattern
           </a>
         </td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -401,6 +489,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <a href="/docs/modules/mechanics/filters">Filter</a>
         </td>
+        <td></td>
       </tr>
       <tr>
         <td>
@@ -413,6 +502,7 @@ In the future, some features that are currently used in Kits may be transferred 
         <td>
           <span className="badge badge--primary">true/false</span>
         </td>
+        <td>false</td>
       </tr>
     </tbody>
   </table>
@@ -550,7 +640,7 @@ trigger an Action.
         <td>
           <label>{`scope`}</label>
         </td>
-        <td>Runs the filter against a certain query.</td>
+        <td>Specify the scope for which to test the filter.</td>
         <td>
           <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
         </td>
@@ -575,7 +665,7 @@ _Example_
         <!-- Gives the player who activated the trigger a diamond -->
         <message text="You've been given a diamond!"/>
         <kit>
-            <item>diamond</item>
+            <item material="diamond"/>
         </kit>
         <!-- Sends a message to the player's team -->
         <switch-scope outer="player" inner="team">
@@ -602,29 +692,29 @@ in order to use `/action`. See [Commands](/docs/commands/main) for more details.
 
 ```
 <actions>
-  <!-- Moderator uses "/action trigger start-blitz" to start this Action -->
-  <action id="start-blitz" expose="true" scope="match">
-    <!-- Sends notification to chat -->
-    <message text="Blitz mode has been enabled!"/>
-    <!-- Sets blitz_enabled to 1 -->
-    <set var="blitz_enabled" value="1"/>
-  </action>
+    <!-- Moderator uses "/action trigger start-blitz" to start this Action -->
+    <action id="start-blitz" expose="true" scope="match">
+        <!-- Sends notification to chat -->
+        <message text="Blitz mode has been enabled!"/>
+        <!-- Sets blitz_enabled to 1 -->
+        <set var="blitz_enabled" value="1"/>
+    </action>
 
-  <!-- Moderator uses "/action trigger end-blitz" to start this Action -->
-  <action id="end-blitz" expose="true" scope="match">
-    <message text="Blitz mode has been disabled!"/>
-    <set var="blitz_enabled" value="0"/>
-  </action>
+    <!-- Moderator uses "/action trigger end-blitz" to start this Action -->
+    <action id="end-blitz" expose="true" scope="match">
+        <message text="Blitz mode has been disabled!"/>
+        <set var="blitz_enabled" value="0"/>
+    </action>
 </actions>
 <!-- Creates the blitz_enabled variable -->
 <variables>
-  <variable id="blitz_enabled" scope="match"/>
+    <variable id="blitz_enabled" scope="match"/>
 </variables>
 <blitz>
   <!-- Matches for a condition where a player loses a life -->
   <filter>
-    <!-- If a player dies when blitz_enabled is 1, they lose a life -->
-    <variable var="blitz_enabled">1</variable>
+      <!-- If a player dies when blitz_enabled is 1, they lose a life -->
+      <variable var="blitz_enabled">1</variable>
   </filter>
 </blitz>
 ```
