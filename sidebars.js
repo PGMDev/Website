@@ -97,6 +97,7 @@ const sidebars = {
       "reference/misc/formatting",
       "reference/misc/objective-names",
       "reference/misc/colors",
+      "reference/misc/sounds",
       "reference/misc/time-periods",
     ],
   },

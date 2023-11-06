@@ -1,0 +1,164 @@
+---
+id: sounds
+title: Sound Presets
+---
+
+Sounds are used to draw a player's attention to certain events on a map. PGM comes with several preset sounds that can be quickly used for scenarios.
+It can be used in combination with other actions, as defined in [Actions &amp; Triggers](/docs/modules/mechanics/actions-triggers#sound-attributes).
+
+<div className="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Sound Type</th>
+        <th>Description</th>
+        <th>Default Volume</th>
+        <th>Default Pitch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CUSTOM</td>
+        <td>
+          Note pling; fallback sound when no sound are defined.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>TIP</td>
+        <td>
+          Used for <a href="/docs/modules/information/broadcasts">Tip broadcast messages</a>.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>1.2</label>
+        </td>
+      </tr>
+      <tr>
+        <td>ALERT</td>
+        <td>
+          High-pitched note pling; used for <a href="/docs/modules/information/broadcasts">Alert broadcast messages</a>.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>2.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>PORTAL</td>
+        <td>
+          Used for <a href="/docs/modules/mechanics/portals">Portals</a>.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>SCORE</td>
+        <td>
+          Used when the player enters a <a href="/docs/modules/objectives/scoring#score-boxes">Score Box</a>.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          OBJECTIVE_FIREWORKS_FAR
+          <br />
+          OBJECTIVE_FIREWORKS_TWINKLE
+        </td>
+        <td>
+          Used for <a href="/docs/modules/objectives/dtm#destroyable-attributes">Destroyables</a> when <label>sparks</label> is enabled.
+        </td>
+        <td>
+          <label>0.75</label>
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>OBJECTIVE_GOOD</td>
+        <td>
+          Used when the player's team completes or captures an objective.
+        </td>
+        <td>
+          <label>0.7</label>
+        </td>
+        <td>
+          <label>2.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>OBJECTIVE_BAD</td>
+        <td>
+          Used when the enemy team completes or captures an objective.
+        </td>
+        <td>
+          <label>0.8</label>
+        </td>
+        <td>
+          <label>0.8</label>
+        </td>
+      </tr>
+      <tr>
+        <td>OBJECTIVE_MODE</td>
+        <td>
+          Used when <a href="/docs/modules/objectives/monument-modes">Monument Modes</a> are triggered.
+        </td>
+        <td>
+          <label>0.15</label>
+        </td>
+        <td>
+          <label>1.2</label>
+        </td>
+      </tr>
+      <tr>
+        <td>DEATH_OWN</td>
+        <td>
+          Used when the player or a teammate dies during a match.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+      </tr>
+      <tr>
+        <td>DEATH_OTHER</td>
+        <td>
+          Used when an enemy player dies during a match.
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+        <td>
+          <label>1.0</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+Copied from: [Kyori Adventure docs - Sound](https://docs.advntr.dev/sound.html)
+
+### Sound Keys
+
+A list of sound keys available in Minecraft 1.8 can be found on [Minecraft Wiki - Sounds.json](https://minecraft.wiki/w/Sounds.json/Java_Edition_values_before_1.9).
