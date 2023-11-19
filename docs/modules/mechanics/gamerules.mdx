@@ -4,101 +4,32 @@ title: Gamerules
 description: Minecraft's built in game rules can be set via the gamerules module.
 ---
 
-Minecraft's built in game rules can be set via the `<gamerules>` module. Not all gamerules are supported, the table below lists which are supported.
+Minecraft's built in game rules can be set via the `<gamerules>` module. 
+Not all gamerules are supported, the table below lists which are supported.
 
+:::info
 When stopping the daylight cycle, you should either use the `<doDaylightCycle>` gamerule or the [`<timelock>`](/docs/modules/environment/time#time-lock) module.
+:::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<gamerules> </gamerules>`}</label>
-        </td>
-        <td>Node containing the defined game rules.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<gamerules> </gamerules>` | Node containing the defined game rules. |
 </div>
 
-##### Supported Gamerule Sub-elements
+#### Supported Gamerule Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th style={{ minWidth: "110px" }}>Values</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<doFireTick>`}</label>
-        </td>
-        <td>Toggles whether firespread occurs.</td>
-        <td>
-          <span className="badge badge--primary">true / false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<doTileDrops>`}</label>
-        </td>
-        <td>Toggles whether tile entities drop.</td>
-        <td>
-          <span className="badge badge--primary">true / false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<doMobLoot>`}</label>
-        </td>
-        <td>Toggles whether mobs drop loot on death.</td>
-        <td>
-          <span className="badge badge--primary">true / false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<mobGriefing>`}</label>
-        </td>
-        <td>
-          Toggles whether mobs such as Creepers and Endermen cause enviromental
-          damage.
-        </td>
-        <td>
-          <span className="badge badge--primary">true / false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<naturalRegeneration>`}</label>
-        </td>
-        <td>Toggles whether or not players naturally regain heath.</td>
-        <td>
-          <span className="badge badge--primary">true / false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<doDaylightCycle>`}</label>
-        </td>
-        <td>Toggles whether or not time tick occurs.</td>
-        <td>
-          <span className="badge badge--primary">true / false</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `<doFireTick>` | Toggles whether fire spread occurs. | <span className="badge badge--primary">true/false</span> |
+  | `<doTileDrops>` | Toggles whether tile entities drop. | <span className="badge badge--primary">true/false</span> |
+  | `<doMobLoot>` | Toggles whether mobs drop loot on death. | <span className="badge badge--primary">true/false</span> |
+  | `<mobGriefing>` | Toggles whether mobs such as Creepers and Endermen cause enviromental damage. | <span className="badge badge--primary">true/false</span> |
+  | `<naturalRegeneration>` | Toggles whether or not players naturally regain heath. | <span className="badge badge--primary">true/false</span> |
+  | `<doDaylightCycle>` | Toggles whether or not time tick occurs. | <span className="badge badge--primary">true/false</span> |
 </div>
+
 Example
 
 ```xml
@@ -108,68 +39,17 @@ Example
 </gamerules>
 ```
 
-##### Unsupported Gamerules
+#### Unsupported Gamerules
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Rule</th>
-        <th>Reason</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>doMobSpawning</label>
-        </td>
-        <td>
-          Not supported in favor of the{" "}
-          <a href="/docs/modules/environment/mobs">mobs</a> module.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>keepInventory</label>
-        </td>
-        <td>Not supported since PGM already solves this with kits.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>commandBlockOutput</label>
-        </td>
-        <td>Command blocks are disabled in PGM.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>logAdminCommands</label>
-        </td>
-        <td>Not useful in custom maps.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>randomTickSpeed</label>
-        </td>
-        <td>Not useful in custom maps.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>reducedDebugInfo</label>
-        </td>
-        <td>Not useful in custom maps.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>sendCommandFeedback</label>
-        </td>
-        <td>Not useful in custom maps.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>showDeathMessages</label>
-        </td>
-        <td>Not useful in custom maps.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Rule | Description |
+  |---|---|
+  | `doMobSpawning` | Not supported in favor of the [Mob Spawning](/docs/modules/environment/mobs) module. |
+  | `keepInventory` | Not supported since PGM already solves this with kits. |
+  | `commandBlockOutput` | Command blocks are not used in PGM. |
+  | `logAdminCommands` | Not useful in custom maps. |
+  | `randomTickSpeed` | Not useful in custom maps. |
+  | `reducedDebugInfo` | Not useful in custom maps. |
+  | `sendCommandFeedback` | Not useful in custom maps. |
+  | `showDeathMessages` | Not supported since PGM handles death messages. |
 </div>

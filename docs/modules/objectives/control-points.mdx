@@ -20,600 +20,65 @@ Other uses of control points include unlocking an area of the map using objectiv
 ```
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "300px" }}>Control Points Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<control-points> </control-points>`}</label>
-        </td>
-        <td>
-          Node containing a single control point or a group of control points.
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<control-point> </control-point>`}</label>
-        </td>
-        <td>A single control point.</td>
-        <td>
-          <span className="badge badge--secondary">
-            Control Point Sub-elements
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<control-points> </control-points>` | Node containing a single control point or a group of control points. |
+
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<control-point> </control-point>` | A single control point. | <span className="badge badge--secondary">Control Point Sub-elements</span> |
 </div>
 
 ##### Control Point Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "150px" }}>Attribute</th>
-        <th>Description</th>
-        <th style={{ minWidth: "100px" }}>Value</th>
-        <th>Default</th>
-        <th>KotH</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          Unique identifier used to reference control points from other places
-          in the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>name</label>
-        </td>
-        <td>Name of the control point, displayed on the scoreboard.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>required</label>
-        </td>
-        <td>
-          Specify if this objective is required to win the match.
-          <br />
-          Teams completing all of their required objectives will win regardless
-          of score or Blitz configuration.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>capture-time</label>
-        </td>
-        <td>Time to capture the control point.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td colspan="2">30 sec</td>
-      </tr>
-      <tr>
-        <td>
-          <label>points</label>
-        </td>
-        <td>Points to give per second to the owning team.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td colspan="2">1</td>
-      </tr>
-      <tr>
-        <td>
-          <label>points-growth</label>
-        </td>
-        <td>
-          Number of seconds for the point rate to double. If given, the rate at
-          which the control point gives points will exponential increase with
-          time.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td colspan="2">0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>owner-points</label>
-        </td>
-        <td>
-          Gives a set number of points to a team when captured. When the control
-          point is captured by another team, the points are revoked.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td colspan="2">0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>capture-rule</label>
-        </td>
-        <td>
-          Rule used to decide who is in control of the point at any given
-          moment.
-        </td>
-        <td>
-          <a href="#capture-rule">Capture Rule</a>
-        </td>
-        <td colspan="2">exclusive</td>
-      </tr>
-      <tr>
-        <td>
-          <label>time-multiplier</label>
-        </td>
-        <td>
-          Adjust capture time relative to the amount of team players on the
-          control point.
-        </td>
-        <td>
-          <span className="badge badge--primary">Decimal</span>
-        </td>
-        <td>0</td>
-        <td>0.1</td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-progress</label>
-        </td>
-        <td>Show capture percentage in the sidebar.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>neutral-state</label>
-        </td>
-        <td>
-          Control point must be un-captured before it can be captured again.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>recovery-rate</label>
-        </td>
-        <td>
-          The rate for a control point to recover to its current state.
-          Applies when the owning team is dominating (only having players of the capturing team on the point).
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>depends</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>decay-rate</label>
-        </td>
-        <td>
-          The rate for a control point to decay to its current state.
-          Applies when nobody is dominating the point (contested by multiple teams or no teams on the point).
-          Can be determined by <label>capture-rules</label>.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>depends</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>contested-rate</label>
-        </td>
-        <td>
-          The rate for a control point to decay to its current state. Applies
-          when the point is contested.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td colspan="2">
-          <label>decay-rate</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>owned-decay-rate</label>
-        </td>
-        <td>
-          The rate for a control point to decay from captured to neutral.
-          Applies when nobody is dominating the point.
-          <br />
-          <em>
-            Takes precedence over <label>decay-rate</label>.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>depends</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>incremental</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--warning"
-            title="This attribute should no longer be used."
-          >
-            Deprecated
-          </span>
-          Capture progress is retained even if capturing is interrupted.
-          <br />
-          If incremental is true, sets <label>recovery-rate</label> to 1,
-          <label>decay-rate</label> to 0, and <label>owned-decay-rate</label> to 0.
-          <br />
-          If incremental is false, <label>recovery-rate</label> and
-          <label>decay-rate</label> are both infinite, and <label>owned-decay-rate</label> is 0.
-          <br />
-          <em>
-            This has been replaced with the recovery & decay attributes which allow
-            more control over progress.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>permanent</label>
-        </td>
-        <td>Control point can only be captured once during the match.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>initial-owner</label>
-        </td>
-        <td>The team owning the control point when the match starts.</td>
-        <td>
-          <a href="/docs/modules/format/teams">Team ID</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-messages</label>
-        </td>
-        <td>Broadcast messages related to the control point in chat.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2">true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-effects</label>
-        </td>
-        <td>
-          Play sounds, fireworks and other effects related to the control point.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2">true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-info</label>
-        </td>
-        <td>
-          Display the control point under commands such as <label>/match</label>.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2">true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-sidebar</label>
-        </td>
-        <td>Displays the control point on scoreboard.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2">true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>stats</label>
-        </td>
-        <td>Determines if this control point counts as a win condition.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2">true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>show</label>
-        </td>
-        <td>
-          Specify if the control point should be hidden from all visible
-          locations to the player. These locations include chat, the boss bar,
-          and the scoreboard.
-          <br />
-          <label>NOTE:</label>
-          This attribute sets all five values above to true/false.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td colspan="2">true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>visual-materials</label>
-        </td>
-        <td>
-          Filter the materials modified when updating the progress regions.
-          <br />
-          <em>
-            Defaults to wool, carpet, stained clay, stained glass & stained
-            glass panes.
-          </em>
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Block Filter</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>capture</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          Region where this control point can be captured.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Region</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>progress</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Region where this control points progress is displayed.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Bounded Region</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>captured</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Region where this control points owner is displayed.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Bounded Region</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>capture-filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter teams that can capture this control point, defaults to all teams.
-          Teams that don't match this filter can still prevent other teams from capturing
-          by standing on the control point. They can also uncapture the control point
-          if neutral-state is enabled.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-      <tr>
-        <td>
-          <label>player-filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter players who can control this control point. Players who don't match
-          this filter cannot affect the control point in any way.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td colspan="2"></td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default | KoTH
+  |---|---|---|---|---|
+  | `id` | Unique identifier used to reference control points from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `name` | The display name of the control point, displayed on the scoreboard. | <span className="badge badge--primary">String</span> |
+  | `required` | Specify if this objective is required to win the match. Teams completing all of their required objectives will win regardless of score or Blitz configuration. | <span className="badge badge--primary">true/false</span> |
+  | `capture-time` | The time to capture the control point. | [Time Period](/docs/reference/misc/time-periods) | 30s |
+  | `points` | Points to give per second to the owning team. | <span className="badge badge--primary">Number</span> | 1 |
+  | `points-growth` | Number of seconds for the point rate to double. If given, the rate at which the control point gives points will exponential increase with time. | <span className="badge badge--primary">Number</span> | 0 |
+  | `owner-points` | Gives a set number of points to a team when captured. When the control point is captured by another team, the points are revoked. | <span className="badge badge--primary">Number</span> | 0 |
+  | `capture-rule` | Rule used to decide who is in control of the point at any given moment. | [Capture Rule](#capture-rule) | `exclusive` |
+  | `time-multiplier` | Adjust capture time relative to the amount of team players on the control point. | <span className="badge badge--primary">Decimal</span> | 0 | 0.1 |
+  | `show-progress` | Show capture percentage in the sidebar. | <span className="badge badge--primary">true/false</span> | false | true |
+  | `neutral-state` | Control point must be un-captured before it can be captured again. | <span className="badge badge--primary">true/false</span> | false | true |
+  | `recovery-rate` | The rate for a control point to recover to its current state. Applies when the owning team is dominating (only having players of the capturing team on the point). | <span className="badge badge--primary">Number</span> | depends | 0 |
+  | `decay-rate` | The rate for a control point to decay to its current state. Applies when nobody is dominating the point (contested by multiple teams or no teams on the point). Can be determined by `capture-rule`. | <span className="badge badge--primary">Number</span> | depends | 0 |
+  | `contested-rate` | The rate for a control point to decay to its current state. Applies when the point is contested. | <span className="badge badge--primary">Number</span> | `decay-rate` |
+  | `owned-decay-rate` | The rate for a control point to decay from captured to neutral. Applies when nobody is dominating the point.<br />*Takes precedence over `decay-rate`.* | <span className="badge badge--primary">Number</span> | depends | 0 |
+  | `incremental` | <span className="badge badge--warning" title="This attribute should no longer be used.">Deprecated</span>Capture progress is retained even if capturing is interrupted.<br />If true, sets `recovery-rate` to 1, `decay-rate` to 0, and `owned-decay-rate` to 0.<br />If false, `recovery-rate` and `decay-rate` are both infinite, and `owned-decay-rate` is 0.<br />*This has been replaced with the recovery & decay attributes which allow more control over progress.* | <span className="badge badge--primary">true/false</span> | false | true |
+  | `permanent` | Control point can only be captured once during the match. | <span className="badge badge--primary">true/false</span> | false | true |
+  | `initial-owner` | The team owning the control point when the match starts. | [Team ID](/docs/modules/format/teams) |
+  | `show-messages` | Broadcast messages related to the control point in chat. | <span className="badge badge--primary">true/false</span> | true |
+  | `show-effects` | Play sounds, fireworks and other effects related to the control point. | <span className="badge badge--primary">true/false</span> | true |
+  | `show-info` | Display the control point under commands such as `/match`. | <span className="badge badge--primary">true/false</span> | true |
+  | `show-sidebar` | Displays the control point on scoreboard. | <span className="badge badge--primary">true/false</span> | true |
+  | `stats` | Determines if this control point counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
+  | `show` | Specify if the control point should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> | true |
+  | `visual-materials` | Filter the materials modified when updating the progress regions.<br />*Defaults to wool, carpet, stained clay, stained glass & stained glass panes.* | [Block Filter](/docs/modules/mechanics/filters) |
+  | `capture` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Region where this control point can be captured. | [Region](/docs/modules/mechanics/regions) |
+  | `progress` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this control points progress is displayed. | [Bounded Region](/docs/modules/mechanics/regions) |
+  | `captured` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this control points owner is displayed. | [Bounded Region](/docs/modules/mechanics/regions) |
+  | `capture-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter teams that can capture this control point, defaults to all teams. Teams that don't match this filter can still prevent other teams from capturing by standing on the control point. They can also uncapture the control point if neutral-state is enabled. | [Filter](/docs/modules/mechanics/filters) |
+  | `player-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter players who can control this control point. Players who don't match this filter cannot affect the control point in any way. | [Filter](/docs/modules/mechanics/filters) |
 </div>
 
 #### Control Point Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "160px" }}>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<capture>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          The region players have to stand in to capture the control point.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Regions</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<progress>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          The region to display capture progress.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Bounded Regions</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<captured>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          The region to display if the control point is captured.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Bounded Regions</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<capture-filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter teams that can capture this control point, defaults to all teams.
-          Teams that don't match this filter can still prevent other teams from capturing
-          by standing on the control point. They can also uncapture the control point
-          if neutral-state is enabled.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<player-filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter players who can control this control point. Players who don't match
-          this filter cannot affect the control point in any way.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `<capture>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region players have to stand in to capture the control point. | [Regions](/docs/modules/mechanics/regions) |
+  | `<progress>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region to display capture progress. | [Bounded Regions](/docs/modules/mechanics/regions) |
+  | `<captured>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region to display if the control point is captured. | [Bounded Regions](/docs/modules/mechanics/regions) |
+  | `<capture-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter teams that can capture this control point, defaults to all teams. Teams that don't match this filter can still prevent other teams from capturing by standing on the control point. They can also uncapture the control point if neutral-state is enabled. | [Filters](/docs/modules/mechanics/filters) |
+  | `<player-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter players who can control this control point. Players who don't match this filter cannot affect the control point in any way. | [Filters](/docs/modules/mechanics/filters) |
 </div>
 
-### Capture Rule
+## Capture Rule
 
 The capture rule defines the logic used to decide which team is in control of the point.
 Values for `capture-rule` can be one of the following:
@@ -625,7 +90,7 @@ Values for `capture-rule` can be one of the following:
 Players who match either `capture-filter` or `player-filter` are counted when calculating the `capture-rule`.
 Players who do not match either filter cannot affect the control point at all.
 
-### Control Point Regions
+## Control Point Regions
 
 Capture progress is displayed inside the defined `<progress>` region using the dominating team's color.
 After a control point is captured, the `<captured>` region is also filled with that color.
@@ -634,9 +99,9 @@ e.g. cylinders & cuboids will work, circles and squares will not.
 Only the default visual materials or materials defined in `visual-materials` will be modified
 in the progress regions when they are updated.
 
-### King of the Hill (deprecated)
+## King of the Hill (deprecated)
 
-:::caution
+:::warning
 The `<king>`, `<hill>` and `<hills>` tags have been deprecated.
 Use the `<control-point>` and `<control-points>` tags, which work the same but
 with differrent default values.
@@ -662,7 +127,7 @@ Default values for `time-multiplier`, `show-progress`, `neutral-state`,
 </king>
 ```
 
-#### Scoring
+### Scoring
 
 KotH games use the `<score>` module to end the game when one team reaches a preset amount of points.
 The `<king/>` tag prevents teams from getting points when killing players,

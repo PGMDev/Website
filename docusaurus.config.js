@@ -22,7 +22,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/PGMDev/Website/tree/master/src',
+            'https://github.com/PGMDev/Website/tree/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -137,7 +137,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright &#169; ${new Date().getFullYear()} The PGM project and its contributors`,
+        copyright: `Copyright &#169; ${new Date().getUTCFullYear()} The PGM project and its contributors`,
       },
       algolia: {
         appId: 'NZ27HYOOIL',

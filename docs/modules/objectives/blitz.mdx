@@ -4,90 +4,30 @@ title: Blitz
 ---
 
 The game will run for a specified amount of time, players will have to find and kill enemy players.
-Each player has a limited amount of lives, and after they are used up the player is moved to the observer team.
+Each player has a limited amount of lives, and after their lives are used up, the player is moved to the observer team.
 The match ends after the specified amount of time, or when one team is eliminated.
-If the match timer ends before a team is eliminated the team with the most players remaining wins.
+If the match timer ends before a team is eliminated, the team with the most players remaining wins.
 
-The blitz module is often combined with the [Rage Module](/docs/modules/objectives/other#rage).
+The Blitz module is often combined with the [Rage Module](/docs/modules/objectives/other#rage).
 
 :::tip
 Blitz maps should include `<respawn auto="true"/>` to prevent players from "hiding" and prolonging matches.
 :::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Blitz Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<blitz> </blitz>`}</label>
-        </td>
-        <td colspan="3">A node containing the blitz gamemode settings.</td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<lives>`}</label>
-        </td>
-        <td>
-          The amount of lives each player has before they are out of the match.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<broadcastLives>`}</label>
-        </td>
-        <td>Broadcast to the player the amount of lives they have left.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<filter>`}</label>
-        </td>
-        <td>Filters when a player loses a life.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>always</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<join-filter>`}</label>
-        </td>
-        <td>Filters when a player can join the match after it has started.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>never</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<blitz> </blitz>` | A node containing the Blitz gamemode settings. | |
+
+  | Sub-elements | | Value | Default |
+  |---|---|---|---|
+  | `<lives>` | The amount of lives each player has before they are out of the match. | <span className="badge badge--primary">Number</span> | 1 |
+  | `<broadcastLives>` | Broadcast to the player the amount of lives they have left. | <span className="badge badge--primary">true/false</span> | true |
+  | `<filter>` | Filters when a player loses a life. | [Filter](/docs/modules/mechanics/filters) | `always` |
+  | `<join-filter>` | Filters when a player can join the match after it has started. | [Filter](/docs/modules/mechanics/filters) | `never` |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <blitz>

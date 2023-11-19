@@ -4,240 +4,46 @@ title: Main Map Element
 description: Every map XML file must contain the base map module. It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings.
 ---
 
-Every map XML file must contain the base `<map>` module. It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings. The objective is the text that players see when they join the match, and so it's important for this to be very clear, concise, and informative.
+Every map XML file must contain the base `<map>` module. 
+It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings. 
+The objective is the text that players see when they join the match, and so it is important for this to be very clear, concise, and informative.
 
-The `proto=""` attribute specifies what PGM version the XML file was created for. Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](/docs/modules/general/proto).
+The `proto=""` attribute specifies what PGM version the XML file was created for. 
+Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](/docs/modules/general/proto).
 
 The maps version should follow the versioning schema `major.minor.patch`.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Map Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<map> </map>`}</label>
-        </td>
-        <td>
-          The main map node containing all the modules used in this match.
-        </td>
-        <td>
-          <span className="badge badge--secondary">XML Modules</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Map Element | Description | Value/Children |
+  |---|---|---|
+  | `<map> <map />` | The main map node containing all the modules used in this match. | <span className="badge badge--secondary">XML Modules</span> |
 </div>
 
 ##### Map Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>proto</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          The map's XML protocol version.
-        </td>
-        <td>
-          <label>1.4.2</label>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>internal</label>
-        </td>
-        <td>Prevent compass teleports above Y 255</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+  | Map Attributes | Description | Value | Default |
+  |---|---|---|---|
+  | `proto` | <span className="badge badge--danger">Required</span>The map's XML protocol version. | `1.4.2` |
+  | `internal` | Prevent compass teleports above Y=255. | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
 ##### Map Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<name>`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          The name of the map.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<slug>`}</label>
-        </td>
-        <td>
-          The map's slug, usually auto generated from the map's name. This should
-          only be used when a map is renamed to retain the map's ratings, etc.
-          <br />
-          Valid slugs are lowercase and only contain the characters:{" "}
-          <label>a-z 0-9 _</label>
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td>
-          <span className="badge badge--secondary">Auto Generated</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<version>`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          The map's <a href="https://semver.org">semantic version</a> string.
-        </td>
-        <td>
-          <label>1.0.0</label>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<objective>`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          The map's objective, shown at the start of the match.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<authors>`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          The authors of the map, at least one author is required.
-        </td>
-        <td>
-          <label>{`<author>`}</label>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<contributors>`}</label>
-        </td>
-        <td>Contributors to the map.</td>
-        <td>
-          <label>{`<contributor>`}</label>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<created>`}</label>
-        </td>
-        <td>The date on which this map was initially released.</td>
-        <td>
-          <label>YYYY-MM-DD</label>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<phase>`}</label>
-        </td>
-        <td>
-          The phase of this map. 
-          <br />
-          <span className="badge badge--secondary">Note</span> By default, it will not appear in the list when a user runs <label>/maps</label>. 
-          In legacy PGM, only maps with <label>production</label> and <label>standard</label> show up on a website configured with an API.
-        </td>
-        <td>
-          <label>development</label>
-          <label>production</label>
-        </td>
-        <td>
-          <label>production</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<edition>`}</label>
-        </td>
-        <td>The edition of this map, describing which servers it should run on.</td>
-        <td>
-          <label>standard</label>
-          <label>ranked</label>
-          <label>tournament</label>
-        </td>
-        <td>
-          <label>standard</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<game>`}</label>
-        </td>
-        <td>A custom title for this match's gamemode.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<gamemode>`}</label>
-        </td>
-        <td>
-          <a className="left-ref-link" href="#gamemode">
-            <i className="fa fa-chevron-down"></i>
-          </a>
-          The gamemode(s) of this map, if this is not specified the map will set
-          the gamemode(s) to whatever modules are used.
-        </td>
-        <td>
-          <span className="badge badge--primary">Gamemode ID</span>
-        </td>
-        <td />
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children | Default |
+  |---|---|---|---|
+  | `<name>` | <span className="badge badge--danger">Required</span>The name of the map. | <span className="badge badge--primary">String</span> |
+  | `<slug>` | The map's slug, usually auto generated from the map's name. This should only be used when a map is renamed to retain the map's ratings, etc.<br />*Valid slugs are lowercase and only contain the characters:* `a-z 0-9 _` | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">Auto Generated</span> |
+  | `<version>` | <span className="badge badge--danger">Required</span>The map's [semantic version](https://semver.org/) string. | `1.0.0` |
+  | `<objective>` | <span className="badge badge--danger">Required</span>The map's objective, shown at the start of the match. | <span className="badge badge--primary">String</span> |
+  | `<authors>` | <span className="badge badge--danger">Required</span>The authors of the map, at least one author is required. | `<author>` |
+  | `<contributors>` | Contributors to the map. | `<contributor>` |
+  | `<created>` | The date on which this map was initially released. | `YYYY-MM-DD` |
+  | `<phase>` | The phase of this map.<br />`NOTE:` By default, it will not appear in the list when a user runs /maps. In legacy PGM, only maps with production and standard show up on a website configured with an API. | `development`<br />`production` | `production` |
+  | `<edition>` | The edition of this map, describing which servers it should run on. | `standard`<br />`ranked`<br />`tournament` | `standard` |
+  | `<game>` | A custom title for this match's gamemode. | <span className="badge badge--primary">String</span> |
+  | `<gamemode>` | The gamemode(s) of this map, if this is not specified the map will set the gamemode(s) to whatever modules are used. | <span className="badge badge--primary">Gamemode ID</span> |
 </div>
 
 ```xml
@@ -255,82 +61,31 @@ The maps version should follow the versioning schema `major.minor.patch`.
 
 ### Authors & Contributors
 
-The authors and contributers elements provide information about who created and helped create the map. There can be multiple authors and contributors to a map. The contribution attribute should be used to specify what their contribution to the map was.
+The authors and contributers elements provide information about who created and helped create the map. 
+There can be multiple authors and contributors to a map. 
+The contribution attribute should be used to specify what their contribution to the map was.
 
-A player's name should **not** be used to credit them, instead their UUID should be used. A UUID is a unique user identifier that is used to keep track of players even if they change their name. You can check player UUIDs at [mcuuid.net](https://mcuuid.net/). If an author or contributor is defined without a UUID, that player will not get any mapmaker perks on the map.
+A player's name should **not** be used to credit them, instead their UUID should be used. 
+A UUID is a unique user identifier that is used to keep track of players even if they change their name. 
+You can check player UUIDs at [mcuuid.net](https://mcuuid.net/). 
+If an author or contributor is defined without a UUID, that player will not get any mapmaker perks on the map.
 
 #### Author or Contributor Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<author>`}</label>
-        </td>
-        <td>
-          A major author of the map, used in
-          <label>{`<authors>`}</label>.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<contributor>`}</label>
-        </td>
-        <td>
-          A contributor to the map, used in
-          <label>{`<contributors>`}</label>.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<author>` | A major author of the map, used in `<authors>`. | <span className="badge badge--primary">String</span> |
+  | `<contributor>` | A contributor to the map, used in `<contributors>`. | <span className="badge badge--primary">String</span> |
 </div>
 
 ##### Author & Contributor Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>contribution</label>
-        </td>
-        <td>The contribution this author or contributor made to the map.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>uuid</label>
-        </td>
-        <td>UUID used to identify a player.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `uuid` | The UUID used to identify a Minecraft player. | <span className="badge badge--primary">String</span> |
+  | `contribution` | The contribution this author or contributor made to the map. | <span className="badge badge--primary">String</span> |
 </div>
 
 ```xml
@@ -388,100 +143,28 @@ Additionally, a variant can also contain constants, which allows you to define t
 #### Variant Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<variant> </variant>`}</label>
-        </td>
-        <td>A map variant.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<variant> <variant />` | A map variant. | <span className="badge badge--primary">String</span> |
 </div>
 
 ##### Variant Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifer used to reference this map variant from other places in the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>override</label>
-        </td>
-        <td>Toggle if the variant name should override the base map name. If set to false, PGM will append <label>: [variant]</label> to the base map name.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this map variant from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `world` | Specify the world the variant should use during a match. | <span className="badge badge--primary">String</span> |
+  | `override` | Toggle if the variant name should override the base map name. If set to false, PGM will append `: [variant]` to the base map name. | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
 #### Conditionals Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<if> </if>`}</label>
-        </td>
-        <td>Apply an XML section if the specified variant is loaded.</td>
-        <td>
-          <span className="badge badge--secondary">XML Modules</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<unless> </unless>`}</label>
-        </td>
-        <td>Apply an XML section for all variants except for a specific variant when loaded.</td>
-        <td>
-          <span className="badge badge--secondary">XML Modules</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<if> </if>` | Apply an XML section if the specified variant is loaded. | <span className="badge badge--secondary">XML Modules</span> |
+  | `<unless> </unless>` | Apply an XML section for all variants except for a specific variant when loaded. | <span className="badge badge--secondary">XML Modules</span> |
 </div>
 
 ### Constants
@@ -489,68 +172,21 @@ Constants are values that remain the same, regardless of conditions.
 PGM will search and replace any corresponding placeholders (`${constant_id}`) with the constant value.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<constants> </constants>`}</label>
-        </td>
-        <td>A node containing the constants for this map.</td>
-        <td>
-          <span className="badge badge--secondary">Constant Elements</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<constant> </constant>`}</label>
-        </td>
-        <td>An individual constant.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Children |
+  |---|---|---|
+  | `<constants> </constants>` | A node containing the constants for this map. | <span className="badge badge--secondary">Constant Elements</span> |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<constant> </constant>` | An individual constant. | <span className="badge badge--primary">String</span> |
 </div>
 
 ##### Constant Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifer used to reference this constant from other places in the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this constant from other places in the XML. | <span className="badge badge--primary">String</span> |
 </div>
 
 The following example utilizes both map variants and constant.
@@ -583,185 +219,40 @@ If no `<gamemode>` tags are specified, the map will set the gamemode(s) to whate
 This means that a map that uses destroyables and flags would be displayed as "DTM and CTF" unless specified otherwise.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<gamemode> </gamemode>`}</label>
-        </td>
-        <td>The gamemode(s) of this map.</td>
-        <td>
-          <span className="badge badge--primary">Gamemode ID</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<gamemode> </gamemode>` | The gamemode(s) of this map. | <span className="badge badge--primary">Gamemode ID</span> |
 </div>
 
 #### Gamemode IDs
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>ad</label>
-        </td>
-        <td>Attack/Defend</td>
-      </tr>
-      <tr>
-        <td>
-          <label>arcade</label>
-        </td>
-        <td>Arcade</td>
-      </tr>
-      <tr>
-        <td>
-          <label>bedwars</label>
-        </td>
-        <td>Bed Wars</td>
-      </tr>
-      <tr>
-        <td>
-          <label>blitz</label>
-        </td>
-        <td>Blitz</td>
-      </tr>
-      <tr>
-        <td>
-          <label>br</label>
-        </td>
-        <td>Blitz: Rage</td>
-      </tr>
-      <tr>
-        <td>
-          <label>bridge</label>
-        </td>
-        <td>Bridge</td>
-      </tr>
-      <tr>
-        <td>
-          <label>cp</label>
-        </td>
-        <td>Control the Point</td>
-      </tr>
-      <tr>
-        <td>
-          <label>ctf</label>
-        </td>
-        <td>Capture the Flag</td>
-      </tr>
-      <tr>
-        <td>
-          <label>ctw</label>
-        </td>
-        <td>Capture the Wool</td>
-      </tr>
-      <tr>
-        <td>
-          <label>dtc</label>
-        </td>
-        <td>Destroy the Core</td>
-      </tr>
-      <tr>
-        <td>
-          <label>dtm</label>
-        </td>
-        <td>Destroy the Monument</td>
-      </tr>
-      <tr>
-        <td>
-          <label>ffa</label>
-        </td>
-        <td>Free for All</td>
-      </tr>
-      <tr>
-        <td>
-          <label>ffb</label>
-        </td>
-        <td>Flag Football</td>
-      </tr>
-      <tr>
-        <td>
-          <label>infection</label>
-        </td>
-        <td>Infection</td>
-      </tr>
-      <tr>
-        <td>
-          <label>kotf</label>
-        </td>
-        <td>King of the Flag</td>
-      </tr>
-      <tr>
-        <td>
-          <label>koth</label>
-        </td>
-        <td>King of the Hill</td>
-      </tr>
-      <tr>
-        <td>
-          <label>mixed</label>
-        </td>
-        <td>Mixed</td>
-      </tr>
-      <tr>
-        <td>
-          <label>payload</label>
-        </td>
-        <td>Payload</td>
-      </tr>
-      <tr>
-        <td>
-          <label>rage</label>
-        </td>
-        <td>Rage</td>
-      </tr>
-      <tr>
-        <td>
-          <label>rfw</label>
-        </td>
-        <td>Race for Wool</td>
-      </tr>
-      <tr>
-        <td>
-          <label>scorebox</label>
-        </td>
-        <td>Scorebox</td>
-      </tr>
-      <tr>
-        <td>
-          <label>skywars</label>
-        </td>
-        <td>Skywars</td>
-      </tr>
-      <tr>
-        <td>
-          <label>sg</label>
-        </td>
-        <td>Survival Games</td>
-      </tr>
-      <tr>
-        <td>
-          <label>tdm</label>
-        </td>
-        <td>Deathmatch</td>
-      </tr>
-    </tbody>
-  </table>
+  | ID | Description |
+  |---|---|
+  | `ad` | Attack/Defend |
+  | `arcade` | Arcade |
+  | `bedwars` | Bed Wars |
+  | `blitz` | Blitz |
+  | `br` | Blitz: Rage |
+  | `bridge` | Bridge |
+  | `cp` | Control the Point |
+  | `ctf` | Capture the Flag |
+  | `ctw` | Capture the Wool |
+  | `dtc` | Destroy the Core |
+  | `dtm` | Destroy the Monument |
+  | `ffa` | Free for All |
+  | `ffb` | Flag Football |
+  | `infection` | Infection |
+  | `kotf` | King of the Flag |
+  | `koth` | King of the Hill |
+  | `mixed` | Mixed |
+  | `payload` | Payload |
+  | `rage` | Rage |
+  | `rfw` | Race for Wool |
+  | `scorebox` | Scorebox |
+  | `skywars` | Skywars |
+  | `sg` | Survival Games |
+  | `tdm` | Deathmatch |
 </div>
 
 Example

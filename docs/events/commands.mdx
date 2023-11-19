@@ -3,95 +3,27 @@ id: commands
 title: Commands
 ---
 
-The plugin's commands are divided in two sections: User commands and Admin commands. Keep in mind that in order to run Admin commands, you must have the `events.staff` permission.
+The plugin's commands are divided in two sections: User commands and Admin commands. 
+Keep in mind that in order to run Admin commands, you must have the `events.staff` permission.
 
-### User commands
+### User Commands
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Command</th>
-        <th>Parameters</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>/veto</label>
-        </td>
-        <td>{`<number>`}</td>
-        <td>
-          Vetoes a map if a veto round is running. It can only be executed by
-          players on a team.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>/score</label>
-        </td>
-        <td />
-        <td>Shows the current score in the event.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/rounds</label>
-        </td>
-        <td />
-        <td>Shows past and future to-be-played rounds.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Command | Parameters | Description |
+  |---|---|---|
+  | `/veto` | \<number\> | Vetoes a map if a veto round is running. It can only be executed by players on a team. |
+  | `/score` |  | Shows the current score in the event. |
+  | `/rounds` |  | Shows past and future to-be-played rounds. |
 </div>
 
 ### Admin Commands
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Command</th>
-        <th>Parameters</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>/tm create</label>
-        </td>
-        <td>{`<format>`}</td>
-        <td>Creates a match based on a format.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/tm register</label>
-        </td>
-        <td>{`<team>`}</td>
-        <td>Registers a team for a match.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/tm list</label>
-        </td>
-        <td />
-        <td>Lists all loaded teams.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/tm info</label>
-        </td>
-        <td>{`<team>`}</td>
-        <td>Shows information about a team.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/tm unregisterall</label>
-        </td>
-        <td />
-        <td>Clears all registered teams.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Command | Parameters | Description |
+  |---|---|---|
+  | `/tm create` | \<format\> | Creates a match based on a format. |
+  | `/tm register` | \<team\> | Registers a team for a match. |
+  | `/tm list` |  | Lists all loaded teams. |
+  | `/tm info` | \<team\> | Shows information about a team. |
+  | `/tm unregisterall` |  | Clears all registered teams. |
 </div>

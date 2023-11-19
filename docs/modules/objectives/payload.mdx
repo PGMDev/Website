@@ -14,126 +14,43 @@ The start of the track will display as 0% completion, and 100% completion is whe
 This gamemode is entirely based off of [Control Points](/docs/modules/objectives/control-points),
 so it currently supports everything that a control point supports.
 
-:::caution
-This gamemode was introduced in PGM version `0.14`, therefore it is experimental and must be enabled for playtesting. 
-In its current state, Payload only properly supports Attack/Defend type payload.
-All documentation here is subject to rapid change.
-:::
+:::warning
+This gamemode was introduced in PGM version `0.14`, therefore it is **experimental** and must be enabled for playtesting. 
+In its current state, Payload only properly supports Attack/Defend-type payload.
 
-```yml title="/server/plugins/PGM/config.yml"
+You can enable it for your PGM server by navigating to PGM configuration file and edit the following line:
+```yml title="/plugins/PGM/config.yml"
 experiments:
   payload: true
 ```
+All documentation here is subject to rapid change. Please report any issues in our [Discord](https://discord.gg/pEEcwTk) or the [PGM issue tracker](https://github.com/PGMDev/PGM/issues).
+:::
 
 #### Payload Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<payloads> </payloads>`}</label>
-        </td>
-        <td>A node containing the payloads for this map.</td>
-        <td>
-          <span className="badge badge--secondary">Payloads</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<payload/>`}</label>
-        </td>
-        <td>An individual payload.</td>
-        <td>
-          <span className="badge badge--secondary">Payload Attributes</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<payloads> </payloads>` | A node containing the payloads for this map. |
+
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<payload/>` | An individual payload. | <span className="badge badge--secondary">Payload Attributes</span> |
 </div>
 
-### Payload Attributes
+#### Payload Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`location`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>The starting
-          position of the payload.
-        </td>
-        <td>
-          <span className="badge badge--primary">X,Y,Z</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`radius`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>The distance at
-          which a player can affect the payload.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`display-filter`}</label>
-        </td>
-        <td>Filter for when particles are shown</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>always</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>capture-time</label>
-        </td>
-        <td>Time for the payload to reach the end of the track.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td colspan="2">30 sec</td>
-      </tr>
-      <tr>
-        <th colspan="4">
-          <a href="/docs/modules/objectives/control-points#control-point-attributes">
-            Supports every other feature of control points.
-          </a>
-        </th>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value/Children | Default |
+  |---|---|---|---|
+  | `location` | <span className="badge badge--danger">Required</span>The starting position of the payload. | <span className="badge badge--primary">X,Y,Z</span> |
+  | `radius` | <span className="badge badge--danger">Required</span>The distance at which a player can affect the payload. | <span className="badge badge--primary">Number</span> |
+  | `display-filter` | Filter when particles should be shown. | [Filter](/docs/modules/mechanics/filters) | `always` |
+  | `capture-time` | The time needed for the payload to reach the end of the track. | [Time Period](/docs/reference/misc/time-periods) | 30s |
+  
+  ||
+  |:---:|
+  | **[Supports every other feature of Control Points.](/docs/modules/objectives/control-points#control-point-attributes)** |
 </div>
 
 ## Examples

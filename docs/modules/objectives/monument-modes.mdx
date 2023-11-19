@@ -10,133 +10,31 @@ The `<modes>` tag can contain any number of `<mode>` tags at any duration, even 
 Each `<mode>` has configurable characteristics that define it.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<modes> </modes>`}</label>
-        </td>
-        <td>Node containing the monument modes for this match.</td>
-        <td>
-          <span className="badge badge--secondary">Mode Elements</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<mode/>`}</label>
-        </td>
-        <td>An individual monument mode.</td>
-        <td>
-          <span className="badge badge--secondary">Mode Attributes</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<modes> </modes>` | Node containing the monument modes for this match. | <span className="badge badge--secondary">Mode Elements</span> |
+  
+  | Sub-elements |||
+  |---|---|---|
+  | `<mode/>` | An individual monument mode. | <span className="badge badge--secondary">Mode Attributes</span> |
 </div>
 
-##### Mode Attributes
+#### Mode Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>after</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Time from the start of the game till this mode takes effect. If a filter
-          is defined, then it will be the time since the filter passes <label>ALLOW</label>.
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>material</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Material the core/destroyable changes to.
-        </td>
-        <td>
-          <a href="/docs/reference/items/inventory#material_matchers">
-            Single Material Pattern
-          </a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>The unique ID of the mode.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>Filter that triggers mode countdown.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Dynamic Filter</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>name</label>
-        </td>
-        <td>Custom mode name, used for the mode change notice.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-before</label>
-        </td>
-        <td>
-          The time before a mode is over to show it in the BossBar.
-          <br />
-          If <label>show-before</label> is set to 0, the mode is not shown in the boss bar at all.
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>60 sec</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | Unique identifier used to reference this mode from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `name` | The custom mode display name, used for the mode change notification. | <span className="badge badge--primary">Formatted Text</span> |
+  | `filter` | Filter that triggers mode countdown. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+  | `material` | <span className="badge badge--danger">Required</span>The material the core/destroyable will change to. | [Single Material Pattern](/docs/reference/items/inventory#material_matchers) |
+  | `after` | <span className="badge badge--danger">Required</span>The time from the start of the match until this mode takes effect. If a filter is defined, then it will be the time since the filter passes `ALLOW`. | [Time Period](/docs/reference/misc/time-periods) |
+  | `show-before` | The time before a mode is transitioning to show it in the boss bar. If `show-before` is set to 0, the mode is not shown in the boss bar at all. | [Time Period](/docs/reference/misc/time-periods) | 1m |
 </div>
 
-#### Examples
+## Examples
+
+### Simple Monument Mode Setup
 
 This specifies a mode that will change the material of affected objectives
 to gold blocks after ten minutes of gameplay.
@@ -146,6 +44,8 @@ to gold blocks after ten minutes of gameplay.
     <mode after="10m" material="gold block"/>
 </modes>
 ```
+
+### Momument Mode with Dynamic Filter
 
 A mode can be triggered by a dynamic filter when it passes `ALLOW` to PGM.
 In this case, the `after` attribute means the mode will change in the
@@ -164,21 +64,25 @@ given amount of time after the filter changes to `ALLOW`.
 </filters>
 ```
 
-In order for an objective to change modes,
-it must have `modes` or `mode-changes="true"` in its element tag.
-Objectives with `mode-changes` enabled will cycle through all
-modes, regardless if the mode has an ID.
+### Monument Modes Cycling
+
+In order for a destroyable or core objective to change modes, it must have `modes` or `mode-changes="true"` in its element tag.
+Objectives with `mode-changes` enabled will cycle through all modes, regardless if the mode has an ID.
 
 ```xml
 <destroyables name="Monument" materials="obsidian">
     <destroyable owner="red" mode-changes="true">
-        <region><cuboid min="46,16,26" max="45,14,25"/></region>
+        <region>
+            <cuboid min="46,16,26" max="45,14,25"/>
+        </region>
     </destroyable>
     <!-- destroyable is already affected by modes listed -->
 </destroyable>
 <cores>
     <core team="red" modes="gold-mode sandstone-mode glass-mode">
-        <region><cuboid min="10,15,12" max="12,13,16"/></region>
+        <region>
+            <cuboid min="10,15,12" max="12,13,16"/>
+        </region>
     </core>
 </cores>
 <modes>
@@ -188,9 +92,11 @@ modes, regardless if the mode has an ID.
 </modes>
 ```
 
+### Monument Mode Notification
+
 This shows a mode that will change the material of enabled objectives to
 coal blocks after ten minutes of gameplay. The following text, `> > > EASY MODE < < <`
-will be on top of the BossBar in yellow.
+will displayed in the boss bar in yellow.
 
 ```xml
 <modes>
@@ -198,18 +104,19 @@ will be on top of the BossBar in yellow.
 </modes>
 ```
 
-In this example, the two cores and the two monuments turn to glass in ten minutes, and the
-two cores will turn to gold in fifteen minutes. Enabling an objective's `mode-changes`
-attribute is not necessary in this case.
+### Complete Monument Modes Setup
+
+In this example, the two cores and the two monuments turn to glass in ten minutes, and the two cores will turn to gold in fifteen minutes. 
+Enabling an objective's `mode-changes` attribute is not necessary in this case.
 
 ```xml
-<cores>
-    <core team="red-team"  region="red-core" modes="glass-mode gold-mode"/>
-    <core team="blue-team" region="blu-core" modes="glass-mode gold-mode"/>
+<cores modes="glass-mode gold-mode">
+    <core team="red-team" region="red-core"/>
+    <core team="blue-team" region="blu-core"/>
 </cores>
-<destroyables materials="obsidian">
-    <destroyable owner="red-team" modes="glass-mode" region="mon-red" name="Red Monument"/>
-    <destroyable owner="blue-team" modes="glass-mode" region="mon-blu" name="Blue Monument"/>
+<destroyables materials="obsidian" modes="glass-mode">
+    <destroyable owner="red-team" region="mon-red" name="Red Monument"/>
+    <destroyable owner="blue-team" region="mon-blu" name="Blue Monument"/>
 </destroyables>
 <modes>
     <mode id="glass-mode" after="10m" material="glass" name="`fGlass Mode"/>

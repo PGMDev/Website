@@ -5,7 +5,7 @@ title: Defining Regions
 
 First of all, region coordinates in PGM are _real numbers_.
 That means they can be fractional values, like `2.3`, `4.5`, `6.789`, and so on.
-A coordinate represents a _point_ on one of the three axes (X, Y, or Z), and a set of three coordinates represents a _point_ in 3D space.
+A coordinate represents a *point* on one of the three axes (X, Y, or Z), and a set of three coordinates represents a *point* in 3D space.
 Coordinates do **not** represent blocks, at least not _directly_.
 When PGM needs to decide if a block is inside a region, it checks if the point at the **center** of the block is inside the region.
 The center point of a block will always have coordinates that end in `0.5`.

@@ -6,94 +6,28 @@ title: Variables
 Variables are used to store information that can later be used in a filter.
 Values are changed using the [Actions & Triggers](/docs/modules/mechanics/actions-triggers) mechanic.
 Afterwards, they can be used as a [Filter](/docs/modules/mechanics/filters#variable-filter) after meeting a certain number or range.
-You can define as many variables as you want, and all variables must have a scope defined.
+You can define as many variables as you want and all variables must have a scope defined.
 
-### Variable Element
+#### Variable Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<variables> </variables>`}</label>
-        </td>
-        <td>A node containing the variables for this map.</td>
-        <td>
-          <span className="badge badge--secondary">Variables</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<variable/>`}</label>
-        </td>
-        <td>An individual variable.</td>
-        <td>
-          <span className="badge badge--secondary">Variable Attributes</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<variables> </variables>` | A node containing the variables for this map. |
+  
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<variable/>` | An individual variable. | <span className="badge badge--secondary">Variable Attributes</span> |
 </div>
 
-### Variable Attributes
+#### Variable Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`id`}</label>
-        </td>
-        <td>Unique identifier used to reference this variable from other places in the XML.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`scope`}</label>
-        </td>
-        <td>
-          Defines what the variable will be applied to.
-          <br />
-          <span className="badge badge--primary">NOTE:</span>
-          <em>Variables scoped to a player will give each player 
-          a unique value that will be preserved, even if they switch teams.</em>
-        </td>
-        <td>
-          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`default`}</label>
-        </td>
-        <td>Sets the initial value of the variable.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `id` | Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `scope` | Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
+  | `default` | Sets the initial value of the variable. | <span className="badge badge--primary">Number</span> |
 </div>
 
 ### Setting Variables

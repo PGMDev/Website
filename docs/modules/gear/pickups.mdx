@@ -6,329 +6,54 @@ title: Pickups
 Pickups are used to create a pickup-able kit at a specific location.
 While somewhat similar to a kit applied using a region, pickups are represented by a physical object and have a refresh time.
 
-By default an ender crystal entity is used to show the pickup location.
-When a player walks into the crystal it gives them a kit and then de-spawns.
-The crystal will respawn again at a _random_ location inside the specified region after the set respawn time.
+By default, an ender crystal entity is used to show the pickup location.
+When a player walks into the crystal, it gives them a kit and then de-spawns.
+The crystal will respawn again at a *random* location inside the specified region after the set respawn time.
 This means that the pickup's region must be randomize-able, e.g. a `<cuboid>`, `<cylinder>`, `<block>` or `<point>`.
 A `<point>` region does not return a randomized position but can still be used to specify an exact location for a pickup.
 
 #### Pickup Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Pickups Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<pickups> </pickups>`}</label>
-        </td>
-        <td>Node containing all the pickups.</td>
-        <td>
-          <span className="badge badge--secondary">Pickup Elements</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<pickup/>`}</label>
-        </td>
-        <td>A single pickup.</td>
-        <td>
-          <span className="badge badge--secondary">Pickup Sub-elements</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<pickups> </pickups>` | Node containing all the pickups. | <span className="badge badge--secondary">Pickup Elements</span> |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<pickup/>` | A single pickup. | <span className="badge badge--secondary">Pickup Sub-elements</span> |
 </div>
 
-### Pickup Attributes
+#### Pickup Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          Unique identifier used to reference this pickup from other places in
-          the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>name</label>
-        </td>
-        <td>
-          The display name of this pickup, shown above the pickup entity if
-          present.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>appearance</label>
-        </td>
-        <td>
-          Entity used to show this pickup's location.
-          <br />
-          <em>
-            Currently only accepts <label>ENDER CRYSTAL</label>.
-          </em>
-        </td>
-        <td>
-          <a href="/docs/reference/entities/entity-types">Entity Type</a>
-        </td>
-        <td>
-          <span className="badge badge--secondary">Ender Crystal</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>spawn-filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter if this pickup is and can be spawned.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>{`<always/>`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>pickup-filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter who can pick up the pickup's kit.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>{`<always/>`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>region</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          Region where the pickup entity is placed into.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Randomize-able Region</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>kit</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The kit to give to players who pick up this pickup.
-        </td>
-        <td>
-          <a href="/docs/modules/gear/kits">Kit ID</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>respawn-time</label>
-        </td>
-        <td>
-          Time until the pickup entity is re-spawned after being picked up.
-          <br />
-          If set to zero the entity will not despawn and will simply be
-          refreshed.
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>3 sec</td>
-      </tr>
-      <tr>
-        <td>
-          <label>pickup-time</label>
-        </td>
-        <td>Time until the pickup is refreshed and can be picked up again.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>3 sec</td>
-      </tr>
-      <tr>
-        <td>
-          <label>effects</label>
-        </td>
-        <td>Show the pickup's particle effects.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>sounds</label>
-        </td>
-        <td>Play the pickup's sound effects.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | Unique identifier used to reference this pickup from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `name` | The display name of this pickup, shown above the pickup entity if present. | <span className="badge badge--primary">Formatted Text</span> |
+  | `appearance` | The entity used to show this pickup's location.<br />*Currently only accepts `ENDER CRYSTAL`.* | [Entity Type](/docs/reference/entities/entity-types) | `ENDER CRYSTAL ` |
+  | `spawn-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if this pickup is and can be spawned. | [Filter](/docs/modules/mechanics/filters) | `always` |
+  | `pickup-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter who can pick up the pickup's kit. | [Filter](/docs/modules/mechanics/filters) | `always` |
+  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region where the pickup entity is placed into. | [Randomize-able Region](/docs/modules/mechanics/regions) |
+  | `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to give to players who pick up this pickup. | [Kit ID](/docs/modules/gear/kits) |
+  | `respawn-time` | Time until the pickup entity is re-spawned after being picked up.<br />*If set to zero, the entity will not despawn and will simply be refreshed.* | [Time Period](/docs/reference/misc/time-periods) | 3s |
+  | `pickup-time` | Time until the pickup is refreshed and can be picked up again. | [Time Period](/docs/reference/misc/time-periods) | 3s |
+  | `effects` | Show the pickup's particle effects. | <span className="badge badge--primary">true/false</span> | true |
+  | `sounds` | Play the pickup's sound effects. | <span className="badge badge--primary">true/false</span> | true |
 </div>
 
 ##### Pickup Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<spawn-filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter if this pickup is and can be spawned.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-        <td>
-          <label>{`<always/>`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<pickup-filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter who can pick up the pickup's kit.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-        <td>
-          <label>{`<always/>`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<region>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          Region where this pickup is placed into.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Randomize-able Regions</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<kit>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          The kit to give to players who pick up this pickup.
-        </td>
-        <td>
-          <a href="/docs/modules/gear/kits">Kits</a>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value | Default |
+  |---|---|---|---|
+  | `<spawn-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter if this pickup is and can be spawned. | [Filters](/docs/modules/mechanics/filters) | `always` |
+  | `<pickup-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can pick up the pickup's kit. | [Filters](/docs/modules/mechanics/filters) | `always` |
+  | `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this pickup is placed into. | [Randomize-able Regions](/docs/modules/mechanics/regions) |
+  | `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give to players who pick up this pickup. | [Kits](/docs/modules/gear/kits) |
 </div>
 
-_Examples_
+### Examples
 
 ```xml
 <pickups>

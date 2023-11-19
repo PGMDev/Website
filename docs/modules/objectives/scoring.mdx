@@ -3,94 +3,24 @@ id: scoring
 title: Scoring
 ---
 
-The score module can be used to give matches a score limit and modify how many points are added to the score for each kill or death. It can also be used to create score boxes that give a player or team a certain amount of points when they enter it.
+The score module can be used to give matches a score limit and modify how many points are added to the score for each kill or death. 
+It can also be used to create score boxes that give a player or team a certain amount of points when they enter it.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Score Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<score> </score>`}</label>
-        </td>
-        <td colspan="3">Node containing the score settings and score boxes.</td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<limit>`}</label>
-        </td>
-        <td>Max score that can be reached before the match ends.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td>No limit</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<mercy>`}</label>
-        </td>
-        <td>
-          Points that a team will need to lead by to win. This will increase the
-          score limit until a {`<limit>`} is reached.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>No mercy</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<kills>`}</label>
-        </td>
-        <td>
-          Points to <strong>give</strong> to a team for killing an enemy player
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<deaths>`}</label>
-        </td>
-        <td>
-          Points to <strong>deduct</strong> from a team for the{" "}
-          <strong>accidental</strong> death of a team member
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<box>`}</label>
-        </td>
-        <td>A single score box.</td>
-        <td>
-          <a href="#score_box">Score Box</a>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<score> </score>` | Node containing the score settings and score boxes. |
+  
+  | Sub-elements || Value/Children | Default |
+  |---|---|---|---|
+  | `<limit>` | The maximum score that can be reached before the match ends. | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">No limit</span> |
+  | `<mercy>` | Points that a team will need to lead by to win.<br />This will increase the score limit until a `<limit>` is reached. | <span className="badge badge--primary">Number</span> | <span className="badge badge--secondary">No mercy</span> |
+  | `<kills>` | Points to **give** to a team for killing an enemy player. | <span className="badge badge--primary">Number</span> | 0 |
+  | `<deaths>` | Points to **deduct** from a team for the **accidental** death of a team member. | <span className="badge badge--primary">Number</span> | 0 |
+  | `<box>` | A single score box. | [Score Box](#score-boxes) |
 </div>
 
-_Examples_
+### Examples
 
 ```xml
 <score>
@@ -110,188 +40,40 @@ _Examples_
 </score>
 ```
 
-### Score Boxes
+## Score Boxes
 
-A score box will give points to a players team when they enter or bring a redeemable item to the score box region. [Portals](/docs/modules/mechanics/portals) should be setup to remove the player from the immediate vicinity of the score box to prevent multiple scores.
-
-<div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Score Box Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<box>`}</label>
-        </td>
-        <td>A single score box.</td>
-        <td>
-          <span className="badge badge--secondary">Score Box Sub-elements</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-##### Score Box Attributes
+A score box will give points to a players team when they enter or bring a redeemable item to the score box region. 
+[Portals](/docs/modules/mechanics/portals) should be used to remove the player from the immediate vicinity of the score box to prevent multiple scores.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>points</label>
-        </td>
-        <td>Points awarded for entering the box.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>silent</label>
-        </td>
-        <td>Don't notify players when points are scored in this box.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>region</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          The location and size of the score box.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Region</a>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter who can score in this box.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <span className="badge badge--secondary">No Filter</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>trigger</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Dynamic conditions under which this score box is applied.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Dynamic Filter</a>
-        </td>
-        <td />
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<box>` | A single score box. | <span className="badge badge--secondary">Box Sub-elements</span> |
 </div>
 
-##### Score Box Sub-elements
+#### Box Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<redeemables>`}</label>
-        </td>
-        <td>Items that can be redeemed at this score box for points.</td>
-        <td>
-          <label>{`<item points="1">`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<region>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          The region where this score box is located.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Regions</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter who can score in this box.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Filters</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `points` | Points awarded for entering the box. | <span className="badge badge--primary">Number</span> | 0 |
+  | `silent` | Do not notify players when points are scored in this box. | <span className="badge badge--primary">true/false</span> | false |
+  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The location and size of the score box. | [Region](/docs/modules/mechanics/regions) |
+  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter who can score in this box. | [Filter](/docs/modules/mechanics/filters) | <span className="badge badge--secondary">No Filter</span> |
+  | `trigger` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Dynamic conditions under which this score box is applied. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
 </div>
 
-Example
+#### Box Sub-elements
+
+<div className="table-container">
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<redeemables>` | Items that can be redeemed at this score box for points. | `<item points="1">` |
+  | `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this score box is located. | [Regions](/docs/modules/mechanics/regions) |
+  | `<filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can score in this box. | [Filters](/docs/modules/mechanics/regions) |
+</div>
+
+### Examples
 
 ```xml
 <score>
@@ -306,14 +88,14 @@ Example
 </score>
 ```
 
-### Redeemables
+## Redeemables
 
 A score box can also award points in exchange for particular items carried by the player when they
 enter the box. These items are defined inside a `<redeemables>` score box sub-element as `<item>` tags.
 Each item contains a [material name](/docs/reference/items/inventory#material_finder)
 and an optional `points="..."` attribute specifying the number of points awarded for each item.
 
-Example
+### Examples
 
 ```xml
 <score>
@@ -327,93 +109,47 @@ Example
 </score>
 ```
 
-### Time Limit
+## Time Limit
 
 Give the match a time limit, the result attribute determines how the winning team or player is calculated when the time runs out.
-Result can be the name of a team, or one of the special values; "tie" for no winner, or "objectives" for the team that has the most objectives completed. The time limit can be specified in minutes, etc., by formatting it as a [time period](/docs/reference/misc/time-periods).
+Result can be the name of a team, or one of the special values; "tie" for no winner, or "objectives" for the team that has the most objectives completed. 
+The time limit can be specified in minutes, etc., by formatting it as a [time period](/docs/reference/misc/time-periods).
 
 :::note
-This tag is **not** placed inside the score module, instead it is located in the root `<map>` element.
+This tag is **not** placed inside the score module. Instead, it is located in the root `<map>` element.
 :::
 
 ```xml
 <time result="objectives">5m</time>
 ```
 
-##### Time Attributes
+#### Time Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>result</label>
-        </td>
-        <td>
-          Change how the winning team or player is calculated.
-          <br />
-          Accepts <label>default</label>, <label>tie</label>,{" "}
-          <label>objectives</label>, <label>score</label> or a Team ID.
-        </td>
-        <td>
-          <span className="badge badge--primary">Victory Condition</span>|
-          <span className="badge badge--primary">Team ID</span>
-        </td>
-        <td>default</td>
-      </tr>
-      <tr>
-        <td>
-          <label>show</label>
-        </td>
-        <td>Show the remaining time in the chat and boss bar.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>overtime</label>
-        </td>
-        <td>Specify the length of the overtime once the tie is broken.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td/ >
-      </tr>
-      <tr>
-        <td>
-          <label>max-overtime</label>
-        </td>
-        <td>Specify a maximum duration that the overtime should last.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `result` | Change how the winning team or player is calculated.<br />Accepts `default`, `tie`, `objectives`, `score`, or a [Team ID](/docs/modules/format/teams). | <span className="badge badge--primary">Victory Condition</span><br /><span className="badge badge--primary">Team ID</span> | `default` |
+  | `show` | Display the remaining time in the chat and boss bar. | <span className="badge badge--primary">true/false</span> | true |
+  | `overtime` | Specify the length of the overtime once the tie is broken. | [Time Period](/docs/reference/misc/time-periods) |
+  | `max-overtime` | Specify a maximum duration that the overtime should last. | [Time Period](/docs/reference/misc/time-periods) |
 </div>
 
-### Overtime
+## Overtime
 
-Overtime can be used in order to force a single winner in a match. By using the optional `overtime="..."` attribute in the time element, you can specify a <a href="/docs/reference/misc/time-periods">time period</a>. If the score is tied once regulation time ends, the match will extend into overtime. The time will begin to tick down as soon as the tie is broken. It will reset back to the specified time if a tie is reached again or a change in the lead occurs before the time expires.
+Overtime can be used in order to force a single winner in a match. By using the optional `overtime="..."` attribute in the time element, you can specify a [time period](/docs/reference/misc/time-periods). 
+If the score is tied once regulation time ends, the match will extend into overtime. 
+The time will begin to tick down as soon as the tie is broken. 
+It will reset back to the specified time if a tie is reached again or a change in the lead occurs before the time expires.
 
-To limit how long overtime lasts, you can include the `max-overtime="..."` attribute as well. It, too, accepts a <a href="/docs/reference/misc/time-periods">time period</a> as a value. This will count down in the background and force the overtime to count down once surpassing the `overtime="..."` attribute's value.
+To limit how long overtime lasts, you can include the `max-overtime="..."` attribute as well. 
+It, too, accepts a [time period](/docs/reference/misc/time-periods) as a value. 
+This will count down in the background and force the overtime to count down once surpassing the `overtime="..."` attribute's value.
 
 :::tip
 Set the `overtime` attribute to `1s` for sudden death overtime.
 :::
 
-Example
+### Examples
 
 ```xml
 <!-- Match will last 12 minutes.

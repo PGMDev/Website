@@ -3,170 +3,49 @@ id: broadcasts
 title: Broadcasts
 ---
 
-The broadcast module allows you to broadcast a message to all players at any given point in the match.
+The broadcast module allows you to send a message to all players at any given point in the match.
 Inside the broadcast tag you may specify either a `<alert>` or a `<tip>` message tag with an `after=""` attribute.
-This attribute is required and specifies how long after the match is started the broadcast is shown. <br/>
-The text in broadcasts can be formatted by using [formatting codes](/docs/reference/misc/formatting).
+This attribute is required and specifies how long after the match is started the broadcast is shown.
+
+The text in broadcasts can be formatted by using [Text Formatting](/docs/reference/misc/formatting).
 
 :::note
-This module should <strong> only </strong> be used to show important
-information that is <strong>specific</strong> and <strong>unique</strong> to the map.
-It should not be used for generic server related messages.
+This module should **only** be used to show important
+information that is **specific** and **unique** to the map.
+It should not be used for generic server-related messages.
 :::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Broadcasts Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<broadcasts> </broadcasts>`}</label>
-        </td>
-        <td>An element containing all the defined broadcast messages.</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Sub-Elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<tip> </tip>`}</label>
-        </td>
-        <td>This will display a [Tip] message</td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<alert> </alert>`}</label>
-        </td>
-        <td>This will display an [Alert] message</td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<broadcasts> </broadcasts>` | An element containing all the defined broadcast messages. |
+
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<tip> </tip>` | This will display a `[Tip]` message. | <span className="badge badge--primary">Formatted Text</span> |
+  | `<alert> </alert>` | This will display a `[Alert]` message. | <span className="badge badge--primary">Formatted Text</span> |
 </div>
 
 ##### Message Tag Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>after</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Duration to wait after the match starts to show the message.
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>every</label>
-        </td>
-        <td>
-          After the message is shown repeat it with this duration between
-          messages.
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>count</label>
-        </td>
-        <td>
-          Amount of times the message is repeated.
-          <br />
-          <em>
-            Infinite repetition can be specified by using <label>oo</label> as
-            the duration.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter if the broadcast message is sent after the duration has passed,
-          or if it's skipped.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `after` | <span className="badge badge--danger">Required</span>Duration to wait after the match starts to show the message. | [Time Period](/docs/reference/misc/time-periods) |
+  | `every` | After the message is shown, repeat it with this duration between messages. | [Time Period](/docs/reference/misc/time-periods) |
+  | `count` | Amount of times the message is repeated.<br />*Infinite repetition can be specified by using `oo` as the duration.* | <span className="badge badge--primary">Number</span> |
+  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if the broadcast message should be sent after the duration has passed, or if it is skipped. | [Filter](/docs/modules/mechanics/filters) |
 </div>
 
 ##### Message Tag Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter if the broadcast message is sent after the duration has passed,
-          or if it's skipped.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Duration to wait after the match starts to show the message. | [Filters](/docs/modules/mechanics/filters) |
 </div>
 
-_Examples_
+### Examples
 
 ```xml
 <broadcasts>

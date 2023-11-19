@@ -13,640 +13,118 @@ In the future, some features that are currently used in Kits may be transferred 
 ## Action Elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<action> </action>`}</label>
-        </td>
-        <td>A group of actions running in a sequence.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<switch-scope> </switch-scope>`}</label>
-        </td>
-        <td>Changes the scope that an action applies to.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<message/>`}</label>
-        </td>
-        <td>A message that is sent to the player.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<sound/>`}</label>
-        </td>
-        <td>A sound that is played for the player.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<set/>`}</label>
-        </td>
-        <td>
-          Sets a new value for a{" "}
-          <a href="/docs/modules/mechanics/variables">Variable</a>.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<kill-entities/>`}</label>
-        </td>
-        <td>Removes entities based on a filter.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<kit/>`}</label>
-        </td>
-        <td>
-          Applies a <a href="/docs/modules/gear/kits">Kit</a>.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<fill/>`}</label>
-        </td>
-        <td>
-          Places blocks in a block-bounded region.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<replace-item> </replace-item>`}</label>
-        </td>
-        <td>Finds and replaces certain items.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<action> </action>` | A group of actions running in a sequence. |
+  | `<switch-scope> </switch-scope>` | Changes the scope that an action applies to. |
+  | `<message/>` | A message that is sent to the player. |
+  | `<sound/>` | A sound that is played for the player. |
+  | `<set/>` | Sets a new value for a [Variable](/docs/modules/mechanics/variables). |
+  | `<kill-entities/>` | Removes entities based on a filter. |
+  | `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
+  | `<fill/>` | Places blocks in a block-bounded region. |
+  | `<replace-item> </replace-item>` | Finds and replaces certain items. |
 </div>
 
 ### Action Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`id`}</label>
-        </td>
-        <td>Unique identifier used to reference this action from other places in the XML.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`scope`}</label>
-        </td>
-        <td>Sets the scope target an action should operate against.</td>
-        <td>
-          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`filter`}</label>
-        </td>
-        <td>A filter that is tested before running actions inside.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`expose`}</label>
-        </td>
-        <td>
-          Allows an action to be triggered by <label>{`/action`}</label>.
-          Defaults to <label>{`false`}</label>.
-          <br/>
-          <em>
-            Actions must have an ID and support the match scope for expose to work.
-            Moderators require the GAMEPLAY permission to use the action command.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | Unique identifier used to reference this action from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `scope` | Sets the scope target an action should operate against. | `player`, `team`, or `match` |
+  | `filter` | A filter that is tested before running actions inside. | [Filter](/docs/modules/mechanics/filters) |
+  | `expose` | Allows an action to be triggered by `/action`.<br />*Actions must have an ID and support the match scope for expose to work. Moderators require the `GAMEPLAY` permission to use the action command.* | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
 ### Switch-Scope Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`id`}</label>
-        </td>
-        <td>Unique identifier used to reference this switch-scope from other places in the XML.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`inner`}</label>
-        </td>
-        <td>Specify the scope of the inner action.</td>
-        <td>
-          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`outer`}</label>
-        </td>
-        <td>Specify the scope outside of an action.
-        <br />
-        <em>
-          In some cases, this can be omitted as PGM will automatically infer the outer scope.
-        </em>
-        </td>
-        <td>
-          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `id` | Unique identifier used to reference this switch-scope from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `inner` | Specify the scope of the inner action. | `player`, `team`, or `match` |
+  | `outer` | Specify the scope outside of an action.<br />*In some cases, this can be omitted as PGM will automatically infer the outer scope.* | `player`, `team`, or `match` |
 </div>
 
 ### Message Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`text`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The text that will be sent in the chat to a player.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`actionbar`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The text above the hotbar.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`title`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The title text that will appear in the center of the player's screen.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`subtitle`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The subtitle text that will appear below the title text.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`fade-in`}</label>
-        </td>
-        <td>How long the title and subtitle text will fade in.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>0.5 sec</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`stay`}</label>
-        </td>
-        <td>How long the title and subtitle text will display for.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>3.5 sec</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`fade-out`}</label>
-        </td>
-        <td>How long the title and subtitle text will fade out.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>1 sec</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `text` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The text that will be sent in the chat to a player. | <span className="badge badge--primary">Formatted Text</span> |
+  | `actionbar` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The text above the hotbar. | <span className="badge badge--primary">Formatted Text</span> |
+  | `title` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The title text that will appear in the center of the player's screen. | <span className="badge badge--primary">Formatted Text</span> |
+  | `subtitle` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The subtitle text that will appear below the title text. | <span className="badge badge--primary">Formatted Text</span> |
+  | `fade-in` | How long the title and subtitle text will fade in. | [Time Period](/docs/reference/misc/time-periods) | 0.5s |
+  | `stay` | How long the title and subtitle text will display for. | [Time Period](/docs/reference/misc/time-periods) | 3.5s |
+  | `fade-out` | How long the title and subtitle text will fade out. | [Time Period](/docs/reference/misc/time-periods) | 1s |
 </div>
 
 ### Sound Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`preset`}</label>
-        </td>
-        <td>Allows you to reuse a pre-existing sound with predefined volume and pitch.</td>
-        <td>
-          <a href="/docs/reference/misc/sounds">Sound Presets</a>
-        </td>
-        <td>
-          <label>CUSTOM</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`key`}</label>
-        </td>
-        <td>The sound type that will be played for a player.</td>
-        <td>
-          <a href="/docs/reference/misc/sounds#sound-keys">Sound Keys</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`volume`}</label>
-        </td>
-        <td>How loud or quiet a sound should be.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>1.0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`pitch`}</label>
-        </td>
-        <td>The tone of the sound.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>1.0</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `preset` | Allows you to reuse a pre-existing sound with predefined volume and pitch. | [Sounds Preset](/docs/reference/misc/sounds) | `CUSTOM` |
+  | `key` | The sound type that will be played for a player. | [Sound Keys](/docs/reference/misc/sounds#sound-keys) |
+  | `volume` | How loud or quiet a sound should be. | <span className="badge badge--primary">Decimal</span> | 1.0 |
+  | `pitch` | The tone of the sound. | <span className="badge badge--primary">Decimal</span> | 1.0 |
 </div>
 
 ### Set Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`var`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span> 
-          The variable to update.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/variables">Variable</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`value`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span> 
-          Sets a new value for the variable.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `var` | <span className="badge badge--danger">Required</span>The variable to update. | [Variable](/docs/modules/mechanics/variables) |
+  | `value` | <span className="badge badge--danger">Required</span>Sets a new value for the variable. | <span className="badge badge--primary">String</span> |
 </div>
 
 ### Kill-Entities Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`filter`}</label>
-        </td>
-        <td>Filters which entities to remove.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `filter` | Filters which entities to remove. | [Filter](/docs/modules/mechanics/filters) |
 </div>
 
 ### Fill Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`region`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          The region to fill in. Multiple regions will be treated
-          as an union.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/Regions">Region</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`material`}</label>
-        </td>
-        <td><span className="badge badge--danger">Required</span> The filling material.</td>
-        <td>
-          <a href="/docs/reference/items/inventory#material_matchers">
-            Single Material Pattern
-          </a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`filter`}</label>
-        </td>
-        <td>Filters which blocks get affected. <em>May impact preformace for large fills.</em></td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`events`}</label>
-        </td>
-        <td>
-          Calls events for block placements and removals,
-          which will make it affected by other filters and PGM features. <em>May impact preformace for large fills.</em>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region to fill in. Multiple regions will be treated as an union. | [Region](/docs/modules/mechanics/Regions) |
+  | `material` | <span className="badge badge--danger">Required</span>The filling material. | [Single Material Pattern](/docs/reference/items/inventory#material_matchers) |
+  | `filter` | Filters which blocks get affected. *May impact preformace for large fills.* | [Filter](/docs/modules/mechanics/filters) |
+  | `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact preformace for large fills.* | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
 ### Replace Item Attributes/Elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<find/>`}</label>
-        </td>
-        <td>The item to find.</td>
-        <td>
-          <a href="/docs/modules/gear/items#item-attributes">Item Attributes</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<replace/>`}</label>
-        </td>
-        <td>The new item to replace with.</td>
-        <td>
-          <a href="/docs/modules/gear/items#item-attributes">Item Attributes</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`keep-amount`}</label>
-        </td>
-        <td>
-          Player recives the same amount of the new item as they had of the old
-          item.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`keep-enchants`}</label>
-        </td>
-        <td>Enchantments on the old item will be applied to the new item.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`ignore-metadata`}</label>
-        </td>
-        <td>Filters which entities to remove.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`amount`}</label>
-        </td>
-        <td>
-          Match for item stacks that have a certain amount of items in a range.
-        </td>
-        <td>
-          <span className="badge badge--primary">Range</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `<find />` | The item to find. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+  | `<replace/>` | The new item to replace with. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+  | `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
+  | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
+  | `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
+  | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
 </div>
 
 ## Trigger Element
 
-The <label>`<trigger/>`</label> Element waits for a dynamic filter to activate it, and afterwards it will
-trigger an Action.
+The trigger element waits for a dynamic filter to activate it, and afterwards it will trigger an action.
 
 ### Trigger Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`filter`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          A dynamic filter that activates the trigger.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters#dynamic-filters">
-            Dynamic Filter
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`action`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Sets the action to run when the filter allows.
-        </td>
-        <td>
-          <a href="#action-elements">Action</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`scope`}</label>
-        </td>
-        <td>Specify the scope for which to test the filter.</td>
-        <td>
-          <label>{`player`}</label>, <label>{`team`}</label>, <label>{`match`}</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A dynamic filter that activates the trigger. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+  | `action` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Sets the action to run when the filter allows. | [Action](#action-elements) |
+  | `scope` | Specify the scope for which to test the filter. | `player`, `team`, or `match` |
 </div>
 
 _Example_

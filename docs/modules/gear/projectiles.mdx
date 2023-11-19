@@ -3,249 +3,47 @@ id: projectiles
 title: Custom Projectiles
 ---
 
-Custom projectile types can be defined and applied to items in [kits](/docs/modules/gear/kits).
+Custom projectile types can be defined and applied to items in [Kits](/docs/modules/gear/kits).
 These items effectively become either weapons that shoot the custom projectile,
 or the item form of the custom projectile itself.
 
 #### Projectiles Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<projectiles> </projectiles>`}</label>
-        </td>
-        <td>Node containing the custom projectile definitions.</td>
-        <td />
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<projectile> </projectile>`}</label>
-        </td>
-        <td>A custom projectile definition.</td>
-        <td>
-          <span className="badge badge--secondary">
-            Projectile Sub-elements
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<projectiles> </projectiles>` | Node containing the custom projectile definitions. |
+
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<projectile> </projectile>` | A custom projectile definition. | <span className="badge badge--secondary">Projectile Sub-elements</span> |
 </div>
 
-### Projectile Attributes
+#### Projectile Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "150px" }}>Attribute</th>
-        <th>Description</th>
-        <th style={{ minWidth: "100px" }}>Value</th>
-        <th style={{ minWidth: "100px" }}>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifier used to reference this projectile from other places in the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>name</label>
-        </td>
-        <td>
-          The display name of this projectile, used in "shot by" messages, etc.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>throwable</label>
-        </td>
-        <td>
-          Items are consumed when using them to shoot this projectile (making
-          them more like grenades than guns).
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>projectile</label>
-        </td>
-        <td>The entity this projectile is materialized as.</td>
-        <td>
-          <a href="/docs/reference/entities/entity-types">Entity Type</a>
-        </td>
-        <td>
-          <span className="badge badge--secondary">Arrow</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>damage</label>
-        </td>
-        <td>The amount of damage this projectile deals.</td>
-        <td>
-          <span className="badge badge--primary">Half-hearts</span>
-        </td>
-        <td>0.0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>velocity</label>
-        </td>
-        <td>The speed at which the projectile moves.</td>
-        <td>
-          <span className="badge badge--primary">Meters/tick</span>
-        </td>
-        <td>1.0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>click</label>
-        </td>
-        <td>
-          The click action that fires the projectile.
-          <br />
-          Accepts <label>right</label>, <label>left</label> or{" "}
-          <label>both</label>.
-        </td>
-        <td>
-          <span className="badge badge--primary">Click Action</span>
-        </td>
-        <td>
-          <label>both</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>effects</label>
-        </td>
-        <td>The potion effects to apply to players hit by this projectile.</td>
-        <td>
-          <a href="/docs/modules/gear/potions">Potion Effect</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>destroy-filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter if/what blocks get destroyed when hit with this projectile.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>deny-all</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>cooldown</label>
-        </td>
-        <td>Minimum time between each firing of this projectile.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>precise</label>
-        </td>
-        <td>
-          Whether the path of a thrown projectile should be precise in hitting a target.
-          <br />
-          <em>
-            This is only applicable if the projectile is <label>Fireball</label>, <label>LargeFireball</label>, <label>SmallFireball</label>, or <label>WitherSkull</label>.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this projectile from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `name` | The display name of this projectile, used in "shot by" messages, etc. | <span className="badge badge--primary">String</span> |
+  | `throwable` | Items are consumed when using them to shoot this projectile (making them more like grenades than guns). | <span className="badge badge--primary">true/false</span> | true |
+  | `projectile` | The entity this projectile is materialized as. | [Entity Type](/docs/reference/entities/entity-types) | <span className="badge badge--secondary">Arrow</span> |
+  | `damage` | The amount of damage this projectile deals. | <span className="badge badge--primary">Half-hearts</span> | 0.0 |
+  | `velocity` | The speed at which the projectile moves. | <span className="badge badge--primary">Meters/tick</span> | 1.0 |
+  | `click` | The click action that fires the projectile. | `right`,<br />`left`,<br />or `both` | `both` |
+  | `effects` | The potion effects to apply to players hit by this projectile. | [Potion Effect](/docs/modules/gear/potions) |
+  | `destroy-filter` | <span className="badge badge--secondary" title="Can be this attribute or a sub-element.">Property</span>Filter if/what blocks get destroyed when hit with this projectile. | [Filter](/docs/modules/mechanics/filters) | `never` |
+  | `cooldown` | The minimum time between each firing of this projectile. | [Time Period](/docs/reference/misc/time-periods) |
+  | `precise` | Whether the path of a thrown projectile should be precise in hitting a target.<br />*This is only applicable if the projectile is `Fireball`, `LargeFireball`, `SmallFireball`, or `WitherSkull`.* | <span className="badge badge--primary">true/false</span> | true |
 </div>
 
 ##### Projectile Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<destroy-filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Filter if/what blocks get destroyed when hit with this projectile.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<effect>`}</label>
-        </td>
-        <td>A potion effect to apply to players hit by this projectile.</td>
-        <td>
-          <a href="/docs/modules/gear/potions">Potion Effect</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<destroy-filter>` | <span className="badge badge--secondary" title="Can be this sub-element or an attribute.">Property</span>Filter if/what blocks get destroyed when hit with this projectile. | [Filters](/docs/modules/mechanics/filters) |
+  | `<effect>` | A potion effect to apply to players hit by this projectile. | [Potion Effects](/docs/modules/gear/potions) |
 </div>
 
 ```xml
@@ -275,74 +73,19 @@ The PGM plugin will calculate the damage the projectile does using the same form
 This means that a flying fish with a velocity of 40 will almost certainly kill you.
 Projectiles can also have custom [potion effects](/docs/modules/gear/potions) which are applied to the target when it is hit.
 
-`NOTE:` You can currently only modify all bow projectiles, this means no normal and custom bow at the same time.
+**Note:** You can currently only modify all bow projectiles, this means no normal and custom bow at the same time.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Projectiles Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<modifybowprojectile> </...>`}</label>
-        </td>
-        <td>Node containing the modify bow projectile settings.</td>
-        <td>
-          <span className="badge badge--secondary">
-            Bow Projectile Sub-elements
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<projectile> </projectile>`}</label>
-        </td>
-        <td>The entity to use as the bows projectile.</td>
-        <td>
-          <a href="/docs/modules/gear/projectiles#custom-projectile-types">
-            Projectile Type
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<velocityMod> </velocityMod>`}</label>
-        </td>
-        <td>The velocity modifier of the bows projectile.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<potion> </potion>`}</label>
-        </td>
-        <td>A potion effect to apply to players hit by the bow projectile.</td>
-        <td>
-          <a href="/docs/modules/gear/potions">Potion Effect</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<pickup-filter> </pickup-filter>`}</label>
-        </td>
-        <td>A filter to determine which players can pick up arrows.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<modifybowprojectile>`<br />`</modifybowprojectile>` | Node containing the modify bow projectile settings. | <span className="badge badge--secondary">Bow Projectile Sub-elements</span> |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<projectile> </projectile>` | The entity to use as the bows projectile. | [Projectile Type](/docs/modules/gear/projectiles#custom-projectile-types) |
+  | `<velocityMod> </velocityMod>` | The velocity modifier of the bows projectile. | <span className="badge badge--primary">Number</span> |
+  | `<potion> </potion>` | A potion effect to apply to players hit by the bow projectile. | [Potion Effect](/docs/modules/gear/potions) |
+  | `<pickup-filter> </pickup-filter>` | A filter to determine which players can pick up arrows. | [Filter](/docs/modules/mechanics/filters) |
 </div>
 
 Examples
@@ -363,76 +106,22 @@ Examples
 
 All of the following projectiles in this table are guaranteed to work.
 Some projectiles such as `WitherSkull` travel very fast by default and may need `<velocityMod>` to reduce the speed.
-See [mrapple/Bukkit Entity Spawning.md](https://gist.github.com/4617111) for a list of tested entities.
 
 <div className="table-container">
-  <table className="table table-striped">
-    <thead>
-      <tr>
-        <th>Working Entity Types</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>Arrow</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>Boat</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>Egg</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>EnderPearl</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>Fireball</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>Firework</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>LargeFireball</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>SmallFireball</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>Snowball</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>ThrownExpBottle</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>WitherSkull</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>TNTPrimed</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Working Entity Types |
+  |---|
+  | `Arrow` |
+  | `Boat` |
+  | `Egg` |
+  | `EnderPearl` |
+  | `Fireball` |
+  | `Firework` |
+  | `LargeFireball` |
+  | `SmallFireball` |
+  | `Snowball` |
+  | `ThrownExpBottle` |
+  | `WitherSkull` |
+  | `TNTPrimed` |
 </div>
+
+Copied from: [mrapple/Bukkit Entity Spawning.md](https://gist.github.com/4617111)

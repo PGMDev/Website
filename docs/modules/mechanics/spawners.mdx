@@ -10,192 +10,44 @@ The module uses the same syntax as [Kits](/docs/modules/gear/kits) to
 define items and makes use of a specific [region](/docs/modules/mechanics/regions) to spawn them in.
 
 :::info
-  Currently, only dropped items and splash potions are supported by this module.
-  Other types of entities may be supported in the future.
+Currently, only dropped items and splash potions are supported by this module.
+Other types of entities may be supported in the future.
 :::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<spawners> </spawners>`}</label>
-        </td>
-        <td>
-          The main spawner node containing all defined spawners used in the
-          match.
-        </td>
-        <td>
-          <span className="badge badge--secondary">Spawners</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<spawners> </spawners>` | Node containing all defined spawners used in this map. |
+
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<spawner> </spawner>` | An individual spawner. | <span className="badge badge--secondary">Spawner Sub-elements</span> |
 </div>
 
-##### Spawner Attributes
+#### Spawner Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>spawn-region</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>The region in
-          which to spawn the target entities.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Region</a>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>player-region</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>The region used
-          to determine whether the spawner is actively spawning entities. At
-          least 1 player must be in this region for the spawner to be
-          active.{" "}
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Region</a>
-        </td>
-        <td />
-      </tr>
-      <tr>
-        <td>
-          <label>max-entities</label>
-        </td>
-        <td>Cap of how many entities the spawner can have spawned at once.</td>
-        <td>Number</td>
-        <td>Infinity</td>
-      </tr>
-      <tr>
-        <td>
-          <label>delay</label>
-        </td>
-        <td>Interval in between spawning attempts.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>10s</td>
-      </tr>
-      <tr>
-        <td>
-          <label>min-delay</label>
-        </td>
-        <td>
-          Used to randomize the spawn interval. Combine this with{" "}
-          <label>max-delay</label> to create random intervals in between two
-          values.{" "}
-          <br />
-          <em>
-            Cannot be combined with <label>delay</label>.
-          </em>
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>
-          <label>delay</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>max-delay</label>
-        </td>
-        <td>
-          Used to randomize the spawn interval. Combine this with{" "}
-          <label>min-delay</label> to create random intervals in between two
-          values.{" "}
-          <br />
-          <em>
-            Cannot be combined with <label>delay</label>.
-          </em>
-        </td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>
-          <label>delay</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          Filter to further control spawn conditions, will return true if at
-          least one player in <label>player-region</label> meets criteria.{" "}
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td />
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `spawn-region` | <span className="badge badge--danger">Required</span>The region in which to spawn the target entities. | [Region](/docs/modules/mechanics/regions) |
+  | `player-region` | <span className="badge badge--danger">Required</span>The region used to determine whether the spawner is actively spawning entities. At least 1 player must be in this region for the spawner to be active. | [Region](/docs/modules/mechanics/regions) |
+  | `max-entities` | A limit of how many entities this spawner can have spawned at once. | <span className="badge badge--primary">Number</span> | `oo` (infinity) |
+  | `delay` | Interval in between spawning attempts. | [Time Period](/docs/reference/misc/time-periods) | 10s |
+  | `min-delay` | Used to randomize the spawn interval. Combine this with `max-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
+  | `max-delay` | Used to randomize the spawn interval. Combine this with `min-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
+  | `filter` | Filter to further control spawn conditions, will return true if at least one player in `player-region` meets criteria. | [Filter](/docs/modules/mechanics/filters) |
 </div>
 
-##### Spawner Sub-elements
+#### Spawner Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<item> </item>`}</label>
-        </td>
-        <td>
-          An item that will be dropped in the <label>spawn-region</label>
-        </td>
-        <td>
-          <a href="/docs/modules/gear/items">Item</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<potion> </potion>`}</label>
-        </td>
-        <td>
-          A single splash potion that will be dropped in the{" "}
-          <label>spawn-region</label>
-        </td>
-        <td>
-          <a href="/docs/modules/gear/potions">Potion Effects</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `<item> </item>` | An item that will be dropped in the `spawn-region`. | [Item](/docs/modules/gear/items) |
+  | `<potion> </potion>` | A single splash potion that will be dropped in the `spawn-region`. | [Potion Effects](/docs/modules/gear/potions) |
 </div>
 
-_Examples_
+### Examples
 
 This will spawn golden swords (in stacks of 1) in the red base, provided there is at least 1 person in that base.
 The swords will spawn in ramdom intervals of 2s - 10s.

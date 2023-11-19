@@ -3,74 +3,30 @@ id: lanes
 title: Lanes
 ---
 
-Lanes are used in Race for Wool (RFW) style maps with two parallel lanes for the teams. They prevent players from leaving their team's lane and entering the enemies' lane.
+Lanes are used in Race for Wool (RFW) style maps with two parallel lanes for the teams. 
+They prevent players from leaving their team's lane and entering the enemies' lane.
 
 #### Lanes Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<lanes> </lanes>`}</label>
-        </td>
-        <td>Node containing this world's lanes.</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<lane> </lane>`}</label>
-        </td>
-        <td>A single lane definition.</td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Regions</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<lanes> </lanes>` | Node containing this world's lanes. |
+  
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<lane> </lane>` | A single lane definition. | [Regions](/docs/modules/mechanics/regions) |
 </div>
 
-### Lane Attributes
+#### Lane Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>team</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          The team the lane belongs to and in which they have to stay inside.
-        </td>
-        <td>
-          <a href="/docs/modules/format/teams">Team ID</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `team` | <span className="badge badge--danger">Required</span>The team the lane belongs to and in which they have to stay inside. | [Team ID](/docs/modules/format/teams) |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <lanes>

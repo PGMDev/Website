@@ -181,17 +181,19 @@
 }
 
 .download_button {
-  width: 250px;
-  max-width: 250px;
+  width: 276px;
+  max-width: 276px;
 }
 
 .download_button_wrapper {
-  width: 250px;
-  max-width: 250px;
+  width: 276px;
+  max-width: 276px;
   margin-bottom: 10px;
   display: flex;
   gap: 10px;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .download_button_wrapper > .download_button {
@@ -203,7 +205,6 @@
 @media screen and (max-width: 996px) {
   .download_button {
     margin-bottom: 30px;
-    margin-right: 10px;
   }
 }
 

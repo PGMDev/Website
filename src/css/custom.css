@@ -78,14 +78,15 @@ table tr:nth-child(odd) td {
   border-color: rgb(72, 77, 91, 0.1);
 }
 
-table label {
+table > tbody > tr > td > code,label {
   display: block;
+  background-color: transparent !important;
   unicode-bidi: embed;
-  font-family: monospace;
+  font-family: monospace !important;
   white-space: pre;
-  font-size: 120%;
+  font-size: 120% !important;
   color: #c7254e;
-  border-radius: 4px;
+  border-radius: 4px !important;
   padding: 1px 4px;
   display: inline-block;
 }
