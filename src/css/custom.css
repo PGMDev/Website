@@ -78,6 +78,7 @@ table tr:nth-child(odd) td {
   border-color: rgb(72, 77, 91, 0.1);
 }
 
+/* All code and label elements which have a td parent */
 table > tbody > tr > td > code,label {
   display: block;
   background-color: transparent !important;
