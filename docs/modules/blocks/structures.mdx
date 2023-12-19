@@ -9,284 +9,47 @@ When the match loads, the original structures will be saved and cleared from the
 
 Structures are brought to life by the `<dynamic>` element.
 This is an XML construct that causes a structure to appear at a specified location in reaction to a given filter.
-Whenever the filter is in a passing state (when it has a value of ALLOW or ABSTAIN), the structure will appear.
-When the filter is not passing, (when its value is DENY), the structure will disappear.
+Whenever the filter is in a passing state (when it has a value of `ALLOW` or `ABSTAIN`), the structure will appear.
+When the filter is not passing, (when its value is `DENY`), the structure will disappear.
 
 Structures are a very powerful feature that can be used to implement an endless variety of custom game mechanics.
 
 #### Structures Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<structures> </structures>`}</label>
-        </td>
-        <td>Element containing all structures and dynamics.</td>
-        <td>
-          <span className="badge badge--secondary">
-            Structure and Dynamic Elements
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<structure>`}</label>
-        </td>
-        <td>Defines a block structure that is part of the map.</td>
-        <td>
-          <span className="badge badge--secondary">Structure Attributes</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<dynamic>`}</label>
-        </td>
-        <td>
-          Causes a structure to be placed/removed at some location in reaction
-          to a filter.
-        </td>
-        <td>
-          <span className="badge badge--secondary">Dynamic Attributes</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<structures> </structures>` | Node containing all structures and dynamics. | <span className="badge badge--secondary">Structure and Dynamic Elements</span> |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<structure>` | Defines a block structure that is part of the map. | <span className="badge badge--secondary">Structure Attributes</span> |
+  | `<dynamic>` | Causes a structure to be placed/removed at some location in reaction to a filter. | <span className="badge badge--secondary">Dynamic Attributes</span> |
 </div>
 
-### Structure Attributes
+#### Structure Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifier used to reference the structure from other places in
-          the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>region</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          Unique identifier used to reference the structure from other places in
-          the XML.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/regions#block-bounded-regions">
-            Cuboid Region
-          </a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>origin</label>
-        </td>
-        <td>
-          {" "}
-          A location used as the reference point when specifying destination
-          points for the structure.
-        </td>
-        <td>
-          <span className="badge badge--primary">X,Y,Z</span>
-        </td>
-        <td>
-          Low corner of <label>region</label> bounding box.
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>air</label>
-        </td>
-        <td>
-          Whether air blocks should be considered part of the structure. If
-          true, empty blocks in the structure's region will be copied along with
-          it, clearing any blocks at the destination. If false, air blocks are
-          not copied and the structure is mixed in with blocks at the
-          destination.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>
-          <label>false</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>clear</label>
-        </td>
-        <td>
-          Whether to clear the original structure when the match loads. If true,
-          the structure's region will be filled with air, and players will never
-          see it. If false, the original structure is not modified.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>
-          <label>true</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children | Default |
+  |---|---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this structure from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>A single region containing this structure. | [Cuboid Region](/docs/modules/mechanics/regions#block-bounded-regions) |
+  | `origin` | A location used as the reference point when specifying destination points for the structure. | <span className="badge badge--primary">X,Y,Z</span> | <span className="badge badge--secondary">Low corner of `region` bounding box</span> |
+  | `air` | Whether air blocks should be considered part of the structure. If `true`, empty blocks in the structure's region will be copied along with it, clearing any blocks at the destination. If `false`, air blocks are not copied and the structure is mixed in with blocks at the destination. | <span className="badge badge--primary">true/false</span> | false |
+  | `clear` | Whether to clear the original structure as soon the match loads. If `true`, the structure's region will be filled with air, and players will never see it. If `false`, the original structure is not modified. | <span className="badge badge--primary">true/false</span> | true |
 </div>
 
-### Dynamic Attributes
+#### Dynamic Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          Unique identifier used to reference the dynamic from other places in
-          the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>structure</label>
-        </td>
-        <td>
-          The <label>id</label> of the structure to place.
-        </td>
-        <td>
-          <a href="#structure-attributes">Structure ID</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter used to determine when a structure is <em>placed</em> when <label>
-            trigger
-          </label> allows.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td>
-          <label>always</label> <em>(structure is permanently placed)</em>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>trigger</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Dynamic filter which triggers placement and clearing of structures.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters#dynamic-filters">
-            Dynamic Filter
-          </a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>location</label>
-        </td>
-        <td>
-          Location to place the structure at. The structure's{" "}
-          <label>origin</label> will be at this point.{" "}
-          <em>
-            Mutually exclusive with <label>offset</label>.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">X,Y,Z</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>offset</label>
-        </td>
-        <td>
-          Relative position to place the structure at. The structure will be
-          translated by this amount from its original location.{" "}
-          <em>
-            Mutually exclusive with <label>location</label>.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">X,Y,Z</span>
-        </td>
-        <td>
-          <label>0,0,0</label>{" "}
-          <em>(structure placed at its original location)</em>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children | Default |
+  |---|---|---|---|
+  | `id` | Unique identifier used to reference this dynamic from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `structure` | The `id` of the structure to place. | [Structure ID](#structure-attributes) |
+  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter used to determine when a structure is *placed* when `trigger` allows. | [Filter](/docs/modules/mechanics/filters) | `always` *(structure is permanently placed)* |
+  | `trigger` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Dynamic filter which triggers placement and clearing of structures. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+  | `location` | The location to place the structure at. The structure's `origin` will be at this point.<br />*Mutually exclusive with `offset`.* | <span className="badge badge--primary">X,Y,Z</span> |
+  | `offset` | Relative position to place the structure at. The structure will be translated by this amount from its original location.<br />*Mutually exclusive with `location`.* | <span className="badge badge--primary">X,Y,Z</span> | `0,0,0` *(structure placed at its original location)* |
 </div>
 
 ### Examples

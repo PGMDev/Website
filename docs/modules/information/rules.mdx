@@ -3,48 +3,23 @@ id: rules
 title: Rules
 ---
 
-You can use the rules module to add custom rules to your map that are not already included within your own established server-wide rules.
+You can use the rules module to add custom rules to your map that are not already included within an established server-wide rules.
 
-:::info
-Regions and filters should be used to enforce access and block rules.
+:::tip
+Regions and Filters should be used to enforce access and block rules.
 :::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Rule Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<rules> </rules>`}</label>
-        </td>
-        <td>Node containing all the defined custom rules.</td>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<rule> </rule>`}</label>
-        </td>
-        <td>A custom map rule.</td>
-        <td>
-          <span className="badge badge--primary">Text</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<rules> </rules>` | Node containing all the defined custom rules. |
+  
+  | Sub-elements || Value |
+  |---|---|---|
+  | `<rule> </rule>` | A custom map rule. | <span className="badge badge--primary">Text</span> |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <rules>

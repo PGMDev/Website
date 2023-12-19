@@ -1,145 +1,47 @@
 ---
 id: kill-rewards
 title: Kill Rewards
-description: The kill-rewards module allows players to get items or a kit when they kill a player.
 ---
 
-The `<kill-rewards>` module allows players to get items or a kit when they kill a player.
+The Kill Rewards module allows players to get items or a kit when they kill a player.
 A kill reward can contain either individual items, kits or references to kits.
 The reward can optionally filter which players are eligible to receive the reward, or when/where the reward is active.
 
 This module can, for example, be used to give upgrades to players by giving them gold ingots.
-Then, once they have collected enough ingots, they can craft armor, etc.
+Then, once they have collected enough ingots, they can craft armor, purchase items from a shop, etc.
 
 #### Kill Rewards Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<kill-rewards> </kill-rewards>`}</label>
-        </td>
-        <td>Node containing all kill reward definitions.</td>
-        <td>
-          <span className="badge badge--secondary">Kill Reward elements</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Kill Rewards Sub-element</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<kill-reward> </kill-reward>`}</label>
-        </td>
-        <td>A single kill reward.</td>
-        <td>
-          <span className="badge badge--secondary">
-            Kill Reward Sub-elements
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <th>Kill Reward Attributes</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>{" "}
-          Filter who can claim this reward and when.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>kit</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>{" "}
-          The kit to give players as the kill reward.
-        </td>
-        <td>
-          <a href="/docs/modules/gear/kits">Kit ID</a>
-        </td>
-      </tr>
-      <tr>
-        <th>Kill Reward Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<item>`}</label>
-        </td>
-        <td>Individual items given as a kill reward.</td>
-        <td>
-          <a href="/docs/modules/gear/items">Item</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>{" "}
-          Filter who can claim this reward and when.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filters</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<kit>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          The kit to give as the reward.
-        </td>
-        <td>
-          <a href="/docs/modules/gear/kits">Kits</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<kill-rewards> </kill-rewards>` | Node containing all kill reward definitions. | <span className="badge badge--secondary">Kill Reward elements</span> |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<kill-reward> </kill-reward>` | A single kill reward. | <span className="badge badge--secondary">Kill Reward Sub-elements</span> |
 </div>
 
-_Examples_
+#### Kill Reward Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value/Children |
+  |---|---|---|
+  | `filter` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can claim this reward and when. | [Filter](/docs/modules/mechanics/filters) |
+  | `kit` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give players as the kill reward. | [Kit ID](/docs/modules/gear/kits) |
+</div>
+
+#### Kill Reward Sub-elements
+
+<div className="table-container">
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<item>` | Individual items given as a kill reward. | [Item](/docs/modules/gear/items) |
+  | `<filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can claim this reward and when. | [Filter](/docs/modules/mechanics/filters) |
+  | `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give players as the kill reward. | [Kit ID](/docs/modules/gear/kits) |
+</div>
+
+### Examples
 
 ```xml
 <kill-rewards>
@@ -161,7 +63,7 @@ _Examples_
 </kill-rewards>
 ```
 
-_Kill rewards with kits_
+Kill rewards with kits
 
 ```xml
 <kill-rewards>
@@ -169,7 +71,7 @@ _Kill rewards with kits_
         <kit>
             <item slot="0" material="iron sword"/>
             <helmet material="iron helmet"/>
-            <potion amplifier="2">speed</potion>
+            <effect amplifier="2">speed</effect>
         </kit>
     </kill-reward>
 

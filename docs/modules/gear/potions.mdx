@@ -13,85 +13,22 @@ Effect IDs should be specified without their `minecraft:` prefix.
 ##### Effect Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<effect> </effect>`}</label>
-        </td>
-        <td>A potion effect</td>
-        <td>
-          <a href="/docs/reference/items/potions">Status Effect ID</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `<effect> </effect>` | A potion effect. | [Status Effect ID](/docs/reference/items/potions)
 </div>
 
 ##### Effect Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>duration</label>
-        </td>
-        <td>Duration of the effect.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>oo (forever)</td>
-      </tr>
-      <tr>
-        <td>
-          <label>amplifier</label>
-        </td>
-        <td>
-          Strength of the effect. The value matches what is displayed to the
-          player in-game, so the first tier of potions have amplifier 1.
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>
-          <label>ambient</label>
-        </td>
-        <td>
-          Disables potion particles on an potion when set to true.
-          <br />
-          <em>
-            <label>potion-particles</label> must be enabled to use this feature.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `duration` | Duration of the effect. | [Time Period](/docs/reference/misc/time-periods) | `oo`<br />(forever) |
+  | `amplifier` | Strength of the effect. The value matches what is displayed to the player in-game, so the first tier of potions have amplifier 1. | <span className="badge badge--primary">Number</span> | 1 |
+  | `ambient` | Disables potion particles on an potion when set to true.<br />*`potion-particles` must be enabled to use this feature.* | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <effect duration="900" amplifier="1">jump_boost</effect>

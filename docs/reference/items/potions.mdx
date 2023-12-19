@@ -3,189 +3,58 @@ id: potions
 title: Potions & Effects
 ---
 
-### Potion Names & Colors
+## Potion Names & Colors
 
 Damage values set the potion color, [potion effect](/docs/modules/gear/potions), default duration and name for potion items.
 Use the `<effect>` element to set custom duration, amplifier and desired status effect.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Damage Value</th>
-        <th>Potion Name</th>
-        <th>Status Effect</th>
-        <th>Color</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>0</label>
-        </td>
-        <td>Water Bottle</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>1</label>
-        </td>
-        <td>Potion of Regeneration</td>
-        <td>
-          <label>regeneration</label>
-        </td>
-        <td>Pink</td>
-      </tr>
-      <tr>
-        <td>
-          <label>2</label>
-        </td>
-        <td>Potion of Swiftness</td>
-        <td>
-          <label>speed</label>
-        </td>
-        <td>Sky Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>3</label>
-        </td>
-        <td>Potion of Fire Resistance</td>
-        <td>
-          <label>fire_resistance</label>
-        </td>
-        <td>Orange</td>
-      </tr>
-      <tr>
-        <td>
-          <label>4</label>
-        </td>
-        <td>Potion of Poison</td>
-        <td>
-          <label>poison</label>
-        </td>
-        <td>Green</td>
-      </tr>
-      <tr>
-        <td>
-          <label>5</label>
-        </td>
-        <td>Potion of Healing</td>
-        <td>
-          <label>instant_health</label>
-        </td>
-        <td>Red</td>
-      </tr>
-      <tr>
-        <td>
-          <label>6</label>
-        </td>
-        <td>Potion of Night Vision</td>
-        <td>
-          <label>night_vision</label>
-        </td>
-        <td>Navy Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>7</label>
-        </td>
-        <td>Clear Potion</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>8</label>
-        </td>
-        <td>Potion of Weakness</td>
-        <td>
-          <label>weakness</label>
-        </td>
-        <td>Gray</td>
-      </tr>
-      <tr>
-        <td>
-          <label>9</label>
-        </td>
-        <td>Potion of Strength</td>
-        <td>
-          <label>strength</label>
-        </td>
-        <td>Dark Red</td>
-      </tr>
-      <tr>
-        <td>
-          <label>10</label>
-        </td>
-        <td>Potion of Slowness</td>
-        <td>
-          <label>slowness</label>
-        </td>
-        <td>Blue-gray</td>
-      </tr>
-      <tr>
-        <td>
-          <label>11</label>
-        </td>
-        <td>Potion of Leaping</td>
-        <td>
-          <label>jump_boost</label>
-        </td>
-        <td>Bright Green</td>
-      </tr>
-      <tr>
-        <td>
-          <label>12</label>
-        </td>
-        <td>Potion of Harming</td>
-        <td>
-          <label>instant_damage</label>
-        </td>
-        <td>Purple</td>
-      </tr>
-      <tr>
-        <td>
-          <label>13</label>
-        </td>
-        <td>Potion of Water Breathing</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>14</label>
-        </td>
-        <td>Potion of Invisibility</td>
-        <td>
-          <label>invisibility</label>
-        </td>
-        <td>Light Gray</td>
-      </tr>
-      <tr>
-        <td>
-          <label>15</label>
-        </td>
-        <td>Thin Potion</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-    </tbody>
-  </table>
+  | Damage Value | Potion Name | Status Effect | Color |
+  |---|---|---|---|
+  | `0` | Water Bottle | `N/A` | Blue |
+  | `1` | Potion of Regeneration | `regeneration` | Pink |
+  | `2` | Potion of Swiftness | `speed` | Sky Blue |
+  | `3` | Potion of Fire Resistance | `fire_resistance` | Orange |
+  | `4` | Potion of Poison | `poison` | Green |
+  | `5` | Potion of Healing | `instant_health` | Red |
+  | `6` | Potion of Night Vision | `night_vision` | Navy Blue |
+  | `7` | Clear Potion | `N/A` | Blue |
+  | `8` | Potion of Weakness | `weakness` | Gray |
+  | `9` | Potion of Strength | `strength` | Dark Red |
+  | `10` | Potion of Slowness | `slowness` | Blue-gray |
+  | `11` | Potion of Leaping | `jump_boost` | Bright Green |
+  | `12` | Potion of Harming | `instant_damage` | Purple |
+  | `13` | Potion of Water Breathing | `N/A` | Blue |
+  | `14` | Potion of Invisibility | `invisibility` | Light Gray |
+  | `15` | Thin Potion | `N/A` | Blue |
 </div>
 
-### Splash Potions
+## Splash Potions
 
 Splash potions are determined by adding the damage value `16384` to the chosen potion value.
+
+<div className="table-container">
+  | Damage Value | Potion Name | Status Effect | Color |
+  |---|---|---|---|
+  | `16384` | Water Bottle | `N/A` | Blue |
+  | `16385` | Splash Potion of Regeneration | `regeneration` | Pink |
+  | `16386` | Splash Potion of Swiftness | `speed` | Sky Blue |
+  | `16387` | Splash Potion of Fire Resistance | `fire_resistance` | Orange |
+  | `16388` | Splash Potion of Poison | `poison` | Green |
+  | `16389` | Splash Potion of Healing | `instant_health` | Red |
+  | `16390` | Splash Potion of Night Vision | `night_vision` | Navy Blue |
+  | `16391` | Clear Potion | `N/A` | Blue |
+  | `16392` | Splash Potion of Weakness | `weakness` | Gray |
+  | `16393` | Splash Potion of Strength | `strength` | Dark Red |
+  | `16394` | Splash Potion of Slowness | `slowness` | Blue-gray |
+  | `16395` | Splash Potion of Leaping | `jump_boost` | Bright Green |
+  | `16396` | Splash Potion of Harming | `instant_damage` | Purple |
+  | `16397` | Splash Potion of Water Breathing | `N/A` | Blue |
+  | `16398` | Splash Potion of Invisibility | `invisibility` | Light Gray |
+  | `16399` | Thin Potion | `N/A` | Blue |
+</div>
+
+### Examples
 
 ```xml
 <!-- 16384 + 2 = 16386 -->
@@ -202,256 +71,30 @@ Splash potions are determined by adding the damage value `16384` to the chosen p
 </item>
 ```
 
-<div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Damage Value</th>
-        <th>Potion Name</th>
-        <th>Status Effect</th>
-        <th>Color</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>16384</label>
-        </td>
-        <td>Water Bottle</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16385</label>
-        </td>
-        <td>Splash Potion of Regeneration</td>
-        <td>
-          <label>regeneration</label>
-        </td>
-        <td>Pink</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16386</label>
-        </td>
-        <td>Splash Potion of Swiftness</td>
-        <td>
-          <label>speed</label>
-        </td>
-        <td>Sky Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16387</label>
-        </td>
-        <td>Splash Potion of Fire Resistance</td>
-        <td>
-          <label>fire_resistance</label>
-        </td>
-        <td>Orange</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16388</label>
-        </td>
-        <td>Splash Potion of Poison</td>
-        <td>
-          <label>poison</label>
-        </td>
-        <td>Green</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16389</label>
-        </td>
-        <td>Splash Potion of Healing</td>
-        <td>
-          <label>instant_health</label>
-        </td>
-        <td>Red</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16390</label>
-        </td>
-        <td>Splash Potion of Night Vision</td>
-        <td>
-          <label>night_vision</label>
-        </td>
-        <td>Navy Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16391</label>
-        </td>
-        <td>Clear Potion</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16392</label>
-        </td>
-        <td>Splash Potion of Weakness</td>
-        <td>
-          <label>weakness</label>
-        </td>
-        <td>Gray</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16393</label>
-        </td>
-        <td>Splash Potion of Strength</td>
-        <td>
-          <label>strength</label>
-        </td>
-        <td>Dark Red</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16394</label>
-        </td>
-        <td>Splash Potion of Slowness</td>
-        <td>
-          <label>slowness</label>
-        </td>
-        <td>Blue-gray</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16395</label>
-        </td>
-        <td>Splash Potion of Leaping</td>
-        <td>
-          <label>jump_boost</label>
-        </td>
-        <td>Bright Green</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16396</label>
-        </td>
-        <td>Splash Potion of Harming</td>
-        <td>
-          <label>instant_damage</label>
-        </td>
-        <td>Purple</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16397</label>
-        </td>
-        <td>Splash Potion of Water Breathing</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16398</label>
-        </td>
-        <td>Splash Potion of Invisibility</td>
-        <td>
-          <label>invisibility</label>
-        </td>
-        <td>Light Gray</td>
-      </tr>
-      <tr>
-        <td>
-          <label>16399</label>
-        </td>
-        <td>Thin Potion</td>
-        <td>
-          <label>N/A</label>
-        </td>
-        <td>Blue</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-### Other Status Effects
+## Other Status Effects
 
 Potions can have other status effects applied that are not potion effects.
 Multiple effects can be applied to a potion.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Status Effect</th>
-        <th>Status ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Absorption</td>
-        <td>
-          <label>absorption</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Blindness</td>
-        <td>
-          <label>blindness</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Haste</td>
-        <td>
-          <label>fast_digging</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Health Boost</td>
-        <td>
-          <label>health_boost</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Hunger</td>
-        <td>
-          <label>hunger</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Mining Fatigue</td>
-        <td>
-          <label>slow_digging</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Nausea</td>
-        <td>
-          <label>confusion</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Saturation</td>
-        <td>
-          <label>saturation</label>
-        </td>
-      </tr>
-      <tr>
-        <td>Wither</td>
-        <td>
-          <label>wither</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Status Effect | Status ID |
+  |---|---|
+  | Absorption | `absorption` |
+  | Blindness | `blindness` |
+  | Haste | `fast_digging` |
+  | Health Boost | `health_boost` |
+  | Hunger | `hunger` |
+  | Mining Fatigue | `slow_digging` |
+  | Nausea | `confusion` |
+  | Saturation | `saturation` |
+  | Wither | `wither` |
 </div>
+
+### Examples
 
 ```xml
 <!-- Strength potion color -->
-<item amount="1" material="potion" damage="9">
+<item material="potion" damage="9">
     <effect amplifier="3" duration="100">absorption</effect>
     <effect amplifier="1" duration="30">fast_digging</effect>
     <effect amplifier="2" duration="30">speed</effect>

@@ -1,306 +1,70 @@
 ---
 id: spawns
 title: Spawns
-description: The spawns module is required in a complete map XML because it specifies where players and observers can spawn.
 ---
 
-The spawns module is required in a complete map XML because it specifies where players and observers can spawn. Default and observer spawns are defined with the `<default>` element and all other spawns in `<spawn>` elements. Only one default spawn element may be defined per map.
+The spawns module is required in a complete map XML because it specifies where players and observers can spawn. 
+Default and observer spawns are defined with the `<default>` element and all other spawns in `<spawn>` elements. 
+Only one default spawn element may be defined per map.
 
-Multiple spawns from the same team can be grouped inside of a single `<regions>` element inside `<spawns team="team-id">`. Spawn positions are picked randomly inside of the defined regions. Since the plugin will not validate the spawn position by default, regions should be checked to make sure that they don't intersect with solid objects or are midair. Spawns can also be defined with the `safe="true"` attribute, PGM will then check that the player spawns on a solid object and not midair.
+Multiple spawns from the same team can be grouped inside of a single `<regions>` element inside `<spawns team="team-id">`. 
+Spawn positions are picked randomly inside of the defined regions. 
+Since PGM will not validate the spawn position by default, regions should be checked to make sure that they don't intersect with solid objects or are mid-air. 
+Spawns can also be defined with the `safe="true"` attribute, PGM will then check that the player spawns on a solid object and not midair.
 
-The regions element accepts more than one region or region area. If they are not inside a `<union>` element one region will be picked at random for each spawn event.
+The regions element accepts more than one region or region area. 
+If they are not inside a `<union>` element one region will be picked at random for each spawn event.
 
 Respawn behavior such as delays, etc. can be customized with the [respawn](#respawn) module.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<spawns> </spawns>`}</label>
-        </td>
-        <td colspan="2">A node containing the spawns for this map.</td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<spawn>`}</label>
-        </td>
-        <td>An individual spawn where a team will spawn</td>
-        <td>
-          <label>{`<regions>`}</label>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<default>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--warning"
-            title="Only one of this child permitted per parent"
-          >
-            Unique
-          </span>
-          The spawn for observers and teams without a spawn.
-          <br />
-          <em>
-            Only one default spawn element is allowed per map.
-          </em>
-        </td>
-        <td>
-          <label>{`<regions>`}</label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<spawns> </spawns>` | Node containing the spawns for this map. |
+  
+  | Sub-elements || Value/Children |
+  |---|---|---|
+  | `<spawn>` | An individual spawn where a team will spawn. | `<regions>` |
+  | `<default>` | <span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The spawn for observers and teams without a spawn.<br />*Only one default spawn element is allowed per map.* | `<regions>` |
 </div>
 
-##### Spawn & Default Element Attributes
+#### Spawn & Default Element Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>team</label>
-        </td>
-        <td>
-          The team this spawn applies to.
-          <br />
-          <em>
-            Not needed for team-less gamemodes.
-          </em>
-        </td>
-        <td>
-          <a href="/docs/modules/format/teams">Team ID</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>safe</label>
-        </td>
-        <td>Validate that the player spawns in a safe location.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>sequential</label>
-        </td>
-        <td>
-          Spawns players at the next region in a list if the one prior to it
-          isn't safe.
-          <br />
-          <em>
-            Requires the <label>safe</label> attribute set to true.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>spread</label>
-        </td>
-        <td>Spawn players as far away as possible from enemy players.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>spread-teammates</label>
-        </td>
-        <td>Spawn teammates as far away as possible from each other.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>exclusive</label>
-        </td>
-        <td>
-          Spawn regions are assigned exclusively to one player or team and only
-          they will spawn there.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>persistent</label>
-        </td>
-        <td>
-          Once a player has been assigned a spawn, they will spawn there even if
-          they leave and rejoin the game.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>kit</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          The kit to apply to players when they are spawned in this spawn.
-        </td>
-        <td>
-          <a href="/docs/modules/gear/kits">Kit ID</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Filter when this spawn is used.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `team` | The team this spawn applies to.<br />*Not needed for team-less gamemodes.* | [Team ID](/docs/modules/format/teams) |
+  | `safe` | Validate that the player spawns in a safe location. | <span className="badge badge--primary">true/false</span> | false |
+  | `sequential` | Spawns players at the next region in a list if the one prior to it is not safe.<br />*Requires the `safe` attribute set to true.* | <span className="badge badge--primary">true/false</span> | false |
+  | `spread` | Spawn players as far away as possible from enemy players. | <span className="badge badge--primary">true/false</span> | false |
+  | `spread-teammates` | Spawn teammates as far away as possible from each other. | <span className="badge badge--primary">true/false</span> | false |
+  | `exclusive` | Spawn regions are assigned exclusively to one player or team and only they will spawn there. | <span className="badge badge--primary">true/false</span> | false |
+  | `persistent` | Once a player has been assigned a spawn, they will spawn there even if they leave and rejoin the game. | <span className="badge badge--primary">true/false</span> | false |
+  | `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to apply to players when they are spawned in this spawn. | [Kit ID](/docs/modules/gear/kits) |
+  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this spawn is used. | [Filter](/docs/modules/mechanics/filters) |
 </div>
 
-##### Spawn & Default Element Sub-elements
+#### Spawn & Default Element Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<regions>`}</label>
-        </td>
-        <td>The region or regions where players will spawn.</td>
-        <td>
-          <a href="/docs/modules/mechanics/regions">Regions</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<regions>` | The region or regions where players will spawn. | [Regions](/docs/modules/mechanics/regions) |
 </div>
 
-##### Regions Element Attributes
+#### Regions Element Attributes
+
+:::tip
+Copy the yaw and pitch from the [Debug screen (`F3`)](https://minecraft.wiki/w/Debug_screen) in Minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).
+:::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>angle</label>
-        </td>
-        <td>
-          The exact block coordinates that the player looks at when spawned.
-          <br />
-          <em>
-            This attribute will negate any angles set by the <label>yaw</label>{" "}
-            and <label>pitch</label> attributes.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">X,Y,Z</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>yaw</label>
-        </td>
-        <td>
-          The horizontal angle the player looks to when spawned.
-          <br />
-          <em>
-            South 0, East -90, North 180, and West 90.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">-180 to 180</span>
-        </td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>
-          <label>pitch</label>
-        </td>
-        <td>
-          The vertical angle the player looks to when spawned.
-          <br />
-          <em>
-            -90 is straight up, 90 is straight down.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">-90 to 90</span>
-        </td>
-        <td>0</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `angle` | The exact block coordinates that the player looks at when spawned.<br />*This attribute will negate any angles set by the `yaw` and `pitch` attributes.* | <span className="badge badge--primary">X,Y,Z</span> |
+  | `yaw` | The horizontal angle the player looks to when spawned.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">-180 to 180</span> | 0 |
+  | `pitch` | The vertical angle the player looks to when spawned.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">-90 to 90</span> | 0 |
 </div>
-
-`TIP:` Copy the yaw and pitch from the F3 screen in Minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).
 
 _Examples_
 
@@ -364,164 +128,40 @@ _Examples_
 
 ## Respawn Module
 
-The respawn module allows the map creator to adjust the respawn time and if players are automatically respawned. For maps that may require instant respawn, you can set the delay to `0s` and auto to `true`.
+The respawn module allows the map creator to adjust the respawn time and if players are automatically respawned. 
+For maps that may require instant respawn, you can set the delay to `0s` and auto to `true`.
 
-To allow players to spawn at a bed set the `bed` attribute to true. Players spawning at beds will not spawn with a kit, even if there is one specified. If a player has a bed spawn location set, it overrides all other spawn regions for that player.
+To allow players to spawn at a bed set the `bed` attribute to true. 
+Players spawning at beds will not spawn with a kit, even if there is one specified. 
+If a player has a bed spawn location set, it overrides all other spawn regions for that player.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<respawn/>`}</label>
-        </td>
-        <td>Node specifying the default respawn settings for this map.</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<respawns>`}</label>
-        </td>
-        <td>Node specifying multiple respawn options for this map.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<respawn/>` | Node specifying the default respawn settings for this map. |
+  | `<respawns>` | Node specifying multiple respawn options for this map. |
 </div>
 
 ##### Respawn Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>delay</label>
-        </td>
-        <td>Delay a players respawn for this duration.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td>2s</td>
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>Filters when the respawn is used.</td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>auto</label>
-        </td>
-        <td>Auto respawn the player after the delay time has elapsed.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>blackout</label>
-        </td>
-        <td>Dead players get a blindness effect applied.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>spectate</label>
-        </td>
-        <td>Allow dead players to fly around.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>bed</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">N/A</span>
-          Allow players to respawn from beds.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>message</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this attribute or a sub-element."
-          >
-            Property
-          </span>
-          Message to display on the respawn screen to respawning players.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `delay` | Delay a player's respawn for this duration. | [Time Period](/docs/reference/misc/time-periods) | 2s |
+  | `filter` | Filters when the respawn is used. | [Filter](/docs/modules/mechanics/filters) |
+  | `auto` | Automatically respawn the player after the delay time has elapsed. | <span className="badge badge--primary">true/false</span> | false |
+  | `blackout` | Dead players get a blindness effect applied. | <span className="badge badge--primary">true/false</span> | false |
+  | `spectate` | Allow dead players to fly around. | <span className="badge badge--primary">true/false</span> | false |
+  | `bed` | <span className="badge badge--danger">N/A</span>Allow players to respawn from beds. | <span className="badge badge--primary">true/false</span> | false |
+  | `message` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Message to display on the respawn screen to respawning players. | <span className="badge badge--primary">Formatted Text</span> |
 </div>
 
 ##### Respawn Sub-elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "125px" }}>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<message>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          Message to display on the respawn screen to respawning players.
-        </td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<message>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Message to display on the respawn screen to respawning players. | <span className="badge badge--primary">Formatted Text</span> |
 </div>
 
 ```xml

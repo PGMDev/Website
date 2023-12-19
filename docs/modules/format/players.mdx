@@ -3,125 +3,34 @@ id: players
 title: Players (free-for-all)
 ---
 
-The players module is the basis for all team-less gamemodes, such as FFA, UHC, or hunger games style matches.
+The players module is the basis for all team-less gamemodes, such as [Free for All (FFA)](/docs/modules/objectives/other#free-for-all), Ultra Hardcore (UHC), or Survival Games-style matches.
 This module is not limited to matches focused on combat,
 it can also be used in combat-less game modes where players have to collect specific items, etc.
 Win conditions are set by using the score and time limit modules.
 
-:::caution
-This gamemode is not compatible with the teams module!
+:::warning
+This gamemode is not compatible with the Teams module!
 :::
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<players />`}</label>
-        </td>
-        <td>The players node, containing player settings.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<players />` | The players node, containing player settings. |
 </div>
 
 ##### Players Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "130px" }}>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>min</label>
-        </td>
-        <td>Minimum amount of players required.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>max</label>
-        </td>
-        <td>
-          Player limit &#8212; normal players cannot join the match once it reaches
-          this size.
-          <br />
-          <em>
-            Premium players may join over this limit until{" "}
-            <label>max-overfill</label> is reached.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>max-overfill</label>
-        </td>
-        <td>
-          Player overfill &#8212; premium players cannot join the match once it
-          reaches this size.
-          <br />
-          <em>
-            Must be greater than the defined <label>max</label>.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-name-tags</label>
-        </td>
-        <td>
-          Specify who can see the name tags of players.
-          <br />
-          Accepts:
-          <label>true</label>, <label>false</label>, <label>allies</label> or <label>enemies</label>
-        </td>
-        <td>
-          <span className="badge badge--primary">Enum</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>colors</label>
-        </td>
-        <td>
-          Automatically assign a unique color to each player, works up to 10 players
-          before colors repeat.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `min` | The minimum amount of players required to start a match. | <span className="badge badge--primary">Number</span> |
+  | `max` | The maximum player limit &#8212; normal players cannot join the match once it reaches this size.<br />*Premium players may join over this limit until `max-overfill` is reached.* | <span className="badge badge--primary">Number</span> |
+  | `max-overfill` | Player overfill &#8212; premium players cannot join the match once it reaches this size.<br />*Must be greater than the defined `max`.* | <span className="badge badge--primary">Number</span> |
+  | `show-name-tags` | Specify who can see the name tags of players.<br />*Observers will always see all name tags.* | `true`<br />`false`<br />`allies`<br />`enemies` | `true` |
+  | `colors` | Automatically assign a unique color to each player, works up to 10 players before colors repeat. | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <players max="16" max-overfill="20"/>

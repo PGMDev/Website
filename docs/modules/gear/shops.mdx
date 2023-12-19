@@ -11,224 +11,58 @@ Players can also buy a kit, instead of individual items, or use muiltiple curren
 #### Shop Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<shops> </shops>`}</label>
-        </td>
-        <td>A node containing the shops for this map.</td>
-        <td>
-          <span className="badge badge--secondary">Shop Elements</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<shop> </shop>`}</label>
-        </td>
-        <td>An individual shop.</td>
-        <td>
-          <span className="badge badge--secondary">Category Elements</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<shops> </shops>` | A node containing the shops for this map. | <span className="badge badge--secondary">Shop Elements</span> |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<shop> </shop>` | An individual shop. | <span className="badge badge--secondary">Category Elements</span> |
 </div>
 
-### Shop Sub-Elements
+#### Shop Sub-Elements
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<category> </category>`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>A category that
-          can hold up to 28 items.
-        </td>
-        <td>
-          <a href="/docs/modules/gear/items">Items</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<shop> </shop>`}</label>
-        </td>
-        <td>An individual shop.</td>
-        <td>
-          <span className="badge badge--secondary">Shop Elements</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<shop> </shop>` | An individual shop. | <span className="badge badge--secondary">Shop Elements</span> |
+  | `<category> </category>` | <span className="badge badge--danger">Required</span>A category that can hold up to 28 items. | [Items](/docs/modules/gear/items) |
 </div>
 
-### Shop Attributes
+#### Shop Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`id`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifier used to reference this shop from other places in the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`name`}</label>
-        </td>
-        <td>The display name for the shop.</td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this shop from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `name` | The display name for the shop. | <span className="badge badge--primary">Formatted Text</span> |
 </div>
 
-### Category Attributes
+#### Category Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`id`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          Unique identifier used to reference this category from other places in the XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`name`}</label>
-        </td>
-        <td>The display name for the category.</td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`material`}</label>
-        </td>
-        <td>The item to display as an icon for the category</td>
-        <td>
-          <a href="/docs/reference/items/inventory#material_matchers">
-            Material Name
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this category from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `name` | The display name for the category. | <span className="badge badge--primary">Formatted Text</span> |
+  | `material` | The item to display as an icon for the category. | [Material Name](/docs/reference/items/inventory#material_matchers) |
 </div>
 
-### Item Attributes
+#### Item Attributes
 
 Items have unique attributes when used in a shop, usually for currency purchases.
 Items can be purchased with multiple currencies using the `<payment>` tag.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`currency`}</label>
-        </td>
-        <td>The currency needed to purchase.</td>
-        <td>
-          <a href="/docs/reference/items/inventory#material_matchers">
-            Material Name
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`price`}</label>
-        </td>
-        <td>The amount of a currency needed to purchase.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`kit`}</label>
-        </td>
-        <td>The kit to give to players purchasing the item.</td>
-        <td>
-          <a href="/docs/modules/gear/kits">Kit</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`color`}</label>
-        </td>
-        <td>Set the currency's display text color. Can be used for associating colors with different currency tiers.</td>
-        <td>
-          <a href="/docs/reference/misc/formatting#chatColors">
-            Chat Color Name
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `currency` | The currency needed to purchase. | [Material Name](/docs/reference/items/inventory#material_matchers) |
+  | `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
+  | `kit` | The kit to give to players purchasing the item. | [Kit](/docs/modules/gear/kits) |
+  | `color` | Set the currency's display text color. This is used for associating colors with different currency tiers. | [Chat Color Name](/docs/reference/misc/formatting#chatColors) |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <!-- Item where a kit is defined. -->
@@ -255,102 +89,35 @@ _Example_
 
 ## Shopkeepers
 
-Shopkeepers are invulnerable, unmovable entities that hold a single shop type and are spawned at match load.
-Each shop type can have an unlimited number of shopkeepers. There are no limitations to how many players
-can have a shop open simultaneously.
+Shopkeepers are invulnerable and immovable entities that hold a single shop type and are spawned at match load.
+Each shop type can have an unlimited number of shopkeepers. 
+There are no limitations to how many players can have a shop open simultaneously.
 
 Shopkeepers must use a single location provider, multiple inner points or regions are not allowed.
 
-### Shopkeeper Element
+#### Shopkeeper Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<shopkeepers> </shopkeepers>`}</label>
-        </td>
-        <td>A node containing a set of shopkeepers for this map.</td>
-        <td>
-          <span className="badge badge--secondary">Shopkeeper Elements</span>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<shopkeeper> </shopkeeper>`}</label>
-        </td>
-        <td>An individual shopkeeper.</td>
-        <td>
-          <span className="badge badge--secondary">Shopkeeper Attributes</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value/Children |
+  |---|---|---|
+  | `<shopkeepers> </shopkeepers>` | A node containing a set of shopkeepers for this map. | <span className="badge badge--secondary">Shopkeeper Elements</span> |
+
+  | Sub-elements | | |
+  |---|---|---|
+  | `<shopkeeper> </shopkeeper>` | An individual shopkeeper. | <span className="badge badge--secondary">Shopkeeper Attributes</span> |
 </div>
 
-### Shopkeeper Attributes
+#### Shopkeeper Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`name`}</label>
-        </td>
-        <td>The display name of this shopkeeper, shown above the entity if present.</td>
-        <td>
-          <span className="badge badge--primary">Formatted Text</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`mob`}</label>
-        </td>
-        <td>
-          The mob type for this shopkeeper to appear as.
-        </td>
-        <td>
-          <a href="/docs/reference/entities/entity-types">Creature Type</a>
-        </td>
-        <td>Villager</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`shop`}</label>
-        </td>
-        <td>
-          <span className="badge badge--danger">Required</span>
-          A previously defined shop to use.
-        </td>
-        <td>Shop ID</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value | Default |
+  |---|---|---|---|
+  | `name` | The display name of this shopkeeper, shown above the entity if present. | <span className="badge badge--primary">Formatted Text</span> |
+  | `mob` | The mob type for this shopkeeper to appear as. | [Creature Type](/docs/reference/entities/entity-types) | Villager |
+  | `shop` | <span className="badge badge--danger">Required</span>A previously defined shop to use. | Shop ID |
 </div>
 
-_Example_
+### Examples
 
 ```xml
 <!-- There's no limit to how many shopkeepers can be in a -->
@@ -367,8 +134,6 @@ _Example_
     </shopkeeper>
 </shopkeepers>
 ```
-
-## Examples
 
 ```xml
 <shops>

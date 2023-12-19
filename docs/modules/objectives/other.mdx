@@ -3,7 +3,7 @@ id: other
 title: Other Gamemodes
 ---
 
-### Team Death-match
+## Team Death-match
 
 This gamemode uses the [scoring](/docs/modules/objectives/scoring) module to run the game for a specified amount of time, after which the team with the highest score wins.
 Teams increase their score by killing players from the other team or capturing points from a [score box](/docs/modules/objectives/scoring#score_box).
@@ -22,7 +22,7 @@ To be able to score points for kills and deaths, the `<kills>` and `<deaths>` el
 <time>600</time>
 ```
 
-### Free-For-All
+## Free-For-All
 
 The FFA gamemode uses the [players](/docs/modules/format/players) instead
 of the [teams](/docs/modules/format/teams) module to create a team-less match.
@@ -43,7 +43,7 @@ To be able to score points for kills and deaths the `<kills>` and `<deaths>` ele
 </score>
 ```
 
-### Rage
+## Rage
 
 Enable the one hit kill, rage style gamemode.
 
@@ -61,67 +61,4 @@ This module must be used in conjunction with another gamemode.
 <score>
     <limit>15</limit>
 </score>
-```
-
-### Kill the King / King's Conquest
-
-A blitz style gamemode where the team has to defend one of their players (the king) from being killed by the enemy team.
-Once the king dies, the team loses. Other teammates can still respawn as long as their monument is intact.
-This gamemode uses flags to select the king and control points to end the game.
-
-```xml
-<!-- Spawn and flag post share the same regions -->
-<regions>
-    <block id="red-spawn">44.5,9,-43.5</block>
-    <block id="blue-spawn">-43.5,9,44.5</block>
-    ...
-</regions>
-<flags>
-    <post id="red-post">44.5,9,-43.5</post>
-    <post id="blue-post">-43.5,9,44.5</post>
-</flags>
-<flags show="false" pickup-kit="king">
-    <!-- the player who picks up the flag becomes King, and gets the king pickup-kit -->
-    <flag id="red-class-picker" name="Red King's Reign" color="red" post="red-post" drop-filter="never" carry-message="You are the King - survive as long as possible!"/>
-    <flag id="blue-class-picker" name="Blue King's Reign" color="blue" post="blue-post" drop-filter="never" carry-message="You are the King - survive as long as possible!"/>
-</flags>
-<not id="not-king">
-    <any id="is-king">
-        <carrying-flag>red-class-picker</carrying-flag>
-        <carrying-flag>blue-class-picker</carrying-flag>
-    </any>
-</not>
-<destroyables name="Sword of Vitality" required="false" materials="gold block" mode-changes="true">
-    <destroyable id="red-sword" owner="red" region="red-monument"/>
-    <destroyable id="blue-sword" owner="blue" region="blue-monument"/>
-</destroyables>
-<!-- Once the monument is destroyed, the team can no longer respawn -->
-<blitz filter="respawn-anchor-destroyed"/>
-<filters>
-    <not id="not-king">
-        <any id="is-king">
-            <carrying-flag>red-class-picker</carrying-flag>
-            <carrying-flag>blue-class-picker</carrying-flag>
-        </any>
-    </not>
-    <all id="allow-conquest-capture">
-        <time>5s</time>
-        <filter id="is-king"/>
-    </all>
-    <any id="respawn-anchor-destroyed">
-        <all>
-            <team>red</team>
-            <objective>red-sword</objective>
-        </all>
-        <all>
-            <team>blue</team>
-            <objective>blue-sword</objective>
-        </all>
-    </any>
-</filters>
-<!-- Allow capture after one of the kings is eliminated, which ends the game -->
-<control-points>
-    <control-point id="conquest" name="King's Conquest" capture-time="0s" permanent="true" capture="everywhere" player-filter="allow-conquest-capture"/>
-</control-points>
-<time>15m</time>
 ```

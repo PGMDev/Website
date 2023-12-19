@@ -59,13 +59,13 @@ export default function Downloads() {
                     <div className={styles.pgm}>
                       <h1>PGM {releases[0].name}</h1>
                       <p>
-                        <label>
+                        <small>
                           {" "}
                           {format(
                             new Date(releases[0].published_at),
                             "LLLL do, yyyy"
                           )}{" "}
-                        </label>
+                        </small>
                       </p>
                       <a href={releases[0].html_url}>
                         Changelog <FontAwesomeIcon icon={faAngleRight} />
@@ -86,37 +86,39 @@ export default function Downloads() {
                     instancing multiple PvP maps across various gamemodes for
                     Minecraft multiplayer.
                   </p>
-                  <div className={classnames(styles.download_button_wrapper)}>
+                  <div className="text--center">
+                    <div className={classnames(styles.download_button_wrapper)}>
+                      <a
+                          className={classnames(
+                              "button button--primary",
+                              styles.download_button
+                          )}
+                          href={"https://nightly.link/PGMDev/PGM/workflows/deploy/dev/PGM.jar.zip"}
+                          title={"Latest development build directly from GitHub.\nContains all the latest features, may occasionally bring new bugs."}
+                      >
+                        Latest <FontAwesomeIcon icon={faDownload} />
+                      </a>
+                      <a
+                          className={classnames(
+                              "button button--primary",
+                              styles.download_button
+                          )}
+                          href={releases[0].assets[0].browser_download_url}
+                          title={`Latest stable release, ${releases[0].name} from ${format(new Date(releases[0].published_at), "LLLL do, yyyy")}.\nLacks the latest features, but has a lower chance of random bugs.`}
+                      >
+                        Stable {releases[0].name} <FontAwesomeIcon icon={faDownload} />
+                      </a>
+                    </div>
                     <a
                         className={classnames(
                             "button button--primary",
                             styles.download_button
                         )}
-                        href={"https://nightly.link/PGMDev/PGM/workflows/deploy/dev/PGM.jar.zip"}
-                        title={"Latest development build directly from github.\nContains all the latest features, may occasionally bring new bugs."}
+                        href={"/docs/guides/preparing/local-server-setup"}
                     >
-                      Latest <FontAwesomeIcon icon={faDownload} />
-                    </a>
-                    <a
-                        className={classnames(
-                            "button button--primary",
-                            styles.download_button
-                        )}
-                        href={releases[0].assets[0].browser_download_url}
-                        title={`Latest stable release, ${releases[0].name} from ${format(new Date(releases[0].published_at), "LLLL do, yyyy")}.\nLacks the latest features, but has a smaller chance of random bugs.`}
-                    >
-                      Stable {releases[0].name} <FontAwesomeIcon icon={faDownload} />
+                      Install guide <FontAwesomeIcon icon={faBook} />
                     </a>
                   </div>
-                  <a
-                      className={classnames(
-                          "button button--primary",
-                          styles.download_button
-                      )}
-                      href={"/docs/guides/preparing/local-server-setup"}
-                  >
-                    Install guide <FontAwesomeIcon icon={faBook} />
-                  </a>
                 </div>
                 <div className={classnames("col col--4", styles.col_margin_left)}>
                 <h2>Download SportPaper</h2>
@@ -125,15 +127,17 @@ export default function Downloads() {
                   for maximum performance and high intensity PvP. It is
                   mandatory and should run alongside PGM.
                 </p>
-                <a
-                  className={classnames(
-                    "button button--primary",
-                    styles.download_button
-                  )}
-                  href={releases[0].assets[1].browser_download_url}
-                >
-                  Download <FontAwesomeIcon icon={faDownload} />
-                </a>
+                <div className="text--center">
+                  <a
+                    className={classnames(
+                      "button button--primary",
+                      styles.download_button
+                    )}
+                    href={releases[0].assets[1].browser_download_url}
+                  >
+                    Download <FontAwesomeIcon icon={faDownload} />
+                  </a>
+                </div>
               </div>
               </div>
             </div>
@@ -153,19 +157,17 @@ export default function Downloads() {
                         </h1>
                         <div className={styles.others_header}>
                           <h2>Events</h2>
-                          <a href="https://github.com/PGMDev/Events/">
-                            <label>GitHub</label>
-                          </a>
+                          <a href="https://github.com/PGMDev/Events/">GitHub</a>
                         </div>
                       </div>
                     </div>
-                    <div className="col col--6">
+                    <div className="col col--6 text--right">
                       <a
                         className={classnames(
                           "button button--primary",
                           styles.others_button
                         )}
-                        href="https://github.com/PGMDev/Events/releases/latest"
+                        href={"https://github.com/PGMDev/Events/releases/latest"}
                       >
                         Download <FontAwesomeIcon icon={faDownload} />
                       </a>
@@ -192,21 +194,20 @@ export default function Downloads() {
                         </h1>
                         <div className={styles.others_header}>
                           <h2>Community</h2>
-                          <a href="https://github.com/PGMDev/Community/">
-                            <label>GitHub</label>
-                          </a>
+                          <a href="https://github.com/PGMDev/Community/">GitHub</a>
                         </div>
                       </div>
                     </div>
-                    <div className="col col--6">
-                      <button
+                    <div className="col col--6 text--right">
+                      <a
                         className={classnames(
-                          "button disabled button--primary",
+                          "button button--primary",
                           styles.others_button
                         )}
+                        href={"https://nightly.link/PGMDev/Community/workflows/build/dev/Community.jar.zip"}
                       >
-                        Coming Soon <FontAwesomeIcon icon={faDownload} />
-                      </button>
+                        Download <FontAwesomeIcon icon={faDownload} />
+                      </a>
                     </div>
                   </div>
                   <div className={styles.others_description}>
@@ -233,19 +234,18 @@ export default function Downloads() {
                         </h1>
                         <div className={styles.others_header}>
                           <h2>ResourcePile</h2>
-                          <a href="https://github.com/MCResourcePile">
-                            <label>GitHub</label>
-                          </a>
+                          <a href="https://github.com/MCResourcePile">GitHub</a>
                         </div>
                       </div>
                     </div>
-                    <div className="col col--6">
+                    <div className="col col--6 text--right">
                       <a
                         className={classnames(
                           "button button--primary",
                           styles.others_button
                         )}
                         href="https://mcresourcepile.github.io"
+                        target="_blank"
                       >
                         Visit <FontAwesomeIcon icon={faFolderOpen} />
                       </a>
@@ -273,19 +273,18 @@ export default function Downloads() {
                         </h1>
                         <div className={styles.others_header}>
                           <h2>PGM Tracker</h2>
-                          <a href="https://pgm.fyi">
-                            <label>Website</label>
-                          </a>
+                          <a href="https://pgm.fyi">Website</a>
                         </div>
                       </div>
                     </div>
-                    <div className="col col--6">
+                    <div className="col col--6 text--right">
                       <a
                         className={classnames(
                           "button button--primary",
                           styles.others_button
                         )}
                         href="https://pgm.fyi"
+                        target="_blank"
                       >
                         Visit <FontAwesomeIcon icon={faCompass} />
                       </a>

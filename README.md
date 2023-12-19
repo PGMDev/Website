@@ -1,6 +1,6 @@
 # PGM Documentation Website
 
-Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus 2](https://docusaurus.io/).
+Source for the official [PGM plugin](https://github.com/PGMDev/PGM) documentation, using [Docusaurus](https://docusaurus.io/).
 
 ## Overview
 

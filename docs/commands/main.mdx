@@ -4,633 +4,72 @@ title: PGM Commands
 ---
 
 This page describes a list of PGM commands, aliases, and permissions.
-Permissions are prefixed with `Permissions` (ie `Permissions.ADMINCHAT`).
+Permissions are prefixed with `Permissions` (i.e. `Permissions.ADMINCHAT`).
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Commands</th>
-        <th>Aliases</th>
-        <th>Description</th>
-        <th>Flags</th>
-        <th>Usage</th>
-        <th>Permissions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>/a</label>
-        </td>
-        <td>$ - (do not use forward slash)</td>
-        <td>Send a message to operators</td>
-        <td></td>
-        <td>[message]</td>
-        <td>ADMINCHAT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/action list</label>
-        </td>
-        <td>actions list, actions page</td>
-        <td>Inspect variables for a player</td>
-        <td>-q query -a all</td>
-        <td>[page]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/action trigger</label>
-        </td>
-        <td>actions trigger</td>
-        <td>Trigger a specific action</td>
-        <td></td>
-        <td>[action]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/action untrigger</label>
-        </td>
-        <td>actions untrigger</td>
-        <td>Untrigger a specific action</td>
-        <td></td>
-        <td>[action]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/mode push</label>
-        </td>
-        <td></td>
-        <td>Reschedule all unconditional objective modes</td>
-        <td></td>
-        <td>[time]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/mode start</label>
-        </td>
-        <td></td>
-        <td>Starts an objective mode</td>
-        <td></td>
-        <td>[mode number] [time]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/team alias</label>
-        </td>
-        <td></td>
-        <td>Rename a team</td>
-        <td></td>
-        <td>[old team name] [new team name]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/timelimit</label>
-        </td>
-        <td>tl</td>
-        <td>Start a time limit</td>
-        <td>-r result (result can be default, objectives, tie, or name of team)</td>
-        <td>[duration] [result] [overtime] [max-overtime]</td>
-        <td>GAMEPLAY</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/join</label>
-        </td>
-        <td>play</td>
-        <td>Join the match</td>
-        <td>-f force</td>
-        <td>[team] – defaults to random</td>
-        <td>JOIN</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/team force</label>
-        </td>
-        <td></td>
-        <td>Force a player onto a team</td>
-        <td></td>
-        <td></td>
-        <td>JOIN_FORCE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/team shuffle</label>
-        </td>
-        <td></td>
-        <td>Shuffle players among the teams</td>
-        <td>-a all -f force</td>
-        <td></td>
-        <td>JOIN_FORCE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/leave</label>
-        </td>
-        <td>obs</td>
-        <td>Leave the match</td>
-        <td></td>
-        <td></td>
-        <td>LEAVE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/loadnewmaps</label>
-        </td>
-        <td>findnewmaps new maps</td>
-        <td>Load New Maps</td>
-        <td>-f force</td>
-        <td></td>
-        <td>RELOAD</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/pgm</label>
-        </td>
-        <td></td>
-        <td>Reload the config</td>
-        <td></td>
-        <td></td>
-        <td>RELOAD</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/ffa min</label>
-        </td>
-        <td></td>
-        <td>Set the min players</td>
-        <td></td>
-        <td>[reset | min-players]</td>
-        <td>RESIZE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/ffa size</label>
-        </td>
-        <td></td>
-        <td>Set the max players</td>
-        <td></td>
-        <td>[reset | max-players] (max-overfill)</td>
-        <td>RESIZE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/team min</label>
-        </td>
-        <td></td>
-        <td>Set the min players on a team</td>
-        <td></td>
-        <td>[team] (reset | min-players)</td>
-        <td>RESIZE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/team size</label>
-        </td>
-        <td></td>
-        <td>Set the max players on a team</td>
-        <td></td>
-        <td>[reset] (max-players | max-overfill)</td>
-        <td>RESIZE</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/setnext</label>
-        </td>
-        <td></td>
-        <td>Change the next map</td>
-        <td>-f force -r reset</td>
-        <td>[map name]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/setpool</label>
-        </td>
-        <td></td>
-        <td>Change the map pool</td>
-        <td>-r revert to dynamic -t timelimit -m matchlimit</td>
-        <td>[pool name]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/setrot reset</label>
-        </td>
-        <td></td>
-        <td>Reset the rotation to default. Use /setpool to reset to other types of pools.</td>
-        <td>-t timelimit -m matchlimit</td>
-        <td></td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/setrot</label>
-        </td>
-        <td></td>
-        <td>Set a rotation as current pool. Use /setpool to set other types of pools.</td>
-        <td>-t timelimit -m matchlimit</td>
-        <td>[rotation name]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/skip</label>
-        </td>
-        <td></td>
-        <td>Skip the next map</td>
-        <td></td>
-        <td>[positions]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/vote add</label>
-        </td>
-        <td></td>
-        <td>Add a custom map to the next vote</td>
-        <td></td>
-        <td>[map name]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/vote clear</label>
-        </td>
-        <td></td>
-        <td>Clear all custom map selections from the next vote</td>
-        <td></td>
-        <td></td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/vote mode</label>
-        </td>
-        <td></td>
-        <td>Toggle the voting mode between replace and override</td>
-        <td></td>
-        <td></td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/vote remove</label>
-        </td>
-        <td>rm</td>
-        <td>Remove a custom map from the next vote</td>
-        <td></td>
-        <td>[map name]</td>
-        <td>SETNEXT</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/cycle</label>
-        </td>
-        <td></td>
-        <td>Cycle to the next match</td>
-        <td>-f force</td>
-        <td></td>
-        <td>START</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/recycle</label>
-        </td>
-        <td>rematch</td>
-        <td>Reload (cycle to) the current map</td>
-        <td>-f force</td>
-        <td></td>
-        <td>START</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/start</label>
-        </td>
-        <td>begin</td>
-        <td>Start the match</td>
-        <td></td>
-        <td></td>
-        <td>START</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/cancel</label>
-        </td>
-        <td>cancelrestart cr</td>
-        <td>Cancels all countdowns</td>
-        <td></td>
-        <td></td>
-        <td>STOP</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/finish</label>
-        </td>
-        <td>end</td>
-        <td>End the match</td>
-        <td></td>
-        <td>[competitor]</td>
-        <td>STOP</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/restart</label>
-        </td>
-        <td>queuerestart qr</td>
-        <td>Restart the server</td>
-        <td>-f force</td>
-        <td></td>
-        <td>STOP</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/vanish</label>
-        </td>
-        <td>v</td>
-        <td>Toggle vanish status</td>
-        <td></td>
-        <td></td>
-        <td>VANISH</td>
-      </tr>
-      <tr>
-        <td>
-          <label>/class</label>
-        </td>
-        <td>selectclass c cl</td>
-        <td>Selects your class</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/classlist</label>
-        </td>
-        <td>classes listclasses cls</td>
-        <td>List all available classes</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/g</label>
-        </td>
-        <td>all (! - do not use forward slash)</td>
-        <td>Send a message to everyone</td>
-        <td></td>
-        <td>[message]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/inventory</label>
-        </td>
-        <td>inv vi</td>
-        <td>View a player’s inventory</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/list</label>
-        </td>
-        <td>who online ls</td>
-        <td>View a list of online players</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/map</label>
-        </td>
-        <td>mapinfo</td>
-        <td>Show info about a map</td>
-        <td></td>
-        <td>[map name] – defaults to current map</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/maps</label>
-        </td>
-        <td>maplist ml</td>
-        <td>List all maps loaded</td>
-        <td>-a author -t tag1,tag2, -n name</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/match</label>
-        </td>
-        <td>matchinfo</td>
-        <td>Show the match info</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/mode list</label>
-        </td>
-        <td>page</td>
-        <td>List all objective modes</td>
-        <td></td>
-        <td>[page]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/mode next</label>
-        </td>
-        <td></td>
-        <td>Show the next objective mode</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/msg</label>
-        </td>
-        <td>msg tell pm dm (@ - do not use forward slash)</td>
-        <td>Send a direct message to a player</td>
-        <td></td>
-        <td>[player] [message]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/nextmap</label>
-        </td>
-        <td>mn mapnext nm next</td>
-        <td>Show which map is playing next</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/pool</label>
-        </td>
-        <td></td>
-        <td>List the maps in the map pool</td>
-        <td>-t type -p pool -s scores -c chance of vote</td>
-        <td>[page]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/pools</label>
-        </td>
-        <td></td>
-        <td>List all the map pools</td>
-        <td>-d dynamic only</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/proximity</label>
-        </td>
-        <td>prox</td>
-        <td>Show the progress of each objective</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/reply</label>
-        </td>
-        <td>r</td>
-        <td>Reply to a direct message</td>
-        <td></td>
-        <td>[message]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/rot</label>
-        </td>
-        <td></td>
-        <td>List the maps in the rotation. Use /pool to see unfiltered results.</td>
-        <td>-s scores -c chance</td>
-        <td>[page]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/rots</label>
-        </td>
-        <td></td>
-        <td>List all the rotations. Use /pools to see unfiltered results.</td>
-        <td>-d dynamic only</td>
-        <td>[page]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/setting</label>
-        </td>
-        <td></td>
-        <td>Get the value of a setting</td>
-        <td></td>
-        <td>[setting]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/settings</label>
-        </td>
-        <td></td>
-        <td>Open the settings Menu</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/stats</label>
-        </td>
-        <td></td>
-        <td>Show your stats for the match</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/t</label>
-        </td>
-        <td></td>
-        <td>Send a message to your team</td>
-        <td></td>
-        <td>[message]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/toggle</label>
-        </td>
-        <td>set</td>
-        <td>Toggle or set the value of a setting</td>
-        <td></td>
-        <td>[setting] [option]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/tools</label>
-        </td>
-        <td>observertools ot</td>
-        <td>Open the observer tools menu</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/vote list</label>
-        </td>
-        <td>ls</td>
-        <td>View a list of maps that have been selected for the next vote</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/votebook</label>
-        </td>
-        <td></td>
-        <td>Spawn a vote book</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>/votenext</label>
-        </td>
-        <td></td>
-        <td>Vote for the next map</td>
-        <td>-o force open</td>
-        <td>[map name]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  | Commands | Aliases | Description | Flags | Usage | Permissions |
+  |---|---|---|---|---|---|
+  | `/a` | $ (*do not use forward slash*) | Send a message to operators. || [message] | `ADMINCHAT` |
+  | `/action list` | actions list<br />actions page | Inspect variables for a player. | -q query<br />-a all | [page] | `GAMEPLAY` |
+  | `/action trigger` | actions trigger | Trigger a specific action. || [action] | `GAMEPLAY` |
+  | `/action untrigger` | actions untrigger | Untrigger a specific action. || [action] | `GAMEPLAY` |
+  | `/mode push` || Reschedule all unconditional objective modes. || [time] | `GAMEPLAY` |
+  | `/mode start` || Starts an objective mode. || [mode number] [time] | `GAMEPLAY` |
+  | `/team alias` || Rename a team. || [old team name] [new team name] | `GAMEPLAY` |
+  | `/timelimit` | tl | Start a time limit. | -r result (can be `default`, `objectives`, `tie`, or name of team) | [duration] [result] [overtime] [max-overtime] | `GAMEPLAY` |
+  | `/join` | play | Join the match. | -f force | [team] – defaults to random | `JOIN` |
+  | `/team force` || Force a player onto a team. ||| `JOIN_FORCE` |
+  | `/team shuffle` || Shuffle players among the teams. || -a all -f force | `JOIN_FORCE` |
+  | `/leave` | obs | Leave the match. ||| `LEAVE` |
+  | `/loadnewmaps` | findnewmaps<br />new<br />maps | Load new maps. | -f force || `RELOAD` |
+  | `/pgm` || Reload the configuration. ||| `RELOAD` |
+  | `/ffa min` || Set the minimum players. || [reset &#124; min-players] | `RESIZE` |
+  | `/ffa size` || Set the maximum players. || [reset &#124; max-players] (max-overfill) | `RESIZE` |
+  | `/team min` || Set the minimum players on a team. || [team] (reset &#124; min-players) | `RESIZE` |
+  | `/team size` || Set the maximum players on a team || [reset] (max-players &#124; max-overfill) | `RESIZE` |
+  | `/setnext` || Change the next map. | -f force<br />-r reset | [map name] | `SETNEXT` |
+  | `/setpool` || Change the map pool. | -r revert to dynamic<br />-t timelimit<br />-m matchlimit | [pool name] | `SETNEXT` |
+  | `/setrot reset` || Reset the rotation to default. Use `/setpool` to reset to other types of pools. | -t timelimit<br />-m matchlimit || `SETNEXT` |
+  | `/setrot` || Set a rotation as current pool. Use `/setpool` to set other types of pools. | -t timelimit<br />-m matchlimit | [rotation name] | `SETNEXT` |
+  | `/skip` || Skip the next map. || [positions] | `SETNEXT` |
+  | `/vote add` || Add a custom map to the next vote. || [map name] | `SETNEXT` |
+  | `/vote clear` || Clear all custom map selections from the next vote. ||| `SETNEXT` |
+  | `/vote mode` || Toggle the voting mode between replace and override. ||| `SETNEXT` |
+  | `/vote remove` | rm | Remove a custom map from the next vote. || [map name] | `SETNEXT` |
+  | `/cycle` || Cycle to the next match | -f force || `START` |
+  | `/recycle` | rematch | Reload (cycle to) the current map | -f force || `START` |
+  | `/start` | begin | Start the match. ||| `START` |
+  | `/cancel` | cancelrestart<br />cr | Cancels all countdowns. ||| `STOP` |
+  | `/finish` | end | End the match. || [competitor] | `STOP` |
+  | `/restart` | queuerestart<br />qr | Restart the server. | -f force || `STOP` |
+  | `/vanish` | v | Toggle vanish status. ||| `VANISH` |
+  | `/class` | selectclass<br />c<br />cl | Selects your class. |
+  | `/classlist` | classes<br />listclasses<br />cls | List all available classes. |
+  | `/g` | all<br />! (*do not use forward slash*) | Send a message to everyone. || [message] |
+  | `/inventory` | inv<br />vi | View a player’s inventory. |
+  | `/list` | who<br />online<br />ls | View a list of online players. |
+  | `/map` | mapinfo | Show info about a map. || [map name] – defaults to current map |
+  | `/maps` | maplist<br />ml | List all loaded maps. | -a author<br />-t tag1,tag2<br />-n name |
+  | `/match` | matchinfo | Show the match info. |
+  | `/mode list` | page | List all objective modes. || [page] |
+  | `/mode next` || Show the next objective mode. |
+  | `/msg` | msg<br />tell<br />pm<br />dm<br />@ (*do not use forward slash*) | Send a direct message to a player. || [player] [message] |
+  | `/nextmap` | mn<br />mapnext<br />nm<br />next | Show which map is playing next. |
+  | `/pool` || List the maps in the map pool. | -t type<br />-p pool<br />-s scores<br />-c chance of vote | [page] |
+  | `/pools` || List all the map pools. | -d dynamic only |
+  | `/proximity` | prox | Show the progress of each objective. |
+  | `/reply` | r | Reply to a direct message. || [message] |
+  | `/rot` || List the maps in the rotation. Use `/pool` to see unfiltered results. | -s scores<br />-c chance | [page] |
+  | `/rots` || List all the rotations. Use `/pools` to see unfiltered results. | -d dynamic only | [page] |
+  | `/setting` || Get the value of a setting. || [setting] |
+  | `/settings` || Open the settings menu. |
+  | `/stats` || Show your stats for the match. |
+  | `/t` || Send a message to your team. || [message] |
+  | `/toggle` | set | Toggle or set the value of a setting. || [setting] [option] |
+  | `/tools` | observertools<br />ot | Open the observer tools menu. |
+  | `/vote list` | ls | View a list of maps that have been selected for the next vote. |
+  | `/votebook` || Spawn a vote book. |
+  | `/votenext` || Vote for the next map. | -o force open | [map name] |
 </div>
 
-Spreadsheet can be found <a href="https://docs.google.com/spreadsheets/d/1QlS4DW6aLcryf4BRw3WXylydm07HqKNTf_QYI2PtLzU/edit?usp=sharing">here.</a>
+Spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1QlS4DW6aLcryf4BRw3WXylydm07HqKNTf_QYI2PtLzU/edit?usp=sharing).

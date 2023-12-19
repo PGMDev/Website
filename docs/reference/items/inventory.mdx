@@ -10,15 +10,10 @@ import Materials from "../../../src/components/materials";
     <h3 id="inventory_slots">Inventory Slots</h3>
   </div>
   <div className="col col--5">
-    <p>
-      <img alt="Inventory slots starting from 0 and ending at 35" src="/img/reference/inventory-slots.png" />
-    </p>
+    <p><img alt="Inventory slots starting from 0 and ending at 35" src="/img/reference/inventory-slots.png" /></p>
   </div>
   <div className="col col--6">
-    <p>
-      The <label>slot</label> attribute of items accepts the slot number which
-      has been visualized to the left.
-    </p>
+    <p>The <label>slot</label> attribute of items accepts the slot number which has been visualized to the left.</p>
   </div>
 </div>
 
@@ -27,36 +22,10 @@ import Materials from "../../../src/components/materials";
 Depending on the material/item element used a material or multiple materials can be specified with or without data values.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th width="20%">Type</th>
-        <th width="55%">Accepted Values</th>
-        <th width="25%">Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Material Matcher</td>
-        <td>
-          A material name and data value separated by a colon (":"). If no data
-          value is specified, it will match all variations of the material.
-        </td>
-        <td>
-          <label>wool:0</label> (Only white wool)
-          <br />
-          <label>wool</label> (All wool types)
-        </td>
-      </tr>
-      <tr>
-        <td>Multi Material Matcher</td>
-        <td>A list of Material Matchers separated by a semicolon (";").</td>
-        <td>
-          <label>wool;log:0</label> (All wool and oak logs)
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Type | Accepted Values | Example |
+  |---|---|---|
+  | Material Matcher | A material name and data value separated by a colon (`:`). If no data value is specified, it will match all variations of the material. | `wool:0` (Only white wool)<br />`wool` (All wool types) |
+  | Multi Material Matcher | A list of Material Matchers separated by a semicolon (`;`). | `wool;log:0` (All wool and oak logs) |
 </div>
 
 ### Material Finder

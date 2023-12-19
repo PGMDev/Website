@@ -3,9 +3,9 @@ id: tnt
 title: TNT
 ---
 
-You can modify TNT explosion & placing behavior with this module.
-Destruction of terrain can be easily disabled with the blockdamage element.
-If it is set to `false`, the yield element will have no effect since there won't be any block drops.
+You can modify TNT explosion and placing behavior with this module.
+Destruction of terrain can be easily disabled with the `<blockdamage>` element.
+If it is set to `false`, the `<yield>` element will have no effect since there will not be any block drops.
 TNT damage can be further limited with the [disable damage module](/docs/modules/mechanics/damage#disable-damage).
 
 By default, dispensers containing TNT will ignite their TNT when exploded.
@@ -18,131 +18,28 @@ This license is revoked if a player kills too many of their teammates using TNT.
 #### TNT Element
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<tnt> </tnt>`}</label>
-        </td>
-        <td colspan="3">Node containing the custom TNT settings.</td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<instantignite>`}</label>
-        </td>
-        <td>Instantly ignite TNT when placed.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<blockdamage>`}</label>
-        </td>
-        <td>Specify if TNT destroys the terrain.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<yield>`}</label>
-        </td>
-        <td>
-          Modify the amount of items dropped by the explosion as a percentage.
-          <br />
-          <em>
-            Not valid when <label>blockdamage</label> is false.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">0 - 1.0</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<power>`}</label>
-        </td>
-        <td>Modify the explosions block radius.</td>
-        <td>
-          <span className="badge badge--primary">0 - 20.0</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<fuse>`}</label>
-        </td>
-        <td>Time till the TNT explodes once it is ignited.</td>
-        <td>
-          <a href="/docs/reference/misc/time-periods">Time Period</a>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<dispenser-tnt-limit>`}</label>
-        </td>
-        <td>Max amount of TNT a dispenser ignites when exploded.</td>
-        <td>
-          <span className="badge badge--primary">0 - 64</span>
-        </td>
-        <td>16</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<dispenser-tnt-multiplier>`}</label>
-        </td>
-        <td>
-          Multiplier for the amount of TNT ignited when a dispenser is exploded.
-        </td>
-        <td>
-          <span className="badge badge--primary">0 - 2.0</span>
-        </td>
-        <td>0.25</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<licensing>`}</label>
-        </td>
-        <td>TNT usage is restricted to players who are licensed.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<friendly-defuse>`}</label>
-        </td>
-        <td>Players may defuse TNT placed by their teammates.</td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>true</td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<tnt> </tnt>` | Node containing the custom TNT settings. |
 </div>
 
-_Examples_
+#### TNT Sub-elements
+
+<div className="table-container">
+  | Sub-elements | Description | Value | Default |
+  |---|---|---|---|
+  | `<instantignite>` | Instantly ignite TNT when placed. | <span className="badge badge--primary">true/false</span> | false |
+  | `<blockdamage>` | Specify if TNT destroys the terrain. | <span className="badge badge--primary">true/false</span> | true |
+  | `<yield>` | Modify the amount of items dropped by the explosion as a percentage.<br />*Not valid when `blockdamage` is false.* | <span className="badge badge--primary">0 - 1.0</span> |
+  | `<power>` | Modify the explosions block radius. | <span className="badge badge--primary">0 - 20.0</span> |
+  | `<fuse>` | Time until the TNT explodes once it is ignited. | [Time Period](/docs/reference/misc/time-periods) |
+  | `<dispenser-tnt-limit>` | The maximum amount of TNT a dispenser ignites when exploded. | <span className="badge badge--primary">0 - 64</span> | 16 |
+  | `<dispenser-tnt-multiplier>` | Multiplier for the amount of TNT ignited when a dispenser is exploded. | <span className="badge badge--primary">0 - 2.0</span> | 0.25 |
+  | `<licensing>` | TNT usage is restricted to players who are licensed. | <span className="badge badge--primary">true/false</span> | true |
+  | `<friendly-defuse>` | Toggle if players can defuse TNT placed by their teammates. | <span className="badge badge--primary">true/false</span> | true |
+</div>
+
+### Examples
 
 ```xml
 <tnt>

@@ -65,9 +65,8 @@ function Home() {
       <header className={classnames("hero", styles.banner)}>
         <div className={classnames(styles.bannerOverlay)} />
         <video
-          video
-          playsinline="playsinline"
-          autoplay="autoplay"
+          playsInline="playsinline"
+          autoPlay="autoplay"
           muted="muted"
           loop="loop"
           poster="img/fallback.jpg"

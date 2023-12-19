@@ -4,169 +4,43 @@ title: Teams
 ---
 
 This module is used to specify the teams used in the match and what their attributes are.
-Matches without teams can be setup with the [players](/docs/modules/format/players) module.
+Matches without teams can be setup with the [Players](/docs/modules/format/players) module.
 
-The soft player limit for each team is set with the `max=""` attribute and the hard limit with `max-overfill`. If max overfill is not explicitly defined the default will be set to 25% over the maximum team size. Players will not be able to join teams once the max overfill team size is reached.
+The soft player limit for each team is set with the `max=""` attribute and the hard limit with `max-overfill`. 
+If max overfill is not explicitly defined, the default will be set to 25% over the maximum team size. 
+Players will not be able to join teams once the max overfill team size is reached.
 
-The team's name is specified inside the `<team>` element. The name should be kept as short as possible and not contain "Team", for example, "Azure" and not "Azure Team".
-A team's `plural` attribute specifies if the team name is plural, e.g. "Attackers"; PGM will use this to pick appropriate win messages, etc. The `show-name-tags` attribute specifies who can see player name tags, this only applies to players, observers will always see all name tags.
-
-It is common for maps to only have 2 teams, although more are possible it usually just causes confusion.
+The team's name is specified inside the `<team>` element. 
+The name should be kept as short as possible and not contain "Team", for example, "Azure" and not "Azure Team".
+A team's `plural` attribute specifies if the team name is plural, e.g. "Attackers"; PGM will use this to pick appropriate win messages, etc. 
+The `show-name-tags` attribute specifies who can see player name tags, this only applies to players, observers will always see all name tags.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Teams Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<teams> </teams>`}</label>
-        </td>
-        <td>The teams node, containing all the individual teams.</td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<team> </team>`}</label>
-        </td>
-        <td>A single team node containing the teams name.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<teams> </teams>` | The teams node, containing all the individual teams. |
+
+  | Sub-elements || Value |
+  |---|---|---|
+  | `<team> </team>` | A single team node containing the team's name. | <span className="badge badge--primary">String</span> |
 </div>
 
 ##### Team Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th style={{ minWidth: "130px" }}>Attribute</th>
-        <th>Description</th>
-        <th style={{ minWidth: "120px" }}>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>id</label>
-        </td>
-        <td>
-          Unique identifier used to reference teams from other places in the
-          XML.
-        </td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>color</label>
-        </td>
-        <td>The team's display color.</td>
-        <td>
-          <a href="/docs/reference/misc/formatting#chat-colors">
-            Chat Color Name
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>dye-color</label>
-        </td>
-        <td>
-          The color for control points and blocks given to the team using{" "}
-          <label>team-color="true"</label>.
-        </td>
-        <td>
-          <a href="/docs/reference/misc/colors">Dye Color Name</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>plural</label>
-        </td>
-        <td>
-          The team's name is plural, used in status messages.
-          <br />
-          e.g., <label>Defenders win!</label> instead of{" "}
-          <label>Defenders wins!</label>
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>show-name-tags</label>
-        </td>
-        <td>
-          Specify who can see the name tags of players in this team.
-          <br />
-          Accepts:
-          <label>true</label>, <label>false</label>, <label>allies</label> or <label>enemies</label>
-        </td>
-        <td>
-          <span className="badge badge--primary">Enum</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>min</label>
-        </td>
-        <td>Required amount of players for this team.</td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>max</label>
-        </td>
-        <td>
-          Maximum players for this team, normal players cannot join the team
-          once it reaches this size.
-          <br />
-          <em>
-            Premium players may join over this limit until{" "}
-            <label>max-overfill</label> is reached.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>max-overfill</label>
-        </td>
-        <td>
-          Maximum players hard limit for this team, nobody can join the team
-          once this limit is reached.
-          <br />
-          <em>
-            Must be greater than the defined <label>max</label>.
-          </em>
-        </td>
-        <td>
-          <span className="badge badge--primary">Number</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | Unique identifier used to reference this team from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `color` | The team's display color. | [Chat Color Name](/docs/reference/misc/formatting#chat-colors) |
+  | `dye-color` | Override the color used for items given to the team using `team-color="true"` and control points. | [Dye Color Name](/docs/reference/misc/colors) |
+  | `plural` | The team's name is plural, used in status messages.<br />*e.g., `Defenders win!` instead of `Defenders wins!`.* | <span className="badge badge--primary">true/false</span> |
+  | `show-name-tags` | Specify who can see the name tags of players in this team.<br />*Observers will always see all name tags.* | `true`<br />`false`<br />`allies`<br />`enemies` | `true` |
+  | `min` | The minimum amount of players required in this team to start a match. | <span className="badge badge--primary">Number</span> |
+  | `max` | The maximum players for this team, normal players cannot join the team once it reaches this size.<br />*Premium players may join over this limit until `max-overfill` is reached.* | <span className="badge badge--primary">Number</span> |
+  | `max-overfill` | Player overfill &#8212; premium players cannot join the match once it reaches this size.<br />*Must be greater than the defined `max`.* | <span className="badge badge--primary">Number</span> | <span className="badge badge--secondary">25% over `max` value</span> |
 </div>
+
+### Examples
 
 ```xml
 <teams>
@@ -175,4 +49,5 @@ It is common for maps to only have 2 teams, although more are possible it usuall
 </teams>
 ```
 
-The total maximum number of players in the example given above is 100, however, the max overfill will allow up to 140 players. Servers currently have a player limit of 150, so 100 players in total would allow 50 observers, or 10 observers if teams are at max overfill.
+The total maximum number of players in the example given above is 100, however, the max overfill will allow up to 140 players. 
+Servers currently have a player limit of 150, so 100 players in total would allow 50 observers, or 10 observers if teams are at max overfill.

@@ -24,83 +24,20 @@ Any chunks not in the world's `region/` folder will be generated according to th
 The `world=""` attribute is used to specify the sub-folder that contains the map's `region/` and `level.dat` files.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<terrain />`}</label>
-        </td>
-        <td>A node defining properties for this world's generator.</td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<terrain />` | A node defining properties for this world's generator. |
 </div>
 
 ##### Terrain Attributes
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Attribute</th>
-        <th>Description</th>
-        <th>Value</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>world</label>
-        </td>
-        <td>The level data sub-folder to be used with this map.</td>
-        <td>
-          <span className="badge badge--primary">Sub-folder Name</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>vanilla</label>
-        </td>
-        <td>
-          Specify if this world is uses the vanilla or null chunk generator.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <td>
-          <label>seed</label>
-        </td>
-        <td>This worlds generation seed.</td>
-        <td>
-          <span className="badge badge--primary">String</span>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          <label>pre-match-physics</label>
-        </td>
-        <td>
-          Allow physics events, such as water flowing, before the match starts.
-        </td>
-        <td>
-          <span className="badge badge--primary">true/false</span>
-        </td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `world` | The level data sub-folder to be used with this map. | <span className="badge badge--primary">Sub-folder Name</span> |
+  | `vanilla` | Specify if this world is uses the vanilla or null chunk generator. | <span className="badge badge--primary">true/false</span> | false |
+  | `seed` | This world's generation seed. | <span className="badge badge--primary">String</span> |
+  | `pre-match-physics` | Allow physics events, such as water flowing, before the match starts. | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
 ```xml

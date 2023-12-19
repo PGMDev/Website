@@ -4,121 +4,34 @@ title: Mob Spawning
 ---
 
 By default, PGM disables all mob spawning. The mobs module allows this behavior to be customized to allow spawning of specific mobs.
-This module makes use of the `<spawn>`, `<mob>` and `<entity>` [filters](/docs/modules/mechanics/filters) to only allow specific mobs to spawn.
-Mob spawns can also be filtered against any other filter type including regions.
+This module makes use of the [`<spawn>`, `<mob>` and `<entity>` filters](/docs/modules/mechanics/filters#entity-filters) to only allow specific mobs to spawn.
+Mob spawns can also be filtered against any other filter type, including regions.
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value/Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<mobs> </mobs>`}</label>
-        </td>
-        <td colspan="2">Node containing the custom mob spawning filters.</td>
-      </tr>
-      <tr>
-        <th>Attributes</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>filter</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be this attribute or a sub-element."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          Filter what mobs can spawn when and where.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-      <tr>
-        <th>Sub-elements</th>
-        <th />
-        <th />
-      </tr>
-      <tr>
-        <td>
-          <label>{`<filter> </filter>`}</label>
-        </td>
-        <td>
-          <span
-            className="badge badge--secondary"
-            title="Can be either this sub-element or an attribute."
-          >
-            Property
-          </span>
-          <span className="badge badge--danger">Required</span>
-          Filter what mobs can spawn when and where.
-        </td>
-        <td>
-          <a href="/docs/modules/mechanics/filters">Filter</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description |
+  |---|---|
+  | `<mobs> </mobs>` | Node containing the custom mob spawning filters. |
+
+  | Attributes || Value/Children |
+  |---|---|---|
+  | `filter` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute." >Property</span><span className="badge badge--danger">Required</span>Filter what mobs can spawn when and where. | [Filters](/docs/modules/mechanics/filters) |
+
+  | Sub-elements |||
+  |---|---|---|
+  | `<filter> </filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute." >Property</span><span className="badge badge--danger">Required</span>Filter what mobs can spawn when and where. | [Filters](/docs/modules/mechanics/filters) |
 </div>
 
 ##### Mob Spawning Filter Matchers
 
 <div className="table-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Element</th>
-        <th>Description</th>
-        <th>Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <label>{`<spawn> </spawn>`}</label>
-        </td>
-        <td>Filter the reason a mob is being spawned.</td>
-        <td>
-          <a href="/docs/reference/entities/spawn-reasons">Spawn Reason</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<mob> </mob>`}</label>
-        </td>
-        <td>The mob to filter for.</td>
-        <td>
-          <a href="/docs/reference/entities/entity-types#creatures">
-            Creature Type
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label>{`<entity> </entity>`}</label>
-        </td>
-        <td>The entity to filter for.</td>
-        <td>
-          <a href="/docs/reference/entities/entity-types">Entity Type</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  | Element | Description | Value |
+  |---|---|---|
+  | `<spawn> </spawn>` | Filter the reason a mob is being spawned. | [Spawn Reason](/docs/reference/entities/spawn-reasons) |
+  | `<mob> </mob>` | The mob to filter for. | [Creature Type](/docs/reference/entities/entity-types#creatures) |
+  | `<entity> </entity>` | The entity to filter for. | [Entity Type](/docs/reference/entities/entity-types) |
 </div>
 
-_Examples_
+### Examples
 
 ```xml
 <!-- Only allow mobs to spawn from monster spawners. -->
