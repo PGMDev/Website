@@ -151,8 +151,8 @@ Define regions that can be later used to apply spawns, filters, etc.
     </union>
     <!-- This is the inverse of the rectangle region (everything outside of the rectangle) -->
     <union id="map-protection">
-        <negative>
-            <rectangle min="-57,-123" max="57,123"/>
+        <negative id="not-map">
+            <rectangle id="map" min="-57,-123" max="57,123"/>
         </negative>
         <cylinder base="0,67,-110" height="4" radius="3"/>
         <cylinder base="0,67,110" height="4" radius="3"/>

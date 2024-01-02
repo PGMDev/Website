@@ -62,7 +62,7 @@ Define the kit that players will receive.
 ```xml
 <kits>
     <kit id="spawn-protection">
-        <potion amplifier="10" duration="oo">damage resistance</potion>
+        <effect amplifier="10">damage resistance</effect>
         <knockback-reduction>1</knockback-reduction>
     </kit>
     <kit id="spawn">
@@ -133,57 +133,37 @@ These regions reference the filters defined above and states where they will wor
 <regions>
     <cuboid id="red-spawn-protect" min="-42,87,3" max="-35,90,-36"/>
     <cuboid id="blue-spawn-protect" min="12,87,3" max="19,90,-36"/>
+    <!-- Subtracts successive regions (blue-core and red-core) from the first region (map) -->
+    <complement id="deny-obsidian-area">
+        <region id="map"/> <!-- Include the entire map (defined below) -->
+        <cuboid id="blue-core" min="13,85,23" max="18,92,30"/> <!-- Location of Blue's core -->
+        <cuboid id="red-core" min="-41,85,23" max="-36,92,30"/> <!-- Location of Red's core -->
+    </complement>
+    <negative id="not-map">
+        <union id="map">
+            <rectangle min="-100,-2" max="100,123"/> <!-- Main area -->
+            <rectangle min="-36,-14" max="13,-2"/> <!-- Area between spawn tunnels -->
+        </union>
+    </negative>
     <!-- applicators -->
     <apply region="blue-spawn-protect" lend-kit="spawn-protection" filter="only-blue"/>
     <apply region="red-spawn-protect" lend-kit="spawn-protection" filter="only-red"/>
-    <apply leave="never" message="Don't exit the playing field!">
-        <region>
-            <union>
-                <rectangle min="-102,-4" max="102,125"/> <!-- Main area -->
-                <rectangle min="-36,-16" max="13,-2"/> <!-- Area between spawn tunnels -->
-            </union>
-        </region>
-    </apply>
-    <apply block="never" message="Don't edit blocks outside the playing field!">
-        <region>
-            <negative>
-                <union id="map">
-                    <rectangle min="-100,-2" max="100,123"/> <!-- Main area -->
-                    <rectangle min="-36,-14" max="13,-2"/> <!-- Area between spawn tunnels -->
-                </union>
-            </negative>
-        </region>
-    </apply>
+    <apply region="map" leave="never" message="Don't exit the playing field!"/>
+    <apply region="not-map" block="never" message="Don't edit blocks outside the playing field!"/>
     <!-- Do not let players place or destroy dispenser blocks anywhere on the map -->
     <apply block="deny-dispenser" message="Dispensers are disabled on this map!"/>
     <!-- Only the obsidian that makes up the core can be broken -->
-    <apply block-break="deny-obsidian" message="You may not break obsidian outside the core area!">
-        <region>
-            <complement>
-                <region id="map"/>
-                <cuboid min="13,85,23" max="18,92,30"/>
-                <cuboid min="-41,85,23" max="-36,92,30"/>
-            </complement>
-        </region>
-    </apply>
+    <apply region="deny-obsidian-area" block-break="deny-obsidian" message="You may not break obsidian outside the core area!"/>
 </regions>
 ```
 
 [<i className="icon-right">➡️</i>](/docs/modules/objectives/dtc)
-This specifies what material the core is made of, who each core belongs to, and how far the lava needs to leak.
+This specifies what material the core is made of, who each core belongs to, where each cores are located, and how far the lava must leak to count as a completed objective.
 
 ```xml
 <cores material="obsidian" leak="10">
-    <core team="blue-team">
-        <region>
-            <cuboid min="13,85,23" max="18,92,30"/>
-        </region>
-    </core>
-    <core team="red-team">
-        <region>
-            <cuboid min="-41,85,23" max="-36,92,30"/>
-        </region>
-    </core>
+    <core team="blue-team" region="blue-core"/>
+    <core team="red-team" region="red-core"/>
 </cores>
 ```
 
@@ -212,7 +192,7 @@ We do not want an excessive amount of items dropped on the map, so this allows u
     <item>gold block</item>
     <item>bucket</item>
     <item>water bucket</item>
-	<item>golden apple</item>
+    <item>golden apple</item>
 </itemremove>
 ```
 

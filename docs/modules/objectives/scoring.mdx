@@ -34,7 +34,8 @@ It can also be used to create score boxes that give a player or team a certain a
 
 ```xml
 <score>
-    <!-- The winner is the first team to get a mercy lead of 5 or reach the limit of 10. Initially a score limit of 5 will be shown -->
+    <!-- The winner is the first team to get a mercy lead of 5 or reach the limit of 10. 
+         Initially a score limit of 5 will be shown -->
     <mercy>5</mercy>
     <limit>10</limit>
 </score>
@@ -79,7 +80,9 @@ A score box will give points to a players team when they enter or bring a redeem
 <score>
     <!-- Only allow red team to use this score box, and give them two points -->
     <box points="2" filter="only-red">
-        <region><cylinder base="21,8,63" radius="1" height="2"/></region>
+        <region>
+            <cylinder base="21,8,63" radius="1" height="2"/>
+        </region>
     </box>
 </score>
 

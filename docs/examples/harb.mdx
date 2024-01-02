@@ -23,8 +23,10 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Harb</name>
+<!-- Shows the map creation date when a user runs /map in game -->
+<created>2012-03-02</created>
 <!-- States what version the map is -->
-<version>1.3.13</version>
+<version>1.3.14</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Be the team with the least amount of deaths after 10 minutes.</objective>
 <!-- States who made the map -->
@@ -67,9 +69,9 @@ Define the kit that players will receive.
             <enchantment level="3">protection projectile</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <potion duration="6s">heal</potion>
-        <potion duration="6s">damage resistance</potion>
-        <potion>speed</potion>
+        <effect duration="6s">heal</effect>
+        <effect duration="6s">damage resistance</effect>
+        <effect>speed</effect>
     </kit>
 </kits>
 ```

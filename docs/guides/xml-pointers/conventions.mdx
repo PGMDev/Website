@@ -24,6 +24,7 @@ Modules that have sub elements such as the `author` tag must be indented with 4 
 
 ```xml
 <map proto="1.4.2">
+...
 <authors>
     <author uuid="060baa18-2852-40d8-afcb-e61607c04be3"/> <!-- PepsiDog -->
 </authors>
@@ -85,7 +86,7 @@ There are 6 modules that make up the maps definition.
 They should all be placed at the top of the document; following the order below: `map`, `name`, `version`, `objective`, `authors` and `contributors`.
 
 :::note
-Contributors are optional but are still to remain at the top.
+Contributors are optional but are still to remain near the top of a XML file.
 :::
 
 ```xml
@@ -135,6 +136,7 @@ A Minor is classified by the addition of changes that affect gameplay but not to
 A Patch is classified by a small change to fix a bug or unintentional feature.
 
 ```xml
+<!-- Major.Minor.Patch -->
 <version>1.2.3</version>
 ```
 
@@ -152,18 +154,24 @@ Objectives are short and concise statements that tell the player what they need 
 
 ### Identification Naming
 
-Modules that require an `id` to be defined should be named in all lowercase and use a `-` dash to signify a space.
+Modules that require an `id` to be defined should be named in all lowercase and use a dash (`-`) to signify a space.
+
+One exception to this is that [variable](/docs/modules/mechanics/variables) ids cannot use a dash (`-`) and instead must use underscores (`_`) to signify a space.
 
 ```xml
 <team id="only-blue">blue-team</team>
+
+<!-- Variables -->
+<variable id="cant-do-this"/>
+<variable id="do_this_instead"/>
 ```
 ### Team Filters
 
-Team filters should be named by following the Identification naming and start with `only-` followed by the team name.
+Team filters should be named by following the identification naming and start with `only-` followed by the team name.
 
 `only-blue` `only-elves`
 
 ### Enumeration Naming
 
-Bukkit names should be set into lower case with `_` underscores replaced with spaces.
-For example, `PROTECTION_ENVIRONMENTAL` should become `protection environmental`.
+Bukkit names should be set into lower case with underscores (`_`) replaced with spaces.
+For example, `PROTECTION_ENVIRONMENTAL` should be `protection environmental`.
