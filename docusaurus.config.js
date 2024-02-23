@@ -85,7 +85,7 @@ const config = {
      announcementBar: {
       id: 'new_features',
       content:
-        'New Features: <a href="/docs/modules/general/main#map-variants">Map Variants</a>, <a href="/docs/modules/general/main#constants">Constants</a>, <a href="/docs/modules/blocks/structures">Structures</a>, and <a href="/docs/modules/blocks/enderchests">Ender Chests</a>',
+        'New Features: <a href="/docs/modules/gear/consumables">Consumables</a>, <a href="/docs/modules/general/main#map-variants">Map Variants</a>, <a href="/docs/modules/general/main#constants">Constants</a>, and <a href="/docs/modules/blocks/structures">Structures</a>',
       backgroundColor: '#fafbfc',
       textColor: '#091E42',
       isCloseable: true,
