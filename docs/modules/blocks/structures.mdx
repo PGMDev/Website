@@ -47,7 +47,7 @@ Structures are a very powerful feature that can be used to implement an endless 
   | `id` | Unique identifier used to reference this dynamic from other places in the XML. | <span className="badge badge--primary">String</span> |
   | `structure` | The `id` of the structure to place. | [Structure ID](#structure-attributes) |
   | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter used to determine when a structure is *placed* when `trigger` allows. | [Filter](/docs/modules/mechanics/filters) | `always` *(structure is permanently placed)* |
-  | `trigger` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Dynamic filter which triggers placement and clearing of structures. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+  | `trigger` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Dynamic filter which triggers placement and clearing of structures. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
   | `location` | The location to place the structure at. The structure's `origin` will be at this point.<br />*Mutually exclusive with `offset`.* | <span className="badge badge--primary">X,Y,Z</span> |
   | `offset` | Relative position to place the structure at. The structure will be translated by this amount from its original location.<br />*Mutually exclusive with `location`.* | <span className="badge badge--primary">X,Y,Z</span> | `0,0,0` *(structure placed at its original location)* |
 </div>
@@ -76,7 +76,7 @@ Structures are a very powerful feature that can be used to implement an endless 
     <!-- The bridge will appear 128 blocks directly below it's original location -->
     <dynamic structure="blue-bridge" offset="0,-128,0">
         <filter>
-            <objective team="blue-team">hill</objective>
+            <captured team="blue-team">hill</captured>
         </filter>
     </dynamic>
 

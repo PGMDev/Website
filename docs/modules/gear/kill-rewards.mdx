@@ -1,6 +1,7 @@
 ---
 id: kill-rewards
 title: Kill Rewards
+toc_max_heading_level: 4
 ---
 
 The Kill Rewards module allows players to get items or a kit when they kill a player.
@@ -8,9 +9,9 @@ A kill reward can contain either individual items, kits or references to kits.
 The reward can optionally filter which players are eligible to receive the reward, or when/where the reward is active.
 
 This module can, for example, be used to give upgrades to players by giving them gold ingots.
-Then, once they have collected enough ingots, they can craft armor, purchase items from a shop, etc.
+Then, once they have collected enough ingots, they can craft armor, purchase items from a [shop](/docs/modules/gear/shops), or use the ingots as [redeemables](/docs/modules/objectives/scoring#redeemables) for a scorebox, etc.
 
-#### Kill Rewards Element
+##### Kill Rewards Element
 
 <div className="table-container">
   | Element | Description | Value/Children |
@@ -22,27 +23,32 @@ Then, once they have collected enough ingots, they can craft armor, purchase ite
   | `<kill-reward> </kill-reward>` | A single kill reward. | <span className="badge badge--secondary">Kill Reward Sub-elements</span> |
 </div>
 
-#### Kill Reward Attributes
+##### Kill Reward Attributes
 
 <div className="table-container">
   | Attribute | Description | Value/Children |
   |---|---|---|
   | `filter` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can claim this reward and when. | [Filter](/docs/modules/mechanics/filters) |
   | `kit` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give players as the kill reward. | [Kit ID](/docs/modules/gear/kits) |
+  | `action` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Run the specified action as the kill reward. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+  | `victim-action` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Run the specified action on the victim instead of the attacker. | [Action ID](/docs/modules/mechanics/actions-triggers) |
 </div>
 
-#### Kill Reward Sub-elements
+##### Kill Reward Sub-elements
 
 <div className="table-container">
   | Element | Description | Value/Children |
   |---|---|---|
   | `<item>` | Individual items given as a kill reward. | [Item](/docs/modules/gear/items) |
   | `<filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can claim this reward and when. | [Filter](/docs/modules/mechanics/filters) |
-  | `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give players as the kill reward. | [Kit ID](/docs/modules/gear/kits) |
+  | `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give players as the kill reward. | [Kit](/docs/modules/gear/kits) |
+  | `<action>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The action to run as the kill reward. | [Action](/docs/modules/mechanics/actions-triggers) |
+  | `<victim-action>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The action to run on the victim. | [Action](/docs/modules/mechanics/actions-triggers) |
 </div>
 
-### Examples
+## Examples
 
+#### Kill rewards with filters
 ```xml
 <kill-rewards>
     <!-- Give two emeralds for all kills -->
@@ -63,12 +69,12 @@ Then, once they have collected enough ingots, they can craft armor, purchase ite
 </kill-rewards>
 ```
 
-Kill rewards with kits
-
+#### Kill rewards with kits
 ```xml
 <kill-rewards>
+    <!-- Give the player an iron helmet, iron helmet, and Speed II effect -->
     <kill-reward>
-        <kit>
+        <kit force="true">
             <item slot="0" material="iron sword"/>
             <helmet material="iron helmet"/>
             <effect amplifier="2">speed</effect>
@@ -81,6 +87,25 @@ Kill rewards with kits
             <kill-streak count="8" repeat="true"/>
         </filter>
         <kit id="reward-kit"/>
+    </kill-reward>
+</kill-rewards>
+```
+
+#### Kill rewards with actions
+```xml
+<kill-rewards>
+    <!-- Runs "some-action" on the victim whenever they are killed by a member of red team -->
+    <kill-reward filter="red-team" victim-action="some-action"/>
+
+    <!-- Kits and actions defined as references -->
+    <kill-reward action="some-kit" /> <!-- Kits are a type of action, so they can be used as an action -->
+    <kill-reward action="some-action"/>
+
+    <!-- Inline defined actions -->
+    <kill-reward>
+        <action>
+            <set var="some_variable" value="1"/>
+        </action>
     </kill-reward>
 </kill-rewards>
 ```

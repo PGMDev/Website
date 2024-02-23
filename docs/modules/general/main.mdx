@@ -16,7 +16,7 @@ The maps version should follow the versioning schema `major.minor.patch`.
 <div className="table-container">
   | Map Element | Description | Value/Children |
   |---|---|---|
-  | `<map> <map />` | The main map node containing all the modules used in this match. | <span className="badge badge--secondary">XML Modules</span> |
+  | `<map> </map>` | The main map node containing all the modules used in this match. | <span className="badge badge--secondary">XML Modules</span> |
 </div>
 
 ##### Map Attributes
@@ -40,7 +40,7 @@ The maps version should follow the versioning schema `major.minor.patch`.
   | `<authors>` | <span className="badge badge--danger">Required</span>The authors of the map, at least one author is required. | `<author>` |
   | `<contributors>` | Contributors to the map. | `<contributor>` |
   | `<created>` | The date on which this map was initially released. | `YYYY-MM-DD` |
-  | `<phase>` | The phase of this map.<br />`NOTE:` By default, it will not appear in the list when a user runs /maps. In legacy PGM, only maps with production and standard show up on a website configured with an API. | `development`<br />`production` | `production` |
+  | `<phase>` | The phase of this map.<br />**Note:** By default, it will not appear in the list when a user runs /maps. In legacy PGM, only maps with production and standard show up on a website configured with an API. | `development`<br />`production` | `production` |
   | `<edition>` | The edition of this map, describing which servers it should run on. | `standard`<br />`ranked`<br />`tournament` | `standard` |
   | `<game>` | A custom title for this match's gamemode. | <span className="badge badge--primary">String</span> |
   | `<gamemode>` | The gamemode(s) of this map, if this is not specified the map will set the gamemode(s) to whatever modules are used. | <span className="badge badge--primary">Gamemode ID</span> |
@@ -89,18 +89,18 @@ If an author or contributor is defined without a UUID, that player will not get 
 </div>
 
 ```xml
-<!-- Major map authors. -->
+<!-- Major map authors -->
 <authors>
-    <author>aPerson</author>
+    <author>aPerson</author> <!-- Credit a person that doesn't have a Minecraft account -->
     <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8" contribution="Clarification of element usage, etc."/> <!-- Plastix -->
     <author uuid="260004f0-996b-4539-ba21-df4ee6336b63"/> <!-- Elliott_ -->
 </authors>
 
-<!-- People that contributed in some way to the map. -->
+<!-- People that contributed in some way to the map -->
 <contributors>
     <!-- Credit a person that doesn't have a Minecraft account -->
     <contributor contribution="A contribution">aHelper</contributor>
-    <contributor uuid="3fbec7dd-0a5f-40bf-9d11-885a54507112" contribution="Some Help"/> <!-- Cubist -->
+    <contributor uuid="3fbec7dd-0a5f-40bf-9d11-885a54507112" contribution="Some help"/> <!-- Cubist -->
 </contributors>
 ```
 
@@ -145,10 +145,10 @@ Additionally, a variant can also contain constants, which allows you to define t
 <div className="table-container">
   | Element | Description | Value/Children |
   |---|---|---|
-  | `<variant> <variant />` | A map variant. | <span className="badge badge--primary">String</span> |
+  | `<variant> </variant>` | A map variant. | <span className="badge badge--primary">String</span> |
 </div>
 
-##### Variant Attributes
+#### Variant Attributes
 
 <div className="table-container">
   | Attribute | Description | Value | Default |
@@ -167,6 +167,17 @@ Additionally, a variant can also contain constants, which allows you to define t
   | `<unless> </unless>` | Apply an XML section for all variants except for a specific variant when loaded. | <span className="badge badge--secondary">XML Modules</span> |
 </div>
 
+#### If/Unless Conditional Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `variant` | The name of the variant to target. | <span className="badge badge--primary">Variant ID</span> |
+  | `has-variant` | Target all maps with a specified variant.<br />**Note:** This can be useful in a server's global XML file. | <span className="badge badge--primary">Variant ID</span> |
+</div>
+
+**Note:** Multiple variants can be targeted as long as it is separated with a comma (`,`).
+
 ### Constants
 Constants are values that remain the same, regardless of conditions.
 PGM will search and replace any corresponding placeholders (`${constant_id}`) with the constant value.
@@ -181,12 +192,13 @@ PGM will search and replace any corresponding placeholders (`${constant_id}`) wi
   | `<constant> </constant>` | An individual constant. | <span className="badge badge--primary">String</span> |
 </div>
 
-##### Constant Attributes
+#### Constant Attributes
 
 <div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
   | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this constant from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `delete` | When true, PGM will completely delete the attribute or element the constant was used in, rather than leaving it blank. | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
 The following example utilizes both map variants and constant.
@@ -197,17 +209,26 @@ The following example utilizes both map variants and constant.
 <variant id="tournament">TE</variant> <!-- Loaded as "Map Name: TE" -->
 <variant id="halloween" override="true">Spooky Map Name</variant> <!-- Loaded as "Spooky Map Name" -->
 
-<!-- PGM will replace "${team_size}" placeholder with the new value -->
+<!-- PGM will replace "${team_size}" and "${max}" placeholder with the new value -->
 <constant id="team_size">25</constant>
+<constant id="overfill" delete="true"/> <!-- "max-overfill" will not exist when "Map Name" is loaded -->
+<constant id="max">6</constant>
 <if variant="5v5">
     <constant id="team_size">5</constant>
+    <constant id="overfill">5</constant>
+    <constant id="max">3</constant>
 </if>
 <if variant="tournament">
-    <constant id="team_size">5</constant>
+    <constant id="team_size">6</constant>
+    <constant id="overfill">6</constant>
+    <constant id="max" delete="true"/>
 </if>
 
-<team id="red" max="${team_size}"/>
-<team id="blue" max="${team_size}"/>
+<team id="red" max="${team_size}" max-overfill="${overfill}"/>
+<team id="blue" max="${team_size}" max-overfill="${overfill}"/>
+<score>
+    <limit>${max}</limit> <!-- 6 in "Map Name", 3 in "Map Name: 5v5", non-existent in "Map Name: TE" -->
+</score>
 </map>
 ```
 

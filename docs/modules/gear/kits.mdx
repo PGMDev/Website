@@ -31,8 +31,8 @@ Removable kits will be noted in the documentation where applicable.
   | `id` | Unique identifier used to reference this kit from other places in the XML. | <span className="badge badge--primary">String</span> |
   | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this kit is used. | [Filter](/docs/modules/mechanics/filters) |
   | `parents` | The kit's parent or a comma separated list of parent kits. | <span className="badge badge--primary">String</span> |
-  | `force` | Force apply the kit. | <span className="badge badge--primary">true/false</span> |
-  | `overflow-warning` | Warn the player when the kit cannot give the player all of it's items.<br />*Defaults to standard translatable message* | <span className="badge badge--primary">String</span> |
+  | `force` | Force apply the kit, which will override existing items in certain slots. | <span className="badge badge--primary">true/false</span> |
+  | `overflow-warning` | Warn the player when the kit cannot give the player all of its items.<br />*Defaults to standard translatable message* | <span className="badge badge--primary">String</span> |
   | `repair-tools` | Repairs tools in the player's inventory with those given in the kit. | <span className="badge badge--primary">true/false</span> | true |
   | `deduct-tools` | Deducts the toolrepair given in the kit by the toolrepair in the player's inventory. | <span className="badge badge--primary">true/false</span> | true |
   | `deduct-items` | Deducts the number of items given in the kit by the number of items the player already has. | <span className="badge badge--primary">true/false</span> | true |
@@ -51,7 +51,7 @@ and potion effects can be replaced with the same effect at a lower level or shor
     <kit id="spawn-kit" force="true">
         <item slot="0" material="iron sword"/>
         <item slot="8" amount="32" material="bread"/>
-        <effect duration="5" amplifier="1">instant_health</effect>
+        <effect duration="5">instant_health</effect>
     </kit>
     <kit id="red-kit" parents="spawn">
         <helmet color="cd0000" material="leather helmet"/>
@@ -95,7 +95,7 @@ You can also clear the player's entire inventory before applying the kit by usin
 
 ```xml
 <kit id="ender" reset-ender-pearls="true">
-    <item slot="0" amount="1" material="ender pearl"/>
+    <item slot="0" amount="4" material="ender pearl"/>
     <!-- clears items and armor slots by default -->
     <clear/>
 </kit>
@@ -373,9 +373,9 @@ If no attributes are specified, `can-fly` defaults to true.
 
 ```xml
 <kit id="fly">
-    <fly/>                 <!-- Allow player to fly -->
-    <fly can-fly="false"/> <!-- Don't allow player to fly -->
-    <fly flying="true"/>   <!-- Make the player fly right away -->
-    <fly flying="false"/>  <!-- Make the player stop flying right away -->
+    <fly/> <!-- Allow player to fly -->
+    <fly can-fly="false"/> <!-- Do not allow player to fly -->
+    <fly flying="true"/> <!-- Make the player fly right away -->
+    <fly flying="false"/> <!-- Make the player stop flying right away -->
 </kit>
 ```

@@ -81,7 +81,7 @@ _Examples_
         </regions>
     </spawn>
     <default>
-        <regions yaw="0">
+        <regions>
             <cuboid min="-1,16,-1" max="2,20,2"/>
         </regions>
     </default>
@@ -91,21 +91,9 @@ _Examples_
 ```xml
 <!-- Example spawns from Assualt -->
 <spawns>
-    <spawn team="blue" kit="blue">
-        <regions yaw="-90">
-            <region id="blue-spawn"/>
-        </regions>
-    </spawn>
-    <spawn team="red" region="red-spawn" kit="red">
-        <regions yaw="90">
-            <region id="red-spawn"/>
-        </regions>
-    </spawn>
-    <default kit="obs">
-        <regions yaw="-135">
-            <region id="obs-spawn"/>
-        </regions>
-    </default>
+    <spawn team="blue" kit="blue" region="blue-spawn" yaw="-90"/>
+    <spawn team="red" kit="red" region="red-spawn" yaw="90"/>
+    <default kit="obs" region="obs-spawn" yaw="-135"/>
 </spawns>
 
 <spawns safe="true" sequential="true">
@@ -113,14 +101,14 @@ _Examples_
         <regions>
             <cuboid min="-10,71,5" max="12,126,27"/> <!-- Players will spawn here first -->
             <cuboid min="-10,6,5" max="12,6,27"/> <!-- Secondary spawn if the first isn't available -->
-            <point>1,8,0</point> <!-- Tertiary spawn if all other team spawns aren't safe -->
+            <point>1.5,8,0.5</point> <!-- Tertiary spawn if all other team spawns aren't safe -->
         </regions>
     </spawn>
-    <spawn team="red" kit="red" yaw="0">
+    <spawn team="red" kit="red">
         <regions>
             <cuboid min="-10,71,-27" max="12,126,-5"/>
             <cuboid min="-10,6,-27" max="12,6,-5"/>
-            <point>1,8,0</point>
+            <point>1.5,8,0.5</point>
         </regions>
     </spawn>
 </spawns>

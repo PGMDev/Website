@@ -44,12 +44,21 @@ Players can then change their class in game with the `/class` command.
 
 ```xml
 <classes family="ghost" sticky="true">
+    <!-- This is the default, so players will join with this unless they change class. -->
     <class name="Demon" default="true" description="Smoke and Fire!" icon="fireball">
         <kit>
-            <effect duration="oo" amplifier="2" ambient="true">damage resistance</effect>
-            <effect duration="oo" amplifier="1" ambient="true">speed</effect>
+            <effect amplifier="2" ambient="true">damage resistance</effect>
+            <effect ambient="true">speed</effect>
             <item slot="8" amount="16" material="cooked beef"/>
             <item slot="1" amount="5" name="`3Grenade" grenade="true" material="ender pearl"/>
+        </kit>
+    </class>
+    <!-- The second class is Pyro, players can select this before joining or changing in game with /class. -->
+    <class name="Pyro" description="Light players on fire!" icon="flint and steel">
+        <kit>
+            <item slot="0" enchantment="fire aspect" name="`6Fire Stick" material="blaze rod"/>
+            <item slot="1" enchantment="arrow fire" name="`6Fire Bow" unbreakable="true" material="bow"/>
+            <item slot="7" amount="10" material="arrow"/>
         </kit>
     </class>
 </classes>

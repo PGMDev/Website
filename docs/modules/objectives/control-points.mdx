@@ -12,9 +12,15 @@ Other uses of control points include unlocking an area of the map using objectiv
 ```xml
 <control-points capture-rule="lead" show-progress="true">
     <control-point name="Center" capture-time="20s">
-        <capture><cylinder base="0.5,23,7.5" radius="7" height="5"/></capture>
-        <progress><cylinder base="0.5,22,7.5" radius="7" height="4"/></progress>
-        <captured><cylinder base="0.5,64,7.5" radius="7" height="5"/></captured>
+        <capture> <!-- Where players must stand so this control point can be captured -->
+            <cylinder base="0.5,23,7.5" radius="7" height="5"/>
+        </capture>
+        <progress> <!-- The area where colored blocks will fade into the controlling team's color -->
+            <cylinder base="0.5,22,7.5" radius="7" height="4"/>
+        </progress>
+        <captured> <!-- The area where colored blocks will change to match the controlling team's color -->
+            <cylinder base="0.5,64,7.5" radius="7" height="5"/>
+        </captured>
     </control-point>
 </control-points>
 ```
@@ -59,9 +65,9 @@ Other uses of control points include unlocking an area of the map using objectiv
   | `stats` | Determines if this control point counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
   | `show` | Specify if the control point should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> | true |
   | `visual-materials` | Filter the materials modified when updating the progress regions.<br />*Defaults to wool, carpet, stained clay, stained glass & stained glass panes.* | [Block Filter](/docs/modules/mechanics/filters) |
-  | `capture` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Region where this control point can be captured. | [Region](/docs/modules/mechanics/regions) |
-  | `progress` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this control points progress is displayed. | [Bounded Region](/docs/modules/mechanics/regions) |
-  | `captured` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this control points owner is displayed. | [Bounded Region](/docs/modules/mechanics/regions) |
+  | `capture` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region where players must stand to capture this control point. | [Region](/docs/modules/mechanics/regions) |
+  | `progress` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region where colored blocks within this area point will progressively fade into the controlling team's color.<br />**Note:** This can be controlled with `visual-materials`. | [Bounded Region](/docs/modules/mechanics/regions) |
+  | `captured` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region where colored blocks within this area will display only the controlling team's color without fading.<br />**Note:** This can be controlled with `visual-materials`. | [Bounded Region](/docs/modules/mechanics/regions) |
   | `capture-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter teams that can capture this control point, defaults to all teams. Teams that don't match this filter can still prevent other teams from capturing by standing on the control point. They can also uncapture the control point if neutral-state is enabled. | [Filter](/docs/modules/mechanics/filters) |
   | `player-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter players who can control this control point. Players who don't match this filter cannot affect the control point in any way. | [Filter](/docs/modules/mechanics/filters) |
 </div>
@@ -71,9 +77,9 @@ Other uses of control points include unlocking an area of the map using objectiv
 <div className="table-container">
   | Element | Description | Value |
   |---|---|---|
-  | `<capture>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region players have to stand in to capture the control point. | [Regions](/docs/modules/mechanics/regions) |
-  | `<progress>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region to display capture progress. | [Bounded Regions](/docs/modules/mechanics/regions) |
-  | `<captured>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region to display if the control point is captured. | [Bounded Regions](/docs/modules/mechanics/regions) |
+  | `<capture>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where players must stand to capture this control point. | [Regions](/docs/modules/mechanics/regions) |
+  | `<progress>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region where colored blocks within this area point will progressively fade into the controlling team's color. | [Bounded Regions](/docs/modules/mechanics/regions) |
+  | `<captured>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region where colored blocks within this area will display only the controlling team's color without fading. | [Bounded Regions](/docs/modules/mechanics/regions) |
   | `<capture-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter teams that can capture this control point, defaults to all teams. Teams that don't match this filter can still prevent other teams from capturing by standing on the control point. They can also uncapture the control point if neutral-state is enabled. | [Filters](/docs/modules/mechanics/filters) |
   | `<player-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter players who can control this control point. Players who don't match this filter cannot affect the control point in any way. | [Filters](/docs/modules/mechanics/filters) |
 </div>
@@ -120,8 +126,12 @@ Default values for `time-multiplier`, `show-progress`, `neutral-state`,
 <king>
     <hills>
         <hill name="Hill" capture-time="10s" points="1">
-            <capture><region id="hill"/></capture>
-            <progress><cuboid min="-5,71,-5" max="5,71,5"/></progress>
+            <capture>
+                <region id="hill"/>
+            </capture>
+            <progress>
+                <cuboid min="-5,71,-5" max="5,71,5"/>
+            </progress>
         </hill>
     </hills>
 </king>

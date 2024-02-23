@@ -43,7 +43,7 @@ Some modules will generate an error if you try to use the wrong type of filter, 
 When a filter does not apply to a particular decision, it will **abstain** from that decision, and things will behave as they would if the filter did not exist.
 Generally, you should avoid using filters in such a way that they can abstain, since it tends to be confusing.
 
-However, the [event rules module](/docs/modules/mechanics/regions#applying) uses filter abstention to make very complex conditions easier to express:
+However, the [event rules module](/docs/modules/mechanics/regions#applying-things-to-regions) uses filter abstention to make very complex conditions easier to express:
 It accepts a *chain* of filters, and uses the first filter in the chain that doesn't abstain.
 
 Filters can be *forced* to abstain using the `<allow>` and `<deny>` modifiers.
@@ -62,6 +62,44 @@ and assigned an `id` used to reference them elsewhere.
     <team id="viridescent-team-filter">viridescent-team</team>
 
     <!-- More filters-->
+</filters>
+```
+
+### Inline Filters
+
+Inline filters allow you to write an expression that internally creates a filter whenever a filter ID is requested.
+This is useful for scenarios where you may need to create a one-off filter.
+
+```xml
+<variables>
+    <variable id="some_variable" scope="match"/>
+</variables>
+<actions>
+    <trigger filter="some_variable=5" scope="match">
+        <action>
+            <message text="The variable is exactly 5!"/>
+        </action>
+    </trigger>
+    <!-- Note that 5.. is alternative syntax for [5, oo) -->
+    <trigger filter="some_variable=5.." scope="match">
+        <action>
+            <message text="The variable is 5 or more!"/>
+        </action>
+    </trigger>
+</actions>
+
+<filters>
+    <all>
+        <not>
+            <filter id="holding-gap">
+        </not>
+        <variable var="missing_gaps">1..</variable>
+    </all>
+    <!-- The pulse filter below uses the inline equivalent of these filters. -->
+    <holding id="holding-gap">
+        <item material="golden apple"/>
+    </holding>
+    <pulse id="can-give-gap" duration="0.05s" period="0.1s" filter="all(not(holding-gap), missing_gaps=1..)"/>
 </filters>
 ```
 
@@ -348,8 +386,8 @@ This filter is commonly used in [Kill Rewards](/docs/modules/gear/kill-rewards),
 _Examples_
 
 ```xml
-<kill-streak min="3"/>   <!-- matches players with at least 3 kills -->
-<kill-streak max="5"/>   <!-- matches players with at most 5 kills -->
+<kill-streak min="3"/> <!-- matches players with at least 3 kills -->
+<kill-streak max="5"/> <!-- matches players with at most 5 kills -->
 <kill-streak count="4"/> <!-- matches players with exactly 4 kills -->
 <kill-streak repeat="true" count="10"/> <!-- match for every 10th kill -->
 ```
@@ -372,8 +410,8 @@ The [Blitz module](/docs/modules/objectives/blitz) must be enabled to use this f
 _Examples_
 
 ```xml
-<lives min="3"/>   <!-- matches players with at least 3 lives -->
-<lives max="5"/>   <!-- matches players with at most 5 lives -->
+<lives min="3"/> <!-- matches players with at least 3 lives -->
+<lives max="5"/> <!-- matches players with at most 5 lives -->
 <lives count="1"/> <!-- matches players with exactly 1 life -->
 ```
 
@@ -467,7 +505,7 @@ It never matches when the child filter doesn't match. This filter is a [Dynamic 
   |---|---|---|
   | `duration` | <span className="badge badge--danger">Required</span>Length of time to match for. | [Time Period](/docs/reference/misc/time-periods) |
   | `filter` | <span className="badge badge--danger">Required</span>Filter when the countdown should be active. | [Dynamic Filter](#dynamic-filters) |
-  | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
+  | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 </div>
 
 ```
@@ -488,12 +526,12 @@ This filter is a [Dynamic Filter](#dynamic-filters).
   |---|---|---|
   | `duration` | <span className="badge badge--danger">Required</span>Length of time to be active after the child filter allows. | [Time Period](/docs/reference/misc/time-periods) |
   | `filter` | <span className="badge badge--danger">Required</span>Filter when the after filter should be active. | [Dynamic Filter](#dynamic-filters) |
-  | `message` | Optional message to display after the child filter allows. Only players who match the filter can see the message. If the message contains a placeholder, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
+  | `message` | Optional message to display after the child filter allows. Only players who match the filter can see the message. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 </div>
 
 ```
 <!-- Allows 15 seconds after the player gets 1st place -->
-<after duration="15s" message="1st place bonus will apply in 15 seconds.">
+<after duration="15s" message="1st place bonus will apply in {0}"> <!-- Automatically updates to show time -->
     <rank>1</rank>
 </after>
 ```
@@ -512,7 +550,7 @@ This filter is a [Dynamic Filter](#dynamic-filters).
   | `period` | <span className="badge badge--danger">Required</span>Length of time a pulse remains on in a cycle. | [Time Period](/docs/reference/misc/time-periods) |
   | `duration` | <span className="badge badge--danger">Required</span>Length of time a cycle lasts for.<br />*Must be a positive number that is shorter than the period length.* | [Time Period](/docs/reference/misc/time-periods) |
   | `filter` | <span className="badge badge--danger">Required</span>Filter when the pulse should be active; if the filter allows, pulse will be ticking. It can be defined as a unique child element or as an attribute. | [Dynamic Filter](#dynamic-filters) |
-  | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
+  | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 </div>
 
 ```
@@ -537,16 +575,17 @@ either using exact locations, coordinates relative to the player,
 or directions relative to the player.
 
 Coordinates relative to the player are defined using `~` and behave the same like `~` does in-game.
-Directions relative to the player use `^`.
+Directions relative to the player use `^`. This can be utilized as a [Dynamic Filter](#dynamic-filters) as long it is used
+with an absolute position.
 
 ```
 <filters>
     <!-- checks for bedrock placed at this exact location -->
-    <offset id="hardFilter" location="10.5, 5, 15.5">
+    <offset id="hardFilter" location="10.5,5,15.5">
         <material>bedrock</material>
     </offset>
     <!-- checks for cobblestone placed 1 block beneath the player -->
-    <offset id="blockUnderFeetFilter" location="~0, ~-1, ~0">
+    <offset id="blockUnderFeetFilter" location="~0,~-1,~0">
         <material>cobblestone</material>
     </offset>
     <!-- checks for water placed 2 blocks *in front* of the player -->
@@ -926,7 +965,7 @@ _Example_
 <not>
     <all>
         <cause>player</cause>
-        <filter name="structure-blocks"/>
+        <filter id="structure-blocks"/>
         <structural-load>3</structural-load>
     </all>
 </not>

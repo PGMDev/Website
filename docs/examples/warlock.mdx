@@ -22,8 +22,10 @@ Every map XML file starts with the XML header and then the base `<map>` module.
 <map proto="1.4.2">
 <!-- Specifies what the map is called -->
 <name>Warlock</name>
+<!-- Shows the map creation date when a user runs /map in game -->
+<created>2012-08-29</created>
 <!-- States what version the map is -->
-<version>1.3.11</version>
+<version>1.3.12</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Break the obsidian from the enemy team's monument.</objective>
 <!-- States who made the map -->
@@ -225,7 +227,7 @@ We can make special kill rewards for players that fit certain criteria.
         <item material="gold nugget"/>
         <item material="golden apple"/>
     </kill-reward>
-    <!-- Players that kill two enemies in a row will get four ink sacks -->
+    <!-- Players that kill two enemies in a row will get a Lapis Lazuli (represented as ink sack with damage value of 4) -->
     <kill-reward>
         <filter>
             <kill-streak count="2" repeat="true"/>

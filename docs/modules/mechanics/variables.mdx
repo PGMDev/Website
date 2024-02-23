@@ -8,27 +8,42 @@ Values are changed using the [Actions & Triggers](/docs/modules/mechanics/action
 Afterwards, they can be used as a [Filter](/docs/modules/mechanics/filters#variable-filter) after meeting a certain number or range.
 You can define as many variables as you want and all variables must have a scope defined.
 
-#### Variable Element
+## Variable Element
 
 <div className="table-container">
   | Element | Description |
   |---|---|
   | `<variables> </variables>` | A node containing the variables for this map. |
   
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<variable/>` | An individual variable. | <span className="badge badge--secondary">Variable Attributes</span> |
+  | Sub-elements ||
+  |---|---|
+  | `<variable/>` | An individual variable. |
+  | `<score/>` | A score variable, allowing direct access to competitor's score. This is automatically scoped to teams. |
+  | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
 </div>
 
-#### Variable Attributes
+### Variable Attributes
 
 <div className="table-container">
   | Attribute | Description | Value |
   |---|---|---|
   | `id` | Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `exclusive` | Limits how many different values there can be in a variable.<br />*Values between 1 and 50 are supported, higher values may lead to performance issues.* | <span className="badge badge--primary">Number</span> |
   | `scope` | Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
   | `default` | Sets the initial value of the variable. | <span className="badge badge--primary">Number</span> |
 </div>
+
+### With-Team Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `id` | Unique identifier used to reference this with-team variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `var` | The variable to target. | [Variable ID](#variable-attributes) |
+  | `team` | The team to target. | [Team ID](/docs/modules/format/teams#team-attributes) |
+</div>
+
+## Examples
 
 ### Setting Variables
 
@@ -65,19 +80,78 @@ _Example_
 
 ```xml
 <!-- Match if next_post has a value of 1 -->
-<variable id="next-blue" var="next_post">1</variable>
+<variable id="next_blue" var="next_post">1</variable>
 <!-- Match if t_score is >= 100 -->
-<variable id="reached-score" var="t_score">[100,oo)</variable>
+<variable id="reached_score" var="t_score">[100,oo)</variable>
 
 <!-- Match if t_score is between 5 and 10 (including 5 and 10) -->
-<variable id="reached-score" var="t_score">[5,10]</variable>
+<variable id="reached_score" var="t_score">[5,10]</variable>
 <!-- Match if t_score is between 5 and 10 (excluding 5 and 10) -->
-<variable id="reached-score" var="t_score">(5,10)</variable>
+<variable id="reached_score" var="t_score">(5,10)</variable>
 <!-- Match if t_score is between 0 and 10 (including 0 and excluding 10) -->
-<variable id="reached-score" var="t_score">[0,10)</variable>
+<variable id="reached_score" var="t_score">[0,10)</variable>
 ```
 
-### Examples
+### Using Exclusive Dummy Variables
+In this example, the `last_scored` variable would, at most, have a value for one team. 
+This in practice means that all other teams will always be reset to default whenever a team is set.
+In the `other` example, the "last 2" updated players will be kept, while players who got in "earlier", are removed.
+
+```xml
+<variables>
+    <variable id="last_scored" exclusive="1" scope="team" />
+    <variable id="other" exclusive="2" scope="player" />
+</variables>
+```
+
+In this example, we want the team which gets the `on-score` action to add one, but the opposite team(s) to subtract one from their score, with `exclusive` it looks like this:
+
+```xml
+<variables>
+    <score id="team_score" scope="team"/>
+    <variable id="last_scored" exclusive="1" scope="team"/>
+</variables>
+<actions>
+    <action id="on-score" scope="team">
+        <set var="team_score" value="team_score+1"/>
+        <set var="last_scored" value="1"/>
+        <switch-scope inner="match">
+            <switch-scope inner="team" filter="last_scored=0">
+                <set var="team_score" value="team_score-1"/>
+            </switch-scope>
+        </switch-scope>
+    </action>
+</actions>
+```
+
+### Team-Rescoping Variables
+Whenever `some-filter` matches for a player (e.g. entering a region), it will trigger an action that sets red team's score to exactly 10, then adds 5 to the score of the team the player is in.
+In short, if a player in red team triggers `some-filter`, red is reset to 10 + 5 = 15, no other scores are affected.
+If a player in blue team triggers `some-filter`, red is reset to 10, and blue wins 5 points.
+
+```xml
+<variables>
+    <score id="team_score"/>
+    <with-team id="red_team_score" var="team_score" team="red"/>
+
+    <variable id="other" scope="team"/> <!-- A dummy team variable -->
+    <!-- A match-scoped variable for the value of other for red team -->
+    <with-team id="other_red" var="other" team="red"/>
+    <!-- A match-scoped variable for the value of other for blue team -->
+    <with-team id="other_blue" var="other" team="blue"/>
+</variables>
+
+<actions>
+    <trigger scope="player" filter="some-filter">
+        <action>
+            <set var="red_team_score" value="10"/>
+            <set var="team_score" value="team_score+5"/>
+        <action>
+    </trigger>
+</actions>
+```
+
+### General Example
 
 In this example, when a player first enters `region-a`, the team score and later the player score is
 increased by 5. The second time the same player enters, the team will score an additional 10 points,

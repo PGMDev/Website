@@ -147,8 +147,10 @@ This helps simplfy kits so a seperate team kit for colored armor and items is no
 
 ```xml
 <kits>
-    <kit id="spawn" force="true">
-        <!-- automatically applies blue colored armor to blue team, red armor to red team, etc -->
+    <kit id="spawn-kit">
+        <!-- automatically applies blue stained clay to blue team, red stained clay to red team, etc -->
+        <item slot="0" amount="64" team-color="true" material="stained clay"/>
+        <!-- automatically applies blue armor to blue team, red armor to red team, etc -->
         <helmet team-color="true" unbreakable="true" material="leather helmet"/>
         <chestplate team-color="true" unbreakable="true" material="leather chestplate"/>
     </kit>

@@ -8,12 +8,16 @@ The victory monument's area, where the wool block is placed, is protected by def
 
 ```xml
 <wools>
-    <wool team="blue" color="lime">
-        <monument><block>0.5,11,-92.5</block></monument>
+    <wool team="blue" color="lime" location="-20,8,-75">
+        <monument>
+            <block>0.5,11,-92.5</block>
+        </monument>
         <!-- Blue team has to place a lime wool block at 0.5,11,-92.5 to win -->
     </wool>
-    <wool team="green" color="light blue" craftable="false">
-        <monument><block>0.5,11,93.5</block></monument>
+    <wool team="green" color="light blue" location="20,8,75" craftable="false">
+        <monument>
+            <block>0.5,11,93.5</block>
+        </monument>
         <!-- Light blue wool can not be crafted, it must be picked up -->
     </wool>
 </wools>
