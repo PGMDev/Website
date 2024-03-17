@@ -19,6 +19,7 @@ You can define as many variables as you want and all variables must have a scope
   |---|---|
   | `<variable/>` | An individual variable. |
   | `<score/>` | A score variable, allowing direct access to competitor's score. This is automatically scoped to teams. |
+  | `<timelimit/>` | A time limit variable which starts/stops the time limit of the match. |
   | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
 </div>
 
@@ -119,6 +120,37 @@ In this example, we want the team which gets the `on-score` action to add one, b
             <switch-scope inner="team" filter="last_scored=0">
                 <set var="team_score" value="team_score-1"/>
             </switch-scope>
+        </switch-scope>
+    </action>
+</actions>
+```
+
+### Timelimit Variables
+When the time limit variable is given a value, it will start a timelimit for the match.
+The time limit can be cancelled by setting the value to a negative number, or the match 
+can be ended by setting the value to `0`.
+
+```xml
+<variables>
+    <timelimit id="tl_1"/>
+</variables>
+<actions>
+    <action id="on-score" scope="team">
+        <switch-scope inner="match">
+            <!-- Sets/starts the timelimit to 60 seconds -->
+            <set var="tl_1" value="60"/>
+        </switch-scope>
+    </action>
+    <action id="on-capture" scope="team">
+        <switch-scope inner="match">
+            <!-- Instantly ends the match -->
+            <set var="tl_1" value="0"/>
+        </switch-scope>
+    </action>
+    <action id="on-overtime" scope="team">
+        <switch-scope inner="match">
+            <!-- Removes the timelimit -->
+            <set var="tl_1" value="-10"/>
         </switch-scope>
     </action>
 </actions>
