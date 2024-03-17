@@ -20,6 +20,7 @@ You can define as many variables as you want and all variables must have a scope
   | `<variable/>` | An individual variable. |
   | `<score/>` | A score variable, allowing direct access to competitor's score. This is automatically scoped to teams. |
   | `<timelimit/>` | A time limit variable which starts/stops the time limit of the match. |
+  | `<maxbuildheight/>` | A variable that sets the build height of the map. |
   | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
 </div>
 
@@ -152,6 +153,22 @@ can be ended by setting the value to `0`.
             <!-- Removes the timelimit -->
             <set var="tl_1" value="-10"/>
         </switch-scope>
+    </action>
+</actions>
+```
+
+### Maxbuildheight Variable
+The `maxbuildheight` variable will give a height limit for placing blocks
+after being set to a certain value.
+
+```xml
+<variables>
+    <maxbuildheight id="build-limit"/>
+</variable>
+<actions>
+    <action id="increase-buildheight" scope="match" expose="true">
+        <!-- Adds 1 to the current height, up to a maximum of 55 -->
+        <set var="build-limit" value="min(55,whatever+1"/>
     </action>
 </actions>
 ```
