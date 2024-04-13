@@ -68,6 +68,7 @@ const sidebars = {
       "modules/gear/crafting",
       "modules/gear/repair-remove-keep",
       "modules/gear/projectiles",
+      "modules/gear/consumables",
       "modules/gear/tnt",
       "modules/gear/kill-rewards",
       "modules/gear/lootables"],

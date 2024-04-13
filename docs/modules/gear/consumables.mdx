@@ -1,0 +1,67 @@
+---
+id: consumables
+title: Consumables
+---
+
+Consumables are items that can be made "edible" to the player and "consuming" it will allow them to run an action or receive a kit.
+It can be defined and applied to items in [kits](/docs/modules/gear/kits).
+When consumed, these items can trigger [actions](/docs/modules/mechanics/actions-triggers), and override vanilla eating or drinking behavior.
+
+#### Consumables Element
+
+<div className="table-container">
+  | Element | Description |
+  |---|---|
+  | `<consumables> </consumables>` | Node containing the consumables definitions. |
+
+  | Sub-elements ||
+  |---|---|
+  | `<consumable> </consumable>` | An individual consumable. |
+</div>
+
+#### Consumable Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this consumable from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `action`&#124;`kit` | <span className="badge badge--danger">Required</span>Run the specified action upon consumption. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+  | `on` | <span className="badge badge--danger">Required</span>Specify how the consumable should be used.<br />**Note:** The only action currently supported is `eat`. In the future, more actions such as clicking will be supported. | `eat` |
+  | `override` | Consumable is affected by vanilla behaviors, such as giving the player potion effects.<br />*This is useful when using potion bottles and golden apples as the consumable item.* | <span className="badge badge--primary">true/false</span> | true |
+</div>
+
+### Examples
+
+```xml
+<!-- Create the consumable "template" -->
+<consumables>
+    <consumable id="porkchop-that-says-yum" action="say-yum" on="eat" override="false"/>
+</consumables>
+<!-- Apply the consumable to an item -->
+<kits>
+    <kit id="spawn">
+        <item slot="1" amount="5" consumable="porkchop-that-says-yum" material="pork"/>
+    </kit>
+</kits>
+<!-- Define the action the consumable will run -->
+<actions>
+    <message id="say-yum" text="Yum!"/>
+</actions>
+```
+
+```xml
+<!-- Create the consumable "template" -->
+<consumables>
+    <consumable id="fast-apple" kit="speed-kit" on="eat"/>
+</consumables>
+<kits>
+    <!-- Apply the consumable to an item -->
+    <kit id="spawn">
+        <item slot="1" consumable="fast-apple" name="Fast Apple" material="golden apple"/>
+    </kit>
+    <!-- Define the kit the consumable gives you -->
+    <kit id="speed-kit">
+        <effect duration="4" amplifier="10">speed</effect>
+    </kit>
+</kits>
+```
