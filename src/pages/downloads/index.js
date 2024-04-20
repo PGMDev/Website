@@ -55,7 +55,7 @@ export default function Downloads() {
               <div className="row">
                 <div className="col">
                   <div className="row">
-                    <img src="/img/shield.png" className={styles.pgm_logo} />
+                    <img src="/img/shield.png" alt="" className={styles.pgm_logo} />
                     <div className={styles.pgm}>
                       <h1>PGM {releases[0].name}</h1>
                       <p>
@@ -123,19 +123,24 @@ export default function Downloads() {
                 <div className={classnames("col col--4", styles.col_margin_left)}>
                 <h2>Download SportPaper</h2>
                 <p>
-                  SportPaper is a Minecraft server jar based on Paper 1.8 tuned
-                  for maximum performance and high intensity PvP. It is
-                  mandatory and should run alongside PGM.
+                  SportPaper is a Minecraft server software based on Paper 1.8, tuned
+                  for maximum performance and high-intensity PvP. It is
+                  recommended for use with PGM.
                 </p>
                 <div className="text--center">
-                  <a
-                    className={classnames(
-                      "button button--primary",
-                      styles.download_button
-                    )}
-                    href={releases[0].assets[1].browser_download_url}
-                  >
-                    Download <FontAwesomeIcon icon={faDownload} />
+                  <div className={classnames(styles.download_button_wrapper)}>
+                    <a
+                      className={classnames(
+                        "button button--primary",
+                        styles.download_button
+                      )}
+                      href={"https://repo.pgm.fyi/snapshots/app/ashcon/sportpaper/1.8.8-R0.1-SNAPSHOT/sportpaper-1.8.8-R0.1-SNAPSHOT.jar"}
+                    >
+                      Download <FontAwesomeIcon icon={faDownload} />
+                    </a>
+                  </div>
+                  <a href="https://github.com/Electroid/SportPaper">
+                    GitHub <FontAwesomeIcon icon={faAngleRight} />
                   </a>
                 </div>
               </div>
@@ -213,8 +218,8 @@ export default function Downloads() {
                   <div className={styles.others_description}>
                     <p>
                       Community is a standalone plugin for managing PGM servers.
-                      It includes various PGM features, such as punishments,
-                      moderation, freezing, and other aspects.
+                      It includes a wide range of useful features such as robust moderation 
+                      tools, a friendship system, match mutations, a party system, and more.
                     </p>
                   </div>
                 </div>
@@ -253,8 +258,8 @@ export default function Downloads() {
                   </div>
                   <div className={styles.others_description}>
                     <p>
-                      ResourcePile is a community project which aims to provide
-                      various collections of resources, such as maps or
+                      ResourcePile is a community project that aims to archive
+                      various collections of resources, such as maps or historical
                       statistics, for users with backgrounds in Overcast and
                       similar networks.
                     </p>

@@ -7,7 +7,7 @@ The item elements are used to place items into a player's inventory or armor slo
 Items have many different attributes, and some may only apply to certain item types;
 such as the leather armor `color` attribute.
 
-Item names can be found with the [Material Finder](/docs/reference/items/inventory#material_finder)
+Item names can be found with the [Material Finder](/docs/reference/items/inventory#material-finder)
 or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
 
 #### Item Element
@@ -35,7 +35,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 <div className="table-container">
   | Attribute | Description | Value | Default |
   |---|---|---|---|
-  | `material` | <span className="badge badge--danger">Required</span>The item's material name. | [Material Name](/docs/reference/items/inventory#material_matchers) |
+  | `material` | <span className="badge badge--danger">Required</span>The item's material name. | [Material Name](/docs/reference/items/inventory#material-matchers) |
   | `slot` | Slot where the item will be placed in the player's inventory.<br />*If no slot is specified, the item will be merged into the player's inventory.* | [Inventory Slot](/docs/reference/items/inventory) |
   | `amount` | The amount of items. Blocks can be given an infinite amount by using `oo`. | <span className="badge badge--primary">Number</span> | 1 |
   | `damage` | The item's damage value, used for items such as birch logs, red wool, potion types, etc. | <span className="badge badge--primary">Number</span> | 0 |
@@ -427,7 +427,7 @@ massive tooltip being displayed to the player.
 
   | Sub-elements | | Value/Children |
   |---|---|---|
-  | `<material> </material` | An individual material to match.<br />*Does not accept a damage/data value.* | [Material Name](/docs/reference/items/inventory#material_matchers) |
+  | `<material> </material` | An individual material to match.<br />*Does not accept a damage/data value.* | [Material Name](/docs/reference/items/inventory#material-matchers) |
   | `<all-blocks/>` | Match all block type materials. |
 </div>
 
