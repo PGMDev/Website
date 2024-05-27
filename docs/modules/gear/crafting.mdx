@@ -18,7 +18,7 @@ Vanilla recipes for a specific material can also be disabled to prevent crafting
   | `<shaped>` | A shaped crafting recipe node. | <span className="badge badge--secondary">Shaped Recipe Sub-elements</span> |
   | `<shapeless>` | A custom shapeless recipe node. | <span className="badge badge--secondary">Shapeless Recipe Sub-elements</span> |
   | `<smelt>` | A custom smelting recipe. | <span className="badge badge--secondary">Smelt Recipe Sub-elements</span> |
-  | `<disable>` | Disable all vanilla recipes for this item. | [Single Material Pattern](/docs/reference/items/inventory#material_matchers) |
+  | `<disable>` | Disable all vanilla recipes for this item. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 
 </div>
 
@@ -59,7 +59,7 @@ Blank ingredient spots are specifed with a dot `.`
   | Sub-elements | | Value/Children |
   |---|---|---|
   | `<shape>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*Only one shape per recipe is allowed.* | `<row>` |
-  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span> An ingredient used in this recipe.<br />*A shaped recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material_matchers) |
+  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span> An ingredient used in this recipe.<br />*A shaped recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 </div>
 
 ##### Shape Sub-elements
@@ -118,7 +118,7 @@ Unlike a shaped recipe, shapeless recipes do not require that their items are ar
 
   | Sub-elements || Value/Children |
   |---|---|---|
-  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span>An ingredient used in this recipe.<br />*A shapeless recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material_matchers) |
+  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span>An ingredient used in this recipe.<br />*A shapeless recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 </div>
 
 #### Shapeless Ingredient attributes
@@ -152,7 +152,7 @@ Smelt recipes specify what a material gets smelted into in a furnace.
 
   | Sub-elements || Value/Children |
   |---|---|---|
-  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*A smelt recipe only accepts one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material_matchers) |
+  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*A smelt recipe only accepts one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 </div>
 
 ### Examples

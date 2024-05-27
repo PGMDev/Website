@@ -45,7 +45,7 @@ Players can also buy a kit, instead of individual items, or use muiltiple curren
   |---|---|---|
   | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this category from other places in the XML. | <span className="badge badge--primary">String</span> |
   | `name` | The display name for the category. | <span className="badge badge--primary">Formatted Text</span> |
-  | `material` | The item to display as an icon for the category. | [Material Name](/docs/reference/items/inventory#material_matchers) |
+  | `material` | The item to display as an icon for the category. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 </div>
 
 #### Item Attributes
@@ -56,10 +56,10 @@ Items can be purchased with multiple currencies using the `<payment>` tag.
 <div className="table-container">
   | Element | Description | Value |
   |---|---|---|
-  | `currency` | The currency needed to purchase. | [Material Name](/docs/reference/items/inventory#material_matchers) |
+  | `currency` | The currency needed to purchase. | [Material Name](/docs/reference/items/inventory#material-matchers) |
   | `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
   | `kit` | The kit to give to players purchasing the item. | [Kit](/docs/modules/gear/kits) |
-  | `color` | Set the currency's display text color. This is used for associating colors with different currency tiers. | [Chat Color Name](/docs/reference/misc/formatting#chatColors) |
+  | `color` | Set the currency's display text color. This is used for associating colors with different currency tiers. | [Chat Color Name](/docs/reference/misc/formatting#chat-colors) |
 </div>
 
 ### Examples

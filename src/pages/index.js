@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 const features = [
   {
     title: "Easy to Use",
-    imageUrl: "img/ok-hand.png",
+    imageUrl: "img/ok-hand.svg",
     description: (
       <>
         Unlike the original release, PGM 1.8 is much easier to use. It has no
@@ -19,7 +19,7 @@ const features = [
   },
   {
     title: "Open Source",
-    imageUrl: "img/open-hands.png",
+    imageUrl: "img/open-hands.svg",
     description: (
       <>
         Not only is PGM easy to use, but contributing requires no dependency
@@ -31,7 +31,7 @@ const features = [
   },
   {
     title: "Active Community",
-    imageUrl: "img/handshake.png",
+    imageUrl: "img/handshake.svg",
     description: (
       <>
         Be part of a community of over 20 contributors and help keep the project
@@ -48,7 +48,7 @@ function Feature({ imageUrl, title, description }) {
     <div className={classnames("col col--4", styles.feature)}>
       {imgUrl && (
         <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+          <img className={styles.featureImage} src={imgUrl} loading="lazy" alt="" />
         </div>
       )}
       <h3>{title}</h3>
@@ -67,17 +67,19 @@ function Home() {
         <video
           playsInline="playsinline"
           autoPlay="autoplay"
+          disablePictureInPicture
           muted="muted"
           loop="loop"
-          poster="img/fallback.jpg"
+          poster="img/fallback.avif"
         >
-          <source src="video/video.mp4" type="video/mp4" />
+          <source src="video/video.webm" type="video/webm" />
+          <source src="video/video.mp4" type="video/mp4" /> {/* fallback */}
         </video>
         <div className={classnames("container", styles.bannerContainer)}>
           <div className="row">
             <div className="col col--6">
               <h1 className={classnames("hero__title", styles.bannerTitle)}>
-                The original, redefined.
+                The original, <span className={styles.bannerGradient}>redefined</span>.
               </h1>
               <p className="hero__subtitle" style={{ color: "#FFF" }}>
                 {siteConfig.tagline}

@@ -40,10 +40,17 @@
 }
 
 .bannerTitle {
-  font-size: 4.5rem !important;
+  font-size: clamp(2.91rem, 4.5vw, 4.5rem) !important;
   line-height: 1.01em !important;
   font-weight: 700 !important;
-  color: #fff !important;
+  color: #fff;
+}
+
+.bannerGradient {
+  background: #FF4500; /* fallback color */
+  background: linear-gradient(to right, #FFA500 0%, #FF8D00 15%, #FF7500 50%, #FF4500 85%, #DC3B00 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @media only screen and (min-width: 992px) {
