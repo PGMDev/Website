@@ -134,7 +134,7 @@ export default function Downloads() {
                         "button button--primary",
                         styles.download_button
                       )}
-                      href={"https://repo.pgm.fyi/snapshots/app/ashcon/sportpaper/1.8.8-R0.1-SNAPSHOT/sportpaper-1.8.8-R0.1-SNAPSHOT.jar"}
+                      href={"https://repo.pgm.fyi/#/snapshots/app/ashcon/sportpaper/1.8.8-R0.1-SNAPSHOT"}
                     >
                       Download <FontAwesomeIcon icon={faDownload} />
                     </a>
