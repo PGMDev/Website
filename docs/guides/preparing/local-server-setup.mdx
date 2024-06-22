@@ -19,9 +19,9 @@ This guide uses Windows 11, however, the same process will work on Windows 10 an
 
 ### Installing Java
 
-We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). 
-However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
-If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+We recommend using Java 21. For this guide, we will be using [Amazon Corretto 21](https://aws.amazon.com/corretto/). 
+However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) instead.
+If you already have a copy of Java 21 installed, you may skip this step.
 
 <div className="row">
   <div className="col col--6">
@@ -47,10 +47,17 @@ Next, you must create a Batch file to be able to start your server and have acce
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.bat`.
 You must always double-click the `start.bat` file to launch the server, not the .jar file.
 
+:::tip
+By default, Windows will hide file extensions.
+Make sure to enable file extensions by clicking `View`, `Show`, and selecting `File name extensions`.
+Also double-check that you did not accidentally save `start.bat` as a text file with the name `start.bat.txt`,
+otherwise you will not be able to start the server!
+:::
+
 ```batch title="start.bat"
 @ECHO OFF
 TITLE SportPaper 1.8
-java -Xms128M -Xmx2G -Dfile.encoding=UTF8 -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
+java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
 PAUSE
 ```
 <div className="text--center">
@@ -59,7 +66,7 @@ PAUSE
 
 ### Downloading PGM
 
-You have two options when it comes to downloading PGM. You can download the stable version of PGM from the [Downloads](/downloads) page or you can download the development builds from its [GitHub repository](https://github.com/PGMDev/PGM/actions?query=actor%3AElectroid+branch%3Adev+is%3Asuccess).
+You have two options when it comes to downloading PGM. The [Downloads](/downloads) page offers both stable and the latest development builds.
 If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
@@ -81,13 +88,13 @@ Also see [Additional Setup](#additional-setup) if you would like to make the mos
 
 ## macOS
 
-This guide uses macOS 12 (Monterey). The process should be the same for newer versions of macOS, however, you may need to proceed differently if you are using an older version of macOS.
+This guide uses macOS 14 (Sonoma). Generally speaking, the process should be the same for recent versions of macOS, however, you may need to proceed differently if you are using an older version of macOS.
 
 ### Installing Java
 
-We recommend using either Java 8 or Java 11. For this guide, we will be using [Amazon Corretto 11](https://aws.amazon.com/corretto/). 
-However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) as well.
-If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+We recommend using either Java 21. For this guide, we will be using [Amazon Corretto 21](https://aws.amazon.com/corretto/). 
+However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) instead.
+If you already have a copy of Java 21 installed, you may skip this step.
 
 <div className="row">
   <div className="col col--6">
@@ -150,7 +157,7 @@ You must always double-click the `start.command` file to launch the server, not 
 
 ### Downloading PGM
 
-You have two options when it comes to downloading PGM. You can download the stable version of PGM from the [Downloads](/downloads) page or you can download the development builds from its [GitHub repository](https://github.com/PGMDev/PGM/actions?query=actor%3AElectroid+branch%3Adev+is%3Asuccess).
+You have two options when it comes to downloading PGM. The [Downloads](/downloads) page offers both stable and the latest development builds.
 If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
@@ -184,12 +191,12 @@ Otherwise, we trust that you know what you are doing.
 
 ### Installing Java
 
-We recommend using either Java 8 or Java 11. For this guide, we will be using [OpenJDK](https://openjdk.org/). 
-However, you may choose to use [Amazon Corretto 11](https://aws.amazon.com/corretto/) or [Eclipse Adoptium](https://adoptium.net/) as well.
-If you already have a copy of Java 8 or Java 11 installed, you may skip this step.
+We recommend using either Java 21. For this guide, we will be using [OpenJDK](https://openjdk.org/). 
+However, you may choose to use [Amazon Corretto 21](https://aws.amazon.com/corretto/) or [Eclipse Adoptium](https://adoptium.net/) instead.
+If you already have a copy of Java 21 installed, you may skip this step.
 
 ```bash
-sudo apt update && sudo apt install openjdk-11-jdk
+sudo apt update && sudo apt install openjdk-21-jdk
 ```
 
 ### Downloading SportPaper
@@ -216,7 +223,7 @@ You must always execute from `start.sh` to launch the server, not the .jar file.
 
 ### Downloading PGM
 
-You have two options when it comes to downloading PGM. You can download the stable version of PGM from the [Downloads](/downloads) page or you can download the development builds from its [GitHub repository](https://github.com/PGMDev/PGM/actions?query=actor%3AElectroid+branch%3Adev+is%3Asuccess).
+You have two options when it comes to downloading PGM. The [Downloads](/downloads) page offers both stable and the latest development builds.
 If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
