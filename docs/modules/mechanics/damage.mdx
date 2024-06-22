@@ -27,8 +27,8 @@ The difficulty level can be set to `peaceful`, `easy`, `normal`, or `hard`. The 
 
 ### Hunger
 
-Specify if a player can starve to death, usually used with the difficulty setting.<br/>
-This can also be accomplished with the `naturalRegeneration` [gamerule](/docs/modules/mechanics/gamerules).
+Specify if a player can starve to death, usually used with the difficulty setting.
+This can also be accomplished with the [`naturalRegeneration` gamerule](/docs/modules/mechanics/gamerules).
 
 ```xml
 <hunger>
@@ -94,6 +94,14 @@ While almost every form of damage can be disabled safely, it is recommended that
   | `<damage> </damage>` | The damage type that is disabled. | [Damage Cause](#damage-causes) |
 </div>
 
+#### Damage Attributes
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `attacker-action` | The action to trigger for the attacker. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+  | `victim-action` | The action to trigger for the victim. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+</div>
+
 _Example_
 
 ```xml
@@ -101,6 +109,15 @@ _Example_
     <!-- Disable fall damage -->
     <damage>fall</damage>
 </disabledamage>
+```
+
+```xml
+<!-- Deny explosions & use actions "when-attacking" and "when-damaged" -->
+<damage attacker-action="when-attacking" victim-action="when-damaged">
+    <deny>
+        <cause>explosion</cause>
+    </deny>
+</damage>
 ```
 
 #### Block Explosion Attributes

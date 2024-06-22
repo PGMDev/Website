@@ -53,7 +53,8 @@ const sidebars = {
       "modules/mechanics/lanes",
       "modules/mechanics/damage",
       "modules/mechanics/gamerules",
-      "modules/mechanics/spawners",],
+      "modules/mechanics/spawners",
+      "modules/mechanics/tracking-compass"],
     },
     {
       type: 'category',

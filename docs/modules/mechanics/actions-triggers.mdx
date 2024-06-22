@@ -1,6 +1,7 @@
 ---
 id: actions-triggers
 title: Actions & Triggers
+toc_max_heading_level: 4
 ---
 
 Actions are a set of features that are applied to players, teams, or matches, similiar to [Kits](/docs/modules/gear/kits).
@@ -23,7 +24,11 @@ In the future, some features that are currently used in Kits may be transferred 
   | `<kill-entities/>` | Removes entities based on a filter. |
   | `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
   | `<fill/>` | Places blocks in a block-bounded region. |
+  | `<paste-structure/>` | Places a structure at a specified location when triggered. |
   | `<replace-item> </replace-item>` | Finds and replaces certain items. |
+  | `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
+  | `<velocity/>` | A player-scoped kit that applies velocity to the player. |
+  | `<teleport/>` | Teleport a player to a specific location. |
 </div>
 
 ### Action Attributes
@@ -61,6 +66,28 @@ In the future, some features that are currently used in Kits may be transferred 
   | `fade-out` | How long the title and subtitle text will fade out. | [Time Period](/docs/reference/misc/time-periods) | 1s |
 </div>
 
+#### Replacements
+
+<div className="table-container">
+  | Element | Description | Value |
+  |---|---|---|
+  | `<replacements>` | A list of replacements.<br />**Note:** In the future, more replacements such as player names will be supported. | <span className="badge badge--secondary">Replacements Sub-elements</span> |
+
+  | Sub-element | Description |
+  |---|---|
+  | `<decimal/>` | A numerical placeholder. |
+</div>
+
+##### Decimal Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `id` | Unique identifier used to reference this decimal from other places in the XML. | <span className="badge badge--primary">String</span> |
+  | `value` | <span className="badge badge--danger">Required</span>The variable this decimal should evaluate. It can be used with formulas. | <span className="badge badge--primary">Expression</span> |
+  | `format` | Customize how the decimal should be displayed, e.g. `#.00`. | [Java DecimalFormat pattern](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html) |
+</div>
+
 ### Sound Attributes
 
 <div className="table-container">
@@ -78,7 +105,8 @@ In the future, some features that are currently used in Kits may be transferred 
   | Attribute | Description | Value |
   |---|---|---|
   | `var` | <span className="badge badge--danger">Required</span>The variable to update. | [Variable](/docs/modules/mechanics/variables) |
-  | `value` | <span className="badge badge--danger">Required</span>Sets a new value for the variable. | <span className="badge badge--primary">String</span> |
+  | `index` | If setting an array-type variable, the expression to be evaluated.<br />*Required when using array-type variables.* | <span className="badge badge--primary">Expression</span> |
+  | `value` | <span className="badge badge--danger">Required</span>Sets a new value for the variable. | <span className="badge badge--primary">Expression</span> |
 </div>
 
 ### Kill-Entities Attributes
@@ -96,21 +124,75 @@ In the future, some features that are currently used in Kits may be transferred 
   |---|---|---|---|
   | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region to fill in. Multiple regions will be treated as an union. | [Region](/docs/modules/mechanics/regions) |
   | `material` | <span className="badge badge--danger">Required</span>The filling material. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-  | `filter` | Filters which blocks get affected. *May impact preformace for large fills.* | [Filter](/docs/modules/mechanics/filters) |
-  | `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact preformace for large fills.* | <span className="badge badge--primary">true/false</span> | false |
+  | `filter` | Filters which blocks get affected. *May impact performance for large fills.* | [Filter](/docs/modules/mechanics/filters) |
+  | `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | false |
 </div>
 
-### Replace Item Attributes/Elements
+### Paste-Structure Attributes
 
 <div className="table-container">
   | Attribute | Description | Value |
   |---|---|---|
-  | `<find />` | The item to find. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+  | `x` | The X coordinate of the location to paste the structure, measured in east-west. | <span className="badge badge--primary">Expression</span> |
+  | `y` | The Y coordinate of the location to paste the structure, measured in altitude. | <span className="badge badge--primary">Expression</span> |
+  | `z` | The Z coordinate of the location to paste the structure, measured in north-south. | <span className="badge badge--primary">Expression</span> |
+  | `structure` | The structure to paste. | [Structure ID](/docs/modules/blocks/structures) |
+</div>
+
+### Replace Item
+
+#### Sub-elements
+
+<div className="table-container">
+  | Sub-elements | Description | Value |
+  |---|---|---|
+  | `<find/>` | The item to find in a player's inventory. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
   | `<replace/>` | The new item to replace with. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+</div>
+
+#### Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
   | `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
   | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
   | `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
   | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
+</div>
+
+### Take-Payment
+
+#### Sub-elements
+
+<div className="table-container">
+  | Sub-elements | Description | Value |
+  |---|---|---|
+  | `<payment/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>An individual payment. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+  | `<success-action/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The action to trigger upon a successful payment. | <span className="badge badge--primary">Action</span> |
+  | `<fail-action/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The action to trigger upon a failed payment. | <span className="badge badge--primary">Action</span> |
+</div>
+
+#### Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `material` | <span className="badge badge--danger">Required</span>The item to display as an icon. | [Material Name](/docs/reference/items/inventory#material-matchers) |
+  | `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
+  | `currency` | The currency needed to purchase. | [Filter](/docs/modules/mechanics/filters) |
+</div>
+
+### Velocity & Teleport Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value |
+  |---|---|---|
+  | `x` | The X coordinate, measured in east-west. | <span className="badge badge--primary">Expression</span> |
+  | `y` | The Y coordinate, measured in altitude. | <span className="badge badge--primary">Expression</span> |
+  | `z` | The Z coordinate, measured in north-south. | <span className="badge badge--primary">Expression</span> |
+  | `yaw` | The horizontal angle a user looks to. | <span className="badge badge--primary">Expression</span> |
+  | `pitch` | The vertical angle a user looks to. | <span className="badge badge--primary">Expression</span> |
 </div>
 
 ## Trigger Element
@@ -168,7 +250,7 @@ This example uses the `expose` attribute in Action to allow moderators to enable
 a "Blitz Mode" using the `/action` command. Moderators must have the `GAMEPLAY` permissions
 in order to use `/action`. See [Commands](/docs/commands/main) for more details.
 
-```
+```xml
 <actions>
     <!-- Moderator uses "/action trigger start-blitz" to start this Action -->
     <action id="start-blitz" expose="true" scope="match">
