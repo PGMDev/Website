@@ -1,6 +1,7 @@
 ---
 id: main
 title: PGM Commands
+hide_table_of_contents: true
 ---
 
 This page describes a list of PGM commands, aliases, and permissions.
@@ -13,16 +14,20 @@ Permissions are prefixed with `Permissions` (i.e. `Permissions.ADMINCHAT`).
   | `/action list` | actions list<br />actions page | Inspect variables for a player. | -q query<br />-a all | [page] | `GAMEPLAY` |
   | `/action trigger` | actions trigger | Trigger a specific action. || [action] | `GAMEPLAY` |
   | `/action untrigger` | actions untrigger | Untrigger a specific action. || [action] | `GAMEPLAY` |
+  | `/filter` || Match a filter against a player. || [filter] [target] | `DEBUG` |
   | `/mode push` || Reschedule all unconditional objective modes. || [time] | `GAMEPLAY` |
   | `/mode start` || Starts an objective mode. || [mode number] [time] | `GAMEPLAY` |
   | `/team alias` || Rename a team. || [old team name] [new team name] | `GAMEPLAY` |
   | `/timelimit` | tl | Start a time limit. | -r result (can be `default`, `objectives`, `tie`, or name of team) | [duration] [result] [overtime] [max-overtime] | `GAMEPLAY` |
-  | `/join` | play | Join the match. | -f force | [team] – defaults to random | `JOIN` |
+  | `/join` | play | Join the match. | -f force | [team] - defaults to random | `JOIN` |
   | `/team force` || Force a player onto a team. ||| `JOIN_FORCE` |
-  | `/team shuffle` || Shuffle players among the teams. || -a all -f force | `JOIN_FORCE` |
+  | `/team shuffle` || Shuffle players among the teams. | -a all<br />-f force || `JOIN_FORCE` |
   | `/leave` | obs | Leave the match. ||| `LEAVE` |
   | `/loadnewmaps` | findnewmaps<br />new<br />maps | Load new maps. | -f force || `RELOAD` |
-  | `/pgm` || Reload the configuration. ||| `RELOAD` |
+  | `/showxml` || Open a file editor with the map's XML on the server side.<br />**Note:** This command is only available for locally hosted servers with a desktop environment. || [map name] |
+  | `/pgm reload` || Reload the configuration. ||| `RELOAD` |
+  | `/pgm help` || View available PGM commands. ||| `RELOAD` |
+  | `/pgm confirm` || Execute any pending commands. ||| `RELOAD` |
   | `/ffa min` || Set the minimum players. || [reset &#124; min-players] | `RESIZE` |
   | `/ffa size` || Set the maximum players. || [reset &#124; max-players] (max-overfill) | `RESIZE` |
   | `/team min` || Set the minimum players on a team. || [team] (reset &#124; min-players) | `RESIZE` |
@@ -46,9 +51,9 @@ Permissions are prefixed with `Permissions` (i.e. `Permissions.ADMINCHAT`).
   | `/class` | selectclass<br />c<br />cl | Selects your class. |
   | `/classlist` | classes<br />listclasses<br />cls | List all available classes. |
   | `/g` | all<br />! (*do not use forward slash*) | Send a message to everyone. || [message] |
-  | `/inventory` | inv<br />vi | View a player’s inventory. |
+  | `/inventory` | inv<br />vi | View a player's inventory. |
   | `/list` | who<br />online<br />ls | View a list of online players. |
-  | `/map` | mapinfo | Show info about a map. || [map name] – defaults to current map |
+  | `/map` | mapinfo | Show info about a map. || [map name] - defaults to current map |
   | `/maps` | maplist<br />ml | List all loaded maps. | -a author<br />-t tag1,tag2<br />-n name |
   | `/match` | matchinfo | Show the match info. |
   | `/mode list` | page | List all objective modes. || [page] |

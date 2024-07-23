@@ -25,15 +25,31 @@ When consumed, these items can trigger [actions](/docs/modules/mechanics/actions
   | Attribute | Description | Value | Default |
   |---|---|---|---|
   | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this consumable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `action`&#124;`kit` | <span className="badge badge--danger">Required</span>Run the specified action upon consumption. | [Action ID](/docs/modules/mechanics/actions-triggers) |
-  | `on` | <span className="badge badge--danger">Required</span>Specify how the consumable should be used.<br />**Note:** The only action currently supported is `eat`. In the future, more actions such as clicking will be supported. | `eat` |
-  | `override` | Consumable is affected by vanilla behaviors, such as giving the player potion effects.<br />*This is useful when using potion bottles and golden apples as the consumable item.* | <span className="badge badge--primary">true/false</span> | true |
+  | `action` | <span className="badge badge--danger">Required</span>Run the specified action upon consumption. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+  | `on` | <span className="badge badge--danger">Required</span>Specify how the consumable should be used. | `eat`<br />`right click`<br />`left click`<br />`click` (both) |
+  | `override` | The consumable is affected by vanilla behaviors, such as giving the player potion effects.<br />*This is useful when using potion bottles and golden apples as the consumable item.* | <span className="badge badge--primary">true/false</span> | true |
+  | `consume` | PGM will consume the item once per use for the user.<br />**Note:** This attribute is ignored if the value of `on` attribute is `eat`. | <span className="badge badge--primary">true/false</span> | [*](#override--consume-behavior) |
+</div>
+
+### Override & Consume Behavior
+Some combinations of `override` and `consume` values can lead to unexpected behaviors involving either
+the user's client or PGM itself. This chart outlines the expected vanilla behavior for each configuration.
+
+<div className="table-container">
+  | Override | Consume | Vanilla Behavior | Result |
+  |---|---|---|---|
+  | `false` | `false` | No consume (e.g.: stick) | <span className="badge badge--success">Optimal</span>0 used |
+  | `false` | `false` | Consumes (e.g.: snowball) | <span className="badge badge--warning">Sub-optimal</span>1 used |
+  | `false` | `true` | No consume (e.g.: stick) | <span className="badge badge--success">Optimal</span>1 used |
+  | `false` | `true` | Consumes (e.g.: snowball) | <span className="badge badge--danger">Invalid</span>2 used |
+  | `true` | `false` | Any case | <span className="badge badge--success">Optimal</span>0 used |
+  | `true` | `true` | Any case | <span className="badge badge--success">Optimal</span>1 used |
 </div>
 
 ### Examples
 
 ```xml
-<!-- Create the consumable "template" -->
+<!-- Create the consumable "porkchop-that-says-yum" -->
 <consumables>
     <consumable id="porkchop-that-says-yum" action="say-yum" on="eat" override="false"/>
 </consumables>
@@ -50,9 +66,9 @@ When consumed, these items can trigger [actions](/docs/modules/mechanics/actions
 ```
 
 ```xml
-<!-- Create the consumable "template" -->
+<!-- Create the consumable "fast-apple" -->
 <consumables>
-    <consumable id="fast-apple" kit="speed-kit" on="eat"/>
+    <consumable id="fast-apple" action="speed-kit" on="eat"/>
 </consumables>
 <kits>
     <!-- Apply the consumable to an item -->
@@ -62,6 +78,25 @@ When consumed, these items can trigger [actions](/docs/modules/mechanics/actions
     <!-- Define the kit the consumable gives you -->
     <kit id="speed-kit">
         <effect duration="4" amplifier="10">speed</effect>
+    </kit>
+</kits>
+```
+
+```xml
+<!-- Create the consumable "heal" -->
+<!-- When the healing stick is right clicked, it is "consumed" and applies the
+heal-click action (kit) that sets the player's health back to 20 -->
+<consumables>
+    <consumable id="heal" action="heal-click" on="click" override="true" consume="true"/>
+</consumables>
+<kits>
+    <!-- Apply the consumable to an item -->
+    <kit id="spawn-kit">
+        <item material="stick" consumable="heal" name="Healing stick!"/>
+    </kit>
+    <!-- Define the kit the consumable gives you -->
+    <kit id="heal-click">
+        <health>20</health>
     </kit>
 </kits>
 ```

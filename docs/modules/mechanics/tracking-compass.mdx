@@ -1,0 +1,65 @@
+---
+id: tracking-compass
+title: Tracking Compass
+---
+
+The Tracking Compass module allows you to override the vanilla compass behavior by pointing
+it to a player of interest. In addition, you can control how the compass selects the target to track.
+
+#### Compass Element
+
+<div className="table-container">
+  | Element | Description |
+  |---|---|
+  | `<compass> </compass>` | Node containing all compass properties used in this map. |
+
+  | Sub-element ||
+  |---|---|
+  | `<player>` | An individual compass property pointing to the nearest player passing a filter. |
+  | `<flag>` | An individual compass property pointing to a specific flag. |
+</div>
+
+##### Compass Attributes
+
+<div className="table-container">
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `order` | When using `DEFINITION_ORDER`, the compass targets first matching target. When using `CLOSEST`, the compass goes through all matching targets and chooses the one closest to the player. | `DEFINITION_ORDER`<br />`CLOSEST` |
+  | `show-distance` | Show the distance between the compass holder and tracked player in meters. | <span className="badge badge--primary">true/false</span> | false |
+</div>
+
+##### Player/Flag Attribute
+
+<div className="table-container">
+  | Attribute | Description | Value | Default |
+  |---|---|---|---|
+  | `filter` | Filters who should be tracked by the compass. | [Filter](/docs/modules/mechanics/filters) |
+  | `holder-filter` | Filters out what compass targets can be eligible for what players, e.g. a team targets a different flag than the other team. | [Filter](/docs/modules/mechanics/filters) |
+  | `name` | The title name that describes the tracked flag or player's role, e.g. "Wool Carrier." | <span className="badge badge--primary">Formatted Text</span> |
+  | `show-player` | Show the tracked player's username to the compass holder.<br />**Note:** This is only applicable to `<player>` sub-element. | <span className="badge badge--primary">true/false</span> | false |
+</div>
+
+## Examples
+
+```xml
+<compass show-distance="true">
+    <player filter="always" show-player="true"/>
+</compass>
+
+<compass>
+    <player filter="always" name="Wool Carrier"/>
+</compass>
+
+<compass order="DEFINITION_ORDER">
+    <player filter="wool-carrier" name="Wool Carrier"/>
+    <player filter="enemy" show-player="true" name="Nearest Enemy"/>
+</compass>
+
+<compass>
+    <player holder-filter="red-team" filter="blue-carrier" show-player="true"/>
+    <flag holder-filter="red-team">blue-flag</flag>
+    
+    <player holder-filter="blue-team" filter="red-carrier" show-player="true"/>
+    <flag holder-filter="blue-team" name="Some other name">red-flag</flag>
+</compass>
+```
