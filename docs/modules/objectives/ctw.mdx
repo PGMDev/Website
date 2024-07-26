@@ -50,6 +50,7 @@ The victory monument's area, where the wool block is placed, is protected by def
   | `show-sidebar` | Displays the wool on scoreboard. | <span className="badge badge--primary">true/false</span> | true |
   | `stats` | Determines if this wool counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
   | `show` | Specify if the wool should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> |
+  | `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) | |
   | `location` | <span className="badge badge--danger" title="Required after proto 1.3.4">Required</span>Location where the wool can be found at, used to determine proximity. | <span className="badge badge--primary">X,Y,Z</span> |
   | `wool-proximity-metric` | Metric used to determine proximity to the wool. | `player`<br />`closest block`<br />`closest kill`<br />`none` | `closest kill` |
   | `wool-proximity-horizontal` | Only calculate horizontal distance for wool proximity. | <span className="badge badge--primary">true/false</span> | false |
