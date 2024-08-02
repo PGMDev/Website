@@ -7,16 +7,19 @@ hide_table_of_contents: true
 This page describes a list of commands, aliases, and permissions for the [Events](https://github.com/PGMDev/Events) plugin.
 
 <div className="table-container">
-  | Commands | Description | Usage | Permissions |
-  |---|---|---|---|
-  | `/create` | Create a tournament. || `events.staff` |
-  | `/info` | View information about a team. | [team] | `events.staff` |
-  | `/list` | List all loaded teams. || `events.staff` |
-  | `/register` | Register a team. | [team] | `events.staff` |
-  | `/rounds` | Shows the rounds from this event. |
-  | `/score` | Shows the current score in the tournament. |
-  | `/unregisterall` | Clear all registered teams. || `events.staff` |
-  | `/veto` | Veto a map. | [number] |
+  | Commands | Aliases | Description | Usage | Permissions |
+  |---|---|---|---|---|
+  | `/ready` || Mark a team as ready. |
+  | `/unready` || Mark a team as no longer being ready. |
+  | `/veto` || Vetoes a map if a veto round is running. It can only be executed by players on a team. | [map] |
+  | `/tourney` | tm<br />tournament<br />events |
+  | `/tourney create` || Creates a match based on a format. | [format] | `events.staff` |
+  | `/tourney info` || View information about a team. | [team] | `events.staff` |
+  | `/tourney list` || List all loaded teams. || `events.staff` |
+  | `/tourney register` || Registers a team for a match. | [team] | `events.staff` |
+  | `/tourney rounds` || Shows past and future to-be-played rounds for an event. |
+  | `/tourney score` || Shows the current score in an event. |
+  | `/tourney unregisterall` || Clears all registered teams. || `events.staff` |
 </div>
 
 Spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1QlS4DW6aLcryf4BRw3WXylydm07HqKNTf_QYI2PtLzU/edit?usp=sharing).
