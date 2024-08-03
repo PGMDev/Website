@@ -32,7 +32,7 @@ You can define as many variables as you want and all variables must have a scope
   | Attribute | Description | Value |
   |---|---|---|
   | `id` | Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `exclusive` | Limits how many different values there can be in a variable.<br />*Values between 1 and 50 are supported, higher values may lead to performance issues.* | <span className="badge badge--primary">Number</span> |
+  | `exclusive` | Limits how many different instances there can be for a variable.<br />*Values between 1 and 50 are supported, higher values may lead to performance issues.* | <span className="badge badge--primary">Number</span> |
   | `scope` | Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
   | `default` | Sets the initial value of the variable. | <span className="badge badge--primary">Number</span> |
 </div>

@@ -32,6 +32,35 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            // Redirect from old Events command page
+            to: '/docs/commands/events',
+            from: '/docs/events/commands',
+          },
+          {
+            // Redirect from old Packaging and Releasing page name
+            to: '/docs/guides/preparing/packaging-and-releasing',
+            from: '/docs/guides/packaging/compiling-and-releasing'
+          },
+        ],
+        createRedirects(existingPath) {
+          if (existingPath.includes('/docs/guides/preparing')) {
+            // Redirect from old guides link to current guides link
+            return [
+              existingPath.replace('/docs/guides/preparing', '/docs/guides/packaging'),
+            ];
+          }
+          return undefined;
+        },
+      },
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
