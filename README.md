@@ -12,7 +12,8 @@ Follow the steps below to get a working local installation of this documentation
 
 1. Run `npm install` in this project's root folder. This will install all dependencies.
 2. Once it's done, run `npm start`. This command starts a local development server and opens up a browser window. Most changes are reflected live without needing to restart the server.
-3. Depending where you host it, you can build the website using `npm build` if you intend to upload it yourself, or build it _and_ deploy it to Github pages using `GIT_USER=<Your GitHub username> USE_SSH=true npm deploy`. The later is a convenient way to build the website and push to the `gh-pages` branch.
+3. Depending where you host it, you can build the website using `npm run build` if you intend to upload it yourself or build it _and_ deploy it to GitHub pages using the [Action workflow](.github/workflows/deploy.yml).
+    * Some modifications will be needed to deploy outside the pgm.dev environment.
 
 ## How to Contribute
 
@@ -23,8 +24,8 @@ Before opening a Pull Request, please:
 
 ## Governance
 
-This project is maintained by [CoWinkKeyDinkInc](https://github.com/CoWinkKeyDinkInc), with assistance from [Electroid](https://github.com/Electroid) and other members from the [PGM](https://discord.gg/RTcBe5AKRA) community.
+This project is maintained by [CoWinkKeyDinkInc](https://github.com/CoWinkKeyDinkInc), with assistance from [Electroid](https://github.com/Electroid) and other members from the [PGM community](https://discord.gg/RTcBe5AKRA).
 
 ## License
 
-> [**Apache-2.0**](https://github.com/PGMDev/Website/blob/master/LICENSE)
+> [**Apache-2.0**](LICENSE)
