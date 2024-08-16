@@ -239,3 +239,12 @@ footer .container {
     vertical-align: sub;
   }
 }
+
+:where(.button--white) {
+  --ifm-button-background-color: #ffffff;
+  --ifm-button-border-color: #ffffff;
+}
+
+.button--white:hover {
+  color: #000000 !important;
+}

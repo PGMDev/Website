@@ -84,7 +84,7 @@ function Home() {
               <div className={styles.Ctas}>
                 <Link
                   className={classnames(
-                    "button button--outline button--primary button--lg",
+                    "button button--outline button--white button--lg",
                     styles.getStarted
                   )}
                   to={useBaseUrl("downloads")}
