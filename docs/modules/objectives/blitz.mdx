@@ -25,6 +25,12 @@ Blitz maps should include `<respawn auto="true"/>` to prevent players from "hidi
 | `<filter>` | Filters when a player loses a life. | [Filter](/docs/modules/mechanics/filters) | `always` |
 | `<join-filter>` | Filters when a player can join the match after it has started. | [Filter](/docs/modules/mechanics/filters) | `never` |
 
+##### Blitz Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard.<br />**Note:** This filter is team-scoped, it can filter whether each team should show or not independently. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+
 ### Examples
 
 ```xml
