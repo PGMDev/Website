@@ -28,30 +28,26 @@ All documentation here is subject to rapid change. Please report any issues in o
 
 #### Payload Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<payloads> </payloads>` | A node containing the payloads for this map. |
+| Element | Description |
+|---|---|
+| `<payloads> </payloads>` | A node containing the payloads for this map. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<payload/>` | An individual payload. | <span className="badge badge--secondary">Payload Attributes</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<payload/>` | An individual payload. | <span className="badge badge--secondary">Payload Attributes</span> |
 
 #### Payload Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value/Children | Default |
-  |---|---|---|---|
-  | `location` | <span className="badge badge--danger">Required</span>The starting position of the payload. | <span className="badge badge--primary">X,Y,Z</span> |
-  | `radius` | <span className="badge badge--danger">Required</span>The distance at which a player can affect the payload. | <span className="badge badge--primary">Number</span> |
-  | `display-filter` | Filter when particles should be shown. | [Filter](/docs/modules/mechanics/filters) | `always` |
-  | `capture-time` | The time needed for the payload to reach the end of the track. | [Time Period](/docs/reference/misc/time-periods) | 30s |
-  
-  ||
-  |:---:|
-  | **[Supports every other feature of Control Points.](/docs/modules/objectives/control-points#control-point-attributes)** |
-</div>
+| Attribute | Description | Value/Children | Default |
+|---|---|---|---|
+| `location` | <span className="badge badge--danger">Required</span>The starting position of the payload. | <span className="badge badge--primary">X,Y,Z</span> |
+| `radius` | <span className="badge badge--danger">Required</span>The distance at which a player can affect the payload. | <span className="badge badge--primary">Number</span> |
+| `display-filter` | Filter when particles should be shown. | [Filter](/docs/modules/mechanics/filters) | `always` |
+| `capture-time` | The time needed for the payload to reach the end of the track. | [Time Period](/docs/reference/misc/time-periods) | 30s |
+
+||
+|:---:|
+| **[Supports every other feature of Control Points.](/docs/modules/objectives/control-points#control-point-attributes)** |
 
 ## Examples
 

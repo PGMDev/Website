@@ -8,34 +8,28 @@ This can be used, for example, to make all gold swords unbreakable or give all i
 
 #### Item-Mod Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<item-mods> </item-mods>` | The item mods node, containing all the individual modification rules. |
+| Element | Description |
+|---|---|
+| `<item-mods> </item-mods>` | The item mods node, containing all the individual modification rules. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<rule> </rule>` | A single item modification rule. | <span className="badge badge--secondary">Rule Sub-Elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<rule> </rule>` | A single item modification rule. | <span className="badge badge--secondary">Rule Sub-Elements</span> |
 
 #### Rule Sub-Elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<match> </match>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The material or materials to modify. | <span className="badge badge--secondary">Match Sub-Elements</span> |
-  | `<modify> </modify>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The attributes to modify on the specified material(s). | [Item Meta](#item-meta) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<match> </match>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The material or materials to modify. | <span className="badge badge--secondary">Match Sub-Elements</span> |
+| `<modify> </modify>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The attributes to modify on the specified material(s). | [Item Meta](#item-meta) |
 
 #### Match Sub-Elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<material> </material>` | An individual material to match. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-  | `<all-materials/>` | Match all materials. |
-  | `<all-blocks/>` | Match all block type materials. |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<material> </material>` | An individual material to match. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
+| `<all-materials/>` | Match all materials. |
+| `<all-blocks/>` | Match all block type materials. |
 
 ### Examples
 
@@ -72,30 +66,26 @@ While these are the same attributes as used in item kits, the modify element doe
 
 #### Modify Sub-Elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<enchantment> </enchantment>` | This item's enchantments. | [Enchantments](/docs/modules/gear/items#enchantments) |
-  | `<effect> </effect>` | A custom potion effect, only applies for potion items. | [Potion Effect](/docs/modules/gear/potions) |
-  | `<attribute> </attribute>` | Custom attributes for this item. | [Attribute Modifiers](/docs/modules/gear/items#attribute-modifiers) |
-  | `<can-destroy> </can-destroy>` | The materials that can be mined with the item. | [Can Destroy](/docs/modules/gear/items#can-destroy--can-place-on) |
-  | `<can-place-on> </can-place-on>` | The materials that the item can be placed on. | [Can Place On](/docs/modules/gear/items#can-destroy--can-place-on) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<enchantment> </enchantment>` | This item's enchantments. | [Enchantments](/docs/modules/gear/items#enchantments) |
+| `<effect> </effect>` | A custom potion effect, only applies for potion items. | [Potion Effect](/docs/modules/gear/potions) |
+| `<attribute> </attribute>` | Custom attributes for this item. | [Attribute Modifiers](/docs/modules/gear/items#attribute-modifiers) |
+| `<can-destroy> </can-destroy>` | The materials that can be mined with the item. | [Can Destroy](/docs/modules/gear/items#can-destroy--can-place-on) |
+| `<can-place-on> </can-place-on>` | The materials that the item can be placed on. | [Can Place On](/docs/modules/gear/items#can-destroy--can-place-on) |
 
 #### Modify Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `name` | The item's display name that appears when it is selected. | <span className="badge badge--primary">String</span> |
-  | `lore` | Custom text that appears when a player hovers over the item in the inventory. | <span className="badge badge--primary">String</span> |
-  | `unbreakable` | Specify if this item is unbreakable and hides the durability bar in Minecraft. | <span className="badge badge--primary">true/false</span> | false |
-  | `color` | Leather armor color as a hexadecimal color. `RRGGBB`<br />*Only applies to leather armor items.* | <span className="badge badge--primary">Hex Color</span> |
-  | `potion` | Potion type.<br />*Only applies to potion items.* | [Potion ID](https://minecraft.wiki/w/Potion#Data_values) |
-  | `show-enchantments` | Show enchantments in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-attributes` | Show attribute modifiers in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-unbreakable` | Show the unbreakable property in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-can-destroy` | Show the breakable block list in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-can-place-on` | Show the blocks the item can be placed on in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-other` | Show various other things in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `name` | The item's display name that appears when it is selected. | <span className="badge badge--primary">String</span> |
+| `lore` | Custom text that appears when a player hovers over the item in the inventory. | <span className="badge badge--primary">String</span> |
+| `unbreakable` | Specify if this item is unbreakable and hides the durability bar in Minecraft. | <span className="badge badge--primary">true/false</span> | false |
+| `color` | Leather armor color as a hexadecimal color. `RRGGBB`<br />*Only applies to leather armor items.* | <span className="badge badge--primary">Hex Color</span> |
+| `potion` | Potion type.<br />*Only applies to potion items.* | [Potion ID](https://minecraft.wiki/w/Potion#Data_values) |
+| `show-enchantments` | Show enchantments in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-attributes` | Show attribute modifiers in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-unbreakable` | Show the unbreakable property in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-can-destroy` | Show the breakable block list in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-can-place-on` | Show the blocks the item can be placed on in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-other` | Show various other things in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |

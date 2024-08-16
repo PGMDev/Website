@@ -13,35 +13,29 @@ Flares will only be set off if a `flare-radius=""` is defined.
 If this attribute is missing a message must be specified to alert players. 
 This is how the alarm can be made "silent", so that enemies may not realize that they have been detected.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<proximity-alarms> </proximity-alarms>` | Node containing this map's proximity-alarms. |
-  
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<proximity-alarm>` | An individual proximity-alarm node. | <span className="badge badge--secondary">Proximity-alarm Sub-elements</span> |
-</div>
+| Element | Description |
+|---|---|
+| `<proximity-alarms> </proximity-alarms>` | Node containing this map's proximity-alarms. |
+
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<proximity-alarm>` | An individual proximity-alarm node. | <span className="badge badge--secondary">Proximity-alarm Sub-elements</span> |
 
 #### Proximity-alarm Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region this alarm applies to. | [Region](/docs/modules/mechanics/regions) |
-  | `message` | The message to show in chat when a player is detected. | <span className="badge badge--primary">Formatted Text</span> |
-  | `flare-radius` | The radius of the circular area to show flares in, centered on the proximity-alarm region. | <span className="badge badge--primary">Number</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region this alarm applies to. | [Region](/docs/modules/mechanics/regions) |
+| `message` | The message to show in chat when a player is detected. | <span className="badge badge--primary">Formatted Text</span> |
+| `flare-radius` | The radius of the circular area to show flares in, centered on the proximity-alarm region. | <span className="badge badge--primary">Number</span> |
 
 #### Proximity-alarm Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region this alarm applies to, treated as a region union. | [Regions](/docs/modules/mechanics/regions) |
-  | `<detect>` | Filter who gets detected by the proximity alarm. | [Filter](/docs/modules/mechanics/filters) |
-  | `<notify>` | Filter who gets notified by the proximity alarm. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region this alarm applies to, treated as a region union. | [Regions](/docs/modules/mechanics/regions) |
+| `<detect>` | Filter who gets detected by the proximity alarm. | [Filter](/docs/modules/mechanics/filters) |
+| `<notify>` | Filter who gets notified by the proximity alarm. | [Filter](/docs/modules/mechanics/filters) |
 
 ### Examples
 

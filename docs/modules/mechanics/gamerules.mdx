@@ -11,24 +11,20 @@ Not all gamerules are supported, the table below lists which are supported.
 When stopping the daylight cycle, you should either use the `<doDaylightCycle>` gamerule or the [`<timelock>`](/docs/modules/environment/time#time-lock) module.
 :::
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<gamerules> </gamerules>` | Node containing the defined game rules. |
-</div>
+| Element | Description |
+|---|---|
+| `<gamerules> </gamerules>` | Node containing the defined game rules. |
 
 #### Supported Gamerule Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<doFireTick>` | Toggles whether fire spread occurs. | <span className="badge badge--primary">true/false</span> |
-  | `<doTileDrops>` | Toggles whether tile entities drop. | <span className="badge badge--primary">true/false</span> |
-  | `<doMobLoot>` | Toggles whether mobs drop loot on death. | <span className="badge badge--primary">true/false</span> |
-  | `<mobGriefing>` | Toggles whether mobs such as Creepers and Endermen cause enviromental damage. | <span className="badge badge--primary">true/false</span> |
-  | `<naturalRegeneration>` | Toggles whether or not players naturally regain heath. | <span className="badge badge--primary">true/false</span> |
-  | `<doDaylightCycle>` | Toggles whether or not time tick occurs. | <span className="badge badge--primary">true/false</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<doFireTick>` | Toggles whether fire spread occurs. | <span className="badge badge--primary">true/false</span> |
+| `<doTileDrops>` | Toggles whether tile entities drop. | <span className="badge badge--primary">true/false</span> |
+| `<doMobLoot>` | Toggles whether mobs drop loot on death. | <span className="badge badge--primary">true/false</span> |
+| `<mobGriefing>` | Toggles whether mobs such as Creepers and Endermen cause enviromental damage. | <span className="badge badge--primary">true/false</span> |
+| `<naturalRegeneration>` | Toggles whether or not players naturally regain heath. | <span className="badge badge--primary">true/false</span> |
+| `<doDaylightCycle>` | Toggles whether or not time tick occurs. | <span className="badge badge--primary">true/false</span> |
 
 Example
 
@@ -41,15 +37,13 @@ Example
 
 #### Unsupported Gamerules
 
-<div className="table-container">
-  | Rule | Description |
-  |---|---|
-  | `doMobSpawning` | Not supported in favor of the [Mob Spawning](/docs/modules/environment/mobs) module. |
-  | `keepInventory` | Not supported since PGM already solves this with kits. |
-  | `commandBlockOutput` | Command blocks are not used in PGM. |
-  | `logAdminCommands` | Not useful in custom maps. |
-  | `randomTickSpeed` | Not useful in custom maps. |
-  | `reducedDebugInfo` | Not useful in custom maps. |
-  | `sendCommandFeedback` | Not useful in custom maps. |
-  | `showDeathMessages` | Not supported since PGM handles death messages. |
-</div>
+| Rule | Description |
+|---|---|
+| `doMobSpawning` | Not supported in favor of the [Mob Spawning](/docs/modules/environment/mobs) module. |
+| `keepInventory` | Not supported since PGM already solves this with kits. |
+| `commandBlockOutput` | Command blocks are not used in PGM. |
+| `logAdminCommands` | Not useful in custom maps. |
+| `randomTickSpeed` | Not useful in custom maps. |
+| `reducedDebugInfo` | Not useful in custom maps. |
+| `sendCommandFeedback` | Not useful in custom maps. |
+| `showDeathMessages` | Not supported since PGM handles death messages. |

@@ -15,46 +15,40 @@ Portals respond to any player move event, this allows almost instant teleportati
 Copy the yaw and pitch from the [Debug screen (`F3`)](https://minecraft.wiki/w/Debug_screen) in Minecraft (the `Facing: Direction (Axis) (Yaw/Pitch)` line).
 :::
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<portals> </portals>` | Node containing the portals on this map. |
+| Element | Description |
+|---|---|
+| `<portals> </portals>` | Node containing the portals on this map. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<portal>` | An individual portal node. | <span className="badge badge--secondary">Portal Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<portal>` | An individual portal node. | <span className="badge badge--secondary">Portal Sub-elements</span> |
 
 #### Portal Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `x`,`y`,`z` | Offset the players `X,Y,Z` position by the amount specified. | <span className="badge badge--primary">Number</span> |
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this portals entrance is located.<br />*Cannot combine an entrance region with `forward` or `transit` properties.* | [Region](/docs/modules/mechanics/regions) |
-  | `destination` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Destination of the portal, teleports players to a random point inside the region.<br />*Cannot combine an exit region with `reverse` or `transit` properties.* | [Randomize-able Region](/docs/modules/mechanics/regions) |
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter portal player access. | [Filter](/docs/modules/mechanics/filters) | `always` |
-  | `sound` | Play the portal sound. | <span className="badge badge--primary">true/false</span> | true |
-  | `protect` | Protect the portal entrance and exit regions. | <span className="badge badge--primary">true/false</span> | false |
-  | `bidirectional` | Creates a dual-linked portal that goes both ways. This can only be used when all coordinates and directions are relative. | <span className="badge badge--primary">true/false</span> | false |
-  | `smooth` | Smoothly teleport players. | <span className="badge badge--primary">true/false</span> | false |
-  | `yaw` | Specify the direction the player is looking horizontally from -180&deg; to 180&deg;.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">Number</span> |
-  | `pitch` | Specify the direction the player is looking vertically from -90&deg; to 90&deg;.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">Number</span> |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `x`,`y`,`z` | Offset the players `X,Y,Z` position by the amount specified. | <span className="badge badge--primary">Number</span> |
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this portals entrance is located.<br />*Cannot combine an entrance region with `forward` or `transit` properties.* | [Region](/docs/modules/mechanics/regions) |
+| `destination` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Destination of the portal, teleports players to a random point inside the region.<br />*Cannot combine an exit region with `reverse` or `transit` properties.* | [Randomize-able Region](/docs/modules/mechanics/regions) |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter portal player access. | [Filter](/docs/modules/mechanics/filters) | `always` |
+| `sound` | Play the portal sound. | <span className="badge badge--primary">true/false</span> | true |
+| `protect` | Protect the portal entrance and exit regions. | <span className="badge badge--primary">true/false</span> | false |
+| `bidirectional` | Creates a dual-linked portal that goes both ways. This can only be used when all coordinates and directions are relative. | <span className="badge badge--primary">true/false</span> | false |
+| `smooth` | Smoothly teleport players. | <span className="badge badge--primary">true/false</span> | false |
+| `yaw` | Specify the direction the player is looking horizontally from -180&deg; to 180&deg;.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">Number</span> |
+| `pitch` | Specify the direction the player is looking vertically from -90&deg; to 90&deg;.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">Number</span> |
 
 #### Portal Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this portals entrance is located. | [Regions](/docs/modules/mechanics/regions) |
-  | `<destination>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Destination of the portal, teleports players to a random point inside the region.<br />*Region is automatically filtered against block place.* | [Randomize-able Regions](/docs/modules/mechanics/regions) |
-  | `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter portal player access. | [Filters](/docs/modules/mechanics/filters) |
-  | `<forward>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Apply forward transform on rising edge. | [Dynamic Filters](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `<reverse>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Apply reverse transform on rising edge. | [Dynamic Filters](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `<transit>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Apply forward transform on rising edge and reverse transform on falling edge.<br />*Cannot combine transit property with `forward` or `reverse` properties.* | [Dynamic Filters](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `<observers>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter portal observer access. | [Filters](/docs/modules/mechanics/filters) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region where this portals entrance is located. | [Regions](/docs/modules/mechanics/regions) |
+| `<destination>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Destination of the portal, teleports players to a random point inside the region.<br />*Region is automatically filtered against block place.* | [Randomize-able Regions](/docs/modules/mechanics/regions) |
+| `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter portal player access. | [Filters](/docs/modules/mechanics/filters) |
+| `<forward>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Apply forward transform on rising edge. | [Dynamic Filters](/docs/modules/mechanics/filters#dynamic-filters) |
+| `<reverse>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Apply reverse transform on rising edge. | [Dynamic Filters](/docs/modules/mechanics/filters#dynamic-filters) |
+| `<transit>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Apply forward transform on rising edge and reverse transform on falling edge.<br />*Cannot combine transit property with `forward` or `reverse` properties.* | [Dynamic Filters](/docs/modules/mechanics/filters#dynamic-filters) |
+| `<observers>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter portal observer access. | [Filters](/docs/modules/mechanics/filters) |
 
 ### Examples
 

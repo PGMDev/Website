@@ -11,29 +11,23 @@ Formats are XML files that instruct the Events plugin to do a specific tournamen
 Every format XML file must contain the base `<format>` module. 
 The format module can also be a round and therefore can be used to create a nested rounds.
 
-<div className="table-container">
-  | Format Element | Description | Value/Children |
-  |---|---|---|
-  | `<format> </format>` | The main format node containing all the modules used in this format. It can also represent a round and be nested inside other elements. | <span className="badge badge--secondary">XML Modules</span> |
-</div>
+| Format Element | Description | Value/Children |
+|---|---|---|
+| `<format> </format>` | The main format node containing all the modules used in this format. It can also represent a round and be nested inside other elements. | <span className="badge badge--secondary">XML Modules</span> |
 
 ##### Format Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `best-of` | What the match should be out of. | <span className="badge badge--primary">Number</span> | 1 |
-  | `name` | <span className="badge badge--danger">Only if nested in {`<options>`}</span>The name of the round. Useful for vetoing. | <span className="badge badge--primary">String</span> |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `best-of` | What the match should be out of. | <span className="badge badge--primary">Number</span> | 1 |
+| `name` | <span className="badge badge--danger">Only if nested in {`<options>`}</span>The name of the round. Useful for vetoing. | <span className="badge badge--primary">String</span> |
 
 ##### Format Sub-elements
 
-<div className="table-container">
-  | Element | Description | Attributes | Value/Children |
-  |---|---|---|---|
-  | `<match>` | The name of the map. | `id=""`<br />(defaults to map name) | <span className="badge badge--primary">String</span> |
-  | `<veto>` | Represents a round with a veto mechanism to choose play order. | `id=""` | <span className="badge badge--secondary">Veto Modules</span> |
-</div>
+| Element | Description | Attributes | Value/Children |
+|---|---|---|---|
+| `<match>` | The name of the map. | `id=""`<br />(defaults to map name) | <span className="badge badge--primary">String</span> |
+| `<veto>` | Represents a round with a veto mechanism to choose play order. | `id=""` | <span className="badge badge--secondary">Veto Modules</span> |
 
 ### Veto
 
@@ -41,43 +35,35 @@ Every format can have a veto element to choose play order between rounds, and ea
 
 ##### Veto Sub-elements
 
-<div className="table-container">
-  | Element | Description | Children |
-  |---|---|---|
-  | `<decider>` | A veto decider. Decides which team vetoes first. | <span className="badge badge--secondary">Match</span><span className="badge badge--secondary">{`<result-from />`}</span> |
-  | `<options>` | Map options for that round. | <span className="badge badge--secondary">Match</span> |
-  | `<order>` | The veto order (ban, pick, etc.). The last element is enacted by the system. | <span className="badge badge--secondary">Match</span> |
-</div>
+| Element | Description | Children |
+|---|---|---|
+| `<decider>` | A veto decider. Decides which team vetoes first. | <span className="badge badge--secondary">Match</span><span className="badge badge--secondary">{`<result-from />`}</span> |
+| `<options>` | Map options for that round. | <span className="badge badge--secondary">Match</span> |
+| `<order>` | The veto order (ban, pick, etc.). The last element is enacted by the system. | <span className="badge badge--secondary">Match</span> |
 
 #### `<decider>`
 
 ###### Decider Sub-elements
 
-<div className="table-container">
-  | Element | Description | Attribute |
-  |---|---|---|
-  | `<result-from />` | Uses the result from a round with a matching id, let it be a veto decider, match or round. Useful to stop repeating veto deciders. | `id="map-name"` |
-</div>
+| Element | Description | Attribute |
+|---|---|---|
+| `<result-from />` | Uses the result from a round with a matching id, let it be a veto decider, match or round. Useful to stop repeating veto deciders. | `id="map-name"` |
 
 #### `<order>`
 
 ##### Order Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `ban-until` | The number of maps that will remain after banning maps. | <span className="badge badge--primary">Number</span> | 1 |
-  | `starting-team` | Which team starts choosing/banning maps first. | <span className="badge badge--primary">Number</span> | 1 |
-  | `time` | The time in seconds that each team has to veto. | <span className="badge badge--primary">Number</span> | 30 |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `ban-until` | The number of maps that will remain after banning maps. | <span className="badge badge--primary">Number</span> | 1 |
+| `starting-team` | Which team starts choosing/banning maps first. | <span className="badge badge--primary">Number</span> | 1 |
+| `time` | The time in seconds that each team has to veto. | <span className="badge badge--primary">Number</span> | 30 |
 
 ##### Order Sub-elements
 
 If `<order>` has no attributes present, it will look for these sub-elements.
 
-<div className="table-container">
-  | Element | Description | Attributes | Value |
-  |---|---|---|---|
-  | `<pick>` | A pick in the veto process. | `team=""` - the team that gets to pick the map.<br />`insert="back"` - whether the map should be added to the front or back of the maps to be played. | <span className="badge badge--primary">Number</span><span className="badge badge--primary">String</span> |
-  | `<ban>` | A ban in the veto process. | `team=""` - the team that gets to pick the map.<br />`insert="back"`- whether the map should be added to the front or back of the maps to be played. | <span className="badge badge--primary">Number</span><span className="badge badge--primary">String</span> |
-</div>
+| Element | Description | Attributes | Value |
+|---|---|---|---|
+| `<pick>` | A pick in the veto process. | `team=""` - the team that gets to pick the map.<br />`insert="back"` - whether the map should be added to the front or back of the maps to be played. | <span className="badge badge--primary">Number</span><span className="badge badge--primary">String</span> |
+| `<ban>` | A ban in the veto process. | `team=""` - the team that gets to pick the map.<br />`insert="back"`- whether the map should be added to the front or back of the maps to be played. | <span className="badge badge--primary">Number</span><span className="badge badge--primary">String</span> |

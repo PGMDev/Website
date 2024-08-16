@@ -9,42 +9,36 @@ When consumed, these items can trigger [actions](/docs/modules/mechanics/actions
 
 #### Consumables Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<consumables> </consumables>` | Node containing the consumables definitions. |
+| Element | Description |
+|---|---|
+| `<consumables> </consumables>` | Node containing the consumables definitions. |
 
-  | Sub-elements ||
-  |---|---|
-  | `<consumable> </consumable>` | An individual consumable. |
-</div>
+| Sub-elements ||
+|---|---|
+| `<consumable> </consumable>` | An individual consumable. |
 
 #### Consumable Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this consumable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `action` | <span className="badge badge--danger">Required</span>Run the specified action upon consumption. | [Action ID](/docs/modules/mechanics/actions-triggers) |
-  | `on` | <span className="badge badge--danger">Required</span>Specify how the consumable should be used. | `eat`<br />`right click`<br />`left click`<br />`click` (both) |
-  | `override` | The consumable is affected by vanilla behaviors, such as giving the player potion effects.<br />*This is useful when using potion bottles and golden apples as the consumable item.* | <span className="badge badge--primary">true/false</span> | true |
-  | `consume` | PGM will consume the item once per use for the user.<br />**Note:** This attribute is ignored if the value of `on` attribute is `eat`. | <span className="badge badge--primary">true/false</span> | [*](#override--consume-behavior) |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this consumable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `action` | <span className="badge badge--danger">Required</span>Run the specified action upon consumption. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+| `on` | <span className="badge badge--danger">Required</span>Specify how the consumable should be used. | `eat`<br />`right click`<br />`left click`<br />`click` (both) |
+| `override` | The consumable is affected by vanilla behaviors, such as giving the player potion effects.<br />*This is useful when using potion bottles and golden apples as the consumable item.* | <span className="badge badge--primary">true/false</span> | true |
+| `consume` | PGM will consume the item once per use for the user.<br />**Note:** This attribute is ignored if the value of `on` attribute is `eat`. | <span className="badge badge--primary">true/false</span> | [*](#override--consume-behavior) |
 
 ### Override & Consume Behavior
 Some combinations of `override` and `consume` values can lead to unexpected behaviors involving either
 the user's client or PGM itself. This chart outlines the expected vanilla behavior for each configuration.
 
-<div className="table-container">
-  | Override | Consume | Vanilla Behavior | Result |
-  |---|---|---|---|
-  | `false` | `false` | No consume (e.g.: stick) | <span className="badge badge--success">Optimal</span>0 used |
-  | `false` | `false` | Consumes (e.g.: snowball) | <span className="badge badge--warning">Sub-optimal</span>1 used |
-  | `false` | `true` | No consume (e.g.: stick) | <span className="badge badge--success">Optimal</span>1 used |
-  | `false` | `true` | Consumes (e.g.: snowball) | <span className="badge badge--danger">Invalid</span>2 used |
-  | `true` | `false` | Any case | <span className="badge badge--success">Optimal</span>0 used |
-  | `true` | `true` | Any case | <span className="badge badge--success">Optimal</span>1 used |
-</div>
+| Override | Consume | Vanilla Behavior | Result |
+|---|---|---|---|
+| `false` | `false` | No consume (e.g.: stick) | <span className="badge badge--success">Optimal</span>0 used |
+| `false` | `false` | Consumes (e.g.: snowball) | <span className="badge badge--warning">Sub-optimal</span>1 used |
+| `false` | `true` | No consume (e.g.: stick) | <span className="badge badge--success">Optimal</span>1 used |
+| `false` | `true` | Consumes (e.g.: snowball) | <span className="badge badge--danger">Invalid</span>2 used |
+| `true` | `false` | Any case | <span className="badge badge--success">Optimal</span>0 used |
+| `true` | `true` | Any case | <span className="badge badge--success">Optimal</span>1 used |
 
 ### Examples
 

@@ -15,30 +15,26 @@ The name should be kept as short as possible and not contain "Team", for example
 A team's `plural` attribute specifies if the team name is plural, e.g. "Attackers"; PGM will use this to pick appropriate win messages, etc. 
 The `show-name-tags` attribute specifies who can see player name tags, this only applies to players, observers will always see all name tags.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<teams> </teams>` | The teams node, containing all the individual teams. |
+| Element | Description |
+|---|---|
+| `<teams> </teams>` | The teams node, containing all the individual teams. |
 
-  | Sub-elements || Value |
-  |---|---|---|
-  | `<team> </team>` | A single team node containing the team's name. | <span className="badge badge--primary">String</span> |
-</div>
+| Sub-elements || Value |
+|---|---|---|
+| `<team> </team>` | A single team node containing the team's name. | <span className="badge badge--primary">String</span> |
 
 ##### Team Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | Unique identifier used to reference this team from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `color` | The team's display color. | [Chat Color Name](/docs/reference/misc/formatting#chat-colors) |
-  | `dye-color` | Override the color used for items given to the team using `team-color="true"` and control points. | [Dye Color Name](/docs/reference/misc/colors) |
-  | `plural` | The team's name is plural, used in status messages.<br />*e.g., `Defenders win!` instead of `Defenders wins!`.* | <span className="badge badge--primary">true/false</span> |
-  | `show-name-tags` | Specify who can see the name tags of players in this team.<br />*Observers will always see all name tags.* | `true`<br />`false`<br />`allies`<br />`enemies` | `true` |
-  | `min` | The minimum amount of players required in this team to start a match. | <span className="badge badge--primary">Number</span> |
-  | `max` | The maximum players for this team, normal players cannot join the team once it reaches this size.<br />*Premium players may join over this limit until `max-overfill` is reached.* | <span className="badge badge--primary">Number</span> |
-  | `max-overfill` | Player overfill &#8212; premium players cannot join the match once it reaches this size.<br />*Must be greater than the defined `max`.* | <span className="badge badge--primary">Number</span> | <span className="badge badge--secondary">25% over `max` value</span> |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | Unique identifier used to reference this team from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `color` | The team's display color. | [Chat Color Name](/docs/reference/misc/formatting#chat-colors) |
+| `dye-color` | Override the color used for items given to the team using `team-color="true"` and control points. | [Dye Color Name](/docs/reference/misc/colors) |
+| `plural` | The team's name is plural, used in status messages.<br />*e.g., `Defenders win!` instead of `Defenders wins!`.* | <span className="badge badge--primary">true/false</span> |
+| `show-name-tags` | Specify who can see the name tags of players in this team.<br />*Observers will always see all name tags.* | `true`<br />`false`<br />`allies`<br />`enemies` | `true` |
+| `min` | The minimum amount of players required in this team to start a match. | <span className="badge badge--primary">Number</span> |
+| `max` | The maximum players for this team, normal players cannot join the team once it reaches this size.<br />*Premium players may join over this limit until `max-overfill` is reached.* | <span className="badge badge--primary">Number</span> |
+| `max-overfill` | Player overfill &#8212; premium players cannot join the match once it reaches this size.<br />*Must be greater than the defined `max`.* | <span className="badge badge--primary">Number</span> | <span className="badge badge--secondary">25% over `max` value</span> |
 
 ### Examples
 

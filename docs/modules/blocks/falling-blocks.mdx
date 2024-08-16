@@ -13,35 +13,29 @@ Entire structures can then be built from those blocks, and they will not collaps
 
 #### Falling Blocks Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<falling-blocks> </falling-blocks>` | Node containing this map's falling block rules. |
+| Element | Description |
+|---|---|
+| `<falling-blocks> </falling-blocks>` | Node containing this map's falling block rules. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<rule>` | An individual falling block rule. | <span className="badge badge--secondary">Rule Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<rule>` | An individual falling block rule. | <span className="badge badge--secondary">Rule Sub-elements</span> |
 
 #### Rule Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Filter what blocks get modified by this rule. | [Block Filter](/docs/modules/mechanics/filters) |
-  | `sticky` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The blocks that are sticky. | [Block Filter](/docs/modules/mechanics/filters) |
-  | `delay` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Tick delay until blocks start to fall after they have been disturbed. | <span className="badge badge--primary">Number</span> | 2 |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Filter what blocks get modified by this rule. | [Block Filter](/docs/modules/mechanics/filters) |
+| `sticky` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The blocks that are sticky. | [Block Filter](/docs/modules/mechanics/filters) |
+| `delay` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Tick delay until blocks start to fall after they have been disturbed. | <span className="badge badge--primary">Number</span> | 2 |
 
 #### Rule Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children | Default |
-  |---|---|---|---|
-  | `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Filter what blocks get modified by this rule.<br />*Also accepts regions to limit the rule to a certain area.* | [Block Filters](/docs/modules/mechanics/filters) &amp;<br />[Regions](/docs/modules/mechanics/regions) |
-  | `<sticky>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The blocks that are sticky. | [Block Filter](/docs/modules/mechanics/filters) |
-  | `<delay>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Tick delay till blocks start to fall after they have been disturbed. | <span className="badge badge--primary">Number</span> | 2 |
-</div>
+| Element | Description | Value/Children | Default |
+|---|---|---|---|
+| `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Filter what blocks get modified by this rule.<br />*Also accepts regions to limit the rule to a certain area.* | [Block Filters](/docs/modules/mechanics/filters) &amp;<br />[Regions](/docs/modules/mechanics/regions) |
+| `<sticky>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The blocks that are sticky. | [Block Filter](/docs/modules/mechanics/filters) |
+| `<delay>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Tick delay till blocks start to fall after they have been disturbed. | <span className="badge badge--primary">Number</span> | 2 |
 
 ### Examples
 

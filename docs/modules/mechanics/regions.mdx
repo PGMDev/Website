@@ -28,36 +28,30 @@ See the [Properly Defining Regions](/docs/guides/xml-pointers/regions) guide for
 
 ### Block Bounded Regions
 
-<div className="table-container">
-  | Block Bounded Regions ||
-  |---|---|
-  | `<cuboid id="abc" min="X1,Y1,Z1" max="X2,Y2,Z2"/>`<br />`<cuboid min="X1,Y1,Z1", size="30,10,40"/>`<br />`<cuboid max="X2,Y2,Z2", size="30,10,40"/>`<br/>A rectangular solid from `X1,Y1,Z1` to `X2,Y2,Z2`.<br />Using the `size` attribute offsets the original min/max value by `size`. ie. (min + size = max) & (max - size = min)<br />*Only block bounded when using finite coordinates.* | <span className="badge badge--primary">Randomize-able</span> |
-  | `<cylinder id="abc" base="X,Y,Z" radius="R" height="H"/>`<br />A cylinder located at `X,Y,Z` with a radius of `R` and a height of `H`.<br />*Only block bounded when using a finite radius.* | <span className="badge badge--primary">Randomize-able</span> |
-  | `<block id="abc">X,Y,Z</block>`<br />A single block located at `X,Y,Z`. | <span className="badge badge--primary">Randomize-able</span> |
-  | `<sphere id="abc" origin="X,Y,Z" radius="R"/>`<br />A sphere located at `X,Y,Z` with a radius of `R`.<br />*Only block bounded when using a finite radius.* | <span className="badge badge--primary">Randomize-able</span> |
-  | `<point id="abc">X,Y,Z</point>`<br />A single point region located at `X,Y,Z`.<br />*This region will always return the same location even when used in a randomized context, e.g., spawns.* | <span className="badge badge--primary">Randomize-able</span> |
-</div>
+| Block Bounded Regions ||
+|---|---|
+| `<cuboid id="abc" min="X1,Y1,Z1" max="X2,Y2,Z2"/>`<br />`<cuboid min="X1,Y1,Z1", size="30,10,40"/>`<br />`<cuboid max="X2,Y2,Z2", size="30,10,40"/>`<br/>A rectangular solid from `X1,Y1,Z1` to `X2,Y2,Z2`.<br />Using the `size` attribute offsets the original min/max value by `size`. ie. (min + size = max) & (max - size = min)<br />*Only block bounded when using finite coordinates.* | <span className="badge badge--primary">Randomize-able</span> |
+| `<cylinder id="abc" base="X,Y,Z" radius="R" height="H"/>`<br />A cylinder located at `X,Y,Z` with a radius of `R` and a height of `H`.<br />*Only block bounded when using a finite radius.* | <span className="badge badge--primary">Randomize-able</span> |
+| `<block id="abc">X,Y,Z</block>`<br />A single block located at `X,Y,Z`. | <span className="badge badge--primary">Randomize-able</span> |
+| `<sphere id="abc" origin="X,Y,Z" radius="R"/>`<br />A sphere located at `X,Y,Z` with a radius of `R`.<br />*Only block bounded when using a finite radius.* | <span className="badge badge--primary">Randomize-able</span> |
+| `<point id="abc">X,Y,Z</point>`<br />A single point region located at `X,Y,Z`.<br />*This region will always return the same location even when used in a randomized context, e.g., spawns.* | <span className="badge badge--primary">Randomize-able</span> |
 
 ### Unbounded Regions
 
-<div className="table-container">
-  | Unbounded Regions |
-  |---|
-  | `<rectangle id="abc" min="X1,Z1" max="X2,Z2"/>`<br />A rectangle from `X1,Z1` to `X2,Z2`. |
-  | `<circle id="abc" center="X,Z" radius="R"/>`<br />A circle located at `X,Z` with a radius of `R`.<br />*The region goes from 0 to map height, i.e. PGM doesn't check the players Y position.* |
-  | `<half normal="1,0,1" origin="100,50,0" id="abc"/>`<br />Half of the world split by a plane pointing towards a normal. |
-  | `<below x="" y="" z="" id="abc"/>`<br />`<above x="" y="" z="" id="abc"/>`<br />Half of the world split at the specified axis.<br />If multiple axises are defined, the specified parts of each axis are intersected and returned. |
-</div>
+| Unbounded Regions |
+|---|
+| `<rectangle id="abc" min="X1,Z1" max="X2,Z2"/>`<br />A rectangle from `X1,Z1` to `X2,Z2`. |
+| `<circle id="abc" center="X,Z" radius="R"/>`<br />A circle located at `X,Z` with a radius of `R`.<br />*The region goes from 0 to map height, i.e. PGM doesn't check the players Y position.* |
+| `<half normal="1,0,1" origin="100,50,0" id="abc"/>`<br />Half of the world split by a plane pointing towards a normal. |
+| `<below x="" y="" z="" id="abc"/>`<br />`<above x="" y="" z="" id="abc"/>`<br />Half of the world split at the specified axis.<br />If multiple axises are defined, the specified parts of each axis are intersected and returned. |
 
 ### Static Regions
 
-<div className="table-container">
-  | Static Regions |
-  |---|
-  | `<empty/>`<br />A zero size/position region, contains nothing. |
-  | `<nowhere/>`<br />A reference-able zero size/position region, contains nothing. Can be referenced with the region ID: `nowhere`. |
-  | `<everywhere/>`<br />A reference-able infinite size region, contains everything. Can be referenced with the region ID: `everywhere`. |
-</div>
+| Static Regions |
+|---|
+| `<empty/>`<br />A zero size/position region, contains nothing. |
+| `<nowhere/>`<br />A reference-able zero size/position region, contains nothing. Can be referenced with the region ID: `nowhere`. |
+| `<everywhere/>`<br />A reference-able infinite size region, contains everything. Can be referenced with the region ID: `everywhere`. |
 
 ### Half-space Regions
 
@@ -91,32 +85,28 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
 
 ### Apply Element Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region this apply affects. | [Region](/docs/modules/mechanics/regions) |
-  | `enter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter player enter events. | [Filter](/docs/modules/mechanics/filters) |
-  | `leave` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter player leave events. | [Filter](/docs/modules/mechanics/filters) |
-  | `block` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block place and break events. | [Filter](/docs/modules/mechanics/filters) |
-  | `block-place` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block place events. | [Filter](/docs/modules/mechanics/filters) |
-  | `block-place-against` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block place against events. | [Filter](/docs/modules/mechanics/filters) |
-  | `block-break` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block break events. | [Filter](/docs/modules/mechanics/filters) |
-  | `block-physics` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter world block updates; water flowing, portals disappearing, etc. | [Filter](/docs/modules/mechanics/filters) |
-  | `use` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter right-click events. | [Filter](/docs/modules/mechanics/filters) |
-  | `message` | Send a message to the player if the filter denies the event. | <span className="badge badge--primary">String</span> |
-  | `early-warning` | Warn the player before they actually break a denied block. | <span className="badge badge--primary">String</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region this apply affects. | [Region](/docs/modules/mechanics/regions) |
+| `enter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter player enter events. | [Filter](/docs/modules/mechanics/filters) |
+| `leave` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter player leave events. | [Filter](/docs/modules/mechanics/filters) |
+| `block` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block place and break events. | [Filter](/docs/modules/mechanics/filters) |
+| `block-place` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block place events. | [Filter](/docs/modules/mechanics/filters) |
+| `block-place-against` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block place against events. | [Filter](/docs/modules/mechanics/filters) |
+| `block-break` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter block break events. | [Filter](/docs/modules/mechanics/filters) |
+| `block-physics` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter world block updates; water flowing, portals disappearing, etc. | [Filter](/docs/modules/mechanics/filters) |
+| `use` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter right-click events. | [Filter](/docs/modules/mechanics/filters) |
+| `message` | Send a message to the player if the filter denies the event. | <span className="badge badge--primary">String</span> |
+| `early-warning` | Warn the player before they actually break a denied block. | <span className="badge badge--primary">String</span> | false |
 
 ### Apply Effects
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Give a kit to players entering the region. | [Kit](/docs/modules/gear/kits) |
-  | `lend-kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Give a kit to players entering the region, and remove it when they leave the region. This can be used only with removable kits. Any non-removable kit will generate an error. The kits page explains which kit types are removable. | [Kit](/docs/modules/gear/kits) |
-  | `velocity` | Change a player's velocity when they enter the region. | <span className="badge badge--primary">X,Y,Z</span> |
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when/if kits and velocities are applied. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Give a kit to players entering the region. | [Kit](/docs/modules/gear/kits) |
+| `lend-kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Give a kit to players entering the region, and remove it when they leave the region. This can be used only with removable kits. Any non-removable kit will generate an error. The kits page explains which kit types are removable. | [Kit](/docs/modules/gear/kits) |
+| `velocity` | Change a player's velocity when they enter the region. | <span className="badge badge--primary">X,Y,Z</span> |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when/if kits and velocities are applied. | [Filter](/docs/modules/mechanics/filters) |
 
 _Apply Examples_
 
@@ -201,14 +191,12 @@ _Example using velocity for jump pads_
 
 Regions can be inverted, combined, subtracted, or intersected by putting them inside of the following elements.
 
-<div className="table-container">
-  | Region Modifiers |
-  |---|
-  | `<negative><region id="region1"/></negative>`<br />Inverse of a region, the region or regions will no longer be considered block bounded. |
-  | `<union><region id="region1"/><region id="region2"/>..</union>`<br />Combination of multiple regions. |
-  | `<complement><region id="region1"/><region id="region2"/>..</complement>`<br />Subtracts successive regions from the first defined region. |
-  | `<intersect><region id="region1"/><region id="region2"/>..</intersect>`<br />Returns the area that multiple regions intersect with. |
-</div>
+| Region Modifiers |
+|---|
+| `<negative><region id="region1"/></negative>`<br />Inverse of a region, the region or regions will no longer be considered block bounded. |
+| `<union><region id="region1"/><region id="region2"/>..</union>`<br />Combination of multiple regions. |
+| `<complement><region id="region1"/><region id="region2"/>..</complement>`<br />Subtracts successive regions from the first defined region. |
+| `<intersect><region id="region1"/><region id="region2"/>..</intersect>`<br />Returns the area that multiple regions intersect with. |
 
 ### Region Combinations Diagram
 
@@ -226,12 +214,10 @@ When mirroring a region the origin is the central point around which the region 
 This point can be inside or outside the region being mirrored.
 The normal specifies which direction the region is being mirrored, e.g., `1,0,0` would mirror along the +X axis.
 
-<div className="table-container">
-  | Region Transformation |
-  |---|
-  | `<translate offset="X,Y,Z"><region id="region1"/></translate>`<br />Copy and translate a region by `X,Y,Z` blocks. |
-  | `<mirror normal="1,0,1" origin="100,50,0"><region id="region1"/></mirror>`<br />Copy and mirror a region towards a normal around a point. |
-</div>
+| Region Transformation |
+|---|
+| `<translate offset="X,Y,Z"><region id="region1"/></translate>`<br />Copy and translate a region by `X,Y,Z` blocks. |
+| `<mirror normal="1,0,1" origin="100,50,0"><region id="region1"/></mirror>`<br />Copy and mirror a region towards a normal around a point. |
 
 ### Region Mirrors Diagram
 
@@ -288,21 +274,17 @@ Copy the yaw and pitch from the [Debug screen (`F3`)](https://minecraft.wiki/w/D
 
 ##### Point Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
-  | `yaw` | Specifies what direction the player is looking horizontally from -180&deg; to 180&deg;.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">-180 to 180</span> |
-  | `pitch` | Specifies what direction the player is looking vertically from -90&deg; to 90&deg;.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">-90 to 90</span> |
-  | `angle` | Specify the exact block coordinates that the player should look at.<br />*This attribute will negate any angles set by the `yaw` and `pitch` attributes.* | <span className="badge badge--primary">X,Y,Z</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
+| `yaw` | Specifies what direction the player is looking horizontally from -180&deg; to 180&deg;.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">-180 to 180</span> |
+| `pitch` | Specifies what direction the player is looking vertically from -90&deg; to 90&deg;.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">-90 to 90</span> |
+| `angle` | Specify the exact block coordinates that the player should look at.<br />*This attribute will negate any angles set by the `yaw` and `pitch` attributes.* | <span className="badge badge--primary">X,Y,Z</span> |
 
 ##### Point Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region or regions the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region or regions the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
 
 **Note:** The pitch and yaw arguments can also accept a `X,Y,Z` coordinate.

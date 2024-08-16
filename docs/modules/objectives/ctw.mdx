@@ -23,48 +23,42 @@ The victory monument's area, where the wool block is placed, is protected by def
 </wools>
 ```
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<wools> </wools>` | Node containing all the wools for this map. | |
+| Element | Description |
+|---|---|
+| `<wools> </wools>` | Node containing all the wools for this map. | |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<wool> </wool>` | A wool victory monument. | <span className="badge badge--secondary">Wool Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<wool> </wool>` | A wool victory monument. | <span className="badge badge--secondary">Wool Sub-elements</span> |
 
 ##### Wool Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | Unique identifier used to reference wool monuments from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `required` | Specify if this objective is required to win the match.<br />*Teams completing all of their required objectives will win regardless of score or Blitz configuration.* | <span className="badge badge--primary">true/false</span> |
-  | `team` | <span className="badge badge--danger">Required</span>The team which must place this wool. | [Team ID](/docs/modules/format/teams) |
-  | `color` | <span className="badge badge--danger">Required</span>The wool's color. | [Dye Color Name](/docs/reference/misc/colors) |
-  | `monument` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element." >Property</span><span className="badge badge--danger">Required</span>The monument where the wool must be placed. | [Region](/docs/modules/mechanics/regions) |
-  | `craftable` | Specify if the wool can be crafted, e.g. with white wool and dye. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-messages` | Broadcast messages related to the wool in chat. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-effects` | Play sounds, fireworks, and other effects related to the wool. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-info` | Display the wool under commands such as `/match`. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-sidebar` | Displays the wool on scoreboard. | <span className="badge badge--primary">true/false</span> | true |
-  | `stats` | Determines if this wool counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
-  | `show` | Specify if the wool should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> |
-  | `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) | |
-  | `location` | <span className="badge badge--danger" title="Required after proto 1.3.4">Required</span>Location where the wool can be found at, used to determine proximity. | <span className="badge badge--primary">X,Y,Z</span> |
-  | `wool-proximity-metric` | Metric used to determine proximity to the wool. | `player`<br />`closest block`<br />`closest kill`<br />`none` | `closest kill` |
-  | `wool-proximity-horizontal` | Only calculate horizontal distance for wool proximity. | <span className="badge badge--primary">true/false</span> | false |
-  | `monument-proximity-metric` | Metric used to determine proximity to the monument. | `player`<br />`closest block`<br />`closest kill`<br />`none` | `closest block` |
-  | `monument-proximity-horizontal` | Only calculate horizontal distance for monument proximity. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | Unique identifier used to reference wool monuments from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `required` | Specify if this objective is required to win the match.<br />*Teams completing all of their required objectives will win regardless of score or Blitz configuration.* | <span className="badge badge--primary">true/false</span> |
+| `team` | <span className="badge badge--danger">Required</span>The team which must place this wool. | [Team ID](/docs/modules/format/teams) |
+| `color` | <span className="badge badge--danger">Required</span>The wool's color. | [Dye Color Name](/docs/reference/misc/colors) |
+| `monument` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element." >Property</span><span className="badge badge--danger">Required</span>The monument where the wool must be placed. | [Region](/docs/modules/mechanics/regions) |
+| `craftable` | Specify if the wool can be crafted, e.g. with white wool and dye. | <span className="badge badge--primary">true/false</span> | true |
+| `show-messages` | Broadcast messages related to the wool in chat. | <span className="badge badge--primary">true/false</span> | true |
+| `show-effects` | Play sounds, fireworks, and other effects related to the wool. | <span className="badge badge--primary">true/false</span> | true |
+| `show-info` | Display the wool under commands such as `/match`. | <span className="badge badge--primary">true/false</span> | true |
+| `show-sidebar` | Displays the wool on scoreboard. | <span className="badge badge--primary">true/false</span> | true |
+| `stats` | Determines if this wool counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
+| `show` | Specify if the wool should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> |
+| `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) | |
+| `location` | <span className="badge badge--danger" title="Required after proto 1.3.4">Required</span>Location where the wool can be found at, used to determine proximity. | <span className="badge badge--primary">X,Y,Z</span> |
+| `wool-proximity-metric` | Metric used to determine proximity to the wool. | `player`<br />`closest block`<br />`closest kill`<br />`none` | `closest kill` |
+| `wool-proximity-horizontal` | Only calculate horizontal distance for wool proximity. | <span className="badge badge--primary">true/false</span> | false |
+| `monument-proximity-metric` | Metric used to determine proximity to the monument. | `player`<br />`closest block`<br />`closest kill`<br />`none` | `closest block` |
+| `monument-proximity-horizontal` | Only calculate horizontal distance for monument proximity. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Wool Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<monument>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The monument where the wool must be placed. | [Region](/docs/modules/mechanics/regions) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<monument>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The monument where the wool must be placed. | [Region](/docs/modules/mechanics/regions) |
 
 ### Examples
 

@@ -15,15 +15,13 @@ Repairing arrows instead of removing them has the advantage of the player being 
 
 #### Tool Repair Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<toolrepair> </toolrepair>` | A node containing all the tools that will be repaired when picked up. |
+| Element | Description |
+|---|---|
+| `<toolrepair> </toolrepair>` | A node containing all the tools that will be repaired when picked up. |
 
-  | Sub-elements | | Value |
-  |---|---|---|
-  | `<tool> </tool>` | A single tool that will be repaired, can be anything with durability. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements | | Value |
+|---|---|---|
+| `<tool> </tool>` | A single tool that will be repaired, can be anything with durability. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 
 ### Examples
 
@@ -38,15 +36,13 @@ Repairing arrows instead of removing them has the advantage of the player being 
 
 Defines items that will be deleted when dropped on the map. Also works when items are destroyed, such as seeds from tall grass, etc.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<itemremove> </itemremove>` | A node containing all the items that will be removed when dropped. |
+| Element | Description |
+|---|---|
+| `<itemremove> </itemremove>` | A node containing all the items that will be removed when dropped. |
 
-  | Sub-elements | | Value |
-  |---|---|---|
-  | `<item> </item>` | The item that will be removed when dropped. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements | | Value |
+|---|---|---|
+| `<item> </item>` | The item that will be removed when dropped. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 
 ### Examples
 
@@ -64,15 +60,13 @@ Defines items that will be deleted when dropped on the map. Also works when item
 Defines items that will be kept on death.
 If there is a spawn kit, kept items will be given back *after* the kit is applied, except for equipped armor, which will replace any armor in the kit.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<itemkeep> </itemkeep>` | A node containing all the items kept when respawning. |
+| Element | Description |
+|---|---|
+| `<itemkeep> </itemkeep>` | A node containing all the items kept when respawning. |
 
-  | Sub-elements | | Value |
-  |---|---|---|
-  | `<item> </item>` | The item that will remain in a player's inventory when they die and respawn. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements | | Value |
+|---|---|---|
+| `<item> </item>` | The item that will remain in a player's inventory when they die and respawn. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 
 ### Examples
 
@@ -87,15 +81,13 @@ If there is a spawn kit, kept items will be given back *after* the kit is applie
 
 Similar to `<itemkeep>`, except that the specified items are only kept if they are equipped in an armor slot.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<armorkeep> </armorkeep>` | A node containing all the **equipped** armor kept when respawning. |
+| Element | Description |
+|---|---|
+| `<armorkeep> </armorkeep>` | A node containing all the **equipped** armor kept when respawning. |
 
-  | Sub-elements | | Value/Children |
-  |---|---|---|
-  | `<item> </item>` | A equipped armor item that will remain in a player's inventory when they die and respawn. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements | | Value/Children |
+|---|---|---|
+| `<item> </item>` | A equipped armor item that will remain in a player's inventory when they die and respawn. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 
 ### Examples
 

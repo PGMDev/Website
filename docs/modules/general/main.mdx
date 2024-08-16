@@ -13,38 +13,32 @@ Mapmakers should always use the latest supported proto version, which is documen
 
 The maps version should follow the versioning schema `major.minor.patch`.
 
-<div className="table-container">
-  | Map Element | Description | Value/Children |
-  |---|---|---|
-  | `<map> </map>` | The main map node containing all the modules used in this match. | <span className="badge badge--secondary">XML Modules</span> |
-</div>
+| Map Element | Description | Value/Children |
+|---|---|---|
+| `<map> </map>` | The main map node containing all the modules used in this match. | <span className="badge badge--secondary">XML Modules</span> |
 
 ##### Map Attributes
 
-<div className="table-container">
-  | Map Attributes | Description | Value | Default |
-  |---|---|---|---|
-  | `proto` | <span className="badge badge--danger">Required</span>The map's XML protocol version. | `1.4.2` |
-  | `internal` | Prevent compass teleports above Y=255. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Map Attributes | Description | Value | Default |
+|---|---|---|---|
+| `proto` | <span className="badge badge--danger">Required</span>The map's XML protocol version. | `1.4.2` |
+| `internal` | Prevent compass teleports above Y=255. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Map Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children | Default |
-  |---|---|---|---|
-  | `<name>` | <span className="badge badge--danger">Required</span>The name of the map. | <span className="badge badge--primary">String</span> |
-  | `<slug>` | The map's internal identifier, usually auto generated from the map's name. This should only be used when a map is renamed to retain the map's ratings, etc.<br />*Valid slugs are lowercase and only contain the characters:* `a-z 0-9 _` | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">Auto Generated</span> |
-  | `<version>` | <span className="badge badge--danger">Required</span>The map's [semantic version](https://semver.org/). | `1.0.0` |
-  | `<objective>` | <span className="badge badge--danger">Required</span>The map's objective, shown at the start of the match. | <span className="badge badge--primary">String</span> |
-  | `<authors>` | <span className="badge badge--danger">Required</span>The authors of the map. At least one author is required. | `<author>` |
-  | `<contributors>` | Contributors to the map. | `<contributor>` |
-  | `<created>` | The date on which this map was initially released. | `YYYY-MM-DD` |
-  | `<phase>` | The stage of development the map is in.<br />**Note:** By default, it will not appear in the list when a user runs `/maps`. In legacy PGM, only maps in production phase show up on a website configured with an API. | `development`<br />`staging`<br />`production` | `production` |
-  | `<edition>` | The type of gameplay environment this map is intended for.<br />**Note:** In legacy PGM, only standard edition maps show up on a website configured with an API. | `standard`<br />`ranked`<br />`tournament` | `standard` |
-  | `<game>` | A custom title for this match's gamemode.<br />**Note:** A map can have multiple gamemode titles. PGM will select the last as the map's primary title. | <span className="badge badge--primary">String</span> |
-  | `<gamemode>` | The gamemode(s) of this map. If this is not specified the map will set the gamemode(s) to whatever modules are used. | <span className="badge badge--primary">Gamemode ID</span> |
-</div>
+| Element | Description | Value/Children | Default |
+|---|---|---|---|
+| `<name>` | <span className="badge badge--danger">Required</span>The name of the map. | <span className="badge badge--primary">String</span> |
+| `<slug>` | The map's internal identifier, usually auto generated from the map's name. This should only be used when a map is renamed to retain the map's ratings, etc.<br />*Valid slugs are lowercase and only contain the characters:* `a-z 0-9 _` | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">Auto Generated</span> |
+| `<version>` | <span className="badge badge--danger">Required</span>The map's [semantic version](https://semver.org/). | `1.0.0` |
+| `<objective>` | <span className="badge badge--danger">Required</span>The map's objective, shown at the start of the match. | <span className="badge badge--primary">String</span> |
+| `<authors>` | <span className="badge badge--danger">Required</span>The authors of the map. At least one author is required. | `<author>` |
+| `<contributors>` | Contributors to the map. | `<contributor>` |
+| `<created>` | The date on which this map was initially released. | `YYYY-MM-DD` |
+| `<phase>` | The stage of development the map is in.<br />**Note:** By default, it will not appear in the list when a user runs `/maps`. In legacy PGM, only maps in production phase show up on a website configured with an API. | `development`<br />`staging`<br />`production` | `production` |
+| `<edition>` | The type of gameplay environment this map is intended for.<br />**Note:** In legacy PGM, only standard edition maps show up on a website configured with an API. | `standard`<br />`ranked`<br />`tournament` | `standard` |
+| `<game>` | A custom title for this match's gamemode.<br />**Note:** A map can have multiple gamemode titles. PGM will select the last as the map's primary title. | <span className="badge badge--primary">String</span> |
+| `<gamemode>` | The gamemode(s) of this map. If this is not specified the map will set the gamemode(s) to whatever modules are used. | <span className="badge badge--primary">Gamemode ID</span> |
 
 ```xml
 <map proto="1.4.2">
@@ -72,21 +66,17 @@ If an author or contributor is defined without a UUID, that player will not get 
 
 #### Author or Contributor Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<author>` | A major author of the map, used in `<authors>`. | <span className="badge badge--primary">String</span> |
-  | `<contributor>` | A contributor to the map, used in `<contributors>`. | <span className="badge badge--primary">String</span> |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<author>` | A major author of the map, used in `<authors>`. | <span className="badge badge--primary">String</span> |
+| `<contributor>` | A contributor to the map, used in `<contributors>`. | <span className="badge badge--primary">String</span> |
 
 ##### Author & Contributor Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `uuid` | The UUID used to identify a Minecraft player. | <span className="badge badge--primary">String</span> |
-  | `contribution` | A description of the contribution this author or contributor made to the map. | <span className="badge badge--primary">String</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `uuid` | The UUID used to identify a Minecraft player. | <span className="badge badge--primary">String</span> |
+| `contribution` | A description of the contribution this author or contributor made to the map. | <span className="badge badge--primary">String</span> |
 
 ```xml
 <!-- Major map authors -->
@@ -142,39 +132,31 @@ Additionally, a variant can also contain constants, which allows you to define t
 
 #### Variant Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<variant> </variant>` | A map variant. | <span className="badge badge--primary">String</span> |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<variant> </variant>` | A map variant. | <span className="badge badge--primary">String</span> |
 
 ##### Variant Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this map variant from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `world` | The world the variant should use during a match. | <span className="badge badge--primary">String</span> |
-  | `override` | Toggle if the variant name should override the base map name. If set to false, PGM will append `: [variant]` to the base map name. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this map variant from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `world` | The world the variant should use during a match. | <span className="badge badge--primary">String</span> |
+| `override` | Toggle if the variant name should override the base map name. If set to false, PGM will append `: [variant]` to the base map name. | <span className="badge badge--primary">true/false</span> | false |
 
 #### Conditionals Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<if> </if>` | Apply an XML section if the specified variant is loaded. | <span className="badge badge--secondary">XML Modules</span> |
-  | `<unless> </unless>` | Apply an XML section for all variants except for a specific variant when loaded. | <span className="badge badge--secondary">XML Modules</span> |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<if> </if>` | Apply an XML section if the specified variant is loaded. | <span className="badge badge--secondary">XML Modules</span> |
+| `<unless> </unless>` | Apply an XML section for all variants except for a specific variant when loaded. | <span className="badge badge--secondary">XML Modules</span> |
 
 ##### If/Unless Conditional Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `variant` | The name of the variant to target. | <span className="badge badge--primary">Variant ID</span> |
-  | `has-variant` | Target all maps with a specified variant.<br />**Note:** This can be useful in a server's global XML file. | <span className="badge badge--primary">Variant ID</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `variant` | The name of the variant to target. | <span className="badge badge--primary">Variant ID</span> |
+| `has-variant` | Target all maps with a specified variant.<br />**Note:** This can be useful in a server's global XML file. | <span className="badge badge--primary">Variant ID</span> |
 
 **Note:** Multiple variants can be targeted as long as it is separated with a comma (`,`).
 
@@ -182,24 +164,20 @@ Additionally, a variant can also contain constants, which allows you to define t
 Constants are values that remain the same, regardless of conditions.
 PGM will search and replace any corresponding placeholders (`${constant_id}`) with the constant value.
 
-<div className="table-container">
-  | Element | Description | Children |
-  |---|---|---|
-  | `<constants> </constants>` | A node containing the constants for this map. | <span className="badge badge--secondary">Constant Elements</span> |
+| Element | Description | Children |
+|---|---|---|
+| `<constants> </constants>` | A node containing the constants for this map. | <span className="badge badge--secondary">Constant Elements</span> |
 
-  | Sub-elements |||
-  |---|---|---|
-  | `<constant> </constant>` | An individual constant. | <span className="badge badge--primary">String</span> |
-</div>
+| Sub-elements |||
+|---|---|---|
+| `<constant> </constant>` | An individual constant. | <span className="badge badge--primary">String</span> |
 
 ##### Constant Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this constant from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `delete` | When true, PGM will completely delete the attribute or element the constant was used in, rather than leaving it blank. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this constant from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `delete` | When true, PGM will completely delete the attribute or element the constant was used in, rather than leaving it blank. | <span className="badge badge--primary">true/false</span> | false |
 
 The following example utilizes both map variants and constant.
 ```xml
@@ -239,43 +217,39 @@ This mainly affects how the map is displayed.
 If no `<gamemode>` tags are specified, the map will set the gamemode(s) to whatever modules are used.
 This means that a map that uses destroyables and flags would be displayed as "DTM and CTF" unless specified otherwise.
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<gamemode> </gamemode>` | The gamemode(s) of this map. | <span className="badge badge--primary">Gamemode ID</span> |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<gamemode> </gamemode>` | The gamemode(s) of this map. | <span className="badge badge--primary">Gamemode ID</span> |
 
 #### Gamemode IDs
 
-<div className="table-container">
-  | ID | Description |
-  |---|---|
-  | `arcade` | Arcade |
-  | `ad` | Attack/Defend |
-  | `bedwars` | Bed Wars |
-  | `blitz` | Blitz |
-  | `br` | Blitz: Rage |
-  | `bridge` | Bridge |
-  | `ctf` | Capture the Flag |
-  | `ctw` | Capture the Wool |
-  | `cp` | Control the Point |
-  | `tdm` | Deathmatch |
-  | `dtc` | Destroy the Core |
-  | `dtm` | Destroy the Monument |
-  | `5cp` | 5 Control Points |
-  | `ffb` | Flag Football |
-  | `ffa` | Free for All |
-  | `infection` | Infection |
-  | `kotf` | King of the Flag |
-  | `koth` | King of the Hill |
-  | `mixed` | Mixed |
-  | `payload` | Payload |
-  | `rfw` | Race for Wool |
-  | `rage` | Rage |
-  | `scorebox` | Scorebox |
-  | `skywars` | Skywars |
-  | `sg` | Survival Games |
-</div>
+| ID | Description |
+|---|---|
+| `arcade` | Arcade |
+| `ad` | Attack/Defend |
+| `bedwars` | Bed Wars |
+| `blitz` | Blitz |
+| `br` | Blitz: Rage |
+| `bridge` | Bridge |
+| `ctf` | Capture the Flag |
+| `ctw` | Capture the Wool |
+| `cp` | Control the Point |
+| `tdm` | Deathmatch |
+| `dtc` | Destroy the Core |
+| `dtm` | Destroy the Monument |
+| `5cp` | 5 Control Points |
+| `ffb` | Flag Football |
+| `ffa` | Free for All |
+| `infection` | Infection |
+| `kotf` | King of the Flag |
+| `koth` | King of the Hill |
+| `mixed` | Mixed |
+| `payload` | Payload |
+| `rfw` | Race for Wool |
+| `rage` | Rage |
+| `scorebox` | Scorebox |
+| `skywars` | Skywars |
+| `sg` | Survival Games |
 
 ##### Example
 

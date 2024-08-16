@@ -10,51 +10,45 @@ Teams can have multiple destroyables and they can be made out of multiple materi
 Completion specifies how much of the material(s) inside of the monument region must be removed for it to count as destroyed. 
 For example, if the monument is obsidian and completion is set to 100%, then all the obsidian must be removed in order for the monument to count as destroyed.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<destroyables> </destroyables>` | Node containing all the defined destroyables. |
+| Element | Description |
+|---|---|
+| `<destroyables> </destroyables>` | Node containing all the defined destroyables. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<destroyable> </destroyable>` | A single destroyable. | <span className="badge badge--secondary">Destroyable Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<destroyable> </destroyable>` | A single destroyable. | <span className="badge badge--secondary">Destroyable Sub-elements</span> |
 
 ##### Destroyable Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | Unique identifier used to reference monuments from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `name` | <span className="badge badge--danger">Required</span>The destroyable's name. | <span className="badge badge--primary">String</span> |
-  | `required` | Specify if this objective is required to win the match. Teams completing all of their required objectives will win regardless of score or Blitz configuration. | <span className="badge badge--primary">true/false</span> |
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Region containing the destroyable. | [Bounded Region](/docs/modules/mechanics/regions) |
-  | `materials` | The destroyable's materials, multiple materials are separated with a semicolon `;`. | [Material Pattern](/docs/reference/items/inventory#material-matchers) |
-  | `owner` | <span className="badge badge--danger">Required</span>The destroyable's owner. | [Team ID](/docs/modules/format/teams) |
-  | `completion` | Percentage of the destroyable that needs to be destroyed for a win. | <span className="badge badge--primary">0 - 100</span> | 100% |
-  | `modes` | Specify which [monument modes](/docs/modules/objectives/monument-modes) should be used. Multiple modes are separated with a space. | [Mode ID](/docs/modules/objectives/monument-modes) | <span className="badge badge--secondary">All modes</span> |
-  | `mode-changes` | Specify if this destroyable uses monument modes.<br />**Note:** Not used in conjunction with `modes`. | <span className="badge badge--primary">true/false</span> | false |
-  | `show-progress` | Show this destroyable's progress in the scoreboard. | <span className="badge badge--primary">true/false</span> | false |
-  | `repairable` | Specify if the destroyable can be repaired. | <span className="badge badge--primary">true/false</span> | true |
-  | `sparks` | Spawn fireworks particles for each destroyed blocks and play the fireworks sound to all players. | <span className="badge badge--primary">true/false</span> | false |
-  | `show-messages` | Broadcast messages related to the monument in chat. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-effects` | Play sounds, fireworks, and other effects related to the monument. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-info` | Display the monument under commands such as `/match`. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-sidebar` | Displays the monument on scoreboard. | <span className="badge badge--primary">true/false</span> | true |
-  | `stats` | Determines if this monument counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
-  | `show` | Specify if the monument should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> | true |
-  | `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) | |
-  | `proximity-metric` | Metric used to determine proximity to the destroyable.<br />Accepts `closest player`, `closest block`, `closest kill`, or `none`. | <span className="badge badge--primary">Proximity Metric</span> | `closest player` |
-  | `proximity-horizontal` | Only calculate horizontal distance for destroyable proximity. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | Unique identifier used to reference monuments from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `name` | <span className="badge badge--danger">Required</span>The destroyable's name. | <span className="badge badge--primary">String</span> |
+| `required` | Specify if this objective is required to win the match. Teams completing all of their required objectives will win regardless of score or Blitz configuration. | <span className="badge badge--primary">true/false</span> |
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Region containing the destroyable. | [Bounded Region](/docs/modules/mechanics/regions) |
+| `materials` | The destroyable's materials, multiple materials are separated with a semicolon `;`. | [Material Pattern](/docs/reference/items/inventory#material-matchers) |
+| `owner` | <span className="badge badge--danger">Required</span>The destroyable's owner. | [Team ID](/docs/modules/format/teams) |
+| `completion` | Percentage of the destroyable that needs to be destroyed for a win. | <span className="badge badge--primary">0 - 100</span> | 100% |
+| `modes` | Specify which [monument modes](/docs/modules/objectives/monument-modes) should be used. Multiple modes are separated with a space. | [Mode ID](/docs/modules/objectives/monument-modes) | <span className="badge badge--secondary">All modes</span> |
+| `mode-changes` | Specify if this destroyable uses monument modes.<br />**Note:** Not used in conjunction with `modes`. | <span className="badge badge--primary">true/false</span> | false |
+| `show-progress` | Show this destroyable's progress in the scoreboard. | <span className="badge badge--primary">true/false</span> | false |
+| `repairable` | Specify if the destroyable can be repaired. | <span className="badge badge--primary">true/false</span> | true |
+| `sparks` | Spawn fireworks particles for each destroyed blocks and play the fireworks sound to all players. | <span className="badge badge--primary">true/false</span> | false |
+| `show-messages` | Broadcast messages related to the monument in chat. | <span className="badge badge--primary">true/false</span> | true |
+| `show-effects` | Play sounds, fireworks, and other effects related to the monument. | <span className="badge badge--primary">true/false</span> | true |
+| `show-info` | Display the monument under commands such as `/match`. | <span className="badge badge--primary">true/false</span> | true |
+| `show-sidebar` | Displays the monument on scoreboard. | <span className="badge badge--primary">true/false</span> | true |
+| `stats` | Determines if this monument counts as a win condition. | <span className="badge badge--primary">true/false</span> | true |
+| `show` | Specify if the monument should be hidden from all visible locations to the player. These locations include chat, the boss bar, and the scoreboard.<br />**Note:** This attribute sets all five values above to true/false. | <span className="badge badge--primary">true/false</span> | true |
+| `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) | |
+| `proximity-metric` | Metric used to determine proximity to the destroyable.<br />Accepts `closest player`, `closest block`, `closest kill`, or `none`. | <span className="badge badge--primary">Proximity Metric</span> | `closest player` |
+| `proximity-horizontal` | Only calculate horizontal distance for destroyable proximity. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Destroyable Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>Region containing the destroyable. | [Bounded Regions](/docs/modules/mechanics/regions) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>Region containing the destroyable. | [Bounded Regions](/docs/modules/mechanics/regions) |
 
 ### Examples
 

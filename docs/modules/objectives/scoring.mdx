@@ -6,19 +6,17 @@ title: Scoring
 The score module can be used to give matches a score limit and modify how many points are added to the score for each kill or death. 
 It can also be used to create score boxes that give a player or team a certain amount of points when they enter it.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<score> </score>` | Node containing the score settings and score boxes. |
-  
-  | Sub-elements || Value/Children | Default |
-  |---|---|---|---|
-  | `<limit>` | The maximum score that can be reached before the match ends. | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">No limit</span> |
-  | `<mercy>` | Points that a team will need to lead by to win.<br />This will increase the score limit until a `<limit>` is reached. | <span className="badge badge--primary">Number</span> | <span className="badge badge--secondary">No mercy</span> |
-  | `<kills>` | Points to **give** to a team for killing an enemy player. | <span className="badge badge--primary">Number</span> | 0 |
-  | `<deaths>` | Points to **deduct** from a team for the **accidental** death of a team member. | <span className="badge badge--primary">Number</span> | 0 |
-  | `<box>` | A single score box. | [Score Box](#score-boxes) |
-</div>
+| Element | Description |
+|---|---|
+| `<score> </score>` | Node containing the score settings and score boxes. |
+
+| Sub-elements || Value/Children | Default |
+|---|---|---|---|
+| `<limit>` | The maximum score that can be reached before the match ends. | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">No limit</span> |
+| `<mercy>` | Points that a team will need to lead by to win.<br />This will increase the score limit until a `<limit>` is reached. | <span className="badge badge--primary">Number</span> | <span className="badge badge--secondary">No mercy</span> |
+| `<kills>` | Points to **give** to a team for killing an enemy player. | <span className="badge badge--primary">Number</span> | 0 |
+| `<deaths>` | Points to **deduct** from a team for the **accidental** death of a team member. | <span className="badge badge--primary">Number</span> | 0 |
+| `<box>` | A single score box. | [Score Box](#score-boxes) |
 
 ### Examples
 
@@ -46,33 +44,27 @@ It can also be used to create score boxes that give a player or team a certain a
 A score box will give points to a players team when they enter or bring a redeemable item to the score box region. 
 [Portals](/docs/modules/mechanics/portals) should be used to remove the player from the immediate vicinity of the score box to prevent multiple scores.
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<box>` | A single score box. | <span className="badge badge--secondary">Box Sub-elements</span> |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<box>` | A single score box. | <span className="badge badge--secondary">Box Sub-elements</span> |
 
 #### Box Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `points` | Points awarded for entering the box. | <span className="badge badge--primary">Number</span> | 0 |
-  | `silent` | Do not notify players when points are scored in this box. | <span className="badge badge--primary">true/false</span> | false |
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The location and size of the score box. | [Region](/docs/modules/mechanics/regions) |
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter who can score in this box. | [Filter](/docs/modules/mechanics/filters) | <span className="badge badge--secondary">No Filter</span> |
-  | `trigger` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span><span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Dynamic conditions under which this score box is applied. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `points` | Points awarded for entering the box. | <span className="badge badge--primary">Number</span> | 0 |
+| `silent` | Do not notify players when points are scored in this box. | <span className="badge badge--primary">true/false</span> | false |
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The location and size of the score box. | [Region](/docs/modules/mechanics/regions) |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter who can score in this box. | [Filter](/docs/modules/mechanics/filters) | <span className="badge badge--secondary">No Filter</span> |
+| `trigger` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span><span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Dynamic conditions under which this score box is applied. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
 
 #### Box Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<redeemables>` | Items that can be redeemed at this score box for points. | `<item points="1">` |
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this score box is located. | [Regions](/docs/modules/mechanics/regions) |
-  | `<filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can score in this box. | [Filters](/docs/modules/mechanics/regions) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<redeemables>` | Items that can be redeemed at this score box for points. | `<item points="1">` |
+| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this score box is located. | [Regions](/docs/modules/mechanics/regions) |
+| `<filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can score in this box. | [Filters](/docs/modules/mechanics/regions) |
 
 ### Examples
 
@@ -128,14 +120,12 @@ This tag is **not** placed inside the score module. Instead, it is located in th
 
 #### Time Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `result` | Change how the winning team or player is calculated.<br />Accepts `default`, `tie`, `objectives`, `score`, or a [Team ID](/docs/modules/format/teams). | <span className="badge badge--primary">Victory Condition</span><br /><span className="badge badge--primary">Team ID</span> | `default` |
-  | `show` | Display the remaining time in the chat and boss bar. | <span className="badge badge--primary">true/false</span> | true |
-  | `overtime` | Specify the length of the overtime once the tie is broken. | [Time Period](/docs/reference/misc/time-periods) |
-  | `max-overtime` | Specify a maximum duration that the overtime should last. | [Time Period](/docs/reference/misc/time-periods) |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `result` | Change how the winning team or player is calculated.<br />Accepts `default`, `tie`, `objectives`, `score`, or a [Team ID](/docs/modules/format/teams). | <span className="badge badge--primary">Victory Condition</span><br /><span className="badge badge--primary">Team ID</span> | `default` |
+| `show` | Display the remaining time in the chat and boss bar. | <span className="badge badge--primary">true/false</span> | true |
+| `overtime` | Specify the length of the overtime once the tie is broken. | [Time Period](/docs/reference/misc/time-periods) |
+| `max-overtime` | Specify a maximum duration that the overtime should last. | [Time Period](/docs/reference/misc/time-periods) |
 
 ## Overtime
 

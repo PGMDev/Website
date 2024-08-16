@@ -17,29 +17,25 @@ Removable kits will be noted in the documentation where applicable.
 
 #### Kit Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<kit> </kit>` | A kit node, containing specific kit types and/or other kit nodes. |
-</div>
+| Element | Description |
+|---|---|
+| `<kit> </kit>` | A kit node, containing specific kit types and/or other kit nodes. |
 
 ### Kit Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | Unique identifier used to reference this kit from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this kit is used. | [Filter](/docs/modules/mechanics/filters) |
-  | `parents` | The kit's parent or a comma separated list of parent kits. | <span className="badge badge--primary">String</span> |
-  | `force` | Force apply the kit, which will override existing items in certain slots. | <span className="badge badge--primary">true/false</span> |
-  | `overflow-warning` | Warn the player when the kit cannot give the player all of its items.<br />*Defaults to standard translatable message* | <span className="badge badge--primary">String</span> |
-  | `repair-tools` | Repairs tools in the player's inventory with those given in the kit. | <span className="badge badge--primary">true/false</span> | true |
-  | `deduct-tools` | Deducts the toolrepair given in the kit by the toolrepair in the player's inventory. | <span className="badge badge--primary">true/false</span> | true |
-  | `deduct-items` | Deducts the number of items given in the kit by the number of items the player already has. | <span className="badge badge--primary">true/false</span> | true |
-  | `drop-overflow` | Drops overflow items on the ground near the player. | <span className="badge badge--primary">true/false</span> | false |
-  | `potion-particles` | Enable or disable potion particles.<br />*Potion particles are disabled for all players by default.* | <span className="badge badge--primary">true/false</span> | false |
-  | `reset-ender-pearls` | Reset any ender pearls the player might have thrown before the kit was applied. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | Unique identifier used to reference this kit from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this kit is used. | [Filter](/docs/modules/mechanics/filters) |
+| `parents` | The kit's parent or a comma separated list of parent kits. | <span className="badge badge--primary">String</span> |
+| `force` | Force apply the kit, which will override existing items in certain slots. | <span className="badge badge--primary">true/false</span> |
+| `overflow-warning` | Warn the player when the kit cannot give the player all of its items.<br />*Defaults to standard translatable message* | <span className="badge badge--primary">String</span> |
+| `repair-tools` | Repairs tools in the player's inventory with those given in the kit. | <span className="badge badge--primary">true/false</span> | true |
+| `deduct-tools` | Deducts the toolrepair given in the kit by the toolrepair in the player's inventory. | <span className="badge badge--primary">true/false</span> | true |
+| `deduct-items` | Deducts the number of items given in the kit by the number of items the player already has. | <span className="badge badge--primary">true/false</span> | true |
+| `drop-overflow` | Drops overflow items on the ground near the player. | <span className="badge badge--primary">true/false</span> | false |
+| `potion-particles` | Enable or disable potion particles.<br />*Potion particles are disabled for all players by default.* | <span className="badge badge--primary">true/false</span> | false |
+| `reset-ender-pearls` | Reset any ender pearls the player might have thrown before the kit was applied. | <span className="badge badge--primary">true/false</span> | false |
 
 The effect of the `force` attribute depends on the type of kit it is used with:
 conflicting items or armor will be replaced instead of smartly merged and repaired,
@@ -77,21 +73,17 @@ You can also clear the player's entire inventory before applying the kit by usin
 
 ##### Inventory Clear Elements
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<clear/>` | Clears all of the player's inventory, including armor slots. |
-</div>
+| Element | Description |
+|---|---|
+| `<clear/>` | Clears all of the player's inventory, including armor slots. |
 
 ##### Inventory Clear Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `items` | Clears all of the player's inventory, except armor slots. | <span className="badge badge--primary">true/false</span> | true |
-  | `armor` | Clear's all of the player's armor slots. | <span className="badge badge--primary">true/false</span> | true |
-  | `effects` | Clears all of the player's current potion effects. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `items` | Clears all of the player's inventory, except armor slots. | <span className="badge badge--primary">true/false</span> | true |
+| `armor` | Clear's all of the player's armor slots. | <span className="badge badge--primary">true/false</span> | true |
+| `effects` | Clears all of the player's current potion effects. | <span className="badge badge--primary">true/false</span> | false |
 
 ```xml
 <kit id="ender" reset-ender-pearls="true">
@@ -106,11 +98,9 @@ You can also clear the player's entire inventory before applying the kit by usin
 A player's gamemode can be changed when they spawn, enter or leave a region, etc., by applying a kit with a `game-mode` element.
 This is not to be confused with [Map Gamemode `<gamemode>`](/docs/modules/general/main#map-gamemode), which controls how PGM should display a map.  
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<game-mode> </game-mode>` | The gamemode to change the player to. | <span className="badge badge--secondary">Game Mode String</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<game-mode> </game-mode>` | The gamemode to change the player to. | <span className="badge badge--secondary">Game Mode String</span> |
 
 ```xml
 <game-mode>adventure</game-mode>
@@ -126,14 +116,12 @@ however a 20 point kit will be applied. This can be overwritten with a kit `forc
 
 ##### Health & Hunger Elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<health> </health>` | Health value in &frac12; heart increments. | <span className="badge badge--primary">1 - 20</span> |
-  | `<max-health> </max-health>` | The maximum health a player can have. | <span className="badge badge--primary">&gt;1</span> |
-  | `<saturation> </saturation>` | Food saturation, always equal to or less than the player's food level. | <span className="badge badge--primary">Decimal</span> |
-  | `<foodlevel> </foodlevel>` | Food level in &frac12; drumstick increments. | <span className="badge badge--primary">0 - 20</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<health> </health>` | Health value in &frac12; heart increments. | <span className="badge badge--primary">1 - 20</span> |
+| `<max-health> </max-health>` | The maximum health a player can have. | <span className="badge badge--primary">&gt;1</span> |
+| `<saturation> </saturation>` | Food saturation, always equal to or less than the player's food level. | <span className="badge badge--primary">Decimal</span> |
+| `<foodlevel> </foodlevel>` | Food level in &frac12; drumstick increments. | <span className="badge badge--primary">0 - 20</span> |
 
 ```xml
 <kit id="health" force="true">
@@ -155,20 +143,16 @@ however a 20 point kit will be applied. This can be overwritten with a kit `forc
 
 Allow for players who receive this kit to be forced onto a different team.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<team-switch/>` | Switch the player's current team. |
-</div>
+| Element | Description |
+|---|---|
+| `<team-switch/>` | Switch the player's current team. |
 
 ##### Team Switch Kit Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `team` | The new team to switch the player to. | [Team ID](/docs/modules/format/teams) |
-  | `show-title` | Set if the player should recieve join message as a title. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `team` | The new team to switch the player to. | [Team ID](/docs/modules/format/teams) |
+| `show-title` | Set if the player should recieve join message as a title. | <span className="badge badge--primary">true/false</span> | true |
 
 ```xml
 <kit id="team-switch">
@@ -180,13 +164,11 @@ Allow for players who receive this kit to be forced onto a different team.
 
 Kits that are removable can be given and taken dynamically by using a Dynamic Filter.
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<give>` | Gives a kit to a player when they match the filter. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `<take>` | Removes a kit when they match the filter. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `<lend>` | Loans a player a kit when the filter is `ALLOW`, removes when they stop matching the filter. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<give>` | Gives a kit to a player when they match the filter. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+| `<take>` | Removes a kit when they match the filter. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+| `<lend>` | Loans a player a kit when the filter is `ALLOW`, removes when they stop matching the filter. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
 
 ```xml
 <kits>
@@ -233,20 +215,16 @@ A kit cannot affect a modifier applied by a different kit.
 
 ##### Attribute Kit Elements
 
-<div className="table-container">
-  | Element | Value |
-  |---|---|
-  | `<attribute> </attribute>` | [Attribute Name](/docs/reference/items/attributes) |
-</div>
+| Element | Value |
+|---|---|
+| `<attribute> </attribute>` | [Attribute Name](/docs/reference/items/attributes) |
 
 ##### Attribute Kit Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `amount` | Numeric parameter | <span className="badge badge--primary">Decimal</span> |
-  | `operation` | Modifier operation | <span className="badge badge--primary">add / base / multiply</span> | `add` |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `amount` | Numeric parameter | <span className="badge badge--primary">Decimal</span> |
+| `operation` | Modifier operation | <span className="badge badge--primary">add / base / multiply</span> | `add` |
 
 ```xml
 <kit>
@@ -259,11 +237,9 @@ A kit cannot affect a modifier applied by a different kit.
 Increase or decrease a player's walking speed. 
 The value is a multiplier of the normal walking speed.
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<walk-speed> </walk-speed>` | Increase or decrease a player's walking speed. | <span className="badge badge--primary">0 - 5.0</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<walk-speed> </walk-speed>` | Increase or decrease a player's walking speed. | <span className="badge badge--primary">0 - 5.0</span> |
 
 ```xml
 <kit id="rabbit">
@@ -283,11 +259,9 @@ Reduce (or increase) the knockback players receive when they have this kit appli
 The normal input range is `0 - 1.0`. If the value is greater than one the knockback will be increased,
 and anything lower than zero pushes the player to the attacker instead of away from them.
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<knockback-reduction> </knockback-reduction>` | Knockback reduction amount. | <span className="badge badge--primary">Number</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<knockback-reduction> </knockback-reduction>` | Knockback reduction amount. | <span className="badge badge--primary">Number</span> |
 
 ```xml
 <kit>
@@ -300,20 +274,16 @@ and anything lower than zero pushes the player to the attacker instead of away f
 The shield kit gives the player a shield consisting of absorption hearts that recharge after a set period of time.
 Recharging of the shield is based on when damage was taken last, every time a player is damaged it resets the recharge timer.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<shield/>` | Give the player a rechargable shield of absorption hearts. |
-</div>
+| Element | Description |
+|---|---|
+| `<shield/>` | Give the player a rechargable shield of absorption hearts. |
 
 ##### Shield Kit Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `health` | Amount of extra absorption hearts to give to the player. | <span className="badge badge--primary">Decimal</span> | 4 |
-  | `delay` | Time to wait after a player is last damaged to recharge the shield. | [Time Period](/docs/reference/misc/time-periods) | 4s |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `health` | Amount of extra absorption hearts to give to the player. | <span className="badge badge--primary">Decimal</span> | 4 |
+| `delay` | Time to wait after a player is last damaged to recharge the shield. | [Time Period](/docs/reference/misc/time-periods) | 4s |
 
 ```xml
 <kit>
@@ -326,22 +296,18 @@ Recharging of the shield is based on when damage was taken last, every time a pl
 Give players with this kit the ability to double-jump.
 This element's enabled attribute can be used to disable double-jump inside regions, etc.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<double-jump/>` | Give a player the ability to double-jump. |
-</div>
+| Element | Description |
+|---|---|
+| `<double-jump/>` | Give a player the ability to double-jump. |
 
 ##### Double-Jump Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `enabled` | Enable or disable double-jump. | <span className="badge badge--primary">true/false</span> | true |
-  | `power` | Power of the double jump.<br />*A normal player jump is 1.25 blocks.* | <span className="badge badge--primary">Number</span> | 3 |
-  | `recharge-time` | Recharge time until the player can double jump again. | [Time Period](/docs/reference/misc/time-periods) | 2.5s |
-  | `recharge-before-landing` | Player starts recharging before they land from their previous jump. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `enabled` | Enable or disable double-jump. | <span className="badge badge--primary">true/false</span> | true |
+| `power` | Power of the double jump.<br />*A normal player jump is 1.25 blocks.* | <span className="badge badge--primary">Number</span> | 3 |
+| `recharge-time` | Recharge time until the player can double jump again. | [Time Period](/docs/reference/misc/time-periods) | 2.5s |
+| `recharge-before-landing` | Player starts recharging before they land from their previous jump. | <span className="badge badge--primary">true/false</span> | false |
 
 ```xml
 <kit>
@@ -355,21 +321,17 @@ The fly kit gives players which it is applied to the ability to fly.
 It also allows modification of the speed at which they fly.
 If no attributes are specified, `can-fly` defaults to true.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<fly/>` | Control the player's flying ability. |
-</div>
+| Element | Description |
+|---|---|
+| `<fly/>` | Control the player's flying ability. |
 
 ##### Fly Kit Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `can-fly` | Set if the player can fly. | <span className="badge badge--primary">true/false</span> | true |
-  | `flying` | Set if the player is currently flying.<br />*To enable flying, `can-fly` cannot be set to false.* | <span className="badge badge--primary">true/false</span> |
-  | `fly-speed` | Set the fly speed multiplier. | <span className="badge badge--primary">0 - 10</span> | 1 |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `can-fly` | Set if the player can fly. | <span className="badge badge--primary">true/false</span> | true |
+| `flying` | Set if the player is currently flying.<br />*To enable flying, `can-fly` cannot be set to false.* | <span className="badge badge--primary">true/false</span> |
+| `fly-speed` | Set the fly speed multiplier. | <span className="badge badge--primary">0 - 10</span> | 1 |
 
 ```xml
 <kit id="fly">

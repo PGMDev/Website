@@ -8,36 +8,30 @@ it to a player of interest. In addition, you can control how the compass selects
 
 #### Compass Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<compass> </compass>` | Node containing all compass properties used in this map. |
+| Element | Description |
+|---|---|
+| `<compass> </compass>` | Node containing all compass properties used in this map. |
 
-  | Sub-element ||
-  |---|---|
-  | `<player>` | An individual compass property pointing to the nearest player passing a filter. |
-  | `<flag>` | An individual compass property pointing to a specific flag. |
-</div>
+| Sub-element ||
+|---|---|
+| `<player>` | An individual compass property pointing to the nearest player passing a filter. |
+| `<flag>` | An individual compass property pointing to a specific flag. |
 
 ##### Compass Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `order` | When using `DEFINITION_ORDER`, the compass targets first matching target. When using `CLOSEST`, the compass goes through all matching targets and chooses the one closest to the player. | `DEFINITION_ORDER`<br />`CLOSEST` |
-  | `show-distance` | Show the distance between the compass holder and tracked player in meters. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `order` | When using `DEFINITION_ORDER`, the compass targets first matching target. When using `CLOSEST`, the compass goes through all matching targets and chooses the one closest to the player. | `DEFINITION_ORDER`<br />`CLOSEST` |
+| `show-distance` | Show the distance between the compass holder and tracked player in meters. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Player/Flag Attribute
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `filter` | Filters who should be tracked by the compass. | [Filter](/docs/modules/mechanics/filters) |
-  | `holder-filter` | Filters out what compass targets can be eligible for what players, e.g. a team targets a different flag than the other team. | [Filter](/docs/modules/mechanics/filters) |
-  | `name` | The title name that describes the tracked flag or player's role, e.g. "Wool Carrier." | <span className="badge badge--primary">Formatted Text</span> |
-  | `show-player` | Show the tracked player's username to the compass holder.<br />**Note:** This is only applicable to `<player>` sub-element. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `filter` | Filters who should be tracked by the compass. | [Filter](/docs/modules/mechanics/filters) |
+| `holder-filter` | Filters out what compass targets can be eligible for what players, e.g. a team targets a different flag than the other team. | [Filter](/docs/modules/mechanics/filters) |
+| `name` | The title name that describes the tracked flag or player's role, e.g. "Wool Carrier." | <span className="badge badge--primary">Formatted Text</span> |
+| `show-player` | Show the tracked player's username to the compass holder.<br />**Note:** This is only applicable to `<player>` sub-element. | <span className="badge badge--primary">true/false</span> | false |
 
 ## Examples
 

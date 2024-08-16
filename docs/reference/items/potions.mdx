@@ -8,51 +8,47 @@ title: Potions & Effects
 Damage values set the potion color, [potion effect](/docs/modules/gear/potions), default duration and name for potion items.
 Use the `<effect>` element to set custom duration, amplifier and desired status effect.
 
-<div className="table-container">
-  | Damage Value | Potion Name | Status Effect | Color |
-  |---|---|---|---|
-  | `0` | Water Bottle | `N/A` | Blue |
-  | `1` | Potion of Regeneration | `regeneration` | Pink |
-  | `2` | Potion of Swiftness | `speed` | Sky Blue |
-  | `3` | Potion of Fire Resistance | `fire_resistance` | Orange |
-  | `4` | Potion of Poison | `poison` | Green |
-  | `5` | Potion of Healing | `instant_health` | Red |
-  | `6` | Potion of Night Vision | `night_vision` | Navy Blue |
-  | `7` | Clear Potion | `N/A` | Blue |
-  | `8` | Potion of Weakness | `weakness` | Gray |
-  | `9` | Potion of Strength | `strength` | Dark Red |
-  | `10` | Potion of Slowness | `slowness` | Blue-gray |
-  | `11` | Potion of Leaping | `jump_boost` | Bright Green |
-  | `12` | Potion of Harming | `instant_damage` | Purple |
-  | `13` | Potion of Water Breathing | `N/A` | Blue |
-  | `14` | Potion of Invisibility | `invisibility` | Light Gray |
-  | `15` | Thin Potion | `N/A` | Blue |
-</div>
+| Damage Value | Potion Name | Status Effect | Color |
+|---|---|---|---|
+| `0` | Water Bottle | `N/A` | Blue |
+| `1` | Potion of Regeneration | `regeneration` | Pink |
+| `2` | Potion of Swiftness | `speed` | Sky Blue |
+| `3` | Potion of Fire Resistance | `fire_resistance` | Orange |
+| `4` | Potion of Poison | `poison` | Green |
+| `5` | Potion of Healing | `instant_health` | Red |
+| `6` | Potion of Night Vision | `night_vision` | Navy Blue |
+| `7` | Clear Potion | `N/A` | Blue |
+| `8` | Potion of Weakness | `weakness` | Gray |
+| `9` | Potion of Strength | `strength` | Dark Red |
+| `10` | Potion of Slowness | `slowness` | Blue-gray |
+| `11` | Potion of Leaping | `jump_boost` | Bright Green |
+| `12` | Potion of Harming | `instant_damage` | Purple |
+| `13` | Potion of Water Breathing | `N/A` | Blue |
+| `14` | Potion of Invisibility | `invisibility` | Light Gray |
+| `15` | Thin Potion | `N/A` | Blue |
 
 ## Splash Potions
 
 Splash potions are determined by adding the damage value `16384` to the chosen potion value.
 
-<div className="table-container">
-  | Damage Value | Potion Name | Status Effect | Color |
-  |---|---|---|---|
-  | `16384` | Water Bottle | `N/A` | Blue |
-  | `16385` | Splash Potion of Regeneration | `regeneration` | Pink |
-  | `16386` | Splash Potion of Swiftness | `speed` | Sky Blue |
-  | `16387` | Splash Potion of Fire Resistance | `fire_resistance` | Orange |
-  | `16388` | Splash Potion of Poison | `poison` | Green |
-  | `16389` | Splash Potion of Healing | `instant_health` | Red |
-  | `16390` | Splash Potion of Night Vision | `night_vision` | Navy Blue |
-  | `16391` | Clear Potion | `N/A` | Blue |
-  | `16392` | Splash Potion of Weakness | `weakness` | Gray |
-  | `16393` | Splash Potion of Strength | `strength` | Dark Red |
-  | `16394` | Splash Potion of Slowness | `slowness` | Blue-gray |
-  | `16395` | Splash Potion of Leaping | `jump_boost` | Bright Green |
-  | `16396` | Splash Potion of Harming | `instant_damage` | Purple |
-  | `16397` | Splash Potion of Water Breathing | `N/A` | Blue |
-  | `16398` | Splash Potion of Invisibility | `invisibility` | Light Gray |
-  | `16399` | Thin Potion | `N/A` | Blue |
-</div>
+| Damage Value | Potion Name | Status Effect | Color |
+|---|---|---|---|
+| `16384` | Water Bottle | `N/A` | Blue |
+| `16385` | Splash Potion of Regeneration | `regeneration` | Pink |
+| `16386` | Splash Potion of Swiftness | `speed` | Sky Blue |
+| `16387` | Splash Potion of Fire Resistance | `fire_resistance` | Orange |
+| `16388` | Splash Potion of Poison | `poison` | Green |
+| `16389` | Splash Potion of Healing | `instant_health` | Red |
+| `16390` | Splash Potion of Night Vision | `night_vision` | Navy Blue |
+| `16391` | Clear Potion | `N/A` | Blue |
+| `16392` | Splash Potion of Weakness | `weakness` | Gray |
+| `16393` | Splash Potion of Strength | `strength` | Dark Red |
+| `16394` | Splash Potion of Slowness | `slowness` | Blue-gray |
+| `16395` | Splash Potion of Leaping | `jump_boost` | Bright Green |
+| `16396` | Splash Potion of Harming | `instant_damage` | Purple |
+| `16397` | Splash Potion of Water Breathing | `N/A` | Blue |
+| `16398` | Splash Potion of Invisibility | `invisibility` | Light Gray |
+| `16399` | Thin Potion | `N/A` | Blue |
 
 ### Examples
 
@@ -76,19 +72,17 @@ Splash potions are determined by adding the damage value `16384` to the chosen p
 Potions can have other status effects applied that are not potion effects.
 Multiple effects can be applied to a potion.
 
-<div className="table-container">
-  | Status Effect | Status ID |
-  |---|---|
-  | Absorption | `absorption` |
-  | Blindness | `blindness` |
-  | Haste | `fast_digging` |
-  | Health Boost | `health_boost` |
-  | Hunger | `hunger` |
-  | Mining Fatigue | `slow_digging` |
-  | Nausea | `confusion` |
-  | Saturation | `saturation` |
-  | Wither | `wither` |
-</div>
+| Status Effect | Status ID |
+|---|---|
+| Absorption | `absorption` |
+| Blindness | `blindness` |
+| Haste | `fast_digging` |
+| Health Boost | `health_boost` |
+| Hunger | `hunger` |
+| Mining Fatigue | `slow_digging` |
+| Nausea | `confusion` |
+| Saturation | `saturation` |
+| Wither | `wither` |
 
 ### Examples
 

@@ -12,23 +12,19 @@ Win conditions are set by using the score and time limit modules.
 This gamemode is not compatible with the Teams module!
 :::
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<players />` | The players node, containing player settings. |
-</div>
+| Element | Description |
+|---|---|
+| `<players />` | The players node, containing player settings. |
 
 ##### Players Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `min` | The minimum amount of players required to start a match. | <span className="badge badge--primary">Number</span> |
-  | `max` | The maximum player limit &#8212; normal players cannot join the match once it reaches this size.<br />*Premium players may join over this limit until `max-overfill` is reached.* | <span className="badge badge--primary">Number</span> |
-  | `max-overfill` | Player overfill &#8212; premium players cannot join the match once it reaches this size.<br />*Must be greater than the defined `max`.* | <span className="badge badge--primary">Number</span> |
-  | `show-name-tags` | Specify who can see the name tags of players.<br />*Observers will always see all name tags.* | `true`<br />`false`<br />`allies`<br />`enemies` | `true` |
-  | `colors` | Automatically assign a unique color to each player, works up to 10 players before colors repeat. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `min` | The minimum amount of players required to start a match. | <span className="badge badge--primary">Number</span> |
+| `max` | The maximum player limit &#8212; normal players cannot join the match once it reaches this size.<br />*Premium players may join over this limit until `max-overfill` is reached.* | <span className="badge badge--primary">Number</span> |
+| `max-overfill` | Player overfill &#8212; premium players cannot join the match once it reaches this size.<br />*Must be greater than the defined `max`.* | <span className="badge badge--primary">Number</span> |
+| `show-name-tags` | Specify who can see the name tags of players.<br />*Observers will always see all name tags.* | `true`<br />`false`<br />`allies`<br />`enemies` | `true` |
+| `colors` | Automatically assign a unique color to each player, works up to 10 players before colors repeat. | <span className="badge badge--primary">true/false</span> | false |
 
 ### Examples
 

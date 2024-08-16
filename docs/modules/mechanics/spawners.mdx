@@ -14,38 +14,32 @@ Currently, only dropped items and splash potions are supported by this module.
 Other types of entities may be supported in the future.
 :::
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<spawners> </spawners>` | Node containing all defined spawners used in this map. |
+| Element | Description |
+|---|---|
+| `<spawners> </spawners>` | Node containing all defined spawners used in this map. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<spawner> </spawner>` | An individual spawner. | <span className="badge badge--secondary">Spawner Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<spawner> </spawner>` | An individual spawner. | <span className="badge badge--secondary">Spawner Sub-elements</span> |
 
 #### Spawner Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `spawn-region` | <span className="badge badge--danger">Required</span>The region in which to spawn the target entities. | [Region](/docs/modules/mechanics/regions) |
-  | `player-region` | <span className="badge badge--danger">Required</span>The region used to determine whether the spawner is actively spawning entities. At least 1 player must be in this region for the spawner to be active. | [Region](/docs/modules/mechanics/regions) |
-  | `max-entities` | A limit of how many entities this spawner can have spawned at once. | <span className="badge badge--primary">Number</span> | `oo` (infinity) |
-  | `delay` | Interval in between spawning attempts. | [Time Period](/docs/reference/misc/time-periods) | 10s |
-  | `min-delay` | Used to randomize the spawn interval. Combine this with `max-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
-  | `max-delay` | Used to randomize the spawn interval. Combine this with `min-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
-  | `filter` | Filter to further control spawn conditions, will return true if at least one player in `player-region` meets criteria. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `spawn-region` | <span className="badge badge--danger">Required</span>The region in which to spawn the target entities. | [Region](/docs/modules/mechanics/regions) |
+| `player-region` | <span className="badge badge--danger">Required</span>The region used to determine whether the spawner is actively spawning entities. At least 1 player must be in this region for the spawner to be active. | [Region](/docs/modules/mechanics/regions) |
+| `max-entities` | A limit of how many entities this spawner can have spawned at once. | <span className="badge badge--primary">Number</span> | `oo` (infinity) |
+| `delay` | Interval in between spawning attempts. | [Time Period](/docs/reference/misc/time-periods) | 10s |
+| `min-delay` | Used to randomize the spawn interval. Combine this with `max-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
+| `max-delay` | Used to randomize the spawn interval. Combine this with `min-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
+| `filter` | Filter to further control spawn conditions, will return true if at least one player in `player-region` meets criteria. | [Filter](/docs/modules/mechanics/filters) |
 
 #### Spawner Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<item> </item>` | An item that will be dropped in the `spawn-region`. | [Item](/docs/modules/gear/items) |
-  | `<potion> </potion>` | A single splash potion that will be dropped in the `spawn-region`. | [Potion Effects](/docs/modules/gear/potions) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<item> </item>` | An item that will be dropped in the `spawn-region`. | [Item](/docs/modules/gear/items) |
+| `<potion> </potion>` | A single splash potion that will be dropped in the `spawn-region`. | [Potion Effects](/docs/modules/gear/potions) |
 
 ### Examples
 
