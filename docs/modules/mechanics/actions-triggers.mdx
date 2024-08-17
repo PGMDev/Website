@@ -36,6 +36,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `id` | Unique identifier used to reference this action from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `scope` | Sets the scope target an action should operate against. | `player`, `team`, or `match` |
 | `filter` | A filter that is tested before running actions inside. | [Filter](/docs/modules/mechanics/filters) |
+| `untrigger-filter` | Filters if an untrigger event (e.g. a trigger filter stops matching) should be passed down to children, similar to [kit lending](/docs/modules/gear/kits#dynamic-kits). | [Filter](/docs/modules/mechanics/filters) | `never` |
 | `expose` | Allows an action to be triggered by `/action`.<br />*Actions must have an ID and support the match scope for expose to work. Moderators require the `GAMEPLAY` permission to use the action command.* | <span className="badge badge--primary">true/false</span> | false |
 
 ### Switch-Scope Attributes
