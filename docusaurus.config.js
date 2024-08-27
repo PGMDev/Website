@@ -9,6 +9,7 @@ const config = {
   favicon: 'img/favicon.png',
   organizationName: 'PGMDev',
   projectName: 'Website',
+  trailingSlash: false,
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],

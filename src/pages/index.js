@@ -61,7 +61,7 @@ function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   return (
-    <Layout title={`Home`}>
+    <Layout title={`Home`} description={siteConfig.tagline}>
       <header className={classnames("hero", styles.banner)}>
         <div className={classnames(styles.bannerOverlay)} />
         <iframe
