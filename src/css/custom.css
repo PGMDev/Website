@@ -57,17 +57,21 @@ table tr {
 
 table th {
   background-color: rgb(72, 77, 91, 0.1);
-  padding: 8px;
+  padding: 6px;
 }
 
 table tbody tr th {
-  padding: 3px;
+  padding: 6px;
 }
 
 table td {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   background-color: rgb(72, 77, 91, 0);
+}
+
+table th, table td {
+  border: none;
 }
 
 table tr:nth-child(even) td {
@@ -157,9 +161,17 @@ code {
 }
 
 /* generally centres the navbar elements  */
+@media (min-width: 1440px) {
+  .navbar__inner {
+    max-width: var(--ifm-container-width-xl) !important;
+  }
+}
+
 .navbar__inner {
-  max-width: 1108px;
-  margin: auto;
+  max-width: var(--ifm-container-width);
+  padding: 0 var(--ifm-spacing-horizontal);
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* keeps the same spacing as the old site */
@@ -226,4 +238,13 @@ footer .container {
     display: inline;
     vertical-align: sub;
   }
+}
+
+:where(.button--white) {
+  --ifm-button-background-color: #ffffff;
+  --ifm-button-border-color: #ffffff;
+}
+
+.button--white:hover {
+  color: #000000 !important;
 }

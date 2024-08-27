@@ -10,57 +10,47 @@ Players can also buy a kit, instead of individual items, or use muiltiple curren
 
 #### Shop Element
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<shops> </shops>` | A node containing the shops for this map. | <span className="badge badge--secondary">Shop Elements</span> |
+| Element | Description | Value/Children |
+|---|---|---|
+| `<shops> </shops>` | A node containing the shops for this map. | <span className="badge badge--secondary">Shop Elements</span> |
 
-  | Sub-elements |||
-  |---|---|---|
-  | `<shop> </shop>` | An individual shop. | <span className="badge badge--secondary">Category Elements</span> |
-</div>
+| Sub-elements |||
+|---|---|---|
+| `<shop> </shop>` | An individual shop. | <span className="badge badge--secondary">Category Elements</span> |
 
 #### Shop Sub-Elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<shop> </shop>` | An individual shop. | <span className="badge badge--secondary">Shop Elements</span> |
-  | `<category> </category>` | <span className="badge badge--danger">Required</span>A category that can hold up to 28 items. | [Items](/docs/modules/gear/items) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<shop> </shop>` | An individual shop. | <span className="badge badge--secondary">Shop Elements</span> |
+| `<category> </category>` | <span className="badge badge--danger">Required</span>A category that can hold up to 28 items. | [Items](/docs/modules/gear/items) |
 
 #### Shop Attributes
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this shop from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `name` | The display name for the shop. | <span className="badge badge--primary">Formatted Text</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this shop from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `name` | The display name for the shop. | <span className="badge badge--primary">Formatted Text</span> |
 
 #### Category Attributes
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this category from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `name` | The display name for the category. | <span className="badge badge--primary">Formatted Text</span> |
-  | `material` | The item to display as an icon for the category. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this category from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `name` | The display name for the category. | <span className="badge badge--primary">Formatted Text</span> |
+| `material` | The item to display as an icon for the category. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 
 #### Item Attributes
 
 Items have unique attributes when used in a shop, usually for currency purchases.
 Items can be purchased with multiple currencies using the `<payment>` tag.
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `currency` | The currency needed to purchase. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-  | `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
-  | `kit` | The kit to give to players purchasing the item. | [Kit](/docs/modules/gear/kits) |
-  | `color` | Set the currency's display text color. This is used for associating colors with different currency tiers. | [Chat Color Name](/docs/reference/misc/formatting#chat-colors) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `currency` | The currency needed to purchase. | [Material Name](/docs/reference/items/inventory#material-matchers) |
+| `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
+| `kit` | The kit to give to players purchasing the item. | [Kit](/docs/modules/gear/kits) |
+| `color` | Set the currency's display text color. This is used for associating colors with different currency tiers. | [Chat Color Name](/docs/reference/misc/formatting#chat-colors) |
 
 ### Examples
 
@@ -97,25 +87,21 @@ Shopkeepers must use a single location provider, multiple inner points or region
 
 #### Shopkeeper Element
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<shopkeepers> </shopkeepers>` | A node containing a set of shopkeepers for this map. | <span className="badge badge--secondary">Shopkeeper Elements</span> |
+| Element | Description | Value/Children |
+|---|---|---|
+| `<shopkeepers> </shopkeepers>` | A node containing a set of shopkeepers for this map. | <span className="badge badge--secondary">Shopkeeper Elements</span> |
 
-  | Sub-elements | | |
-  |---|---|---|
-  | `<shopkeeper> </shopkeeper>` | An individual shopkeeper. | <span className="badge badge--secondary">Shopkeeper Attributes</span> |
-</div>
+| Sub-elements | | |
+|---|---|---|
+| `<shopkeeper> </shopkeeper>` | An individual shopkeeper. | <span className="badge badge--secondary">Shopkeeper Attributes</span> |
 
 #### Shopkeeper Attributes
 
-<div className="table-container">
-  | Element | Description | Value | Default |
-  |---|---|---|---|
-  | `name` | The display name of this shopkeeper, shown above the entity if present. | <span className="badge badge--primary">Formatted Text</span> |
-  | `mob` | The mob type for this shopkeeper to appear as. | [Creature Type](/docs/reference/entities/entity-types) | Villager |
-  | `shop` | <span className="badge badge--danger">Required</span>A previously defined shop to use. | Shop ID |
-</div>
+| Element | Description | Value | Default |
+|---|---|---|---|
+| `name` | The display name of this shopkeeper, shown above the entity if present. | <span className="badge badge--primary">Formatted Text</span> |
+| `mob` | The mob type for this shopkeeper to appear as. | [Creature Type](/docs/reference/entities/entity-types) | Villager |
+| `shop` | <span className="badge badge--danger">Required</span>A previously defined shop to use. | Shop ID |
 
 ### Examples
 

@@ -10,60 +10,50 @@ You can define as many variables as you want and all variables must have a scope
 
 ## Variable Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<variables> </variables>` | A node containing the variables for this map. |
-  
-  | Sub-elements ||
-  |---|---|
-  | `<variable/>` | An individual variable. |
-  | `<score/>` | A score variable, allowing direct access to competitor's score. This is automatically scoped to teams. |
-  | `<timelimit/>` | A time limit variable which starts/stops the time limit of the match. |
-  | `<maxbuildheight/>` | A variable that sets the build height of the map. |
-  | `<array/>` | A variable that represents a collection of values. |
-  | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
-  | `<player-location/>` | A variable that reads a player's location components. |
-</div>
+| Element | Description |
+|---|---|
+| `<variables> </variables>` | A node containing the variables for this map. |
+
+| Sub-elements ||
+|---|---|
+| `<variable/>` | An individual variable. |
+| `<score/>` | A score variable, allowing direct access to competitor's score. This is automatically scoped to teams. |
+| `<timelimit/>` | A time limit variable which starts/stops the time limit of the match. |
+| `<maxbuildheight/>` | A variable that sets the build height of the map. |
+| `<array/>` | A variable that represents a collection of values. |
+| `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
+| `<player-location/>` | A variable that reads a player's location components. |
 
 ### Variable Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `exclusive` | Limits how many different instances there can be for a variable.<br />*Values between 1 and 50 are supported, higher values may lead to performance issues.* | <span className="badge badge--primary">Number</span> |
-  | `scope` | Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
-  | `default` | Sets the initial value of the variable. | <span className="badge badge--primary">Number</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `exclusive` | Limits how many different instances there can be for a variable.<br />*Values between 1 and 50 are supported, higher values may lead to performance issues.* | <span className="badge badge--primary">Number</span> |
+| `scope` | Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
+| `default` | Sets the initial value of the variable. | <span className="badge badge--primary">Number</span> |
 
 ### Array Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this array-type variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `size` | <span className="badge badge--danger">Required</span>The size of this array. | <span className="badge badge--primary">1 - 1024</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this array-type variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `size` | <span className="badge badge--danger">Required</span>The size of this array. | <span className="badge badge--primary">1 - 1024</span> |
 
 ### With-Team Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this with-team variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `var` | The variable to target. | [Variable ID](#variable-attributes) |
-  | `team` | The team to target. | [Team ID](/docs/modules/format/teams#team-attributes) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this with-team variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `var` | The variable to target. | [Variable ID](#variable-attributes) |
+| `team` | The team to target. | [Team ID](/docs/modules/format/teams#team-attributes) |
 
 ### Player-Location Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this player-location variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `component` | The player's location component to target. `XYZ`, `YAW`, and `PITCH` represents the player's position/angle, `DIR_XYZ` represents the player's direction, and `VEL_XYZ` represents the player's velocity.  | `X`, `Y`, `Z`, `PITCH`, `YAW`,<br />`DIR_X`, `DIR_Y`, `DIR_Z`,<br />`VEL_X`, `VEL_Y`, and `VEL_Z` |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this player-location variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `component` | The player's location component to target. `XYZ`, `YAW`, and `PITCH` represents the player's position/angle, `DIR_XYZ` represents the player's direction, and `VEL_XYZ` represents the player's velocity.  | `X`, `Y`, `Z`, `PITCH`, `YAW`,<br />`DIR_X`, `DIR_Y`, `DIR_Z`,<br />`VEL_X`, `VEL_Y`, and `VEL_Z` |
 
 ## Examples
 

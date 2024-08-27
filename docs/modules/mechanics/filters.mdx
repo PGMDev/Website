@@ -111,127 +111,109 @@ Filter matchers test for specific conditions or properties of things.
 
 Generic filters can apply to anything.
 
-<div className="table-container">
-  | Element | Description ||
-  |---|---|---|
-  | `<filter id="filter1"/>` | Reference a filter by its ID. | <span className="badge badge--primary">Dynamic</span> |
-  | `<always/>` | Matches/allows everything.<br />Can be referenced with the ID `always`. | <span className="badge badge--primary">Dynamic</span> |
-  | `<never/>` | Matches nothing/denies everything.<br />Can be referenced with the ID `never`. | <span className="badge badge--primary">Dynamic</span> |
-  | `<time>duration</time>` | Filter if the specified [time period](/docs/reference/misc/time-periods) has elapsed since the match started. | <span className="badge badge--primary">Dynamic</span> |
-  | `<match-started/>` | Filter if the match has started *(running or finished)*. | <span className="badge badge--primary">Dynamic</span> |
-  | `<match-running/>` | Filter if the match is running. | <span className="badge badge--primary">Dynamic</span> |
-  | `<match-finished/>` | Filter if the match is over. | <span className="badge badge--primary">Dynamic</span> |
-  | `<objective>objective-id</objective>` | Match if the objective is completed. | <span className="badge badge--primary">Dynamic</span> |
-  | `<flag-carried>flag-id</flag-carried>` | Match if the flag is being carried by anyone. | <span className="badge badge--primary">Dynamic</span> |
-  | `<flag-dropped>flag-id</flag-dropped>` | Match if the flag is dropped on the ground. | <span className="badge badge--primary">Dynamic</span> |
-  | `<flag-returned>flag-id</flag-returned>` | Match if the flag is at the return-point. | <span className="badge badge--primary">Dynamic</span> |
-  | `<flag-captured>flag-id</flag-captured>` | Match if the flag has been captured. | <span className="badge badge--primary">Dynamic</span> |
-</div>
+| Element | Description ||
+|---|---|---|
+| `<filter id="filter1"/>` | Reference a filter by its ID. | <span className="badge badge--primary">Dynamic</span> |
+| `<always/>` | Matches/allows everything.<br />Can be referenced with the ID `always`. | <span className="badge badge--primary">Dynamic</span> |
+| `<never/>` | Matches nothing/denies everything.<br />Can be referenced with the ID `never`. | <span className="badge badge--primary">Dynamic</span> |
+| `<time>duration</time>` | Filter if the specified [time period](/docs/reference/misc/time-periods) has elapsed since the match started. | <span className="badge badge--primary">Dynamic</span> |
+| `<match-started/>` | Filter if the match has started *(running or finished)*. | <span className="badge badge--primary">Dynamic</span> |
+| `<match-running/>` | Filter if the match is running. | <span className="badge badge--primary">Dynamic</span> |
+| `<match-finished/>` | Filter if the match is over. | <span className="badge badge--primary">Dynamic</span> |
+| `<objective>objective-id</objective>` | Match if the objective is completed. | <span className="badge badge--primary">Dynamic</span> |
+| `<flag-carried>flag-id</flag-carried>` | Match if the flag is being carried by anyone. | <span className="badge badge--primary">Dynamic</span> |
+| `<flag-dropped>flag-id</flag-dropped>` | Match if the flag is dropped on the ground. | <span className="badge badge--primary">Dynamic</span> |
+| `<flag-returned>flag-id</flag-returned>` | Match if the flag is at the return-point. | <span className="badge badge--primary">Dynamic</span> |
+| `<flag-captured>flag-id</flag-captured>` | Match if the flag has been captured. | <span className="badge badge--primary">Dynamic</span> |
 
 ### Spatial Filters
 
 These type of filters apply to anything with a physical location.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<void/>` | Match if there is an air block at Y=0 in the vertical column of this location. |
-  | `<blocks region="region-1"> </blocks>` | Match for original blocks that exist on the map during match load. |
+| Element | Description |
+|---|---|
+| `<void/>` | Match if there is an air block at Y=0 in the vertical column of this location. |
+| `<blocks region="region-1"> </blocks>` | Match for original blocks that exist on the map during match load. |
 
-  ||
-  |:---:|
-  | *All [region](/docs/modules/mechanics/regions#region-types) types* |
-</div>
+||
+|:---:|
+| *All [region](/docs/modules/mechanics/regions#region-types) types* |
 
 ### Block Filters
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<material>block</material>` | Matches blocks by their [Material](/docs/reference/items/inventory#material-finder) name.<br />Accepts a [Single Material Pattern](/docs/reference/items/inventory#material-matchers). |
-  | `<structural-load>2</structural-load>` | Test the number of other gravity blocks that the queried block is supporting. |
-</div>
+| Element | Description |
+|---|---|
+| `<material>block</material>` | Matches blocks by their [Material](/docs/reference/items/inventory#material-finder) name.<br />Accepts a [Single Material Pattern](/docs/reference/items/inventory#material-matchers). |
+| `<structural-load>2</structural-load>` | Test the number of other gravity blocks that the queried block is supporting. |
 
 ### Entity Filters
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<spawn>spawn reason</spawn>` | Matches spawn event reasons, see [Mob Spawning](/docs/modules/environment/mobs). |
-  | `<mob>mob name</mob>` | Matches mobs by their name, see [Mob Spawning](/docs/modules/environment/mobs). |
-  | `<entity>entity name</entity>` | Match entities such as projectiles, boats, dropped items, etc. |
-</div>
+| Element | Description |
+|---|---|
+| `<spawn>spawn reason</spawn>` | Matches spawn event reasons, see [Mob Spawning](/docs/modules/environment/mobs). |
+| `<mob>mob name</mob>` | Matches mobs by their name, see [Mob Spawning](/docs/modules/environment/mobs). |
+| `<entity>entity name</entity>` | Match entities such as projectiles, boats, dropped items, etc. |
 
 ### Competitor Filters
 
 Competitor Filters apply to teams or players when Free-for-all is enabled.
 
-<div className="table-container">
-  | Element | Description ||
-  |---|---|---|
-  | `<carrying-flag>flag-id</carrying-flag>` | Match the team/player carrying the specified flag. | <span className="badge badge--primary">Dynamic</span> |
-  | `<score>single number or range</score>` | Match the team/player with a range of score. | <span className="badge badge--primary">Dynamic</span> |
-</div>
+| Element | Description ||
+|---|---|---|
+| `<carrying-flag>flag-id</carrying-flag>` | Match the team/player carrying the specified flag. | <span className="badge badge--primary">Dynamic</span> |
+| `<score>single number or range</score>` | Match the team/player with a range of score. | <span className="badge badge--primary">Dynamic</span> |
 
 ### Player Filters
 
 Player filters match for attributes of a certain player.
 
-<div className="table-container">
-  | Element | Description ||
-  |---|---|---|
-  | `<participating/>` | Match if the player is participating in the match. | <span className="badge badge--primary">Dynamic</span> |
-  | `<observing/>` | Match if the player is observing in the match. | <span className="badge badge--primary">Dynamic</span> |
-  | `<team>team</team>` | Matches a team by its ID. | <span className="badge badge--primary">Dynamic</span> |
-  | `<class>class name</class>` | Match players with the specified class. ||
-  | `<kill-streak/>` | Match players with a certain range or amount of kills. ||
-  | `<lives/>` | Match players with a certain amount of lives. ||
-  | `<crouching/>` | Match if the player is crouching. | <span className="badge badge--primary">Dynamic</span> |
-  | `<walking/>` | Match if the player is walking. | <span className="badge badge--primary">Dynamic</span> |
-  | `<sprinting/>` | Match if the player is sprinting. | <span className="badge badge--primary">Dynamic</span> |
-  | `<grounded/>` | Match if the player is on the ground. | <span className="badge badge--primary">Dynamic</span> |
-  | `<flying/>` | Match if the player is flying. | <span className="badge badge--primary">Dynamic</span> |
-  | `<alive/>` | Match if the player is participating and alive. | <span className="badge badge--primary">Dynamic</span> |
-  | `<dead/>` | Match if the player is participating and dead. | <span className="badge badge--primary">Dynamic</span> |
-  | `<can-fly/>` | Match if the player can fly. ||
-  | `<effect/>` | Match if the player has a certain status effect. ||
-  | `<carrying><item material=""/></carrying>` | Match if the player is carrying an item. | <span className="badge badge--primary">Dynamic</span> |
-  | `<holding><item material=""/></holding>` | Match if the player is holding an item. | <span className="badge badge--primary">Dynamic</span> |
-  | `<wearing><item material=""/></wearing>` | Match if the player is wearing an item. | <span className="badge badge--primary">Dynamic</span> |
-</div>
+| Element | Description ||
+|---|---|---|
+| `<participating/>` | Match if the player is participating in the match. | <span className="badge badge--primary">Dynamic</span> |
+| `<observing/>` | Match if the player is observing in the match. | <span className="badge badge--primary">Dynamic</span> |
+| `<team>team</team>` | Matches a team by its ID. | <span className="badge badge--primary">Dynamic</span> |
+| `<class>class name</class>` | Match players with the specified class. ||
+| `<kill-streak/>` | Match players with a certain range or amount of kills. ||
+| `<lives/>` | Match players with a certain amount of lives. ||
+| `<crouching/>` | Match if the player is crouching. | <span className="badge badge--primary">Dynamic</span> |
+| `<walking/>` | Match if the player is walking. | <span className="badge badge--primary">Dynamic</span> |
+| `<sprinting/>` | Match if the player is sprinting. | <span className="badge badge--primary">Dynamic</span> |
+| `<grounded/>` | Match if the player is on the ground. | <span className="badge badge--primary">Dynamic</span> |
+| `<flying/>` | Match if the player is flying. | <span className="badge badge--primary">Dynamic</span> |
+| `<alive/>` | Match if the player is participating and alive. | <span className="badge badge--primary">Dynamic</span> |
+| `<dead/>` | Match if the player is participating and dead. | <span className="badge badge--primary">Dynamic</span> |
+| `<can-fly/>` | Match if the player can fly. ||
+| `<effect/>` | Match if the player has a certain status effect. ||
+| `<carrying><item material=""/></carrying>` | Match if the player is carrying an item. | <span className="badge badge--primary">Dynamic</span> |
+| `<holding><item material=""/></holding>` | Match if the player is holding an item. | <span className="badge badge--primary">Dynamic</span> |
+| `<wearing><item material=""/></wearing>` | Match if the player is wearing an item. | <span className="badge badge--primary">Dynamic</span> |
 
 #### Carrying/Holding/Wearing Filter Attributes
 
 These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 
-<div className="table-container">
-  | Element | Description ||
-  |---|---|---|
-  | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
-  | `ignore-durability` | Ignore the durability of the item when matching. | <span className="badge badge--primary">true/false</span> |
-  | `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
-  | `ignore-name` | Ignore the name of the item when matching. | <span className="badge badge--primary">true/false</span> |
-  | `ignore-enchantments` | Ignore the enchantments of the item when matching. | <span className="badge badge--primary">true/false</span> |
-</div>
+| Element | Description ||
+|---|---|---|
+| `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
+| `ignore-durability` | Ignore the durability of the item when matching. | <span className="badge badge--primary">true/false</span> |
+| `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
+| `ignore-name` | Ignore the name of the item when matching. | <span className="badge badge--primary">true/false</span> |
+| `ignore-enchantments` | Ignore the enchantments of the item when matching. | <span className="badge badge--primary">true/false</span> |
 
 ### Event Filters
 
 Event Filters apply to transient events.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<cause>cause</cause>` | Filter an event's cause. |
-  | `<random>decimal or range</random>` | Random chance matcher. |
-</div>
+| Element | Description |
+|---|---|
+| `<cause>cause</cause>` | Filter an event's cause. |
+| `<random>decimal or range</random>` | Random chance matcher. |
 
 ### Damage Filters
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<relation>relation</relation>` | Filter an event's relation to the player. |
-</div>
+| Element | Description |
+|---|---|
+| `<relation>relation</relation>` | Filter an event's relation to the player. |
 
 ## Modifier Elements
 
@@ -373,15 +355,13 @@ This filter is commonly used in [Kill Rewards](/docs/modules/gear/kill-rewards),
 
 ##### Kill-Streak Filter Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `min` | Match players with at least this many kills. | <span className="badge badge--primary">Number</span> |
-  | `max` | Match players with a maximum of this many kills. | <span className="badge badge--primary">Number</span> |
-  | `count` | Match players with exactly this many kills.<br />*Can not be mixed with the `min` and `max` attributes.* | <span className="badge badge--primary">Number</span> |
-  | `repeat` | Repeat the filter range. | <span className="badge badge--primary">true/false</span> | false |
-  | `persistent` | Do not reset a players kill count when they die. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `min` | Match players with at least this many kills. | <span className="badge badge--primary">Number</span> |
+| `max` | Match players with a maximum of this many kills. | <span className="badge badge--primary">Number</span> |
+| `count` | Match players with exactly this many kills.<br />*Can not be mixed with the `min` and `max` attributes.* | <span className="badge badge--primary">Number</span> |
+| `repeat` | Repeat the filter range. | <span className="badge badge--primary">true/false</span> | false |
+| `persistent` | Do not reset a players kill count when they die. | <span className="badge badge--primary">true/false</span> | false |
 
 _Examples_
 
@@ -399,13 +379,11 @@ The [Blitz module](/docs/modules/objectives/blitz) must be enabled to use this f
 
 ##### Lives Filter Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `min` | Match players with at least this many lives. | <span className="badge badge--primary">Number</span> |
-  | `max` | Match players with a maximum of this many lives. | <span className="badge badge--primary">Number</span> |
-  | `count` | Match players with exactly this many lives.<br />*Cannot be mixed with the `min` and `max` attributes.* | <span className="badge badge--primary">Number</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `min` | Match players with at least this many lives. | <span className="badge badge--primary">Number</span> |
+| `max` | Match players with a maximum of this many lives. | <span className="badge badge--primary">Number</span> |
+| `count` | Match players with exactly this many lives.<br />*Cannot be mixed with the `min` and `max` attributes.* | <span className="badge badge--primary">Number</span> |
 
 _Examples_
 
@@ -500,13 +478,11 @@ _Examples_
 This filter matches for **up to** the specified amount of time after the child filter starts matching.
 It never matches when the child filter doesn't match. This filter is a [Dynamic Filter](#dynamic-filters).
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `duration` | <span className="badge badge--danger">Required</span>Length of time to match for. | [Time Period](/docs/reference/misc/time-periods) |
-  | `filter` | <span className="badge badge--danger">Required</span>Filter when the countdown should be active. | [Dynamic Filter](#dynamic-filters) |
-  | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `duration` | <span className="badge badge--danger">Required</span>Length of time to match for. | [Time Period](/docs/reference/misc/time-periods) |
+| `filter` | <span className="badge badge--danger">Required</span>Filter when the countdown should be active. | [Dynamic Filter](#dynamic-filters) |
+| `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 
 ```
 <!-- Countdown 30s from the moment any player picks up the flag -->
@@ -521,13 +497,11 @@ It never matches when the child filter doesn't match. This filter is a [Dynamic 
 This filter starts allowing sometime after a duration the child filters start allowing.
 This filter is a [Dynamic Filter](#dynamic-filters).
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `duration` | <span className="badge badge--danger">Required</span>Length of time to be active after the child filter allows. | [Time Period](/docs/reference/misc/time-periods) |
-  | `filter` | <span className="badge badge--danger">Required</span>Filter when the after filter should be active. | [Dynamic Filter](#dynamic-filters) |
-  | `message` | Optional message to display after the child filter allows. Only players who match the filter can see the message. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `duration` | <span className="badge badge--danger">Required</span>Length of time to be active after the child filter allows. | [Time Period](/docs/reference/misc/time-periods) |
+| `filter` | <span className="badge badge--danger">Required</span>Filter when the after filter should be active. | [Dynamic Filter](#dynamic-filters) |
+| `message` | Optional message to display after the child filter allows. Only players who match the filter can see the message. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 
 ```
 <!-- Allows 15 seconds after the player gets 1st place -->
@@ -544,14 +518,12 @@ which the filter is evaluated again. The filter continues repeating if the inner
 This is mainly useful in combination with [Actions & Triggers](/docs/modules/mechanics/actions-triggers).
 This filter is a [Dynamic Filter](#dynamic-filters).
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `period` | <span className="badge badge--danger">Required</span>Length of time a pulse remains on in a cycle. | [Time Period](/docs/reference/misc/time-periods) |
-  | `duration` | <span className="badge badge--danger">Required</span>Length of time a cycle lasts for.<br />*Must be a positive number that is shorter than the period length.* | [Time Period](/docs/reference/misc/time-periods) |
-  | `filter` | <span className="badge badge--danger">Required</span>Filter when the pulse should be active; if the filter allows, pulse will be ticking. It can be defined as a unique child element or as an attribute. | [Dynamic Filter](#dynamic-filters) |
-  | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `period` | <span className="badge badge--danger">Required</span>Length of time a pulse remains on in a cycle. | [Time Period](/docs/reference/misc/time-periods) |
+| `duration` | <span className="badge badge--danger">Required</span>Length of time a cycle lasts for.<br />*Must be a positive number that is shorter than the period length.* | [Time Period](/docs/reference/misc/time-periods) |
+| `filter` | <span className="badge badge--danger">Required</span>Filter when the pulse should be active; if the filter allows, pulse will be ticking. It can be defined as a unique child element or as an attribute. | [Dynamic Filter](#dynamic-filters) |
+| `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 
 ```
 <filters>
@@ -604,15 +576,13 @@ The child filter can be omitted, in which case all players in the match will be 
 
 ##### Player Count Filter Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `min` | Minimum player count. | <span className="badge badge--primary">Number</span> | 1 |
-  | `max` | Maximum player count. | <span className="badge badge--primary">Number</span> | `oo` (unlimited) |
-  | `participants` | Include participants (players actually playing) in the count. | <span className="badge badge--primary">true/false</span> | true |
-  | `observers` | Include observers in the count. | <span className="badge badge--primary">true/false</span> | false |
-  | `filter` | Filter when players are counted. | [Dynamic Filter](#dynamic-filters) | `always` |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `min` | Minimum player count. | <span className="badge badge--primary">Number</span> | 1 |
+| `max` | Maximum player count. | <span className="badge badge--primary">Number</span> | `oo` (unlimited) |
+| `participants` | Include participants (players actually playing) in the count. | <span className="badge badge--primary">true/false</span> | true |
+| `observers` | Include observers in the count. | <span className="badge badge--primary">true/false</span> | false |
+| `filter` | Filter when players are counted. | [Dynamic Filter](#dynamic-filters) | `always` |
 
 _Examples_
 
@@ -655,23 +625,19 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 
 ##### Objective Filter Modules
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<completed>` | Matches if anyone completed or captured the objective. | <span className="badge badge--secondary">Objective ID</span> |
-  | `<captured>` | Matches for players/teams who currently control the objective. | <span className="badge badge--secondary">Objective ID</span> |
-  | `<objective>` | <span className="badge badge--warning" title="This attribute should no longer be used.">Deprecated</span>Matches if any team completed the objective. | <span className="badge badge--secondary">Objective ID</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<completed>` | Matches if anyone completed or captured the objective. | <span className="badge badge--secondary">Objective ID</span> |
+| `<captured>` | Matches for players/teams who currently control the objective. | <span className="badge badge--secondary">Objective ID</span> |
+| `<objective>` | <span className="badge badge--warning" title="This attribute should no longer be used.">Deprecated</span>Matches if any team completed the objective. | <span className="badge badge--secondary">Objective ID</span> |
 
 
 ##### Objective Module Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `any` | Matches if any team completed the objective. | <span className="badge badge--primary">true/false</span> | false |
-  | `team` | Matches if a certain team completed the objective. | [Team ID](/docs/modules/format/teams) |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `any` | Matches if any team completed the objective. | <span className="badge badge--primary">true/false</span> | false |
+| `team` | Matches if a certain team completed the objective. | [Team ID](/docs/modules/format/teams) |
 
 _Examples_
 

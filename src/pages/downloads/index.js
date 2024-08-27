@@ -79,7 +79,7 @@ export default function Downloads() {
                     </p>
                   </div>
                 </div>
-                <div className={classnames("col col--4", styles.col_border)}>
+                <div className="col col--4">
                   <h2>Download PGM</h2>
                   <p>
                     PvP Game Manager (PGM) is a plugin that manages running and
@@ -110,10 +110,6 @@ export default function Downloads() {
                       </a>
                     </div>
                     <a
-                        className={classnames(
-                            "button button--primary",
-                            styles.download_button
-                        )}
                         href={"/docs/guides/preparing/local-server-setup"}
                     >
                       Install guide <FontAwesomeIcon icon={faBook} />
@@ -123,7 +119,7 @@ export default function Downloads() {
                 <div className={classnames("col col--4", styles.col_margin_left)}>
                 <h2>Download SportPaper</h2>
                 <p>
-                  SportPaper is a Minecraft server software based on Paper 1.8, tuned
+                  SportPaper is a 1.8 Paper fork tuned
                   for maximum performance and high-intensity PvP. It is
                   recommended for use with PGM.
                 </p>
@@ -226,7 +222,6 @@ export default function Downloads() {
               </div>
             </div>
           </div>
-          <hr style={{ marginTop: "40px", marginBottom: "10px" }} />
           <div className="row">
             <div className={classnames("col col--6", styles.column)}>
               <div className={classnames("hero", styles.others_hero)}>

@@ -19,33 +19,26 @@ Additionally, players cannot place Ender chests under any circumstances.
 
 #### Enderchest Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<enderchest> </enderchest>` | Node containing this map's Ender chest properties. |
+| Element | Description |
+|---|---|
+| `<enderchest> </enderchest>` | Node containing this map's Ender chest properties. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<dropoff>` | An individual Ender chest drop-off rule. | <span className="badge badge--secondary">Enderchest Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<dropoff>` | An individual Ender chest drop-off rule. | <span className="badge badge--secondary">Enderchest Sub-elements</span> |
 
 #### Enderchest Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `fallback` | Specify a fallback operation for when no drop-off passes the filters.<br />`KEEP` will maintain items when the player leaves a match.<br />`DELETE` will clear the content of a player's Ender chest if they leave a match. Under `AUTO`, it will acts as `DELETE` if no drop-offs are defined, otherwise it will act as `KEEP`. | `AUTO`, `KEEP`, or `DELETE` | `AUTO` |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `fallback` | Specify a fallback operation for when no drop-off passes the filters.<br />`KEEP` will maintain items when the player leaves a match.<br />`DELETE` will clear the content of a player's Ender chest if they leave a match. Under `AUTO`, it will acts as `DELETE` if no drop-offs are defined, otherwise it will act as `KEEP`. | `AUTO`, `KEEP`, or `DELETE` | `AUTO` |
 
 #### Dropoff Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Region in which a player's Ender chest content will be dropped off. | [Randomize-able Regions](/docs/modules/mechanics/regions) |
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Filter to determine whether to drop off Ender chest content at this location or attempt the next location (if any). | [Filter](/docs/modules/mechanics/filters) |
-
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Region in which a player's Ender chest content will be dropped off. | [Randomize-able Regions](/docs/modules/mechanics/regions) |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Filter to determine whether to drop off Ender chest content at this location or attempt the next location (if any). | [Filter](/docs/modules/mechanics/filters) |
 
 ## Examples
 

@@ -84,23 +84,20 @@ While almost every form of damage can be disabled safely, it is recommended that
 
 #### Disable Damage Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<disabledamage> </disabledamage>` | Node containing the disabled damage types. |
-  
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<damage> </damage>` | The damage type that is disabled. | [Damage Cause](#damage-causes) |
-</div>
+| Element | Description |
+|---|---|
+| `<disabledamage> </disabledamage>` | Node containing the disabled damage types. |
+
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<damage> </damage>` | The damage type that is disabled. | [Damage Cause](#damage-causes) |
 
 #### Damage Attributes
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `attacker-action` | The action to trigger for the attacker. | [Action ID](/docs/modules/mechanics/actions-triggers) |
-  | `victim-action` | The action to trigger for the victim. | [Action ID](/docs/modules/mechanics/actions-triggers) |
-</div>
+
+| Attribute | Description | Value |
+|---|---|---|
+| `attacker-action` | The action to trigger for the attacker. | [Action ID](/docs/modules/mechanics/actions-triggers) |
+| `victim-action` | The action to trigger for the victim. | [Action ID](/docs/modules/mechanics/actions-triggers) |
 
 _Example_
 
@@ -124,14 +121,12 @@ _Example_
 
 The `BLOCK_EXPLOSION` damage cause has several extended attributes to customize who/what gets damaged. Only attributes with `false` as the value need to be explicitly defined since all attributes default to `true`.
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `ally` | Damage to players on the same team as the person that caused the explosion. | <span className="badge badge--primary">true/false</span> | true |
-  | `self` | Damage to the person that caused the explosion. | <span className="badge badge--primary">true/false</span> | true |
-  | `enemy` | Damage to players not on the same team as the person that caused the explosion. | <span className="badge badge--primary">true/false</span> | true |
-  | `other` | Any other damage caused by the explosion. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `ally` | Damage to players on the same team as the person that caused the explosion. | <span className="badge badge--primary">true/false</span> | true |
+| `self` | Damage to the person that caused the explosion. | <span className="badge badge--primary">true/false</span> | true |
+| `enemy` | Damage to players not on the same team as the person that caused the explosion. | <span className="badge badge--primary">true/false</span> | true |
+| `other` | Any other damage caused by the explosion. | <span className="badge badge--primary">true/false</span> | true |
 
 _Example_
 
@@ -147,31 +142,29 @@ _Example_
 The following damage causes can be used in the disable damage module.
 These causes do not need to be capitalized or contain underscores, i.e., `FIRE_TICK` and `fire tick` will both work.
 
-<div className="table-container">
-  | Name | Description |
-  |---|---|
-  | `CONTACT` | Damage caused when an entity contacts a block such as a Cactus. |
-  | `ENTITY_ATTACK` | Damage caused when an entity attacks another entity. |
-  | `PROJECTILE` | Damage caused when attacked by a projectile. |
-  | `SUFFOCATION` | Damage caused by being put in a block. |
-  | `FALL` | Damage caused when an entity falls a distance greater than 3 blocks. |
-  | `FIRE` | Damage caused by direct exposure to fire. |
-  | `FIRE_TICK` | Damage caused due to burns caused by fire. |
-  | `MELTING` | Damage caused due to a snowman melting. |
-  | `LAVA` | Damage caused by direct exposure to lava. |
-  | `DROWNING` | Damage caused by running out of air while in water. |
-  | `BLOCK_EXPLOSION` | Damage caused by being in the area when a block explodes. |
-  | `ENTITY_EXPLOSION` | Damage caused by being in the area when an entity, such as a Creeper, explodes. |
-  | `VOID` | Damage caused by falling into the void. |
-  | `LIGHTNING` | Damage caused by being struck by lightning. |
-  | `SUICIDE` | Damage caused by committing suicide using the command `/kill`. |
-  | `STARVATION` | Damage caused by starving due to having an empty hunger bar. |
-  | `POISON` | Damage caused due to an ongoing poison effect. |
-  | `MAGIC` | Damage caused by being hit by a damage potion or spell. |
-  | `WITHER` | Damage caused by Wither potion effect. |
-  | `FALLING_BLOCK` | Damage caused by being hit by a falling block which deals damage. |
-  | `THORNS` | Damage caused in retaliation to another attack by the Thorns enchantment. |
-  | `CUSTOM` | Custom damage. |
-</div>
+| Name | Description |
+|---|---|
+| `CONTACT` | Damage caused when an entity contacts a block such as a Cactus. |
+| `ENTITY_ATTACK` | Damage caused when an entity attacks another entity. |
+| `PROJECTILE` | Damage caused when attacked by a projectile. |
+| `SUFFOCATION` | Damage caused by being put in a block. |
+| `FALL` | Damage caused when an entity falls a distance greater than 3 blocks. |
+| `FIRE` | Damage caused by direct exposure to fire. |
+| `FIRE_TICK` | Damage caused due to burns caused by fire. |
+| `MELTING` | Damage caused due to a snowman melting. |
+| `LAVA` | Damage caused by direct exposure to lava. |
+| `DROWNING` | Damage caused by running out of air while in water. |
+| `BLOCK_EXPLOSION` | Damage caused by being in the area when a block explodes. |
+| `ENTITY_EXPLOSION` | Damage caused by being in the area when an entity, such as a Creeper, explodes. |
+| `VOID` | Damage caused by falling into the void. |
+| `LIGHTNING` | Damage caused by being struck by lightning. |
+| `SUICIDE` | Damage caused by committing suicide using the command `/kill`. |
+| `STARVATION` | Damage caused by starving due to having an empty hunger bar. |
+| `POISON` | Damage caused due to an ongoing poison effect. |
+| `MAGIC` | Damage caused by being hit by a damage potion or spell. |
+| `WITHER` | Damage caused by Wither potion effect. |
+| `FALLING_BLOCK` | Damage caused by being hit by a falling block which deals damage. |
+| `THORNS` | Damage caused in retaliation to another attack by the Thorns enchantment. |
+| `CUSTOM` | Custom damage. |
 
 Copied from: [bukkit docs - Damage Cause](https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html)

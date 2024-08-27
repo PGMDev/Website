@@ -5,9 +5,9 @@
   "private": true,
   "bugs": "https://github.com/PGMDev/Website/issues",
   "repository": {
-		"type": "git",
-		"url": "https://github.com/PGMDev/Website.git"
-	},
+    "type": "git",
+    "url": "https://github.com/PGMDev/Website.git"
+  },
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -21,8 +21,9 @@
   },
   "dependencies": {
     "@docusaurus/core": "^3.4.0",
-    "@docusaurus/preset-classic": "^3.4.0",
     "@docusaurus/plugin-client-redirects": "^3.4.0",
+    "@docusaurus/preset-classic": "^3.4.0",
+    "@docusaurus/theme-classic": "^3.5.2",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",

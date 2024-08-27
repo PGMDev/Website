@@ -11,43 +11,37 @@ If neither are specified, the renewable affects all blocks in the world.
 
 #### Renewables Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<renewables> </renewables>` | Node containing this map's renewable block rules. |
-  
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<renewable>` | An individual renewable block rule. | <span className="badge badge--secondary">Renewable Sub-elements</span> |
-</div>
+| Element | Description |
+|---|---|
+| `<renewables> </renewables>` | Node containing this map's renewable block rules. |
+
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<renewable>` | An individual renewable block rule. | <span className="badge badge--secondary">Renewable Sub-elements</span> |
 
 #### Renewable Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region in which blocks will be renewed. | [Region](/docs/modules/mechanics/regions) | `everywhere` |
-  | `renew-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are renewed. | [Filter](/docs/modules/mechanics/filters) | Everything |
-  | `replace-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks can be replaced by renewing blocks. | [Filter](/docs/modules/mechanics/filters) | Everything |
-  | `shuffle-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which renewable blocks are shuffled. | [Filter](/docs/modules/mechanics/filters) | Nothing |
-  | `rate` | Approximate number of blocks that will be restored per second. This rate applies to the renewable as a whole, which means the time required for any single block to renew will depend on how many other blocks are waiting to be renewed by the same renewable.<br />*This parameter cannot be combined with `interval`.* | <span className="badge badge--primary">blocks/second</span> | 1 |
-  | `interval` | Average time required for a block to renew. Unlike `rate`, this applies to each block individually, and blocks do not affect each other's renewal time. A renewable with an `interval` can behave very differently from a renewable with a `rate`, particularly if it is large.<br />*This parameter cannot be combined with `rate`.* | [Time Period](/docs/reference/misc/time-periods) |
-  | `grow` | Only allow blocks to be restored adjacent to other blocks that are already renewed, or not renewable. If set to `false`, blocks will be restored at completely random locations, even in mid-air. | <span className="badge badge--primary">true/false</span> | true |
-  | `particles` | Show block restore particle effects. | <span className="badge badge--primary">true/false</span> | true |
-  | `sound` | Play block restore sound effects. | <span className="badge badge--primary">true/false</span> | true |
-  | `avoid-players` | Prevent blocks from being restored within a specific number of distance from any player. | <span className="badge badge--primary">block</span> | 2 |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Region in which blocks will be renewed. | [Region](/docs/modules/mechanics/regions) | `everywhere` |
+| `renew-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are renewed. | [Filter](/docs/modules/mechanics/filters) | Everything |
+| `replace-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks can be replaced by renewing blocks. | [Filter](/docs/modules/mechanics/filters) | Everything |
+| `shuffle-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which renewable blocks are shuffled. | [Filter](/docs/modules/mechanics/filters) | Nothing |
+| `rate` | Approximate number of blocks that will be restored per second. This rate applies to the renewable as a whole, which means the time required for any single block to renew will depend on how many other blocks are waiting to be renewed by the same renewable.<br />*This parameter cannot be combined with `interval`.* | <span className="badge badge--primary">blocks/second</span> | 1 |
+| `interval` | Average time required for a block to renew. Unlike `rate`, this applies to each block individually, and blocks do not affect each other's renewal time. A renewable with an `interval` can behave very differently from a renewable with a `rate`, particularly if it is large.<br />*This parameter cannot be combined with `rate`.* | [Time Period](/docs/reference/misc/time-periods) |
+| `grow` | Only allow blocks to be restored adjacent to other blocks that are already renewed, or not renewable. If set to `false`, blocks will be restored at completely random locations, even in mid-air. | <span className="badge badge--primary">true/false</span> | true |
+| `particles` | Show block restore particle effects. | <span className="badge badge--primary">true/false</span> | true |
+| `sound` | Play block restore sound effects. | <span className="badge badge--primary">true/false</span> | true |
+| `avoid-players` | Prevent blocks from being restored within a specific number of distance from any player. | <span className="badge badge--primary">block</span> | 2 |
 
 #### Renewable Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region the renewable applies to. | [Bounded Regions](/docs/modules/mechanics/regions) |
-  | `<renew-filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are renewed. | [Filters](/docs/modules/mechanics/filters) |
-  | `<replace-filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are replaced. | [Filters](/docs/modules/mechanics/filters) |
-  | `<shuffle-filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are shuffled. | [Filters](/docs/modules/mechanics/filters) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region the renewable applies to. | [Bounded Regions](/docs/modules/mechanics/regions) |
+| `<renew-filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are renewed. | [Filters](/docs/modules/mechanics/filters) |
+| `<replace-filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are replaced. | [Filters](/docs/modules/mechanics/filters) |
+| `<shuffle-filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter which blocks are shuffled. | [Filters](/docs/modules/mechanics/filters) |
 
 ### Examples
 

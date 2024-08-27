@@ -8,88 +8,86 @@ This page describes a list of commands, aliases, and permissions for [Community]
 Commands for moderation, punishments, etc will be shown here.
 Permissions are prefixed with `CommunityPermissions` (i.e. `CommunityPermissions.LOOKUP_OTHERS`).
 
-<div className="table-container">
-  | Commands | Aliases | Description | Usage | Permissions |
-  |---|---|---|---|---|
-  | `/alts` | alternateaccounts | View a list of alternate accounts of a player. | [target] | `LOOKUP_OTHERS` |
-  | `/assistance` | assist<br />helpop<br />helpme | Request help from staff members. | [reason] – Let staff know what you need help with |
-  | `/ban` | permban<br />pb | Ban a player from the server. | [player] [reason] | `BAN` |
-  | `/broadcast` | announce<br />bc | Broadcast an announcement to everyone. | [title] [message] or [message] | `BROADCAST` |
-  | `/chat clear` || Clears the chat. || `CHAT_MANAGEMENT` |
-  | `/chat lock` | lockdown | Toggle lock status for the chat. || `CHAT_MANAGEMENT` |
-  | `/chat slow` | slowmode | Toggle chat slowmode. || `CHAT_MANAGEMENT` |
-  | `/chat status` || View current chat mode status. || `CHAT_MANAGEMENT` |
-  | `/chat` || Manage the chat status. | defaults to status | `CHAT_MANAGEMENT` |
-  | `/chestedit` | ce<br />cedit<br />containeredit | Edit inventory contents of target block (chest, furnace, dispenser, beacon, etc.) || `CONTAINER` |
-  | `/community punishments` | p | Imports bans to database. | [true/false] – verbose | `RELOAD` |
-  | `/community reload` || Reloads the Community configuration. || `RELOAD` |
-  | `/community stats` || Displays total users, punishments and reports. || `RELOAD` |
-  | `/community` || Manage the community plugin. | reloads by default | `RELOAD` |
-  | `/fly` | flight | Toggle your flight mode. || `FLIGHT` |
-  | `/flyspeed` || Adjust your flight speed. || `FLIGHT_SPEED` |
-  | `/freeze` | fz<br />f | Toggle a player’s frozen state. | [username] | `FREEZE` |
-  | `/friend accept` | acc | Accept an incoming friend request. | [username &#124; uuid] | `FRIENDSHIP` |
-  | `/friend add` | request<br />a | Sends a friend request to another player. | [username &#124; uuid] | `FRIENDSHIP` |
-  | `/friend reject` | deny | Denies an incoming friend request. | [username &#124; uuid] | `FRIENDSHIP` |
-  | `/friend remove` | delete<br />rm | Removes a friend. | [username &#124; uuid] | `FRIENDSHIP` |
-  | `/friend requests` | incoming<br />pending | View a list of your pending friend requests. || `FRIENDSHIP` |
-  | `/friend` | friendship<br />fs | Manage your friend relationships. | defaults to list | `FRIENDSHIP` |
-  | `/friends` | /friend list | View a list of friends. || `FRIENDSHIP` |
-  | `/frozenlist` | fls<br />flist | View a list of frozen players. || `FREEZE` |
-  | `/gamemode` | gm | Adjust your or another player’s gamemode. || `GAMEMODE` |
-  | `/kick` | k | Kick a player from the server. | [player] [reason] | `KICK` |
-  | `/languages` || View a list of online languages. || `TRANSLATE` |
-  | `/lookup` | l | View infraction history of a player. | [player] [page] | `LOOKUP_OTHERS` |
-  | `/modtools` | mtools | Give moderator tools to observer. || `STAFF` |
-  | `/mutate add` | a | Add a mutation to the match. || `MUTATION` |
-  | `/mutate list` | ls | View a list of mutations. |
-  | `/mutate remove` | rm<br />disable | Remove an active mutation from the match. || `MUTATION` |
-  | `/mutate` | mutation<br />mt | Manage match mutations. || `MUTATION` |
-  | `/mute` | m | Pervent a player from speaking in the chat. | [player] [duration] [reason] | `MUTE` |
-  | `/mutes` || List all online players who are muted. || `MUTE` |
-  | `/nameban` | nb [/ban username/name] | Bans a username from the server, player can still reconnect if their username changes. | [player] [reason] – no reason required | `BAN` |
-  | `/nick check` || Check if the provided name is avaliable. | [nick] | `NICKNAME` |
-  | `/nick clear` | reset | Remove nickname from yourself or another player. | [target] (needs `NICKNAME_OTHER` permissions) – defaults to own player | `NICKNAME` |
-  | `/nick confirm` || Confirm random nickname choice. | [name] – Confirm name from nick selection | `NICKNAME` |
-  | `/nick random` || Set a random nickname. || `NICKNAME` |
-  | `/nick set` || Set your nickname. | [name] | `NICKNAME_SET` |
-  | `/nick setother` | other | Set the nickname of another player. | [target] [nick] | `NICKNAME_OTHER` |
-  | `/nick skin` || Set skin for current nick session. | [username] – name of skin to copy | `NICKNAME_SET` |
-  | `/nick status` || Check your current nickname status. | [target] (needs `NICKNAME_OTHER` perms) – defaults to own player |
-  | `/nick toggle` || Toggle your nickname status. |
-  | `/nick` || Set a nickname. || `NICKNAME` |
-  | `/nicks` | /nick list | View a list of online nicked players. || `STAFF` |
-  | `/player` | pl | View a list of recent reports for the targeted player. | [player] [page] | `REPORTS` |
-  | `/profile` | user | View account info for a player. | [username &#124; uuid] | `LOOKUP_OTHERS` |
-  | `/punishmenthistory` | ph | View a list of recent punishments. | [page] | `PUNISH` |
-  | `/queue` | sponsorqueue<br />sq<br />[/sponsor queue] | View the sponsored maps queue. |
-  | `/record` | infractions mypunishments | View your punishment history. | [page] | `LOOKUP` |
-  | `/repeatpunishment` | rp | Repeat the last punishment you performed for another player. | [player] | `PUNISH` |
-  | `/report` || Report a player who is breaking the rules. | [username] [reason] |
-  | `/reports` | reporthistory<br />reps | View report history. || `REPORTS` |
-  | `/request` | req | Request a map. | [map] – Name of map to request | `REQUEST` |
-  | `/requests clear` || Clear map requests. | [map] – Leave empty to clear all | `STAFF` |
-  | `/requests` | reqs | View and manage map requests. | clear | `STAFF` |
-  | `/seen` | lastseen<br />find | View when a player was last seen online. | [player] | `FIND` |
-  | `/sponsor maps` || View a list of maps which can be sponsored. |
-  | `/sponsor request` | submit<br />add | Sponsor a map request. | [map] – Name of map to sponsor (only allowed maps) |
-  | `/sponsor` || View the sponsor request menu. | info, cancel – defaults to info |
-  | `/staff` | mods<br />admins | View a list of online staff members. |
-  | `/sudo` | force | Force targets to perform given command. | [commands] | `ADMIN` |
-  | `/tempban` | tb<br />[/ban temp temporary t] | Temporarily bans a player from a server. | [player] [duration] [reason] | `BAN` |
-  | `/tokens balance` || Check your token balance. |
-  | `/tokens give` | award | Give the target player sponsor tokens. | [player] [token amount] | `ADMIN` |
-  | `/tokens` | sponsortokens<br />token | View how many sponsor tokens you have. | defaults to balance |
-  | `/tp` | teleport | Teleport to another player. | [player] [other player] | `TELEPORT` |
-  | `/tphere` | bring<br />tph | Teleport players to you. | [player] | `TELEPORT_OTHERS` |
-  | `/tplocation` | tpl<br />tploc | Teleport to specific coordinates. | [x,y,z] [target player] | `TELEPORT_LOCATION` |
-  | `/tptarget` | tptg<br />tg | Target a player for the player hook tool. || `STAFF` |
-  | `/translate` || Translate the given chat message. || `TRANSLATE` |
-  | `/unban` | pardon<br />forgive | Pardon all active punishments for a player. | [player] | `UNBAN` |
-  | `/unmute` | um | Unmute a player. | [player] | `MUTE` |
-  | `/uptime` || View how long the server has been online. |
-  | `/usernamehistoy` | uh | View the name history of a user. | [player] | `LOOKUP_OTHERS` |
-  | `/warn` | w | Warn a player for bad behavior. | [player] [reason] | `WARN` |
-</div>
+| Commands | Aliases | Description | Usage | Permissions |
+|---|---|---|---|---|
+| `/alts` | alternateaccounts | View a list of alternate accounts of a player. | [target] | `LOOKUP_OTHERS` |
+| `/assistance` | assist<br />helpop<br />helpme | Request help from staff members. | [reason] – Let staff know what you need help with |
+| `/ban` | permban<br />pb | Ban a player from the server. | [player] [reason] | `BAN` |
+| `/broadcast` | announce<br />bc | Broadcast an announcement to everyone. | [title] [message] or [message] | `BROADCAST` |
+| `/chat clear` || Clears the chat. || `CHAT_MANAGEMENT` |
+| `/chat lock` | lockdown | Toggle lock status for the chat. || `CHAT_MANAGEMENT` |
+| `/chat slow` | slowmode | Toggle chat slowmode. || `CHAT_MANAGEMENT` |
+| `/chat status` || View current chat mode status. || `CHAT_MANAGEMENT` |
+| `/chat` || Manage the chat status. | defaults to status | `CHAT_MANAGEMENT` |
+| `/chestedit` | ce<br />cedit<br />containeredit | Edit inventory contents of target block (chest, furnace, dispenser, beacon, etc.) || `CONTAINER` |
+| `/community punishments` | p | Imports bans to database. | [true/false] – verbose | `RELOAD` |
+| `/community reload` || Reloads the Community configuration. || `RELOAD` |
+| `/community stats` || Displays total users, punishments and reports. || `RELOAD` |
+| `/community` || Manage the community plugin. | reloads by default | `RELOAD` |
+| `/fly` | flight | Toggle your flight mode. || `FLIGHT` |
+| `/flyspeed` || Adjust your flight speed. || `FLIGHT_SPEED` |
+| `/freeze` | fz<br />f | Toggle a player’s frozen state. | [username] | `FREEZE` |
+| `/friend accept` | acc | Accept an incoming friend request. | [username &#124; uuid] | `FRIENDSHIP` |
+| `/friend add` | request<br />a | Sends a friend request to another player. | [username &#124; uuid] | `FRIENDSHIP` |
+| `/friend reject` | deny | Denies an incoming friend request. | [username &#124; uuid] | `FRIENDSHIP` |
+| `/friend remove` | delete<br />rm | Removes a friend. | [username &#124; uuid] | `FRIENDSHIP` |
+| `/friend requests` | incoming<br />pending | View a list of your pending friend requests. || `FRIENDSHIP` |
+| `/friend` | friendship<br />fs | Manage your friend relationships. | defaults to list | `FRIENDSHIP` |
+| `/friends` | /friend list | View a list of friends. || `FRIENDSHIP` |
+| `/frozenlist` | fls<br />flist | View a list of frozen players. || `FREEZE` |
+| `/gamemode` | gm | Adjust your or another player’s gamemode. || `GAMEMODE` |
+| `/kick` | k | Kick a player from the server. | [player] [reason] | `KICK` |
+| `/languages` || View a list of online languages. || `TRANSLATE` |
+| `/lookup` | l | View infraction history of a player. | [player] [page] | `LOOKUP_OTHERS` |
+| `/modtools` | mtools | Give moderator tools to observer. || `STAFF` |
+| `/mutate add` | a | Add a mutation to the match. || `MUTATION` |
+| `/mutate list` | ls | View a list of mutations. |
+| `/mutate remove` | rm<br />disable | Remove an active mutation from the match. || `MUTATION` |
+| `/mutate` | mutation<br />mt | Manage match mutations. || `MUTATION` |
+| `/mute` | m | Pervent a player from speaking in the chat. | [player] [duration] [reason] | `MUTE` |
+| `/mutes` || List all online players who are muted. || `MUTE` |
+| `/nameban` | nb [/ban username/name] | Bans a username from the server, player can still reconnect if their username changes. | [player] [reason] – no reason required | `BAN` |
+| `/nick check` || Check if the provided name is avaliable. | [nick] | `NICKNAME` |
+| `/nick clear` | reset | Remove nickname from yourself or another player. | [target] (needs `NICKNAME_OTHER` permissions) – defaults to own player | `NICKNAME` |
+| `/nick confirm` || Confirm random nickname choice. | [name] – Confirm name from nick selection | `NICKNAME` |
+| `/nick random` || Set a random nickname. || `NICKNAME` |
+| `/nick set` || Set your nickname. | [name] | `NICKNAME_SET` |
+| `/nick setother` | other | Set the nickname of another player. | [target] [nick] | `NICKNAME_OTHER` |
+| `/nick skin` || Set skin for current nick session. | [username] – name of skin to copy | `NICKNAME_SET` |
+| `/nick status` || Check your current nickname status. | [target] (needs `NICKNAME_OTHER` perms) – defaults to own player |
+| `/nick toggle` || Toggle your nickname status. |
+| `/nick` || Set a nickname. || `NICKNAME` |
+| `/nicks` | /nick list | View a list of online nicked players. || `STAFF` |
+| `/player` | pl | View a list of recent reports for the targeted player. | [player] [page] | `REPORTS` |
+| `/profile` | user | View account info for a player. | [username &#124; uuid] | `LOOKUP_OTHERS` |
+| `/punishmenthistory` | ph | View a list of recent punishments. | [page] | `PUNISH` |
+| `/queue` | sponsorqueue<br />sq<br />[/sponsor queue] | View the sponsored maps queue. |
+| `/record` | infractions mypunishments | View your punishment history. | [page] | `LOOKUP` |
+| `/repeatpunishment` | rp | Repeat the last punishment you performed for another player. | [player] | `PUNISH` |
+| `/report` || Report a player who is breaking the rules. | [username] [reason] |
+| `/reports` | reporthistory<br />reps | View report history. || `REPORTS` |
+| `/request` | req | Request a map. | [map] – Name of map to request | `REQUEST` |
+| `/requests clear` || Clear map requests. | [map] – Leave empty to clear all | `STAFF` |
+| `/requests` | reqs | View and manage map requests. | clear | `STAFF` |
+| `/seen` | lastseen<br />find | View when a player was last seen online. | [player] | `FIND` |
+| `/sponsor maps` || View a list of maps which can be sponsored. |
+| `/sponsor request` | submit<br />add | Sponsor a map request. | [map] – Name of map to sponsor (only allowed maps) |
+| `/sponsor` || View the sponsor request menu. | info, cancel – defaults to info |
+| `/staff` | mods<br />admins | View a list of online staff members. |
+| `/sudo` | force | Force targets to perform given command. | [commands] | `ADMIN` |
+| `/tempban` | tb<br />[/ban temp temporary t] | Temporarily bans a player from a server. | [player] [duration] [reason] | `BAN` |
+| `/tokens balance` || Check your token balance. |
+| `/tokens give` | award | Give the target player sponsor tokens. | [player] [token amount] | `ADMIN` |
+| `/tokens` | sponsortokens<br />token | View how many sponsor tokens you have. | defaults to balance |
+| `/tp` | teleport | Teleport to another player. | [player] [other player] | `TELEPORT` |
+| `/tphere` | bring<br />tph | Teleport players to you. | [player] | `TELEPORT_OTHERS` |
+| `/tplocation` | tpl<br />tploc | Teleport to specific coordinates. | [x,y,z] [target player] | `TELEPORT_LOCATION` |
+| `/tptarget` | tptg<br />tg | Target a player for the player hook tool. || `STAFF` |
+| `/translate` || Translate the given chat message. || `TRANSLATE` |
+| `/unban` | pardon<br />forgive | Pardon all active punishments for a player. | [player] | `UNBAN` |
+| `/unmute` | um | Unmute a player. | [player] | `MUTE` |
+| `/uptime` || View how long the server has been online. |
+| `/usernamehistoy` | uh | View the name history of a user. | [player] | `LOOKUP_OTHERS` |
+| `/warn` | w | Warn a player for bad behavior. | [player] [reason] | `WARN` |
 
 Spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1QlS4DW6aLcryf4BRw3WXylydm07HqKNTf_QYI2PtLzU/edit?usp=sharing).

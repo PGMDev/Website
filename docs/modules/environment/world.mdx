@@ -25,22 +25,18 @@ The `RandomSeed` value in the level data file is not used.
 Any chunks not in the world's `region/` folder will be generated according to the Minecraft chunk generation rules.
 This means that only the terrain that you have modified needs to be saved with the world.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<terrain />` | A node defining properties for this world's generator. |
-</div>
+| Element | Description |
+|---|---|
+| `<terrain />` | A node defining properties for this world's generator. |
 
 ##### Terrain Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `vanilla` | Specify if this world is uses the vanilla or null chunk generator. | <span className="badge badge--primary">true/false</span> | false |
-  | `seed` | The world's seed that determines how the world is generated. | <span className="badge badge--primary">String</span> |
-  | `environment` | The world's dimension type.<br />**Note:** Worlds with `the end` environment are not supported. | `normal`<br />`nether` | `normal` |
-  | `pre-match-physics` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span>Allow physics events, such as water flowing, before the match starts. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `vanilla` | Specify if this world is uses the vanilla or null chunk generator. | <span className="badge badge--primary">true/false</span> | false |
+| `seed` | The world's seed that determines how the world is generated. | <span className="badge badge--primary">String</span> |
+| `environment` | The world's dimension type.<br />**Note:** Worlds with `the end` environment are not supported. | `normal`<br />`nether` | `normal` |
+| `pre-match-physics` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span>Allow physics events, such as water flowing, before the match starts. | <span className="badge badge--primary">true/false</span> | false |
 
 ```xml
 <!-- Make a vanilla world with the seed 'qwerty' -->

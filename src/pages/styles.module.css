@@ -24,19 +24,24 @@
   z-index: 10;
 }
 
-.banner video {
+.bannerVideo {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
+  width: 200vw;
+  height: 100vh;
+  z-index: -1;
   -ms-transform: translateX(-50%) translateY(-50%);
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+}
+
+@media screen and (min-width: 996px) {
+  .bannerVideo {
+    width: 100vw;
+    height: 200vh;
+  }
 }
 
 .bannerTitle {
@@ -53,16 +58,8 @@
   -webkit-text-fill-color: transparent;
 }
 
-@media only screen and (min-width: 992px) {
-  .banner h1 {
-    margin-top: 90px;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .banner {
-    padding: 2rem;
-  }
+.banner {
+  padding: 8rem 1rem;
 }
 
 .bannerContainer {
@@ -76,9 +73,10 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: black;
   opacity: 0.5;
   z-index: 1;
+  background: #FF4500; /* fallback color */
+  background: linear-gradient(to right, rgba(255, 165, 0, 0.5) 0%, rgba(255, 141, 0, 0.5) 15%, rgba(255, 117, 0, 0.5) 50%, rgba(255, 69, 0, 0.5) 85%, rgba(220, 59, 0, 0.5) 100%);
 }
 
 .Ctas {
@@ -87,11 +85,11 @@
   margin-top: 24px;
 }
 
-.GitHubButtonWrapper {
+.githubButtonWrapper {
   display: flex;
 }
 
-.GitHubButton {
+.githubButton {
   border: none;
   margin-left: 24px;
   overflow: hidden;
@@ -104,22 +102,8 @@
   animation-timing-function: ease-in-out;
   display: block;
   margin-left: auto;
-  margin-right: auto;
-  width: 50vh;
-  margin-top: 7%;
-  margin-bottom: 15%;
-}
-
-@media only screen and (min-width: 992px) {
-  .floating {
-    float: right;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  .floating {
-    float: center;
-  }
+  height: 0;
+  min-height: 100%;
 }
 
 @keyframes floating {

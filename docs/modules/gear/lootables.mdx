@@ -6,16 +6,14 @@ title: Lootables
 Lootables are chests or other containers that generate their contents based on custom rules and probabilities.
 They can optionally refill themselves on a schedule or in response to dynamic filters.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<lootables> </lootables>` | A procedural list of loot. |
+| Element | Description |
+|---|---|
+| `<lootables> </lootables>` | A procedural list of loot. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<loot> </loot>` | A generated set of items. | <span className="badge badge--secondary">Loot Sub-elements</span> |
-  | `<fill> </fill>` | Configuration for filling containers with loot. | <span className="badge badge--secondary">Fill Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<loot> </loot>` | A generated set of items. | <span className="badge badge--secondary">Loot Sub-elements</span> |
+| `<fill> </fill>` | Configuration for filling containers with loot. | <span className="badge badge--secondary">Fill Sub-elements</span> |
 
 ## Loot
 
@@ -23,30 +21,24 @@ The `<loot>` element defines a generated set of items, using literal `<item>` el
 
 #### Loot Element
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<loot>` | A generated set of items. | <span className="badge badge--secondary">Loot Sub-elements</span> |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<loot>` | A generated set of items. | <span className="badge badge--secondary">Loot Sub-elements</span> |
 
 #### Loot Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this loot from other places in the XML. | <span className="badge badge--primary">String</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this loot from other places in the XML. | <span className="badge badge--primary">String</span> |
 
 #### Loot Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<item>` | An item to include in the loot. This can be any type of item element, and can have any item attributes. | [Item](/docs/modules/gear/items) |
-  | `<any>` | A random selection of children. |
-  | `<maybe>` | Include child conditionally based on a filter. |
-  | `<all>` | Include all children. |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<item>` | An item to include in the loot. This can be any type of item element, and can have any item attributes. | [Item](/docs/modules/gear/items) |
+| `<any>` | A random selection of children. |
+| `<maybe>` | Include child conditionally based on a filter. |
+| `<all>` | Include all children. |
 
 ### Random Selection
 
@@ -55,29 +47,23 @@ Its children can be `<option>` elements, or any other `<loot>` sub-element.
 
 #### Any Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `count` | The number of child elements to choose. | <span className="badge badge--primary">Numeric Range</span> |
-  | `unique` | Set to `true` if each child can only be chosen once.<br />Set to `false` to allow a child to be chosen multiple times. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `count` | The number of child elements to choose. | <span className="badge badge--primary">Numeric Range</span> |
+| `unique` | Set to `true` if each child can only be chosen once.<br />Set to `false` to allow a child to be chosen multiple times. | <span className="badge badge--primary">true/false</span> | true |
 
 #### Any Sub-elements
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<option>` | A single option for the random selection. |
-</div>
+| Element | Description |
+|---|---|
+| `<option>` | A single option for the random selection. |
 
 #### Option Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `weight` | The weight of this option relative to all others. | <span className="badge badge--primary">Number</span> | 1 |
-  | `filter` | Filter used to decide the eligibility of this option. | [Filter](/docs/modules/mechanics/filters) | `always` |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `weight` | The weight of this option relative to all others. | <span className="badge badge--primary">Number</span> | 1 |
+| `filter` | Filter used to decide the eligibility of this option. | [Filter](/docs/modules/mechanics/filters) | `always` |
 
 ### Conditional Inclusion
 
@@ -86,11 +72,9 @@ The filter is matched against the first player to access the loot.
 
 #### Maybe Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `filter` | Filter used to decide inclusion of children. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `filter` | Filter used to decide inclusion of children. | [Filter](/docs/modules/mechanics/filters) |
 
 ## Container Fill
 
@@ -102,23 +86,19 @@ chests to be filled, you will need to use [blocks filter](/docs/modules/mechanic
 
 #### Fill Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<fill>` | Automatically fills containers with loot. |
-</div>
+| Element | Description |
+|---|---|
+| `<fill>` | Automatically fills containers with loot. |
 
 #### Fill Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `loot` | Loot to fill containers with. | <span className="badge badge--primary">Loot</span> |
-  | `filter` | Selects which blocks/entities to fill. | [Filter](/docs/modules/mechanics/filters) | `always` |
-  | `refill-trigger` | Optional dynamic filter that causes containers to be refilled. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `refill-interval` | Time to refill containers after they are first accessed. | [Time Period](/docs/reference/misc/time-periods) | `oo` (never) |
-  | `refill-clear` | Whether to clear containers before refilling them. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `loot` | Loot to fill containers with. | <span className="badge badge--primary">Loot</span> |
+| `filter` | Selects which blocks/entities to fill. | [Filter](/docs/modules/mechanics/filters) | `always` |
+| `refill-trigger` | Optional dynamic filter that causes containers to be refilled. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+| `refill-interval` | Time to refill containers after they are first accessed. | [Time Period](/docs/reference/misc/time-periods) | `oo` (never) |
+| `refill-clear` | Whether to clear containers before refilling them. | <span className="badge badge--primary">true/false</span> | true |
 
 ## Examples
 

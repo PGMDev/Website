@@ -15,35 +15,29 @@ information that is **specific** and **unique** to the map.
 It should not be used for generic server-related messages.
 :::
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<broadcasts> </broadcasts>` | An element containing all the defined broadcast messages. |
+| Element | Description |
+|---|---|
+| `<broadcasts> </broadcasts>` | An element containing all the defined broadcast messages. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<tip> </tip>` | This will display a `[Tip]` message. | <span className="badge badge--primary">Formatted Text</span> |
-  | `<alert> </alert>` | This will display a `[Alert]` message. | <span className="badge badge--primary">Formatted Text</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<tip> </tip>` | This will display a `[Tip]` message. | <span className="badge badge--primary">Formatted Text</span> |
+| `<alert> </alert>` | This will display a `[Alert]` message. | <span className="badge badge--primary">Formatted Text</span> |
 
 ##### Message Tag Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `after` | <span className="badge badge--danger">Required</span>Duration to wait after the match starts to show the message. | [Time Period](/docs/reference/misc/time-periods) |
-  | `every` | After the message is shown, repeat it with this duration between messages. | [Time Period](/docs/reference/misc/time-periods) |
-  | `count` | Amount of times the message is repeated.<br />*Infinite repetition can be specified by using `oo` as the duration.* | <span className="badge badge--primary">Number</span> |
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if the broadcast message should be sent after the duration has passed, or if it is skipped. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `after` | <span className="badge badge--danger">Required</span>Duration to wait after the match starts to show the message. | [Time Period](/docs/reference/misc/time-periods) |
+| `every` | After the message is shown, repeat it with this duration between messages. | [Time Period](/docs/reference/misc/time-periods) |
+| `count` | Amount of times the message is repeated.<br />*Infinite repetition can be specified by using `oo` as the duration.* | <span className="badge badge--primary">Number</span> |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if the broadcast message should be sent after the duration has passed, or if it is skipped. | [Filter](/docs/modules/mechanics/filters) |
 
 ##### Message Tag Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if the broadcast message should be sent after the duration has passed, or if it is skipped. | [Filters](/docs/modules/mechanics/filters) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if the broadcast message should be sent after the duration has passed, or if it is skipped. | [Filters](/docs/modules/mechanics/filters) |
 
 ### Examples
 

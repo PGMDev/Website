@@ -8,39 +8,33 @@ Only one world border definition can be active at a time.
 
 Attributes for multiple world borders can be applied for all borders by specifying them in the root `<world-borders>` element.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<world-borders> </world-borders>` | Node containing all the defined world borders. |
+| Element | Description |
+|---|---|
+| `<world-borders> </world-borders>` | Node containing all the defined world borders. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<world-border>` | A single world border. | <span className="badge badge--secondary">World Border Sub-elements</span> |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<world-border>` | A single world border. | <span className="badge badge--secondary">World Border Sub-elements</span> |
 
 ##### World Borders Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `center` | <span className="badge badge--danger">Required</span>The center of this world border. | <span className="badge badge--primary">X,Z</span> |
-  | `size` | <span className="badge badge--danger">Required</span>The diameter of the world border, borders are always square. | <span className="badge badge--primary">Number</span> |
-  | `when` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this world border is in effect. | [Filter](/docs/modules/mechanics/filters) |
-  | `after` | Time after which this border takes effect.<br />*Not compatible with the `when` property.* | [Time Period](/docs/reference/misc/time-periods) |
-  | `duration` | The time it takes to transition from the previous state to this state. | [Time Period](/docs/reference/misc/time-periods) |
-  | `damage` | The amount of damage per second inflicted to players for each meter they are outside the border. | <span className="badge badge--primary">Number</span> | 0.2 |
-  | `buffer` | Distance to the edge of the border where damage to the player begins. | <span className="badge badge--primary">Number</span> | 5 |
-  | `warning-distance` | Specify the block distance to the border before showing a red vignette to players. | <span className="badge badge--primary">Number</span> | 5 |
-  | `warning-time` | Show red vignette to players when the border is moving and will reach them within the specified time. | [Time Period](/docs/reference/misc/time-periods) | 15s |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `center` | <span className="badge badge--danger">Required</span>The center of this world border. | <span className="badge badge--primary">X,Z</span> |
+| `size` | <span className="badge badge--danger">Required</span>The diameter of the world border, borders are always square. | <span className="badge badge--primary">Number</span> |
+| `when` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this world border is in effect. | [Filter](/docs/modules/mechanics/filters) |
+| `after` | Time after which this border takes effect.<br />*Not compatible with the `when` property.* | [Time Period](/docs/reference/misc/time-periods) |
+| `duration` | The time it takes to transition from the previous state to this state. | [Time Period](/docs/reference/misc/time-periods) |
+| `damage` | The amount of damage per second inflicted to players for each meter they are outside the border. | <span className="badge badge--primary">Number</span> | 0.2 |
+| `buffer` | Distance to the edge of the border where damage to the player begins. | <span className="badge badge--primary">Number</span> | 5 |
+| `warning-distance` | Specify the block distance to the border before showing a red vignette to players. | <span className="badge badge--primary">Number</span> | 5 |
+| `warning-time` | Show red vignette to players when the border is moving and will reach them within the specified time. | [Time Period](/docs/reference/misc/time-periods) | 15s |
 
 ##### World Border Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<when>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this world border is in effect. | [Filters](/docs/modules/mechanics/filters) |
-</div>
+| Element | Description | Value/Children |
+|---|---|---|
+| `<when>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this world border is in effect. | [Filters](/docs/modules/mechanics/filters) |
 
 ### Examples
 

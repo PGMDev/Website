@@ -106,68 +106,28 @@ const config = {
             position: 'right',
           },
           {
+            label: 'Discord',
+            href: 'https://discord.gg/pEEcwTk',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/PGMDev',
             label: 'GitHub',
             position: 'right',
           },
         ],
       },
-     announcementBar: {
-      id: 'new_features',
-      content:
-        'New Features: <a href="/docs/modules/mechanics/tracking-compass">Tracking Compass</a>, <a href="/docs/modules/gear/consumables">Consumables</a>, <a href="/docs/modules/general/main#map-variants">Map Variants</a>, and <a href="/docs/modules/general/main#constants">Constants</a>',
-      backgroundColor: '#fafbfc',
-      textColor: '#091E42',
-      isCloseable: true,
-    },
       footer: {
         style: 'light',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Modules',
-                to: '/docs/modules/general/main',
-              },
-              {
-                label: 'Reference',
-                to: '/docs/reference/items/inventory',
-              },
-              {
-                label: 'Guides',
-                to: '/docs/guides/xml-pointers/regions',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/pEEcwTk',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/OvercastPGM',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Downloads',
-                to: 'downloads',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/PGMDev',
-              },
-            ],
-          },
-        ],
         copyright: `Copyright &#169; ${new Date().getUTCFullYear()} The PGM project and its contributors`,
+      },
+      announcementBar: {
+        id: 'new_features',
+        content:
+          'New Features: <a href="/docs/modules/mechanics/tracking-compass">Tracking Compass</a>, <a href="/docs/modules/gear/consumables">Consumables</a>, <a href="/docs/modules/general/main#map-variants">Map Variants</a>, and <a href="/docs/modules/general/main#constants">Constants</a>',
+        backgroundColor: '#fafbfc',
+        textColor: '#091E42',
+        isCloseable: true,
       },
       algolia: {
         appId: 'NZ27HYOOIL',

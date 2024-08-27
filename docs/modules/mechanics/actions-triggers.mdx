@@ -13,187 +13,155 @@ In the future, some features that are currently used in Kits may be transferred 
 
 ## Action Elements
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<action> </action>` | A group of actions running in a sequence. |
-  | `<switch-scope> </switch-scope>` | Changes the scope that an action applies to. |
-  | `<message/>` | A message that is sent to the player. |
-  | `<sound/>` | A sound that is played for the player. |
-  | `<set/>` | Sets a new value for a [Variable](/docs/modules/mechanics/variables). |
-  | `<kill-entities/>` | Removes entities based on a filter. |
-  | `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
-  | `<fill/>` | Places blocks in a block-bounded region. |
-  | `<paste-structure/>` | Places a structure at a specified location when triggered. |
-  | `<replace-item> </replace-item>` | Finds and replaces certain items. |
-  | `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
-  | `<velocity/>` | A player-scoped kit that applies velocity to the player. |
-  | `<teleport/>` | Teleport a player to a specific location. |
-</div>
+| Element | Description |
+|---|---|
+| `<action> </action>` | A group of actions running in a sequence. |
+| `<switch-scope> </switch-scope>` | Changes the scope that an action applies to. |
+| `<message/>` | A message that is sent to the player. |
+| `<sound/>` | A sound that is played for the player. |
+| `<set/>` | Sets a new value for a [Variable](/docs/modules/mechanics/variables). |
+| `<kill-entities/>` | Removes entities based on a filter. |
+| `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
+| `<fill/>` | Places blocks in a block-bounded region. |
+| `<paste-structure/>` | Places a structure at a specified location when triggered. |
+| `<replace-item> </replace-item>` | Finds and replaces certain items. |
+| `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
+| `<velocity/>` | A player-scoped kit that applies velocity to the player. |
+| `<teleport/>` | Teleport a player to a specific location. |
 
 ### Action Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | Unique identifier used to reference this action from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `scope` | Sets the scope target an action should operate against. | `player`, `team`, or `match` |
-  | `filter` | A filter that is tested before running actions inside. | [Filter](/docs/modules/mechanics/filters) |
-  | `expose` | Allows an action to be triggered by `/action`.<br />*Actions must have an ID and support the match scope for expose to work. Moderators require the `GAMEPLAY` permission to use the action command.* | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | Unique identifier used to reference this action from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `scope` | Sets the scope target an action should operate against. | `player`, `team`, or `match` |
+| `filter` | A filter that is tested before running actions inside. | [Filter](/docs/modules/mechanics/filters) |
+| `expose` | Allows an action to be triggered by `/action`.<br />*Actions must have an ID and support the match scope for expose to work. Moderators require the `GAMEPLAY` permission to use the action command.* | <span className="badge badge--primary">true/false</span> | false |
 
 ### Switch-Scope Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this switch-scope from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `inner` | Specify the scope of the inner action. | `player`, `team`, or `match` |
-  | `outer` | Specify the scope outside of an action.<br />*In some cases, this can be omitted as PGM will automatically infer the outer scope.* | `player`, `team`, or `match` |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this switch-scope from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `inner` | Specify the scope of the inner action. | `player`, `team`, or `match` |
+| `outer` | Specify the scope outside of an action.<br />*In some cases, this can be omitted as PGM will automatically infer the outer scope.* | `player`, `team`, or `match` |
 
 ### Message Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `text` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The text that will be sent in the chat to a player. | <span className="badge badge--primary">Formatted Text</span> |
-  | `actionbar` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The text above the hotbar. | <span className="badge badge--primary">Formatted Text</span> |
-  | `title` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The title text that will appear in the center of the player's screen. | <span className="badge badge--primary">Formatted Text</span> |
-  | `subtitle` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The subtitle text that will appear below the title text. | <span className="badge badge--primary">Formatted Text</span> |
-  | `fade-in` | How long the title and subtitle text will fade in. | [Time Period](/docs/reference/misc/time-periods) | 0.5s |
-  | `stay` | How long the title and subtitle text will display for. | [Time Period](/docs/reference/misc/time-periods) | 3.5s |
-  | `fade-out` | How long the title and subtitle text will fade out. | [Time Period](/docs/reference/misc/time-periods) | 1s |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `text` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The text that will be sent in the chat to a player. | <span className="badge badge--primary">Formatted Text</span> |
+| `actionbar` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The text above the hotbar. | <span className="badge badge--primary">Formatted Text</span> |
+| `title` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The title text that will appear in the center of the player's screen. | <span className="badge badge--primary">Formatted Text</span> |
+| `subtitle` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The subtitle text that will appear below the title text. | <span className="badge badge--primary">Formatted Text</span> |
+| `fade-in` | How long the title and subtitle text will fade in. | [Time Period](/docs/reference/misc/time-periods) | 0.5s |
+| `stay` | How long the title and subtitle text will display for. | [Time Period](/docs/reference/misc/time-periods) | 3.5s |
+| `fade-out` | How long the title and subtitle text will fade out. | [Time Period](/docs/reference/misc/time-periods) | 1s |
 
 #### Replacements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<replacements>` | A list of replacements.<br />**Note:** In the future, more replacements such as player names will be supported. | <span className="badge badge--secondary">Replacements Sub-elements</span> |
+| Element | Description | Value |
+|---|---|---|
+| `<replacements>` | A list of replacements.<br />**Note:** In the future, more replacements such as player names will be supported. | <span className="badge badge--secondary">Replacements Sub-elements</span> |
 
-  | Sub-element | Description |
-  |---|---|
-  | `<decimal/>` | A numerical placeholder. |
-</div>
+| Sub-element | Description |
+|---|---|
+| `<decimal/>` | A numerical placeholder. |
 
 ##### Decimal Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `id` | Unique identifier used to reference this decimal from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `value` | <span className="badge badge--danger">Required</span>The variable this decimal should evaluate. It can be used with formulas. | <span className="badge badge--primary">Expression</span> |
-  | `format` | Customize how the decimal should be displayed, e.g. `#.00`. | [Java DecimalFormat pattern](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this decimal from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `value` | <span className="badge badge--danger">Required</span>The variable this decimal should evaluate. It can be used with formulas. | <span className="badge badge--primary">Expression</span> |
+| `format` | Customize how the decimal should be displayed, e.g. `#.00`. | [Java DecimalFormat pattern](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html) |
 
 ### Sound Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `preset` | Allows you to reuse a pre-existing sound with predefined volume and pitch. | [Sounds Preset](/docs/reference/misc/sounds) | `CUSTOM` |
-  | `key` | The sound type that will be played for a player. | [Sound Keys](/docs/reference/misc/sounds#sound-keys) |
-  | `volume` | How loud or quiet a sound should be. | <span className="badge badge--primary">Decimal</span> | 1.0 |
-  | `pitch` | The tone of the sound. | <span className="badge badge--primary">Decimal</span> | 1.0 |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `preset` | Allows you to reuse a pre-existing sound with predefined volume and pitch. | [Sounds Preset](/docs/reference/misc/sounds) | `CUSTOM` |
+| `key` | The sound type that will be played for a player. | [Sound Keys](/docs/reference/misc/sounds#sound-keys) |
+| `volume` | How loud or quiet a sound should be. | <span className="badge badge--primary">Decimal</span> | 1.0 |
+| `pitch` | The tone of the sound. | <span className="badge badge--primary">Decimal</span> | 1.0 |
 
 ### Set Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `var` | <span className="badge badge--danger">Required</span>The variable to update. | [Variable](/docs/modules/mechanics/variables) |
-  | `index` | If setting an array-type variable, the expression to be evaluated.<br />*Required when using array-type variables.* | <span className="badge badge--primary">Expression</span> |
-  | `value` | <span className="badge badge--danger">Required</span>Sets a new value for the variable. | <span className="badge badge--primary">Expression</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `var` | <span className="badge badge--danger">Required</span>The variable to update. | [Variable](/docs/modules/mechanics/variables) |
+| `index` | If setting an array-type variable, the expression to be evaluated.<br />*Required when using array-type variables.* | <span className="badge badge--primary">Expression</span> |
+| `value` | <span className="badge badge--danger">Required</span>Sets a new value for the variable. | <span className="badge badge--primary">Expression</span> |
 
 ### Kill-Entities Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `filter` | Filters which entities to remove. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `filter` | Filters which entities to remove. | [Filter](/docs/modules/mechanics/filters) |
 
 ### Fill Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region to fill in. Multiple regions will be treated as an union. | [Region](/docs/modules/mechanics/regions) |
-  | `material` | <span className="badge badge--danger">Required</span>The filling material. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-  | `filter` | Filters which blocks get affected. *May impact performance for large fills.* | [Filter](/docs/modules/mechanics/filters) |
-  | `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region to fill in. Multiple regions will be treated as an union. | [Region](/docs/modules/mechanics/regions) |
+| `material` | <span className="badge badge--danger">Required</span>The filling material. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
+| `filter` | Filters which blocks get affected. *May impact performance for large fills.* | [Filter](/docs/modules/mechanics/filters) |
+| `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | false |
 
 ### Paste-Structure Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `x` | The X coordinate of the location to paste the structure, measured in east-west. | <span className="badge badge--primary">Expression</span> |
-  | `y` | The Y coordinate of the location to paste the structure, measured in altitude. | <span className="badge badge--primary">Expression</span> |
-  | `z` | The Z coordinate of the location to paste the structure, measured in north-south. | <span className="badge badge--primary">Expression</span> |
-  | `structure` | The structure to paste. | [Structure ID](/docs/modules/blocks/structures) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `x` | The X coordinate of the location to paste the structure, measured in east-west. | <span className="badge badge--primary">Expression</span> |
+| `y` | The Y coordinate of the location to paste the structure, measured in altitude. | <span className="badge badge--primary">Expression</span> |
+| `z` | The Z coordinate of the location to paste the structure, measured in north-south. | <span className="badge badge--primary">Expression</span> |
+| `structure` | The structure to paste. | [Structure ID](/docs/modules/blocks/structures) |
 
 ### Replace Item
 
 #### Sub-elements
 
-<div className="table-container">
-  | Sub-elements | Description | Value |
-  |---|---|---|
-  | `<find/>` | The item to find in a player's inventory. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
-  | `<replace/>` | The new item to replace with. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
-</div>
+| Sub-elements | Description | Value |
+|---|---|---|
+| `<find/>` | The item to find in a player's inventory. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+| `<replace/>` | The new item to replace with. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
 
 #### Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
-  | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
-  | `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
-  | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
+| `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
+| `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
+| `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
 
 ### Take-Payment
 
 #### Sub-elements
 
-<div className="table-container">
-  | Sub-elements | Description | Value |
-  |---|---|---|
-  | `<payment/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>An individual payment. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
-  | `<success-action/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The action to trigger upon a successful payment. | <span className="badge badge--primary">Action</span> |
-  | `<fail-action/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The action to trigger upon a failed payment. | <span className="badge badge--primary">Action</span> |
-</div>
+| Sub-elements | Description | Value |
+|---|---|---|
+| `<payment/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>An individual payment. | [Item Attributes](/docs/modules/gear/items#item-attributes) |
+| `<success-action/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The action to trigger upon a successful payment. | <span className="badge badge--primary">Action</span> |
+| `<fail-action/>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The action to trigger upon a failed payment. | <span className="badge badge--primary">Action</span> |
 
 #### Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `material` | <span className="badge badge--danger">Required</span>The item to display as an icon. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-  | `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
-  | `currency` | The currency needed to purchase. | [Filter](/docs/modules/mechanics/filters) |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `material` | <span className="badge badge--danger">Required</span>The item to display as an icon. | [Material Name](/docs/reference/items/inventory#material-matchers) |
+| `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
+| `currency` | The currency needed to purchase. | [Filter](/docs/modules/mechanics/filters) |
 
 ### Velocity & Teleport Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `x` | The X coordinate, measured in east-west. | <span className="badge badge--primary">Expression</span> |
-  | `y` | The Y coordinate, measured in altitude. | <span className="badge badge--primary">Expression</span> |
-  | `z` | The Z coordinate, measured in north-south. | <span className="badge badge--primary">Expression</span> |
-  | `yaw` | The horizontal angle a user looks to. | <span className="badge badge--primary">Expression</span> |
-  | `pitch` | The vertical angle a user looks to. | <span className="badge badge--primary">Expression</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `x` | The X coordinate, measured in east-west. | <span className="badge badge--primary">Expression</span> |
+| `y` | The Y coordinate, measured in altitude. | <span className="badge badge--primary">Expression</span> |
+| `z` | The Z coordinate, measured in north-south. | <span className="badge badge--primary">Expression</span> |
+| `yaw` | The horizontal angle a user looks to. | <span className="badge badge--primary">Expression</span> |
+| `pitch` | The vertical angle a user looks to. | <span className="badge badge--primary">Expression</span> |
 
 ## Trigger Element
 
@@ -201,13 +169,11 @@ The trigger element waits for a dynamic filter to activate it, and afterwards it
 
 ### Trigger Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A dynamic filter that activates the trigger. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-  | `action` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Sets the action to run when the filter allows. | [Action](#action-elements) |
-  | `scope` | Specify the scope for which to test the filter. | `player`, `team`, or `match` |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A dynamic filter that activates the trigger. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+| `action` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Sets the action to run when the filter allows. | [Action](#action-elements) |
+| `scope` | Specify the scope for which to test the filter. | `player`, `team`, or `match` |
 
 _Example_
 

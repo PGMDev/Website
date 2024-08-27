@@ -64,17 +64,14 @@ function Home() {
     <Layout title={`Home`}>
       <header className={classnames("hero", styles.banner)}>
         <div className={classnames(styles.bannerOverlay)} />
-        <video
-          playsInline="playsinline"
-          autoPlay="autoplay"
-          disablePictureInPicture
-          muted="muted"
-          loop="loop"
-          poster="img/fallback.avif"
-        >
-          <source src="video/video.webm" type="video/webm" />
-          <source src="video/video.mp4" type="video/mp4" /> {/* fallback */}
-        </video>
+        <iframe
+          className={styles.bannerVideo}
+          src="https://www.youtube-nocookie.com/embed/vxS-0jqCEYo?playlist=vxS-0jqCEYo&controls=0&autoplay=1&mute=1&loop=1&rel=0&showinfo=0&quality=high"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title="Homepage Banner Video"
+        />
         <div className={classnames("container", styles.bannerContainer)}>
           <div className="row">
             <div className="col col--6">
@@ -87,16 +84,16 @@ function Home() {
               <div className={styles.Ctas}>
                 <Link
                   className={classnames(
-                    "button button--outline button--primary button--lg",
+                    "button button--outline button--white button--lg",
                     styles.getStarted
                   )}
                   to={useBaseUrl("downloads")}
                 >
                   Get Started
                 </Link>
-                <span className={styles.GitHubButtonWrapper}>
+                <span className={styles.githubButtonWrapper}>
                   <iframe
-                    className={styles.GitHubButton}
+                    className={styles.githubButton}
                     src="https://ghbtns.com/github-btn.html?user=PGMDev&amp;repo=PGM&amp;type=star&amp;count=true&amp;size=large"
                     width={160}
                     height={30}
@@ -110,7 +107,6 @@ function Home() {
                 src="img/shield.png"
                 alt="Biege-colored shield with a red outline containing two swords clashing in the middle and a text that reads 'PGM' underneath it."
                 title="Biege-colored shield with a red outline containing two swords clashing in the middle and a text that reads 'PGM' underneath it."
-                width="350px"
                 className={classnames(styles.floating)}
               />
             </div>

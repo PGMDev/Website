@@ -8,36 +8,29 @@ Vanilla recipes for a specific material can also be disabled to prevent crafting
 
 #### Crafting Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<crafting> </crafting>` | Node containing the custom crafting recipes. |
+| Element | Description |
+|---|---|
+| `<crafting> </crafting>` | Node containing the custom crafting recipes. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<shaped>` | A shaped crafting recipe node. | <span className="badge badge--secondary">Shaped Recipe Sub-elements</span> |
-  | `<shapeless>` | A custom shapeless recipe node. | <span className="badge badge--secondary">Shapeless Recipe Sub-elements</span> |
-  | `<smelt>` | A custom smelting recipe. | <span className="badge badge--secondary">Smelt Recipe Sub-elements</span> |
-  | `<disable>` | Disable all vanilla recipes for this item. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<shaped>` | A shaped crafting recipe node. | <span className="badge badge--secondary">Shaped Recipe Sub-elements</span> |
+| `<shapeless>` | A custom shapeless recipe node. | <span className="badge badge--secondary">Shapeless Recipe Sub-elements</span> |
+| `<smelt>` | A custom smelting recipe. | <span className="badge badge--secondary">Smelt Recipe Sub-elements</span> |
+| `<disable>` | Disable all vanilla recipes for this item. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 
 ##### Recipe Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `override` | Disable all vanilla recipes for the same item. This is a convenient alternative to the `<disable>` element. | <span className="badge badge--primary">true/false</span> | false |
-  | `override-all` | Override all vanilla recipes resulting in this material. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `override` | Disable all vanilla recipes for the same item. This is a convenient alternative to the `<disable>` element. | <span className="badge badge--primary">true/false</span> | false |
+| `override-all` | Override all vanilla recipes resulting in this material. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Recipe Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<result>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The result of this recipe, only one result is allowed per recipe.<br />*Accepts all attributes and sub-elements of a normal kit item.* | [Item](/docs/modules/gear/items) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<result>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The result of this recipe, only one result is allowed per recipe.<br />*Accepts all attributes and sub-elements of a normal kit item.* | [Item](/docs/modules/gear/items) |
 
 ## Shaped Recipes
 
@@ -51,32 +44,26 @@ A shaped recipe does not need to specify all 3 rows of a crafting grid, only one
 All columns in a shaped recipe need to be the same width.
 Blank ingredient spots are specifed with a dot `.`
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<shaped> </shaped>` | A shaped crafting recipe node. |
+| Element | Description |
+|---|---|
+| `<shaped> </shaped>` | A shaped crafting recipe node. |
 
-  | Sub-elements | | Value/Children |
-  |---|---|---|
-  | `<shape>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*Only one shape per recipe is allowed.* | `<row>` |
-  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span> An ingredient used in this recipe.<br />*A shaped recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements | | Value/Children |
+|---|---|---|
+| `<shape>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*Only one shape per recipe is allowed.* | `<row>` |
+| `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span> An ingredient used in this recipe.<br />*A shaped recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 
 ##### Shape Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<row>` | A row in the recipe crafting shape. | <span className="badge badge--secondary">Row String</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<row>` | A row in the recipe crafting shape. | <span className="badge badge--secondary">Row String</span> |
 
 ##### Shaped Ingredient Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `symbol` | <span className="badge badge--danger">Required</span>The symbol used to specify this ingredients grid location in the recipe. | <span className="badge badge--primary">Single Character</span> | `A-Z 0-9` |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `symbol` | <span className="badge badge--danger">Required</span>The symbol used to specify this ingredients grid location in the recipe. | <span className="badge badge--primary">Single Character</span> | `A-Z 0-9` |
 
 ### Examples
 
@@ -111,23 +98,19 @@ Blank ingredient spots are specifed with a dot `.`
 
 Unlike a shaped recipe, shapeless recipes do not require that their items are arranged in any specific way in the crafting grid.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<shapeless> </shapeless>` | A custom shapeless recipe node. |
+| Element | Description |
+|---|---|
+| `<shapeless> </shapeless>` | A custom shapeless recipe node. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span>An ingredient used in this recipe.<br />*A shapeless recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span>An ingredient used in this recipe.<br />*A shapeless recipe requires at least one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 
 #### Shapeless Ingredient attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `amount` | Amount of items of this type required for this recipe.<br />*Items must be in separate slots, not stacked, for this recipe to work.* | <span className="badge badge--primary">Number</span> | `1-9` |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `amount` | Amount of items of this type required for this recipe.<br />*Items must be in separate slots, not stacked, for this recipe to work.* | <span className="badge badge--primary">Number</span> | `1-9` |
 
 ### Examples
 
@@ -145,15 +128,13 @@ Unlike a shaped recipe, shapeless recipes do not require that their items are ar
 
 Smelt recipes specify what a material gets smelted into in a furnace.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<smelt> </smelt>` | A custom smelting recipe. |
+| Element | Description |
+|---|---|
+| `<smelt> </smelt>` | A custom smelting recipe. |
 
-  | Sub-elements || Value/Children |
-  |---|---|---|
-  | `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*A smelt recipe only accepts one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
-</div>
+| Sub-elements || Value/Children |
+|---|---|---|
+| `<ingredient>`&#124;`<i>` | <span className="badge badge--danger">Required</span><span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>An ingredient used in this recipe.<br />*A smelt recipe only accepts one ingredient.* | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 
 ### Examples
 

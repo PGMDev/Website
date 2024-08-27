@@ -14,44 +14,38 @@ A `<point>` region does not return a randomized position but can still be used t
 
 #### Pickup Element
 
-<div className="table-container">
-  | Element | Description | Value/Children |
-  |---|---|---|
-  | `<pickups> </pickups>` | Node containing all the pickups. | <span className="badge badge--secondary">Pickup Elements</span> |
+| Element | Description | Value/Children |
+|---|---|---|
+| `<pickups> </pickups>` | Node containing all the pickups. | <span className="badge badge--secondary">Pickup Elements</span> |
 
-  | Sub-elements |||
-  |---|---|---|
-  | `<pickup/>` | A single pickup. | <span className="badge badge--secondary">Pickup Sub-elements</span> |
-</div>
+| Sub-elements |||
+|---|---|---|
+| `<pickup/>` | A single pickup. | <span className="badge badge--secondary">Pickup Sub-elements</span> |
 
 #### Pickup Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `id` | Unique identifier used to reference this pickup from other places in the XML. | <span className="badge badge--primary">String</span> |
-  | `name` | The display name of this pickup, shown above the pickup entity if present. | <span className="badge badge--primary">Formatted Text</span> |
-  | `appearance` | The entity used to show this pickup's location.<br />*Currently only accepts `ENDER CRYSTAL`.* | [Entity Type](/docs/reference/entities/entity-types) | `ENDER CRYSTAL ` |
-  | `spawn-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if this pickup is and can be spawned. | [Filter](/docs/modules/mechanics/filters) | `always` |
-  | `pickup-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter who can pick up the pickup's kit. | [Filter](/docs/modules/mechanics/filters) | `always` |
-  | `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region where the pickup entity is placed into. | [Randomize-able Region](/docs/modules/mechanics/regions) |
-  | `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to give to players who pick up this pickup. | [Kit ID](/docs/modules/gear/kits) |
-  | `respawn-time` | Time until the pickup entity is re-spawned after being picked up.<br />*If set to zero, the entity will not despawn and will simply be refreshed.* | [Time Period](/docs/reference/misc/time-periods) | 3s |
-  | `pickup-time` | Time until the pickup is refreshed and can be picked up again. | [Time Period](/docs/reference/misc/time-periods) | 3s |
-  | `effects` | Show the pickup's particle effects. | <span className="badge badge--primary">true/false</span> | true |
-  | `sounds` | Play the pickup's sound effects. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | Unique identifier used to reference this pickup from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `name` | The display name of this pickup, shown above the pickup entity if present. | <span className="badge badge--primary">Formatted Text</span> |
+| `appearance` | The entity used to show this pickup's location.<br />*Currently only accepts `ENDER CRYSTAL`.* | [Entity Type](/docs/reference/entities/entity-types) | `ENDER CRYSTAL ` |
+| `spawn-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter if this pickup is and can be spawned. | [Filter](/docs/modules/mechanics/filters) | `always` |
+| `pickup-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter who can pick up the pickup's kit. | [Filter](/docs/modules/mechanics/filters) | `always` |
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The region where the pickup entity is placed into. | [Randomize-able Region](/docs/modules/mechanics/regions) |
+| `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to give to players who pick up this pickup. | [Kit ID](/docs/modules/gear/kits) |
+| `respawn-time` | Time until the pickup entity is re-spawned after being picked up.<br />*If set to zero, the entity will not despawn and will simply be refreshed.* | [Time Period](/docs/reference/misc/time-periods) | 3s |
+| `pickup-time` | Time until the pickup is refreshed and can be picked up again. | [Time Period](/docs/reference/misc/time-periods) | 3s |
+| `effects` | Show the pickup's particle effects. | <span className="badge badge--primary">true/false</span> | true |
+| `sounds` | Play the pickup's sound effects. | <span className="badge badge--primary">true/false</span> | true |
 
 ##### Pickup Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value | Default |
-  |---|---|---|---|
-  | `<spawn-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter if this pickup is and can be spawned. | [Filters](/docs/modules/mechanics/filters) | `always` |
-  | `<pickup-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can pick up the pickup's kit. | [Filters](/docs/modules/mechanics/filters) | `always` |
-  | `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this pickup is placed into. | [Randomize-able Regions](/docs/modules/mechanics/regions) |
-  | `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give to players who pick up this pickup. | [Kits](/docs/modules/gear/kits) |
-</div>
+| Element | Description | Value | Default |
+|---|---|---|---|
+| `<spawn-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter if this pickup is and can be spawned. | [Filters](/docs/modules/mechanics/filters) | `always` |
+| `<pickup-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can pick up the pickup's kit. | [Filters](/docs/modules/mechanics/filters) | `always` |
+| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this pickup is placed into. | [Randomize-able Regions](/docs/modules/mechanics/regions) |
+| `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give to players who pick up this pickup. | [Kits](/docs/modules/gear/kits) |
 
 ### Examples
 

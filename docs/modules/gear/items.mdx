@@ -12,51 +12,45 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 
 #### Item Element
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<item>` | A single item stack. |
-</div>
+| Element | Description |
+|---|---|
+| `<item>` | A single item stack. |
 
 ### Sub-Elements
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<enchantment> </enchantment>`<br />`<stored-enchantment> </stored-enchantment>` | [Enchantment](#enchantments) |
-  | `<effect> </effect>` | [Potion Effects](#potions) (only works on potion items) |
-  | `<attribute> </attribute>` | [Attribute Modifier](/docs/reference/items/attributes) |
-  | `<can-destroy> </can-destroy>` | <a className="left-ref-link" href="#can-destroy"><i className="fa fa-chevron-down"></i></a>Materials that can be mined with the item |
-  | `<can-place-on> </can-place-on>` | <a className="left-ref-link" href="#can-destroy"><i className="fa fa-chevron-down"></i></a> Materials that the item can be placed on |
-</div>
+| Element | Description |
+|---|---|
+| `<enchantment> </enchantment>`<br />`<stored-enchantment> </stored-enchantment>` | [Enchantment](#enchantments) |
+| `<effect> </effect>` | [Potion Effects](#potions) (only works on potion items) |
+| `<attribute> </attribute>` | [Attribute Modifier](/docs/reference/items/attributes) |
+| `<can-destroy> </can-destroy>` | <a className="left-ref-link" href="#can-destroy"><i className="fa fa-chevron-down"></i></a>Materials that can be mined with the item |
+| `<can-place-on> </can-place-on>` | <a className="left-ref-link" href="#can-destroy"><i className="fa fa-chevron-down"></i></a> Materials that the item can be placed on |
 
 ### Item Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `material` | <span className="badge badge--danger">Required</span>The item's material name. | [Material Name](/docs/reference/items/inventory#material-matchers) |
-  | `slot` | Slot where the item will be placed in the player's inventory.<br />*If no slot is specified, the item will be merged into the player's inventory.* | [Inventory Slot](/docs/reference/items/inventory) |
-  | `amount` | The amount of items. Blocks can be given an infinite amount by using `oo`. | <span className="badge badge--primary">Number</span> | 1 |
-  | `damage` | The item's damage value, used for items such as birch logs, red wool, potion types, etc. | <span className="badge badge--primary">Number</span> | 0 |
-  | `unbreakable` | Specify if this item is unbreakable and hides the durability bar in Minecraft. | <span className="badge badge--primary">true/false</span> | false |
-  | `name` | The item's display name that appears when it is selected. | <span className="badge badge--primary">Formatted Text</span> |
-  | `lore` | Custom text that appears when a player hovers over the item in their inventory. | <span className="badge badge--primary">Formatted Text</span> |
-  | `color` | Leather armor color as a hexadecimal color. `RRGGBB`<br />*Only applies to leather armor items.* | <span className="badge badge--primary">Hex Color</span> |
-  | `team-color` | Automatically applies the team's [Dye Color](/docs/modules/format/teams#team-attributes) to colored blocks *(wool, stained glass, banner, etc)*. | <span className="badge badge--primary">true/false</span> | false |
-  | `grenade` | Projectile explodes on impact.<br />*Works with ender pearls, snowballs, eggs, and arrows.* | <span className="badge badge--primary">true/false</span> | false |
-  | `grenade-power` | The power of the grenade explosion on impact. | <span className="badge badge--primary">Decimal</span> | 1.0 |
-  | `grenade-fire` | Toggle if grenade explosion creates fire. | <span className="badge badge--primary">true/false</span> | false |
-  | `grenade-destroy` | Toggle if grenade explosion destroys blocks. | <span className="badge badge--primary">true/false</span> | true |
-  | `prevent-sharing` | Prevent this item from being moved from the player's inventory. | <span className="badge badge--primary">true/false</span> | false |
-  | `projectile` | Make this item shoot a custom projectile. | [Projectile ID](/docs/modules/gear/projectiles) |
-  | `show-enchantments` | Show enchantments in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-attributes` | Show attribute modifiers in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-unbreakable` | Show the unbreakable property in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-can-destroy` | Show the breakable block list in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-can-place-on` | Show the blocks the item can be placed on in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-  | `show-other` | Show various other things in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `material` | <span className="badge badge--danger">Required</span>The item's material name. | [Material Name](/docs/reference/items/inventory#material-matchers) |
+| `slot` | Slot where the item will be placed in the player's inventory.<br />*If no slot is specified, the item will be merged into the player's inventory.* | [Inventory Slot](/docs/reference/items/inventory) |
+| `amount` | The amount of items. Blocks can be given an infinite amount by using `oo`. | <span className="badge badge--primary">Number</span> | 1 |
+| `damage` | The item's damage value, used for items such as birch logs, red wool, potion types, etc. | <span className="badge badge--primary">Number</span> | 0 |
+| `unbreakable` | Specify if this item is unbreakable and hides the durability bar in Minecraft. | <span className="badge badge--primary">true/false</span> | false |
+| `name` | The item's display name that appears when it is selected. | <span className="badge badge--primary">Formatted Text</span> |
+| `lore` | Custom text that appears when a player hovers over the item in their inventory. | <span className="badge badge--primary">Formatted Text</span> |
+| `color` | Leather armor color as a hexadecimal color. `RRGGBB`<br />*Only applies to leather armor items.* | <span className="badge badge--primary">Hex Color</span> |
+| `team-color` | Automatically applies the team's [Dye Color](/docs/modules/format/teams#team-attributes) to colored blocks *(wool, stained glass, banner, etc)*. | <span className="badge badge--primary">true/false</span> | false |
+| `grenade` | Projectile explodes on impact.<br />*Works with ender pearls, snowballs, eggs, and arrows.* | <span className="badge badge--primary">true/false</span> | false |
+| `grenade-power` | The power of the grenade explosion on impact. | <span className="badge badge--primary">Decimal</span> | 1.0 |
+| `grenade-fire` | Toggle if grenade explosion creates fire. | <span className="badge badge--primary">true/false</span> | false |
+| `grenade-destroy` | Toggle if grenade explosion destroys blocks. | <span className="badge badge--primary">true/false</span> | true |
+| `prevent-sharing` | Prevent this item from being moved from the player's inventory. | <span className="badge badge--primary">true/false</span> | false |
+| `projectile` | Make this item shoot a custom projectile. | [Projectile ID](/docs/modules/gear/projectiles) |
+| `show-enchantments` | Show enchantments in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-attributes` | Show attribute modifiers in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-unbreakable` | Show the unbreakable property in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-can-destroy` | Show the breakable block list in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-can-place-on` | Show the blocks the item can be placed on in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
+| `show-other` | Show various other things in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
 
 Items can be give custom names and lore with the `name` and `lore` attributes.
 Colors and fancy text in item names or lore can be specified with the grave symbol `` ` `` and then the [formatting code](/docs/reference/misc/formatting).
@@ -82,22 +76,18 @@ A player's skin data can be found by using `https://sessionserver.mojang.com/ses
 
 ##### Head Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value |
-  |---|---|---|
-  | `name` | The head's display name. | <span className="badge badge--primary">String</span> |
-  | `uuid` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
-  | `skin` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
-</div>
+| Attribute | Description | Value |
+|---|---|---|
+| `name` | The head's display name. | <span className="badge badge--primary">String</span> |
+| `uuid` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
+| `skin` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
 
 ##### Head Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<uuid>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
-  | `<skin>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<uuid>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
+| `<skin>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
 
 ### Armor
 
@@ -113,11 +103,9 @@ They accept all of the properties of normal items and may have their own special
 
 ##### Armor Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `locked` | Prevent this armor item from being removed from the armor slot in any way. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `locked` | Prevent this armor item from being removed from the armor slot in any way. | <span className="badge badge--primary">true/false</span> | false |
 
 Enchanting, naming, or giving armor lore works the same way as with items.
 
@@ -172,11 +160,9 @@ Additionally, you can visit [Potions & Effects](/docs/reference/items/potions) f
 
 ##### Potion Item Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<effect>` | A custom effect. | [Potion Effect](/docs/modules/gear/potions) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<effect>` | A custom effect. | [Potion Effect](/docs/modules/gear/potions) |
 
 ```xml
 <item slot="1" material="potion" damage="3">
@@ -208,22 +194,18 @@ Preferably, books should be written in-game to ensure proper formatting and then
 
 ##### Book Element
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<book>` | The element containing the books `<title>`, `<author>`, and `<pages>`. | <span className="badge badge--primary">Formatted Text</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<book>` | The element containing the books `<title>`, `<author>`, and `<pages>`. | <span className="badge badge--primary">Formatted Text</span> |
 
 ##### Book Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<title>` | <span className="badge badge--danger">Required</span>The title of the book. | <span className="badge badge--primary">Formatted Text</span> |
-  | `<author>` | <span className="badge badge--danger">Required</span>The author of the book. | <span className="badge badge--primary">Formatted Text</span> |
-  | `<pages>` | The pages in the book. | `<page>` |
-  | `<page>` | A newline separated string. Used inside `<pages>`. | <span className="badge badge--primary">Formatted Text</span> |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<title>` | <span className="badge badge--danger">Required</span>The title of the book. | <span className="badge badge--primary">Formatted Text</span> |
+| `<author>` | <span className="badge badge--danger">Required</span>The author of the book. | <span className="badge badge--primary">Formatted Text</span> |
+| `<pages>` | The pages in the book. | `<page>` |
+| `<page>` | A newline separated string. Used inside `<pages>`. | <span className="badge badge--primary">Formatted Text</span> |
 
 ```xml
 <book slot="1">
@@ -248,42 +230,34 @@ Preferably, books should be written in-game to ensure proper formatting and then
 
 You can define custom explosion designs when creating and giving a firework rocket item.
 
-<div className="table-container">
-  | Element | Description |
-  |---|---|
-  | `<firework> </firework>` | A firework design containing one or more explosion effect. |
+| Element | Description |
+|---|---|
+| `<firework> </firework>` | A firework design containing one or more explosion effect. |
 
-  | Sub-element ||
-  |---|---|
-  | `<firework> </firework>` | Define an explosion effect design. |
-</div>
+| Sub-element ||
+|---|---|
+| `<firework> </firework>` | Define an explosion effect design. |
 
 ##### Firework Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `power` | Defines the power of the firework. This also determines how high it will travel. | <span className="badge badge--primary">Number</span> | 1 |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `power` | Defines the power of the firework. This also determines how high it will travel. | <span className="badge badge--primary">Number</span> | 1 |
 
 ##### Explosion Attributes
 
-<div className="table-container">
-  | Attribute | Description | Value | Default |
-  |---|---|---|---|
-  | `type` | Defines the power of the firework. This also determines how high it will travel. | `ball`, `ball large`, `burst`, `creeper`, `star` | `burst` |
-  | `flicker` | Whether the effect should flicker. | <span className="badge badge--primary">true/false</span> | false |
-  | `trail` | Whether the effect should have a trail. | <span className="badge badge--primary">true/false</span> | false |
-</div>
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `type` | Defines the power of the firework. This also determines how high it will travel. | `ball`, `ball large`, `burst`, `creeper`, `star` | `burst` |
+| `flicker` | Whether the effect should flicker. | <span className="badge badge--primary">true/false</span> | false |
+| `trail` | Whether the effect should have a trail. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Explosion Sub-elements
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<color>` | <span className="badge badge--danger">Required</span>Define a color of the firework. | [Hex Firework Color](/docs/reference/misc/colors) |
-  | `<fade>` | Define a fade color of the firework. Multiple fade colors can be defined for each explosion.<br />*If no fade colors are defined, the explosion will not fade.* | [Hex Firework Color](/docs/reference/misc/colors) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<color>` | <span className="badge badge--danger">Required</span>Define a color of the firework. | [Hex Firework Color](/docs/reference/misc/colors) |
+| `<fade>` | Define a fade color of the firework. Multiple fade colors can be defined for each explosion.<br />*If no fade colors are defined, the explosion will not fade.* | [Hex Firework Color](/docs/reference/misc/colors) |
 
 ```xml
 <firework power="1">
@@ -317,20 +291,16 @@ simply replace the tag `enchantment` with `stored-enchantment`.
 
 ##### Enchantment Element
 
-<div className="table-container">
-  | Element | Description | Value |
-  |---|---|---|
-  | `<enchantment> <enchantment>` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
-  | `<stored-enchantment> </stored-enchantment>` | An enchantment stored in an enchanted book. | [Enchantment Name](/docs/reference/items/enchantments) |
-</div>
+| Element | Description | Value |
+|---|---|---|
+| `<enchantment> <enchantment>` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
+| `<stored-enchantment> </stored-enchantment>` | An enchantment stored in an enchanted book. | [Enchantment Name](/docs/reference/items/enchantments) |
 
 ##### Enchantment Attributes
 
-<div className="table-container">
-  | Element | Description | Value | Default |
-  |---|---|---|---|
-  | `level` | The specified enchantment's level. | <span className="badge badge--primary">Number</span> | 1 |
-</div>
+| Element | Description | Value | Default |
+|---|---|---|---|
+| `level` | The specified enchantment's level. | <span className="badge badge--primary">Number</span> | 1 |
 
 _Examples_
 
@@ -419,17 +389,15 @@ Instead of a list of blocks, you can use the `<all-blocks/>` element, which is e
 In this case, you will probably want to specify `show-can-place-on="false"` or `show-can-destroy="false"` on the item to prevent a
 massive tooltip being displayed to the player.
 
-<div className="table-container">
-  | Elements | Description |
-  |---|---|
-  | `<can-destroy> </can-destroy>` | A node containing the materials this item can destroy. |
-  | `<can-place-on> </can-place-on>` | A node containing materials this item can be placed on. |
+| Elements | Description |
+|---|---|
+| `<can-destroy> </can-destroy>` | A node containing the materials this item can destroy. |
+| `<can-place-on> </can-place-on>` | A node containing materials this item can be placed on. |
 
-  | Sub-elements | | Value/Children |
-  |---|---|---|
-  | `<material> </material` | An individual material to match.<br />*Does not accept a damage/data value.* | [Material Name](/docs/reference/items/inventory#material-matchers) |
-  | `<all-blocks/>` | Match all block type materials. |
-</div>
+| Sub-elements | | Value/Children |
+|---|---|---|
+| `<material> </material` | An individual material to match.<br />*Does not accept a damage/data value.* | [Material Name](/docs/reference/items/inventory#material-matchers) |
+| `<all-blocks/>` | Match all block type materials. |
 
 ```xml
 <item material="iron shovel">

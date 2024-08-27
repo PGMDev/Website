@@ -7,74 +7,72 @@ hide_table_of_contents: true
 This page describes a list of PGM commands, aliases, and permissions.
 Permissions are prefixed with `Permissions` (i.e. `Permissions.ADMINCHAT`).
 
-<div className="table-container">
-  | Commands | Aliases | Description | Flags | Usage | Permissions |
-  |---|---|---|---|---|---|
-  | `/a` | $ (*do not use forward slash*) | Send a message to operators. || [message] | `ADMINCHAT` |
-  | `/action list` | actions list<br />actions page | Inspect variables for a player. | -q query<br />-a all | [page] | `GAMEPLAY` |
-  | `/action trigger` | actions trigger | Trigger a specific action. || [action] | `GAMEPLAY` |
-  | `/action untrigger` | actions untrigger | Untrigger a specific action. || [action] | `GAMEPLAY` |
-  | `/filter` || Match a filter against a player. || [filter] [target] | `DEBUG` |
-  | `/mode push` || Reschedule all unconditional objective modes. || [time] | `GAMEPLAY` |
-  | `/mode start` || Starts an objective mode. || [mode number] [time] | `GAMEPLAY` |
-  | `/team alias` || Rename a team. || [old team name] [new team name] | `GAMEPLAY` |
-  | `/timelimit` | tl | Start a time limit. | -r result (can be `default`, `objectives`, `tie`, or name of team) | [duration] [result] [overtime] [max-overtime] | `GAMEPLAY` |
-  | `/join` | play | Join the match. | -f force | [team] - defaults to random | `JOIN` |
-  | `/team force` || Force a player onto a team. ||| `JOIN_FORCE` |
-  | `/team shuffle` || Shuffle players among the teams. | -a all<br />-f force || `JOIN_FORCE` |
-  | `/leave` | obs | Leave the match. ||| `LEAVE` |
-  | `/loadnewmaps` | findnewmaps<br />new<br />maps | Load new maps. | -f force || `RELOAD` |
-  | `/showxml` || Open a file editor with the map's XML on the server side.<br />**Note:** This command is only available for locally hosted servers with a desktop environment. || [map name] |
-  | `/pgm reload` || Reload the configuration. ||| `RELOAD` |
-  | `/pgm help` || View available PGM commands. ||| `RELOAD` |
-  | `/pgm confirm` || Execute any pending commands. ||| `RELOAD` |
-  | `/ffa min` || Set the minimum players. || [reset &#124; min-players] | `RESIZE` |
-  | `/ffa size` || Set the maximum players. || [reset &#124; max-players] (max-overfill) | `RESIZE` |
-  | `/team min` || Set the minimum players on a team. || [team] (reset &#124; min-players) | `RESIZE` |
-  | `/team size` || Set the maximum players on a team || [reset] (max-players &#124; max-overfill) | `RESIZE` |
-  | `/setnext` || Change the next map. | -f force<br />-r reset | [map name] | `SETNEXT` |
-  | `/setpool` || Change the map pool. | -r revert to dynamic<br />-t timelimit<br />-m matchlimit | [pool name] | `SETNEXT` |
-  | `/setrot reset` || Reset the rotation to default. Use `/setpool` to reset to other types of pools. | -t timelimit<br />-m matchlimit || `SETNEXT` |
-  | `/setrot` || Set a rotation as current pool. Use `/setpool` to set other types of pools. | -t timelimit<br />-m matchlimit | [rotation name] | `SETNEXT` |
-  | `/skip` || Skip the next map. || [positions] | `SETNEXT` |
-  | `/vote add` || Add a custom map to the next vote. || [map name] | `SETNEXT` |
-  | `/vote clear` || Clear all custom map selections from the next vote. ||| `SETNEXT` |
-  | `/vote mode` || Toggle the voting mode between replace and override. ||| `SETNEXT` |
-  | `/vote remove` | rm | Remove a custom map from the next vote. || [map name] | `SETNEXT` |
-  | `/cycle` || Cycle to the next match | -f force || `START` |
-  | `/recycle` | rematch | Reload (cycle to) the current map | -f force || `START` |
-  | `/start` | begin | Start the match. ||| `START` |
-  | `/cancel` | cancelrestart<br />cr | Cancels all countdowns. ||| `STOP` |
-  | `/finish` | end | End the match. || [competitor] | `STOP` |
-  | `/restart` | queuerestart<br />qr | Restart the server. | -f force || `STOP` |
-  | `/vanish` | v | Toggle vanish status. ||| `VANISH` |
-  | `/class` | selectclass<br />c<br />cl | Selects your class. |
-  | `/classlist` | classes<br />listclasses<br />cls | List all available classes. |
-  | `/g` | all<br />! (*do not use forward slash*) | Send a message to everyone. || [message] |
-  | `/inventory` | inv<br />vi | View a player's inventory. |
-  | `/list` | who<br />online<br />ls | View a list of online players. |
-  | `/map` | mapinfo | Show info about a map. || [map name] - defaults to current map |
-  | `/maps` | maplist<br />ml | List all loaded maps. | -a author<br />-t tag1,tag2<br />-n name |
-  | `/match` | matchinfo | Show the match info. |
-  | `/mode list` | page | List all objective modes. || [page] |
-  | `/mode next` || Show the next objective mode. |
-  | `/msg` | msg<br />tell<br />pm<br />dm<br />@ (*do not use forward slash*) | Send a direct message to a player. || [player] [message] |
-  | `/nextmap` | mn<br />mapnext<br />nm<br />next | Show which map is playing next. |
-  | `/pool` || List the maps in the map pool. | -t type<br />-p pool<br />-s scores<br />-c chance of vote | [page] |
-  | `/pools` || List all the map pools. | -d dynamic only |
-  | `/proximity` | prox | Show the progress of each objective. |
-  | `/reply` | r | Reply to a direct message. || [message] |
-  | `/rot` || List the maps in the rotation. Use `/pool` to see unfiltered results. | -s scores<br />-c chance | [page] |
-  | `/rots` || List all the rotations. Use `/pools` to see unfiltered results. | -d dynamic only | [page] |
-  | `/setting` || Get the value of a setting. || [setting] |
-  | `/settings` || Open the settings menu. |
-  | `/stats` || Show your stats for the match. |
-  | `/t` || Send a message to your team. || [message] |
-  | `/toggle` | set | Toggle or set the value of a setting. || [setting] [option] |
-  | `/tools` | observertools<br />ot | Open the observer tools menu. |
-  | `/vote list` | ls | View a list of maps that have been selected for the next vote. |
-  | `/votebook` || Spawn a vote book. |
-  | `/votenext` || Vote for the next map. | -o force open | [map name] |
-</div>
+| Commands | Aliases | Description | Flags | Usage | Permissions |
+|---|---|---|---|---|---|
+| `/a` | $ (*do not use forward slash*) | Send a message to operators. || [message] | `ADMINCHAT` |
+| `/action list` | actions list<br />actions page | Inspect variables for a player. | -q query<br />-a all | [page] | `GAMEPLAY` |
+| `/action trigger` | actions trigger | Trigger a specific action. || [action] | `GAMEPLAY` |
+| `/action untrigger` | actions untrigger | Untrigger a specific action. || [action] | `GAMEPLAY` |
+| `/filter` || Match a filter against a player. || [filter] [target] | `DEBUG` |
+| `/mode push` || Reschedule all unconditional objective modes. || [time] | `GAMEPLAY` |
+| `/mode start` || Starts an objective mode. || [mode number] [time] | `GAMEPLAY` |
+| `/team alias` || Rename a team. || [old team name] [new team name] | `GAMEPLAY` |
+| `/timelimit` | tl | Start a time limit. | -r result (can be `default`, `objectives`, `tie`, or name of team) | [duration] [result] [overtime] [max-overtime] | `GAMEPLAY` |
+| `/join` | play | Join the match. | -f force | [team] - defaults to random | `JOIN` |
+| `/team force` || Force a player onto a team. ||| `JOIN_FORCE` |
+| `/team shuffle` || Shuffle players among the teams. | -a all<br />-f force || `JOIN_FORCE` |
+| `/leave` | obs | Leave the match. ||| `LEAVE` |
+| `/loadnewmaps` | findnewmaps<br />new<br />maps | Load new maps. | -f force || `RELOAD` |
+| `/showxml` || Open a file editor with the map's XML on the server side.<br />**Note:** This command is only available for locally hosted servers with a desktop environment. || [map name] |
+| `/pgm reload` || Reload the configuration. ||| `RELOAD` |
+| `/pgm help` || View available PGM commands. ||| `RELOAD` |
+| `/pgm confirm` || Execute any pending commands. ||| `RELOAD` |
+| `/ffa min` || Set the minimum players. || [reset &#124; min-players] | `RESIZE` |
+| `/ffa size` || Set the maximum players. || [reset &#124; max-players] (max-overfill) | `RESIZE` |
+| `/team min` || Set the minimum players on a team. || [team] (reset &#124; min-players) | `RESIZE` |
+| `/team size` || Set the maximum players on a team || [reset] (max-players &#124; max-overfill) | `RESIZE` |
+| `/setnext` || Change the next map. | -f force<br />-r reset | [map name] | `SETNEXT` |
+| `/setpool` || Change the map pool. | -r revert to dynamic<br />-t timelimit<br />-m matchlimit | [pool name] | `SETNEXT` |
+| `/setrot reset` || Reset the rotation to default. Use `/setpool` to reset to other types of pools. | -t timelimit<br />-m matchlimit || `SETNEXT` |
+| `/setrot` || Set a rotation as current pool. Use `/setpool` to set other types of pools. | -t timelimit<br />-m matchlimit | [rotation name] | `SETNEXT` |
+| `/skip` || Skip the next map. || [positions] | `SETNEXT` |
+| `/vote add` || Add a custom map to the next vote. || [map name] | `SETNEXT` |
+| `/vote clear` || Clear all custom map selections from the next vote. ||| `SETNEXT` |
+| `/vote mode` || Toggle the voting mode between replace and override. ||| `SETNEXT` |
+| `/vote remove` | rm | Remove a custom map from the next vote. || [map name] | `SETNEXT` |
+| `/cycle` || Cycle to the next match | -f force || `START` |
+| `/recycle` | rematch | Reload (cycle to) the current map | -f force || `START` |
+| `/start` | begin | Start the match. ||| `START` |
+| `/cancel` | cancelrestart<br />cr | Cancels all countdowns. ||| `STOP` |
+| `/finish` | end | End the match. || [competitor] | `STOP` |
+| `/restart` | queuerestart<br />qr | Restart the server. | -f force || `STOP` |
+| `/vanish` | v | Toggle vanish status. ||| `VANISH` |
+| `/class` | selectclass<br />c<br />cl | Selects your class. |
+| `/classlist` | classes<br />listclasses<br />cls | List all available classes. |
+| `/g` | all<br />! (*do not use forward slash*) | Send a message to everyone. || [message] |
+| `/inventory` | inv<br />vi | View a player's inventory. |
+| `/list` | who<br />online<br />ls | View a list of online players. |
+| `/map` | mapinfo | Show info about a map. || [map name] - defaults to current map |
+| `/maps` | maplist<br />ml | List all loaded maps. | -a author<br />-t tag1,tag2<br />-n name |
+| `/match` | matchinfo | Show the match info. |
+| `/mode list` | page | List all objective modes. || [page] |
+| `/mode next` || Show the next objective mode. |
+| `/msg` | msg<br />tell<br />pm<br />dm<br />@ (*do not use forward slash*) | Send a direct message to a player. || [player] [message] |
+| `/nextmap` | mn<br />mapnext<br />nm<br />next | Show which map is playing next. |
+| `/pool` || List the maps in the map pool. | -t type<br />-p pool<br />-s scores<br />-c chance of vote | [page] |
+| `/pools` || List all the map pools. | -d dynamic only |
+| `/proximity` | prox | Show the progress of each objective. |
+| `/reply` | r | Reply to a direct message. || [message] |
+| `/rot` || List the maps in the rotation. Use `/pool` to see unfiltered results. | -s scores<br />-c chance | [page] |
+| `/rots` || List all the rotations. Use `/pools` to see unfiltered results. | -d dynamic only | [page] |
+| `/setting` || Get the value of a setting. || [setting] |
+| `/settings` || Open the settings menu. |
+| `/stats` || Show your stats for the match. |
+| `/t` || Send a message to your team. || [message] |
+| `/toggle` | set | Toggle or set the value of a setting. || [setting] [option] |
+| `/tools` | observertools<br />ot | Open the observer tools menu. |
+| `/vote list` | ls | View a list of maps that have been selected for the next vote. |
+| `/votebook` || Spawn a vote book. |
+| `/votenext` || Vote for the next map. | -o force open | [map name] |
 
 Spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/1QlS4DW6aLcryf4BRw3WXylydm07HqKNTf_QYI2PtLzU/edit?usp=sharing).
