@@ -38,15 +38,6 @@ A `<point>` region does not return a randomized position but can still be used t
 | `effects` | Show the pickup's particle effects. | <span className="badge badge--primary">true/false</span> | true |
 | `sounds` | Play the pickup's sound effects. | <span className="badge badge--primary">true/false</span> | true |
 
-##### Pickup Sub-elements
-
-| Element | Description | Value | Default |
-|---|---|---|---|
-| `<spawn-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter if this pickup is and can be spawned. | [Filters](/docs/modules/mechanics/filters) | `always` |
-| `<pickup-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can pick up the pickup's kit. | [Filters](/docs/modules/mechanics/filters) | `always` |
-| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where this pickup is placed into. | [Randomize-able Regions](/docs/modules/mechanics/regions) |
-| `<kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The kit to give to players who pick up this pickup. | [Kits](/docs/modules/gear/kits) |
-
 ### Examples
 
 ```xml

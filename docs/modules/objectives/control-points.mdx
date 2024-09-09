@@ -69,16 +69,6 @@ Other uses of control points include unlocking an area of the map using objectiv
 | `capture-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter teams that can capture this control point, defaults to all teams. Teams that don't match this filter can still prevent other teams from capturing by standing on the control point. They can also uncapture the control point if neutral-state is enabled. | [Filter](/docs/modules/mechanics/filters) |
 | `player-filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter players who can control this control point. Players who don't match this filter cannot affect the control point in any way. | [Filter](/docs/modules/mechanics/filters) |
 
-#### Control Point Sub-elements
-
-| Element | Description | Value |
-|---|---|---|
-| `<capture>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region where players must stand to capture this control point. | [Regions](/docs/modules/mechanics/regions) |
-| `<progress>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region where colored blocks within this area point will progressively fade into the controlling team's color. | [Bounded Regions](/docs/modules/mechanics/regions) |
-| `<captured>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region where colored blocks within this area will display only the controlling team's color without fading. | [Bounded Regions](/docs/modules/mechanics/regions) |
-| `<capture-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter teams that can capture this control point, defaults to all teams. Teams that don't match this filter can still prevent other teams from capturing by standing on the control point. They can also uncapture the control point if neutral-state is enabled. | [Filters](/docs/modules/mechanics/filters) |
-| `<player-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter players who can control this control point. Players who don't match this filter cannot affect the control point in any way. | [Filters](/docs/modules/mechanics/filters) |
-
 ## Capture Rule
 
 The capture rule defines the logic used to decide which team is in control of the point.
@@ -108,7 +98,7 @@ Use the `<control-point>` and `<control-points>` tags, which work the same but
 with differrent default values.
 :::
 
-KotH is a gamemode in which you capture and hold a hill to collect points.
+King of the Hill is a gamemode in which you capture and hold a hill to collect points.
 The first team to reach a preset amount of points wins.
 
 KotH maps use control points to define hills.

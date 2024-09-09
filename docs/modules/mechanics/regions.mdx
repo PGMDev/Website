@@ -276,15 +276,9 @@ Copy the yaw and pitch from the [Debug screen (`F3`)](https://minecraft.wiki/w/D
 
 | Attribute | Description | Value |
 |---|---|---|
-| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region (or regions) the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
 | `yaw` | Specifies what direction the player is looking horizontally from -180&deg; to 180&deg;.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">-180 to 180</span> |
 | `pitch` | Specifies what direction the player is looking vertically from -90&deg; to 90&deg;.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">-90 to 90</span> |
 | `angle` | Specify the exact block coordinates that the player should look at.<br />*This attribute will negate any angles set by the `yaw` and `pitch` attributes.* | <span className="badge badge--primary">X,Y,Z</span> |
-
-##### Point Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The region or regions the point provider modifies. | [Randomize-able Region](#block-bounded-regions) |
 
 **Note:** The pitch and yaw arguments can also accept a `X,Y,Z` coordinate.

@@ -33,23 +33,15 @@ Blocks broken by means other than mining or explosions currently do not cause cu
 | `wrong-tool` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Drop items regardless of what tool was used to mine the block. | <span className="badge badge--primary">true/false</span> | false |
 | `punch` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Check this rule when a block is punched. | <span className="badge badge--primary">true/false</span> | false |
 | `trample` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Check this rule when a block is walked on. | <span className="badge badge--primary">true/false</span> | false |
+| `fall-chance` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The percentage of blocks that will change to falling blocks when exploded. | <span className="badge badge--primary">0 - 1.0</span> |
+| `land-chance` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The percentage of falling blocks that will change back to real blocks when they land. | <span className="badge badge--primary">0 - 1.0</span> |
+| `fall-speed` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A multiplier for the velocity of the blocks flying out from a explosion. | <span className="badge badge--primary">Number</span> |
 
 #### Rule Sub-elements
 
-| Element | Description | Value/Children | Default |
-|---|---|---|---|
-| `<filter>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter what blocks get modified by this rule. | [Filters](/docs/modules/mechanics/filters) |
-| `<region>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region this rule applies to. | [Regions](/docs/modules/mechanics/regions) |
-| `<kit>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to give players when this rule applies. | [Kits](/docs/modules/gear/kits) |
-| `<drops>` | The items which get dropped when a matching block is mined. | [Items](/docs/modules/gear/items)| |
-| `<experience>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The amount of XP that gets dropped. | <span className="badge badge--primary">Number</span> |
-| `<replacement>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>What to replace the mined block with. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) | <span className="badge badge--secondary">Air</span> |
-| `<wrong-tool>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Drop items regardless of what tool was used to mine the block. | <span className="badge badge--primary">true/false</span> | false |
-| `<punch>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Check this rule when a player in adventure mode punches a block. | <span className="badge badge--primary">true/false</span> | false |
-| `<trample>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Check this rule when a block is walked on. | <span className="badge badge--primary">true/false</span> | false |
-| `<fall-chance>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The percentage of blocks that will change to falling blocks when exploded. | <span className="badge badge--primary">0 - 1.0</span> |
-| `<land-chance>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The percentage of falling blocks that will change back to real blocks when they land. | <span className="badge badge--primary">0 - 1.0</span> |
-| `<fall-speed>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A multiplier for the velocity of the blocks flying out from a explosion. | <span className="badge badge--primary">Number</span> |
+| Element | Description | Value/Children |
+|---|---|---|
+| `<drops>` | The items which get dropped when a matching block is mined. | [Items](/docs/modules/gear/items)|
 
 #### Block Drops Item Attributes
 
@@ -69,7 +61,7 @@ This value can range from 0 to 1, a chance of 0.5 would mean that the item will 
 By default, custom drops will not appear if a block is mined with the "wrong" tool, e.g., stone mined with a shovel.
 If `wrong-tool` is set to true, the custom drops will happen regardless of what tool was used.
 
-### Examples
+## Examples
 
 ```xml
 <block-drops>
@@ -180,14 +172,6 @@ Additionally the `<sprinting/>`, `<walking/>`, and `<crouching/>` filters used i
 ### Explosion behavior
 
 The behavior for blocks that become airborne due to explosions can be modified in addition to all the other drop rules.
-
-#### Rule Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<fall-chance>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The percentage of blocks that will change to falling blocks when exploded. | <span className="badge badge--primary">0 - 1.0</span> |
-| `<land-chance>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>The percentage of falling blocks that will change back to real blocks when they land. | <span className="badge badge--primary">0 - 1.0</span> |
-| `<fall-speed>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>A multiplier for the velocity of the blocks flying out from a explosion. | <span className="badge badge--primary">Number</span> |
 
 ```xml
 <block-drops>
