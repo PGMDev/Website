@@ -23,7 +23,7 @@ export default function Downloads() {
   useEffect(() => {
     async function getReleases() {
       const response = await fetch(
-        "https://api.github.com/repos/PGMDev/PGM/releases"
+        "https://api.github.com/repos/PGMDev/PGM/commits"
       );
 
       return setReleases(await response.json());
@@ -57,17 +57,18 @@ export default function Downloads() {
                   <div className="row">
                     <img src="/img/shield.png" alt="" className={styles.pgm_logo} />
                     <div className={styles.pgm}>
-                      <h1>PGM {releases[0].name}</h1>
+                      <h1>PGM</h1>
                       <p>
                         <small>
+                          Last updated on
                           {" "}
                           {format(
-                            new Date(releases[0].published_at),
-                            "LLLL do, yyyy"
+                            new Date(releases[0].commit.committer.date),
+                            "LLLL d, yyyy"
                           )}{" "}
                         </small>
                       </p>
-                      <a href={releases[0].html_url}>
+                      <a href="https://github.com/PGMDev/PGM/commits">
                         Changelog <FontAwesomeIcon icon={faAngleRight} />
                       </a>
                     </div>
@@ -94,25 +95,13 @@ export default function Downloads() {
                               styles.download_button
                           )}
                           href={"https://nightly.link/PGMDev/PGM/workflows/deploy/dev/PGM.jar.zip"}
-                          title={"Latest development build directly from GitHub.\nContains all the latest features, may occasionally bring new bugs."}
+                          title={"Latest build directly from GitHub.\nContains all the latest features, may occasionally bring new bugs."}
                       >
-                        Latest <FontAwesomeIcon icon={faDownload} />
-                      </a>
-                      <a
-                          className={classnames(
-                              "button button--primary",
-                              styles.download_button
-                          )}
-                          href={releases[0].assets[0].browser_download_url}
-                          title={`Latest stable release, ${releases[0].name} from ${format(new Date(releases[0].published_at), "LLLL do, yyyy")}.\nLacks the latest features, but has a lower chance of random bugs.`}
-                      >
-                        Stable {releases[0].name} <FontAwesomeIcon icon={faDownload} />
+                        Download <FontAwesomeIcon icon={faDownload} />
                       </a>
                     </div>
-                    <a
-                        href={"/docs/guides/preparing/local-server-setup"}
-                    >
-                      Install guide <FontAwesomeIcon icon={faBook} />
+                    <a href={"/docs/guides/preparing/local-server-setup"}>
+                      PGM setup guide <FontAwesomeIcon icon={faBook} />
                     </a>
                   </div>
                 </div>

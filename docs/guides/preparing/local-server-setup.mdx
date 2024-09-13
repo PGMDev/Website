@@ -21,7 +21,7 @@ This guide uses Windows 11, however, the same process will work on Windows 10 an
 
 We recommend using Java 21. For this guide, we will be using [Amazon Corretto 21](https://aws.amazon.com/corretto/). 
 However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) instead.
-If you already have a copy of Java 21 installed, you may skip this step.
+If you already have Java 21 installed, you may skip this step.
 
 <div className="row">
   <div className="col col--6">
@@ -41,7 +41,7 @@ If you already have a copy of Java 21 installed, you may skip this step.
 ### Downloading SportPaper
 
 Get the latest version of SportPaper from the [Downloads](/downloads) page.
-Once the download is done, you must put `SportPaper.jar` inside an empty folder.
+Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
 
 Next, you must create a Batch file to be able to start your server and have access to its console. 
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.bat`.
@@ -66,8 +66,7 @@ PAUSE
 
 ### Downloading PGM
 
-You have two options when it comes to downloading PGM. The [Downloads](/downloads) page offers both stable and the latest development builds.
-If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
+You can download a copy of the latest version of PGM from the [Downloads](/downloads) page.
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
 
@@ -94,7 +93,7 @@ This guide uses macOS 14 (Sonoma). Generally speaking, the process should be the
 
 We recommend using either Java 21. For this guide, we will be using [Amazon Corretto 21](https://aws.amazon.com/corretto/). 
 However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) instead.
-If you already have a copy of Java 21 installed, you may skip this step.
+If you already have Java 21 installed, you may skip this step.
 
 <div className="row">
   <div className="col col--6">
@@ -120,7 +119,7 @@ If you already have a copy of Java 21 installed, you may skip this step.
 ### Downloading SportPaper
 
 Get the latest version of SportPaper from the [Downloads](/downloads) page.
-Once the download is done, you must put `SportPaper.jar` inside an empty folder.
+Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
 
 Next, you must create a Terminal shell script file to be able to start your server and have access to its console. 
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.command`.
@@ -157,8 +156,7 @@ You must always double-click the `start.command` file to launch the server, not 
 
 ### Downloading PGM
 
-You have two options when it comes to downloading PGM. The [Downloads](/downloads) page offers both stable and the latest development builds.
-If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
+You can download a copy of the latest version of PGM from the [Downloads](/downloads) page.
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
 
@@ -193,7 +191,7 @@ Otherwise, we trust that you know what you are doing.
 
 We recommend using either Java 21. For this guide, we will be using [OpenJDK](https://openjdk.org/). 
 However, you may choose to use [Amazon Corretto 21](https://aws.amazon.com/corretto/) or [Eclipse Adoptium](https://adoptium.net/) instead.
-If you already have a copy of Java 21 installed, you may skip this step.
+If you already have Java 21 installed, you may skip this step.
 
 ```bash
 sudo apt update && sudo apt install openjdk-21-jdk
@@ -202,7 +200,7 @@ sudo apt update && sudo apt install openjdk-21-jdk
 ### Downloading SportPaper
 
 Get the latest version of SportPaper from the [Downloads](/downloads) page.
-Once the download is done, you must put `SportPaper.jar` inside an empty folder.
+Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
 
 Next, you must create a shell script file to be able to start your server and have access to its console. 
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.sh`.
@@ -223,8 +221,7 @@ You must always execute from `start.sh` to launch the server, not the .jar file.
 
 ### Downloading PGM
 
-You have two options when it comes to downloading PGM. The [Downloads](/downloads) page offers both stable and the latest development builds.
-If you are working on a map that will utilize features introduced in pre-release versions of PGM, we recommend downloading the development build.
+You can download a copy of the latest version of PGM from the [Downloads](/downloads) page.
 
 Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
 
@@ -239,7 +236,7 @@ Also see [Additional Setup](#additional-setup) if you would like to make the mos
 
 ### Configure SportPaper
 
-Using your text editor of choice, you may edit `server.properties` and `sportpaper.yml`. We recommend changing the following options below:
+Using your text editor of choice, you may edit `server.properties` and `sportpaper.yml`. We recommend changing the following options below to these values:
 
 ```properties title="server.properties"
 allow-nether=false
@@ -300,9 +297,12 @@ experiments:
 
 Some servers may choose to use [WorldEdit](https://dev.bukkit.org/projects/worldedit). Since SportPaper is based on Minecraft 1.8 server software, the latest compatible version of WorldEdit is [6.1.9](https://dev.bukkit.org/projects/worldedit/files/2597538).
 
-Once the download is done, place `worldedit-bukkit-6.1.9.jar` inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below:
+Once the download is done, place `worldedit-bukkit-6.1.9.jar` inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below these value:
 
 ```yml title="/plugins/WorldEdit/config.yml"
 # PGM will give observers with OP the "Rabbit's Foot" item, which allows them to edit the world during a match.
 wand-item: 414
+
+# On newer WorldEdit versions in combination with newer Minecraft versions, it will be the item's name.
+wand-item: minecraft:rabbit_foot
 ```
