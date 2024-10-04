@@ -1,11 +1,10 @@
 ---
 id: proto
 title: Protocol Versions
-description: The proto attribute specifies what iteration of PGM a certain XML document was created for. It also instructs PGM on whether to allow the usage of deprecated or newly introduced features within a map.
 toc_max_heading_level: 4
 ---
 
-The `proto=""` attribute specifies what iteration of PGM a certain XML document was created for. 
+The proto attribute specifies what iteration of PGM a certain XML document was created for. 
 It also instructs PGM on whether to allow the usage of deprecated or newly introduced features within a map. 
 If the value is lower than the currently recommended proto version, the map will load but the XML may be interpreted in an outdated and unexpected ways.
 
@@ -21,12 +20,13 @@ Mapmakers should always use the latest supported proto version, and this may be 
 
 | Attribute | Description | Value |
 |---|---|---|
-| `proto` | <span className="badge badge--danger">Required</span>The map XML's protocol version. | <span className="badge badge--success">Recommended</span>`1.4.2` |
+| `proto` | <span className="badge badge--danger">Required</span>The map XML's protocol version. | <span className="badge badge--success">Recommended</span>`1.5.0` |
 
 ##### Map Protocol Values
 
 | Version | Description |
 |---|---|
+| `1.5.0` | Refer to [Changes in 1.5.0](#changes-in-150). |
 | `1.4.2` | Refer to [Changes in 1.4.2](#changes-in-142). |
 | `1.4.1` | No change in features on PGM. Use `1.4.0` or `1.4.2` instead. |
 | `1.4.0` | Filters, regions, and teams are always referenced by its ID (replaces `name`).<br />Disallows `<time>` inside `<score>` or `<blitz>` &amp; disallows `<title>` inside `<blitz>`. |
@@ -42,9 +42,39 @@ Mapmakers should always use the latest supported proto version, and this may be 
 ### Changes in 1.5.0
 
 :::note
-`1.5.0` is a upcoming protocol version that is currently in its planning stage and therefore, **not implemented**.
-If you would like to learn more or propose changes, please visit [PGM#1267 on the issue tracker](https://github.com/PGMDev/PGM/issues/1267).
+`1.5.0` is now available. As the latest protocol version, it is not fully polished, so bugs are expected.
+If you would like to learn more or report issues, please visit the [PGM issue tracker](https://github.com/PGMDev/PGM/issues).
 :::
+
+#### Breaking
+
+- Filters and variables are now their own IDs that will be reserved by PGM. Those IDs can be referenced anywhere in the XML.
+  - This applies to the following filters: `observing`, `participating`, `alive`, `dead`, `match-idle`, `match-starting`, `match-running`, `match-finished`, `match-started`, `crouching`, `walking`, `sprinting`, `grounded`, `flying`, `can-fly`, and `void`.
+  
+    ```xml
+    <!-- Sample proto 1.4.2 XML -->
+    <filters>
+        <alive id="alive"/> <!-- id="alive" is not necessary in proto 1.5.0 -->
+    </filters>
+    ```
+  
+  - This applies to the following variables: `lives`, `score`, `timelimit`, `maxbuildheight`, `player.x`, `player.y`, `player.z`, `player.pitch`, `player.yaw`, `player.dir_x`, `player.dir_y`, `player.dir_z`, `player.vel_x`, `player.vel_y`, `player.vel_z`, `player.has_target`, `player.target_x`, `player.target_y`, `player.target_z`, `player.place_x`, `player.place_y`, and `player.place_z`.
+- Triggers and switch-scope actions now exclude observers when the scope is `team` or `player`.
+  - For maps below proto 1.4.2, `observers` defaults to `true` for backward compatibility. In proto 1.5.0, it defaults to `false`.
+
+    ```xml
+    <!-- Sample proto 1.4.2 XML -->
+    <trigger scope="player" observers="true" filter="your-filter">
+    <switch-scope inner="player" observers="true">
+    ```
+- Actions now untrigger by default.
+  - This is not a common behavior, as the only action to untrigger is [removable kits](/docs/modules/gear/kits#dynamic-kits). This is expected to change in the future.
+  - For maps below proto 1.4.2, `untrigger-filter` defaults to `false` for for backward compatibility. In proto 1.5.0, it defaults to `always`.
+
+    ```xml
+    <!-- Sample proto 1.5.0 XML -->
+    <action untrigger-filter="always">
+    ```
 
 ### Changes in 1.4.2
 
