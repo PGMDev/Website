@@ -54,8 +54,15 @@ If you would like to learn more or report issues, please visit the [PGM issue tr
     ```xml
     <!-- Sample proto 1.4.2 XML -->
     <filters>
-        <alive id="alive"/> <!-- id="alive" is not necessary in proto 1.5.0 -->
+        <alive id="alive"/> 
     </filters>
+    <some-other-feature filter="alive"/>
+    
+    <!-- Sample proto 1.5.0 XML -->
+    <filters>
+      <!-- Defining the alive id is not necessary, as it's a built-in now -->
+    </filters>
+    <some-other-feature filter="alive"/>    
     ```
   
   - This applies to the following variables: `lives`, `score`, `timelimit`, `maxbuildheight`, `player.x`, `player.y`, `player.z`, `player.pitch`, `player.yaw`, `player.dir_x`, `player.dir_y`, `player.dir_z`, `player.vel_x`, `player.vel_y`, `player.vel_z`, `player.has_target`, `player.target_x`, `player.target_y`, `player.target_z`, `player.place_x`, `player.place_y`, and `player.place_z`.
