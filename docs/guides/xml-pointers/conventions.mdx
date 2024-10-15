@@ -11,7 +11,7 @@ Modules must all start on column one.
 This means that all children tags under the `<map>` tag must be aligned with said `<map>` tag.
 
 ```xml
-<map proto="1.4.2">
+<map proto="1.5.0">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
 <objective>Leak lava from the enemy's obsidian core.</objective>
@@ -23,7 +23,7 @@ This means that all children tags under the `<map>` tag must be aligned with sai
 Modules that have sub elements such as the `author` tag must be indented with 4 spaces below the parent element.
 
 ```xml
-<map proto="1.4.2">
+<map proto="1.5.0">
 ...
 <authors>
     <author uuid="060baa18-2852-40d8-afcb-e61607c04be3"/> <!-- PepsiDog -->
@@ -38,7 +38,7 @@ That means the end of one module should have the start of another on the immedia
 
 ```xml
 <!-- Correct -->
-<map proto="1.4.2">
+<map proto="1.5.0">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
 <objective>Leak lava from the enemy's obsidian core.</objective>
@@ -47,7 +47,7 @@ That means the end of one module should have the start of another on the immedia
 
 ```xml
 <!-- Incorrect! -->
-<map proto="1.4.2">
+<map proto="1.5.0">
 
 <name>Blocks DTC</name>
 
@@ -90,7 +90,7 @@ Contributors are optional but are still to remain near the top of a XML file.
 :::
 
 ```xml
-<map proto="1.4.2">
+<map proto="1.5.0">
 <name>Blocks DTC</name>
 <version>1.3.4</version>
 <objective>Leak lava from the enemy's obsidian core.</objective>
@@ -105,10 +105,11 @@ Contributors are optional but are still to remain near the top of a XML file.
 
 ### The Protocol
 
-All maps should use the latest [protocol version](/docs/modules/general/proto). The proto version can be defined with this line:
+All maps should use the latest [protocol version](/docs/modules/general/proto).
+The proto version can be defined with this line:
 
 ```xml
-<map proto="1.4.2">
+<map proto="1.5.0">
 ```
 
 ### Authors and Contributors

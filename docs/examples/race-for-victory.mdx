@@ -31,11 +31,11 @@ to help their way back to base!_
 Every map XML file starts with the XML header and then the base `<map>` module.
 
 ```xml
-<map proto="1.4.2">
+<map proto="1.5.0">
 <!-- Specifies what the map is called -->
 <name>Race for Victory</name>
 <!-- States what version the map is -->
-<version>1.2.4</version>
+<version>1.2.5</version>
 <!-- Tells the teams what the objective is in order to win the game -->
 <objective>Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.</objective>
 <!-- States who made the map -->
@@ -175,7 +175,7 @@ Define regions that can be later used to apply spawns, filters, etc.
     <!-- applicators -->
     <apply region="blue-wool-rooms" block="only-red" use="only-red"/>
     <apply region="blue-wool-rooms" enter="only-red" message="You may not enter your own wool room!"/>
-    <apply region="red-wool-rooms" block="only-blue" use="only-red"/>
+    <apply region="red-wool-rooms" block="only-blue" use="only-blue"/>
     <apply region="red-wool-rooms" enter="only-blue" message="You may not enter your own wool room!"/>
     <apply region="red-base" enter="only-red" message="You may not enter the enemy spawn!"/>
     <apply region="red-base" block="only-red"/>
