@@ -15,7 +15,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Enviroment',
+      label: 'Environment',
       items: ["modules/environment/world",
       "modules/environment/time",
       "modules/environment/border",
