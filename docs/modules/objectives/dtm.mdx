@@ -4,11 +4,11 @@ title: Destroy the Monument
 ---
 
 Players have to locate and destroy certain objects from the enemy team, such as an obsidian pillar, etc. 
-Teams win after a specified percentage of the enemy teams destroyables are destroyed. 
+Teams win after a specified percentage of the enemy team's destroyables are destroyed. 
 Teams can have multiple destroyables and they can be made out of multiple materials.
 
-Completion specifies how much of the material(s) inside of the monument region must be removed for it to count as destroyed. 
-For example, if the monument is obsidian and completion is set to 100%, then all the obsidian must be removed in order for the monument to count as destroyed.
+Completion specifies how much of the material(s) inside the monument region must be removed for it to count as destroyed.
+For example, if the monument is obsidian and completion is set to 100%, then all the obsidian must be removed for the monument to count as destroyed.
 
 | Element | Description |
 |---|---|
@@ -33,7 +33,7 @@ For example, if the monument is obsidian and completion is set to 100%, then all
 | `mode-changes` | Specify if this destroyable uses monument modes.<br />**Note:** Not used in conjunction with `modes`. | <span className="badge badge--primary">true/false</span> | false |
 | `show-progress` | Show this destroyable's progress in the scoreboard. | <span className="badge badge--primary">true/false</span> | false |
 | `repairable` | Specify if the destroyable can be repaired. | <span className="badge badge--primary">true/false</span> | true |
-| `sparks` | Spawn fireworks particles for each destroyed blocks and play the fireworks sound to all players. | <span className="badge badge--primary">true/false</span> | false |
+| `sparks` | Spawn fireworks particles for each destroyed blocks and play the fireworks sound to all or nearby players. | `true`, `false`, `near` | false |
 | `show-messages` | Broadcast messages related to the monument in chat. | <span className="badge badge--primary">true/false</span> | true |
 | `show-effects` | Play sounds, fireworks, and other effects related to the monument. | <span className="badge badge--primary">true/false</span> | true |
 | `show-info` | Display the monument under commands such as `/match`. | <span className="badge badge--primary">true/false</span> | true |

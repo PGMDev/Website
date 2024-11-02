@@ -94,7 +94,7 @@ export default function Downloads() {
                               "button button--primary",
                               styles.download_button
                           )}
-                          href={"https://nightly.link/PGMDev/PGM/workflows/deploy/dev/PGM.jar.zip"}
+                          href={"https://nightly.link/PGMDev/PGM/workflows/build/dev/PGM.jar.zip"}
                           title={"Latest build directly from GitHub.\nContains all the latest features, may occasionally bring new bugs."}
                       >
                         Download <FontAwesomeIcon icon={faDownload} />
