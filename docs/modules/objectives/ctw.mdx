@@ -54,12 +54,6 @@ The victory monument's area, where the wool block is placed, is protected by def
 | `monument-proximity-metric` | Metric used to determine proximity to the monument. | `player`<br />`closest block`<br />`closest kill`<br />`none` | `closest block` |
 | `monument-proximity-horizontal` | Only calculate horizontal distance for monument proximity. | <span className="badge badge--primary">true/false</span> | false |
 
-##### Wool Sub-elements
-
-| Element | Description | Value |
-|---|---|---|
-| `<monument>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The monument where the wool must be placed. | [Region](/docs/modules/mechanics/regions) |
-
 ### Examples
 
 You can group multiple victory monuments from the same team inside a single `<wools team="team-id">` element; and then define that teams individual wool colors inside of a `<wool>` element.
