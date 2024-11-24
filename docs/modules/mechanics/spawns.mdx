@@ -31,6 +31,7 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
 | Attribute | Description | Value | Default |
 |---|---|---|---|
 | `team` | The team this spawn applies to.<br />*Not needed for team-less gamemodes.* | [Team ID](/docs/modules/format/teams) |
+| `region` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The region or regions where players will spawn. | [Regions](/docs/modules/mechanics/regions) |
 | `safe` | Validate that the player spawns in a safe location. | <span className="badge badge--primary">true/false</span> | false |
 | `sequential` | Spawns players at the next region in a list if the one prior to it is not safe.<br />*Requires the `safe` attribute set to true.* | <span className="badge badge--primary">true/false</span> | false |
 | `spread` | Spawn players as far away as possible from enemy players. | <span className="badge badge--primary">true/false</span> | false |
@@ -39,12 +40,6 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
 | `persistent` | Once a player has been assigned a spawn, they will spawn there even if they leave and rejoin the game. | <span className="badge badge--primary">true/false</span> | false |
 | `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to apply to players when they are spawned in this spawn. | [Kit ID](/docs/modules/gear/kits) |
 | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this spawn is used. | [Filter](/docs/modules/mechanics/filters) |
-
-#### Spawn & Default Element Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<regions>` | The region or regions where players will spawn. | [Regions](/docs/modules/mechanics/regions) |
 
 #### Regions Element Attributes
 
@@ -132,11 +127,7 @@ If a player has a bed spawn location set, it overrides all other spawn regions f
 | `bed` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span>Allow players to respawn from beds. | <span className="badge badge--primary">true/false</span> | false |
 | `message` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Message to display on the respawn screen to respawning players. | <span className="badge badge--primary">Formatted Text</span> |
 
-##### Respawn Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<message>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Message to display on the respawn screen to respawning players. | <span className="badge badge--primary">Formatted Text</span> |
+### Examples
 
 ```xml
 <!-- Default auto respawn of 2 seconds -->

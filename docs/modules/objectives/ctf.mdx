@@ -85,13 +85,7 @@ Filters can be used to control who can pickup/capture the flag and when.
 
 | Element | Description | Value |
 |---|---|---|
-| `<net>` | A net where only this flag can be captured, flags accept multiple net sub-elements. |
-| `<post>X,Y,Z</post>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The flag's initial & default post. | [Point Provider](/docs/modules/mechanics/regions#point-providers) |
-| `<pickup-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can pickup the flag. | [Filters](/docs/modules/mechanics/filters) |
-| `<drop-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter if the flag can be dropped at the current location. | [Filters](/docs/modules/mechanics/filters) |
-| `<capture-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter who can capture the flag. | [Filters](/docs/modules/mechanics/filters) |
-| `<pickup-kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Given to players when they pick up the flag. | [Kit](/docs/modules/gear/kits) |
-| `<drop-kit>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Given to flag carriers when they lose the flag, for whatever reason. | [Kit](/docs/modules/gear/kits) |
+| `<net>` | A net where only this flag can be captured, flags accept multiple net sub-elements. | <span className="badge badge--secondary">Net Sub-elements</span> |
 
 ### Posts
 
@@ -116,7 +110,7 @@ The `permanent` option can be used to make a post into something like a [monumen
 
 | Element | Description | Value/Children |
 |---|---|---|
-| `<post>X,Y,Z</post>` | A point or region(s) for flags to spawn at. | [Point Provider](/docs/modules/mechanics/regions#point-providers) |
+| `<post>X,Y,Z</post>` | A point or region(s) for flags to spawn at. | [Point Provider](/docs/modules/mechanics/regions#point-providers) | <span className="badge badge--secondary">Net Sub-elements</span> |
 
 #### Post Attributes
 
@@ -159,7 +153,7 @@ If the net has no owner, then the player carrying the flag will receive the poin
 
 | Element | Description | Value/Children |
 |---|---|---|
-| `<net>` | A region that flags can be captured in. | <span className="badge badge--secondary">Net Sub-elements.</span> |
+| `<net>` | A region that flags can be captured in. | <span className="badge badge--secondary">Net Sub-elements</span> |
 
 #### Net Attributes
 
@@ -179,14 +173,6 @@ If the net has no owner, then the player carrying the flag will receive the poin
 | `respawn-filter` | <span className="badge badge--secondary" title="Can be this attribute or a sub-element.">Property</span>Filter when the flags captured in this net are allowed to respawn. | [Filter](/docs/modules/mechanics/filters) |
 | `respawn-message` | Custom message to broadcast in chat when flag respawn is prevented by a special rule or filter.<br />This can be used to explain an unusual `respawn-filter` to confused players. | <span className="badge badge--primary">Formatted Message</span> |
 | `location` | Location where the net can be found at, used to determine proximity. | <span className="badge badge--primary">X,Y,Z</span> | <span className="badge badge--secondary">Net Region Center</span> |
-
-#### Net Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<region>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span><span className="badge badge--danger">Required</span>The region flag carriers must enter to capture in this net. | [Regions](/docs/modules/mechanics/regions) |
-| `<capture-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter players who can capture in this net. | [Filters](/docs/modules/mechanics/filters) |
-| `<respawn-filter>` | <span className="badge badge--secondary" title="Can be either this sub-element or an attribute.">Property</span>Filter when the flags captured in this net are allowed to respawn. | [Filters](/docs/modules/mechanics/filters) |
 
 ## Examples
 
