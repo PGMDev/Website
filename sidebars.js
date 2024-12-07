@@ -5,7 +5,8 @@ const sidebars = {
       type: 'category',
       label: 'General',
       items: ["modules/general/introduction", 
-      "modules/general/main", 
+      "modules/general/main",
+      "modules/general/preprocessing", 
       "modules/general/proto"],
     },
     {

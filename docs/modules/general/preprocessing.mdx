@@ -1,0 +1,181 @@
+---
+id: preprocessing
+title: Includes & Preprocessing
+---
+
+## Includes
+
+Include statements allow global XML files to be loaded and reused across different maps, thereby standardizing elements across maps.
+
+Using the include element, an XML file can be split into multiple files and then included in the main one.
+This allows you to keep the main file more organized by including sections such as kits, actions, and more.
+
+```xml
+<map>
+    ...
+    <include id="include-name-goes-here"/>
+    ...
+</map>
+```
+
+### Example
+
+Below is a sample include file that can be used for Blitz maps:
+
+```xml title="/server/includes/blitz.xml"
+<!-- The location for include files is defined in /plugins/PGM/config.yml -->
+<map>
+    <blitz>
+        <lives>5</lives>
+    </blitz>
+</map>
+```
+
+The include file is automatically given an ID based on its file name, which in this case is `blitz`.
+Then, it can be added to the main `map.xml`. Multiple include statements can be used per map.
+
+```xml title="/server/maps/map_name/map.xml"
+<map>
+...
+<!-- All maps with this include statement will give the player 5 lives -->
+<include id="blitz"/>
+...
+</map>
+```
+
+## Map Variants
+
+Mapmakers may choose to build different versions of their maps tailored to events, such as seasonal maps (Christmas, Halloween, etc.).
+Variants allow them to avoid the need to duplicate existing maps and, instead, unify various versions into one location.
+
+By defining a variant ID, PGM will treat an individual map with one or more variants as separate maps. 
+Each variant can contain conditionals, which determine whether a section of the XML file from the base (internally, the `default` variant) map should be loaded for a variant map.
+Additionally, a variant can also contain constants, which allows you to define text constants that can be used to replace placeholders in the base map XML with the specified values.
+
+#### Variant Sub-elements
+
+| Element | Description | Value/Children |
+|---|---|---|
+| `<variant> </variant>` | A map variant. | <span className="badge badge--primary">String</span> |
+
+##### Variant Attributes
+
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this map variant from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `slug` | The variant's internal identifier, usually auto generated from the variant's name. This should only be used when a variant is renamed to retain its information, etc.<br />*Valid slugs are lowercase and only contain the characters:* `a-z 0-9 _` | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">Auto Generated</span> |
+| `world` | The world the variant should use during a match. | <span className="badge badge--primary">String</span> |
+| `override` | Toggle if the variant name should override the base map name. If set to false, PGM will append `: [variant]` to the base map name. | <span className="badge badge--primary">true/false</span> | false |
+
+### Example
+
+```xml
+<map proto="1.5.0">
+<name>Map Name</name>
+<variant id="5v5">5v5</variant> <!-- Loaded as "Map Name: 5v5" -->
+<variant id="tournament">TE</variant> <!-- Loaded as "Map Name: TE" -->
+<variant id="halloween" override="true">Spooky Map Name</variant> <!-- Loaded as "Spooky Map Name" -->
+<variant id="christmas" world="christmas"/>Christmas</variant> <!-- Loaded as "Map Name: Christmas" with a different world -->
+...
+</map>
+```
+
+
+## Conditionals
+
+XML files can contain simple `<if>` and `<unless>` conditional statements.
+These conditionals can be used to reduce duplicated map files and simplify managing multiple map variations.
+
+For example, instead of having multiple map variants in different folders, they can be condensed into one location.
+This also allows map variants to be automatically loaded on specific servers or during special occasions.
+
+#### Conditionals Sub-elements
+
+| Element | Description | Value/Children |
+|---|---|---|
+| `<if> </if>` | Apply an XML section if the specified variant is loaded. | <span className="badge badge--secondary">XML Modules</span> |
+| `<unless> </unless>` | Apply an XML section for all variants except for a specific variant when loaded. | <span className="badge badge--secondary">XML Modules</span> |
+
+##### If/Unless Conditional Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `variant` | The map variant to target.<br />*Multiple variants can be targeted as long as it is separated with a comma (`,`).* | <span className="badge badge--primary">Variant ID</span> |
+| `has-variant` | Target all maps with a specified variant.<br />**Note:** This can be useful in a server's global XML file. | <span className="badge badge--primary">Variant ID</span> |
+| `constant` | The name of the constant to check against.<br />*Constants must be defined before this conditional.* | <span className="badge badge--primary">Constant ID</span> |
+| `constant-value` | The constant value to check for. | <span className="badge badge--secondary">Constant Value</span>
+| `constant-comparison` | The type of comparison performed.<br />**Note:** If there is no value, it will default to `defined value`. With a value, it will default to `equals`. | `undefined`, `defined`,<br />`defined delete`,<br />`defined value`,<br />`contains`, `regex`, `range`. |
+
+#### Constant Comparison
+
+* UNDEFINED: checks that the constant has not been defined to anything.
+* DEFINED: checks the constant has been defined, to anything (either to delete or to a value).
+* DEFINED_DELETE: the constant has been defined as a delete.
+* DEFINED_VALUE: the constant has defined as an actual value (not a delete).
+* EQUALS: the constant equals to the attribute constant-value.
+* CONTAINS: the constant is one of the the comma-separated list of values in `constant-value`.
+    ```xml
+    <if constant="const" constant-value="a,b,c" constant-comparison="contains"/>
+    ```
+* REGEX: checks if the constant matches the regex.
+    ```xml
+    <if constant="const" constant-value="[0-9]+" constant-comparison="regex"/>
+    ```
+* RANGE: check if the constant, interpreted as a number, is in the range.
+    * In this example, we check if the value is between 0 and 12.
+        ```xml
+        <if constant="const" constant-value="0..12" constant-comparison="range"/>
+        ```
+
+## Constants
+
+Constants are values that remain the same, regardless of conditions.
+PGM will search and replace any corresponding placeholders (`${constant_id}`) with the constant value.
+
+| Element | Description | Children |
+|---|---|---|
+| `<constants> </constants>` | A node containing the constants for this map. | <span className="badge badge--secondary">Constant Elements</span> |
+
+| Sub-elements |||
+|---|---|---|
+| `<constant> </constant>` | An individual constant. | <span className="badge badge--primary">String</span> |
+
+##### Constant Attributes
+
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this constant from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `delete` | When true, PGM will completely delete the attribute or element the constant was used in, rather than leaving it blank. | <span className="badge badge--primary">true/false</span> | false |
+| `fallback` | When true, this constant will not override any previous declaration.<br />**Note:** This is useful for includes, since you may not want to override individual maps' constant value. | <span className="badge badge--primary">true/false</span> | false |
+
+### Example
+
+The following example utilizes both map variants and constants.
+```xml
+<map proto="1.5.0">
+<name>Map Name</name>
+<variant id="5v5">5v5</variant> <!-- Loaded as "Map Name: 5v5" -->
+<variant id="tournament">TE</variant> <!-- Loaded as "Map Name: TE" -->
+
+<!-- PGM will replace "${team_size}" and "${max}" placeholder with the new value -->
+<constant id="team_size">25</constant>
+<constant id="overfill" delete="true"/> <!-- "max-overfill" will not exist when "Map Name" is loaded -->
+<constant id="max">6</constant>
+<if variant="5v5">
+    <constant id="team_size">5</constant>
+    <constant id="overfill">5</constant>
+    <constant id="max">3</constant>
+</if>
+<if variant="tournament">
+    <constant id="team_size">6</constant>
+    <constant id="overfill">6</constant>
+    <constant id="max" delete="true"/>
+</if>
+
+<team id="red" max="${team_size}" max-overfill="${overfill}"/>
+<team id="blue" max="${team_size}" max-overfill="${overfill}"/>
+<score>
+    <limit>${max}</limit> <!-- 6 in "Map Name", 3 in "Map Name: 5v5", non-existent in "Map Name: TE" -->
+</score>
+</map>
+```
