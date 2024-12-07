@@ -45,7 +45,7 @@ Then, it can be added to the main `map.xml`. Multiple include statements can be 
 
 ## Map Variants
 
-Mapmakers may choose to build different versions of their maps that are tailored for events, such as tournaments. 
+Mapmakers may choose to build different versions of their maps tailored to events, such as seasonal maps (Christmas, Halloween, etc.).
 Variants allow them to avoid the need to duplicate existing maps and, instead, unify various versions into one location.
 
 By defining a variant ID, PGM will treat an individual map with one or more variants as separate maps. 
@@ -73,8 +73,9 @@ Additionally, a variant can also contain constants, which allows you to define t
 <map proto="1.5.0">
 <name>Map Name</name>
 <variant id="5v5">5v5</variant> <!-- Loaded as "Map Name: 5v5" -->
-<variant id="tournament" world="comp">TE</variant> <!-- Loaded as "Map Name: TE" with a different world -->
+<variant id="tournament">TE</variant> <!-- Loaded as "Map Name: TE" -->
 <variant id="halloween" override="true">Spooky Map Name</variant> <!-- Loaded as "Spooky Map Name" -->
+<variant id="christmas" world="christmas"/>Christmas</variant> <!-- Loaded as "Map Name: Christmas" with a different world -->
 ...
 </map>
 ```
