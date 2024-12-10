@@ -5,13 +5,13 @@ description: Every map XML file must contain the base map module. It contains mo
 ---
 
 Every map XML file must contain the base `<map>` module. 
-It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings. 
-The objective is the text that players see when they join the match, and so it is important for this to be very clear, concise, and informative.
+It contains modules that specify the map name, version, objective, authors, contributors, and all other map settings.
+The objective is the text that players see when they join the match, and so this needs to be very clear, concise, and informative.
 
 The `proto=""` attribute specifies what PGM version the XML file was created for. 
 Mapmakers should always use the latest supported proto version, which is documented in depth at [Protocol Versions](/docs/modules/general/proto).
 
-The maps version should follow the versioning schema `major.minor.patch`.
+The map's version should follow the versioning schema `major.minor.patch`.
 
 | Map Element | Description | Value/Children |
 |---|---|---|
@@ -21,7 +21,9 @@ The maps version should follow the versioning schema `major.minor.patch`.
 
 | Map Attributes | Description | Value | Default |
 |---|---|---|---|
-| `proto` | <span className="badge badge--danger">Required</span>The map's XML protocol version. | `1.4.2` |
+| `proto` | <span className="badge badge--danger">Required</span>The map's XML protocol version. | <span className="badge badge--secondary">Proto Version</span> |
+| `min-server-version` | The minimum server version this map can run on. |
+| `max-server-version` | The maximum server version this map can run on. |
 | `internal` | Prevent compass teleports above Y=255. | <span className="badge badge--primary">true/false</span> | false |
 
 ##### Map Sub-elements
@@ -29,7 +31,7 @@ The maps version should follow the versioning schema `major.minor.patch`.
 | Element | Description | Value/Children | Default |
 |---|---|---|---|
 | `<name>` | <span className="badge badge--danger">Required</span>The name of the map. | <span className="badge badge--primary">String</span> |
-| `<slug>` | The map's internal identifier, usually auto generated from the map's name. This should only be used when a map is renamed to retain the map's ratings, etc.<br />*Valid slugs are lowercase and only contain the characters:* `a-z 0-9 _` | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">Auto Generated</span> |
+| `<slug>` | The map's internal identifier, usually auto generated from the map's name. This should only be used when a map is renamed to retain its information, etc.<br />*Valid slugs are lowercase and only contain the characters:* `a-z 0-9 _` | <span className="badge badge--primary">String</span> | <span className="badge badge--secondary">Auto Generated</span> |
 | `<version>` | <span className="badge badge--danger">Required</span>The map's [semantic version](https://semver.org/). | `1.0.0` |
 | `<objective>` | <span className="badge badge--danger">Required</span>The map's objective, shown at the start of the match. | <span className="badge badge--primary">String</span> |
 | `<authors>` | <span className="badge badge--danger">Required</span>The authors of the map. At least one author is required. | `<author>` |
@@ -53,14 +55,14 @@ The maps version should follow the versioning schema `major.minor.patch`.
 </map>
 ```
 
-### Authors & Contributors
+## Authors & Contributors
 
-The authors and contributers elements provide information about who created and helped create the map. 
+The authors and contributors elements provide information about who created and helped create the map. 
 There can be multiple authors and contributors to a map. 
 The contribution attribute should be used to specify what their contribution to the map was.
 
 A player's name should **not** be used to credit them, instead their UUID should be used. 
-A UUID is a universally unique identifier that is used to keep track of players even if they change their name. 
+A UUID is a universally unique identifier that is used to keep track of players even if they change their names. 
 You can check player UUIDs at [mcuuid.net](https://mcuuid.net/). 
 If an author or contributor is defined without a UUID, that player will not get any mapmaker perks on the map.
 
@@ -94,123 +96,7 @@ If an author or contributor is defined without a UUID, that player will not get 
 </contributors>
 ```
 
-### Include Statements
-
-Include statements allow for global XML files to be loaded and re-used across different maps.
-This can be used to standardize values across maps.
-Below is a sample includes file that can be used on Blitz maps:
-
-```xml title="/server/includes/blitz.xml"
-<!-- the location for include files is defined in config.yml -->
-<map>
-    <blitz>
-        <lives>5</lives>
-    </blitz>
-</map>
-```
-
-The file is automatically given an ID based on the file name, which in this case is `blitz`.
-Then it can be added into the main `map.xml`. Multiple include statements can be used per map.
-
-```xml title="/server/maps/map_name/map.xml"
-<map>
-  ...
-  <!-- All maps with this include statement will give the player 5 lives -->
-  <include id="blitz"/>
-  ...
-</map>
-```
-
-### Map Variants
-
-Mapmakers may choose to build different versions of their maps that are tailored for events, such as tournaments. 
-This tool allows them to avoid the need to duplicate existing maps and, instead, unify various versions into one location.
-
-By defining a variant ID, PGM will treat an individual map with one or more variants as separate maps. 
-Each variant can contain conditionals, which determine whether a section of the XML file from the base (internally, the `default` variant) map should be loaded for a variant map.
-Additionally, a variant can also contain constants, which allows you to define text constants that can be used to replace placeholders in the base map XML with the specified values.
-
-#### Variant Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<variant> </variant>` | A map variant. | <span className="badge badge--primary">String</span> |
-
-##### Variant Attributes
-
-| Attribute | Description | Value | Default |
-|---|---|---|---|
-| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this map variant from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `world` | The world the variant should use during a match. | <span className="badge badge--primary">String</span> |
-| `override` | Toggle if the variant name should override the base map name. If set to false, PGM will append `: [variant]` to the base map name. | <span className="badge badge--primary">true/false</span> | false |
-
-#### Conditionals Sub-elements
-
-| Element | Description | Value/Children |
-|---|---|---|
-| `<if> </if>` | Apply an XML section if the specified variant is loaded. | <span className="badge badge--secondary">XML Modules</span> |
-| `<unless> </unless>` | Apply an XML section for all variants except for a specific variant when loaded. | <span className="badge badge--secondary">XML Modules</span> |
-
-##### If/Unless Conditional Attributes
-
-| Attribute | Description | Value |
-|---|---|---|
-| `variant` | The name of the variant to target. | <span className="badge badge--primary">Variant ID</span> |
-| `has-variant` | Target all maps with a specified variant.<br />**Note:** This can be useful in a server's global XML file. | <span className="badge badge--primary">Variant ID</span> |
-
-**Note:** Multiple variants can be targeted as long as it is separated with a comma (`,`).
-
-### Constants
-Constants are values that remain the same, regardless of conditions.
-PGM will search and replace any corresponding placeholders (`${constant_id}`) with the constant value.
-
-| Element | Description | Children |
-|---|---|---|
-| `<constants> </constants>` | A node containing the constants for this map. | <span className="badge badge--secondary">Constant Elements</span> |
-
-| Sub-elements |||
-|---|---|---|
-| `<constant> </constant>` | An individual constant. | <span className="badge badge--primary">String</span> |
-
-##### Constant Attributes
-
-| Attribute | Description | Value | Default |
-|---|---|---|---|
-| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this constant from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `delete` | When true, PGM will completely delete the attribute or element the constant was used in, rather than leaving it blank. | <span className="badge badge--primary">true/false</span> | false |
-
-The following example utilizes both map variants and constant.
-```xml
-<map proto="1.4.2">
-<name>Map Name</name>
-<variant id="5v5">5v5</variant> <!-- Loaded as "Map Name: 5v5" -->
-<variant id="tournament">TE</variant> <!-- Loaded as "Map Name: TE" -->
-<variant id="halloween" override="true">Spooky Map Name</variant> <!-- Loaded as "Spooky Map Name" -->
-
-<!-- PGM will replace "${team_size}" and "${max}" placeholder with the new value -->
-<constant id="team_size">25</constant>
-<constant id="overfill" delete="true"/> <!-- "max-overfill" will not exist when "Map Name" is loaded -->
-<constant id="max">6</constant>
-<if variant="5v5">
-    <constant id="team_size">5</constant>
-    <constant id="overfill">5</constant>
-    <constant id="max">3</constant>
-</if>
-<if variant="tournament">
-    <constant id="team_size">6</constant>
-    <constant id="overfill">6</constant>
-    <constant id="max" delete="true"/>
-</if>
-
-<team id="red" max="${team_size}" max-overfill="${overfill}"/>
-<team id="blue" max="${team_size}" max-overfill="${overfill}"/>
-<score>
-    <limit>${max}</limit> <!-- 6 in "Map Name", 3 in "Map Name: 5v5", non-existent in "Map Name: TE" -->
-</score>
-</map>
-```
-
-### Map Gamemode
+## Map Gamemode
 
 The gamemode element is used to specify the gamemode(s) of the map.
 This mainly affects how the map is displayed.
