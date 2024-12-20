@@ -17,6 +17,7 @@ In the future, some features that are currently used in Kits may be transferred 
 |---|---|
 | `<action> </action>` | A group of actions running in a sequence. |
 | `<switch-scope> </switch-scope>` | Changes the scope that an action applies to. |
+| `<repeat> </repeat>` | Loop actions without recursions. |
 | `<message/>` | A message that is sent to the player. |
 | `<sound/>` | A sound that is played for the player. |
 | `<set/>` | Sets a new value for a [Variable](/docs/modules/mechanics/variables). |
@@ -25,6 +26,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<fill/>` | Places blocks in a block-bounded region. |
 | `<paste-structure/>` | Places a structure at a specified location when triggered. |
 | `<replace-item> </replace-item>` | Finds and replaces certain items. |
+| `<enchant-item> </enchant-item>` | Enchants the targeted item. |
 | `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
 | `<velocity/>` | A player-scoped kit that applies velocity to the player. |
 | `<teleport/>` | Teleport a player to a specific location. |
@@ -46,6 +48,13 @@ In the future, some features that are currently used in Kits may be transferred 
 | `inner` | Specify the scope of the inner action. | `player`, `team`, or `match` |
 | `outer` | Specify the scope outside of an action.<br />*In some cases, this can be omitted as PGM will automatically infer the outer scope.* | `player`, `team`, or `match` |
 
+### Repeat Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `times` | The amount of time to repeat.<br />*Non-whole numbers will be rounded down. Negative numbers will cause no iterations.* | <span className="badge badge--primary">Expression</span> |
+| `filter` | Filters when this loop should be active. This will be checked as many time as the loop is ran. | [Filter](/docs/modules/mechanics/filters) |
+
 ### Message Attributes
 
 | Attribute | Description | Value | Default |
@@ -62,19 +71,35 @@ In the future, some features that are currently used in Kits may be transferred 
 
 | Element | Description | Value |
 |---|---|---|
-| `<replacements>` | A list of replacements.<br />**Note:** In the future, more replacements such as player names will be supported. | <span className="badge badge--secondary">Replacements Sub-elements</span> |
+| `<replacements>` | A list of replacements.<br />**Note:** In the future, more replacements will be supported. | <span className="badge badge--secondary">Replacements Sub-elements</span> |
 
 | Sub-element | Description |
 |---|---|
 | `<decimal/>` | A numerical placeholder. |
+| `<player/>` | A player's name placeholder. |
 
 ##### Decimal Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
-| `id` | Unique identifier used to reference this decimal from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `id` | Unique identifier used to reference this decimal placeholder from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `value` | <span className="badge badge--danger">Required</span>The variable this decimal should evaluate. It can be used with formulas. | <span className="badge badge--primary">Expression</span> |
 | `format` | Customize how the decimal should be displayed, e.g. `#.00`. | [Java DecimalFormat pattern](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html) |
+
+##### Player Attributes
+
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this player placeholder from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `var` | <span className="badge badge--danger">Required</span>The exclusive player-scoped variable to check for. | [Variable](/docs/modules/mechanics/variables) |
+| `style` | The style to display the player's name in. | `plain`, `color`,<br />`fancy`, `verbose` | `verbose` |
+| `fallback` | If no player has been assigned this variable, set the text to display instead. | <span className="badge badge--primary">String</span> |
+
+###### Style Examples
+
+| Description | Screenshot
+|---|---|
+| `plain` - no formatting at all.<br />`simple_color` **(discouraged)** - team color formatting without click-to-teleport hover.<br />`color` - the player's name with team color with click-to-teleport hover.<br />`fancy` - contains fancy formatting, flairs, colors, click-to-teleport hover, and special formatting from Community or third-party plugins.<br />`tab` **(discouraged)** - formatted as a tablist entry with team color, flairs, death status, self, etc.<br />`verbose` - like `fancy`, but includes full nickname of nicked users to server operators. | ![Unnicked player placeholder in chat](/img/player-replacement-action-chat-unnicked.png 'Unnicked player placeholder in chat')<br />![Server operator perspective of the player placeholder in chat](/img/player-replacement-action-chat-op.png 'Server operator perspective of the player placeholder in chat') |
 
 ### Sound Attributes
 
@@ -107,17 +132,19 @@ In the future, some features that are currently used in Kits may be transferred 
 | `material` | <span className="badge badge--danger">Required</span>The filling material. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 | `filter` | Filters which blocks get affected. *May impact performance for large fills.* | [Filter](/docs/modules/mechanics/filters) |
 | `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | false |
+| `update` | Placed blocks will update upon interaction, e.g., redstone, and invalid block placements such as floating ladders, "popping" off. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | true |
 
 ### Paste-Structure Attributes
 
-| Attribute | Description | Value |
-|---|---|---|
+| Attribute | Description | Value | Default |
+|---|---|---|---|
 | `x` | The X coordinate of the location to paste the structure, measured in east-west. | <span className="badge badge--primary">Expression</span> |
 | `y` | The Y coordinate of the location to paste the structure, measured in altitude. | <span className="badge badge--primary">Expression</span> |
 | `z` | The Z coordinate of the location to paste the structure, measured in north-south. | <span className="badge badge--primary">Expression</span> |
 | `structure` | The structure to paste. | [Structure ID](/docs/modules/blocks/structures) |
+| `update` | Placed blocks will update upon interaction, e.g., redstone, and invalid block placements such as floating ladders, "popping" off. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | true |
 
-### Replace Item
+### Replace-Item
 
 #### Sub-elements
 
@@ -134,6 +161,14 @@ In the future, some features that are currently used in Kits may be transferred 
 | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
 | `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
 | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
+
+### Enchant-Item Attributes
+
+| Attribute | Description | Value |
+|---|---|--|
+| `enchantment` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
+| `level` | The specified enchantment's level. | <span className="badge badge--primary">Expression</span> |
+| `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
 
 ### Take-Payment
 
