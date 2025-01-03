@@ -70,6 +70,56 @@ and assigned an `id` used to reference them elsewhere.
 Inline filters allow you to write an expression that internally creates a filter whenever a filter ID is requested.
 This is useful for scenarios where you may need to create a one-off filter.
 
+Currently only [logic/abstention modifiers](/docs/modules/mechanics/filters#modifier-elements) and [variable filters](/docs/modules/mechanics/filters#variable-filter) are supported,
+meaning you do not have to make a declaration for those in the `<filters>` element and you can use them directly inside of element attributes that require a filter ID.
+The syntax for inline modifiers is: `modifier(filter_id)` which is the same as:
+```xml
+<modifier>
+    <filter id="filter_id" />
+</modifier>
+```
+where `modifier` represents any logical/abstention modifier and the filter represents any filter you've declared in your `<filters>` element.
+If the modifier you're using accepts multiple child elements, e.g. the `<all>` modifier, you can separate the filter ids with a comma: `all(filter_id1,filter_id2,filter_id3)`.
+Inline modifiers can also be nested like so: `modifier1(modifier2(filter_id1),filter_id2)`
+
+To visualize how this is useful, the below example presents a snippet that is supposed to prevent `team_one` from opening their woolroom chests:
+```xml
+<filters>
+    <team id="only_team_one">team_one</team>
+    <material id="only_chest">chest</material>
+</filters>
+<regions>
+    <apply region="woolroom_region" use="deny(all(only_team_one,only_chest))" message="You cannot open your own woolroom's chest!" />
+</regions>
+```
+Without inline filters the aforementioned snippet would look like that:
+```xml
+<filters>
+    <deny id="deny_team_one_chests">
+      <all>
+        <team id="only_team_one">team_one</team>
+        <material id="only_chest">chest</material>
+      </all>
+    </deny>
+</filters>
+<regions>
+    <apply region="woolroom_region" use="deny_team_one_chests" message="You cannot open your own woolroom's chest!" />
+</regions>
+```
+
+The syntax for inline variable filters is: `variable_id=value`, which is the same as: `<variable var="variable_id">value</variable>`.
+This filter like the regular variable filter supports an integer or a range as the value, however the range syntax differs,
+as it only accepts the *vanilla minecraft dotted range notation*, so instead of `[100,oo)` you'd use `100..` or instead of `[50,100]` - `50..100`
+
+The inline variable filters can be combined with inline modifiers, e.g: `not(score=1)` equals to:
+```xml
+<filters>
+    <not id="not_score_one">
+        <variable var="score">1</variable>
+    </not>
+</filters>
+```
+#### Examples
 ```xml
 <variables>
     <variable id="some_variable" scope="match"/>
