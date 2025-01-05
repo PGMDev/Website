@@ -28,31 +28,33 @@ You can define as many variables as you want and all variables must have a scope
 
 | Attribute | Description | Value |
 |---|---|---|
-| `id` | Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this variable from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `exclusive` | Limits how many different instances there can be for a variable.<br />*Values between 1 and 50 are supported, higher values may lead to performance issues.* | <span className="badge badge--primary">Number</span> |
-| `scope` | Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
+| `scope` | <span className="badge badge--danger">Required</span>Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique value that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
 | `default` | Sets the initial value of the variable. | <span className="badge badge--primary">Number</span> |
 
 ### Array Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
-| `id` | Unique identifier used to reference this array-type variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this array-type variable from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `size` | <span className="badge badge--danger">Required</span>The size of this array. | <span className="badge badge--primary">1 - 1024</span> |
+| `scope` | <span className="badge badge--danger">Required</span>Defines what the variable will be applied to.<br />*Variables scoped to a player will give each player a unique array that will be preserved, even if they switch teams.* | `player`, `team`, or `match` |
+| `default` | Sets the initial value of all indexes | <span className="badge badge--primary">Number</span> |
 
 ### With-Team Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
-| `id` | Unique identifier used to reference this with-team variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `var` | The variable to target. | [Variable ID](#variable-attributes) |
-| `team` | The team to target. | [Team ID](/docs/modules/format/teams#team-attributes) |
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this with-team variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `var` | <span className="badge badge--danger">Required</span>The variable to target. | [Variable ID](#variable-attributes) |
+| `team` | <span className="badge badge--danger">Required</span>The team to target. | [Team ID](/docs/modules/format/teams#team-attributes) |
 
 ### Player-Location Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
-| `id` | Unique identifier used to reference this player-location variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this player-location variable from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `component` | The player's location component to target. `XYZ`, `YAW`, and `PITCH` represents the player's position/angle, `DIR_XYZ` represents the player's direction, and `VEL_XYZ` represents the player's velocity.  | `X`, `Y`, `Z`, `PITCH`, `YAW`,<br />`DIR_X`, `DIR_Y`, `DIR_Z`,<br />`VEL_X`, `VEL_Y`, and `VEL_Z` |
 
 ## Examples
