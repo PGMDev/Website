@@ -38,7 +38,7 @@ PGM Documentation provides detailed and accurate information about features offe
 
 Before opening a pull request, please:
 
-- Verify that there is no ongoing discussion concerning the implementation you wish to contribute. You can search for such a discussion in the [plugin's repository issues page](https://github.com/PGMDev/PGM/issues).
+- Verify that there is no ongoing discussion concerning the implementation you wish to contribute. You can search for such a discussion in the [repository issues page](https://github.com/PGMDev/Website/issues).
 - Make sure your contribution follows American (US) English grammar rules and spelling, e.g. "color" and not "colour" or "center" and not "centre."
 - If editing pages in the `mdx` format, try to use [Markdown](https://commonmark.org/help/) and avoid HTML as much as possible.
 - PGMDev enforces the *Developer Certificiate of Origin* (DCO). As such, you must sign off your commits.
