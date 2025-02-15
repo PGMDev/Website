@@ -22,9 +22,10 @@ Each `<mode>` has configurable characteristics that define it.
 | Attribute | Description | Value | Default |
 |---|---|---|---|
 | `id` | Unique identifier used to reference this mode from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `name` | The custom mode display name, used for the mode change notification. | <span className="badge badge--primary">Formatted Text</span> |
+| `name` | The custom mode display name, used for the mode change notification.<br />**Note:** This is required if `material` is not set. | <span className="badge badge--primary">Formatted Text</span> |
 | `filter` | Filter that triggers mode countdown. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
-| `material` | <span className="badge badge--danger">Required</span>The material the core/destroyable will change to. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
+| `action` | Trigger a specificed action when this mode is activated.<br />**Note:** This is required if `material` is not set. | [Action ID](/docs/modules/mechanics/actions-triggers)
+| `material` | The material the core/destroyable will change to. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 | `after` | <span className="badge badge--danger">Required</span>The time from the start of the match until this mode takes effect. If a filter is defined, then it will be the time since the filter passes `ALLOW`. | [Time Period](/docs/reference/misc/time-periods) |
 | `show-before` | The time before a mode is transitioning to show it in the boss bar. If `show-before` is set to 0, the mode is not shown in the boss bar at all. | [Time Period](/docs/reference/misc/time-periods) | 1m |
 
