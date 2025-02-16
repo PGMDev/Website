@@ -33,8 +33,8 @@ Mapmakers should always use the latest supported proto version, and this may be 
 | `1.3.6` | Moved all defining elements out of module XML root.<br />Everything scores zero points by default. |
 | `1.3.5` | Filters are aware of who owns TNT. |
 | `1.3.4` | Wools must have a location property. |
-| `1.3.3` | Define how overlapping regions should behave. |
-| `1.3.2` | Added [monument modes](/docs/modules/objectives/monument-modes). |
+| `1.3.3` | Defined how overlapping regions should behave. |
+| `1.3.2` | Added [monument modes](/docs/modules/objectives/monument-modes). Refer to [Changes in 1.3.2](#changes-in-132). |
 | `1.3.1` | Fixed a bug in which cuboids' max value were off by one.<br />**Note:** When upgrading a map from proto `1.3.0` or below, all cuboid max values should be manually increased by positive 1. No other region types are affected. |
 
 ## Map Protocol Changelog
@@ -202,4 +202,20 @@ If you would like to learn more or report issues, please visit the [PGM issue tr
     </spawns>
     ```
 
-- Everything scores 0 points by default, this means you have to explicitly define `<kills>` and `<deaths>` in the score module if you want players to get points for killing players.
+- Everything scores 0 points by default, this means you must explicitly define `<kills>` and `<deaths>` in the score module if you want players to receive points for killing players.
+
+### Changes in 1.3.2
+
+#### Removed
+
+- The built-in monument modes, gold at 15 minutes and glass at 20 minutes, for [Destroy the Core (DTC)](/docs/modules/objectives/dtc) maps have been removed.
+
+  - You can use the XML below to restore the monument modes when upgrading from proto 1.3.1:
+
+    ```xml
+    <!-- Don't forget mode-changes="true" in cores module -->
+    <modes>
+        <mode after="15m" material="gold block"/>
+        <mode after="20m" material="glass"/>
+    </modes>
+    ```
