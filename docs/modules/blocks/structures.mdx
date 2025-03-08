@@ -45,6 +45,7 @@ Structures are a very powerful feature that can be used to implement an endless 
 | `trigger` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>Dynamic filter which triggers placement and clearing of structures. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
 | `location` | The location to place the structure at. The structure's `origin` will be at this point.<br />*Mutually exclusive with `offset`.* | <span className="badge badge--primary">X,Y,Z</span> |
 | `offset` | Relative position to place the structure at. The structure will be translated by this amount from its original location.<br />*Mutually exclusive with `location`.* | <span className="badge badge--primary">X,Y,Z</span> | `0,0,0` *(structure placed at its original location)* |
+| `update` | Placed blocks will update upon interaction, e.g., redstone, and invalid block placements such as floating ladders, "popping" off. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | true |
 
 ### Examples
 
