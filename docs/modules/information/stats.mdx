@@ -1,0 +1,34 @@
+---
+id: stats
+title: Custom Statistics
+---
+
+The stats module allows you to define additional statistics displayed in the chat as part of the match summary at the end of a match.
+Any [expressions](/docs/modules/mechanics/variables) can be used as a statistic.
+
+| Element | Description |
+|---|---|
+| `<stats> </stats>` | Node containing all the defined statistics. |
+
+| Sub-elements ||
+|---|---|
+| `<stat> </stat>` | An individual statistic. |
+
+#### Stat Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `name` | The name of this statistic. | <span className="badge badge--primary">Formatted Text</span> |
+| `value` | The calculated result of the expression to display as a statistic. | <span className="badge badge--primary">Expression</span> |
+
+### Examples
+
+```xml
+<stats>
+    <!-- "player_score" is a custom variable -->
+    <stat name="`6Goals" value="player_score"/>
+
+    <!-- "player.health" and "player.food" are built-in variables -->
+    <stat name="Most Healthy" value="player.health + player.food"/>
+</stats>
+```

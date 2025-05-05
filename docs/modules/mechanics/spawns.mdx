@@ -25,6 +25,7 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
 |---|---|---|
 | `<spawn>` | An individual spawn where a team will spawn. | `<regions>` |
 | `<default>` | <span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>The spawn for observers and teams without a spawn.<br />*Only one default spawn element is allowed per map.* | `<regions>` |
+| `<player-kit>` | A kit to apply to all players in a match upon spawning. | [Kits](/docs/modules/gear/kits) |
 
 #### Spawn & Default Element Attributes
 
@@ -37,8 +38,9 @@ Respawn behavior such as delays, etc. can be customized with the [respawn](#resp
 | `spread` | Spawn players as far away as possible from enemy players. | <span className="badge badge--primary">true/false</span> | false |
 | `spread-teammates` | Spawn teammates as far away as possible from each other. | <span className="badge badge--primary">true/false</span> | false |
 | `exclusive` | Spawn regions are assigned exclusively to one player or team and only they will spawn there. | <span className="badge badge--primary">true/false</span> | false |
+| `outdoors` | Spawn players at the highest point of the world at a particular `x,z` coordinate.<br />*For example, this could prevent players from getting stuck in a hollowed-out map with a large, generalized spawn.* | <span className="badge badge--primary">true/false</span> | false |
 | `persistent` | Once a player has been assigned a spawn, they will spawn there even if they leave and rejoin the game. | <span className="badge badge--primary">true/false</span> | false |
-| `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to apply to players when they are spawned in this spawn. | [Kit ID](/docs/modules/gear/kits) |
+| `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The kit to apply to players when they are sent to this spawn. | [Kit ID](/docs/modules/gear/kits) |
 | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when this spawn is used. | [Filter](/docs/modules/mechanics/filters) |
 
 #### Regions Element Attributes
@@ -53,7 +55,7 @@ Copy the yaw and pitch from the [Debug screen (`F3`)](https://minecraft.wiki/w/D
 | `yaw` | The horizontal angle the player looks to when spawned.<br />*South 0&deg;, East -90&deg;, North 180&deg;, and West 90&deg;.* | <span className="badge badge--primary">-180 to 180</span> | 0 |
 | `pitch` | The vertical angle the player looks to when spawned.<br />*-90&deg; is straight up, 90&deg; is straight down.* | <span className="badge badge--primary">-90 to 90</span> | 0 |
 
-_Examples_
+#### Examples
 
 ```xml
 <spawns>
@@ -101,14 +103,19 @@ _Examples_
 </spawns>
 ```
 
+```xml
+<spawns>
+    <player-kit>
+        <!-- Make everyone slightly faster -->
+        <attribute operation="add" amount="0.5">generic.movementSpeed</attribute>
+    </player-kit>
+</spawns>
+```
+
 ## Respawn Module
 
 The respawn module allows the map creator to adjust the respawn time and if players are automatically respawned. 
 For maps that may require instant respawn, you can set the delay to `0s` and auto to `true`.
-
-To allow players to spawn at a bed set the `bed` attribute to true. 
-Players spawning at beds will not spawn with a kit, even if there is one specified. 
-If a player has a bed spawn location set, it overrides all other spawn regions for that player.
 
 | Element | Description |
 |---|---|
@@ -124,7 +131,7 @@ If a player has a bed spawn location set, it overrides all other spawn regions f
 | `auto` | Automatically respawn the player after the delay time has elapsed. | <span className="badge badge--primary">true/false</span> | false |
 | `blackout` | Dead players get a blindness effect applied. | <span className="badge badge--primary">true/false</span> | false |
 | `spectate` | Allow dead players to fly around. | <span className="badge badge--primary">true/false</span> | false |
-| `bed` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span>Allow players to respawn from beds. | <span className="badge badge--primary">true/false</span> | false |
+| `bed` | <span className="badge badge--danger" title="This feature once existed, but has not been re-implemented in modern versions of PGM.">N/A</span>Allow players to respawn from beds. If a player has a bed spawn location set, it overrides all other spawn regions for that player.<br />**Note:** Players spawning at beds will not spawn with a kit, even if there is one specified. | <span className="badge badge--primary">true/false</span> | false |
 | `message` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Message to display on the respawn screen to respawning players. | <span className="badge badge--primary">Formatted Text</span> |
 
 ### Examples

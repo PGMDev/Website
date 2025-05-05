@@ -40,8 +40,8 @@ Permissions are prefixed with `Permissions` (i.e. `Permissions.ADMINCHAT`).
 | `/vote clear` || Clear all custom map selections from the next vote. ||| `SETNEXT` |
 | `/vote mode` || Toggle the voting mode between replace and override. ||| `SETNEXT` |
 | `/vote remove` | rm | Remove a custom map from the next vote. || [map name] | `SETNEXT` |
-| `/cycle` || Cycle to the next match | -f force || `START` |
-| `/recycle` | rematch | Reload (cycle to) the current map | -f force || `START` |
+| `/cycle` || Cycle to the next match | -f force<br />--override (required when forcibly cycling on a long-running match) || `START` |
+| `/recycle` | rematch | Reload (cycle) to the current map | -f force || `START` |
 | `/start` | begin | Start the match. ||| `START` |
 | `/cancel` | cancelrestart<br />cr | Cancels all countdowns. ||| `STOP` |
 | `/finish` | end | End the match. || [competitor] | `STOP` |
