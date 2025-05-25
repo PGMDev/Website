@@ -12,7 +12,9 @@ const sidebars = {
     {
       type: 'category',
       label: 'Information',
-      items: ["modules/information/broadcasts", "modules/information/rules"],
+      items: ["modules/information/broadcasts",
+      "modules/information/rules",
+      "modules/information/stats"],
     },
     {
       type: 'category',
