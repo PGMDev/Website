@@ -21,13 +21,13 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
           editUrl:
             'https://github.com/PGMDev/Website/tree/master/',
             showLastUpdateTime: true,
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
       }),
     ],
@@ -38,6 +38,11 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          {
+            // Redirect from old introduction link to current link
+            to: '/docs/modules/introduction',
+            from: '/docs/modules/general/introduction'
+          },
           {
             // Redirect from old Events command page
             to: '/docs/commands/events',
@@ -82,7 +87,7 @@ const config = {
           position: "left",
           items: [
             {
-              to: "docs/modules/general/introduction",
+              to: "docs/modules/introduction",
               label: "Modules",
             },
             {
@@ -146,4 +151,4 @@ const config = {
     }),
 };
 
-module.exports = config;
+export default config;
