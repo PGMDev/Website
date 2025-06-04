@@ -1,4 +1,5 @@
 ---
+sidebar_position: 0
 id: regions
 title: Defining Regions
 ---
@@ -11,7 +12,7 @@ When PGM needs to decide if a block is inside a region, it checks if the point a
 The center point of a block will always have coordinates that end in `0.5`.
 When making regions, you have to make sure that all the block centers are _inside_ the region.
 
-### Cuboid
+## Cuboid
 
 Here is an example. Let us say we want to make a region for a destroyable monument that looks like this:
 
@@ -59,7 +60,7 @@ This is not necessary, as PGM will fix it for you, but it might make the XML eas
 An easy way to check that cuboid regions are correct is to simply subtract the low coordinates from the high ones.
 The result should be the size of the region. If it is not, you may need to check both the coordinates and your calculation again.
 
-### Cylinder
+## Cylinder
 
 Let us try a more interesting region: a cylinder.
 A cylinder is defined by its base (center) point, radius, and height.
@@ -80,7 +81,7 @@ So the region would be:
 <cylinder base="53.5,57,-10.5" radius="2.5" height="1"/>
 ```
 
-### Regions: The Wrong Way
+## Regions: The Wrong Way
 
 **DO NOT USE** use WorldEdit to get region coordinates.
 WorldEdit uses a different coordinate system that will not give you correct regions. Although it is possible to convert the coordinates,
