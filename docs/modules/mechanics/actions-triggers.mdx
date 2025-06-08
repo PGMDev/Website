@@ -31,6 +31,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
 | `<velocity/>` | A player-scoped kit that applies velocity to the player. |
 | `<teleport/>` | Teleport a player to a specific location. |
+| `<weather/>` | The weather to set for the map's environment. |
 
 ### Action Attributes
 
@@ -44,11 +45,12 @@ In the future, some features that are currently used in Kits may be transferred 
 
 ### Switch-Scope Attributes
 
-| Attribute | Description | Value |
-|---|---|---|
+| Attribute | Description | Value | Default |
+|---|---|---|---|
 | `id` | Unique identifier used to reference this switch-scope from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `inner` | Specify the scope of the inner action. | `player`, `team`, or `match` |
 | `outer` | Specify the scope outside of an action.<br />*In some cases, this can be omitted as PGM will automatically infer the outer scope.* | `player`, `team`, or `match` |
+| `observers` | Toggle if non-participant players should be included in the scope.<br />**Note:** This is only relevant when `inner` scope is `player`. | <span className="badge badge--primary">true/false</span> | false |
 
 ### Repeat Attributes
 
@@ -161,7 +163,7 @@ In the future, some features that are currently used in Kits may be transferred 
 |---|---|---|
 | `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
 | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
-| `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
+| `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
 | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
 
 ### Enchant-Item Attributes
@@ -170,7 +172,7 @@ In the future, some features that are currently used in Kits may be transferred 
 |---|---|--|
 | `enchantment` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
 | `level` | The specified enchantment's level. | <span className="badge badge--primary">Expression</span> |
-| `ignore-metadata` | Filters which entities to remove. | <span className="badge badge--primary">true/false</span> |
+| `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
 
 ### Take-Payment
 
@@ -200,17 +202,24 @@ In the future, some features that are currently used in Kits may be transferred 
 | `yaw` | The horizontal angle a user looks to. | <span className="badge badge--primary">Expression</span> |
 | `pitch` | The vertical angle a user looks to. | <span className="badge badge--primary">Expression</span> |
 
+### Weather Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `state` | The weather type to transition into. | `clear`, `rain`, `thunder` |
+
 ## Trigger Element
 
 The trigger element waits for a dynamic filter to activate it, and afterwards it will trigger an action.
 
 ### Trigger Attributes
 
-| Attribute | Description | Value |
-|---|---|---|
+| Attribute | Description | Value | Default |
+|---|---|---|---|
 | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A dynamic filter that activates the trigger. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
 | `action` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Sets the action to run when the filter allows. | [Action](#action-elements) |
 | `scope` | Specify the scope for which to test the filter. | `player`, `team`, or `match` |
+| `observers` | Toggle if non-participant players can activate this trigger.<br />**Note:** This is only relevant when `scope` is `player`. | <span className="badge badge--primary">true/false</span> | false |
 
 _Example_
 
