@@ -24,6 +24,7 @@ You can define as many variables as you want and all variables must have a scope
 | `<array/>` | A variable that represents a collection of values. |
 | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
 | `<player-location/>` | A variable that reads a player's location components. |
+| `<worldtime/>` | A variable that allows direct access to the world's time. |
 
 ### Variable Attributes
 
@@ -180,6 +181,29 @@ after being set to a certain value.
     <action id="increase-buildheight" scope="match" expose="true">
         <!-- Adds 1 to the current height, up to a maximum of 55 -->
         <set var="build-limit" value="min(55,whatever+1"/>
+    </action>
+</actions>
+```
+
+### Worldtime Variable
+The variable's value is the current world's time.
+
+```xml
+<variables>
+    <worldtime id="world_time"/>
+</variables>
+<actions>
+    <action id="set-to-noon" scope="match" expose="true">
+        <set var="world_time" value="6000"/> <!-- Sets the world time to 6000 -->
+    </action>
+    <action id="set-to-midnight" scope="match" expose="true">
+        <set var="world_time" value="18000"/> <!-- Sets the world time to 18000 -->
+    </action>
+    <action id="add-time" scope="match" expose="true">
+        <set var="world_time" value="world_time+1000"/> <!-- Adds 1000 to the current world time -->
+    </action>
+    <action id="remove-time" scope="match" expose="true">
+        <set var="world_time" value="world_time-1000"/> <!-- Removes 1000 from the current world time -->
     </action>
 </actions>
 ```
