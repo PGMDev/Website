@@ -21,9 +21,20 @@ It can also be used to create score boxes that give a player or team a certain a
 
 ##### Score Attributes
 
-| Attribute | Description | Value |
-|---|---|---|
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `display` | Set how score should appear in the scoreboard.<br />**Note:** In maps without a mercy rule or score limit, only earned points are shown. | `numerical`, `circle`, `square`, `pipe` | `numerical` |
 | `scoreboard-filter` | Determines when the objective should be displayed on the scoreboard.<br />**Note:** This filter is team-scoped, it can filter whether each team should show or not independently. | [Dynamic Filter](/docs/modules/mechanics/filters#dynamic-filters) |
+
+### Alternative Displays
+
+| Description | Example |
+|---|:---:|
+| `numerical` - displays as a number.<br />If the score is negative or exceeds the allowed maximum, it falls back to this. | ![](/img/modules/score-display-numerical.png) |
+| `circle` - displays as `⬤` circles in the scoreboard, visible up to score/limit of 10. | ![](/img/modules/score-display-circle.png) |
+| `square` - displays as `■` squares in the scoreboard, visible up to score/limit of 10. | ![](/img/modules/score-display-square.png) |
+| `pipe` - displays as the pipe `\|` character in the scoreboard, visible up to score/limit of 24. | ![](/img/modules/score-display-pipe.png) |
+
 
 ### Examples
 
@@ -43,6 +54,12 @@ It can also be used to create score boxes that give a player or team a certain a
          Initially a score limit of 5 will be shown -->
     <mercy>5</mercy>
     <limit>10</limit>
+</score>
+```
+
+```xml
+<score display="circle"> <!-- Points will be shown as 5 circles -->
+    <limit>5</limit> <!-- First team to reach 5 points wins the match -->
 </score>
 ```
 
