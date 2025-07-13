@@ -1,0 +1,11 @@
+.PlayerComponent span {
+    margin-right: 0; /* Remove the span padding in tables that comes from the main CSS */
+}
+
+.PlayerComponent--team-color {
+    color: var(--team-color);
+}
+
+.PlayerComponent__rank {
+    color: var(--ifm-color-primary);
+}
