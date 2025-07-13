@@ -59,7 +59,9 @@ In the future, some features that are currently used in Kits may be transferred 
 | `times` | The amount of time to repeat.<br />*Non-whole numbers will be rounded down. Negative numbers will cause no iterations.* | <span className="badge badge--primary">Expression</span> |
 | `filter` | Filters when this loop should be active. This will be checked as many time as the loop is ran. | [Filter](/docs/modules/mechanics/filters) |
 
-### Message Attributes
+### Message
+
+#### Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
@@ -71,39 +73,10 @@ In the future, some features that are currently used in Kits may be transferred 
 | `stay` | How long the title and subtitle text will display for. | [Time Period](/docs/reference/misc/time-periods) | 3.5s |
 | `fade-out` | How long the title and subtitle text will fade out. | [Time Period](/docs/reference/misc/time-periods) | 1s |
 
-#### Replacements
-
-| Element | Description | Value |
+#### Sub-elements
+| Sub-element | Description | Value |
 |---|---|---|
-| `<replacements>` | A list of replacements.<br />**Note:** In the future, more replacements will be supported. | <span className="badge badge--secondary">Replacements Sub-elements</span> |
-
-| Sub-element | Description |
-|---|---|
-| `<decimal/>` | A numerical placeholder. |
-| `<player/>` | A player's name placeholder. |
-
-##### Decimal Attributes
-
-| Attribute | Description | Value |
-|---|---|---|
-| `id` | Unique identifier used to reference this decimal placeholder from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `value` | <span className="badge badge--danger">Required</span>The variable this decimal should evaluate. It can be used with formulas. | <span className="badge badge--primary">Expression</span> |
-| `format` | Customize how the decimal should be displayed, e.g. `#.00`. | [Java DecimalFormat pattern](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html) |
-
-##### Player Attributes
-
-| Attribute | Description | Value | Default |
-|---|---|---|---|
-| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this player placeholder from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `var` | <span className="badge badge--danger">Required</span>The exclusive player-scoped variable to check for. | [Variable](/docs/modules/mechanics/variables) |
-| `style` | The style to display the player's name in. | `plain`, `color`,<br />`fancy`, `verbose` | `verbose` |
-| `fallback` | If no player has been assigned this variable, set the text to display instead. | <span className="badge badge--primary">String</span> |
-
-###### Style Examples
-
-| Description | Screenshot
-|---|---|
-| `plain` - no formatting at all.<br />`simple_color` **(discouraged)** - team color formatting without click-to-teleport hover.<br />`color` **(recommended for chat)** - the player's name with team color with click-to-teleport hover.<br />`fancy` - contains fancy formatting, flairs (prefix/suffix/etc), colors, and click-to-teleport hover.<br />`tab` **(discouraged)** - formatted as a tablist entry with team color, flairs, death status, self, etc.<br />`verbose` - like `fancy`, but includes full nickname of nicked users to server operators and friends. | ![Unnicked player placeholder in chat](/img/player-replacement-action-chat-unnicked.png 'Unnicked player placeholder in chat')<br />![Server operator perspective of the player placeholder in chat](/img/player-replacement-action-chat-op.png 'Server operator perspective of the player placeholder in chat') |
+| `<replacements>` | A list of replacements. They can be referred to in the message text using curly braces (`{replacement-id}`). | [Replacements](#replacements) |
 
 ### Sound Attributes
 
@@ -253,6 +226,117 @@ _Example_
     <trigger filter="another-dynamic-filter" action="standalone-text" scope="player"/>
 </actions>
 ```
+
+## Replacements
+
+export const ScopedBadge = () => <span class="badge badge--secondary" title="Requires a scope attribute if defined globally.">Scoped</span>
+
+### Replacement Types
+| Type | Description |
+|---|---|
+| [`<decimal/>`](#decimal-replacement) | <ScopedBadge/>A numerical placeholder. |
+| [`<player/>`](#player-replacement) | A player's name placeholder. |
+| [`<switch>`](#switch-replacement) | <ScopedBadge/>A switch-case replacement. |
+| [`<replacement>`](#replacement-reference) | A reference to a replacement in the global registry. |
+
+### Global Replacement Registry
+Replacements can be defined globally by including them in `<replacements>` in the root `<map>` element. In that case, defining a scope for scoped replacements is required:
+
+```xml
+<map proto="1.5.0">
+<replacements>
+    <decimal id="example-decimal" value="points" scope="player"/>
+    <switch id="example-switch" scope="team">
+        <case filter="team-a" result="`9Team A"/>
+        <case filter="team-b" result="`cTeam B"/>
+    </switch>
+</replacements>
+</map>
+```
+
+Globally-defined replacements can be accessed in message actions using the [`<replacement>` element](#replacement-reference).
+
+### Decimal Replacement
+Displays a numerical value according to the provided format.
+
+#### Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this decimal placeholder from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `value` | <span className="badge badge--danger">Required</span>The variable this decimal should evaluate. It can be used with formulas. | <span className="badge badge--primary">Expression</span> |
+| `format` | Customize how the decimal should be displayed, e.g. `#.00`. | [Java DecimalFormat pattern](https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html) |
+
+### Player Replacement
+Displays the name of a player who has an exclusive player-scoped variable assigned to them.
+
+#### Attributes
+
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this player placeholder from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `var` | <span className="badge badge--danger">Required</span>The exclusive player-scoped variable to check for. | [Variable](/docs/modules/mechanics/variables) |
+| `style` | The style to display the player's name in. | [Player Replacement Style](#player-replacement-styles) | `verbose` |
+| `fallback` | If no player has been assigned this variable, set the text to display instead. | <span className="badge badge--primary">String</span> |
+
+#### Player Replacement Styles
+
+import PlayerComponent, { PlayerStyle } from "@site/src/components/PlayerComponent.tsx";
+
+| Type | Description | Example | Example (server operator view) |
+|---|---|---|---|
+| `plain` | Displays the player name without any formatting. | <PlayerComponent style={PlayerStyle.Plain} /> | <PlayerComponent style={PlayerStyle.Plain} isOp /> |
+| `simple_color` | Displays the player name with team color formatting. **Using this style is discouraged.** | <PlayerComponent style={PlayerStyle.SimpleColor} /> | <PlayerComponent style={PlayerStyle.SimpleColor} isOp /> |
+| `color` | Displays the player name with team color, and a click-to-teleport action. **Recommended for chat messages.** | <PlayerComponent style={PlayerStyle.Color} /> | <PlayerComponent style={PlayerStyle.Color} isOp /> |
+| `fancy` | Displays the player name with team color, a click-to-teleport action, flairs (prefix, suffix, etc.), and fancy formatting. | <PlayerComponent style={PlayerStyle.Fancy} /> | <PlayerComponent style={PlayerStyle.Fancy} isOp /> |
+| `tab` | Displays the player name formatted as a tab list entry with team color, flairs, death status, self-highlighting, etc. **Using this style is discouraged.** | <PlayerComponent style={PlayerStyle.Tab} /> | <PlayerComponent style={PlayerStyle.Tab} isOp /> |
+| `verbose` | Displays the player name in a manner similar to `fancy`, along with an alternative nickname (if present) to server operators and friends of the player. | <PlayerComponent style={PlayerStyle.Verbose} /> | <PlayerComponent style={PlayerStyle.Verbose} isOp /> |
+
+### Switch Replacement
+Selects the first matching value from a list of candidate case branches.
+
+```xml
+<switch id="player-health-state" value="player.health">
+    <case match="(0, 5]" result="`cAlmost dead"/>
+    <case match="5..10" result="`eUnwell"/>
+    <case match="10..15" result="`6Not great, not terrible"/>
+    <case match="[15, 20)" result="`4OK"/>
+    <case match="20" filter="blue-team" result="`aHealthy `9blue`a player"/>
+    <case match="20" filter="red-team" result="`aHealthy `9red`a player"/>
+</switch>
+```
+#### Attributes
+| Attribute | Description | Type |
+|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this switch replacement from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `value` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>An optional value to match against in individual switch cases. Formulas are supported. | <span className="badge badge--primary">Expression</span> |
+
+#### Sub-elements
+| Sub-element | Description | Type |
+|---|---|---|
+| `<case>` | Case branches to match against. | [Case Branch](#case-branch-properties) |
+| `<fallback>` | The fallback text to display if none of the `<case>` branches match. Defaults to empty text. | <span className="badge badge--primary">Formatted Text</span> |
+
+#### Case Branch Properties
+A case branch describes the requirements for the text to be displayed. At least one of the `match` and `filter` properties must be specified. If both are specified, the filter acts as a "case guard". This means that both the range specified in `match` and the `filter` must match for the branch to match.
+
+| Property | Description | Type |
+|---|---|---|
+| `match` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The value to match against. | <span className="badge badge--primary">Number Range</span> |
+| `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>The filter to match against.<br/><span className="badge badge--danger">Required</span>if `value` is not specified in the parent `<switch>` element. | [Filter](/docs/modules/mechanics/filters) |
+| `result` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The text to display when matched. | <span className="badge badge--primary">Formatted Text</span> |
+
+### Replacement Reference
+Refers to a replacement in the global registry. Takes in an `id` attribute, which serves as the local identifier of the replacement to be used in message text, and the [global replacement ID](#global-replacement-registry) as an inner value.
+
+```xml
+<message text="{local-id}">
+    <replacements>
+        <replacement id="local-id">global-id</replacements>
+    </replacements>
+</message>
+```
+
 
 ## Examples
 
