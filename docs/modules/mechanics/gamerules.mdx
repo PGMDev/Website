@@ -2,15 +2,11 @@
 sidebar_position: 9
 id: gamerules
 title: Gamerules
-description: Minecraft's built in game rules can be set via the gamerules module.
+description: Minecraft's built-in game rules can be set via the gamerules module.
 ---
 
-Minecraft's built in game rules can be set via the `<gamerules>` module. 
-Not all gamerules are supported, the table below lists which are supported.
-
-:::info
-When stopping the daylight cycle, you should either use the `<doDaylightCycle>` gamerule or the [`<timelock>`](/docs/modules/environment/time#time-lock) module.
-:::
+Minecraft's built-in game rules can be set via the `<gamerules>` module. 
+Not all gamerules are fully supported, the table below lists which are supported.
 
 | Element | Description |
 |---|---|
@@ -23,11 +19,34 @@ When stopping the daylight cycle, you should either use the `<doDaylightCycle>` 
 | `<doFireTick>` | Toggles whether fire spread occurs. | <span className="badge badge--primary">true/false</span> |
 | `<doTileDrops>` | Toggles whether tile entities drop. | <span className="badge badge--primary">true/false</span> |
 | `<doMobLoot>` | Toggles whether mobs drop loot on death. | <span className="badge badge--primary">true/false</span> |
+| `<locatorBar>` | Toggles whether the [locator bar](https://minecraft.wiki/w/Locator_Bar) should be enabled.<br />**Note:** This is available in Minecraft 1.21.6 and later. | <span className="badge badge--primary">true/false</span> |
 | `<mobGriefing>` | Toggles whether mobs such as Creepers and Endermen cause enviromental damage. | <span className="badge badge--primary">true/false</span> |
+| `<randomTickSpeed>` | Sets how often random block ticks occur, such as leaf decay, vegetation growth, fire spreading, and more. | <span className="badge badge--primary">Integer</span> |
 | `<naturalRegeneration>` | Toggles whether or not players naturally regain heath. | <span className="badge badge--primary">true/false</span> |
 | `<doDaylightCycle>` | Toggles whether or not time tick occurs. | <span className="badge badge--primary">true/false</span> |
 
-Example
+:::info
+When stopping the daylight cycle, you should either use the `<doDaylightCycle>` gamerule or the [`<timelock>` module](/docs/modules/environment/time#time-lock).
+:::
+
+#### Additional Gamerule Sub-elements
+
+| Rule | Description |
+|---|---|
+| `<commandBlockOutput>` | Command blocks should not be used with PGM. |
+| `<logAdminCommands>` | Not useful in custom maps. |
+| `<reducedDebugInfo>` | Not useful in custom maps. |
+| `<sendCommandFeedback>` | Not useful in custom maps. |
+
+#### Unsupported Gamerules
+| Rule | Description |
+|---|---|
+| `<doMobSpawning>` | Not supported in favor of the [Mob Spawning module](/docs/modules/environment/mobs). |
+| `<showDeathMessages>` | Not supported since PGM handles death messages. |
+| `<doImmediateRespawn>` | Not supported in favor of the [Respawn module](/docs/modules/mechanics/spawns#respawn-module). |
+| `<keepInventory>` | Partially supported. Use the [Item Keep module](/docs/modules/gear/repair-remove-keep#item-keep) instead.<br />*Some maps use this to prevent item drops on death without adding them to [Item Remove](/docs/modules/gear/repair-remove-keep#item-remove).* |
+
+### Examples
 
 ```xml
 <gamerules>
@@ -35,16 +54,3 @@ Example
     <naturalRegeneration>false</naturalRegeneration>
 </gamerules>
 ```
-
-#### Unsupported Gamerules
-
-| Rule | Description |
-|---|---|
-| `doMobSpawning` | Not supported in favor of the [Mob Spawning](/docs/modules/environment/mobs) module. |
-| `keepInventory` | Not supported since PGM already solves this with kits. |
-| `commandBlockOutput` | Command blocks are not used in PGM. |
-| `logAdminCommands` | Not useful in custom maps. |
-| `randomTickSpeed` | Not useful in custom maps. |
-| `reducedDebugInfo` | Not useful in custom maps. |
-| `sendCommandFeedback` | Not useful in custom maps. |
-| `showDeathMessages` | Not supported since PGM handles death messages. |

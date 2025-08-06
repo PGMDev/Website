@@ -23,12 +23,13 @@ Effect IDs should be specified without their `minecraft:` prefix.
 |---|---|---|---|
 | `duration` | Duration of the effect. | [Time Period](/docs/reference/misc/time-periods) | `oo`<br />(forever) |
 | `amplifier` | Strength of the effect. The value matches what is displayed to the player in-game, so the first tier of potions have amplifier 1. | <span className="badge badge--primary">Number</span> | 1 |
-| `ambient` | Disables potion particles on an potion when set to true.<br />*`potion-particles` must be enabled to use this feature.* | <span className="badge badge--primary">true/false</span> | false |
+| `ambient` | Toggle whether the potion particles should be less vibrant and intrusive.<br />*`potion-particles` must be enabled to use this feature.* | <span className="badge badge--primary">true/false</span> | false |
 
 ### Examples
 
 ```xml
-<effect duration="900" amplifier="1">jump_boost</effect>
+<effect duration="900" amplifier="2">jump boost</effect>
+
 <!-- Commonly used to prevent unintended damage when spawning -->
-<effect duration="2" amplifier="10">damage_resistance</effect>
+<effect duration="2" amplifier="5">damage resistance</effect>
 ```
