@@ -68,9 +68,13 @@ and assigned an `id` used to reference them elsewhere.
 
 ### Inline Filters
 
-Inline filters allow you to write an expression that internally creates a filter whenever a filter ID is requested.
-This is useful for scenarios where you may need to create a one-off filter.
+Inline filters allow you to write expressions that create filters dynamically, supporting both function-like syntax and variable expressions.
 
+**Function Syntax:** `all()`, `any()`, `one()`, `not()`, `allow()`, `deny()` can be used with nested filter references.
+
+**Variable Expressions:** Variables can be used directly with comparison operators: `=`, `[min,max]`, `min..`, `[min,oo)`.
+
+_Examples_
 ```xml
 <variables>
     <variable id="some_variable" scope="match"/>
@@ -87,6 +91,9 @@ This is useful for scenarios where you may need to create a one-off filter.
             <message text="The variable is 5 or more!"/>
         </action>
     </trigger>
+    <!-- Function-style inline filters -->
+    <trigger filter="all(team-red, holding-sword)" scope="player"/>
+    <trigger filter="not(team-red)" scope="player"/>
 </actions>
 
 <filters>

@@ -65,6 +65,8 @@ Setting variables are done inside the [Actions & Triggers](/docs/modules/mechani
 The `<set>` action which changes the variables, waits to be called by a trigger after a filter activates it.
 The `value` attribute can do any basic mathematical expressions.
 
+Alternatively, variables can be set using inline syntax with the `:=` operator directly in trigger actions.
+
 _Example_
 
 ```xml
@@ -74,11 +76,16 @@ _Example_
         <set var="flag_captures" value="flag_captures+1">
     </action>
     <trigger filter="flag-cap-filter" action="score-points" scope="player"/>
+    
+    <!-- Alternative inline syntax -->
+    <trigger filter="flag-cap-filter" action="flag_captures := flag_captures + 1" scope="team"/>
 </action>
 
 ...
 <!-- Sets some_variable to 0, 1, 2, 3, or 4 randomly -->
 <set var="some_variable" value="floor(random() * 5)"/>
+<!-- Alternative inline syntax -->
+<trigger filter="some-condition" action="some_variable := floor(random() * 5)" scope="match"/>
 ...
 ```
 
