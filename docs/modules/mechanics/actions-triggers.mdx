@@ -122,6 +122,12 @@ In the future, some features that are currently used in Kits may be transferred 
 | `index` | If setting an array-type variable, the expression to be evaluated.<br />*Required when using array-type variables.* | <span className="badge badge--primary">Expression</span> |
 | `value` | <span className="badge badge--danger">Required</span>Sets a new value for the variable. | <span className="badge badge--primary">Expression</span> |
 
+**Alternative Inline Syntax:** Variable assignments can be written using the `:=` operator as `variable_name := value` or `variable_name[index] := value` for array variables.
+
+```xml
+<trigger filter="some-condition" action="player_score := player_score + 10" scope="player"/>
+```
+
 ### Kill-Entities Attributes
 
 | Attribute | Description | Value |
