@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-import classnames from "classnames";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 
 let parsedRowData = null;
@@ -162,7 +162,7 @@ const Materials = ({ children }) => {
   return (
     <>
       <form role="search">
-        <div className={classnames(styles.search)}>
+        <div className={clsx(styles.search)}>
           <input
             ref={searchField}
             onChange={() => doMaterialSearch(searchField, resultCount)}

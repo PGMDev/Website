@@ -4,8 +4,6 @@ const config = {
   tagline: 'Documentation for PGM, the original Minecraft PvP Game Manager',
   url: 'https://pgm.dev/',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   organizationName: 'PGMDev',
   projectName: 'Website',
