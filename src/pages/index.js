@@ -1,5 +1,5 @@
 import React from "react";
-import classnames from "classnames";
+import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -45,7 +45,7 @@ const features = [
 function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames("col col--4", styles.feature)}>
+    <div className={clsx("col col--4", styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <img className={styles.featureImage} src={imgUrl} loading="lazy" alt="" />
@@ -62,8 +62,8 @@ function Home() {
   const { siteConfig = {} } = context;
   return (
     <Layout title={`Home`} description={siteConfig.tagline}>
-      <header className={classnames("hero", styles.banner)}>
-        <div className={classnames(styles.bannerOverlay)} />
+      <header className={clsx("hero", styles.banner)}>
+        <div className={clsx(styles.bannerOverlay)} />
         <iframe
           className={styles.bannerVideo}
           src="https://www.youtube-nocookie.com/embed/vxS-0jqCEYo?playlist=vxS-0jqCEYo&controls=0&autoplay=1&mute=1&loop=1&rel=0&showinfo=0&quality=high"
@@ -72,10 +72,10 @@ function Home() {
           allowFullScreen
           title="Homepage Banner Video"
         />
-        <div className={classnames("container", styles.bannerContainer)}>
+        <div className={clsx("container", styles.bannerContainer)}>
           <div className="row">
             <div className="col col--6">
-              <h1 className={classnames("hero__title", styles.bannerTitle)}>
+              <h1 className={clsx("hero__title", styles.bannerTitle)}>
                 The original, <span className={styles.bannerGradient}>redefined</span>.
               </h1>
               <p className="hero__subtitle" style={{ color: "#FFF" }}>
@@ -83,7 +83,7 @@ function Home() {
               </p>
               <div className={styles.Ctas}>
                 <Link
-                  className={classnames(
+                  className={clsx(
                     "button button--outline button--white button--lg",
                     styles.getStarted
                   )}
@@ -107,7 +107,7 @@ function Home() {
                 src="img/shield.png"
                 alt="Biege-colored shield with a red outline containing two swords clashing in the middle and a text that reads 'PGM' underneath it."
                 title="Biege-colored shield with a red outline containing two swords clashing in the middle and a text that reads 'PGM' underneath it."
-                className={classnames(styles.floating)}
+                className={clsx(styles.floating)}
               />
             </div>
           </div>

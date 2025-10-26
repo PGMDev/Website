@@ -14,7 +14,7 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
-import classnames from "classnames";
+import clsx from "clsx";
 import styles from "./styles.module.css";
 
 export default function Downloads() {
@@ -34,10 +34,10 @@ export default function Downloads() {
 
   return (
     <Layout title="Downloads">
-      <div className={classnames("container", styles.downloads_container)}>
+      <div className={clsx("container", styles.downloads_container)}>
         <h1 className={styles.downloads_title}>Downloads</h1>
         {releases.length === 0 ? (
-          <div className={classnames("hero", styles.spinner_hero)}>
+          <div className={clsx("hero", styles.spinner_hero)}>
             <div className={styles.lds_ripple}>
               <div></div>
               <div></div>
@@ -45,7 +45,7 @@ export default function Downloads() {
           </div>
         ) : (
           <div
-            className={classnames(
+            className={clsx(
               "hero",
               styles.downloads_hero,
               styles.appearing
@@ -88,9 +88,9 @@ export default function Downloads() {
                     Minecraft multiplayer.
                   </p>
                   <div className="text--center">
-                    <div className={classnames(styles.download_button_wrapper)}>
+                    <div className={clsx(styles.download_button_wrapper)}>
                       <a
-                          className={classnames(
+                          className={clsx(
                               "button button--primary",
                               styles.download_button
                           )}
@@ -105,7 +105,7 @@ export default function Downloads() {
                     </a>
                   </div>
                 </div>
-                <div className={classnames("col col--4", styles.col_margin_left)}>
+                <div className={clsx("col col--4", styles.col_margin_left)}>
                 <h2>Download SportPaper</h2>
                 <p>
                   SportPaper is a 1.8 Paper fork tuned
@@ -113,9 +113,9 @@ export default function Downloads() {
                   recommended for use with PGM.
                 </p>
                 <div className="text--center">
-                  <div className={classnames(styles.download_button_wrapper)}>
+                  <div className={clsx(styles.download_button_wrapper)}>
                     <a
-                      className={classnames(
+                      className={clsx(
                         "button button--primary",
                         styles.download_button
                       )}
@@ -136,8 +136,8 @@ export default function Downloads() {
         <div className={styles.others}>
           <h2 style={{ marginBottom: "-15px" }}>Other Resources</h2>
           <div className="row">
-            <div className={classnames("col col--6", styles.column)}>
-              <div className={classnames("hero", styles.others_hero)}>
+            <div className={clsx("col col--6", styles.column)}>
+              <div className={clsx("hero", styles.others_hero)}>
                 <div className="col">
                   <div className="row">
                     <div className="col col--6">
@@ -153,7 +153,7 @@ export default function Downloads() {
                     </div>
                     <div className="col col--6 text--right">
                       <a
-                        className={classnames(
+                        className={clsx(
                           "button button--primary",
                           styles.others_button
                         )}
@@ -173,8 +173,8 @@ export default function Downloads() {
                 </div>
               </div>
             </div>
-            <div className={classnames("col col--6", styles.column)}>
-              <div className={classnames("hero", styles.others_hero)}>
+            <div className={clsx("col col--6", styles.column)}>
+              <div className={clsx("hero", styles.others_hero)}>
                 <div className="col">
                   <div className="row">
                     <div className="col col--6">
@@ -190,7 +190,7 @@ export default function Downloads() {
                     </div>
                     <div className="col col--6 text--right">
                       <a
-                        className={classnames(
+                        className={clsx(
                           "button button--primary",
                           styles.others_button
                         )}
@@ -212,8 +212,8 @@ export default function Downloads() {
             </div>
           </div>
           <div className="row">
-            <div className={classnames("col col--6", styles.column)}>
-              <div className={classnames("hero", styles.others_hero)}>
+            <div className={clsx("col col--6", styles.column)}>
+              <div className={clsx("hero", styles.others_hero)}>
                 <div className="col">
                   <div className="row">
                     <div className="col col--6">
@@ -229,7 +229,7 @@ export default function Downloads() {
                     </div>
                     <div className="col col--6 text--right">
                       <a
-                        className={classnames(
+                        className={clsx(
                           "button button--primary",
                           styles.others_button
                         )}
@@ -251,8 +251,8 @@ export default function Downloads() {
                 </div>
               </div>
             </div>
-            <div className={classnames("col col--6", styles.column)}>
-              <div className={classnames("hero", styles.others_hero)}>
+            <div className={clsx("col col--6", styles.column)}>
+              <div className={clsx("hero", styles.others_hero)}>
                 <div className="col">
                   <div className="row">
                     <div className="col col--6">
@@ -268,7 +268,7 @@ export default function Downloads() {
                     </div>
                     <div className="col col--6 text--right">
                       <a
-                        className={classnames(
+                        className={clsx(
                           "button button--primary",
                           styles.others_button
                         )}

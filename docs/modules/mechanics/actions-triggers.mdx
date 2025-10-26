@@ -29,6 +29,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<replace-item> </replace-item>` | Finds and replaces certain items. |
 | `<enchant-item> </enchant-item>` | Enchants the targeted item. |
 | `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
+| `<team-alias/> ` | Dynamically change a team's name during a match. |
 | `<velocity/>` | A player-scoped kit that applies velocity to the player. |
 | `<teleport/>` | Teleport a player to a specific location. |
 | `<weather/>` | The weather to set for the map's environment. |
@@ -197,6 +198,13 @@ In the future, some features that are currently used in Kits may be transferred 
 | `material` | <span className="badge badge--danger">Required</span>The item to display as an icon. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 | `price` | The amount of a currency needed to purchase. | <span className="badge badge--primary">Number</span> |
 | `currency` | The currency needed to purchase. | [Filter](/docs/modules/mechanics/filters) |
+
+### Team-Alias Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `team` | The team for the action to rename.<br />**Note:** This is required if the action's scope is `match`; otherwise, the team will be assumed. | [Team ID](/docs/modules/format/teams) |
+| `alias` | The new team's name. | <span className="badge badge--primary">String</span> |
 
 ### Velocity & Teleport Attributes
 
