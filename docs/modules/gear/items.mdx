@@ -90,6 +90,42 @@ A player's skin data can be found by using `https://sessionserver.mojang.com/ses
 | `<uuid>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
 | `<skin>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
 
+### Banners
+
+Custom banners can be given to the player using the banner element.
+
+| Element | Description |
+|---|---|
+| `<banner> </banner>` | A banner design containing multiple cascading layers. |
+
+| Sub-element | Description|
+|---|---|
+| `<layer/>` | Defines a specific pattern layer. |
+
+##### Banner Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `base-color` | Defines the base color of the banner. | [Dye Color Name](/docs/reference/misc/colors) |
+
+##### Pattern Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `pattern` | <span className="badge badge--danger">Required</span> The pattern type to apply. | [Pattern Type](/docs/reference/misc/banners) |
+| `color` | <span className="badge badge--danger">Required</span> Color of the pattern. | [Dye Color Name](/docs/reference/misc/colors) |
+
+```xml
+<banner base-color="white">
+    <layer pattern="straight cross" color="yellow" />
+    <layer pattern="stripe top" color="yellow" />
+    <layer pattern="stripe bottom" color="yellow" />
+    <layer pattern="mojang" color="black" />
+    <layer pattern="stripe middle" color="yellow" />
+    <layer pattern="triangle top" color="yellow" />
+</banner>
+```
+
 ### Armor
 
 Armor slots have predefined tags to make it easier to give them to a player. 
