@@ -392,8 +392,9 @@ _Examples_
 Attribute modifiers can be applied to items in the same way they are applied to kits.
 See [Attribute Kits](/docs/modules/gear/kits#attribute-modifier-kits-removable) for details.
 
-Additionally, a `slot` can be specified, in which case the modifier will only be applied
-when the item is in that slot. This must be an [armor or hand slot](/docs/reference/items/inventory).
+Additionally, a `slot` can be specified, in which case the modifier will only be applied when the item is in that slot.
+This must be an equipment slot or [equipment slot group](/docs/reference/items/inventory#inventory-slots).
+This is not available in Minecraft 1.8.
 
 _Examples_
 
@@ -405,7 +406,8 @@ _Examples_
 
 ```xml
 <item material="diamond spade">
-    <attribute slot="weapon.mainhand" operation="multiply" amount="2">generic.movementSpeed</attribute>
+    <!-- The slot value here is an example of an "inventory slot" -->
+    <attribute slot="mainhand" operation="multiply" amount="2">generic.movementSpeed</attribute>
 </item>
 ```
 
