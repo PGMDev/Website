@@ -528,8 +528,8 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 
 | Attribute | Description | Value |
 |---|---|---|
-| `period` | <span className="badge badge--danger">Required</span>Length of time a pulse remains on in a cycle. | [Time Period](/docs/reference/misc/time-periods) |
-| `duration` | <span className="badge badge--danger">Required</span>Length of time a cycle lasts for.<br />*Must be a positive number that is shorter than the period length.* | [Time Period](/docs/reference/misc/time-periods) |
+| `period` | <span className="badge badge--danger">Required</span>Length of time a cycle lasts for. | [Time Period](/docs/reference/misc/time-periods) |
+| `duration` | <span className="badge badge--danger">Required</span>Length of time a pulse remains on in a cycle.<br />*Must be a positive number that is shorter than the period length.* | [Time Period](/docs/reference/misc/time-periods) |
 | `filter` | <span className="badge badge--danger">Required</span>Filter when the pulse should be active; if the filter allows, pulse will be ticking. It can be defined as a unique child element or as an attribute. | [Dynamic Filter](#dynamic-filters) |
 
 ```
