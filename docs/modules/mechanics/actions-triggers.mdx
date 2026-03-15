@@ -340,7 +340,7 @@ Selects the first matching value from a list of candidate case branches.
 | `<fallback>` | The fallback text to display if none of the `<case>` branches match. Defaults to empty text. | <span className="badge badge--primary">Formatted Text</span> |
 
 #### Case Branch Properties
-A case branch describes the requirements for the text to be displayed. At least one of the `match` and `filter` properties must be specified. If both are specified, the filter acts as a "case guard". This means that both the range specified in `match` and the `filter` must match for the branch to match.
+A case branch describes the requirements for the text to be displayed. At least one of the `match` and `filter` properties must be specified. If both are specified, the filter acts as a "case guard" &ndash; meaning that the case branch will match only if the value matches the range specified by `match` and the `filter` allows.
 
 | Property | Description | Type |
 |---|---|---|
