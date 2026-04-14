@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.0",
-    "@docusaurus/plugin-client-redirects": "^3.9.2",
+    "@docusaurus/plugin-client-redirects": "^3.10.0",
     "@docusaurus/preset-classic": "^3.10.0",
     "@docusaurus/theme-classic": "^3.10.0",
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
