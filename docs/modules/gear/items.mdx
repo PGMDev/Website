@@ -393,8 +393,21 @@ Attribute modifiers can be applied to items in the same way they are applied to 
 See [Attribute Kits](/docs/modules/gear/kits#attribute-modifier-kits-removable) for details.
 
 Additionally, a `slot` can be specified, in which case the modifier will only be applied when the item is in that slot.
-This must be an equipment slot or [equipment slot group](/docs/reference/items/inventory#inventory-slots).
+This must be an equipment slot or equipment slot group.
 This is not available in Minecraft 1.8.
+
+| Slot Value | Description |
+|---|---|
+| `any` | Any equipment slot, the default if not set. |
+| `mainhand` ||
+| `offhand` ||
+| `hand` | Either main or off-hand. |
+| `feet` ||
+| `legs` ||
+| `chest` ||
+| `head` ||
+| `armor` | Any armor piece. |
+| `body` | Used for entities with no feet/legs/chest/head distinction, e.g. horses with armor. |
 
 _Examples_
 
