@@ -17,7 +17,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 |---|---|
 | `<item>` | A single item stack. |
 
-### Sub-Elements
+#### Sub-Elements
 
 | Element | Description |
 |---|---|
@@ -27,7 +27,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 | `<can-destroy> </can-destroy>` | <a className="left-ref-link" href="#can-destroy"><i className="fa fa-chevron-down"></i></a>Materials that can be mined with the item |
 | `<can-place-on> </can-place-on>` | <a className="left-ref-link" href="#can-destroy"><i className="fa fa-chevron-down"></i></a> Materials that the item can be placed on |
 
-### Item Attributes
+#### Item Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
@@ -54,7 +54,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 | `show-other` | Show various other things in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
 
 Items can be give custom names and lore with the `name` and `lore` attributes.
-Colors and fancy text in item names or lore can be specified with the grave symbol `` ` `` and then the [formatting code](/docs/reference/misc/formatting).
+Colors and fancy text in item names or lore can be specified with the grave symbol `` ` `` and the [formatting code](/docs/reference/misc/formatting).
 You can specify multiple lines of lore using a pipe symbol `|` for line breaks.
 
 ```xml
@@ -63,7 +63,7 @@ You can specify multiple lines of lore using a pipe symbol `|` for line breaks.
 <item lore="`eWarning!|`5Does damage!" material="iron sword"/> <!-- A sword with 2 lines of lore. -->
 ```
 
-### Custom Heads
+## Custom Heads
 
 Player heads can be given to players by using the heads element.
 
@@ -75,7 +75,7 @@ A player's skin data can be found by using `https://sessionserver.mojang.com/ses
 </head>
 ```
 
-##### Head Attributes
+#### Head Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
@@ -83,14 +83,14 @@ A player's skin data can be found by using `https://sessionserver.mojang.com/ses
 | `uuid` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
 | `skin` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
 
-##### Head Sub-elements
+#### Head Sub-elements
 
 | Element | Description | Value |
 |---|---|---|
 | `<uuid>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The UUID used to identify the player this head belongs to. | <span className="badge badge--primary">String</span> |
 | `<skin>` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span><span className="badge badge--danger">Required</span>The skin data used for this head. | <span className="badge badge--primary">Base64</span> |
 
-### Banners
+## Banners
 
 Custom banners can be given to the player using the banner element.
 
@@ -102,13 +102,13 @@ Custom banners can be given to the player using the banner element.
 |---|---|
 | `<layer/>` | Defines a specific pattern layer. |
 
-##### Banner Attributes
+#### Banner Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
 | `base-color` | Defines the base color of the banner. | [Dye Color Name](/docs/reference/misc/colors) |
 
-##### Pattern Attributes
+#### Pattern Attributes
 
 | Attribute | Description | Value |
 |---|---|---|
@@ -126,7 +126,7 @@ Custom banners can be given to the player using the banner element.
 </banner>
 ```
 
-### Armor
+## Armor
 
 Armor slots have predefined tags to make it easier to give them to a player. 
 They accept all of the properties of normal items and may have their own special attributes.
@@ -138,7 +138,7 @@ They accept all of the properties of normal items and may have their own special
 <boots material="leather boots"/>
 ```
 
-##### Armor Attributes
+#### Armor Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
@@ -163,7 +163,7 @@ The hex color value is specified without the hash `#` symbol.
 <helmet color="cd0000" material="leather helmet"/>
 ```
 
-###### Team Color Attribute
+#### Team Color Attribute
 
 The `team-color` attribute can be used to add color to leather armor automatically.
 Armor color is based on the team's [Chat Color](/docs/reference/misc/formatting#chat-colors) rather
@@ -182,7 +182,25 @@ This helps simplfy kits so a seperate team kit for colored armor and items is no
 </kits>
 ```
 
-### Potions
+### Armor Trims
+
+As an alternative to `team-color`, armor trims are available in modern Minecraft versions for all armor materials.
+By default, PGM will use the player's team color.
+
+```xml
+<!-- To disable trims entirely -->
+<trims enabled="false"/>
+<!-- Otherwise, there are two different ways to specify trims -->
+<trims helmet="shaper" chestplate="shaper" leggings="none" boots="none"/>
+<trims>
+    <helmet>shaper</helmet>
+    <chestplate>shaper</chestplate>
+    <leggings>shaper</leggings>
+    <boots>shaper</boots>
+</trims>
+```
+
+## Potions
 
 Potion items, including lingering and splash potions, can specify their potion type and any number of custom effects.
 The potion type determines the name and color of the item.
@@ -195,7 +213,7 @@ This behavior can be disabled with the `<keep-potion-bottles/>` tag.
 For more details on the `<effect>` element, visit [Potion Effects](/docs/modules/gear/potions). 
 Additionally, you can visit [Potions & Effects](/docs/reference/items/potions) for references on potion effects available in Minecraft.
 
-##### Potion Item Sub-elements
+#### Potion Item Sub-elements
 
 | Element | Description | Value |
 |---|---|---|
@@ -220,7 +238,7 @@ This feature is enabled by default, but can be disabled with this tag.
 <keep-potion-bottles/>
 ```
 
-### Books
+## Books
 
 Written books can be created using the book element. 
 The title, author, and individual pages can be formatted with [formatting codes](/docs/reference/misc/formatting).
@@ -229,13 +247,13 @@ All normal item attributes can also be applied to books.
 Each page in a book can contain a maximum of 13 lines, with approximately 19 characters per line.
 Preferably, books should be written in-game to ensure proper formatting and then translated into the books element.
 
-##### Book Element
+#### Book Element
 
 | Element | Description | Value |
 |---|---|---|
 | `<book>` | The element containing the books `<title>`, `<author>`, and `<pages>`. | <span className="badge badge--primary">Formatted Text</span> |
 
-##### Book Sub-elements
+#### Book Sub-elements
 
 | Element | Description | Value |
 |---|---|---|
@@ -263,7 +281,7 @@ Preferably, books should be written in-game to ensure proper formatting and then
 </book>
 ```
 
-### Firework
+## Firework
 
 You can define custom explosion designs when creating and giving a firework rocket item.
 
@@ -275,13 +293,13 @@ You can define custom explosion designs when creating and giving a firework rock
 |---|---|
 | `<firework> </firework>` | Define an explosion effect design. |
 
-##### Firework Attributes
+#### Firework Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
 | `power` | Defines the power of the firework. This also determines how high it will travel. | <span className="badge badge--primary">Number</span> | 1 |
 
-##### Explosion Attributes
+#### Explosion Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
@@ -289,7 +307,7 @@ You can define custom explosion designs when creating and giving a firework rock
 | `flicker` | Whether the effect should flicker. | <span className="badge badge--primary">true/false</span> | false |
 | `trail` | Whether the effect should have a trail. | <span className="badge badge--primary">true/false</span> | false |
 
-##### Explosion Sub-elements
+#### Explosion Sub-elements
 
 | Element | Description | Value |
 |---|---|---|
@@ -316,7 +334,7 @@ You can define custom explosion designs when creating and giving a firework rock
 </firework>
 ```
 
-### Enchantments
+## Enchantments
 
 Any enchantment can be applied to any item and an item can have one or multiple enchantments.
 The enchantment type can be specified by its
@@ -326,14 +344,14 @@ The enchantment type can be specified by its
 To store an enchantment in an enchanted book (instead of enchanting the book itself),
 simply replace the tag `enchantment` with `stored-enchantment`.
 
-##### Enchantment Element
+#### Enchantment Element
 
 | Element | Description | Value |
 |---|---|---|
 | `<enchantment> <enchantment>` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
 | `<stored-enchantment> </stored-enchantment>` | An enchantment stored in an enchanted book. | [Enchantment Name](/docs/reference/items/enchantments) |
 
-##### Enchantment Attributes
+#### Enchantment Attributes
 
 | Element | Description | Value | Default |
 |---|---|---|---|
@@ -369,7 +387,7 @@ _Examples_
 </item>
 ```
 
-### Attribute Modifiers
+## Attribute Modifiers
 
 Attribute modifiers can be applied to items in the same way they are applied to kits.
 See [Attribute Kits](/docs/modules/gear/kits#attribute-modifier-kits-removable) for details.
@@ -395,7 +413,7 @@ _Examples_
 Negative attribute values are allowed, however, they sometimes do not work as expected.
 :::
 
-### Grenades
+## Grenades
 
 The `grenade="true"` attribute will make the item explode on impact, just like a grenade.
 This option only works on items that can turn into projectiles.
@@ -415,7 +433,7 @@ If an ender pearl is used as a grenade, the player will teleport to the location
 <item name="`a`lRocket Ammo" amount="3" enchantment="thorns" grenade="true" grenade-power="4" grenade-fire="true" material="arrow"/>
 ```
 
-### Can-Destroy / Can-Place-On
+## Can-Destroy / Can-Place-On
 
 In adventure mode, no blocks can be placed or mined by default. The `<can-destroy>` element allows an item to mine a specified list of blocks.
 The `<can-place-on>` element allows a block item to be placed against a specified list of blocks. In each case, the blocks are listed inside

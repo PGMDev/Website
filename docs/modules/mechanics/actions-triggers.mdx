@@ -26,6 +26,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
 | `<fill/>` | Places blocks in a block-bounded region. |
 | `<paste-structure/>` | Places a structure at a specified location when triggered. |
+| `<open-shop/>` | Open a [shop](/docs/modules/gear/shops) menu when triggered. |
 | `<replace-item> </replace-item>` | Finds and replaces certain items. |
 | `<enchant-item> </enchant-item>` | Enchants the targeted item. |
 | `<take-payment> </take-payment>` | Allow players to pay with items in their inventory to trigger an action. |
@@ -155,6 +156,12 @@ In the future, some features that are currently used in Kits may be transferred 
 | `structure` | The structure to paste. | [Structure ID](/docs/modules/blocks/structures) |
 | `update` | Placed blocks will update upon interaction, e.g., redstone, and invalid block placements such as floating ladders, "popping" off. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | true |
 
+### Open-Shop Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `shop` | The individual shop to open. | [Shop ID](/docs/modules/gear/shops) |
+
 ### Replace-Item
 
 #### Sub-elements
@@ -210,6 +217,7 @@ In the future, some features that are currently used in Kits may be transferred 
 
 | Attribute | Description | Value |
 |---|---|---|
+| `region` | The destination region to teleport the user to.<br />*This is available only for teleport action.* | [Region](/docs/modules/mechanics/regions) |
 | `x` | The X coordinate, measured in east-west. | <span className="badge badge--primary">Expression</span> |
 | `y` | The Y coordinate, measured in altitude. | <span className="badge badge--primary">Expression</span> |
 | `z` | The Z coordinate, measured in north-south. | <span className="badge badge--primary">Expression</span> |

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 
 import { format } from "date-fns";
@@ -94,7 +94,7 @@ export default function Downloads() {
                               "button button--primary",
                               styles.download_button
                           )}
-                          href={"https://nightly.link/PGMDev/PGM/workflows/build/dev/PGM.jar.zip"}
+                          href={"https://dl.pgm.fyi/download/pgm"}
                           title={"Latest build directly from GitHub.\nContains all the latest features, may occasionally bring new bugs."}
                       >
                         Download <FontAwesomeIcon icon={faDownload} />
@@ -119,7 +119,7 @@ export default function Downloads() {
                         "button button--primary",
                         styles.download_button
                       )}
-                      href={"https://repo.pgm.fyi/#/snapshots/app/ashcon/sportpaper/1.8.8-R0.1-SNAPSHOT"}
+                      href={"https://dl.pgm.fyi/download/sportpaper"}
                     >
                       Download <FontAwesomeIcon icon={faDownload} />
                     </a>
@@ -194,7 +194,7 @@ export default function Downloads() {
                           "button button--primary",
                           styles.others_button
                         )}
-                        href={"https://nightly.link/PGMDev/Community/workflows/build/dev/Community.jar.zip"}
+                        href={"https://dl.pgm.fyi/download/community"}
                       >
                         Download <FontAwesomeIcon icon={faDownload} />
                       </a>

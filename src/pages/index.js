@@ -12,7 +12,7 @@ const features = [
     imageUrl: "img/ok-hand.svg",
     description: (
       <>
-        Unlike the original release, PGM 1.8 is much easier to use. It has no
+        Unlike the original release, PGM is much easier to use. It has no
         backend, website, or API to make hosting more cost-effective.
       </>
     ),
@@ -34,8 +34,8 @@ const features = [
     imageUrl: "img/handshake.svg",
     description: (
       <>
-        Be part of a community of over 20 contributors and help keep the project
-        alive! Our <a href="https://discord.gg/pEEcwTk">Discord server</a> is
+        Be part of our growing community of contributors and help keep the project alive!
+        Our <a href="https://discord.gg/pEEcwTk">Discord server</a> is
         the best place to discuss bug fixes and implementations in real time.
       </>
     ),

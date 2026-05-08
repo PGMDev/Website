@@ -4,6 +4,8 @@ title: Setting Up a Server
 ---
 
 import ImageSwitcher from "@site/src/components/ImageSwitcher.js";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Setting up a local Minecraft server loaded with PGM is one of the best ways to test your map without disruption and allows for greater experimentation. 
 Additionally, being able to test maps before submitting to a Minecraft network of your choice means that you will be able to catch mistakes early and speed up the map submission process.
@@ -19,9 +21,9 @@ This guide uses Windows 11, however, the same process will work on Windows 10 an
 
 ### Installing Java
 
-We recommend using Java 21. For this guide, we will be using [Amazon Corretto 21](https://aws.amazon.com/corretto/). 
+We recommend using Java 25. For this guide, we will be using [Amazon Corretto](https://aws.amazon.com/corretto/). 
 However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) instead.
-If you already have Java 21 installed, you may skip this step.
+If you already have Java installed, you may skip this step.
 
 <div className="row">
   <div className="col col--6">
@@ -38,10 +40,18 @@ If you already have Java 21 installed, you may skip this step.
   </div>
 </div>
 
-### Downloading SportPaper
+### Downloading the Server Software
 
-Get the latest version of SportPaper from the [Downloads](/downloads) page.
-Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
+<Tabs groupId="server-versions">
+  <TabItem value="classic" label="Classic (1.8)">
+    Get the latest version of SportPaper from the [Downloads](/downloads) page.
+    Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
+  </TabItem>
+  <TabItem value="modern" label="Modern (1.21+)">
+    Get the latest stable version of Paper from [PaperMC website](https://papermc.io/downloads/paper).
+    Once the download is done, you must rename the file and put `paper.jar` inside an empty folder.
+  </TabItem>
+</Tabs>
 
 Next, you must create a Batch file to be able to start your server and have access to its console. 
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.bat`.
@@ -56,7 +66,7 @@ otherwise you will not be able to start the server!
 
 ```batch title="start.bat"
 @ECHO OFF
-TITLE SportPaper 1.8
+TITLE My Server
 java -Xms128M -Xmx2G -Dterminal.jline=false -Dterminal.ansi=true -jar SportPaper.jar nogui
 PAUSE
 ```
@@ -68,7 +78,7 @@ PAUSE
 
 You can download a copy of the latest version of PGM from the [Downloads](/downloads) page.
 
-Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains the `SportPaper.jar` file.
+Once the download is done, you must put `PGM.jar` inside the `plugins` folder (create if it does not exist), which can be found in the folder that contains your server `.jar` file.
 
 <div className="text--center">
   <img src="/img/guides/local-server-setup/windows-pgm-c1.png" loading="lazy" />
@@ -76,7 +86,7 @@ Once the download is done, you must put `PGM.jar` inside the `plugins` folder (c
 
 ### Starting the Server
 
-Once you are done with the initial setup, you can double-click `start.bat` to let SportPaper create the necessary files for Minecraft and PGM.
+Once you are done with the initial setup, you can double-click `start.bat` to let the server create the necessary files for Minecraft and PGM.
 You can now join the server from your Minecraft client at `localhost` or `127.0.0.1:25565`.
 
 Also see [Additional Setup](#additional-setup) if you would like to make the most use out of your newly-created server.
@@ -91,9 +101,9 @@ This guide uses macOS 14 (Sonoma). Generally speaking, the process should be the
 
 ### Installing Java
 
-We recommend using Java 21. For this guide, we will be using [Amazon Corretto 21](https://aws.amazon.com/corretto/). 
+We recommend using Java 25. For this guide, we will be using [Amazon Corretto](https://aws.amazon.com/corretto/). 
 However, you may choose to use [OpenJDK](https://openjdk.org/) or [Eclipse Adoptium](https://adoptium.net/) instead.
-If you already have Java 21 installed, you may skip this step.
+If you already have Java installed, you may skip this step.
 
 <div className="row">
   <div className="col col--6">
@@ -116,10 +126,18 @@ If you already have Java 21 installed, you may skip this step.
   </div>
 </div>
 
-### Downloading SportPaper
+### Downloading the Server Software
 
-Get the latest version of SportPaper from the [Downloads](/downloads) page.
-Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
+<Tabs groupId="server-versions">
+  <TabItem value="classic" label="Classic (1.8)">
+    Get the latest version of SportPaper from the [Downloads](/downloads) page.
+    Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
+  </TabItem>
+  <TabItem value="modern" label="Modern (1.21+)">
+    Get the latest stable version of Paper from [PaperMC website](https://papermc.io/downloads/paper).
+    Once the download is done, you must rename the file and put `paper.jar` inside an empty folder.
+  </TabItem>
+</Tabs>
 
 Next, you must create a Terminal shell script file to be able to start your server and have access to its console. 
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.command`.
@@ -189,18 +207,26 @@ Otherwise, we trust that you know what you are doing.
 
 ### Installing Java
 
-We recommend using Java 21. For this guide, we will be using [OpenJDK](https://openjdk.org/). 
-However, you may choose to use [Amazon Corretto 21](https://aws.amazon.com/corretto/) or [Eclipse Adoptium](https://adoptium.net/) instead.
-If you already have Java 21 installed, you may skip this step.
+We recommend using Java 25. For this guide, we will be using [OpenJDK](https://openjdk.org/). 
+However, you may choose to use [Amazon Corretto](https://aws.amazon.com/corretto/) or [Eclipse Adoptium](https://adoptium.net/) instead.
+If you already have Java installed, you may skip this step.
 
 ```bash
-sudo apt update && sudo apt install openjdk-21-jdk
+sudo apt update && sudo apt install openjdk-25-jdk
 ```
 
-### Downloading SportPaper
+### Downloading the Server Software
 
-Get the latest version of SportPaper from the [Downloads](/downloads) page.
-Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
+<Tabs groupId="server-versions">
+  <TabItem value="classic" label="Classic (1.8)">
+    Get the latest version of SportPaper from the [Downloads](/downloads) page.
+    Once the download is done, you must rename the file and put `SportPaper.jar` inside an empty folder.
+  </TabItem>
+  <TabItem value="modern" label="Modern (1.21+)">
+    Get the latest stable version of Paper from [PaperMC website](https://papermc.io/downloads/paper).
+    Once the download is done, you must rename the file and put `paper.jar` inside an empty folder.
+  </TabItem>
+</Tabs>
 
 Next, you must create a shell script file to be able to start your server and have access to its console. 
 Start by opening your preferred text editor, copy and paste the following example below, and save the file as `start.sh`.
@@ -234,39 +260,63 @@ Also see [Additional Setup](#additional-setup) if you would like to make the mos
 
 ## Additional Setup
 
-### Configure SportPaper
+### Configure the Server Software
 
-Using your text editor of choice, you may edit `server.properties` and `sportpaper.yml`. We recommend changing the following options below to these values:
+<Tabs groupId="server-versions">
+  <TabItem value="classic" label="Classic (1.8)">
+    Using your text editor of choice, you may edit `server.properties` and `sportpaper.yml`. We recommend changing the following options below to these values:
 
-```properties title="server.properties"
-allow-nether=false
-announce-player-achievements=false
-generate-structures=false
-```
+    ```properties title="server.properties"
+    announce-player-achievements=false
+    generate-structures=false
+    ```
 
-```yml title="sportpaper.yml"
-bukkit:
-  settings:
-    allow-end: false
-spigot:
-  # Forcibly disable vanilla Minecraft achievements.
-  stats:
-    disable-saving: true
-    forced-stats:
-      achievement:
-        openInventory: 1
-  world-settings:
-    anti-xray:
-      enabled: false # Helps with reducing lag; public servers should utilize an anti-cheat plugin.
-paper:
-  settings:
-    empty-server-suspend: P100D # Prevent the server from immediately suspending itself due to inactivity.
-  world-settings:
-    fix-cannons: true # Stops ignited TNT from moving in flowing water. Recommended when making maps that involves TNT.
-    game-mechanics:
-      disable-chest-cat-detection: true # Helps with reducing lag.
-    optimize-explosions: true # Recommended when making maps that involves TNT.
-```
+    ```yml title="sportpaper.yml"
+    spigot:
+      # Forcibly disable vanilla Minecraft achievements.
+      stats:
+        disable-saving: true
+        forced-stats:
+          achievement:
+            openInventory: 1
+      world-settings:
+        anti-xray:
+          enabled: false # Helps with reducing lag; public servers should utilize an anti-cheat plugin.
+    paper:
+      settings:
+        empty-server-suspend: P100D # Prevent the server from immediately suspending itself due to inactivity.
+      world-settings:
+        fix-cannons: true # Stops ignited TNT from moving in flowing water. Recommended when making maps that involves TNT.
+        game-mechanics:
+          disable-chest-cat-detection: true # Helps with reducing lag.
+        optimize-explosions: true # Recommended when making maps that involves TNT.
+    ```
+  </TabItem>
+  <TabItem value="modern" label="Modern (1.21+)">
+    Using your text editor of choice, you may edit `spigot.yml` and `/config/paper-world-defaults.yml`. We recommend changing the following options below to these values:
+
+    ```yml title="spigot.yml"
+    # Forcibly disable vanilla Minecraft advancements.
+    advancements:
+      disable-saving: true
+      disabled:
+      - '*'
+    ```
+
+    ```yml title="/config/paper-world-defaults.yml"
+    anticheat:
+      anti-xray:
+        enabled: false # Helps with reducing lag; public servers should utilize an anti-cheat plugin.
+    entities:
+      behavior:
+        disable-chest-cat-detection: true # Helps with reducing lag.
+    environment:
+      optimize-explosions: true # Recommended when making maps that involves TNT.
+    fixes:
+      prevent-tnt-from-moving-in-water: true # Stops ignited TNT from moving in flowing water. Recommended when making maps that involves TNT.
+    ```
+  </TabItem>
+</Tabs>
 
 ### Configure PGM
 
@@ -295,14 +345,27 @@ experiments:
 
 ### Load and Configure WorldEdit
 
-Some servers may choose to use [WorldEdit](https://dev.bukkit.org/projects/worldedit). Since SportPaper is based on Minecraft 1.8 server software, the latest compatible version of WorldEdit is [6.1.9](https://dev.bukkit.org/projects/worldedit/files/2597538).
+Some servers may choose to use [WorldEdit](https://dev.bukkit.org/projects/worldedit).
 
-Once the download is done, place `worldedit-bukkit-6.1.9.jar` inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below to this value:
+<Tabs groupId="server-versions">
+  <TabItem value="classic" label="Classic (1.8)">
+    Since SportPaper is based on Minecraft 1.8 server software, the latest compatible version of WorldEdit is [6.1.9](https://dev.bukkit.org/projects/worldedit/files/2597538).
 
-```yml title="/plugins/WorldEdit/config.yml"
-# PGM will give observers with OP the "Rabbit's Foot" item, which allows them to edit the world during a match.
-wand-item: 414
+    Once the download is done, place `worldedit-bukkit-6.1.9.jar` inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below to this value:
 
-# On newer WorldEdit versions in combination with newer Minecraft versions, it will be the item's name.
-wand-item: minecraft:rabbit_foot
-```
+    ```yml title="/plugins/WorldEdit/config.yml"
+    # PGM will give observers with OP the "Rabbit's Foot" item, which allows them to edit the world during a match.
+    wand-item: 414
+    ```
+  </TabItem>
+  <TabItem value="modern" label="Modern (1.21+)">
+    You can get the latest version of WorldEdit for Paper from [Modrinth](https://modrinth.com/plugin/worldedit/versions?l=paper).
+
+    Once the download is done, place the WorldEdit jar inside the `plugins` folder and restart the server. Afterwards, you can navigate to `/plugins/WorldEdit/config.yml` and change the following option below to this value:
+
+    ```yml title="/plugins/WorldEdit/config.yml"
+    # PGM will give observers with OP the "Rabbit's Foot" item, which allows them to edit the world during a match.
+    wand-item: minecraft:rabbit_foot
+    ```
+  </TabItem>
+</Tabs>
