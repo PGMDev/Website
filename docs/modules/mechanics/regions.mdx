@@ -106,7 +106,7 @@ The region an apply affects can be specified as an attribute or in a `<region>` 
 |---|---|---|
 | `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Give a kit to players entering the region. | [Kit](/docs/modules/gear/kits) |
 | `lend-kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Give a kit to players entering the region, and remove it when they leave the region. This can be used only with removable kits. Any non-removable kit will generate an error. The kits page explains which kit types are removable. | [Kit](/docs/modules/gear/kits) |
-| `velocity` | Change a player's velocity when they enter the region. | <span className="badge badge--primary">X,Y,Z</span> |
+| `velocity` | Change a player's velocity when they enter the region.<br />**Note:** The axis value cannot exceed ±3.9, otherwise it will be clamped. | <span className="badge badge--primary">X,Y,Z</span> |
 | `filter` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>Filter when/if kits and velocities are applied. | [Filter](/docs/modules/mechanics/filters) |
 
 _Apply Examples_
