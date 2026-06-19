@@ -22,6 +22,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<message/>` | A message that is sent to the player. |
 | `<sound/>` | A sound that is played for the player. |
 | `<set/>` | Sets a new value for a [Variable](/docs/modules/mechanics/variables). |
+| `<schedule> </schedule>` | Adds a delay between actions. |
 | `<kill-entities/>` | Removes entities based on a filter. |
 | `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
 | `<fill/>` | Places blocks in a block-bounded region. |
@@ -128,6 +129,30 @@ In the future, some features that are currently used in Kits may be transferred 
 
 ```xml
 <trigger filter="some-condition" action="player_score := player_score + 10" scope="player"/>
+```
+
+### Schedule Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `after` | The time, in seconds, to wait before triggering an action.<br />**Note:** The value must be between 0 and 60. | <span className="badge badge--primary">Number</span> |
+
+```xml
+<action id="schedule-action-example" scope="match">
+    <!-- No delay -->
+    <message text="Message one"/>
+    <sound preset="alert" volume="0.75" pitch="1.5"/>
+    <!-- Two seconds delay -->
+    <schedule after="2s">
+        <message text="Message two"/>
+        <sound preset="alert" volume="0.75" pitch="1.5"/>
+    </schedule>
+    <!-- Five seconds delay -->
+    <schedule after="5s">
+        <message text="Message three"/>
+        <sound preset="alert" volume="0.75" pitch="1.5"/>
+    </schedule>
+</action>
 ```
 
 ### Kill-Entities Attributes
