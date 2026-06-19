@@ -33,9 +33,10 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 |---|---|---|---|
 | `material` | <span className="badge badge--danger">Required</span>The item's material name. | [Material Name](/docs/reference/items/inventory#material-matchers) |
 | `slot` | Slot where the item will be placed in the player's inventory.<br />*If no slot is specified, the item will be merged into the player's inventory.* | [Inventory Slot](/docs/reference/items/inventory) |
-| `amount` | The amount of items. Blocks can be given an infinite amount by using `oo`. | <span className="badge badge--primary">Number</span> | 1 |
+| `amount` | The amount of items. Infinite amount can be given by using `oo`. | <span className="badge badge--primary">Number</span> | 1 |
 | `damage` | The item's damage value, used for items such as birch logs, red wool, potion types, etc. | <span className="badge badge--primary">Number</span> | 0 |
 | `unbreakable` | Specify if this item is unbreakable and hides the durability bar in Minecraft. | <span className="badge badge--primary">true/false</span> | false |
+| `components` | Define a [vanilla item component](https://minecraft.wiki/w/Data_component_format#List_of_components) to be applied to this item.<br />**Note:** This is available in Minecraft 1.21+. The component format is version-dependant; if an attribute changes in a future Minecraft update, this must be updated as well. | <span className="badge badge--primary">Data Component</span> |
 | `name` | The item's display name that appears when it is selected. | <span className="badge badge--primary">Formatted Text</span> |
 | `lore` | Custom text that appears when a player hovers over the item in their inventory. | <span className="badge badge--primary">Formatted Text</span> |
 | `color` | Leather armor color as a hexadecimal color. `RRGGBB`<br />*Only applies to leather armor items.* | <span className="badge badge--primary">Hex Color</span> |
@@ -58,14 +59,16 @@ Colors and fancy text in item names or lore can be specified with the grave symb
 You can specify multiple lines of lore using a pipe symbol `|` for line breaks.
 
 ```xml
-<item name="`6Golden Sword" material="gold sword"/> <!-- Gold sword with a gold/yellow name. -->
-<item lore="`4The One and Only" material="stick"/> <!-- A stick with the lore colored red. -->
-<item lore="`eWarning!|`5Does damage!" material="iron sword"/> <!-- A sword with 2 lines of lore. -->
+<item material="gold sword" name="`6Golden Sword"/> <!-- Gold sword with a gold/yellow name. -->
+<item material="stick" lore="`4The One and Only"/> <!-- A stick with the lore colored red. -->
+<item material="iron sword" lore="`eWarning!|`5Does damage!"/> <!-- A sword with 2 lines of lore. -->
+<item material="diamond pickaxe" components="consumable={}"/> <!-- An edible pickaxe in 1.21+ -->
+<item material="glass" name="Astronaut Helmet" components="equippable={slot:head}"/> <!-- A wearable glass block in 1.21+ -->
 ```
 
 ## Custom Heads
 
-Player heads can be given to players by using the heads element.
+Player heads can be given to players by using the head element.
 
 A player's skin data can be found by using `https://sessionserver.mojang.com/session/minecraft/profile/(UUID)`.
 
