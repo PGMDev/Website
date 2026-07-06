@@ -173,18 +173,52 @@ In the future, some features that are currently used in Kits may be transferred 
 
 | Attribute | Description | Value |
 |---|---|---|
+| `slots` | Restricts which inventory slot(s) to modify. | [Slot Groups](/docs/reference/items/inventory/#slot-groups) |
 | `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
 | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
 | `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
 | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
 
+
 ### Enchant-Item Attributes
 
 | Attribute | Description | Value |
 |---|---|--|
+| `slots` | Restricts which inventory slot(s) to modify. | [Slot Groups](/docs/reference/items/inventory/#slot-groups) |
 | `enchantment` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
 | `level` | The specified enchantment's level. | <span className="badge badge--primary">Expression</span> |
 | `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
+
+```xml
+<filters>
+    <carrying id="has-flame-bow" ignore-name="true">
+        <item material="bow" enchantment="flame" unbreakable="true"/>
+    </carrying>
+    <wearing id="wearing-leather-helmet">
+        <item material="leather helmet"/>
+    </wearing>
+</filters>
+<actions>
+    <!-- If a player is carrying a flame bow, replace it with a power bow -->
+     <trigger filter="has-flame-bow" scope="player">
+        <action id="flame" expose="true">
+            <replace-item ignore-name="true">
+                <find material="bow" enchantment="flame" unbreakable="true"/>
+                <replace material="bow" enchantment="power" unbreakable="true"/>
+            </replace-item>
+        </action>
+     </trigger>
+    <!-- When a player wears a leather helmet, enchant it -->
+    <trigger filter="wearing-leather-helmet" scope="player">
+        <action>
+            <!-- Filter for only the helmet worn by the player -->
+            <enchant-item enchantment="protection" level="2" slots="armor.head">
+                <find material="leather helmet"/>
+            </enchant-item>
+        </action>
+    </trigger>
+</actions>
+```
 
 ### Take-Payment
 

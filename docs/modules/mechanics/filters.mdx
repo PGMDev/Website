@@ -204,11 +204,45 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 
 | Element | Description ||
 |---|---|---|
+| `slots` | Restricts which inventory slot(s) to match for. | [Slot Groups](/docs/reference/items/inventory/#slot-groups) |
 | `amount` | Match for item stacks that have a certain amount of items in a range. | <span className="badge badge--primary">Range</span> |
 | `ignore-durability` | Ignore the durability of the item when matching. | <span className="badge badge--primary">true/false</span> |
 | `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
 | `ignore-name` | Ignore the name of the item when matching. | <span className="badge badge--primary">true/false</span> |
 | `ignore-enchantments` | Ignore the enchantments of the item when matching. | <span className="badge badge--primary">true/false</span> |
+
+#### Item Sub-Element
+
+| Sub-element | Description | Value/Children |
+|---|---|---|
+| `<match> </match>` |<span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>Used to define material(s) sharing properties defined in `item`. | <span className="badge badge--secondary">Match Sub-Element</span> |
+
+#### Match Sub-Elements
+| Element | Description | Value/Children |
+|---|---|---|
+| `<material> </material>` | An individual material to match. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
+| `<all-items/>` | Match all materials. |
+| `<all-blocks/>` | Match all block type materials. |
+```xml
+<filters>
+    <wearing id="wearing-protection-chestplate" slots="armor.chest">
+      <item enchantment="protection:1">
+        <match>
+          <all-items/>
+        </match>
+      </item>
+    </wearing>
+
+    <holding id="holding-block">
+      <item amount="5" name="Block!">
+        <match>
+          <material>stone</material>
+          <material>dirt</material>
+        </match>
+      </item>
+    </holding>
+</filters>
+```
 
 ### Event Filters
 
