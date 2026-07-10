@@ -62,7 +62,7 @@ and assigned an `id` used to reference them elsewhere.
 
     <team id="viridescent-team-filter">viridescent-team</team>
 
-    <!-- More filters-->
+    <!-- More filters -->
 </filters>
 ```
 
@@ -162,6 +162,7 @@ These type of filters apply to anything with a physical location.
 | `<spawn>spawn reason</spawn>` | Matches spawn event reasons, see [Mob Spawning](/docs/modules/environment/mobs). |
 | `<mob>mob name</mob>` | Matches mobs by their name, see [Mob Spawning](/docs/modules/environment/mobs). |
 | `<entity>entity name</entity>` | Match entities such as projectiles, boats, dropped items, etc. |
+| `<damager><entity>...</entity></damager>` | Match the entity that caused the damage, especially projectiles. |
 
 ### Competitor Filters
 
@@ -229,20 +230,20 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 ```xml
 <filters>
     <wearing id="wearing-protection-chestplate" slots="armor.chest">
-      <item enchantment="protection:1">
-        <match>
-          <all-items/>
-        </match>
-      </item>
+        <item enchantment="protection:1">
+            <match>
+                <all-items/>
+            </match>
+        </item>
     </wearing>
 
     <holding id="holding-block">
-      <item amount="5" name="Block!">
-        <match>
-          <material>stone</material>
-          <material>dirt</material>
-        </match>
-      </item>
+        <item amount="5" name="Block!">
+            <match>
+                <material>stone</material>
+                <material>dirt</material>
+            </match>
+        </item>
     </holding>
 </filters>
 ```
@@ -967,7 +968,7 @@ It returns `ALLOW` as long as the structural load is greater than or equal to th
 This filter is very computationally expensive to apply.
 XML authors should ensure that it is only run when absolutely necessary, e.g. by placing other filters above it.
 They should also not apply it to events that modify large amounts of blocks, such as explosions. 
-This filter requires the falling blocks module to be loaded otherwise it will default to abstain.
+This filter requires the falling blocks module to be loaded, otherwise it will default to abstain.
 :::
 
 _Example_
