@@ -75,6 +75,7 @@ Inline filters allow you to write expressions that create filters dynamically, s
 **Variable Expressions:** Variables can be used directly with comparison operators: `=`, `[min,max]`, `min..`, `[min,oo)`.
 
 _Examples_
+
 ```xml
 <variables>
     <variable id="some_variable" scope="match"/>
@@ -216,7 +217,7 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 
 | Sub-element | Description | Value/Children |
 |---|---|---|
-| `<match> </match>` |<span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>Used to define material(s) sharing properties defined in `item`. | <span className="badge badge--secondary">Match Sub-Element</span> |
+| `<match> </match>` | <span className="badge badge--warning" title="Only one of this child permitted per parent">Unique</span>Used to define material(s) sharing properties defined in `item`. | <span className="badge badge--secondary">Match Sub-Element</span> |
 
 #### Match Sub-Elements
 | Element | Description | Value/Children |
@@ -224,6 +225,7 @@ These are the attributes for `<carrying>`, `<holding>`, and `<wearing>`.
 | `<material> </material>` | An individual material to match. | [Single Material Pattern](/docs/reference/items/inventory#material-matchers) |
 | `<all-items/>` | Match all materials. |
 | `<all-blocks/>` | Match all block type materials. |
+
 ```xml
 <filters>
     <wearing id="wearing-protection-chestplate" slots="armor.chest">
@@ -529,7 +531,7 @@ It never matches when the child filter doesn't match. This filter is a [Dynamic 
 | `filter` | <span className="badge badge--danger">Required</span>Filter when the countdown should be active. | [Dynamic Filter](#dynamic-filters) |
 | `message` | Optional timer message to display while counting down. Only players who match the filter can see the timer. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 
-```
+```xml
 <!-- Countdown 30s from the moment any player picks up the flag -->
 <!-- (you could then use the countdown filter to kill them, teleport them, etc) -->
 <countdown duration="30s" message="You have {0} to capture the flag!">
@@ -548,7 +550,7 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 | `filter` | <span className="badge badge--danger">Required</span>Filter when the after filter should be active. | [Dynamic Filter](#dynamic-filters) |
 | `message` | Optional message to display after the child filter allows. Only players who match the filter can see the message. If the message contains a placeholder `{0}`, it will be replaced with the remaining time. | <span className="badge badge--primary">String</span> |
 
-```
+```xml
 <!-- Allows 15 seconds after the player gets 1st place -->
 <after duration="15s" message="1st place bonus will apply in {0}"> <!-- Automatically updates to show time -->
     <rank>1</rank>
@@ -569,7 +571,7 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 | `duration` | <span className="badge badge--danger">Required</span>Length of time a pulse remains on in a cycle.<br />*Must be a positive number that is shorter than the period length.* | [Time Period](/docs/reference/misc/time-periods) |
 | `filter` | <span className="badge badge--danger">Required</span>Filter when the pulse should be active; if the filter allows, pulse will be ticking. It can be defined as a unique child element or as an attribute. | [Dynamic Filter](#dynamic-filters) |
 
-```
+```xml
 <filters>
     <!-- Pulses activation for 15 seconds in a 60 second time period -->
     <!-- ie. on for 15 seconds, off for 45 seconds -->
@@ -594,7 +596,7 @@ Coordinates relative to the player are defined using `~` and behave the same lik
 Directions relative to the player use `^`. This can be utilized as a [Dynamic Filter](#dynamic-filters) as long it is used
 with an absolute position.
 
-```
+```xml
 <filters>
     <!-- checks for bedrock placed at this exact coordinate vector (dynamic) -->
     <offset id="hardFilter" vector="10.5,5,15.5">
@@ -991,7 +993,7 @@ Users should use the more specific `<match-started/>`, `<match-running/>` or `<m
 filters instead of `<match-phase>`.
 :::
 
-```
+```xml
 <!-- Filter if the match has started (running or finished) -->
 <match-started/>
 <!-- Filter if the match is currently running -->
