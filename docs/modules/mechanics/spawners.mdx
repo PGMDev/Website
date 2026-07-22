@@ -28,12 +28,12 @@ Other types of entities may be supported in the future.
 | Attribute | Description | Value | Default |
 |---|---|---|---|
 | `spawn-region` | <span className="badge badge--danger">Required</span>The region in which to spawn the target entities. | [Region](/docs/modules/mechanics/regions) |
-| `player-region` | <span className="badge badge--danger">Required</span>The region used to determine whether the spawner is actively spawning entities. At least 1 player must be in this region for the spawner to be active. | [Region](/docs/modules/mechanics/regions) |
+| `player-region` | The region used to determine whether the spawner is actively spawning entities. At least 1 player must be in this region for the spawner to be active. | [Region](/docs/modules/mechanics/regions) | `everywhere` |
 | `max-entities` | A limit of how many entities this spawner can have spawned at once. | <span className="badge badge--primary">Number</span> | `oo` (infinity) |
 | `delay` | Interval in between spawning attempts. | [Time Period](/docs/reference/misc/time-periods) | 10s |
 | `min-delay` | Used to randomize the spawn interval. Combine this with `max-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
 | `max-delay` | Used to randomize the spawn interval. Combine this with `min-delay` to create random intervals in between two values.<br />*Cannot be combined with `delay`.* | [Time Period](/docs/reference/misc/time-periods) | `delay` |
-| `filter` | Filter to further control spawn conditions, will return true if at least one player in `player-region` meets criteria. | [Filter](/docs/modules/mechanics/filters) |
+| `filter` | Filter to further control spawn conditions, will return true if at least one player in `player-region` meets criteria. | [Filter](/docs/modules/mechanics/filters) | `always` |
 
 #### Spawner Sub-elements
 
