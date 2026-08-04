@@ -25,6 +25,11 @@ You can define as many variables as you want and all variables must have a scope
 | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
 | `<player-location/>` | A variable that reads a player's location components. |
 | `<worldtime/>` | A variable that allows direct access to the world's time. |
+| `<cuboid/>` | A variable that represents a dynamic cuboid region. |
+| `<cylinder/>` | A variable that represents a dynamic cylinder region. |
+| `<block/>` | A variable that represents a dynamic block region. |
+| `<sphere/>` | A variable that represents a dynamic sphere region. |
+| `<point/>` | A variable that represents a dynamic point region. |
 
 ### Variable Attributes
 
@@ -56,6 +61,28 @@ You can define as many variables as you want and all variables must have a scope
 |---|---|---|
 | `id` | Unique identifier used to reference this player-location variable from other places in the XML. | <span className="badge badge--primary">String</span> |
 | `component` | The player's location component to target.<br />`X`, `Y`, `Z`, `YAW`, and `PITCH` represents the player's position and angle.<br />`DIR_X`, `DIR_Y`, and `DIR_Z` represents the player's direction.<br />`VEL_X`, `VEL_Y`, and `VEL_Z` represents the player's velocity.<br />`TARGET_X`, `TARGET_Y`, and `TARGET_Z` represents the block a player is looking at.<br />`PLACE_X`, `PLACE_Y`, and `PLACE_Z` represents the location of a player-placed block.  | <span className="badge badge--secondary">XYZ</span>, <span className="badge badge--secondary">Yaw</span>, <span className="badge badge--secondary">Pitch</span>,<br /><span className="badge badge--secondary">Direction</span>, <span className="badge badge--secondary">Velocity</span>,<br /><span className="badge badge--secondary">Target</span>, <span className="badge badge--secondary">Place</span> |
+
+### Region Variable Attributes
+
+Region variables are used when a region's bounds need to change during a match. Region variables are defined following the same structure seen in [Regions](/docs/modules/mechanics/regions). Region variables are always match scoped, but they can support player variable values.
+
+| Attribute | Description | Value |
+|---|---|---|
+| `id` | Unique identifier used to reference this cuboid variable from other places in the XML. | <span className="badge badge--primary">String</span> |
+
+#### Region Variable Indices
+
+Every region variable behaves like an array where each index corresponds to a specific coordinate or dimension, in the order its attributes are defined in the XML.
+
+| Variable Type | i=0 | i=1 | i=2 | i=3 | i=4 | i=5 |
+|---|---|---|---|---|---|---|
+| `<cuboid min="X1,Y1,Z1" max="X2,Y2,Z2"/>` | X1 | Y1 | Z1 | X2 | Y2 | Z2 |
+| `<cylinder base="X,Y,Z" radius="R" height="H"/>` | X | Y | Z | R | H |
+| `<block>X,Y,Z</block>` | X | Y | Z |
+| `<sphere origin="X,Y,Z" radius="R"/>` | X | Y | Z | R |
+| `<point>X,Y,Z</point>` | X | Y | Z |
+
+**Note:** The `<cuboid/>` variable also supports `size` as an alternative to defining both `min` and `max`.
 
 ## Examples
 
@@ -239,6 +266,32 @@ If a player in blue team triggers `some-filter`, red is reset to 10, and blue wi
             <set var="team_score" value="team_score+5"/>
         <action>
     </trigger>
+</actions>
+```
+
+### Region Variables
+A player uses a consumable and sets a cylinder region around themself, giving speed to whoever is currently inside.
+
+```xml
+<variables>
+    <!-- Cylinder variable set to arbitrary coordinates outside of the map -->
+    <cylinder id="cyl_zone" base="-200,-200,-200" radius="4" height="4"/>
+</variables>
+<actions>
+    <action id="consumable-action" scope="player">
+        <set var="cyl_zone" index="0" value="player.x"/>
+        <set var="cyl_zone" index="1" value="player.y"/>
+        <set var="cyl_zone" index="2" value="player.z"/>
+        <!-- Switch to match scope first, then back to player to iterate over ALL players in the match -->
+        <switch-scope inner="match">
+            <switch-scope inner="player">
+                <!-- Filter for anyone currently inside the cylinder var's new location -->
+                <action filter="cyl_zone">
+                    <kit id="speed-kit"/>
+                </action>
+            </switch-scope>
+        </switch-scope>
+    </action>
 </actions>
 ```
 
