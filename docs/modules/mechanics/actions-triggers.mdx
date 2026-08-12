@@ -25,8 +25,10 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<schedule> </schedule>` | Adds a delay between actions. |
 | `<kill-entities/>` | Removes entities based on a filter. |
 | `<kit/>` | Applies a [Kit](/docs/modules/gear/kits). |
-| `<fill/>` | Places blocks in a block-bounded region. |
+| `<fill> </fill>` | Places blocks in a block-bounded region. |
 | `<paste-structure/>` | Places a structure at a specified location when triggered. |
+| `<pickup-flag/>` | Force a player to pick up the specified flag. |
+| `<drop-flag/>` | Force a player to drop the specified flag. |
 | `<open-shop/>` | Open a [shop](/docs/modules/gear/shops) menu when triggered. |
 | `<replace-item> </replace-item>` | Finds and replaces certain items. |
 | `<enchant-item> </enchant-item>` | Enchants the targeted item. |
@@ -134,7 +136,15 @@ In the future, some features that are currently used in Kits may be transferred 
 |---|---|---|
 | `filter` | Filters which entities to remove. | [Filter](/docs/modules/mechanics/filters) |
 
-### Fill Attributes
+### Fill
+
+#### Sub-elements
+
+| Sub-elements | Description |
+|---|---|
+| `<resize/>` | Resize an existing region by the specified values. |
+
+#### Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
@@ -143,6 +153,21 @@ In the future, some features that are currently used in Kits may be transferred 
 | `filter` | Filters which blocks get affected. *May impact performance for large fills.* | [Filter](/docs/modules/mechanics/filters) |
 | `events` | Calls events for block placements and removals, which will make it affected by other filters and PGM features. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | false |
 | `update` | Placed blocks will update upon interaction, e.g., redstone, and invalid block placements such as floating ladders, "popping" off. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | true |
+| `min` | How much to expand in the -x, -y and -z directions.<br />*This attribute is only available for resize.* | <span className="badge badge--primary">X,Y,Z</span> ||
+| `max` | How much to expand in the +x, +y and +z directions.<br />*This attribute is only available for resize.* | <span className="badge badge--primary">X,Y,Z</span> ||
+| `relative` | If the min and max should be relative to the original size of the region (proportion) or absolute (number of blocks).<br />*This attribute is only available for resize.* | <span className="badge badge--primary">true/false</span> | false |
+
+```xml
+<action id="fill-regions" expose="true" scope="match">
+    <fill material="glass">
+        <resize min="5,6,5" max="5,4,5" region="monument-region"/>
+    </fill>
+    <fill material="stained_glass:1">
+        <resize min="1,1,1" max="1,1,1" relative="true" region="monument-region"/>
+    </fill>
+    <fill material="obsidian" region="monument-region"/>
+</action>
+```
 
 ### Paste-Structure Attributes
 
@@ -153,6 +178,22 @@ In the future, some features that are currently used in Kits may be transferred 
 | `z` | The Z coordinate of the location to paste the structure, measured in north-south. | <span className="badge badge--primary">Expression</span> |
 | `structure` | The structure to paste. | [Structure ID](/docs/modules/blocks/structures) |
 | `update` | Placed blocks will update upon interaction, e.g., redstone, and invalid block placements such as floating ladders, "popping" off. *May impact performance for large fills.* | <span className="badge badge--primary">true/false</span> | true |
+
+### Pickup-Flag/Drop-Flag Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `flag` | The name of the flag to act upon. | [Flag ID](/docs/modules/objectives/ctf#flags) |
+
+```xml
+<action id="pickup-red-flag" scope="player" expose="true">
+    <pickup-flag flag="red-flag"/>
+</action>
+
+<action id="drop-red-flag" scope="match" expose="true">
+    <drop-flag flag="red-flag"/>
+</action>
+```
 
 ### Open-Shop Attributes
 
@@ -173,6 +214,7 @@ In the future, some features that are currently used in Kits may be transferred 
 
 | Attribute | Description | Value |
 |---|---|---|
+| `slots` | Restricts which inventory slot(s) to modify. | [Slot Groups](/docs/reference/items/inventory/#slot-groups) |
 | `keep-amount` | Player recives the same amount of the new item as they had of the old item. | <span className="badge badge--primary">true/false</span> |
 | `keep-enchants` | Enchantments on the old item will be applied to the new item. | <span className="badge badge--primary">true/false</span> |
 | `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
@@ -182,9 +224,55 @@ In the future, some features that are currently used in Kits may be transferred 
 
 | Attribute | Description | Value |
 |---|---|--|
+| `slots` | Restricts which inventory slot(s) to modify. | [Slot Groups](/docs/reference/items/inventory/#slot-groups) |
 | `enchantment` | An item enchantment. | [Enchantment Name](/docs/reference/items/enchantments) |
 | `level` | The specified enchantment's level. | <span className="badge badge--primary">Expression</span> |
 | `ignore-metadata` | Ignore the metadata of the item when matching. | <span className="badge badge--primary">true/false</span> |
+
+```xml
+<filters>
+    <carrying id="has-flame-bow" ignore-name="true">
+        <item material="bow" enchantment="flame" unbreakable="true"/>
+    </carrying>
+    <wearing id="wearing-leather-helmet">
+        <item material="leather helmet"/>
+    </wearing>
+</filters>
+<actions>
+    <!-- If a player is carrying a flame bow, replace it with a power bow -->
+    <trigger filter="has-flame-bow" scope="player">
+        <action id="flame" expose="true">
+            <replace-item ignore-name="true">
+                <find material="bow" enchantment="flame" unbreakable="true"/>
+                <replace material="bow" enchantment="power" unbreakable="true"/>
+            </replace-item>
+        </action>
+    </trigger>
+    <!-- When a player wears a leather helmet, enchant it -->
+    <trigger filter="wearing-leather-helmet" scope="player">
+        <action>
+            <!-- Filter for only the helmet worn by the player -->
+            <enchant-item enchantment="protection" level="2" slots="armor.head">
+                <find material="leather helmet"/>
+            </enchant-item>
+        </action>
+    </trigger>
+    <trigger scope="player">
+        <!-- Matches if a player has a vanilla diamond sword in any slot in their inventory -->
+        <filter>
+            <carrying>
+                <item material="diamond sword"/> <!-- Add item attributes as needed -->
+            </carrying>
+        </filter>
+        <action>
+            <!-- Enchants all vanilla diamond swords in the player's inventory with sharpness 2 -->
+            <enchant-item enchantment="sharpness" level="2">
+                <find material="diamond sword"/>
+            </enchant-item>
+        </action>
+    </trigger>
+</actions>
+```
 
 ### Take-Payment
 
@@ -352,6 +440,7 @@ Selects the first matching value from a list of candidate case branches.
     <case match="20" filter="red-team" result="`aHealthy `9red`a player"/>
 </switch>
 ```
+
 #### Attributes
 | Attribute | Description | Type |
 |---|---|---|
@@ -383,7 +472,6 @@ Refers to a replacement in the global registry. Takes in an `id` attribute, whic
     </replacements>
 </message>
 ```
-
 
 ## Examples
 

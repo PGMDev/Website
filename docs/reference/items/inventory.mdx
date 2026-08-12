@@ -18,6 +18,30 @@ import Materials from "../../../src/components/materials";
   </div>
 </div>
 
+
+### Slot Groups
+
+The `slots` attribute is used to define a set of slots in a player's inventory that a feature will work in.
+It can be used with `carrying`, `holding`, and `wearing` filters, as well as the `enchant-item` and `replace-item` actions.
+Specific slots within a group can be targeted using `group.index`, where the index is relative to that group starting at `0`.
+This should not be confused with the kit `slot` attribute.
+
+| Slot Group | Slot Number(s) |
+|---|---|
+| `hotbar` | Slots `0`-`8`. |
+| `pockets` | Slots `9`-`35`. |
+| `storage` | Includes `hotbar` and `pockets`. |
+| `hand`/`mainhand` | Selected slot on the player's hotbar.<br />**Note:** Incompatible when used together with `hotbar`. |
+| `offhand` | Off-hand slot. |
+| `hands` | Includes `hand`/`mainhand` and `offhand`. |
+| `armor` | Individual armor slots: `armor.head`, `armor.chest`, `armor.legs`, and `armor.feet`. |
+| `equipment` | Includes `armor` and `offhand`.<br />**Note:** Does not include `hand`/`mainhand`. |
+| `cursor` | Item currently held in a player's cursor slot.<br />**Note:** While having your inventory open, clicking once on an item will make it be in your cursor slot. |
+| `crafting` | Includes slots inside a 2x2 or 3x3 crafting grid. |
+| `carrying` | Includes `storage`, `offhand`, `cursor`, and `crafting`. |
+| `all` | Includes `storage`, `offhand`, `armor`, `cursor`, and `crafting`. |
+
+
 ### Material Matchers
 
 Depending on the material/item element used a material or multiple materials can be specified with or without data values.
