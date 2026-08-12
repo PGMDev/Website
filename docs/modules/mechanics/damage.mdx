@@ -28,14 +28,25 @@ The difficulty level can be set to `peaceful`, `easy`, `normal`, or `hard`. The 
 
 ### Hunger
 
-Specify if a player can starve to death, usually used with the difficulty setting.
+The hunger module allows you to control depletion and replenishment separately.
+For backward compatibility, replenishment will default to the same as depletion.
 This can also be accomplished with the [`naturalRegeneration` gamerule](/docs/modules/mechanics/gamerules).
 
 ```xml
 <hunger>
-    <depletion>off</depletion>
+    <depletion>off</depletion> <!-- Can't lose hunger (e.g. sprinting) -->
+    <replenishment>on</replenishment> <!-- Can gain hunger (e.g. eating) -->
 </hunger>
+
+<hunger depletion="true" replenishment="false"/> <!-- Can lose hunger, but not gain it -->
 ```
+
+:::tip
+If you are updating an older map XML, you can simplify the hunger module from the above to just the following, which will disable depletion but allow replenishment.
+```xml
+<hunger depletion="false"/>
+```
+:::
 
 ### Damage Filtering
 

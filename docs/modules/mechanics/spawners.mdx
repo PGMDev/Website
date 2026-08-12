@@ -2,18 +2,12 @@
 sidebar_position: 10
 id: spawners
 title: Spawners
-description: The spawners module provides an easy way of spawning items and splash potions into the world, without using actual spawner blocks.
 ---
 
-The `<spawners>` module provides an easy way of spawning items and splash potions into the world, without using actual spawner blocks with NBT editors.
+The Spawners module provides an easy way of spawning items, splash potions, and living entities into the world, without using actual spawner blocks with NBT editors.
 
 The module uses the same syntax as [Kits](/docs/modules/gear/kits) to
 define items and makes use of a specific [region](/docs/modules/mechanics/regions) to spawn them in.
-
-:::info
-Currently, only dropped items and splash potions are supported by this module.
-Other types of entities may be supported in the future.
-:::
 
 | Element | Description |
 |---|---|
@@ -41,8 +35,11 @@ Other types of entities may be supported in the future.
 |---|---|---|
 | `<item> </item>` | An item that will be dropped in the `spawn-region`. | [Item](/docs/modules/gear/items) |
 | `<potion> </potion>` | A single splash potion that will be dropped in the `spawn-region`. | [Potion Effects](/docs/modules/gear/potions) |
+| `<mob />` | A living entity that will be spawned in the `spawn-region`.<br />**Note:** Wither and Ender Dragon cannot be spawned. | [Creature Type](/docs/reference/entities/entity-types#creature-types) |
 
-### Examples
+## Examples
+
+### Item Spawner
 
 This will spawn golden swords (in stacks of 1) in the red base, provided there is at least 1 person in that base.
 The swords will spawn in ramdom intervals of 2s - 10s.
@@ -55,6 +52,8 @@ The <label>filter</label> insures that only players on the red team can trigger 
     </spawner>
 </spawners>
 ```
+
+### Splash Potion Spawner
 
 This will spawn a single splash potion that gives players Absorption III, Speed II and Jump Boost II.
 The speed and jump boost effects will both last 10 seconds and aborbtion will last 60 seconds.
@@ -69,6 +68,68 @@ The `damage` attribute will give the potion a red appeareance based on
             <effect>speed</effect>
             <effect>jump_boost</effect>
         </potion>
+    </spawner>
+</spawners>
+```
+
+### Mob Spawner
+
+This will spawn baby zombies named "Boss" with 20 hearts and are on fire for 30 seconds.
+
+```xml
+<spawners>
+    <spawner spawn-region="south-mob-point" player-region="south-mob" delay="4s">
+        <mob type="Zombie" custom-name="Boss" custom-name-visible="true" baby="true"
+             health="40" max-health="40" fire-ticks="600" can-pickup-items="false"/>
+    </spawner>
+</spawners>
+```
+
+This will spawn bees that are silent, glowing, invulnerable, and have AI.
+They will also be permanently angry, have nectar, and be unable to enter hives.
+
+```xml
+<spawners>
+    <spawner spawn-region="north-mob-point" player-region="north-mob" delay="4s">
+        <mob type="Bee" silent="true" glowing="true" invulnerable="true" ai="true"
+             anger="100" has-nectar="true" cannot-enter-hive-ticks="600"/>
+    </spawner>
+</spawners>
+```
+
+You can also spawn multiple mobs with predefined kits, even with minor changes on a per-mob basis.
+This example will spawn a normal skeleton and a wither skeleton with a kit called "boss-skeleton".
+
+```xml
+<kits>
+    <kit id="boss-skeleton">
+        <helmet material="iron helmet" drop-chance="0"/>
+        <chestplate material="iron chestplate" drop-chance="0"/>
+        <item slot="weapon.mainhand" material="iron sword" unbreakable="true" drop-chance="0.7"/>
+        <effect duration="255">strength</effect>
+        <attribute operation="add" amount="10">generic.max_health</attribute>
+    </kit>
+</kits>
+
+<spawners>
+    <!-- This mob will use the "boss-skeleton" kit defined above -->
+    <spawner spawn-region="west-mob-point" player-region="west-mob" delay="4s">
+        <mob type="Skeleton" custom-name="Captain" kit="boss-skeleton"/>
+    </spawner>
+    <!-- This mob will use the "boss-skeleton" kit defined above, but will also have its own kit -->
+    <spawner spawn-region="center-mob-point" player-region="center-mob" delay="4s">
+        <mob type="WitherSkeleton" custom-name="King" kit="boss-skeleton">
+            <kit>
+                <effect amplifier="2">speed</effect>
+                <attribute operation="add" amount="5">generic.attack_damage</attribute>
+            </kit>
+        </mob>
+    </spawner>
+    <!-- This mob will use its own kit -->
+    <spawner spawn-region="east-mob-point" player-region="east-mob" delay="4s">
+        <mob type="Spider" custom-name="Swift">
+            <kit attribute="generic.movement_speed:multiply:1.5;generic.attack_damage:add:3"/>
+        </mob>
     </spawner>
 </spawners>
 ```
