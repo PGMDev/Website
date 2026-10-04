@@ -239,3 +239,24 @@ footer .container {
 .button--white:hover {
   color: #000000 !important;
 }
+
+/* Side-by-side code blocks, stacked when the content column is too narrow */
+.code-compare {
+  container-type: inline-size;
+}
+
+.code-compare__grid {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1rem;
+}
+
+.code-compare__grid > * {
+  min-width: 0;
+}
+
+@container (max-width: 800px) {
+  .code-compare__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

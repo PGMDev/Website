@@ -1,0 +1,793 @@
+---
+id: programming-basics
+title: Programming Basics
+---
+
+If you already know how to program, most of what you would write in code can be written with [actions](/docs/modules/mechanics/actions-triggers), [filters](/docs/modules/mechanics/filters), and [variables](/docs/modules/mechanics/variables).
+This page shows the XML equivalent of common pseudo-code.
+
+| Concept | PGM equivalent |
+|---|---|
+| Variable | [`<variable>`](/docs/modules/mechanics/variables) |
+| Condition | [Filter](/docs/modules/mechanics/filters) |
+| Block of code | `<action>` |
+| Function | [`<function>`](/docs/modules/mechanics/actions-triggers#functions) |
+| Event listener | [`<trigger>`](/docs/modules/mechanics/actions-triggers#trigger-element) |
+
+All values are numbers. Like in C, there is no boolean type, but numbers can be [used as booleans](#booleans).
+In the examples below, `condition` is any [filter](/docs/modules/mechanics/filters), `expr` is any [expression](/docs/modules/mechanics/variables#expression-functions), and `...` is more actions.
+
+---
+
+## How It Runs
+
+Nothing runs on its own.
+A `<trigger>` runs an action when its filter starts allowing, and that action can run other actions and functions.
+
+Every action runs for one match, team, or player, set by its `scope`.
+This works like `this`: in a `player` action, `player_x` is that player's value.
+
+---
+
+## Values
+
+### Variables
+
+Variables are defined inside `<variables>` and keep their value for the whole match.
+The `scope` can be `match`, `team`, or `player`, to store one value for the match, each team, or each player.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+var x = 0;
+var x = value;
+```
+
+</div>
+<div>
+
+```xml
+<variable id="x" scope="match"/>
+<variable id="x" scope="match" default="value"/>
+```
+
+</div>
+</div>
+</div>
+
+Actions can use variables from their own scope or any scope above it.
+
+Arrays hold a fixed number of values.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+var arr = new Array(n);
+```
+
+</div>
+<div>
+
+```xml
+<array id="arr" scope="match" size="n"/>
+```
+
+</div>
+</div>
+</div>
+
+Local variables are declared with `locals` on an `<action>`, `<repeat>`, or `<function>`, and start at 0 each time it runs.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+let x;
+```
+
+</div>
+<div>
+
+```xml
+<action locals="x">
+```
+
+</div>
+</div>
+</div>
+
+### Assignment
+
+Variables are changed with the `<set>` action.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+x = expr;
+x += expr;
+```
+
+</div>
+<div>
+
+```xml
+<set var="x" value="expr"/>
+<set var="x" value="x + expr"/>
+```
+
+</div>
+</div>
+</div>
+
+Arrays also take an `index`.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+arr[i] = expr;
+```
+
+</div>
+<div>
+
+```xml
+<set var="arr" index="i" value="expr"/>
+```
+
+</div>
+</div>
+</div>
+
+Assignments can also be written inline with `:=`, anywhere an action is referenced.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+x = expr;
+```
+
+</div>
+<div>
+
+```xml
+<trigger action="x := expr"/>
+```
+
+</div>
+</div>
+</div>
+
+### Booleans
+
+There are no booleans, but like in C, a number can be treated as one by using `0` for false and `1` for true.
+A filter's result can be stored this way by setting a variable when it allows.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+flag = condition;
+```
+
+</div>
+<div>
+
+```xml
+<set var="flag" value="0"/>
+<action filter="condition"><set var="flag" value="1"/></action>
+```
+
+</div>
+</div>
+</div>
+
+Flags are checked with a filter.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (flag) { ... }
+if (!flag) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="flag=1">...</action>
+<action filter="flag=0">...</action>
+```
+
+</div>
+</div>
+</div>
+
+To treat any non-zero value as true, like C does, use `not(flag=0)`.
+
+While the values are `0` or `1`, expressions can combine them.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+a && b
+a || b
+```
+
+</div>
+<div>
+
+```xml
+min(a, b)
+max(a, b)
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+!a
+c ? a : b
+```
+
+</div>
+<div>
+
+```xml
+1 - a
+c * a + (1 - c) * b
+```
+
+</div>
+</div>
+</div>
+
+---
+
+## Control Flow
+
+### Conditions
+
+Conditions are [filters](/docs/modules/mechanics/filters), usually written as [inline filters](/docs/modules/mechanics/filters#inline-filters).
+
+#### Comparing Values
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (x == value) { ... }
+if (x != value) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="x=value">...</action>
+<action filter="not(x=value)">...</action>
+```
+
+</div>
+</div>
+</div>
+
+Greater and less than are written as ranges, with `..` on the open side.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (x >= value) { ... }
+if (x <= value) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="x=value..">...</action>
+<action filter="x=..value">...</action>
+```
+
+</div>
+</div>
+</div>
+
+Inline filters only use inclusive ranges, so `x > 5` is written as `x=6..` for whole numbers.
+For decimals, use a [variable filter](/docs/modules/mechanics/filters#variable-filter) like `<variable var="x">(5,oo)</variable>`.
+
+#### Ranges & Expressions
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (x >= min && x <= max) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="x=min..max">...</action>
+```
+
+</div>
+</div>
+</div>
+
+The left side of a filter can be any expression, not just a variable.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (x == y) { ... }
+if (expr >= value) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="x-y=0">...</action>
+<action filter="expr=value..">...</action>
+```
+
+</div>
+</div>
+</div>
+
+#### Combining Conditions
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (a && b) { ... }
+if (a || b) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="all(a, b)">...</action>
+<action filter="any(a, b)">...</action>
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (!a) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="not(a)">...</action>
+```
+
+</div>
+</div>
+</div>
+
+### If Statements
+
+Actions only run when their `filter` allows, so a `filter` works like an `if` statement.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (condition) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="condition">...</action>
+```
+
+</div>
+</div>
+</div>
+
+Some single actions can use a `filter` directly.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (condition) return;
+if (condition) return value;
+```
+
+</div>
+<div>
+
+```xml
+<return filter="condition"/>
+<return filter="condition" value="value"/>
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (condition) break;
+if (condition) continue;
+```
+
+</div>
+<div>
+
+```xml
+<break filter="condition"/>
+<continue filter="condition"/>
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (condition) f();
+```
+
+</div>
+<div>
+
+```xml
+<call filter="condition" function="f"/>
+```
+
+</div>
+</div>
+</div>
+
+#### If-Else
+
+Two actions with opposite filters can both run if the first one changes the condition.
+Return early from the first one instead.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (condition) {
+    A
+} else {
+    B
+}
+```
+
+</div>
+<div>
+
+```xml
+<action filter="condition">
+    A
+    <return/>
+</action>
+B
+```
+
+</div>
+</div>
+</div>
+
+`<return/>` stops everything up to the nearest parent action with an `id`.
+
+### Loops
+
+`<repeat>` runs its actions a number of times.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+for (let i = 0; i < n; i++)
+```
+
+</div>
+<div>
+
+```xml
+<repeat times="n" index="i">
+```
+
+</div>
+</div>
+</div>
+
+`<switch-scope>` runs its actions once for each team or player.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+for (const player of team.players)
+for (const player of match.players)
+```
+
+</div>
+<div>
+
+```xml
+<switch-scope outer="team" inner="player">
+<switch-scope outer="match" inner="player">
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+for (const team of match.teams)
+```
+
+</div>
+<div>
+
+```xml
+<switch-scope outer="match" inner="team">
+```
+
+</div>
+</div>
+</div>
+
+Loops can be stopped or skipped ahead.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+break;
+continue;
+```
+
+</div>
+<div>
+
+```xml
+<break/>
+<continue/>
+```
+
+</div>
+</div>
+</div>
+
+`<break/>` only stops the innermost loop.
+
+#### While
+
+There is no `while` loop, but a `<repeat>` with a `<break/>` can be used, up to a maximum number of iterations.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+while (condition) {
+    ...
+}
+```
+
+</div>
+<div>
+
+```xml
+<repeat times="100">
+    <break filter="not(condition)"/>
+    ...
+</repeat>
+```
+
+</div>
+</div>
+</div>
+
+---
+
+## Functions & Events
+
+### Functions
+
+Functions are reusable actions with parameters and an optional return value, defined inside `<actions>`.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+function f(a, b)
+```
+
+</div>
+<div>
+
+```xml
+<function id="f" scope="player" params="a,b">
+```
+
+</div>
+</div>
+</div>
+
+Functions are run with `<call/>`, which can store the returned value.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+f(1, 2);
+x = f(1, 2);
+```
+
+</div>
+<div>
+
+```xml
+<call function="f" a="1" b="2"/>
+<call function="f" a="1" b="2" result="x"/>
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+return value;
+```
+
+</div>
+<div>
+
+```xml
+<return value="value"/>
+```
+
+</div>
+</div>
+</div>
+
+A function's `scope` must match the caller's.
+Functions can not see the caller's local variables.
+
+### Events
+
+A trigger runs an action when its filter starts allowing, like an event listener.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+when (condition)
+```
+
+</div>
+<div>
+
+```xml
+<trigger filter="condition" scope="match" action="..."/>
+```
+
+</div>
+</div>
+</div>
+
+Triggers run separately for each player, team, or match, each time their filter changes from deny to allow.
+
+A schedule runs its actions later, up to 1 minute.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+setTimeout(() => { ... }, 5000);
+```
+
+</div>
+<div>
+
+```xml
+<schedule after="5s">
+```
+
+</div>
+</div>
+</div>
+
+Variables are shown in messages using a [`<decimal>`](/docs/modules/mechanics/actions-triggers#decimal-replacement) replacement.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+console.log(`${x}`);
+```
+
+</div>
+<div>
+
+```xml
+<message text="{x}">
+```
+
+</div>
+</div>
+</div>
+
+---
+
+## Limitations
+
+- Expressions can't use comparisons or logic like `==` or `&&`. Use a filter instead.
+- There are no strings.
+- Every loop has a maximum number of iterations.
+- A schedule can wait up to 1 minute.
+- Another player's variables can only be used by looping over players with `<switch-scope>`.
