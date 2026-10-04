@@ -33,7 +33,8 @@ This works like `this`: in a `player` action, `player_x` is that player's value.
 
 ### Variables
 
-Variables are defined inside `<variables>` and keep their value for the whole match.
+Variables are global, like global state in other languages.
+They are defined in their own `<variables>` tag, outside of any action, and keep their value for the whole match.
 The `scope` can be `match`, `team`, or `player`, to store one value for the match, each team, or each player.
 
 <div className="code-compare">
@@ -42,7 +43,7 @@ The `scope` can be `match`, `team`, or `player`, to store one value for the matc
 
 ```js
 var x = 0;
-var x = value;
+var y = 5;
 ```
 
 </div>
@@ -50,7 +51,7 @@ var x = value;
 
 ```xml
 <variable id="x" scope="match"/>
-<variable id="x" scope="match" default="value"/>
+<variable id="y" scope="match" default="5"/>
 ```
 
 </div>
@@ -59,21 +60,21 @@ var x = value;
 
 Actions can use variables from their own scope or any scope above it.
 
-Arrays hold a fixed number of values.
+Arrays hold a fixed number of values, set by a number from 1 to 1024.
 
 <div className="code-compare">
 <div className="code-compare__grid">
 <div>
 
 ```js
-var arr = new Array(n);
+var arr = new Array(10);
 ```
 
 </div>
 <div>
 
 ```xml
-<array id="arr" scope="match" size="n"/>
+<array id="arr" scope="match" size="10"/>
 ```
 
 </div>
@@ -277,16 +278,16 @@ Conditions are [filters](/docs/modules/mechanics/filters), usually written as [i
 <div>
 
 ```js
-if (x == value) { ... }
-if (x != value) { ... }
+if (x == 5) { ... }
+if (x != 5) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<action filter="x=value">...</action>
-<action filter="not(x=value)">...</action>
+<action filter="x=5">...</action>
+<action filter="not(x=5)">...</action>
 ```
 
 </div>
@@ -294,22 +295,23 @@ if (x != value) { ... }
 </div>
 
 Greater and less than are written as ranges, with `..` on the open side.
+The values in a range must be numbers, not variables or expressions.
 
 <div className="code-compare">
 <div className="code-compare__grid">
 <div>
 
 ```js
-if (x >= value) { ... }
-if (x <= value) { ... }
+if (x >= 5) { ... }
+if (x <= 5) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<action filter="x=value..">...</action>
-<action filter="x=..value">...</action>
+<action filter="x=5..">...</action>
+<action filter="x=..5">...</action>
 ```
 
 </div>
@@ -326,14 +328,14 @@ For decimals, use a [variable filter](/docs/modules/mechanics/filters#variable-f
 <div>
 
 ```js
-if (x >= min && x <= max) { ... }
+if (x >= 1 && x <= 10) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<action filter="x=min..max">...</action>
+<action filter="x=1..10">...</action>
 ```
 
 </div>
@@ -348,7 +350,7 @@ The left side of a filter can be any expression, not just a variable.
 
 ```js
 if (x == y) { ... }
-if (expr >= value) { ... }
+if (expr >= 5) { ... }
 ```
 
 </div>
@@ -356,7 +358,7 @@ if (expr >= value) { ... }
 
 ```xml
 <action filter="x-y=0">...</action>
-<action filter="expr=value..">...</action>
+<action filter="expr=5..">...</action>
 ```
 
 </div>
@@ -649,7 +651,7 @@ while (condition) {
 
 ### Functions
 
-Functions are reusable actions with parameters and an optional return value, defined inside `<actions>`.
+Functions are reusable actions with parameters and an optional return value, defined in the `<actions>` tag.
 
 <div className="code-compare">
 <div className="code-compare__grid">
