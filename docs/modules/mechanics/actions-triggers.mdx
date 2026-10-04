@@ -114,16 +114,14 @@ Inside a [function](#functions), it can also return a value.
         <set var="points" value="points + 1"/>
     </action>
 
-    <action id="give-flag-kit" scope="team">
-        <switch-scope inner="player">
-            <!-- Skip players who are already carrying -->
-            <continue filter="carrying=1"/>
-            <kit id="flag-kit"/>
-            <set var="carrying" value="1"/>
-            <!-- Only give the kit to one player -->
-            <break/>
-        </switch-scope>
-    </action>
+    <switch-scope id="give-flag-kit" outer="team" inner="player">
+        <!-- Skip players who are already carrying -->
+        <continue filter="carrying=1"/>
+        <kit id="flag-kit"/>
+        <set var="carrying" value="1"/>
+        <!-- Only give the kit to one player -->
+        <break/>
+    </switch-scope>
 </actions>
 ```
 
