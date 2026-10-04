@@ -4,7 +4,7 @@ title: Programming Basics
 ---
 
 If you already know how to program, most of what you would write in code can be written with [actions](/docs/modules/mechanics/actions-triggers), [filters](/docs/modules/mechanics/filters), and [variables](/docs/modules/mechanics/variables).
-This page shows the XML equivalent of common pseudo-code.
+This page shows how common code is written in PGM.
 
 | Concept | PGM equivalent |
 |---|---|
@@ -14,15 +14,15 @@ This page shows the XML equivalent of common pseudo-code.
 | Function | [`<function>`](/docs/modules/mechanics/actions-triggers#functions) |
 | Event listener | [`<trigger>`](/docs/modules/mechanics/actions-triggers#trigger-element) |
 
-All values are numbers. Like in C, there is no boolean type, but numbers can be [used as booleans](#booleans).
+All values are numbers. Like in C, there is no boolean type.
 In the examples below, `condition` is any [filter](/docs/modules/mechanics/filters), `expr` is any [expression](/docs/modules/mechanics/variables#expression-functions), and `...` is more actions.
 
 ---
 
 ## How It Runs
 
-Nothing runs on its own.
-A `<trigger>` runs an action when its filter starts allowing, and that action can run other actions and functions.
+Actions are usually started by a `<trigger>`, which runs an action when its filter starts allowing.
+That action can then run other actions and functions.
 
 Every action runs for one match, team, or player, set by its `scope`.
 This works like `this`: in a `player` action, `player_x` is that player's value.
@@ -95,7 +95,7 @@ let x;
 <div>
 
 ```xml
-<action locals="x">
+<action locals="x">...</action>
 ```
 
 </div>
@@ -162,101 +162,7 @@ x = expr;
 <div>
 
 ```xml
-<trigger action="x := expr"/>
-```
-
-</div>
-</div>
-</div>
-
-### Booleans
-
-There are no booleans, but like in C, a number can be treated as one by using `0` for false and `1` for true.
-A filter's result can be stored this way by setting a variable when it allows.
-
-<div className="code-compare">
-<div className="code-compare__grid">
-<div>
-
-```js
-flag = condition;
-```
-
-</div>
-<div>
-
-```xml
-<set var="flag" value="0"/>
-<action filter="condition"><set var="flag" value="1"/></action>
-```
-
-</div>
-</div>
-</div>
-
-Flags are checked with a filter.
-
-<div className="code-compare">
-<div className="code-compare__grid">
-<div>
-
-```js
-if (flag) { ... }
-if (!flag) { ... }
-```
-
-</div>
-<div>
-
-```xml
-<action filter="flag=1">...</action>
-<action filter="flag=0">...</action>
-```
-
-</div>
-</div>
-</div>
-
-To treat any non-zero value as true, like C does, use `not(flag=0)`.
-
-While the values are `0` or `1`, expressions can combine them.
-
-<div className="code-compare">
-<div className="code-compare__grid">
-<div>
-
-```js
-a && b
-a || b
-```
-
-</div>
-<div>
-
-```xml
-min(a, b)
-max(a, b)
-```
-
-</div>
-</div>
-</div>
-
-<div className="code-compare">
-<div className="code-compare__grid">
-<div>
-
-```js
-!a
-c ? a : b
-```
-
-</div>
-<div>
-
-```xml
-1 - a
-c * a + (1 - c) * b
+<trigger filter="condition" scope="match" action="x := expr"/>
 ```
 
 </div>
@@ -269,7 +175,71 @@ c * a + (1 - c) * b
 
 ### Conditions
 
-Conditions are [filters](/docs/modules/mechanics/filters), usually written as [inline filters](/docs/modules/mechanics/filters#inline-filters).
+Conditions are [filters](/docs/modules/mechanics/filters).
+A filter defined in `<filters>` is used by its `id`.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (holdingGap) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="holding-gap">...</action>
+```
+
+</div>
+</div>
+</div>
+
+Filters can also be written [inline](/docs/modules/mechanics/filters#inline-filters), to combine other filters or compare numbers.
+
+#### Combining Conditions
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (a && b) { ... }
+if (a || b) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="all(a, b)">...</action>
+<action filter="any(a, b)">...</action>
+```
+
+</div>
+</div>
+</div>
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (!a) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="not(a)">...</action>
+```
+
+</div>
+</div>
+</div>
 
 #### Comparing Values
 
@@ -319,7 +289,28 @@ if (x <= 5) { ... }
 </div>
 
 Inline filters only use inclusive ranges, so `x > 5` is written as `x=6..` for whole numbers.
-For decimals, use a [variable filter](/docs/modules/mechanics/filters#variable-filter) like `<variable var="x">(5,oo)</variable>`.
+For decimals, use `not` on the opposite range.
+
+<div className="code-compare">
+<div className="code-compare__grid">
+<div>
+
+```js
+if (x > 5) { ... }
+if (x < 5) { ... }
+```
+
+</div>
+<div>
+
+```xml
+<action filter="not(x=..5)">...</action>
+<action filter="not(x=5..)">...</action>
+```
+
+</div>
+</div>
+</div>
 
 #### Ranges & Expressions
 
@@ -342,7 +333,8 @@ if (x >= 1 && x <= 10) { ... }
 </div>
 </div>
 
-The left side of a filter can be any expression, not just a variable.
+The left side of a filter can be an expression, as long as it has no parentheses.
+Filters with an expression only work in actions, not in triggers.
 
 <div className="code-compare">
 <div className="code-compare__grid">
@@ -359,48 +351,6 @@ if (expr >= 5) { ... }
 ```xml
 <action filter="x-y=0">...</action>
 <action filter="expr=5..">...</action>
-```
-
-</div>
-</div>
-</div>
-
-#### Combining Conditions
-
-<div className="code-compare">
-<div className="code-compare__grid">
-<div>
-
-```js
-if (a && b) { ... }
-if (a || b) { ... }
-```
-
-</div>
-<div>
-
-```xml
-<action filter="all(a, b)">...</action>
-<action filter="any(a, b)">...</action>
-```
-
-</div>
-</div>
-</div>
-
-<div className="code-compare">
-<div className="code-compare__grid">
-<div>
-
-```js
-if (!a) { ... }
-```
-
-</div>
-<div>
-
-```xml
-<action filter="not(a)">...</action>
 ```
 
 </div>
@@ -438,7 +388,7 @@ Some single actions can use a `filter` directly.
 
 ```js
 if (condition) return;
-if (condition) return value;
+if (condition) return expr;
 ```
 
 </div>
@@ -446,7 +396,7 @@ if (condition) return value;
 
 ```xml
 <return filter="condition"/>
-<return filter="condition" value="value"/>
+<return filter="condition" value="expr"/>
 ```
 
 </div>
@@ -495,8 +445,7 @@ if (condition) f();
 
 #### If-Else
 
-Two actions with opposite filters can both run if the first one changes the condition.
-Return early from the first one instead.
+An `else` is a second action with the opposite filter.
 
 <div className="code-compare">
 <div className="code-compare__grid">
@@ -504,9 +453,9 @@ Return early from the first one instead.
 
 ```js
 if (condition) {
-    A
+    ...
 } else {
-    B
+    ...
 }
 ```
 
@@ -514,18 +463,15 @@ if (condition) {
 <div>
 
 ```xml
-<action filter="condition">
-    A
-    <return/>
-</action>
-B
+<action filter="condition">...</action>
+<action filter="not(condition)">...</action>
 ```
 
 </div>
 </div>
 </div>
 
-`<return/>` stops everything up to the nearest parent action with an `id`.
+Each filter is checked when its action runs, so if the first action changes a variable the condition uses, both can run.
 
 ### Loops
 
@@ -536,14 +482,14 @@ B
 <div>
 
 ```js
-for (let i = 0; i < n; i++)
+for (let i = 0; i < n; i++) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<repeat times="n" index="i">
+<repeat times="n" index="i">...</repeat>
 ```
 
 </div>
@@ -557,16 +503,16 @@ for (let i = 0; i < n; i++)
 <div>
 
 ```js
-for (const player of team.players)
-for (const player of match.players)
+for (const player of team.players) { ... }
+for (const player of match.players) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<switch-scope outer="team" inner="player">
-<switch-scope outer="match" inner="player">
+<switch-scope outer="team" inner="player">...</switch-scope>
+<switch-scope outer="match" inner="player">...</switch-scope>
 ```
 
 </div>
@@ -578,14 +524,14 @@ for (const player of match.players)
 <div>
 
 ```js
-for (const team of match.teams)
+for (const team of match.teams) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<switch-scope outer="match" inner="team">
+<switch-scope outer="match" inner="team">...</switch-scope>
 ```
 
 </div>
@@ -658,14 +604,14 @@ Functions are reusable actions with parameters and an optional return value, def
 <div>
 
 ```js
-function f(a, b)
+function f(a, b) { ... }
 ```
 
 </div>
 <div>
 
 ```xml
-<function id="f" scope="player" params="a,b">
+<function id="f" scope="player" params="a,b">...</function>
 ```
 
 </div>
@@ -700,14 +646,14 @@ x = f(1, 2);
 <div>
 
 ```js
-return value;
+return expr;
 ```
 
 </div>
 <div>
 
 ```xml
-<return value="value"/>
+<return value="expr"/>
 ```
 
 </div>
@@ -726,7 +672,7 @@ A trigger runs an action when its filter starts allowing, like an event listener
 <div>
 
 ```js
-when (condition)
+when (condition) { ... }
 ```
 
 </div>
@@ -756,7 +702,7 @@ setTimeout(() => { ... }, 5000);
 <div>
 
 ```xml
-<schedule after="5s">
+<schedule after="5s">...</schedule>
 ```
 
 </div>
@@ -777,7 +723,11 @@ console.log(`${x}`);
 <div>
 
 ```xml
-<message text="{x}">
+<message text="{x_text}">
+    <replacements>
+        <decimal id="x_text" value="x"/>
+    </replacements>
+</message>
 ```
 
 </div>
