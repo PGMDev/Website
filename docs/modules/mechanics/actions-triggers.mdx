@@ -7,6 +7,7 @@ toc_max_heading_level: 4
 
 Actions are a set of features that are applied to players, teams, or matches, similiar to [Kits](/docs/modules/gear/kits).
 Multiple actions can be started by one trigger.
+If you are familiar with programming, see [Programming Basics](/docs/guides/xml-pointers/programming-basics) for how common code translates to actions.
 
 :::info
 In the future, some features that are currently used in Kits may be transferred to be used as an Action instead.
@@ -19,6 +20,10 @@ In the future, some features that are currently used in Kits may be transferred 
 | `<action> </action>` | A group of actions running in a sequence. |
 | `<switch-scope> </switch-scope>` | Changes the scope that an action applies to. |
 | `<repeat> </repeat>` | Loop actions without recursions. |
+| `<break/>` | Stops the enclosing loop. See [Control Flow](#control-flow). |
+| `<continue/>` | Skips to the next iteration of the enclosing loop. See [Control Flow](#control-flow). |
+| `<return/>` | Stops the current action, or returns a value from a function. See [Control Flow](#control-flow). |
+| `<call/>` | Runs a [Function](#functions). |
 | `<message/>` | A message that is sent to the player. |
 | `<sound/>` | A sound that is played for the player. |
 | `<set/>` | Sets a new value for a [Variable](/docs/modules/mechanics/variables). |
@@ -45,6 +50,7 @@ In the future, some features that are currently used in Kits may be transferred 
 | `filter` | A filter that is tested before running actions inside. | [Filter](/docs/modules/mechanics/filters) |
 | `untrigger-filter` | A filter that is tested before deactivating the actions inside, similar to [kit lending](/docs/modules/gear/kits#dynamic-kits).<br />*Most actions do not have explicit untrigger logic and will do nothing on untrigger.* | [Filter](/docs/modules/mechanics/filters) | `never` |
 | `expose` | Allows an action to be triggered by `/action`.<br />*Actions must have an ID and support the match scope for expose to work. Moderators require the `GAMEPLAY` permission to use the action command.* | <span className="badge badge--primary">true/false</span> | false |
+| `locals` | A comma separated list of [local variables](#local-variables) for the actions inside. | <span className="badge badge--primary">String</span> |
 
 ### Switch-Scope Attributes
 
@@ -61,6 +67,64 @@ In the future, some features that are currently used in Kits may be transferred 
 |---|---|---|
 | `times` | The amount of time to repeat.<br />*Non-whole numbers will be rounded down. Negative numbers will cause no iterations.* | <span className="badge badge--primary">Expression</span> |
 | `filter` | Filters when this loop should be active. This will be checked as many time as the loop is ran. | [Filter](/docs/modules/mechanics/filters) |
+| `index` | The name of a [local variable](#local-variables) that holds the current iteration, starting at 0. | <span className="badge badge--primary">String</span> |
+| `locals` | A comma separated list of [local variables](#local-variables) for the actions inside. | <span className="badge badge--primary">String</span> |
+
+### Local Variables
+
+Local variables are temporary values that only exist while an action runs, starting at 0 each time.
+They are declared with the `locals` attribute on an `<action>`, `<repeat>`, or [`<function>`](#functions),
+and can be used in any expression or filter inside it, or changed with `<set>` and `:=`.
+Actions with an `id` start with their own set of locals.
+
+```xml
+<action id="give-arrows" scope="player" locals="per_kill,amount">
+    <!-- 2 arrows per kill, or 3 during overtime, up to 16 -->
+    <set var="per_kill" value="2 + overtime"/>
+    <set var="amount" value="min(kills * per_kill, 16)"/>
+    <repeat times="amount">
+        <kit>
+            <item material="arrow"/>
+        </kit>
+    </repeat>
+</action>
+```
+
+### Control Flow
+
+`<break/>`, `<continue/>`, and `<return/>` change which actions run next, if their `filter` allows.
+
+`<break/>` stops a loop, and `<continue/>` skips to its next iteration.
+They can be used inside a `<repeat>`, or a `<switch-scope>` that runs once for each team or player.
+
+`<return/>` skips the rest of the action, up to the nearest parent action with an `id`.
+Inside a [function](#functions), it can also return a value.
+
+#### Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `filter` | Filters when this should take effect. | [Filter](/docs/modules/mechanics/filters) |
+| `value` | The value to return from a function.<br />*Only for `<return/>`.* | <span className="badge badge--primary">Expression</span> |
+
+```xml
+<actions>
+    <action id="on-capture" scope="player">
+        <!-- Nothing below runs during overtime -->
+        <return filter="overtime=1"/>
+        <set var="points" value="points + 1"/>
+    </action>
+
+    <switch-scope id="give-flag-kit" outer="team" inner="player">
+        <!-- Skip players who are already carrying -->
+        <continue filter="carrying=1"/>
+        <kit id="flag-kit"/>
+        <set var="carrying" value="1"/>
+        <!-- Only give the kit to one player -->
+        <break/>
+    </switch-scope>
+</actions>
+```
 
 ### Message
 
@@ -271,6 +335,57 @@ _Example_
     <trigger filter="some-dynamic-filter" action="do-stuff" scope="player"/>
     <message id="standalone-text" text="This is a standalone text trigger"/>
     <trigger filter="another-dynamic-filter" action="standalone-text" scope="player"/>
+</actions>
+```
+
+## Functions
+
+Functions are reusable groups of actions that take parameters and can return a value.
+They are defined inside `<actions>`, and are run with the `<call/>` action.
+
+A function's parameters are [local variables](#local-variables).
+
+### Function Attributes
+
+| Attribute | Description | Value | Default |
+|---|---|---|---|
+| `id` | <span className="badge badge--danger">Required</span>Unique identifier used to reference this function from other places in the XML. | <span className="badge badge--primary">String</span> |
+| `scope` | <span className="badge badge--danger">Required</span>The scope the function runs in.<br />*Must match the caller's scope.* | `player`, `team`, or `match` |
+| `params` | A comma separated list of parameter names, which are given values by `<call/>`. | <span className="badge badge--primary">String</span> |
+| `locals` | A comma separated list of extra [local variables](#local-variables). | <span className="badge badge--primary">String</span> |
+| `filter` | A filter that is tested before running the function. It can use the function's parameters. | [Filter](/docs/modules/mechanics/filters) |
+| `default` | The value to return if the function ends without returning a value. | <span className="badge badge--primary">Number</span> | 0 |
+
+### Call Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `function` | <span className="badge badge--danger">Required</span>The function to run. | [Function ID](#function-attributes) |
+| `result` | The variable to store the returned value in. This can also be a local variable. | [Variable](/docs/modules/mechanics/variables) |
+| `index` | If `result` is an array-type variable, the index to store the value in. | <span className="badge badge--primary">Expression</span> |
+| `filter` | A filter that is tested before calling the function. | [Filter](/docs/modules/mechanics/filters) |
+
+All other attributes set the function's parameters, using the parameter name as the attribute name.
+
+```xml
+<actions>
+    <!-- Launches the player forward -->
+    <function id="launch" scope="player" params="power,height">
+        <velocity x="player.dir_x * power" y="height" z="player.dir_z * power"/>
+    </function>
+
+    <!-- Returns the coins earned for a kill -->
+    <function id="kill-reward" scope="player" params="streak" default="10">
+        <return filter="streak=0" value="1"/>
+        <return filter="streak=1..4" value="streak * 2"/>
+        <!-- Streaks of 5 or more return the default value of 10 -->
+    </function>
+
+    <action id="on-kill" scope="player" locals="reward">
+        <call function="kill-reward" streak="killstreak" result="reward"/>
+        <set var="coins" value="coins + reward"/>
+        <call function="launch" power="1.5" height="0.5"/>
+    </action>
 </actions>
 ```
 

@@ -1,0 +1,16 @@
+/* Side-by-side code blocks, stacked when the content column is too narrow */
+.CodeCompare {
+    container-type: inline-size;
+}
+
+.CodeCompare__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: 1rem;
+}
+
+@container (max-width: 800px) {
+    .CodeCompare__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

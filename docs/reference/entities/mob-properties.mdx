@@ -1,0 +1,103 @@
+---
+id: mob-properties
+title: Mob Properties
+---
+
+Properties that can be set on mobs spawned by [Spawners](/docs/modules/mechanics/spawners).
+
+## General Properties
+
+| Attribute | Description | Value |
+|---|---|---|
+| `custom-name` | The mob's name. | <span className="badge badge--primary">String</span> |
+| `custom-name-visible` | Always show the mob's name above it. | <span className="badge badge--primary">true/false</span> |
+| `health` | The mob's health. | <span className="badge badge--primary">Decimal</span> |
+| `max-health` | The mob's maximum health. | <span className="badge badge--primary">Decimal</span> |
+| `fire-ticks` | How long the mob is on fire for, in ticks. | <span className="badge badge--primary">Number</span> |
+| `can-pickup-items` | Toggle if the mob can pick up items. | <span className="badge badge--primary">true/false</span> |
+| `remove-when-far-away` | Toggle if the mob despawns when no players are nearby. | <span className="badge badge--primary">true/false</span> |
+| `arrows-stuck` | The number of arrows stuck in the mob. | <span className="badge badge--primary">Number</span> |
+| `maximum-air` | The mob's maximum air, in ticks. | <span className="badge badge--primary">Number</span> |
+| `remaining-air` | The mob's remaining air, in ticks. | <span className="badge badge--primary">Number</span> |
+| `maximum-no-damage-ticks` | How long the mob is invulnerable for after taking damage, in ticks. | <span className="badge badge--primary">Number</span> |
+| `no-damage-ticks` | How long the mob is invulnerable for after spawning, in ticks. | <span className="badge badge--primary">Number</span> |
+
+## Mob-Specific Properties
+
+| Mob | Attribute | Value |
+|---|---|---|
+| Animals, villagers | `baby`, `age-lock` | <span className="badge badge--primary">true/false</span> |
+| Animals, villagers | `age` | <span className="badge badge--primary">Number</span> |
+| Tameable mobs | `tamed` | <span className="badge badge--primary">true/false</span> |
+| Sheep, shulkers | `color` | [Dye Color](/docs/reference/misc/colors) |
+| Sheep | `sheared` | <span className="badge badge--primary">true/false</span> |
+| Pig | `saddle` | <span className="badge badge--primary">true/false</span> |
+| Slime, magma cube, phantom | `size` | <span className="badge badge--primary">Number</span> |
+| Horse | `color` | `white`, `creamy`, `chestnut`, `brown`, `black`, `gray`, `dark_brown` |
+| Horse | `style` | `none`, `white`, `whitefield`, `white_dots`, `black_dots` |
+| Horse | `domestication`, `max-domestication` | <span className="badge badge--primary">Number</span> |
+| Horse | `jump-strength` | <span className="badge badge--primary">Decimal</span> |
+| Donkey, mule, llama | `carrying-chest` | <span className="badge badge--primary">true/false</span> |
+| Wolf | `angry`, `sitting` | <span className="badge badge--primary">true/false</span> |
+| Wolf, cat | `collar-color` | [Dye Color](/docs/reference/misc/colors) |
+| Ocelot | `trusting` | <span className="badge badge--primary">true/false</span> |
+| Cat | `lying-down`, `head-up` | <span className="badge badge--primary">true/false</span> |
+| Zombie | `baby` | <span className="badge badge--primary">true/false</span> |
+| Zombie | `can-break-doors`, `arms-raised`, `should-burn-in-day` | <span className="badge badge--primary">true/false</span> |
+| Zombie *(except zombie pigmen)* | `conversion-time` | <span className="badge badge--primary">Number</span> |
+| Zombie pigman | `angry` | <span className="badge badge--primary">true/false</span> |
+| Zombie pigman, bee | `anger` | <span className="badge badge--primary">Number</span> |
+| Creeper | `powered`, `ignited` | <span className="badge badge--primary">true/false</span> |
+| Creeper | `fuse-ticks`, `max-fuse-ticks`, `explosion-radius` | <span className="badge badge--primary">Number</span> |
+| Phantom | `should-burn-in-day` | <span className="badge badge--primary">true/false</span> |
+| Iron golem | `player-created` | <span className="badge badge--primary">true/false</span> |
+| Rabbit | `rabbit-type` | `brown`, `white`, `black`, `black_and_white`, `gold`, `salt_and_pepper`, `the_killer_bunny` |
+| Bat | `awake` | <span className="badge badge--primary">true/false</span> |
+| Fox | `fox-type` | `red`, `snow` |
+| Fox | `crouching`, `sleeping`, `interested`, `leaping`, `defending`, `faceplanted` | <span className="badge badge--primary">true/false</span> |
+| Panda | `main-gene`, `hidden-gene` | `normal`, `lazy`, `worried`, `playful`, `brown`, `weak`, `aggressive` |
+| Panda | `rolling`, `sneezing`, `eating` | <span className="badge badge--primary">true/false</span> |
+| Bee | `has-nectar`, `has-stung` | <span className="badge badge--primary">true/false</span> |
+| Bee | `cannot-enter-hive-ticks`, `time-since-sting` | <span className="badge badge--primary">Number</span> |
+| Snow golem | `derp` | <span className="badge badge--primary">true/false</span> |
+| Endermite | `lifetime-ticks` | <span className="badge badge--primary">Number</span> |
+| Witch | `potion-use-time-left` | <span className="badge badge--primary">Number</span> |
+| Armor stand | `base-plate`, `visible`, `arms`, `small`, `marker`, `can-move` | <span className="badge badge--primary">true/false</span> |
+
+## Modern Properties
+
+These apply to all mobs. Not available in 1.8.
+
+| Attribute | Description | Value |
+|---|---|---|
+| `silent` | Prevent the mob from making sounds. | <span className="badge badge--primary">true/false</span> |
+| `glowing` | Give the mob a glowing outline. | <span className="badge badge--primary">true/false</span> |
+| `invulnerable` | Prevent the mob from taking damage. | <span className="badge badge--primary">true/false</span> |
+| `invisible` | Make the mob invisible. | <span className="badge badge--primary">true/false</span> |
+| `persistent` | Prevent the mob from despawning. | <span className="badge badge--primary">true/false</span> |
+| `gravity` | Toggle if the mob is affected by gravity. | <span className="badge badge--primary">true/false</span> |
+| `no-physics` | Let the mob move through blocks. | <span className="badge badge--primary">true/false</span> |
+| `collidable` | Toggle if the mob can be pushed by other entities. | <span className="badge badge--primary">true/false</span> |
+| `ai` | Toggle if the mob moves and acts on its own. | <span className="badge badge--primary">true/false</span> |
+| `aware` | Toggle if the mob reacts to its surroundings. | <span className="badge badge--primary">true/false</span> |
+| `aggressive` | Put the mob in its aggressive pose. | <span className="badge badge--primary">true/false</span> |
+| `left-handed` | Make the mob left-handed. | <span className="badge badge--primary">true/false</span> |
+| `gliding` | Make the mob glide. | <span className="badge badge--primary">true/false</span> |
+| `swimming` | Make the mob swim. | <span className="badge badge--primary">true/false</span> |
+| `freeze-ticks` | How long the mob has been in powder snow, in ticks. | <span className="badge badge--primary">Number</span> |
+| `portal-cooldown` | How long until the mob can use a portal, in ticks. | <span className="badge badge--primary">Number</span> |
+| `no-action-ticks` | How long the mob has been idle, in ticks. | <span className="badge badge--primary">Number</span> |
+
+## Legacy Properties
+
+These are only available in 1.8.
+
+| Mob | Attribute | Value |
+|---|---|---|
+| Horse | `variant` | `horse`, `donkey`, `mule`, `undead_horse`, `skeleton_horse` |
+| Horse | `carrying-chest` | <span className="badge badge--primary">true/false</span> |
+| Ocelot | `cat-type` | `wild_ocelot`, `black_cat`, `red_cat`, `siamese_cat` |
+| Zombie | `villager` | <span className="badge badge--primary">true/false</span> |
+| Skeleton | `skeleton-type` | `normal`, `wither` |
+| Guardian | `elder` | <span className="badge badge--primary">true/false</span> |
+| Armor stand | `gravity` | <span className="badge badge--primary">true/false</span> |

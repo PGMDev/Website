@@ -46,6 +46,7 @@ or on the [bukkit docs - Material](https://hub.spigotmc.org/javadocs/bukkit/org/
 | `grenade-fire` | Toggle if grenade explosion creates fire. | <span className="badge badge--primary">true/false</span> | false |
 | `grenade-destroy` | Toggle if grenade explosion destroys blocks. | <span className="badge badge--primary">true/false</span> | true |
 | `prevent-sharing` | Prevent this item from being moved from the player's inventory. | <span className="badge badge--primary">true/false</span> | false |
+| `class-menu` | Right-clicking this item opens the [class](/docs/modules/gear/classes) picker. | <span className="badge badge--primary">true/false</span> | false |
 | `projectile` | Make this item shoot a custom projectile. | [Projectile ID](/docs/modules/gear/projectiles) |
 | `show-enchantments` | Show enchantments in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
 | `show-attributes` | Show attribute modifiers in the item tooltip. | <span className="badge badge--primary">true/false</span> | true |
@@ -141,11 +142,21 @@ They accept all of the properties of normal items and may have their own special
 <boots material="leather boots"/>
 ```
 
+Other equipment slots have their own tags as well.
+
+| Element | Description |
+|---|---|
+| `<mainhand>` | The item held in the main hand. |
+| `<offhand>` | The item held in the off hand.<br />*Not available in 1.8.* |
+| `<body>` | Body armor, such as horse armor or wolf armor.<br />*Only applies to [mobs](/docs/modules/mechanics/spawners#mob-kits).* |
+| `<saddle>` | A saddle.<br />*Only applies to [mobs](/docs/modules/mechanics/spawners#mob-kits).* |
+
 #### Armor Attributes
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
 | `locked` | Prevent this armor item from being removed from the armor slot in any way. | <span className="badge badge--primary">true/false</span> | false |
+| `drop-chance` | The chance for a [mob](/docs/modules/mechanics/spawners#mob-kits) to drop this item when it dies. | <span className="badge badge--primary">0 - 1.0</span> |
 
 Enchanting, naming, or giving armor lore works the same way as with items.
 

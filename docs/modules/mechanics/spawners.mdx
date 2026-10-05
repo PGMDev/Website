@@ -35,7 +35,22 @@ define items and makes use of a specific [region](/docs/modules/mechanics/region
 |---|---|---|
 | `<item> </item>` | An item that will be dropped in the `spawn-region`. | [Item](/docs/modules/gear/items) |
 | `<potion> </potion>` | A single splash potion that will be dropped in the `spawn-region`. | [Potion Effects](/docs/modules/gear/potions) |
-| `<mob />` | A living entity that will be spawned in the `spawn-region`.<br />**Note:** Wither and Ender Dragon cannot be spawned. | [Creature Type](/docs/reference/entities/entity-types#creature-types) |
+| `<mob />` | A living entity that will be spawned in the `spawn-region`. | [Mob Attributes](#mob-attributes) |
+
+#### Mob Attributes
+
+| Attribute | Description | Value |
+|---|---|---|
+| `type` | <span className="badge badge--danger">Required</span>The type of mob to spawn.<br />**Note:** Wither and Ender Dragon cannot be spawned. | [Creature Type](/docs/reference/entities/entity-types#creature-types) |
+| `kit` | <span className="badge badge--secondary" title="Can be either this attribute or a sub-element.">Property</span>A kit to apply to the mob when it spawns. See [Mob Kits](#mob-kits). | [Kit](/docs/modules/gear/kits) |
+
+Mobs can also be given any [Mob Properties](/docs/reference/entities/mob-properties) that apply to their type.
+
+#### Mob Kits
+
+Mobs can be given a [Kit](/docs/modules/gear/kits) when they spawn, which can contain
+[armor and equipment](/docs/modules/gear/items#armor), [potion effects](/docs/modules/gear/potions), [attribute modifiers](/docs/reference/items/attributes), health, and max health.
+Equipment can be given a `drop-chance` to control how likely the mob is to drop it.
 
 ## Examples
 
@@ -75,6 +90,7 @@ The `damage` attribute will give the potion a red appeareance based on
 ### Mob Spawner
 
 This will spawn baby zombies named "Boss" with 20 hearts and are on fire for 30 seconds.
+See [Mob Properties](/docs/reference/entities/mob-properties) for all available properties.
 
 ```xml
 <spawners>
@@ -105,7 +121,7 @@ This example will spawn a normal skeleton and a wither skeleton with a kit calle
     <kit id="boss-skeleton">
         <helmet material="iron helmet" drop-chance="0"/>
         <chestplate material="iron chestplate" drop-chance="0"/>
-        <item slot="weapon.mainhand" material="iron sword" unbreakable="true" drop-chance="0.7"/>
+        <mainhand material="iron sword" unbreakable="true" drop-chance="0.7"/>
         <effect duration="255">strength</effect>
         <attribute operation="add" amount="10">generic.max_health</attribute>
     </kit>
