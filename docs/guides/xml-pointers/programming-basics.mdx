@@ -1,0 +1,609 @@
+---
+id: programming-basics
+title: Programming Basics
+---
+
+import CodeCompare from "@site/src/components/CodeCompare.tsx";
+
+If you already know how to program, most of what you would write in code can be written with [actions](/docs/modules/mechanics/actions-triggers), [filters](/docs/modules/mechanics/filters), and [variables](/docs/modules/mechanics/variables).
+This page shows how common code is written in PGM.
+
+| Concept | PGM equivalent |
+|---|---|
+| Variable | [`<variable>`](/docs/modules/mechanics/variables) |
+| Condition | [Filter](/docs/modules/mechanics/filters) |
+| Block of code | `<action>` |
+| Function | [`<function>`](/docs/modules/mechanics/actions-triggers#functions) |
+| Event listener | [`<trigger>`](/docs/modules/mechanics/actions-triggers#trigger-element) |
+
+All values are numbers. Like in C, there is no boolean type.
+In the examples below, `condition` is any [filter](/docs/modules/mechanics/filters), `expr` is any [expression](/docs/modules/mechanics/variables#expression-functions), and `...` is more actions.
+
+---
+
+## How It Runs
+
+Actions are usually started by a `<trigger>`, which runs an action when its filter starts allowing.
+That action can then run other actions and functions.
+
+Every action runs for one match, team, or player, set by its `scope`.
+This works like `this`: in a `player` action, `player_x` is that player's value.
+
+---
+
+## Values
+
+### Variables
+
+Variables are global, like global state in other languages.
+They are defined in their own `<variables>` tag, outside of any action, and keep their value for the whole match.
+The `scope` can be `match`, `team`, or `player`, to store one value for the match, each team, or each player.
+
+<CodeCompare>
+
+```js
+var x = 0;
+var y = 5;
+```
+
+```xml
+<variable id="x" scope="match"/>
+<variable id="y" scope="match" default="5"/>
+```
+
+</CodeCompare>
+
+Actions can use variables from their own scope or any scope above it.
+
+Arrays hold a fixed number of values, set by a number from 1 to 1024.
+
+<CodeCompare>
+
+```js
+var arr = new Array(10);
+```
+
+```xml
+<array id="arr" scope="match" size="10"/>
+```
+
+</CodeCompare>
+
+Local variables are declared with `locals` on an `<action>`, `<repeat>`, or `<function>`, and start at 0 each time it runs.
+
+<CodeCompare>
+
+```js
+let x;
+```
+
+```xml
+<action locals="x">...</action>
+```
+
+</CodeCompare>
+
+### Assignment
+
+Variables are changed with the `<set>` action.
+
+<CodeCompare>
+
+```js
+x = expr;
+x += expr;
+```
+
+```xml
+<set var="x" value="expr"/>
+<set var="x" value="x + expr"/>
+```
+
+</CodeCompare>
+
+Arrays also take an `index`.
+
+<CodeCompare>
+
+```js
+arr[i] = expr;
+```
+
+```xml
+<set var="arr" index="i" value="expr"/>
+```
+
+</CodeCompare>
+
+Assignments can also be written inline with `:=`, anywhere an action is referenced.
+
+<CodeCompare>
+
+```js
+x = expr;
+```
+
+```xml
+<trigger filter="condition" scope="match"
+         action="x := expr"/>
+```
+
+</CodeCompare>
+
+---
+
+## Control Flow
+
+### Conditions
+
+Conditions are [filters](/docs/modules/mechanics/filters).
+A filter defined in `<filters>` is used by its `id`.
+
+<CodeCompare>
+
+```js
+if (holdingGap) { ... }
+```
+
+```xml
+<action filter="holding-gap">...</action>
+```
+
+</CodeCompare>
+
+Filters can also be written [inline](/docs/modules/mechanics/filters#inline-filters), to combine other filters or compare numbers.
+
+#### Combining Conditions
+
+<CodeCompare>
+
+```js
+if (a && b) { ... }
+if (a || b) { ... }
+```
+
+```xml
+<action filter="all(a, b)">...</action>
+<action filter="any(a, b)">...</action>
+```
+
+</CodeCompare>
+
+<CodeCompare>
+
+```js
+if (!a) { ... }
+```
+
+```xml
+<action filter="not(a)">...</action>
+```
+
+</CodeCompare>
+
+#### Comparing Values
+
+<CodeCompare>
+
+```js
+if (x == 5) { ... }
+if (x != 5) { ... }
+```
+
+```xml
+<action filter="x=5">...</action>
+<action filter="not(x=5)">...</action>
+```
+
+</CodeCompare>
+
+Greater and less than are written as ranges, with `..` on the open side.
+The values in a range must be numbers, not variables or expressions.
+
+<CodeCompare>
+
+```js
+if (x >= 5) { ... }
+if (x <= 5) { ... }
+```
+
+```xml
+<action filter="x=5..">...</action>
+<action filter="x=..5">...</action>
+```
+
+</CodeCompare>
+
+Inline filters only use inclusive ranges, so `x > 5` is written as `x=6..` for whole numbers.
+For decimals, use `not` on the opposite range.
+
+<CodeCompare>
+
+```js
+if (x > 5) { ... }
+if (x < 5) { ... }
+```
+
+```xml
+<action filter="not(x=..5)">...</action>
+<action filter="not(x=5..)">...</action>
+```
+
+</CodeCompare>
+
+#### Ranges & Expressions
+
+<CodeCompare>
+
+```js
+if (x >= 1 && x <= 10) { ... }
+```
+
+```xml
+<action filter="x=1..10">...</action>
+```
+
+</CodeCompare>
+
+The left side of a filter can be an expression, as long as it has no parentheses.
+Inside `all`, `any`, or `not`, it also can't have spaces.
+Filters with an expression only work in actions, not in triggers.
+
+<CodeCompare>
+
+```js
+if (x == y) { ... }
+if (expr >= 5) { ... }
+```
+
+```xml
+<action filter="x-y=0">...</action>
+<action filter="expr=5..">...</action>
+```
+
+</CodeCompare>
+
+### If Statements
+
+Actions only run when their `filter` allows, so a `filter` works like an `if` statement.
+
+<CodeCompare>
+
+```js
+if (condition) { ... }
+```
+
+```xml
+<action filter="condition">...</action>
+```
+
+</CodeCompare>
+
+Some single actions can use a `filter` directly.
+
+<CodeCompare>
+
+```js
+if (condition) return;
+if (condition) return expr;
+```
+
+```xml
+<return filter="condition"/>
+<return filter="condition" value="expr"/>
+```
+
+</CodeCompare>
+
+<CodeCompare>
+
+```js
+if (condition) break;
+if (condition) continue;
+```
+
+```xml
+<break filter="condition"/>
+<continue filter="condition"/>
+```
+
+</CodeCompare>
+
+<CodeCompare>
+
+```js
+if (condition) f();
+```
+
+```xml
+<call filter="condition" function="f"/>
+```
+
+</CodeCompare>
+
+#### If-Else
+
+An `else` is a second action with the opposite filter.
+
+<CodeCompare>
+
+```js
+if (condition) {
+    ...
+} else {
+    ...
+}
+```
+
+```xml
+<action filter="condition">...</action>
+<action filter="not(condition)">...</action>
+```
+
+</CodeCompare>
+
+Each filter is checked when its action runs, so if the first action changes a variable the condition uses, both can run.
+
+### Loops
+
+`<repeat>` runs its actions a number of times.
+
+<CodeCompare>
+
+```js
+for (let i = 0; i < n; i++) { ... }
+```
+
+```xml
+<repeat times="n" index="i">...</repeat>
+```
+
+</CodeCompare>
+
+`<switch-scope>` runs its actions once for each team or player.
+
+<CodeCompare>
+
+```js
+for (const player of team.players) {
+    ...
+}
+for (const player of match.players) {
+    ...
+}
+```
+
+```xml
+<switch-scope outer="team" inner="player">
+    ...
+</switch-scope>
+<switch-scope outer="match" inner="player">
+    ...
+</switch-scope>
+```
+
+</CodeCompare>
+
+<CodeCompare>
+
+```js
+for (const team of match.teams) {
+    ...
+}
+```
+
+```xml
+<switch-scope outer="match" inner="team">
+    ...
+</switch-scope>
+```
+
+</CodeCompare>
+
+Loops can be stopped or skipped ahead.
+
+<CodeCompare>
+
+```js
+break;
+continue;
+```
+
+```xml
+<break/>
+<continue/>
+```
+
+</CodeCompare>
+
+`<break/>` only stops the innermost loop.
+
+#### While
+
+There is no `while` loop, but a `<repeat>` with a `<break/>` can be used, up to a maximum number of iterations.
+
+<CodeCompare>
+
+```js
+while (condition) {
+    ...
+}
+```
+
+```xml
+<repeat times="100">
+    <break filter="not(condition)"/>
+    ...
+</repeat>
+```
+
+</CodeCompare>
+
+---
+
+## Functions & Events
+
+### Functions
+
+Functions are reusable actions with parameters and an optional return value, defined in the `<actions>` tag.
+
+<CodeCompare>
+
+```js
+function f(a, b) {
+    ...
+}
+```
+
+```xml
+<function id="f" scope="player" params="a,b">
+    ...
+</function>
+```
+
+</CodeCompare>
+
+Functions are run with `<call/>`, which can store the returned value.
+
+<CodeCompare>
+
+```js
+f(1, 2);
+x = f(1, 2);
+```
+
+```xml
+<call function="f" a="1" b="2"/>
+<call function="f" a="1" b="2" result="x"/>
+```
+
+</CodeCompare>
+
+<CodeCompare>
+
+```js
+return expr;
+```
+
+```xml
+<return value="expr"/>
+```
+
+</CodeCompare>
+
+A function's `scope` must match the caller's.
+Functions can not see the caller's local variables.
+
+### Events
+
+A trigger runs an action when its filter starts allowing, like an event listener.
+
+<CodeCompare>
+
+```js
+condition.on("allow", () => { ... });
+```
+
+```xml
+<trigger filter="condition" scope="match" action="..."/>
+```
+
+</CodeCompare>
+
+Triggers run separately for each player, team, or match, each time their filter changes from deny to allow.
+
+A schedule runs its actions later, up to 1 minute.
+
+<CodeCompare>
+
+```js
+setTimeout(() => { ... }, 5000);
+```
+
+```xml
+<schedule after="5s">...</schedule>
+```
+
+</CodeCompare>
+
+Variables are shown in messages using a [`<decimal>`](/docs/modules/mechanics/actions-triggers#decimal-replacement) replacement.
+
+<CodeCompare>
+
+```js
+console.log(`${x}`);
+```
+
+```xml
+<message text="{x_text}">
+    <replacements>
+        <decimal id="x_text" value="x"/>
+    </replacements>
+</message>
+```
+
+</CodeCompare>
+
+---
+
+## Full Example
+
+This function checks if a number is prime, returning `1` if it is and `0` if it is not.
+Every value in PGM is a double, so the code is written with decimals to match.
+
+```js
+function isPrime(number) {
+    let divisor;
+
+    if (number == 2.0) return 1.0;
+    if (number < 2.0 || number % 2.0 == 0.0) return 0.0;
+
+    for (let i = 0.0; i < number; i++) {
+        divisor = (i * 2.0) + 3.0;
+
+        if (divisor * divisor > number) break;
+        if (number % divisor == 0.0) return 0.0;
+    }
+
+    return 1.0;
+}
+```
+
+```xml
+<function id="is-prime" scope="match" params="number" locals="divisor">
+
+    <return filter="number=2" value="1"/>
+    <return filter="any(number=..2, number%2=0)" value="0"/>
+
+    <repeat times="number" index="i">
+        <set var="divisor" value="(i * 2) + 3"/>
+
+        <break filter="divisor * divisor - number = 1.."/>
+        <return filter="number % divisor = 0" value="0"/>
+    </repeat>
+
+    <return value="1"/>
+</function>
+```
+
+<CodeCompare>
+
+```js
+x = isPrime(7.0);
+```
+
+```xml
+<call function="is-prime" number="7" result="x"/>
+```
+
+</CodeCompare>
+
+---
+
+## Limitations
+
+- Every variable is a double or an array of doubles.
+- Expressions can't use comparisons or logic like `==` or `&&`. Use a filter instead.
+- Every loop has a maximum number of iterations.
+- A schedule can wait up to 1 minute.
+- Another player's variables can only be used by looping over players with `<switch-scope>`.
