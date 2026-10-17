@@ -58,6 +58,7 @@ Regions can also be used since they are filters that filter for a location.
 _Examples_
 
 ```xml
+<!-- Deny taking damage from explosion -->
 <damage>
     <deny>
         <cause>explosion</cause>
@@ -84,6 +85,17 @@ _Examples_
             <class>eagle</class>
             <cause>fall</cause>
         </all>
+    </deny>
+</damage>
+```
+
+```xml
+<!-- Deny taking damage from shot arrows -->
+<damage>
+    <deny>
+        <damager>
+            <entity>arrow</entity>
+        </damager>
     </deny>
 </damage>
 ```
@@ -131,7 +143,8 @@ _Example_
 
 #### Block Explosion Attributes
 
-The `BLOCK_EXPLOSION` damage cause has several extended attributes to customize who/what gets damaged. Only attributes with `false` as the value need to be explicitly defined since all attributes default to `true`.
+The `BLOCK_EXPLOSION` damage cause has several extended attributes to customize who/what gets damaged.
+Only attributes with `false` as the value need to be explicitly defined since all attributes default to `true`.
 
 | Attribute | Description | Value | Default |
 |---|---|---|---|
