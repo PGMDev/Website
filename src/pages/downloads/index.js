@@ -36,19 +36,10 @@ export default function Downloads() {
     <Layout title="Downloads">
       <div className={clsx("container", styles.downloads_container)}>
         <h1 className={styles.downloads_title}>Downloads</h1>
-        {releases.length === 0 ? (
-          <div className={clsx("hero", styles.spinner_hero)}>
-            <div className={styles.lds_ripple}>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-        ) : (
-          <div
+        <div
             className={clsx(
               "hero",
               styles.downloads_hero,
-              styles.appearing
             )}
           >
             <div className="container">
@@ -60,12 +51,10 @@ export default function Downloads() {
                       <h1>PGM</h1>
                       <p>
                         <small>
-                          Last updated on
-                          {" "}
-                          {format(
+                          Last updated on {releases.length ? format(
                             new Date(releases[0].commit.committer.date),
                             "LLLL d, yyyy"
-                          )}{" "}
+                          ) : "(loading)"}
                         </small>
                       </p>
                       <a href="https://github.com/PGMDev/PGM/commits">
@@ -129,10 +118,9 @@ export default function Downloads() {
                   </a>
                 </div>
               </div>
-              </div>
             </div>
           </div>
-        )}
+        </div>
         <div className={styles.others}>
           <h2 style={{ marginBottom: "-15px" }}>Other Resources</h2>
           <div className="row">
