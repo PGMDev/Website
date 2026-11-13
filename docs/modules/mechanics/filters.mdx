@@ -73,6 +73,7 @@ Inline filters allow you to write expressions that create filters dynamically, s
 **Function Syntax:** `all()`, `any()`, `one()`, `not()`, `allow()`, `deny()` can be used with nested filter references.
 
 **Variable Expressions:** Variables can be used directly with comparison operators: `=`, `[min,max]`, `min..`, `[min,oo)`.
+See [Programming Basics](/docs/guides/xml-pointers/programming-basics#conditions) for how common comparisons are written.
 
 _Examples_
 ```xml
@@ -610,7 +611,7 @@ _Examples_
 
 ### Objective Filters
 
-There are three different Objective Filters that are used:
+There are four different Objective Filters that are used:
 
 The `<completed>` filter matches when the specified objective is completed or captured by anybody.
 This filter is not affected by the context in which it is applied and never abstains.
@@ -622,6 +623,10 @@ This filter will abstain if used in a context that does not involve a specific p
 
 Alternately, `<captured>` can have a team specified with the team attribute.
 Then it will always test that team's control of the objective, regardless of the filtering context, and will never abstain.
+
+The `<touched>` filter matches players or teams who have touched the specified wool, core, monument, or flag.
+Like `<captured>`, it can have a team specified with the team attribute.
+This filter is a [Dynamic Filter](#dynamic-filters).
 
 :::warning
 `<objective>` is deprecated and may be removed in future versions of PGM.
@@ -638,6 +643,7 @@ This filter is a [Dynamic Filter](#dynamic-filters).
 |---|---|---|
 | `<completed>` | Matches if anyone completed or captured the objective. | <span className="badge badge--secondary">Objective ID</span> |
 | `<captured>` | Matches for players/teams who currently control the objective. | <span className="badge badge--secondary">Objective ID</span> |
+| `<touched>` | Matches for players/teams who have touched the objective. | <span className="badge badge--secondary">Objective ID</span> |
 | `<objective>` | <span className="badge badge--warning" title="This attribute should no longer be used.">Deprecated</span>Matches if any team completed the objective. | <span className="badge badge--secondary">Objective ID</span> |
 
 
@@ -660,6 +666,11 @@ _Examples_
 <captured>north-hill</captured>
 <!-- Match if Blue Team owns central-hill -->
 <captured team="blue-team">central-hill</captured>
+
+<!-- Match players/teams who have touched "red-wool" -->
+<touched>red-wool</touched>
+<!-- Match if Blue Team has touched "red-core" -->
+<touched team="blue-team">red-core</touched>
 
 <!-- <objective> is deprecated -->
 <!-- Matches if the team of the player is the one that completed objective -->

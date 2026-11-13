@@ -8,6 +8,7 @@ Variables are used to store information that can later be used in a filter.
 Values are changed using the [Actions & Triggers](/docs/modules/mechanics/actions-triggers) mechanic.
 Afterwards, they can be used as a [Filter](/docs/modules/mechanics/filters#variable-filter) after meeting a certain number or range.
 You can define as many variables as you want and all variables must have a scope defined.
+If you are familiar with programming, see [Programming Basics](/docs/guides/xml-pointers/programming-basics) for how common code translates to variables, filters, and actions.
 
 ## Variable Element
 
@@ -20,6 +21,7 @@ You can define as many variables as you want and all variables must have a scope
 | `<variable/>` | An individual variable. |
 | `<score/>` | A score variable, allowing direct access to competitor's score. This is automatically scoped to teams. |
 | `<timelimit/>` | A time limit variable which starts/stops the time limit of the match. |
+| `<lives/>` | A player-scoped variable for the player's remaining [Blitz](/docs/modules/objectives/blitz) lives. |
 | `<maxbuildheight/>` | A variable that sets the build height of the map. |
 | `<array/>` | A variable that represents a collection of values. |
 | `<with-team/>` | A team-rescoping variable that allows using a specific team's value from a different team-scoped variable as a match-scoped variable. |
@@ -55,7 +57,19 @@ You can define as many variables as you want and all variables must have a scope
 | Attribute | Description | Value |
 |---|---|---|
 | `id` | Unique identifier used to reference this player-location variable from other places in the XML. | <span className="badge badge--primary">String</span> |
-| `component` | The player's location component to target.<br />`X`, `Y`, `Z`, `YAW`, and `PITCH` represents the player's position and angle.<br />`DIR_X`, `DIR_Y`, and `DIR_Z` represents the player's direction.<br />`VEL_X`, `VEL_Y`, and `VEL_Z` represents the player's velocity.<br />`TARGET_X`, `TARGET_Y`, and `TARGET_Z` represents the block a player is looking at.<br />`PLACE_X`, `PLACE_Y`, and `PLACE_Z` represents the location of a player-placed block.  | <span className="badge badge--secondary">XYZ</span>, <span className="badge badge--secondary">Yaw</span>, <span className="badge badge--secondary">Pitch</span>,<br /><span className="badge badge--secondary">Direction</span>, <span className="badge badge--secondary">Velocity</span>,<br /><span className="badge badge--secondary">Target</span>, <span className="badge badge--secondary">Place</span> |
+| `component` | The player's location component to target.<br />`X`, `Y`, `Z`, `YAW`, and `PITCH` represents the player's position and angle.<br />`DIR_X`, `DIR_Y`, and `DIR_Z` represents the player's direction.<br />`VEL_X`, `VEL_Y`, and `VEL_Z` represents the player's velocity.<br />`TARGET_X`, `TARGET_Y`, and `TARGET_Z` represents the block a player is looking at.<br />`PLACE_X`, `PLACE_Y`, and `PLACE_Z` represents where a block would be placed against the face the player is looking at.<br />`HAS_TARGET` represents if the player is looking at a block, as 1 or 0.<br />*Target and place components are -1 when the player is not looking at a block.* | <span className="badge badge--secondary">XYZ</span>, <span className="badge badge--secondary">Yaw</span>, <span className="badge badge--secondary">Pitch</span>,<br /><span className="badge badge--secondary">Direction</span>, <span className="badge badge--secondary">Velocity</span>,<br /><span className="badge badge--secondary">Target</span>, <span className="badge badge--secondary">Place</span>, <span className="badge badge--secondary">Has Target</span> |
+
+## Expression Functions
+
+Expressions, such as the `value` of a `<set>` action, support all of the [built-in operators](https://www.objecthunter.net/exp4j/#Built-in_operators) and [functions](https://www.objecthunter.net/exp4j/#Built-in_functions) from exp4j, like `floor`, `abs`, and `sqrt`.
+PGM also adds the following functions.
+
+| Function | Description |
+|---|---|
+| `min(a, b, ...)` | The smallest of the given values. |
+| `max(a, b, ...)` | The largest of the given values. |
+| `bound(value, min, max)` | Limits `value` to be between `min` and `max`. |
+| `random()` | A random decimal between 0 and 1. |
 
 ## Examples
 
@@ -172,6 +186,22 @@ can be ended by setting the value to `0`.
             <!-- Removes the timelimit -->
             <set var="tl_1" value="-10"/>
         </switch-scope>
+    </action>
+</actions>
+```
+
+### Lives Variable
+The `lives` variable reads and changes a player's remaining lives in [Blitz](/docs/modules/objectives/blitz).
+It is -1 if the map does not use Blitz.
+
+```xml
+<variables>
+    <lives id="player_lives"/>
+</variables>
+<actions>
+    <action id="extra-life" scope="player">
+        <!-- Gives the player one more life -->
+        <set var="player_lives" value="player_lives+1"/>
     </action>
 </actions>
 ```
